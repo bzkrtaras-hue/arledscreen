@@ -318,7 +318,7 @@ const INTENT_PAGES: CommercialPage[] = [
     lead: "Kısa süreli etkinlik, sahne ve fuarlar için kiralık LED ekran kurulumu planlıyoruz.",
     intro: [
       "Satın alma yerine kısa süreli ihtiyaçlarda kiralık LED ekran daha verimli olabilir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
-      "Kiralık ürün grubu ve kiralık mı satın alma rehberi ile karşılaştırma yapabilirsiniz.",
+      "Kiralık LED ekran ürün grubunu inceleyebilir, “Kiralık mı, satın alma mı?” rehberiyle iki seçeneği karşılaştırabilirsiniz.",
       NAP,
     ],
     bullets: [
@@ -1941,9 +1941,9 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         "LED display rental for stage, fair and events. ARLEDSCREEN rental cabinets: USD 50 per m² per day; installation and shipping quoted separately.",
       h1: "LED display rental",
       eyebrow: "Rental",
-      lead: "We plan rental LED installs for short-run events, stages and fairs.",
+      lead: "We plan rental LED installations for short-term events, stages and fairs.",
       intro: [
-        "For short needs, rental can beat purchase. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+        "For short-term needs, renting can be more efficient than buying. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
         "Compare with purchase using our price list and calculator when ownership makes more sense.",
         NAP_EN,
       ],
@@ -1968,7 +1968,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Rent or buy?",
           answer:
-            "One-off events usually favor rental; continuous use usually favors purchase. Purchase prices per panel are published on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+            "One-off events usually favour renting; continuous use usually favours buying. Purchase prices per panel are published on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
         },
         {
           question: "Is there a published fixed rental price?",

@@ -394,7 +394,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       ],
       h1: "LCD ekran nedir, ne zaman tercih edilir?",
       intro:
-        "LCD ekran, arkadan aydınlatılan sıvı kristal bir panelle görüntü oluşturan ve fabrikada belirlenen ölçüde üretilen dijital ekrandır; TV, monitör, menuboard ve ayaklı totemlerde yaygın olarak kullanılır. ARLEDSCREEN, menuboard ve ayaklı ekran projelerinde LED'in yanı sıra LCD/TV tipi ekran seçeneği de sunar. LCD seçeneklerinde model, ölçü ve fiyat bilgisi yazılı teklifle verilir.",
+        "LCD ekran, arkadan aydınlatılan sıvı kristal bir panelle görüntü oluşturan ve fabrikada belirlenen ölçüde üretilen dijital ekrandır; TV, monitör, menüboard ve ayaklı totemlerde yaygın olarak kullanılır. ARLEDSCREEN, menuboard ve ayaklı ekran projelerinde LED'in yanı sıra LCD/TV tipi ekran seçeneği de sunar. LCD seçeneklerinde model, ölçü ve fiyat bilgisi yazılı teklifle verilir.",
       sections: [
         {
           h2: "LCD ekran ile LED ekran arasındaki fark",
@@ -404,22 +404,22 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "LCD ekran nerelerde kullanılır?",
           body:
-            "Kafe ve restoranlarda menuboard, mağaza girişinde ve lobide ayaklı totem, bilgi ve self-servis noktalarında kiosk, ofis ve bekleme alanlarında bilgilendirme ekranı LCD'nin en yaygın kullanım alanlarıdır.",
+            "Kafe ve restoranlarda menüboard, mağaza girişinde ve lobide ayaklı totem, bilgi ve self-servis noktalarında kiosk, ofis ve bekleme alanlarında bilgilendirme ekranı LCD'nin en yaygın kullanım alanlarıdır.",
         },
         {
-          h2: "LCD menuboard ve ayaklı LCD ekran",
+          h2: "LCD menüboard ve ayaklı LCD ekran",
           body:
-            "ARLEDSCREEN, menuboard ve ayaklı ekran projelerinde LCD/TV tipi seçeneği LED ile birlikte değerlendirir. Keşifte kasa üstündeki veya girişteki alan, izleme mesafesi ve içerik türü not edilir; ardından LCD ya da LED için yazılı teklif hazırlanır. Montaj ve devreye almayı aynı ekip yapar.",
+            "ARLEDSCREEN, menüboard ve ayaklı ekran projelerinde LCD/TV tipi seçeneği LED ile birlikte değerlendirir. Keşifte kasa üstündeki veya girişteki alan, izleme mesafesi ve içerik türü not edilir; ardından LCD ya da LED için yazılı teklif hazırlanır. Montaj ve devreye almayı aynı ekip yapar.",
         },
         {
           h2: "Fiyat ve teklif",
           body:
-            "LCD ekranlar için sitede fiyat yayımlamıyoruz; model, ölçü ve adet netleştikten sonra yazılı teklif hazırlıyoruz. Yayımladığımız teknik bilgiler LCD ekran ve kiosk ürün sayfalarındakilerle sınırlıdır: dokunmatik kiosk 49, 55 ve 65 inç, Android veya Windows, USB, HDMI, LAN ve Wi‑Fi bağlantısı. Diğer değerler seçilen modelle birlikte teklifte paylaşılır. Sitede yayımlanan fiyatlar yalnızca NXTIONSTAR LED paneller içindir ve LED ekran fiyatları sayfasında yer alır.",
+            "LCD ekranlar için sitede fiyat yayımlamıyoruz; model, ölçü ve adet netleştikten sonra yazılı teklif hazırlıyoruz. Yayımladığımız teknik bilgiler, LCD ekran ve kiosk ürün sayfalarındakilerle sınırlıdır: 49, 55 ve 65 inç dokunmatik kiosk; Android veya Windows işletim sistemi; USB, HDMI, LAN ve Wi‑Fi bağlantısı. Diğer değerler seçilen modelle birlikte teklifte paylaşılır. Sitede yayımlanan fiyatlar yalnızca NXTIONSTAR LED paneller içindir ve LED ekran fiyatları sayfasında yer alır.",
         },
         {
           h2: "İnç ölçüsüne ve mekâna göre LCD ekran",
           body:
-            "LCD ekran inç ölçüsüyle seçilir. İç mekân ticari ekranlarda yaygın aralık 43–85 inçtir; tekli menü, bilgilendirme ve yönlendirme için 43–55 inç, uzaktan okunacak duvar ekranları için 65–85 inç sık kullanılır. Ayaklı dokunmatik kiosk gövdelerinde tedarik ettiğimiz ölçüler 49, 55 ve 65 inçtir; Android veya Windows tabanlı olabilir. İç mekân LCD standart parlaklıktadır. Cam arkası vitrin için yüksek parlaklıklı, açık hava için ise sızdırmaz kasalı ve iklimlendirmeli dış mekân sınıfı ayrı ürünlerdir; dış mekânda geniş ve parlak yüzey gerektiğinde çoğu projede LED ekran daha uygun olur. LCD için fiyat ve model bilgisi yalnızca yazılı teklifle verilir.",
+            "LCD ekran inç ölçüsüyle seçilir. İç mekân ticari ekranlarda yaygın aralık 43–85 inçtir; tekli menü, bilgilendirme ve yönlendirme için 43–55 inç, uzaktan okunacak duvar ekranları için 65–85 inç sık kullanılır. Ayaklı dokunmatik kiosk gövdelerinde tedarik ettiğimiz ölçüler 49, 55 ve 65 inçtir; bu kiosklar Android veya Windows tabanlı olabilir. İç mekân LCD standart parlaklıktadır. Cam arkası vitrin için yüksek parlaklıklı, açık hava için ise sızdırmaz kasalı ve iklimlendirmeli dış mekân sınıfı ayrı ürünlerdir; dış mekânda geniş ve parlak yüzey gerektiğinde çoğu projede LED ekran daha uygun olur. LCD için fiyat ve model bilgisi yalnızca yazılı teklifle verilir.",
         },
       ],
       faqs: [
@@ -434,9 +434,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Tek ve küçük bir ekran yeterliyse LCD uygun olabilir. Geniş, çerçevesiz ve parlak bir yüzey ya da dış mekânda okunabilirlik gerekiyorsa LED tercih edilir. ARLEDSCREEN iki seçeneği de sunar; seçim keşifte yapılır.",
         },
         {
-          question: "LCD menuboard ve ayaklı LCD ekran satıyor musunuz?",
+          question: "LCD menüboard ve ayaklı LCD ekran satıyor musunuz?",
           answer:
-            "Evet. Menuboard ve ayaklı ekran projelerinde LED'in yanı sıra LCD/TV tipi ekran seçeneği sunuyoruz. Fiyat yazılı teklifle verilir.",
+            "Evet. Menüboard ve ayaklı ekran projelerinde LED'in yanı sıra LCD/TV tipi ekran seçeneği sunuyoruz. Fiyat yazılı teklifle verilir.",
         },
         {
           question: "LCD ekran fiyatı ne kadar?",
@@ -1832,12 +1832,12 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Price and quote",
           body:
-            "We do not publish prices for LCD displays; a written quote follows once model, size and quantity are clear. The technical details we publish are limited to those on our LCD and kiosk product pages: touch kiosks in 49, 55 and 65 inch, Android or Windows, with USB, HDMI, LAN and Wi-Fi. Other values are shared with the chosen model in the quote. Prices published on the site are for NXTIONSTAR LED panels only.",
+            "We do not publish prices for LCD displays; a written quote follows once model, size and quantity are clear. The technical details we publish are limited to those on our LCD and kiosk product pages: 49-, 55- and 65-inch touch kiosks running Android or Windows, with USB, HDMI, LAN and Wi-Fi. Other values are shared with the chosen model in the quote. Prices published on the site are for NXTIONSTAR LED panels only.",
         },
         {
           h2: "LCD displays by inch size and location",
           body:
-            "LCD displays are chosen by diagonal size. For indoor commercial displays the common range is 43–85 inches: 43–55 inches for single menus, information and wayfinding, 65–85 inches for wall screens read from a distance. The freestanding touch kiosk bodies we supply come in 49, 55 and 65 inches, Android or Windows based. Indoor LCDs use standard brightness. High-brightness window displays and sealed, climate-controlled outdoor displays are separate product classes; where a large, bright outdoor surface is needed, an LED screen is usually the better fit. LCD prices and models are given only in a written quote.",
+            "LCD displays are chosen by diagonal size. For indoor commercial displays the common range is 43–85 inches: 43–55 inches for single menus, information and wayfinding, 65–85 inches for wall screens read from a distance. The freestanding touch kiosk bodies we supply come in 49, 55 and 65 inches and run Android or Windows. Indoor LCDs use standard brightness. High-brightness window displays and sealed, climate-controlled outdoor displays are separate product classes; where a large, bright outdoor surface is needed, an LED screen is usually the better fit. LCD prices and models are given only in a written quote.",
         },
       ],
       faqs: [
@@ -1849,7 +1849,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "LCD or LED?",
           answer:
-            "LCD can suit a single small screen. For a large, bezel-free, bright surface or outdoor readability, LED is preferred. ARLEDSCREEN offers both; the choice is made on survey.",
+            "LCD can suit a single small screen. For a large, bezel-free, bright surface or outdoor readability, LED is preferred. ARLEDSCREEN offers both; the choice is made during the site survey.",
         },
         {
           question: "How much does an LCD display cost?",
@@ -1888,14 +1888,14 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Kiosk display sizes and indoor/outdoor use",
           body:
-            "The touch digital kiosks we supply come in 49, 55 and 65 inches; each size is available Android or Windows based, and content is updated over USB, HDMI, LAN or Wi-Fi. These bodies are for indoor spaces such as shopping centres, shops, restaurants, hotel lobbies and meeting areas. An outdoor kiosk needs a sealed enclosure, high brightness and climate control; such requests are assessed per project. Price and stock are confirmed in a written quote.",
+            "The touch digital kiosks we supply come in 49, 55 and 65 inches; each size is available with Android or Windows, and content is updated over USB, HDMI, LAN or Wi-Fi. These bodies are for indoor spaces such as shopping centres, shops, restaurants, hotel lobbies and meeting areas. An outdoor kiosk needs a sealed enclosure, high brightness and climate control; such requests are assessed per project. Price and stock are confirmed in a written quote.",
         },
       ],
       faqs: [
         {
           question: "What sizes do kiosk displays come in?",
           answer:
-            "The touch kiosks we supply are 49, 55 and 65 inches, Android or Windows based. They are for indoor use; outdoor kiosk requests are assessed per project and priced in a written quote.",
+            "The touch kiosks we supply come in 49, 55 and 65 inches and run Android or Windows. They are for indoor use; outdoor kiosk requests are assessed per project and priced in a written quote.",
         },
         {
           question: "How much does a kiosk display cost?",

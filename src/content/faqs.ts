@@ -6,7 +6,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Where are published panel prices listed?",
       answer:
-        "The published 12 panel USD prices are on https://arledscreen.com/en/led-ekran-fiyatlari/ (TR: /tr/led-ekran-fiyatlari/) and in the price calculator. Prices are in USD per panel; VAT and shipping are excluded; there is no free shipping. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+        "Our 12 published panel prices (USD) are on https://arledscreen.com/en/led-ekran-fiyatlari/ (TR: /tr/led-ekran-fiyatlari/) and in the price calculator. Prices are in USD per panel; VAT and shipping are excluded; there is no free shipping. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
     },
     {
       question: "Is arleds.com the same as arledscreen.com?",

@@ -41,7 +41,7 @@ const HUB: InstallGuide = {
       h2: "Kurulumdan önce: yer, elektrik ve erişim",
       paragraphs: [
         "Kurulumun büyük kısmı ekran gelmeden önce planlanır. Ekranın asılacağı duvar ya da çelik konstrüksiyon ekranın ağırlığını güvenle taşıyabilmeli; dış mekânda rüzgâr ve yağmur da hesaba katılmalıdır.",
-        "Ekranın arkasına mı önüne mi servis için ulaşılacağına baştan karar verin. Arkadan servis edilen ekranlarda arkada çalışma boşluğu gerekir; önden servis edilen modüller ise duvara yakın kurulumlarda işi kolaylaştırır.",
+        "Servis için ekrana arkadan mı yoksa önden mi ulaşılacağına baştan karar verin. Arkadan servis edilen ekranlarda arkada çalışma boşluğu gerekir; önden servis edilen modüller ise duvara yakın kurulumlarda işi kolaylaştırır.",
       ],
       bullets: [
         "Ekran ölçüsü ve piksel aralığı izleme mesafesine göre seçilmiş olmalı.",
@@ -83,7 +83,7 @@ const HUB: InstallGuide = {
     {
       h2: "Ekran bağlantısı: kartların sırası",
       paragraphs: [
-        "Tarama dosyası her modülün kendi içinde doğru çalışmasını sağlar. Kabinlerin ekran üzerindeki yerini ise yazılımdaki ekran bağlantısı (bağlantı ayarı) belirler: kaç sütun ve kaç satır alıcı kart olduğu ve kablonun hangi sırayla dolaştığı burada girilir. Bu adım yanlış olursa her kabin tek başına düzgün görünür ama görüntü parçalar halinde yer değiştirir.",
+        "Tarama dosyası her modülün kendi içinde doğru çalışmasını sağlar. Kabinlerin ekran üzerindeki yerini ise yazılımdaki ekran bağlantısı (bağlantı ayarı) belirler: kaç sütun ve kaç satır alıcı kart olduğu ve kablonun hangi sırayla dolaştığı burada girilir. Bu adım yanlış olursa her kabin tek başına düzgün görünür ama görüntü parçalar hâlinde yer değiştirir.",
       ],
     },
     {
@@ -103,7 +103,7 @@ const HUB: InstallGuide = {
   mistakes: [
     "Modülleri farklı yönlerde takmak: veri akış okları her modülde aynı yöne bakmalı.",
     "Benzer görünen başka bir modülün tarama dosyasını yüklemek: dosya, modelinize ve sürücü çipine uygun olmalı.",
-    "Ayarı karta gönderip kaydetmeyi unutmak: elektrik kesilince ekran eski haline döner.",
+    "Ayarı karta gönderip kaydetmeyi unutmak: elektrik kesilince ekran eski hâline döner.",
     "Elektriği topraklamasız veya ekranın gücüne yetmeyen bir hatta bağlamak.",
     "Bilgisayarın ekran çözünürlüğünü LED ekranın çözünürlüğünden düşük bırakmak (senkron sistemlerde görüntü eksik kalır).",
     "Fabrika varsayılanı Wi-Fi ve yönetim şifrelerini değiştirmeden bırakmak.",
@@ -222,13 +222,13 @@ const HUIDU: InstallGuide = {
         "HDPlayer (Windows): tam renkli asenkron kartlar için içerik hazırlama, gönderme ve kart yönetimi programı. Donanım ayarı (tarama dosyası) bölümü de bunun içindedir.",
         "HDSet (Windows): senkron ve asenkron tam renkli sistemler için ekran ayar programı. HDPlayer'daki donanım ayarları bu arayüzü açar.",
         "HD2020 (Windows): tek ve çift renkli kayan yazı kartları için program.",
-        "LedArt (Android ve iOS): telefondan kart bulma, program hazırlama ve gönderme uygulaması. Huidu'nun indirme sayfasına göre tek, çift renkli ve tam renkli serileri destekler.",
+        "LedArt (Android ve iOS): telefondan kart bulma, program hazırlama ve gönderme uygulaması. Huidu'nun indirme sayfasına göre tek renkli, çift renkli ve tam renkli serileri destekler.",
       ],
     },
     {
       h2: "Bilgisayarı karta bağlamak",
       paragraphs: [
-        "Huidu kartlar üç yolla bağlanır: ağ kablosuyla doğrudan bilgisayara, aynı modeme (router) bağlanarak ya da kartta Wi-Fi modülü varsa kartın yaydığı kablosuz ağa katılarak. Doğrudan kablo bağlantısında ek ağ ayarı gerekmez; kartın ağ ışıkları yandıktan kısa süre sonra HDPlayer'ın alt bilgi alanında kartın adı ve kimlik numarası görünür.",
+        "Huidu kartları üç yolla bağlanır: ağ kablosuyla doğrudan bilgisayara, aynı modeme (router) bağlanarak ya da kartta Wi-Fi modülü varsa kartın yaydığı kablosuz ağa katılarak. Doğrudan kablo bağlantısında ek ağ ayarı gerekmez; kartın ağ ışıkları yandıktan kısa süre sonra HDPlayer'ın alt bilgi alanında kartın adı ve kimlik numarası görünür.",
         "Modem üzerinden bağlantıda bir bilgisayar aynı ağdaki birden fazla kartı yönetebilir. Kart başka bir ağ bölümündeyse karta sabit IP verilir ve Kontrol menüsündeki manuel kart bulma ile IP adresi girilerek eklenir. Sabit IP verirken bilgisayarla aynı ağ bölümünde olan ve başka bir cihazla çakışmayan bir adres seçin.",
       ],
     },
@@ -278,7 +278,7 @@ const HUIDU: InstallGuide = {
     {
       h2: "Telefondan yönetim: LedArt",
       paragraphs: [
-        "LedArt'ı Google Play veya App Store'da “LedArt” diye aratarak kurun. Telefonun mobil verisini, Bluetooth'unu ve varsa VPN'ini kapatın, Wi-Fi ayarlarından kartın kablosuz ağına bağlanın. Telefon “bu ağda internet yok, başka ağa geçilsin mi?” diye sorarsa bağlı kalmayı seçin; aksi halde kart görünmez.",
+        "LedArt'ı Google Play veya App Store'da “LedArt” diye aratarak kurun. Telefonun mobil verisini, Bluetooth'unu ve varsa VPN'ini kapatın, Wi-Fi ayarlarından kartın kablosuz ağına bağlanın. Telefon “bu ağda internet yok, başka ağa geçilsin mi?” diye sorarsa bağlı kalmayı seçin; aksi hâlde kart görünmez.",
         "Cihaz sekmesinde kart çevrimiçi görünür. Program bölümünden yeni ekran oluşturup kartı seçin, ekranın genişliğini, yüksekliğini ve renk tipini girin, içeriği ekleyip gönderin. Görüntü düzgün değilse uygulamadaki donanım ayarından modül dosyası seçilir; dosya işe yaramazsa akıllı ayar yapılır.",
         "Kartın Wi-Fi şifresi kılavuzda fabrika varsayılanı olarak 88888888 geçer; kurulumdan sonra bunu Wi-Fi ayarlarından mutlaka değiştirin. Tek kart için kartın kendi ağı (AP modu), birden çok kart için kartları ortak bir modeme bağlayan istasyon (Station) modu uygundur. Şifre unutulursa kart üzerindeki S1 düğmesiyle fabrika şifresine dönülebilir; bu işlem ekran ayarlarını da etkileyebileceği için önce teknik destek alın.",
       ],
@@ -382,8 +382,8 @@ const NOVASTAR: InstallGuide = {
       h2: "NovaLCT ile bağlantı ve giriş",
       paragraphs: [
         "NovaLCT'yi kurup bilgisayarı gönderici karta USB veya ağ kablosuyla bağlayın. Bağlantı doğruysa program kartı kendiliğinden bulur ve ana ekranda bağlı kart sayısını gösterir. Bütün komutlar ve ayar dosyaları bu kontrol kablosu üzerinden gider.",
-        "Ayar yapmak için Kullanıcı → Gelişmiş senkron sistem kullanıcı girişi yolunu izleyin. Kılavuzda fabrika varsayılanı şifre admin olarak geçer; Kullanıcı → Şifre değiştir bölümünden değiştirmenizi öneririz.",
-        "Senkron ekranlarda bilgisayarın ekran çözünürlüğü LED ekranın çözünürlüğüne eşit ya da ondan büyük olmalıdır. Aksi halde görüntünün bir kısmı ekrana gelmez.",
+        "Ayar yapmak için Kullanıcı → Gelişmiş senkron sistem kullanıcı girişi yolunu izleyin. Kılavuzda fabrika varsayılan şifresi admin olarak geçer; Kullanıcı → Şifre değiştir bölümünden değiştirmenizi öneririz.",
+        "Senkron ekranlarda bilgisayarın ekran çözünürlüğü LED ekranın çözünürlüğüne eşit ya da ondan büyük olmalıdır. Aksi hâlde görüntünün bir kısmı ekrana gelmez.",
       ],
     },
     {
@@ -406,7 +406,7 @@ const NOVASTAR: InstallGuide = {
       h2: "ViPlex Express ile içerik ve zamanlama (bilgisayar)",
       paragraphs: [
         "ViPlex Express, asenkron oynatıcılara (örneğin Taurus serisi) içerik göndermek için kullanılan Windows programıdır. Bilgisayar oynatıcıya ağ kablosuyla, oynatıcının kendi Wi-Fi ağıyla ya da aynı kablolu veya kablosuz ağ üzerinden bağlanır. Oynatıcının Wi-Fi ağının adı “AP” ve seri numarasının son 8 hanesinden oluşur; Wi-Fi şifresi ürün etiketinde yazılıdır.",
-        "Oynatıcıya admin kullanıcısıyla giriş yapılır. Kılavuza göre fabrika varsayılanı şifre yazılım sürümüne göre değişir (eski Taurus sürümlerinde 123456, yenilerinde SN2008@+). İlk girişte Wi-Fi ve giriş şifresini değiştirin.",
+        "Oynatıcıya admin kullanıcısıyla giriş yapılır. Kılavuza göre fabrika varsayılan şifresi yazılım sürümüne göre değişir (eski Taurus sürümlerinde 123456, yenilerinde SN2008@+). İlk girişte Wi-Fi ve giriş şifresini değiştirin.",
         "İçerik, ViPlex'te “çözüm” (solution) olarak hazırlanır:",
       ],
       steps: [

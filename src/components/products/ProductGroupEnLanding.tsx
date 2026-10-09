@@ -21,6 +21,9 @@ import {
 } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
+/** Model kataloğu olmayan, yalnızca teklifle fiyatlanan gruplar. */
+const NO_MODEL_GROUPS = new Set(["dijital-ekran", "menuboard", "kiosk", "lcd-ekran"]);
+
 export function ProductGroupEnLanding({
   group,
   en,
@@ -164,19 +167,29 @@ export function ProductGroupEnLanding({
               </li>
             ))}
           </ul>
-          <p className="pt-2 text-sm">
-            Detailed model specs are on the TR catalog pages; panel prices are on{" "}
-            <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
-              our price list
-            </Link>. See{" "}
-            <Link
-              href={`/tr/products/${group.slug}/`}
-              className="font-semibold text-cyan hover:underline"
-            >
-              all models (Turkish)
-            </Link>
-            .
-          </p>
+          {NO_MODEL_GROUPS.has(group.slug) ? (
+            <p className="pt-2 text-sm">
+              Our published panel prices (NXTIONSTAR LED only) are on{" "}
+              <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                our price list
+              </Link>
+              . This group is priced by written quote.
+            </p>
+          ) : (
+            <p className="pt-2 text-sm">
+              Detailed model specs are on the TR catalog pages; panel prices are on{" "}
+              <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                our price list
+              </Link>. See{" "}
+              <Link
+                href={`/tr/products/${group.slug}/`}
+                className="font-semibold text-cyan hover:underline"
+              >
+                all models (Turkish)
+              </Link>
+              .
+            </p>
+          )}
         </div>
       </section>
 

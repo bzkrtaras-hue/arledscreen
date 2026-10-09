@@ -95,7 +95,7 @@ export const references: Reference[] = [
     id: "ref-11",
     date: "Mar 2026",
     company: "Vx1 X-Large Premium",
-    detail: "16 m\u00b2 D\u0131\u015f mek\u00e2n outdoor kiralama kabin",
+    detail: "16 m\u00b2 d\u0131\u015f mek\u00e2n kiralama kabini",
     location: "",
     source: "Reels",
   },

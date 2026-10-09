@@ -224,7 +224,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     quoteOnly: true,
     intro: [
       "A digital display is any screen whose content you change in software instead of reprinting. LCD/TV-type panels, touch kiosks, menu boards, freestanding totems and modular LED walls all belong here.",
-      "The right type depends on where the screen goes, how far away people stand and how big it needs to be. For one screen viewed up close, a fixed-size LCD is often enough; for a large, bezel-free or sunlit surface, LED leads. We sell, install and service both.",
+      "The right type depends on where the screen goes, how far away people stand and how big it needs to be. For one screen viewed up close, a fixed-size LCD is often enough; for a large, bezel-free or sunlit surface, LED is the better choice. We sell, install and service both.",
     ],
     highlights: [
       "LED and LCD from the same team",
@@ -260,7 +260,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     quoteOnly: true,
     intro: [
       "A menu board shows your menu, prices and promotions above the counter or at the entrance. When a price or product changes, you update it in minutes without reprinting.",
-      "We build them two ways. LCD/TV-type screens come in fixed sizes and are placed side by side, usually 43 to 55 inch behind the counter. An LED menu wall is built from modules to fit the wall and gives one bezel-free surface that reads from a distance. At the entrance, 49, 55 or 65-inch portrait units or a poster LED are common.",
+      "We build them two ways. LCD/TV-type screens come in fixed sizes and are placed side by side, usually 43 to 55 inches behind the counter. An LED menu wall is built from modules to fit the wall and gives one bezel-free surface that reads from a distance. At the entrance, 49, 55 or 65-inch portrait units or a poster LED are common.",
     ],
     highlights: [
       "LED or LCD, chosen on site",
@@ -289,14 +289,14 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     lead: "A screen people touch to get information or complete a task",
     title: "Touch Kiosks: Sale & Installation | ARLEDSCREEN",
     description:
-      "Touch kiosks in 49, 55 and 65 inch, Android or Windows, for wayfinding, information, ordering and catalogues. Sale, installation, repair and written quote. Istanbul.",
+      "49-, 55- and 65-inch touch kiosks running Android or Windows, for wayfinding, information, ordering and catalogues. Sale, installation, repair and written quote. Istanbul.",
     short: "49, 55 and 65-inch touch kiosks, Android or Windows",
     tag: "Kiosk",
     imageAlt: "Two 49-inch touch digital kiosks on floor stands",
     quoteOnly: true,
     intro: [
       "A kiosk is a standalone point where people touch the screen or scan a QR code to get information or complete a task. Totems and posters mostly broadcast one way; a kiosk is interactive.",
-      "The freestanding touch kiosks we supply come in 49, 55 and 65 inch and run Android or Windows. They play video, images and sound, and content changes via USB, HDMI, LAN or Wi-Fi. These units are for indoor spaces; outdoor kiosk requests are assessed per project.",
+      "The freestanding touch kiosks we supply come in 49, 55 and 65 inches and run Android or Windows. They play video, images and sound, and content changes via USB, HDMI, LAN or Wi-Fi. These units are for indoor spaces; outdoor kiosk requests are assessed per project.",
     ],
     highlights: [
       "49, 55 and 65-inch touch screen",
@@ -307,7 +307,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     faqs: [
       {
         question: "What sizes are available?",
-        answer: "We supply freestanding touch kiosks in 49, 55 and 65 inch and help you choose by viewing distance and space.",
+        answer: "We supply freestanding touch kiosks in 49, 55 and 65 inches and help you choose by viewing distance and space.",
       },
       {
         question: "Can a kiosk be used outdoors?",

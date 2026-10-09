@@ -2,6 +2,23 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-016 — 9 Ekim eklemeleri için imla / anlatım düzeltmesi (TR + EN)
+
+- **Kaynak:** Aras Bey (9 Eki 2026): bugün eklenen ve değişen metinlerde yazım, anlatım bozukluğu, kırık dosya ve hata kontrolü.
+- **Kapsam:** kurulum rehberleri (genel, Huidu, NovaStar), Dijital ekran / Menüboard / Kiosk / LCD ürün sayfaları, /products "Popüler ürünler" ve fiyat kutusu, garanti ve kiralama cümleleri, LCD rehberi "Fiyat ve teklif"; EN karşılıkları.
+- **Düzeltmeler (yalnızca metin; anlam ve rakamlar aynı):**
+  - TDK: "hâlinde", "aksi hâlde", "eski hâline", "dâhil" (categories.ts); "Huidu kartları"; "fabrika varsayılan şifresi"; "tek renkli, çift renkli ve tam renkli".
+  - Anlatım: "Ekranın arkasına mı önüne mi servis için ulaşılacağına" → "Servis için ekrana arkadan mı yoksa önden mi ulaşılacağına"; "izleme mesafesi ve konulacak alana" → "izleme mesafesine ve konulacak alana"; "Doğru tür;" → "Doğru tür,"; "Arızalı kiosk tamir…" → "Arızalı kioskları tamir…"; kiralama girişindeki "Kiralık ürün grubu ve kiralık mı satın alma rehberi ile…" cümlesi yeniden yazıldı.
+  - Tutarlılık: görünen metinde "menuboard" → "menüboard" (ürün adıyla aynı; slug ve meta açıklama değişmedi).
+  - /products: "Panel list fiyatı" → "Panel liste fiyatı"; "Bu hub'daki … m² örnekler" → "Bu sayfada … yer alır. Tam liste ve m² örnekleri".
+  - Ürün şablonu: cümle içindeki ürün adı küçük harfle ("Dijital ekran fiyatı…", "LCD ekran hakkında sorular"); ürün satışında geçersiz "süre" kelimesi çıkarıldı; H1'i zaten iki nokta içeren sayfalarda ekran okuyucu ayırıcısı ": " yerine " — " (çift iki nokta önlendi). Görünüm değişmedi.
+  - Proje kaydı: "16 m² Dış mekân outdoor kiralama kabin" → "16 m² dış mekân kiralama kabini" (EN: "16 m² outdoor rental cabinet"; önceki "Outdoor outdoor" tekrarı giderildi).
+  - EN: "the image comes right", "both on the same router", eksik yüklemli NovaLCT cümlesi, "49, 55 and 65 inch" → "inches", "LED leads", "made on survey", "favor" → "favour" (site İngiliz yazımı), "The published 12 panel USD prices" → "Our 12 published panel prices (USD)". Dijital/Menü/Kiosk/LCD EN sayfalarındaki yanlış "Detailed model specs are on the TR catalog pages … all models (Turkish)" notu, model kataloğu olmayan bu dört grup için doğru notla değiştirildi.
+- **Kontroller:** canlıda 215 iç link + 141 görsel → kırık yok; build çıktısında 26 sayfa, 138 JSON-LD bloğu geçerli; tüm iç link ve görseller out/ içinde mevcut; validate-ai-feeds ve validate-no-owner-gate geçti; out/ içinde kişisel Gmail yok.
+- **Dokunulmadı:** ana sayfa yerleşimi, title, H1, hero; /fiyat-hesap/; Melis dosyaları; CSS.
+- **Ekran görüntüleri:** `/workspace/preview-grok/imla/` (mobil 390, önce/sonra)
+- **Production:** Aras Bey / Ali onayı → squash merge → manual deploy
+
 ## ARL-20261009-015 — LCD "teknik değer yayımlanmaz" çelişkisi giderildi (llms + LCD rehberi)
 
 - **Sorun:** llms.txt, llms-full.txt ve LCD rehberi (TR / EN / RU / AR) "LCD için teknik değer yayımlanmaz" diyordu. Oysa yeni /tr/products/lcd-ekran/ ve /tr/products/kiosk/ sayfaları 49 / 55 / 65 inç, Android veya Windows ve USB / HDMI / LAN / Wi‑Fi bilgilerini veriyor.

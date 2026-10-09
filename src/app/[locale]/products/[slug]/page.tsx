@@ -112,6 +112,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return buildTrOnlyMetadata({ path: `/products/${g.slug}`, title: g.title, description: g.description });
 }
 
+/** Cümle içinde ürün adı: ilk kelime korunur, sonraki baş harfi büyük sözcükler küçültülür (LED, LCD, GOB gibi kısaltmalar korunur). */
+const nameInSentence = (name: string) =>
+  name
+    .split(" ")
+    .map((w, i) => (i > 0 && /^[A-ZÇĞİÖŞÜ][a-zçğıöşüâîû]+$/.test(w) ? w.toLocaleLowerCase("tr-TR") : w))
+    .join(" ");
+
 const priceLabel = (p: PanelPrice) => `${p.pitch}${p.surface ? ` ${p.surface}` : ""}${p.frontService ? " önden servis" : ""}`;
 
 /** Direct, quotable answer built only from the published 2026 panel price list. */
@@ -282,7 +289,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
             </nav>
             <h1 id="pg-h1" className="mt-3 text-balance font-display text-[clamp(1.9rem,1.4rem+2vw,2.75rem)] font-extrabold leading-tight tracking-[-0.03em] text-ink">
               {g.h1}
-              <span className="sr-only">: </span>
+              <span className="sr-only">{g.h1.includes(":") ? " — " : ": "}</span>
               <span id="pg-lead" className="mt-2 block text-[clamp(1.05rem,0.95rem+0.5vw,1.35rem)] font-semibold leading-snug tracking-[-0.01em] text-cyan">
                 {g.lead}
               </span>
@@ -458,7 +465,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 <p className="mt-3 max-w-xl text-base leading-relaxed text-ink-soft">
                   {g.slug === "kiralik-led-ekran"
                     ? "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz."
-                    : `${g.name} fiyatı ölçü, form, süre ve kurulum koşullarına göre hazırlanır. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz.`}
+                    : `${nameInSentence(g.name)} fiyatı ölçü, form ve kurulum koşullarına göre hazırlanır. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz.`}
                 </p>
                 <p className="mt-2 max-w-xl text-xs leading-relaxed text-ink-muted">
                   {g.slug === "kiralik-led-ekran" ? null : "Bu ürün grubunda fiyat teklifle verilir. "}Yayımlanmış 12 panel modelinin USD fiyatları (ör. P1.25 GOB
@@ -595,7 +602,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
       {/* Use cases */}
       <section id="kullanim" className="scroll-mt-28 bg-white py-14 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="Kullanım alanları" title={`${g.name} nerelerde kullanılır?`} />
+          <SectionHeading eyebrow="Kullanım alanları" title={`${nameInSentence(g.name)} nerelerde kullanılır?`} />
           <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {g.uses.map((u, i) => (
               <FadeIn as="li" key={u.title} delay={i * 0.12} className="rounded-3xl bg-band p-6 text-center">
@@ -647,7 +654,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
 
       <section id="sss" className="scroll-mt-28 bg-band py-14 md:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="Sık sorulan sorular" title={`${g.name} hakkında sorular`} />
+          <SectionHeading eyebrow="Sık sorulan sorular" title={`${nameInSentence(g.name)} hakkında sorular`} />
           <HomeFaq faqs={g.faqs} />
         </div>
       </section>
