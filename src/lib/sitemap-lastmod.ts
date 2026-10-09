@@ -21,7 +21,12 @@ const CONTENT_BY_SECTION: Record<string, string[]> = {
     "src/content/en-product-group-bridges.ts",
     "src/content/product-lineup.ts",
   ],
-  rehber: ["src/content/seo-guides.ts", "src/content/commercial-guides-en.ts"],
+  rehber: [
+    "src/content/seo-guides.ts",
+    "src/content/commercial-guides-en.ts",
+    "src/content/install-guides-tr.ts",
+    "src/content/install-guides-en.ts",
+  ],
   blog: ["src/content/blog.ts"],
   bolgeler: ["src/content/service-regions.ts"],
   projelerimiz: ["src/content/case-studies.ts", "src/content/references.ts"],
