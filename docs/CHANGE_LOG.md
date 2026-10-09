@@ -2,6 +2,16 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-006 — Yusuf Issue #66: EN leftovers (a–d)
+
+- **Kaynak:** GitHub Issue #66 (Yusuf next queue after #64)
+- **(a)** “Bireysel müşteri” → “Private client”; “Bar üstü proje” → “Above-bar project”; NXTIONSTAR controller names + Huidu/NovaStar/Colorlight group labels EN; ARL-004 Production line → merged + deployed
+- **(b)** `businessHoursText(locale)` on commercial landings + footer; `panelProductsJsonLd` EN Product name/description/props; project company labels via `displayCompany(locale)`
+- **(c)** EN pitch pages: esnek model links keep TR PDP (`/tr/products/esnek-led-ekran/…`) — no new routes
+- **(d)** EN `<title>` lengths 30–60: fiyatlar, indoor group, modules/controllers, yapay-zeka, gizlilik
+- **Arayüz:** CSS/className/layout değişmedi; TR metin/titles dokunulmadı; fiyat rakamları ve makine dosyaları aynı
+- **Production:** Ali review → squash merge → manual deploy (Aras uyurken onay Ali’de)
+
 ## ARL-20261009-005 — TR site denetimi düzeltmeleri: kırık proje görselleri, görünen teknik jargon, kontrol kartı P0, arleds.com notları
 
 - **Görseller:** `OptImage` / `lib/opt.ts` `/opt/blog/...` kaynaklarına ikinci kez `/opt` ekliyordu (`/opt/opt/blog/...-480.webp` → 404; 37 URL, 19 sayfa: /tr/, /tr/otel-led-ekran/, blog, 4 proje sayfası + EN karşılıkları). Önek artık tekil; out/ içindeki tüm `/opt/...` referansları dosyaya karşılık geliyor
@@ -20,7 +30,7 @@ En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 - **Ürün aile başlıkları, galeri kategorileri, ticari proof satırları, şehir link etiketleri, proje videoları / case kartları:** EN görünür metin
 - **/en/magaza/:** title + H1 → “LED Display Shop”
 - **Arayüz:** CSS/className/layout değişmedi; fiyat rakamları ve makine dosyaları dokunulmadı
-- **Production:** yok — draft PR → main; deploy / IndexNow / merge yok
+- **Production:** merged + deployed by Ali (9 Oct 2026)
 
 ## ARL-20261009-003 — Sitemap ayrımı (sitemap.xml / sitemap-ai.xml) + TR başlık uzunluk düzeltmesi
 

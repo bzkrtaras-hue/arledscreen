@@ -44,7 +44,7 @@ export function ReferencesGrid({ locale, collapsible = false }: Props) {
               >
                 <td className="whitespace-nowrap px-4 py-3 align-top text-ink-muted sm:px-5">{formatProjectDate(ref.date, locale)}</td>
                 <td className="px-4 py-3 align-top font-display text-[15px] font-semibold tracking-[-0.01em] text-ink sm:px-5">
-                  {displayCompany(ref)}
+                  {displayCompany(ref, locale === "en" ? "en" : "tr")}
                 </td>
                 <td className="px-4 py-3 align-top text-ink-soft sm:px-5">{formatProjectDetail(ref.detail, locale)}</td>
                 <td className="whitespace-nowrap px-4 py-3 align-top text-ink-muted sm:px-5">{ref.location || "—"}</td>

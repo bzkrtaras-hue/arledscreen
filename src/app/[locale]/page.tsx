@@ -101,6 +101,7 @@ export default async function HomePage({ params }: PageProps) {
                     absoluteUrl("/en/"),
                     "LED display module sales, survey and installation",
                     modelUrlForPrice(absoluteUrl),
+                    "en",
                   ),
                 ),
               }}

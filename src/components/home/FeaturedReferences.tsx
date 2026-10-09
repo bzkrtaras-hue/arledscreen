@@ -101,8 +101,12 @@ export function FeaturedReferences({
   const featured = cases.find((c) => c.image) ?? cases[0];
   const rest = cases.filter((c) => c !== featured).slice(0, Math.max(0, limit - 1));
   const en = locale === "en";
-  const titleOf = (c: CaseStudy) =>
-    en && c.title === "Bireysel müşteri" ? "Individual customer" : c.title;
+  const titleOf = (c: CaseStudy) => {
+    if (!en) return c.title;
+    if (c.title === "Bireysel müşteri") return "Private client";
+    if (c.title === "Bar üstü proje") return "Above-bar project";
+    return c.title;
+  };
 
   return (
     <div>

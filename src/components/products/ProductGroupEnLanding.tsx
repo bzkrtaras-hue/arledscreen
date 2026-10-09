@@ -85,7 +85,7 @@ export function ProductGroupEnLanding({
   // Products only — Service AggregateOffer lives in serviceLd (TR group parity).
   const productsLd =
     prices.length > 0
-      ? panelProductsJsonLd(prices, url, undefined, modelUrlForPrice(absoluteUrl))
+      ? panelProductsJsonLd(prices, url, undefined, modelUrlForPrice(absoluteUrl), "en")
       : null;
 
   return (

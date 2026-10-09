@@ -318,7 +318,11 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
                 className="block rounded-2xl border border-border bg-white p-4 transition hover:border-cyan/40"
               >
                 <p className="font-display text-base font-bold text-ink">
-                  {en && c.companyLabel === "Bireysel müşteri" ? "Individual customer" : c.companyLabel}
+                  {en && c.companyLabel === "Bireysel müşteri"
+                    ? "Private client"
+                    : en && c.companyLabel === "Bar üstü proje"
+                      ? "Above-bar project"
+                      : c.companyLabel}
                 </p>
                 <p className="mt-1 text-sm text-ink-soft">{formatProjectDetail(c.detail, locale)}</p>
                 <p className="mt-2 text-xs text-ink-muted">

@@ -213,7 +213,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "Share contact details, project dimensions and schedule so our engineering desk can reply with a preliminary BOM and power outline.",
     },
     "yapay-zeka": {
-      title: "AI-Compatible LED Display | Media Server Integration — ARLEDSCREEN",
+      title: "AI-Compatible LED Display | ARLEDSCREEN",
       description:
         "AI-compatible LED walls: pitch, signal topology and media-server integration for AI content engines. How ARLEDSCREEN plans NXTIONSTAR installs.",
       keywords: [

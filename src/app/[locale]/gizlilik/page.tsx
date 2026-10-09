@@ -38,7 +38,7 @@ export async function generateMetadata({
     return buildPageMetadata({
       locale: "en" as Locale,
       path: "/gizlilik/",
-      title: "Privacy Notice | ARLEDSCREEN",
+      title: "Privacy & Data Notice | ARLEDSCREEN",
       description:
         "How ARLEDSCREEN handles contact and quote form data. Istanbul (Gaziosmanpaşa) LED display company — canonical site arledscreen.com (not arleds.com).",
       hreflangLocales: ["tr", "en"],

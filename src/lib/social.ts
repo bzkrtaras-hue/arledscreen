@@ -99,6 +99,11 @@ export const BUSINESS_ADDRESS_LINES = ["Merkez Mah. Tuna Sok. No:15-17 Kat 1", "
 export const BUSINESS_GEO = { latitude: 41.0538876, longitude: 28.9121358 } as const;
 export const BUSINESS_MAP_URL = "https://www.google.com/maps/search/?api=1&query=41.0538876%2C28.9121358";
 export const BUSINESS_HOURS_TEXT = ["Pazartesi – Cuma: 09:00 – 18:00", "Cumartesi: 10:00 – 15:00"] as const;
+export const BUSINESS_HOURS_TEXT_EN = ["Mon–Fri: 09:00–18:00", "Sat: 10:00–15:00"] as const;
+/** Visible opening-hours lines — Turkish byte-for-byte when locale is "tr". */
+export function businessHoursText(locale: "tr" | "en" = "tr"): readonly string[] {
+  return locale === "en" ? BUSINESS_HOURS_TEXT_EN : BUSINESS_HOURS_TEXT;
+}
 export const BUSINESS_HOURS_SPEC = [
   { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "18:00" },
   { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "10:00", closes: "15:00" },

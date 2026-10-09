@@ -181,6 +181,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
                     absoluteUrl("/en/hesaplayici/"),
                     "LED display module sales, survey and installation",
                     modelUrlForPrice(absoluteUrl),
+                    "en",
                   ),
                 ),
               }}

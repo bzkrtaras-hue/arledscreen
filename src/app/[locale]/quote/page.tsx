@@ -91,6 +91,7 @@ export default async function QuotePage({ params }: PageProps) {
                     ? "LED ekran modülü satışı, keşif ve montaj"
                     : "LED display module sales, survey and installation",
                   modelUrlForPrice(absoluteUrl),
+                  locale === "en" ? "en" : "tr",
                 ),
               ),
             }}

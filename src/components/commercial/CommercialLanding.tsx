@@ -22,7 +22,7 @@ import {
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS_LINES,
-  BUSINESS_HOURS_TEXT,
+  businessHoursText,
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_HREF,
   CONTACT_EMAIL,
@@ -172,7 +172,13 @@ export function CommercialLanding({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(
               // Products only — Service AggregateOffer lives in serviceLd.
-              panelProductsJsonLd(PANEL_PRICES, url, undefined, modelUrlForPrice(absoluteUrl)),
+              panelProductsJsonLd(
+                PANEL_PRICES,
+                url,
+                undefined,
+                modelUrlForPrice(absoluteUrl),
+                tr ? "tr" : "en",
+              ),
             ),
           }}
         />
@@ -243,7 +249,7 @@ export function CommercialLanding({
                 {CONTACT_EMAIL}
               </a>
             </p>
-            {BUSINESS_HOURS_TEXT.map((h) => (
+            {businessHoursText(tr ? "tr" : "en").map((h) => (
               <p key={h} className="text-ink-muted">
                 {h}
               </p>
@@ -344,7 +350,11 @@ export function CommercialLanding({
                         {formatProjectDate(p.date, locale)}
                       </td>
                       <td className="py-3 pr-4 font-medium text-ink">
-                        {!tr && p.label === "Bireysel müşteri" ? "Individual customer" : p.label}
+                        {!tr && p.label === "Bireysel müşteri"
+                          ? "Private client"
+                          : !tr && p.label === "Bar üstü proje"
+                            ? "Above-bar project"
+                            : p.label}
                       </td>
                       <td className="py-3 pr-4 text-ink-soft">
                         {formatProjectDetail(p.detail, locale)}

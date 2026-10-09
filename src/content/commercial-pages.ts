@@ -8,7 +8,7 @@
  */
 import { references, type Reference } from "@/content/references";
 import { displayCompany } from "@/content/trust";
-import { modelPath, LED_MODELS } from "@/content/models";
+import { modelPath, LED_MODELS, getModel } from "@/content/models";
 import { productGroupPath, getProductGroup } from "@/content/categories";
 import { getProductGroupEn } from "@/content/product-groups-en";
 import { SERVICE_REGIONS } from "@/content/service-regions";
@@ -968,8 +968,34 @@ function enPitchLinks(except?: string): CommercialLink[] {
   }));
 }
 
+/** EN label for a model link (chip + kind); keep proper product codes. */
+function enModelLinkLabel(group: string, slug: string, fallback: string): string {
+  const m = getModel(group, slug);
+  if (!m) return fallback;
+  if (m.kind === "esnek") return `${m.chip} flexible`;
+  if (m.kind === "gob") return `${m.chip} GOB`;
+  if (m.kind === "ic") return `${m.chip} indoor`;
+  if (m.kind === "dis") {
+    return m.chip.includes("önden") || m.slug.includes("on-servis")
+      ? `${m.chip.replace(" önden servis", "")} outdoor front service`
+      : `${m.chip} outdoor`;
+  }
+  return m.chip;
+}
+
 function remapProductLinksToEn(links: CommercialLink[]): CommercialLink[] {
   return links.map((l) => {
+    const modelMatch = l.href.match(/^\/(?:tr|en)\/products\/([^/]+)\/([^/]+)\/?$/);
+    if (modelMatch) {
+      const [, group, slug] = modelMatch;
+      const m = getModel(group, slug);
+      const label = enModelLinkLabel(group, slug, l.label);
+      // EN model routes exist only for pricedPanels (priceId); others stay on TR PDP.
+      if (m?.priceId) {
+        return { href: `/en/products/${group}/${slug}/`, label };
+      }
+      return { href: `/tr/products/${group}/${slug}/`, label };
+    }
     const href = l.href.replace(/^\/tr\/products\//, "/en/products/");
     const slug = href.match(/\/en\/products\/([^/]+)\/?$/)?.[1];
     const enName = slug ? getProductGroupEn(slug)?.name : undefined;

@@ -18,7 +18,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     name: "Indoor LED display",
     h1: "Indoor LED display",
     lead: "Sharp, seamless image at close viewing distance",
-    title: "Indoor LED Display Prices & Models | Store, Café, Hall | ARLEDSCREEN",
+    title: "Indoor LED Display Models | ARLEDSCREEN",
     description:
       "Indoor LED for stores, cafés, showrooms and meeting halls: pitch selection, survey, install and service. NXTIONSTAR by ARLEDSCREEN — Istanbul.",
     short: "Indoor LED walls for close viewing",
@@ -237,7 +237,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     name: "LED modules & control systems",
     h1: "LED modules and control systems",
     lead: "Modules, spares and Huidu / NovaStar / Colorlight control",
-    title: "LED Modules & Controllers | Huidu, NovaStar, Colorlight | ARLEDSCREEN",
+    title: "LED Modules & Controllers | ARLEDSCREEN",
     description:
       "LED modules, spares and control systems (Huidu, NovaStar, Colorlight). Compatibility check after label photos. ARLEDSCREEN — Istanbul.",
     short: "Modules and controllers",

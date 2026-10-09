@@ -578,21 +578,28 @@ export function panelProductsJsonLd(
   pageUrl: string,
   serviceName?: string,
   urlFor?: (p: PanelPrice) => string | undefined,
+  locale: "tr" | "en" = "tr",
 ) {
   const org = { "@id": `${SITE_URL}/#organization` };
+  const en = locale === "en";
   const products = panels.map((p) => {
     const u = urlFor?.(p) ?? pageUrl;
     const hasPdp = Boolean(urlFor?.(p));
+    const label = panelLabel(p, locale);
     return {
     "@type": "Product",
     "@id": hasPdp ? `${u}#product` : `${pageUrl}#${p.id}`,
-    name: `${panelLabel(p)} LED ekran modülü (${panelModule(p)})`,
+    name: en
+      ? `${label} LED display module (${panelModule(p)})`
+      : `${label} LED ekran modülü (${panelModule(p)})`,
     // Align with catalog / ai-shopping / merchant TSV: honest mpn=sku (= panel id).
     sku: p.id,
     mpn: p.id,
     brand: nxtionstarBrandRef(),
-    category: "LED ekran modülü",
-    description: `${panelLabel(p)} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.`,
+    category: en ? "LED display module" : "LED ekran modülü",
+    description: en
+      ? `${label} LED display module. Price is per panel; excl. VAT and shipping. Final price is set in a written quote.`
+      : `${label} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.`,
     url: u,
     // Join AggregateOffer hub Product ↔ catalog.json#sku (PDP/ai-shopping parity).
     sameAs: [`${SITE_URL}/catalog.json#${p.id}`],
@@ -600,9 +607,22 @@ export function panelProductsJsonLd(
     mainEntityOfPage: u,
     ...(p.image ? { image: `${SITE_URL}${p.image}` } : {}),
     additionalProperty: [
-      { "@type": "PropertyValue", name: "Piksel aralığı", value: p.pitchMm, unitText: "mm" },
-      { "@type": "PropertyValue", name: "Modül ölçüsü", value: panelModule(p) },
-      { "@type": "PropertyValue", name: "Kullanım", value: p.use === "ic" ? "İç mekân" : "Dış mekân" },
+      {
+        "@type": "PropertyValue",
+        name: en ? "Pixel pitch" : "Piksel aralığı",
+        value: p.pitchMm,
+        unitText: "mm",
+      },
+      {
+        "@type": "PropertyValue",
+        name: en ? "Module size" : "Modül ölçüsü",
+        value: panelModule(p),
+      },
+      {
+        "@type": "PropertyValue",
+        name: en ? "Use" : "Kullanım",
+        value: p.use === "ic" ? (en ? "Indoor" : "İç mekân") : en ? "Outdoor" : "Dış mekân",
+      },
     ],
     // sku → Offer @id + sameAs catalog/ai-shopping offer @ids (unique when hub has no PDP url).
     offers: panelOffer(u, p.usd, {

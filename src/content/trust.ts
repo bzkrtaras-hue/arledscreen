@@ -53,8 +53,17 @@ export function getReferenceStats() {
 /** Entries that name a private individual — shown anonymised for privacy (KVKK). */
 const PRIVATE_PERSON_IDS = new Set(["ref-09", "ref-24", "ref-41", "ref-43"]);
 
-export function displayCompany(ref: Reference): string {
-  return PRIVATE_PERSON_IDS.has(ref.id) ? "Bireysel müşteri" : ref.company;
+/** Generic project labels in the log that should read in EN on /en/ (proper names stay). */
+const COMPANY_LABEL_EN: Record<string, string> = {
+  "Bar üstü proje": "Above-bar project",
+};
+
+export function displayCompany(ref: Reference, locale: "tr" | "en" = "tr"): string {
+  if (PRIVATE_PERSON_IDS.has(ref.id)) {
+    return locale === "en" ? "Private client" : "Bireysel müşteri";
+  }
+  if (locale === "en") return COMPANY_LABEL_EN[ref.company] ?? ref.company;
+  return ref.company;
 }
 
 /** Parse "384×160 cm" style sizes → m² (first dimension pair only). */

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProducts, CATEGORY_LABELS_TR, CATEGORY_LABELS_EN } from "@/content/products";
 import { PRODUCT_GROUPS, productGroupPath } from "@/content/categories";
+import { getProductGroupEn } from "@/content/product-groups-en";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
@@ -57,6 +58,9 @@ const GROUP_LABEL_EN: Record<string, string> = {
   "ince-pitch-led-ekran": "Fine-pitch LED",
   "poster-led-ekran": "Poster / totem LED",
   "led-modul-ve-kontrol-sistemleri": "Modules & control systems",
+  "huidu-kontrol-kartlari": "Huidu Control Cards",
+  "novastar-kontrolculer": "NovaStar Controllers",
+  "colorlight-kontrolculer": "Colorlight Controllers",
 };
 
 const PAGE: Record<
@@ -269,6 +273,7 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
                 ? "NXTIONSTAR LED ekran modülü satışı, keşif ve montaj"
                 : "NXTIONSTAR LED module sales, survey and installation",
               modelUrlForPrice(absoluteUrl),
+              locale,
             ),
           ),
         }}
@@ -361,7 +366,9 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
                   href={productGroupPath(g)}
                   className="flex min-h-11 items-center rounded-xl bg-band px-4 text-[14.5px] font-semibold text-ink hover:text-cyan"
                 >
-                  {locale === "tr" ? g.name : GROUP_LABEL_EN[g.slug] || g.name}
+                  {locale === "tr"
+                    ? g.name
+                    : getProductGroupEn(g.slug)?.name ?? GROUP_LABEL_EN[g.slug] ?? g.name}
                 </Link>
               </li>
             ))}
