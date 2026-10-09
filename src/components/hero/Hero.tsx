@@ -23,10 +23,10 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
     labelEn: "Lounge LED",
   },
   {
-    // 1080p (Drive IMG_1071, 4K 2025) — replaces the upscaled 720p sphere clip.
-    slug: "ic-mekan-led-duvar-kurulumu",
-    labelTr: "İç mekân LED duvar",
-    labelEn: "Indoor LED wall",
+    // 1080p desktop + 1080x1920 phone (Drive IMG_1089, 4K, 2025) — replaces the upscaled 720p sphere clip.
+    slug: "salon-led-duvar-2025",
+    labelTr: "Salon LED duvar",
+    labelEn: "Living-room LED wall",
   },
   // club-curved-led-ribbon (848x480, shot 2023) left the hero: below 720p and older than 2024.
   // It stays on /projelerimiz.
@@ -42,6 +42,8 @@ export function Hero({ locale }: HeroProps) {
       {
         src: video.src,
         poster: video.poster,
+        srcMobile: video.srcMobile,
+        posterMobile: video.posterMobile,
         width: video.width,
         height: video.height,
         label: tr ? scene.labelTr : scene.labelEn,

@@ -17,6 +17,9 @@ export interface SiteVideo {
    * (linked blog post); otherwise year-month from the caption. Never guessed.
    */
   uploadDate?: string;
+  /** Optional portrait (9:16) version for phones; hero picks it via <source media>. */
+  srcMobile?: string;
+  posterMobile?: string;
 }
 
 export const PROJECT_VIDEOS: SiteVideo[] = [
@@ -254,17 +257,21 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
  */
 export const HERO_ONLY_VIDEOS: SiteVideo[] = [
   {
-    // Drive: Site için video / IMG_1071.MOV — iPhone 14 Pro Max, 3840x2160 HEVC HLG, shot 2025-08-23.
-    // Web: 16:9 crop around the wall, HLG → SDR BT.709, 1920x1080 H.264, no audio, +faststart.
-    slug: "ic-mekan-led-duvar-kurulumu",
-    src: "/videos/ic-mekan-led-duvar-kurulumu.mp4",
-    poster: "/videos/ic-mekan-led-duvar-kurulumu.webp",
+    // Drive: IMG_1089.MOV — iPhone 14 Pro Max, 4K HEVC HLG, shot 2025-08-23 17:36 (TRT).
+    // Finished living-room LED wall, 16.0–21.7 s of the source, tripod-stabilised (vidstab), HLG → SDR BT.709.
+    // Desktop: 16:9 crop around the wall, 1920x1080 H.264. Phone: native portrait, 1080x1920 H.264.
+    // No audio track, +faststart.
+    slug: "salon-led-duvar-2025",
+    src: "/videos/salon-led-duvar-2025.mp4",
+    poster: "/videos/salon-led-duvar-2025.webp",
+    srcMobile: "/videos/salon-led-duvar-2025-mobil.mp4",
+    posterMobile: "/videos/salon-led-duvar-2025-mobil.webp",
     width: 1920,
     height: 1080,
-    title: "İç Mekân LED Duvar Kurulumu",
-    titleEn: "Indoor LED wall installation",
-    caption: "Salon duvarına monte edilen iç mekân LED ekran · Ağustos 2025",
-    captionEn: "Indoor LED display mounted on a living-room wall · August 2025",
+    title: "Salon — İç Mekân LED Duvar",
+    titleEn: "Living room — indoor LED wall",
+    caption: "Salon duvarına monte edilmiş, devreye alınmış iç mekân LED ekran · Ağustos 2025",
+    captionEn: "Commissioned indoor LED display on a living-room wall · August 2025",
     uploadDate: "2025-08",
   },
 ];
