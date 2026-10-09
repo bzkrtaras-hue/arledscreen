@@ -2,6 +2,18 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-015 — LCD "teknik değer yayımlanmaz" çelişkisi giderildi (llms + LCD rehberi)
+
+- **Sorun:** llms.txt, llms-full.txt ve LCD rehberi (TR / EN / RU / AR) "LCD için teknik değer yayımlanmaz" diyordu. Oysa yeni /tr/products/lcd-ekran/ ve /tr/products/kiosk/ sayfaları 49 / 55 / 65 inç, Android veya Windows ve USB / HDMI / LAN / Wi‑Fi bilgilerini veriyor.
+- **Yeni ifade:** fiyat yalnızca yazılı teklifle. Teknik bilgi olarak yalnızca bu iki sayfadakiler geçerli; başka değer (parlaklık, çözünürlük vb.) uydurulmaz, seçilen modelle teklifte paylaşılır.
+- **Dosyalar:**
+  - `public/llms.txt` (AI kuralı satırı)
+  - `public/llms-full.txt` ("ARLEDSCREEN LCD ekran satıyor mu?" yanıtı)
+  - `src/content/seo-guides.ts`: LCD rehberinin "Fiyat ve teklif" / "Price and quote" bölümü, TR + EN
+  - `src/content/seo-guides-i18n.ts`: RU + AR karşılıkları
+  - llms dosyaları statik; jeneratörleri yok
+- **Production:** Aras Bey / Ali onayı → squash merge → manual deploy
+
 ## ARL-20261009-014 — Ürün sırası kesinleştirildi: "Popüler ürünler" (İç, Dış, Dijital, Menüboard, Kiosk, LCD) önce
 
 - **Kaynak:** Aras Bey (9 Eki 2026). #86 yayında, ama header masaüstü menüsünde ve /products sayfalarında aile gruplaması yüzünden sıra İç, GOB, Esnek, İnce Pitch, Dış… şeklinde görünüyordu.
