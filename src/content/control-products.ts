@@ -19,9 +19,9 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     tag: "Huidu · Asenkron · Wi‑Fi",
     family: "Modül ve Kontrol Sistemleri",
     types: ["Asenkron oynatıcı", "4K çift mod kontrolcü", "Wi‑Fi tabela kartı", "Alıcı kart genişletme"],
-    image: "/control/huidu-async-hero.png",
+    image: "/control/huidu-card-c.png",
     cardImage: "/control/huidu-card-a.jpg",
-    imageAlt: "Huidu LED asenkron kontrol kartı ürün görseli",
+    imageAlt: "Huidu HD-A7 4K LED kontrolcü ürün görseli",
     brandName: "Huidu",
     intro: [
       "Huidu (Shenzhen Huidu Technology) kontrol kartları, özellikle asenkron LED tabela ve orta boy reklam yüzeylerinde sık tercih edilir. Kart üzerinde depolama vardır; program bilgisayar veya telefonda hazırlanıp Wi‑Fi, USB ya da ağ üzerinden ekrana gönderilir.",
@@ -78,9 +78,9 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     tag: "NovaStar · VX · Taurus",
     family: "Modül ve Kontrol Sistemleri",
     types: ["All-in-one video kontrolcü", "Medya oynatıcı", "Gönderici kart", "Alıcı / Armor serisi"],
-    image: "/control/novastar-hero.jpg",
+    image: "/control/novastar-mctrl660-pro.png",
     cardImage: "/control/novastar-mctrl660-pro.png",
-    imageAlt: "NovaStar LED kontrol ve işlemci ürün ailesi görseli",
+    imageAlt: "NovaStar MCTRL660 PRO LED gönderici kart ürün görseli",
     brandName: "NovaStar",
     intro: [
       "NovaStar (Xi’an NovaStar Tech) kontrolcüleri; senkron video işleme, yüksek piksel yükü ve sahne / DOOH projelerinde yaygın kullanılır. VX serisi video işlemeyi ve gönderimi tek kutuda birleştirir; Taurus medya oynatıcılar asenkron ve senkron senaryolarda içerik yayınlar; MCTRL gönderici kartlar harici işlemci veya bilgisayar kaynaklarını ekrana taşır.",

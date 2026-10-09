@@ -539,7 +539,7 @@ const PITCH_PAGES: CommercialPage[] = [
     ].filter((x): x is CommercialLink => Boolean(x)),
     proof: (r) => /P3|P3\.0/i.test(r.detail),
     images: [
-      { src: "/projects/modules/indoor-smd-surface.jpg", alt: "P3 sınıfı iç mekan yüzey" },
+      { src: "/modules/nxtionstar-p3-07-ic-mekan-modul.webp", alt: "NXTIONSTAR P3.07 iç mekân LED modül" },
       { src: "/projects/modules/outdoor-cab.jpg", alt: "P3 sınıfı dış mekan kabin" },
     ],
   }),

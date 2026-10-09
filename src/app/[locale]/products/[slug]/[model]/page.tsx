@@ -29,6 +29,7 @@ import {
 } from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { InventBridge } from "@/components/seo/InventBridge";
+import { ModelNoPhoto } from "@/components/products/ModelNoPhoto";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
@@ -214,7 +215,7 @@ export default async function ModelPage({ params }: PageProps) {
         : { "@type": "Brand", name: brandName },
     itemCondition: "https://schema.org/NewCondition",
     category: m.kind === "kontrol" ? `${g.name}` : `${g.name} modülü`,
-    image: absoluteUrl(m.image),
+    ...(m.image ? { image: absoluteUrl(m.image) } : {}),
     description,
     url,
     // Human page join (catalog/ai-shopping mainEntityOfPage parity).
@@ -273,15 +274,19 @@ export default async function ModelPage({ params }: PageProps) {
 
           <div className="mt-6 grid min-w-0 items-start gap-8 md:grid-cols-[0.9fr_1.1fr] lg:gap-14">
             <div className="min-w-0 rounded-card bg-band p-3 md:sticky md:top-28">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={m.image}
-                alt={m.imageAlt}
-                width={777}
-                height={551}
-                className="h-auto w-full rounded-[1.1rem] bg-white object-contain"
-                fetchPriority="high"
-              />
+              {m.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={m.image}
+                  alt={m.imageAlt}
+                  width={777}
+                  height={551}
+                  className="h-auto w-full rounded-[1.1rem] bg-white object-contain"
+                  fetchPriority="high"
+                />
+              ) : (
+                <ModelNoPhoto brand={brandName} chip={m.chip} className="aspect-[777/551] w-full rounded-[1.1rem]" />
+              )}
             </div>
 
             <div className="min-w-0">
@@ -407,8 +412,12 @@ export default async function ModelPage({ params }: PageProps) {
                       href={modelPath(r)}
                       className="group flex h-full flex-col rounded-2xl bg-band p-2 transition hover:-translate-y-0.5 hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan"
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={r.image} alt={r.imageAlt} width={388} height={275} loading="lazy" className="aspect-[4/3] w-full rounded-xl bg-white object-contain" />
+                      {r.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={r.image} alt={r.imageAlt} width={388} height={275} loading="lazy" className="aspect-[4/3] w-full rounded-xl bg-white object-contain" />
+                      ) : (
+                        <ModelNoPhoto brand={r.brandName ?? g.brandName ?? "NXTIONSTAR"} chip={r.chip} className="aspect-[4/3] w-full rounded-xl" />
+                      )}
                       <span className="px-2 pb-2 pt-3">
                         <span className="block font-display text-[15px] font-bold text-ink group-hover:text-cyan">{r.name}</span>
                         <span className="mt-1 block text-[13px] text-ink-muted">
