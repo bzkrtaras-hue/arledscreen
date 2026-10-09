@@ -974,7 +974,7 @@ function enModelLinkLabel(group: string, slug: string, fallback: string): string
   if (!m) return fallback;
   const chip = m.chip.replace(/\s*esnek\s*/i, " ").trim();
   if (m.kind === "esnek") return `${chip} flexible`;
-  if (m.kind === "gob") return `${m.chip} GOB`;
+  if (m.kind === "gob") return /\bGOB\b/.test(m.chip) ? m.chip : `${m.chip} GOB`;
   if (m.kind === "ic") return `${m.chip} indoor`;
   if (m.kind === "dis") {
     return m.chip.includes("önden") || m.slug.includes("on-servis")
