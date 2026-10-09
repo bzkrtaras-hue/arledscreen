@@ -248,7 +248,29 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   },
 ];
 
-export const getVideo = (slug: string) => PROJECT_VIDEOS.find((v) => v.slug === slug);
+/**
+ * Hero-only clips (homepage rotation). Not listed on /projelerimiz.
+ * Source: Aras's own footage in Drive "Site için video" (shot 2024+ only).
+ */
+export const HERO_ONLY_VIDEOS: SiteVideo[] = [
+  {
+    // Drive: Site için video / IMG_1071.MOV — iPhone 14 Pro Max, 3840x2160 HEVC HLG, shot 2025-08-23.
+    // Web: 16:9 crop around the wall, HLG → SDR BT.709, 1920x1080 H.264, no audio, +faststart.
+    slug: "ic-mekan-led-duvar-kurulumu",
+    src: "/videos/ic-mekan-led-duvar-kurulumu.mp4",
+    poster: "/videos/ic-mekan-led-duvar-kurulumu.webp",
+    width: 1920,
+    height: 1080,
+    title: "İç Mekân LED Duvar Kurulumu",
+    titleEn: "Indoor LED wall installation",
+    caption: "Salon duvarına monte edilen iç mekân LED ekran · Ağustos 2025",
+    captionEn: "Indoor LED display mounted on a living-room wall · August 2025",
+    uploadDate: "2025-08",
+  },
+];
+
+export const getVideo = (slug: string) =>
+  PROJECT_VIDEOS.find((v) => v.slug === slug) ?? HERO_ONLY_VIDEOS.find((v) => v.slug === slug);
 
 /** schema.org VideoObject for a self-hosted clip shown on `pageUrl`. */
 export function videoObjectJsonLd(
