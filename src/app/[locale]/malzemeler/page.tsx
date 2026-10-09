@@ -98,7 +98,7 @@ export default async function MaterialsHubPage({ params }: { params: Promise<{ l
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <nav aria-label="Sayfa yolu" className="flex flex-wrap items-center gap-1 text-[13px] text-ink-muted">
-            <Link href="/tr/" className="hover:text-cyan">Ana Sayfa</Link>
+            <Link href="/tr/" className="hover:text-cyan max-md:inline-flex max-md:min-h-11 max-md:items-center">Ana Sayfa</Link>
             <ChevronRight className="h-3.5 w-3.5" aria-hidden />
             <span className="text-ink-soft" aria-current="page">Malzemeler</span>
           </nav>
@@ -145,7 +145,7 @@ export default async function MaterialsHubPage({ params }: { params: Promise<{ l
               return (
                 <li key={c.slug} className="rounded-2xl p-5 glass-card">
                   <h3 className="font-display text-base font-bold text-ink">
-                    <Link href={categoryPath(c.slug)} className="hover:text-cyan">
+                    <Link href={categoryPath(c.slug)} className="hover:text-cyan max-md:inline-flex max-md:min-h-11 max-md:items-center">
                       {c.name}
                     </Link>
                   </h3>
@@ -177,7 +177,7 @@ export default async function MaterialsHubPage({ params }: { params: Promise<{ l
                   >
                     <span className="px-2 pb-2 pt-3">
                       <span className="block font-display text-[15px] font-bold text-ink group-hover:text-cyan">{it?.name}</span>
-                      <span className="mt-1 block text-[13px] text-ink-muted">
+                      <span className="mt-1 block text-[13px] text-ink-muted max-md:text-base">
                         {m.type}
                         {typeof it?.usd === "number" ? ` · ${fmtUsd(it.usd)} USD` : ""}
                       </span>
@@ -188,9 +188,9 @@ export default async function MaterialsHubPage({ params }: { params: Promise<{ l
             })}
           </ul>
           <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-            <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">LED ekran fiyatları (12 panel)</Link>
-            <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">Fiyat hesaplayıcı</Link>
-            <Link href="/tr/products/led-modul-ve-kontrol-sistemleri/" className="font-semibold text-cyan hover:underline">Modül ve kontrol sistemleri</Link>
+            <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline max-md:inline-flex max-md:min-h-11 max-md:items-center">LED ekran fiyatları (12 panel)</Link>
+            <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline max-md:inline-flex max-md:min-h-11 max-md:items-center">Fiyat hesaplayıcı</Link>
+            <Link href="/tr/products/led-modul-ve-kontrol-sistemleri/" className="font-semibold text-cyan hover:underline max-md:inline-flex max-md:min-h-11 max-md:items-center">Modül ve kontrol sistemleri</Link>
           </div>
         </div>
       </section>
