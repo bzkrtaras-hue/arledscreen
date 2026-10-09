@@ -22,6 +22,7 @@ import {
 } from "@/content/prices";
 import { modelPath, modelsForGroup, modelUrlForPrice, SPEC_LABELS, type SpecKey } from "@/content/models";
 import { OptImage } from "@/components/ui/opt-image";
+import { ModelNoPhoto } from "@/components/products/ModelNoPhoto";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
@@ -397,13 +398,21 @@ export default async function ProductGroupPage({ params }: PageProps) {
                       {isControlGroup ? (
                         <>
                           <div className="relative aspect-[16/10] w-full bg-surface">
-                            <OptImage
-                              src={m.image}
-                              alt={m.imageAlt}
-                              fill
-                              sizes="(max-width: 1024px) 50vw, 33vw"
-                              className="object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
-                            />
+                            {m.image ? (
+                              <OptImage
+                                src={m.image}
+                                alt={m.imageAlt}
+                                fill
+                                sizes="(max-width: 1024px) 50vw, 33vw"
+                                className="object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
+                              />
+                            ) : (
+                              <ModelNoPhoto
+                                brand={m.brandName ?? g.brandName ?? "NXTIONSTAR"}
+                                chip={m.chip}
+                                className="absolute inset-0 h-full w-full"
+                              />
+                            )}
                           </div>
                           <div className="flex flex-1 flex-col px-4 py-4 text-left">
                             <span className="font-display text-lg font-extrabold text-cyan">{m.chip}</span>

@@ -252,31 +252,12 @@
       480
     ]
   },
-  "/control/novastar-hero.jpg": {
-    "w": 2560,
-    "h": 1933,
-    "widths": [
-      480,
-      960,
-      1600,
-      2560
-    ]
-  },
   "/control/novastar-mctrl660-pro.png": {
     "w": 768,
     "h": 432,
     "widths": [
       480,
       768
-    ]
-  },
-  "/control/novastar-vx600.png": {
-    "w": 1400,
-    "h": 900,
-    "widths": [
-      480,
-      960,
-      1400
     ]
   },
   "/projects/applications/automotive-led-eyes.jpg": {
@@ -590,15 +571,6 @@
       480,
       960,
       1600
-    ]
-  },
-  "/projects/modules/indoor-smd-surface.jpg": {
-    "h": 1001,
-    "w": 997,
-    "widths": [
-      480,
-      960,
-      997
     ]
   },
   "/projects/modules/indoor-wall.jpg": {
