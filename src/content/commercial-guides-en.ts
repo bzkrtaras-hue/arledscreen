@@ -123,7 +123,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         h2: "Choose rental when…",
         body:
-          "Short duration, touring stages, or uncertain reuse. Price depends on size, days and site access — request /en/led-ekran-kiralama/ and /en/quote/. There is no fixed rental price.",
+          "Short duration, touring stages, or uncertain reuse. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. Request /en/led-ekran-kiralama/ and /en/quote/.",
       },
       {
         h2: "Choose purchase when…",

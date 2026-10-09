@@ -1813,7 +1813,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       ...tr,
       title: "LED Display Rental | Stage & Events | ARLEDSCREEN",
       description:
-        "LED display rental for stage, fair and events. ARLEDSCREEN rental cabinets with install and strike support — written quote by size and duration.",
+        "LED display rental for stage, fair and events. ARLEDSCREEN rental cabinets: USD 50 per m² per day; installation and shipping quoted separately.",
       h1: "LED display rental",
       eyebrow: "Rental",
       lead: "We plan rental LED installs for short-run events, stages and fairs.",

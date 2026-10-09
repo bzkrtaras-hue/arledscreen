@@ -647,7 +647,7 @@
         "type": "Custom Quote Request",
         "url": "https://arledscreen.com/tr/quote/",
         "format": "text/html",
-        "description": "Entry point for quote-only product groups (transparent, flexible, rental, control); also emits 12 panel Offers. Machine OrderAction also on entity.json WebSite #website and /brand.json potentialAction.",
+        "description": "Entry point for quote-only product groups (transparent, flexible, control); Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. Also emits 12 panel Offers. Machine OrderAction also on entity.json WebSite #website and /brand.json potentialAction.",
         "subjectOf": [],
         "distribution": [
           "https://arledscreen.com/ai-shopping.json",
