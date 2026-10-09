@@ -128,6 +128,36 @@ const HUB: InstallGuide = {
       answer:
         "A synchronous screen shows the connected source in real time and goes blank when the source is off. An asynchronous screen keeps content in its own memory and plays it on a schedule, independently of a computer.",
     },
+    {
+      question: "Can an LED screen be hung from the ceiling?",
+      answer:
+        "Yes. Indoors, an LED screen can be hung from the ceiling with a suitable frame and suspension system. Whether the ceiling and hanging points carry the screen weight is checked during the survey; the suspension detail is written into the quote.",
+    },
+    {
+      question: "Do I need scaffolding or a crane for installation?",
+      answer:
+        "It depends on mounting height and screen size. Low indoor walls usually need only ladders or a platform; high façade and pole installations need scaffolding, a boom lift or a crane. This is decided at the survey and shown separately in the quote.",
+    },
+    {
+      question: "How much space does an LED screen installation need?",
+      answer:
+        "Screen size is planned in multiples of the 320 × 160 mm module. Front-service systems can be mounted close to the wall; rear-service systems need access space behind the screen for maintenance. Required depth and clearance are measured on site.",
+    },
+    {
+      question: "What electrical supply does an LED screen need?",
+      answer:
+        "The screen must be on an earthed line with a breaker sized for its power. For large screens, three-phase (R-S-T) distribution is recommended to balance the load. Peak and average power are calculated from screen area and stated in the quote.",
+    },
+    {
+      question: "Can an LED screen replace my existing sign?",
+      answer:
+        "Yes. If the existing structure is sound and the size fits, the LED screen can go in the same place. The structure is checked at the survey for screen weight and, outdoors, wind load; it is reinforced if needed.",
+    },
+    {
+      question: "Do I need a municipal permit for an outdoor LED screen?",
+      answer:
+        "Outdoor advertising screens may need a permit from the local municipality. The screen owner applies to the relevant municipal office; screen size, location and mounting details may be requested. These technical details are included in our quote.",
+    },
   ],
   sources: [HUIDU_SOURCES.en[0], HUIDU_SOURCES.en[2], ...NOVASTAR_SOURCES.en.slice(0, 3)],
   links: [

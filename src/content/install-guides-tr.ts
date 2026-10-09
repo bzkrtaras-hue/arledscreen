@@ -129,6 +129,36 @@ const HUB: InstallGuide = {
       answer:
         "Senkron ekran bağlı kaynağın görüntüsünü anlık gösterir, kaynak kapanınca görüntü de gider. Asenkron ekran içeriği kendi hafızasında tutar ve zamanlanmış programa göre bilgisayardan bağımsız oynatır.",
     },
+    {
+      question: "LED ekran tavana asılabilir mi?",
+      answer:
+        "Evet. İç mekânda LED ekran uygun taşıyıcı ve askı sistemiyle tavana asılabilir. Tavanın ve askı noktalarının ekran ağırlığını taşıyıp taşımadığı keşifte kontrol edilir; askı detayı teklifte yazılı olarak belirtilir.",
+    },
+    {
+      question: "Kurulum için iskele veya vinç gerekir mi?",
+      answer:
+        "Montaj yüksekliğine ve ekran ölçüsüne bağlıdır. Alçak iç mekân duvarlarında genellikle merdiven ve platform yeterlidir; yüksek cephe ve direk montajlarında iskele, sepetli platform veya vinç gerekir. İhtiyaç keşifte belirlenir ve teklifte ayrıca gösterilir.",
+    },
+    {
+      question: "LED ekran montajı için ne kadar yer gerekir?",
+      answer:
+        "Ekran ölçüsü 320 × 160 mm modül katlarına göre planlanır. Önden servisli sistemler duvara yakın monte edilebilir; arkadan servisli sistemlerde bakım için ekranın arkasında erişim boşluğu bırakılır. Gerekli derinlik ve boşluk keşifte ölçülür.",
+    },
+    {
+      question: "LED ekran için elektrik altyapısı nasıl olmalı?",
+      answer:
+        "Ekran topraklı ve ekranın gücüne uygun sigortalı bir hatta bağlanmalıdır. Büyük ekranlarda yükü dengelemek için üç faz (R-S-T) dağıtım önerilir. Tepe ve ortalama güç ekran alanına göre hesaplanır ve teklifte yazılı olarak belirtilir.",
+    },
+    {
+      question: "Mevcut tabelanın yerine LED ekran takılır mı?",
+      answer:
+        "Evet. Mevcut taşıyıcı sağlamsa ve ölçü uygunsa LED ekran aynı yere takılabilir. Taşıyıcının ekran ağırlığına ve dış mekânda rüzgâr yüküne uygunluğu keşifte kontrol edilir; gerekirse konstrüksiyon güçlendirilir.",
+    },
+    {
+      question: "Dış mekân LED ekran için belediye izni gerekir mi?",
+      answer:
+        "Dış mekân reklam ekranları için ilgili belediyeden izin gerekebilir. Başvuru ekran sahibi tarafından belediyenin ilgili birimine yapılır; ekranın ölçüsü, konumu ve montaj bilgisi istenebilir. Bu teknik bilgiler teklifimizde yer alır.",
+    },
   ],
   sources: [HUIDU_SOURCES.tr[0], HUIDU_SOURCES.tr[2], ...NOVASTAR_SOURCES.tr.slice(0, 3)],
   links: [

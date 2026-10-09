@@ -16,6 +16,13 @@ export const SEO_GUIDE_SLUGS = [
   "kiosk-ekran",
   "kiosk-dijital-ekran",
   "cnc-led-kasa",
+  "cami-led-ekran",
+  "led-ekran-ariza-belirtileri",
+  "led-ekran-ihracat",
+  "eczane-led-ekran",
+  "dugun-salonu-led",
+  "hastane-dijital-ekran",
+  "okul-led-ekran",
 ] as const;
 
 export type SeoGuideSlug = (typeof SEO_GUIDE_SLUGS)[number];
@@ -817,71 +824,75 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
     },
     "konferans-salonu-led": {
       slug: "konferans-salonu-led",
-      title: "Okul & Konferans Salonu LED Ekran — ARLEDSCREEN",
+      title: "Konferans Salonu LED Ekran: Ölçü, Piksel Aralığı ve Fiyat | ARLEDSCREEN",
       description:
-        "Okul konferans salonu ve konferans salonları için LED ekran: izleme mesafesi, ses/AV entegrasyonu, ince pitch. NXTIONSTAR — ARLEDSCREEN B2B keşif ve kurulum.",
-      keywords: [
-        "okul konferans salonu",
-        "konferans salonları",
-        "konferans LED ekran",
-        "salon video duvar",
-        "NXTIONSTAR",
-        "ARLEDSCREEN",
-      ],
-      h1: "Okul ve konferans salonu LED ekran",
+        "Konferans salonu ve amfi için LED ekran: salon derinliğine göre ekran ölçüsü, ilk sıraya göre piksel aralığı, örnek ölçü ve modül bedeli tablosu, AV bağlantıları. NXTIONSTAR — ARLEDSCREEN, İstanbul.",
+      keywords: ["konferans salonu LED ekran", "konferans salonları", "okul konferans salonu", "amfi LED ekran", "toplantı salonu LED ekran", "salon video duvar", "NXTIONSTAR", "ARLEDSCREEN"],
+      h1: "Konferans salonu LED ekran nasıl seçilir?",
       intro:
-        "Konferans salonları ve okul konferans salonu projelerinde sahne arkası LED veya yan kanatlar sunum, yayın ve etkinlik için tek yüzey olur. ARLEDSCREEN / NXTIONSTAR kurulumu ses, ışık ve kontrol odasıyla uyumlu planlanır.",
+        "Konferans salonunda LED ekranı iki mesafe belirler: ilk sıranın ekrana uzaklığı piksel aralığını, son sıranın uzaklığı ekran yüksekliğini. Sunum ve yazı ağırlıklı salonlarda genellikle iç mekân P2.5, derin salonlarda P3.07 yeterlidir; ekran yüksekliği son sıra mesafesinin yaklaşık sekizde biri seçilir. LED ekran projeksiyona göre aydınlık salonda da net görünür ve karartma gerektirmez. ARLEDSCREEN, kendi markası NXTIONSTAR ekranların keşfini, montajını ve teknik servisini İstanbul Gaziosmanpaşa merkezinden yapar.",
       sections: [
         {
-          h2: "Salon geometrisi ve izleme mesafesi",
+          h2: "Piksel aralığı: ilk sıraya göre",
           body:
-            "İlk sıra ile sahne arası mesafe pitch’i belirler. Okul amfisi ile otel konferans salonu farklı oturma yoğunluğuna sahiptir; metin ağırlıklı sunumda daha ince pitch, video ağırlıklı etkinlikte biraz daha geniş pitch kabul edilebilir. ARLEDSCREEN keşfinde oturma planı ve kritik okuma mesafesi not edilir.",
+            "Yaklaşık 1 mm piksel aralığı için 1 m mesafe kuralı kullanılır. İlk sıra 2,5 m uzaktaysa P2.5, 3 m ve üzerindeyse P3.07 yeterlidir. Yönetim kurulu odası gibi 1,5–2 m'den izlenen salonlarda P1.53 veya P1.86 GOB tercih edilir. Yayımlanmış panel fiyatları (USD, panel başına, KDV ve nakliye hariç): P1.53 GOB 62,08, P1.86 GOB 49,08, P2.5 iç mekân 32,18, P3.07 iç mekân 30,88.",
         },
         {
-          h2: "AV entegrasyonu: ses, kamera, kontrol",
+          h2: "Ekran ölçüsü: son sıraya göre",
           body:
-            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir. Yüksek yenileme, kamera çekiminde flicker riskini düşürür. Gerekirse yedek kaynak girişi teklife eklenir.",
+            "Sunum yazılarının son sıradan okunması için ekran yüksekliği, son sıra mesafesinin yaklaşık sekizde biri seçilir. Ölçü 320 × 160 mm modül katlarına göre planlanır; 16:9 oranına en yakın modül düzeni seçilir ki bilgisayar görüntüsü kenarlarda boşluk bırakmadan dolsun. Tablodaki örnekler bu kurala göre hazırlanmıştır.",
         },
         {
-          h2: "Okul ve kurumsal kullanım farkları",
+          h2: "Projeksiyon yerine LED",
           body:
-            "Okul konferans salonunda bütçe ve dayanıklılık; kurumsal salonda marka rengi ve ince pitch öncelik olabilir. Her iki senaryoda da kolay içerik geçişi (PC / laptop / medya oynatıcı) ve basit operatör paneli önemlidir. YZ destekli otomatik içerik zamanlama istenirse CMS hattı baştan tanımlanır.",
+            "LED ekran aydınlık salonda da yüksek kontrast verir, perde ve karartma gerekmez, görüntü kenardan kenara eşit parlaklıktadır. Modül eklenerek büyütülebilir ve arızalı modül tek başına değiştirilir.",
         },
         {
-          h2: "Montaj, akustik ve sahne güvenliği",
+          h2: "Ses, kamera ve kontrol bağlantıları",
           body:
-            "Asma LED’lerde statik onay ve güvenlik teli; yerden yükselen sahne duvarında ankraj detayı şarttır. Akustik panellerle çakışma ve fan gürültüsü kontrol edilir. Kurulum sonrası renk kalibrasyonu ve operatör eğitimi ARLEDSCREEN teslimatına dahildir.",
+            "Laptop, kablosuz sunum cihazı, medya oynatıcı ve kamera kaydı ekranla aynı bağlantı planında düşünülür. Kamera ile yayın yapılacaksa bunu keşifte belirtin; kontrol sistemi ve tazeleme ayarları buna göre planlanır. Sahne arkası duvar, asma sistem veya yerden yükselen konstrüksiyon seçeneklerinin taşıma ve güvenlik detayı teklifte yazılır.",
+        },
+        {
+          h2: "Okul ve kurumsal salonlar",
+          body:
+            "Okul konferans salonu ve amfilerde dayanıklılık ve kolay kullanım, kurumsal salonlarda ince piksel aralığı ve marka renkleri öne çıkar. Okul ekranlarının tamamı için ayrı okul rehberimize bakabilirsiniz. Taksitli ödeme yapılabilir; ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz. Ürünlerimiz CE sertifikalıdır. Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir.",
         },
       ],
       faqs: [
         {
-          question: "Konferans salonu için minimum çözünürlük nedir?",
+          question: "Konferans salonu için hangi piksel aralığı gerekir?",
           answer:
-            "Sunum metninin son sıradan okunabilirliği esas alınır. Pitch × fiziksel boyut = piksel çözünürlük; keşifte örnek slayt okuma testi yapılabilir.",
+            "İlk sıra 2,5 m uzaktaysa P2.5 (32,18 USD/panel), 3 m ve üzerindeyse P3.07 (30,88 USD/panel) iç mekân yeterlidir. 1,5–2 m'den izlenen toplantı odalarında P1.53 veya P1.86 GOB önerilir.",
+        },
+        {
+          question: "Konferans salonu LED ekran ne kadar büyük olmalı?",
+          answer:
+            "Ekran yüksekliği son sıra mesafesinin yaklaşık sekizde biri seçilir. Son sıra 15 m uzaktaysa yaklaşık 3,52 × 1,92 m (132 modül) bir ekran uygundur; P2.5 iç mekân modül bedeli 132 × 32,18 = 4.247,76 USD'dir (yalnızca modül, KDV ve nakliye hariç).",
         },
         {
           question: "Projeksiyon yerine LED neden tercih edilir?",
           answer:
-            "Yüksek ambient ışıkta okunabilirlik, tutarlı parlaklık ve geniş açı. Karartma zorunluluğu azalır; etkinlik ve yayın senaryoları kolaylaşır.",
+            "LED aydınlık salonda da net görünür, karartma ve perde gerektirmez, parlaklığı yüzey boyunca eşittir ve modül modül onarılabilir.",
         },
         {
-          question: "Okul projelerinde süreç nasıl işler?",
+          question: "Konferans salonu LED ekran fiyatı neye göre değişir?",
           answer:
-            "Ölçü / keşif → teknik teklif → onay → montaj → eğitim. İhale dokümanına pitch, nit ve IP (iç mekân) maddeleri net yazılmalıdır.",
+            "Ekran ölçüsü, piksel aralığı, montaj şekli (duvar, asma, konstrüksiyon) ve kontrol sistemi fiyatı belirler. Panel fiyatları yayımlanmıştır; kesin tutar keşif sonrası yazılı teklifle verilir. Taksitli ödeme yapılabilir.",
+        },
+        {
+          question: "Teslim ve kurulum ne kadar sürer?",
+          answer:
+            "Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. İstanbul'un tüm ilçelerinde proje yaptık; montaj tarihi keşifte planlanır.",
         },
       ],
-      relatedSlugs: [
-        "ic-mekan-led-ekran",
-        "led-ekran",
-        "mimari-muhendislik-led",
-      ],
+      relatedSlugs: ["okul-led-ekran", "ic-mekan-led-ekran", "dugun-salonu-led"],
       cta: {
-        title: "Salon LED projenizi boyutlandıralım",
+        title: "Salonunuz için ekranı boyutlandıralım",
         body:
-          "Salon ölçüleri ve oturma planını paylaşın; pitch ve AV entegrasyon özeti ile dönüş yapalım.",
+          "Salon planını, ilk ve son sıra mesafesini ve sahne duvarının fotoğrafını gönderin; ölçü, piksel aralığı ve bütçe önerisi hazırlayalım.",
       },
-      cardLabel: "Konferans salonu",
-      cardTeaser: "Okul ve konferans salonları için LED / AV entegrasyon.",
+      cardLabel: "Konferans salonu LED ekran",
+      cardTeaser: "Salon derinliğine göre ekran ölçüsü, ilk sıraya göre piksel aralığı ve örnek modül bedelleri.",
     },
     "vitrin-led-ekran": {
       slug: "vitrin-led-ekran",
@@ -1095,6 +1106,495 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       },
       cardLabel: "Kiosk",
       cardTeaser: "Dokunmatik bilgi ve self-servis kiosk dijital ekran.",
+    },
+    "cami-led-ekran": {
+      slug: "cami-led-ekran",
+      title: "Cami ve İbadethane LED Ekran: Ölçü, Fiyat, Vakit Ekranı | ARLEDSCREEN",
+      description:
+        "Cami, kilise ve diğer ibadethaneler için LED ekran: cemaat mesafesine göre ölçü ve piksel aralığı, namaz vakti ve hutbe gösterimi, yayımlanmış panel fiyatları. ARLEDSCREEN, İstanbul.",
+      keywords: ["cami LED ekran", "camiye LED ekran", "namaz vakti ekranı", "ezan vakti ekranı", "cami dijital ekran", "ibadethane LED ekran", "kilise LED ekran", "NXTIONSTAR"],
+      h1: "Cami ve ibadethaneler için LED ekran nasıl seçilir?",
+      intro:
+        "Camiye LED ekran takılabilir; namaz vakitleri, hutbe metni, duyurular ve dini günler aynı ekranda gösterilebilir. Doğru ekran iki ölçüye göre seçilir: en öndeki cemaatin ekrana uzaklığı piksel aralığını, en arkadaki saftın uzaklığı ekran büyüklüğünü belirler. Aynı kurallar kilise, cemevi ve diğer ibadethaneler için de geçerlidir. ARLEDSCREEN, kendi markası NXTIONSTAR LED ekranların keşfini, montajını ve teknik servisini İstanbul Gaziosmanpaşa merkezinden yapar.",
+      sections: [
+        {
+          h2: "Camiye LED ekran mı, LCD ekran mı?",
+          body:
+            "Küçük bir mescitte yalnızca vakit çizelgesi gösterilecekse tek bir LCD ekran yeterli olabilir. Geniş bir harimde cemaatin büyük bölümü ekranı uzaktan izleyeceği için ölçüsü modül eklenerek büyütülebilen LED ekran daha uygundur. LED ekran 320 × 160 mm modüllerin yan yana birleşmesiyle kurulur; ölçü mihrap yanındaki ya da kadınlar mahfilindeki duvara göre planlanır.",
+        },
+        {
+          h2: "Ekran büyüklüğü nasıl belirlenir?",
+          body:
+            "Genel bir kural olarak ekran yüksekliği, en arkadaki izleyicinin ekrana uzaklığının yaklaşık sekizde biri kadar seçilir; böylece vakit ve hutbe yazıları arka saflardan okunur. Örneğin en arka saf 12 m uzaktaysa yaklaşık 1,44 m yüksekliğinde (9 modül) bir ekran başlangıç için uygundur. Tablodaki örnekler bu kurala göre hazırlanmıştır; kesin ölçü keşifte duvar ve saf düzenine göre verilir.",
+        },
+        {
+          h2: "Piksel aralığı nasıl seçilir?",
+          body:
+            "Piksel aralığı en öndeki cemaatin mesafesine göre seçilir: yaklaşık 1 mm piksel aralığı için 1 m mesafe (P3.07 ≈ 3 m). Cami içinde ön saflar çoğunlukla 3–4 m'den uzakta olduğu için iç mekân P3.07 veya P4 modüller yeterlidir. Ekran cemaate çok yakın monte edilecekse P2.5 tercih edilir. Avlu ve dış cephe ekranlarında dış mekân P4 veya P5 modüller kullanılır.",
+        },
+        {
+          h2: "Namaz vakitleri ve hutbe nasıl gösterilir?",
+          body:
+            "LED ekran kendisine gelen görüntüyü gösterir. Vakit çizelgesi, hutbe metni, duyurular ve ayet-hadis görselleri bir medya oynatıcı ya da asenkron kontrol kartı (Huidu, NovaStar) ile zamanlanmış içerik olarak oynatılabilir; bilgisayar kapalıyken de program devam eder. Kullanılacak içerik kaynağı ve kontrol sistemi keşifte netleşir ve teklifte yazılı olarak belirtilir.",
+        },
+        {
+          h2: "Fiyat ve ödeme",
+          body:
+            "Yayımlanmış panel fiyatları USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir: P2.5 iç mekân 32,18 USD, P3.07 iç mekân 30,88 USD, P4 iç mekân 26,98 USD, dış mekânda P4 33,80 USD ve P5 29,90 USD. Tablodaki tutarlar yalnızca modül bedelidir; kontrol kartı, kabin veya taşıyıcı, işçilik ve yazılım ayrıca eklenir. Taksitli ödeme yapılabilir; ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz. Dernek veya bağışla alınacak ekranlarda ödeme planı yazılı teklifte belirtilir.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Camiye LED ekran takılır mı?",
+          answer:
+            "Evet. Cami içinde mihrap yanına, kadınlar mahfiline veya avluya LED ekran monte edilebilir. Duvarın taşıma durumu, elektrik hattı ve kablo güzergâhı keşifte kontrol edilir.",
+        },
+        {
+          question: "Cami için kaç m² LED ekran gerekir?",
+          answer:
+            "En arka saf 12 m uzaktaysa yaklaşık 2,56 × 1,44 m (72 modül, ≈ 3,7 m²) bir ekran başlangıç için uygundur; P3.07 iç mekân modül bedeli 72 × 30,88 = 2.223,36 USD'dir (KDV ve nakliye hariç, yalnızca modül). Mahalle mescitlerinde daha küçük ölçüler yeterli olabilir.",
+        },
+        {
+          question: "Cami LED ekran fiyatı ne kadar?",
+          answer:
+            "Fiyat ekran ölçüsüne, piksel aralığına ve montaj koşuluna göre değişir. Panel fiyatları yayımlanmıştır (ör. P3.07 iç mekân 30,88 USD/panel); kesin tutar keşif sonrası yazılı teklifle verilir. Taksitli ödeme yapılabilir.",
+        },
+        {
+          question: "Kilise veya cemevi için hangi ekran uygundur?",
+          answer:
+            "Aynı kurallar geçerlidir: piksel aralığı en öndeki izleyicinin, ekran büyüklüğü en arkadaki izleyicinin mesafesine göre seçilir. Geniş salonlarda LED, küçük alanlarda LCD ekran tercih edilebilir.",
+        },
+        {
+          question: "Teslim süresi ne kadar?",
+          answer:
+            "Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. Projenize ait tarih yazılı teklifte belirtilir.",
+        },
+      ],
+      relatedSlugs: ["ic-mekan-led-ekran", "konferans-salonu-led", "lcd-ekran"],
+      cta: {
+        title: "Camiye uygun ekranı birlikte planlayalım",
+        body:
+          "Harimin ölçüsünü, en ön ve en arka saf mesafesini ve ekranın konacağı duvarın fotoğrafını gönderin; ölçü, piksel aralığı ve bütçe önerisi hazırlayalım.",
+      },
+      cardLabel: "Cami ve ibadethane LED ekran",
+      cardTeaser: "Cemaat mesafesine göre ekran ölçüsü, piksel aralığı ve namaz vakti gösterimi.",
+    },
+    "led-ekran-ariza-belirtileri": {
+      slug: "led-ekran-ariza-belirtileri",
+      title: "LED Ekran Arıza Belirtileri ve Nedenleri | ARLEDSCREEN",
+      description:
+        "LED ekran karardı, titriyor, çizgi var ya da hiç açılmıyor mu? Arıza belirtileri, olası nedenleri ve ilk kontroller. LED, LCD, kiosk ve menuboard tamiri: ARLEDSCREEN, İstanbul.",
+      keywords: ["LED ekran arıza", "LED ekran arıza belirtileri", "LED ekran titriyor", "LED ekran çizgi", "LED ekran açılmıyor", "LED ekran tamiri", "LCD ekran tamiri", "kiosk tamiri"],
+      h1: "LED ekran arıza belirtileri: neden olur, ne yapılır?",
+      intro:
+        "LED ekran arızalarının çoğu belirtisinden tanınır: bir bölümün kararması çoğunlukla güç kaynağı veya alıcı kartı, titreme kablo ya da ayar sorununu, tek sırada çizgi veya renk bozulması modül ya da flat kabloyu işaret eder. Aşağıdaki tablo en sık belirtileri, olası nedenlerini ve sizin yapabileceğiniz ilk kontrolleri gösterir. Kesin teşhis yerinde ölçümle konur; ARLEDSCREEN LED ekranların yanı sıra LCD reklam ekranı, kiosk ve menuboard tamiri de yapar.",
+      sections: [
+        {
+          h2: "Ekranın bir bölümü karardı",
+          body:
+            "Kabin büyüklüğünde dikdörtgen bir alan kararmışsa sebep genellikle o kabinin güç kaynağı veya alıcı kartıdır. Kararma bir kabinden sonraki tüm kabinlere yayılıyorsa veri kablosu zinciri kopmuş olabilir. Tek bir modül sönmüşse modülün kendisi ya da flat kablosu arızalıdır.",
+        },
+        {
+          h2: "Titreme, çizgi ve renk bozulması",
+          body:
+            "Titreme çoğunlukla gevşek veri veya güç kablosundan, zayıflayan güç kaynağından ya da alıcı kart ayarlarından kaynaklanır; kamerada görülen titreme düşük tazeleme hızıyla ilgilidir. Yatay veya dikey çizgi ve tek sırada renk bozulması (ör. bir sıranın sürekli kırmızı yanması) genellikle modülün sürücü entegresi, flat kablo ya da alıcı kart portundan kaynaklanır.",
+        },
+        {
+          h2: "Ekran hiç açılmıyor",
+          body:
+            "Önce sigortayı, enerji hattını ve görüntü kaynağını (bilgisayar, medya oynatıcı) kontrol edin. Senkron ekranlarda bilgisayar kapalıysa ekran da görüntü vermez. Bunlar sağlamsa gönderici kart, güç kaynakları veya yazılım ayarı kontrol edilmelidir.",
+        },
+        {
+          h2: "Nem, yıldırım ve aşırı gerilim",
+          body:
+            "Dış mekânda conta yıpranırsa nem girer; modüllerde oksitlenme ve bölgesel sönme görülür. Yıldırım ve elektrik dalgalanması çoğunlukla güç kaynaklarına, alıcı kartlara ve bağlantılara zarar verir. Bu durumlarda ekranı yeniden açmadan önce teknik kontrol yaptırmak ek hasarı önler.",
+        },
+        {
+          h2: "LCD, kiosk ve menuboard arızaları",
+          body:
+            "LCD reklam ekranlarında, dokunmatik kiosklarda ve dijital menuboardlarda en sık görülen belirtiler görüntü gelmemesi, dokunmatiğin tepki vermemesi, güç kartı arızası ve bağlantı sorunlarıdır. Marka ve model bilgisini, arızanın fotoğrafı veya videosuyla birlikte gönderin; uzaktan ön teşhis yapıp keşfi planlayalım.",
+        },
+      ],
+      faqs: [
+        {
+          question: "LED ekranın bir kısmı siyah kaldı; ne yapmalıyım?",
+          answer:
+            "Ekranı kapatıp açmak kalıcı çözüm değildir. Kararan alanın fotoğrafını çekin ve +90 530 507 88 34 WhatsApp hattına gönderin. Kabin büyüklüğündeki kararmalar çoğunlukla güç kaynağı veya alıcı karttan kaynaklanır ve parça değişimiyle giderilir.",
+        },
+        {
+          question: "LED ekran tamiri ne kadar tutar?",
+          answer:
+            "Tamir için sabit fiyat yayımlamıyoruz; arızanın kaynağı ve değişecek parça her işte farklıdır. Fiyat ön teşhis ve keşif sonrası yazılı teklifle verilir.",
+        },
+        {
+          question: "LED ekran bakımı ne sıklıkla yapılmalı?",
+          answer:
+            "Kullanım koşuluna göre değişir. Dış mekân ekranlarda conta, kablo ve bağlantıların düzenli kontrolü nem kaynaklı arızaları azaltır. Bakım kapsamı ve sıklığı yazılı teklifte belirtilir; ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar.",
+        },
+        {
+          question: "Kayan yazı tabela ve dijital ekran tamiri yapıyor musunuz?",
+          answer:
+            "Evet. LED ekran, LCD reklam ekranı, kiosk ve menuboard tamiri yapıyoruz. Kayan yazı tabelalar için marka ve kontrol kartı bilgisini paylaşın; servis ve yedek parça uygunluğunu değerlendirip iletelim.",
+        },
+      ],
+      relatedSlugs: ["led-ekran", "ic-mekan-led-ekran", "dis-mekan-led-ekran"],
+      cta: {
+        title: "Arızayı birlikte teşhis edelim",
+        body:
+          "Belirtinin fotoğrafını veya kısa videosunu WhatsApp'tan gönderin; uzaktan ön teşhis yapıp keşif ve tamir teklifini hazırlayalım.",
+      },
+      cardLabel: "LED ekran arıza belirtileri",
+      cardTeaser: "Kararma, titreme, çizgi ve açılmama: olası nedenler ve ilk kontroller.",
+    },
+    "led-ekran-ihracat": {
+      slug: "led-ekran-ihracat",
+      title: "Yurt Dışına LED Ekran Satışı ve İhracat | Avrupa, Orta Doğu, Balkanlar | ARLEDSCREEN",
+      description:
+        "ARLEDSCREEN, NXTIONSTAR LED ekranları tüm Avrupa'ya, Orta Doğu'ya ve Balkanlar'a gönderir. CE sertifikalı ürünler, USD panel fiyatları, TL, USD, EUR ve diğer para birimlerinde ödeme.",
+      keywords: ["LED ekran ihracat", "yurt dışı LED ekran", "Türkiye'den LED ekran", "LED ekran Avrupa", "LED ekran Orta Doğu", "LED ekran Balkanlar", "CE sertifikalı LED ekran", "NXTIONSTAR"],
+      h1: "Yurt dışına LED ekran: Avrupa, Orta Doğu ve Balkanlar",
+      intro:
+        "ARLEDSCREEN, kendi markası NXTIONSTAR LED ekranları İstanbul'dan tüm Avrupa'ya, Orta Doğu'ya ve Balkanlar'a gönderir. Ürünlerimiz CE sertifikalıdır. Yayımlanmış panel fiyatları USD cinsindendir ve tüm dillerde aynıdır; ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz.",
+      sections: [
+        {
+          h2: "Hangi ülkelere gönderiyoruz?",
+          body:
+            "Tüm Avrupa ülkelerine, Orta Doğu'ya ve Balkanlar'a (ör. Bulgaristan, Yunanistan, Romanya, Sırbistan, Bosna-Hersek, Kuzey Makedonya, Arnavutluk, Kosova) LED ekran gönderiyoruz. Varış adresi ve teslim koşulları yazılı teklifte belirtilir.",
+        },
+        {
+          h2: "Fiyat ve ödeme",
+          body:
+            "Panel fiyatları USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir; örneğin P2.5 iç mekân 32,18 USD, P2.5 dış mekân 63,70 USD. Fiyatlar tüm dillerde aynıdır. Ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz; taksitli ödeme de yapılabilir. Nakliye ayrıca tekliflendirilir.",
+        },
+        {
+          h2: "Sertifika",
+          body:
+            "NXTIONSTAR ürünleri CE sertifikalıdır. Modele ait teknik föy yazılı teklifle birlikte paylaşılır.",
+        },
+        {
+          h2: "Teslim süresi",
+          body:
+            "Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. Hazırlık süresi ürüne, ölçüye ve stok durumuna; nakliye süresi varış adresine göre değişir. Kesin tarih yazılı teklifte belirtilir.",
+        },
+        {
+          h2: "Teklif için gerekenler",
+          body:
+            "Ülke ve şehir, ekran ölçüsü, iç veya dış mekân kullanımı, izleme mesafesi ve montaj yeri fotoğrafı yeterlidir. Kurulum ve teknik destek kapsamı teklifte yazılı olarak belirtilir.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Türkiye'den yurt dışına LED ekran gönderiyor musunuz?",
+          answer:
+            "Evet. Tüm Avrupa'ya, Orta Doğu'ya ve Balkanlar'a LED ekran gönderiyoruz. Nakliye ayrıca tekliflendirilir.",
+        },
+        {
+          question: "Ürünleriniz CE sertifikalı mı?",
+          answer:
+            "Evet, ürünlerimiz CE sertifikalıdır.",
+        },
+        {
+          question: "Hangi para birimlerinde ödeme kabul ediyorsunuz?",
+          answer:
+            "TL, USD, EUR ve diğer tüm para birimlerinde ödeme kabul ediyoruz. Yayımlanmış panel fiyatları USD cinsindendir; taksitli ödeme de yapılabilir.",
+        },
+        {
+          question: "Yurt dışı fiyatları farklı mı?",
+          answer:
+            "Hayır. Panel fiyatları tüm dillerde ve ülkelerde aynıdır; KDV ve nakliye hariçtir. Nakliye bedeli varış adresine göre teklifte belirtilir.",
+        },
+      ],
+      relatedSlugs: ["led-ekran", "dis-mekan-led-ekran", "ic-mekan-led-ekran"],
+      cta: {
+        title: "Yurt dışı teklifinizi hazırlayalım",
+        body:
+          "Ülke, şehir, ekran ölçüsü ve kullanım yerini paylaşın; panel listesi, nakliye ve ödeme planıyla yazılı teklif gönderelim.",
+      },
+      cardLabel: "Yurt dışına LED ekran (ihracat)",
+      cardTeaser: "Avrupa, Orta Doğu ve Balkanlar'a gönderim, CE sertifika, ödeme ve teslim süresi.",
+    },
+    "eczane-led-ekran": {
+      slug: "eczane-led-ekran",
+      title: "Eczane LED Ekran: Vitrin, Tabela ve Raf Üstü Ekran Seçimi | ARLEDSCREEN",
+      description:
+        "Eczane için LED ekran: vitrin arkası, dış cephe, raf üstü ve ayaklı ekran seçenekleri; mesafeye göre piksel aralığı ve yayımlanmış panel fiyatları. İçerik kuralları için not. ARLEDSCREEN, İstanbul.",
+      keywords: ["eczane LED ekran", "eczane dijital ekran", "eczane vitrin ekranı", "eczane tabela LED", "nöbetçi eczane ekranı", "eczane raf üstü ekran", "NXTIONSTAR"],
+      h1: "Eczane LED ekran nasıl seçilir?",
+      intro:
+        "Eczanede LED ekran dört yerde kullanılır: vitrin arkasında, dış cephede, tezgâh arkasında raf üstünde ve girişte ayaklı ekran olarak. Yoldan izlenen cephe ve vitrin ekranlarında parlaklık, içeriden yakından izlenen raf üstü ekranlarda ince piksel aralığı öne çıkar. İçeride P2.5 iç mekân (32,18 USD/panel), dış cephede P4 (33,80 USD/panel) veya P5 (29,90 USD/panel) dış mekân modüller sık seçilir. Ekranda gösterilecek içerik, eczacılık meslek kuralları ve reklam mevzuatına uygun planlanmalıdır.",
+      sections: [
+        {
+          h2: "Vitrin arkası ekran",
+          body:
+            "Güneş alan vitrinde standart iç mekân ekran soluk görünür; vitrin için yüksek parlaklıklı ekran veya camı kapatmayan şeffaf LED seçilir. Bu ürünlerin fiyatı vitrin ölçüsüne göre yazılı teklifle verilir. Gölgede kalan vitrinlerde iç mekân P2.5 veya P3.07 yeterli olabilir; bunu keşifte birlikte ölçeriz.",
+        },
+        {
+          h2: "Dış cephe ve tabela ekranı",
+          body:
+            "Cephede yoldan ve karşı kaldırımdan izlenen ekranlarda dış mekân P4 (33,80 USD/panel) veya P5 (29,90 USD/panel) modüller uygundur; daha yakından izlenen alçak cephelerde P3.07 dış mekân (44,20 USD/panel) daha net görünür. Fiyatlar panel başına, KDV ve nakliye hariçtir.",
+        },
+        {
+          h2: "Raf üstü ve tezgâh arkası",
+          body:
+            "Müşteri tezgâhtan 1,5–3 m uzakta durduğu için iç mekân P2.5 veya ince P1.86 GOB (49,08 USD/panel) seçilir. Uzun ve dar raf üstü şeritler 320 × 160 mm modüllerle istenen ölçüye yakın kurulur.",
+        },
+        {
+          h2: "İçerik: dikkat edilmesi gerekenler",
+          body:
+            "Ekranda nöbetçi eczane listesi, çalışma saatleri, sağlık duyuruları ve kampanyasız bilgilendirme içerikleri gösterilebilir. İlaç tanıtımı ve eczane reklamına ilişkin mevzuat ve meslek kuralları içeriği sınırlayabilir; içeriği hazırlamadan önce bağlı olduğunuz eczacı odasının güncel kurallarını kontrol edin.",
+        },
+        {
+          h2: "Ödeme, teslim ve servis",
+          body:
+            "Taksitli ödeme yapılabilir; ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz. Ürünlerimiz CE sertifikalıdır. Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. İstanbul'un tüm ilçelerinde proje yaptık; arıza durumunda tamir ve teknik servis veriyoruz.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Eczane için hangi LED ekran uygun?",
+          answer:
+            "İçeride raf üstü ve tezgâh arkası için P2.5 iç mekân (32,18 USD/panel), dış cephe için P4 (33,80 USD/panel) veya P5 (29,90 USD/panel) dış mekân modül sık seçilir. Güneş alan vitrinde yüksek parlaklıklı vitrin ekranı veya şeffaf LED gerekir; bunların fiyatı teklifle verilir.",
+        },
+        {
+          question: "Eczane ekranında nöbetçi eczane gösterilebilir mi?",
+          answer:
+            "Evet. Nöbetçi eczane listesi, çalışma saatleri ve duyurular zamanlanmış içerik olarak gösterilebilir. İçerik kaynağı keşifte netleşir.",
+        },
+        {
+          question: "Eczanede ekrana reklam koyabilir miyim?",
+          answer:
+            "İlaç tanıtımı ve eczane reklamına ilişkin mevzuat ve meslek kuralları içeriği sınırlar. Ekrana koyacağınız içerik için bağlı olduğunuz eczacı odasının güncel kurallarını kontrol edin.",
+        },
+        {
+          question: "Eczane LED ekran fiyatı ne kadar?",
+          answer:
+            "Panel fiyatları yayımlanmıştır; örneğin 1,28 × 0,64 m'lik raf üstü P2.5 ekran 16 modüldür ve modül bedeli 16 × 32,18 = 514,88 USD'dir (yalnızca modül, KDV ve nakliye hariç). Kesin tutar keşif sonrası yazılı teklifle verilir; taksitli ödeme yapılabilir.",
+        },
+      ],
+      relatedSlugs: ["vitrin-led-ekran", "poster-led-ekran", "dis-mekan-led-ekran"],
+      cta: {
+        title: "Eczaneniz için ekranı planlayalım",
+        body:
+          "Vitrin ve cephe fotoğrafını, ekranın konacağı yerin ölçüsünü ve müşterinin ekrana uzaklığını gönderin; size uygun ekranı ve bütçeyi hazırlayalım.",
+      },
+      cardLabel: "Eczane LED ekran",
+      cardTeaser: "Vitrin, cephe, raf üstü ve ayaklı ekran: piksel aralığı, fiyat ve içerik notları.",
+    },
+    "dugun-salonu-led": {
+      slug: "dugun-salonu-led",
+      title: "Düğün Salonu LED Ekran: Ölçü, Fiyat, Satın Alma ve Kiralama | ARLEDSCREEN",
+      description:
+        "Düğün ve davet salonu için LED ekran: salon derinliğine göre sahne ekranı ölçüsü, P3.07 / P4 seçimi, örnek modül bedeli ve günlük 50 USD/m² kiralama karşılaştırması. ARLEDSCREEN, İstanbul.",
+      keywords: ["düğün salonu LED ekran", "düğün salonu sahne ekranı", "davet salonu LED ekran", "düğün LED ekran fiyatı", "kiralık düğün LED ekran", "NXTIONSTAR"],
+      h1: "Düğün salonu LED ekran: ölçü, fiyat ve kiralama",
+      intro:
+        "Düğün salonunda LED ekran çoğunlukla sahnenin arkasına kurulur; gelin-damat girişi, fotoğraf ve video gösterisi, canlı çekim ve salon logosu bu ekranda oynar. Konuklar masalarda ekrandan genellikle 4 m ve daha uzakta oturduğu için iç mekân P3.07 veya P4 modüller yeterlidir. Ekran yüksekliği salonun en arka masasının uzaklığının yaklaşık sekizde biri seçilir. Salon sahibi için satın alma, tek seferlik organizasyon için günlük 50 USD/m² kiralama uygundur.",
+      sections: [
+        {
+          h2: "Piksel aralığı",
+          body:
+            "Video ve fotoğraf ağırlıklı içerikte yaklaşık 1 mm piksel aralığı için 1 m kuralı yeterlidir. Ön masalar 3 m civarındaysa P3.07 (30,88 USD/panel), 4 m ve üzerindeyse P4 (26,98 USD/panel) iç mekân modül seçilir. Sahneye çok yakın dans pistinden izlenecek yan ekranlarda P2.5 (32,18 USD/panel) daha net görüntü verir.",
+        },
+        {
+          h2: "Ekran ölçüsü",
+          body:
+            "Ekran yüksekliği en arka masanın uzaklığının yaklaşık sekizde biri seçilir ve 320 × 160 mm modül katlarına yuvarlanır. Sahne arkası duvarı tam kaplamak yerine 16:9'a yakın bir ekran, video içeriği kenarlarda boşluk bırakmadan gösterir. Tablodaki örnekler bu kurala göre hazırlanmıştır.",
+        },
+        {
+          h2: "Satın alma mı, kiralama mı?",
+          body:
+            "Her hafta organizasyon yapan salonlar için satın alma, tek düğün veya nişan için kiralama daha mantıklıdır. İç ve dış mekân kiralık LED ekran günlük 50 USD/m²'dir; haftalık ve aylık kiralamalar aynı günlük m² fiyatı üzerinden hesaplanır, depozito alınmaz. Kurulum ve nakliye ayrıca tekliflendirilir.",
+        },
+        {
+          h2: "İçerik ve kontrol",
+          body:
+            "Ekrana laptop, medya oynatıcı veya kamera görüntüsü bağlanır. Asenkron kontrol kartı (Huidu, NovaStar) ile salon logosu ve tanıtım videoları bilgisayar kapalıyken de zamanlanmış olarak oynar. Canlı çekim yapılacaksa bunu keşifte belirtin.",
+        },
+        {
+          h2: "Ödeme, teslim ve servis",
+          body:
+            "Taksitli ödeme yapılabilir; ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz. Ürünlerimiz CE sertifikalıdır. Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. İstanbul'un tüm ilçelerinde proje yaptık; arıza durumunda tamir ve teknik servis de veriyoruz.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Düğün salonu için kaç m² LED ekran gerekir?",
+          answer:
+            "En arka masa 25 m uzaktaysa yaklaşık 5,44 × 3,04 m (323 modül, ≈ 16,5 m²) bir sahne ekranı uygundur. Daha küçük salonlarda 3,52 × 1,92 m (≈ 6,8 m²) yeterli olabilir.",
+        },
+        {
+          question: "Düğün salonu LED ekran fiyatı ne kadar?",
+          answer:
+            "Yayımlanmış panel fiyatlarıyla 323 modüllük P4 iç mekân ekranın modül bedeli 323 × 26,98 = 8.714,54 USD'dir (yalnızca modül; kontrol, kabin, işçilik, KDV ve nakliye hariç). Kesin tutar keşif sonrası yazılı teklifle verilir; taksitli ödeme yapılabilir.",
+        },
+        {
+          question: "Düğün için LED ekran kiralanır mı?",
+          answer:
+            "Evet. Kiralık LED ekran günlük 50 USD/m²'dir; örneğin 16,5 m² ekran bir günlüğüne yaklaşık 827 USD'dir. Kurulum ve nakliye ayrıca tekliflendirilir, depozito alınmaz.",
+        },
+        {
+          question: "Düğün salonu ekranında hangi piksel aralığı seçilmeli?",
+          answer:
+            "Konuklar 3–4 m ve daha uzaktaysa P3.07 veya P4 iç mekân yeterlidir. Dans pistine bakan yakın yan ekranlarda P2.5 daha net görüntü verir.",
+        },
+        {
+          question: "Teslim süresi ne kadar?",
+          answer:
+            "Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. Sezon öncesi kurulum için keşfi erken planlamanızı öneririz.",
+        },
+      ],
+      relatedSlugs: ["konferans-salonu-led", "ic-mekan-led-ekran", "led-ekran"],
+      cta: {
+        title: "Salonunuz için ekranı planlayalım",
+        body:
+          "Salon ölçüsünü, sahne duvarının fotoğrafını ve en ön ve en arka masa mesafesini gönderin; satın alma ve kiralama seçenekleriyle teklif hazırlayalım.",
+      },
+      cardLabel: "Düğün salonu LED ekran",
+      cardTeaser: "Sahne ekranı ölçüsü, P3.07/P4 seçimi, satın alma ve günlük 50 USD/m² kiralama.",
+    },
+    "hastane-dijital-ekran": {
+      slug: "hastane-dijital-ekran",
+      title: "Hastane Dijital Ekranları: Sıra Sistemi, Yönlendirme, Bekleme Salonu | ARLEDSCREEN",
+      description:
+        "Hastane içi dijital ekranlar: bekleme salonu ve sıra sistemi ekranı, poliklinik kapı ekranı, yönlendirme totemleri, giriş ve cephe LED ekranı. LED mi LCD mi, mesafeye göre seçim. ARLEDSCREEN, İstanbul.",
+      keywords: ["hastane dijital ekran", "hastane LED ekran", "sıra sistemi ekranı", "hastane bekleme salonu ekranı", "hastane yönlendirme ekranı", "poliklinik ekranı", "sağlık kuruluşu dijital ekran"],
+      h1: "Hastane içi dijital ekranlar: LED mi, LCD mi?",
+      intro:
+        "Hastanede dijital ekran beş yerde kullanılır: bekleme salonunda sıra numarası ve bilgilendirme, poliklinik kapısında doktor ve sıra bilgisi, giriş lobisinde yönlendirme, kafeterya ve koridorlarda duyuru, bina cephesinde ve acil girişinde dış mekân ekran. Kapı ve küçük bekleme alanlarında LCD ekran, geniş bekleme salonu, lobi ve cephede ölçüsü modülle büyütülebilen LED ekran uygundur. Mart 2026'da Lokman Hekim Hastanesi için 16 m² LED ekran projesini tamamladık.",
+      sections: [
+        {
+          h2: "Bekleme salonu ve sıra sistemi",
+          body:
+            "Sıra numarası ekranı, hastanenin kullandığı sıra yazılımının görüntüsünü gösterir; LED veya LCD ekran bu görüntüyü bir bilgisayar ya da medya oynatıcı üzerinden alır. Küçük bekleme alanlarında tek LCD yeterlidir; 6 m'den uzaktan okunacak geniş salonlarda iç mekân P2.5 (32,18 USD/panel) veya P3.07 (30,88 USD/panel) LED ekran daha büyük ve okunur bir yüzey sağlar. Kullanılan sıra yazılımı ve bağlantısı keşifte netleşir.",
+        },
+        {
+          h2: "Poliklinik kapısı ve oda ekranları",
+          body:
+            "Kapı yanındaki doktor adı, oda numarası ve sıradaki hasta bilgisi küçük ölçülü LCD ekranlarla gösterilir. Bu ekranların ölçüsü ve fiyatı yazılı teklifle verilir.",
+        },
+        {
+          h2: "Giriş lobisi ve yönlendirme",
+          body:
+            "Girişte kat planı, bölüm yönlendirmesi ve duyurular için ayaklı poster LED veya totem ekran kullanılır; dokunmatik kiosk ile hasta kendi bölümünü arayabilir. Bu ürünlerin fiyatı teklifle verilir.",
+        },
+        {
+          h2: "Cephe ve acil girişi",
+          body:
+            "Bina cephesi ve acil girişi üzerindeki ekranlarda dış mekân P4 (33,80 USD/panel) veya P5 (29,90 USD/panel) modüller kullanılır. Gece parlaklığı çevreyi rahatsız etmeyecek şekilde ayarlanabilir.",
+        },
+        {
+          h2: "Ödeme, teslim ve servis",
+          body:
+            "Taksitli ödeme yapılabilir; ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz. Ürünlerimiz CE sertifikalıdır. Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. LED ekranların yanı sıra LCD ekran ve kiosk tamiri de yapıyoruz; İstanbul'un tüm ilçelerinde proje yaptık.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Hastane bekleme salonu için LED mi LCD mi?",
+          answer:
+            "Küçük bekleme alanlarında LCD yeterlidir. Uzaktan okunacak geniş salonlarda ve lobilerde iç mekân P2.5 (32,18 USD/panel) veya P3.07 (30,88 USD/panel) LED ekran daha büyük ve okunur bir yüzey sağlar.",
+        },
+        {
+          question: "Sıra sistemi ekranı nasıl çalışır?",
+          answer:
+            "Ekran, hastanenin kullandığı sıra yazılımının görüntüsünü bilgisayar veya medya oynatıcı üzerinden gösterir. Kullanılan yazılım ve bağlantı şekli keşifte netleşir.",
+        },
+        {
+          question: "Hastane yönlendirme ekranı olarak ne kullanılır?",
+          answer:
+            "Lobide ayaklı poster LED, totem veya dokunmatik kiosk kullanılır. Fiyatları teklifle verilir.",
+        },
+        {
+          question: "Hastanede daha önce proje yaptınız mı?",
+          answer:
+            "Evet. Mart 2026'da Lokman Hekim Hastanesi için 16 m² LED ekran, Temmuz 2025'te Van'da Umut Radyoloji için yüksek çözünürlüklü LED ekran projesini tamamladık.",
+        },
+        {
+          question: "Arıza durumunda servis veriyor musunuz?",
+          answer:
+            "Evet. LED ekranların yanı sıra LCD ekran, kiosk ve menuboard tamiri de yapıyoruz. ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar.",
+        },
+      ],
+      relatedSlugs: ["lcd-ekran", "kiosk-ekran", "poster-led-ekran"],
+      cta: {
+        title: "Hastaneniz için ekran planını çıkaralım",
+        body:
+          "Bekleme salonu, lobi ve cephe fotoğraflarını ve kullandığınız sıra yazılımını paylaşın; her alan için LED veya LCD önerisi ve bütçe hazırlayalım.",
+      },
+      cardLabel: "Hastane dijital ekranları",
+      cardTeaser: "Sıra sistemi, bekleme salonu, yönlendirme ve cephe: LED mi LCD mi?",
+    },
+    "okul-led-ekran": {
+      slug: "okul-led-ekran",
+      title: "Okullar İçin LED Ekran: İlkokul, Ortaokul, Lise ve Üniversite | ARLEDSCREEN",
+      description:
+        "Okul LED ekranı: ilkokul ve ortaokulda giriş, koridor ve bahçe ekranı; lise ve üniversitede amfi, konferans salonu, kampüs ve spor salonu. Mesafeye göre piksel aralığı ve panel fiyatları. ARLEDSCREEN.",
+      keywords: ["okul LED ekran", "okul dijital ekran", "ilkokul LED ekran", "ortaokul dijital pano", "üniversite LED ekran", "kampüs LED ekran", "okul bahçesi LED ekran", "amfi LED ekran"],
+      h1: "Okullar için LED ekran: ilkokuldan üniversiteye",
+      intro:
+        "Okulda LED ekran en çok girişte duyuru panosu, koridorda bilgilendirme ekranı, bahçede tören ve etkinlik ekranı, konferans salonu ve amfide sunum ekranı olarak kullanılır. İç mekânda öğrenciler ekrana genellikle 3 m ve daha uzaktan baktığı için P3.07 (30,88 USD/panel), amfide P2.5 (32,18 USD/panel), bahçe ve cephede P4 (33,80 USD/panel) veya P5 (29,90 USD/panel) dış mekân modüller yeterlidir. Sınıf içi ve yakın izlenen küçük ekranlarda LCD veya etkileşimli ekran daha uygundur.",
+      sections: [
+        {
+          h2: "İlkokul ve ortaokul",
+          body:
+            "Giriş holünde duyuru, ders programı, nöbetçi öğretmen ve etkinlik takvimi için iç mekân P3.07 LED veya ayaklı poster LED kullanılır. Öğrencilerin dokunabileceği alçak montajlarda yüzeyi koruyan GOB modüller (P1.86 GOB 49,08 USD/panel) veya ekranı erişilemeyecek yüksekliğe monte etmek tercih edilir. Bahçede tören ve bayram programları için dış mekân P4 veya P5 ekran uygundur.",
+        },
+        {
+          h2: "Lise",
+          body:
+            "Konferans salonunda mezuniyet, tiyatro ve seminerler için sahne arkası LED ekran, kantin ve koridorlarda duyuru ekranları kullanılır. Konferans salonunda ekran yüksekliği son sıra mesafesinin yaklaşık sekizde biri seçilir; ayrıntılar konferans salonu rehberimizde.",
+        },
+        {
+          h2: "Üniversite",
+          body:
+            "Amfilerde ilk sıra 2,5–3 m uzakta olduğu için P2.5 veya P3.07 iç mekân seçilir. Kampüs girişi, fakülte cephesi ve meydan ekranlarında dış mekân P4 veya P5 modüller kullanılır. Kütüphane ve öğrenci merkezlerinde ayaklı dijital ekranlar yönlendirme ve duyuru için uygundur.",
+        },
+        {
+          h2: "Spor salonu",
+          body:
+            "Skor ve duyuru ekranı izleyicilerden genellikle 6 m ve daha uzakta olduğu için iç mekân P4 (26,98 USD/panel) yeterlidir. Top darbesine karşı koruma detayı keşifte planlanır.",
+        },
+        {
+          h2: "Ödeme, teslim ve servis",
+          body:
+            "Taksitli ödeme yapılabilir; ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz. Ürünlerimiz CE sertifikalıdır. Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. İstanbul'un tüm ilçelerinde proje yaptık; arıza durumunda tamir ve teknik servis veriyoruz.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Okul için hangi LED ekran uygun?",
+          answer:
+            "Giriş ve koridor için iç mekân P3.07 (30,88 USD/panel), amfi ve konferans salonu için P2.5 (32,18 USD/panel), bahçe ve cephe için dış mekân P4 (33,80 USD/panel) veya P5 (29,90 USD/panel) sık seçilir. Fiyatlar panel başına, KDV ve nakliye hariçtir.",
+        },
+        {
+          question: "Okul giriş duyuru ekranı ne kadar?",
+          answer:
+            "Örneğin 1,92 × 0,96 m'lik iç mekân P3.07 ekran 36 modüldür; modül bedeli 36 × 30,88 = 1.111,68 USD'dir (yalnızca modül; kontrol, kabin, işçilik, KDV ve nakliye hariç). Kesin tutar keşif sonrası yazılı teklifle verilir.",
+        },
+        {
+          question: "Okul bahçesine LED ekran konur mu?",
+          answer:
+            "Evet. Bahçe ve tören alanı için dış mekân P4 veya P5 modüller kullanılır. Direk veya duvar montajının taşıma ve rüzgâr yükü keşifte kontrol edilir.",
+        },
+        {
+          question: "Sınıfta LED mi LCD mi kullanılmalı?",
+          answer:
+            "Sınıf içinde öğrenciler ekrana yakın oturduğu için LCD veya etkileşimli ekran daha uygundur. LED ekran daha çok giriş, koridor, bahçe, amfi ve konferans salonunda tercih edilir.",
+        },
+        {
+          question: "Okullar için ödeme seçenekleri neler?",
+          answer:
+            "Taksitli ödeme yapılabilir; ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz. Ödeme planı yazılı teklifte belirtilir.",
+        },
+      ],
+      relatedSlugs: ["konferans-salonu-led", "poster-led-ekran", "dis-mekan-led-ekran"],
+      cta: {
+        title: "Okulunuz için ekran planını çıkaralım",
+        body:
+          "Giriş, koridor, bahçe ve salon fotoğraflarını ve ekranların izleneceği mesafeleri gönderin; her alan için ekran ve bütçe önerisi hazırlayalım.",
+      },
+      cardLabel: "Okullar için LED ekran",
+      cardTeaser: "İlkokul, ortaokul, lise ve üniversite: giriş, koridor, bahçe, amfi ve spor salonu ekranları.",
     },
   },
   en: {
@@ -1685,70 +2185,75 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
     },
     "konferans-salonu-led": {
       slug: "konferans-salonu-led",
-      title: "School & Conference Hall LED Displays — ARLEDSCREEN",
+      title: "Conference Hall LED Screen: Size, Pixel Pitch and Price | ARLEDSCREEN",
       description:
-        "LED for school auditoriums and conference halls: viewing distance, AV integration, fine pitch. NXTIONSTAR — ARLEDSCREEN B2B survey and install.",
-      keywords: [
-        "conference hall LED",
-        "auditorium LED",
-        "school hall display",
-        "NXTIONSTAR",
-        "ARLEDSCREEN",
-      ],
-      h1: "School & conference hall LED displays",
+        "LED screens for conference halls and auditoriums: screen size by hall depth, pixel pitch by the front row, example size and module cost table, AV connections. NXTIONSTAR — ARLEDSCREEN, Istanbul.",
+      keywords: ["conference hall LED screen", "auditorium LED screen", "school conference hall", "meeting room LED wall", "LED video wall", "NXTIONSTAR", "ARLEDSCREEN"],
+      h1: "How to choose an LED screen for a conference hall",
       intro:
-        "Conference halls and school auditoriums use stage LED or side wings as one surface for presentation, broadcast and events. ARLEDSCREEN / NXTIONSTAR installs align with audio, lighting and the control room.",
+        "Two distances decide a conference-hall LED screen: the front row sets the pixel pitch and the back row sets the screen height. For presentation-heavy halls, indoor P2.5 is usually right, and P3.07 suits deeper halls; screen height is about one eighth of the back-row distance. Unlike a projector, an LED screen stays sharp in a lit room with no blackout needed. ARLEDSCREEN surveys, installs and services its own NXTIONSTAR screens from its Gaziosmanpaşa, Istanbul HQ.",
       sections: [
         {
-          h2: "Hall geometry and viewing distance",
+          h2: "Pixel pitch: set by the front row",
           body:
-            "Front-row distance drives pitch. School amphitheatres and hotel ballrooms differ in density; text-heavy decks need finer pitch than video-led events. Survey captures seating plans and critical reading distance.",
+            "Use roughly 1 m of distance per 1 mm of pitch. If the front row is 2.5 m away, P2.5 works; from 3 m, P3.07 is enough. Boardrooms viewed from 1.5–2 m need P1.53 or P1.86 GOB. Published panel prices (USD per panel, VAT and shipping excluded): P1.53 GOB 62.08, P1.86 GOB 49.08, indoor P2.5 32.18, indoor P3.07 30.88.",
         },
         {
-          h2: "AV integration",
+          h2: "Screen size: set by the back row",
           body:
-            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers. High refresh reduces flicker on camera. Spare inputs can be quoted.",
+            "For slide text to be readable from the back, choose a screen height of about one eighth of the back-row distance. Sizes are planned in 320 × 160 mm modules, with the layout closest to 16:9 so a laptop image fills the screen. The table examples follow this rule.",
         },
         {
-          h2: "School vs corporate priorities",
+          h2: "LED instead of a projector",
           body:
-            "Schools often prioritise durability and budget; corporate halls may prioritise brand colour and finer pitch. Both need simple source switching and operator panels. AI/CMS scheduling is defined early when required.",
+            "LED keeps high contrast in a lit room, needs no screen or blackout, and is evenly bright edge to edge. It grows by adding modules, and a faulty module is replaced on its own.",
         },
         {
-          h2: "Mounting, acoustics and safety",
+          h2: "Sound, camera and control",
           body:
-            "Flown LED needs structural sign-off and safety bonds; stage walls need anchorage detail. Acoustic clashes and fan noise are checked. Colour calibration and operator training close delivery.",
+            "Laptop, wireless presentation, media player and camera recording are planned in one signal layout with the screen. If you will film or stream, say so at the survey so control and refresh settings are planned for it. Load and safety details for a wall, hanging or floor-standing frame are written into the quote.",
+        },
+        {
+          h2: "Schools and corporate halls",
+          body:
+            "School halls and lecture theatres prioritise durability and easy use; corporate halls prioritise fine pitch and brand colours. See our separate school guide for every screen in a school. Installment payment is available, and we accept TL, USD, EUR and other currencies. Our products are CE certified. Delivery takes 3–21 days of preparation + 1–14 days of shipping.",
         },
       ],
       faqs: [
         {
-          question: "Minimum resolution for conference halls?",
+          question: "Which pixel pitch does a conference hall need?",
           answer:
-            "Driven by slide readability from the back row. Pitch × physical size yields pixel count; we can run a sample-slide readability check on survey.",
+            "If the front row is 2.5 m away, indoor P2.5 (USD 32.18 per panel); from 3 m, indoor P3.07 (USD 30.88 per panel). Meeting rooms viewed from 1.5–2 m need P1.53 or P1.86 GOB.",
         },
         {
-          question: "Why LED instead of projection?",
+          question: "How big should a conference-hall LED screen be?",
           answer:
-            "Readable under ambient light, consistent brightness and wide angles — less need to blackout the room.",
+            "Screen height is about one eighth of the back-row distance. With the back row at 15 m, about 3.52 × 1.92 m (132 modules) fits; indoor P2.5 module cost is 132 × 32.18 = USD 4,247.76 (module only, VAT and shipping excluded).",
         },
         {
-          question: "How do school projects run?",
+          question: "Why choose LED over a projector?",
           answer:
-            "Measure/survey → technical quote → approval → install → training. Tender docs should state pitch, nits and indoor IP clearly.",
+            "LED stays sharp in a lit room, needs no blackout or screen, is evenly bright and can be repaired module by module.",
+        },
+        {
+          question: "What drives the price?",
+          answer:
+            "Screen size, pitch, mounting (wall, hanging, frame) and control system. Panel prices are published; the final amount is given in a written quote after survey. Installment payment is available.",
+        },
+        {
+          question: "How long do delivery and installation take?",
+          answer:
+            "Delivery takes 3–21 days of preparation + 1–14 days of shipping. We have completed projects in every Istanbul district; the installation date is planned at the survey.",
         },
       ],
-      relatedSlugs: [
-        "ic-mekan-led-ekran",
-        "led-ekran",
-        "mimari-muhendislik-led",
-      ],
+      relatedSlugs: ["okul-led-ekran", "ic-mekan-led-ekran", "dugun-salonu-led"],
       cta: {
-        title: "Size your hall LED project",
+        title: "Let's size the screen for your hall",
         body:
-          "Share hall dimensions and seating — we reply with pitch and AV integration outline.",
+          "Send the hall plan, front and back row distances and a photo of the stage wall; we will suggest size, pitch and budget.",
       },
-      cardLabel: "Conference halls",
-      cardTeaser: "School and conference hall LED / AV integration.",
+      cardLabel: "Conference hall LED screen",
+      cardTeaser: "Screen size by hall depth, pitch by the front row, example module costs.",
     },
     "vitrin-led-ekran": {
       slug: "vitrin-led-ekran",
@@ -1952,6 +2457,495 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       },
       cardLabel: "Kiosk",
       cardTeaser: "Touch info and self-service digital kiosk displays.",
+    },
+    "cami-led-ekran": {
+      slug: "cami-led-ekran",
+      title: "LED Screens for Mosques and Places of Worship: Size, Price, Prayer Times | ARLEDSCREEN",
+      description:
+        "LED screens for mosques, churches and other places of worship: size and pixel pitch by congregation distance, prayer-time and sermon display, published panel prices. ARLEDSCREEN, Istanbul.",
+      keywords: ["mosque LED screen", "LED screen for mosque", "prayer time display", "church LED screen", "place of worship LED screen", "NXTIONSTAR"],
+      h1: "How to choose an LED screen for a mosque or place of worship",
+      intro:
+        "An LED screen can be installed in a mosque to show prayer times, the sermon text, announcements and religious days. Two distances decide the right screen: the nearest worshipper sets the pixel pitch, and the farthest row sets the screen size. The same rules apply to churches, cemevis and other places of worship. ARLEDSCREEN surveys, installs and services its own NXTIONSTAR LED screens from its Gaziosmanpaşa, Istanbul HQ.",
+      sections: [
+        {
+          h2: "LED or LCD for a mosque?",
+          body:
+            "If a small masjid only needs a prayer-time chart, a single LCD screen may be enough. In a large prayer hall most worshippers watch from a distance, so an LED screen, which grows by adding modules, is the better fit. LED screens are built from 320 × 160 mm modules; the size is planned around the wall beside the mihrab or in the women's gallery.",
+        },
+        {
+          h2: "How big should the screen be?",
+          body:
+            "As a general rule, choose a screen height of about one eighth of the distance to the farthest viewer, so prayer times and sermon text stay readable from the back rows. For example, if the last row is 12 m away, a screen about 1.44 m high (9 modules) is a good starting point. The examples in the table follow this rule; the final size is set at the survey.",
+        },
+        {
+          h2: "How is pixel pitch chosen?",
+          body:
+            "Pitch follows the nearest viewer: roughly 1 m of distance per 1 mm of pitch (P3.07 ≈ 3 m). Inside a mosque the front rows are usually more than 3–4 m away, so indoor P3.07 or P4 modules are enough. If the screen sits very close to worshippers, P2.5 is preferred. Courtyard and façade screens use outdoor P4 or P5 modules.",
+        },
+        {
+          h2: "How are prayer times and the sermon shown?",
+          body:
+            "An LED screen displays the signal it receives. Prayer times, the sermon text, announcements and verse images can be played as scheduled content from a media player or an asynchronous control card (Huidu, NovaStar), so the programme keeps running with the PC off. The content source and control system are agreed at the survey and written into the quote.",
+        },
+        {
+          h2: "Price and payment",
+          body:
+            "Published panel prices are in USD per panel, VAT and shipping excluded: indoor P2.5 32.18, indoor P3.07 30.88, indoor P4 26.98, outdoor P4 33.80 and outdoor P5 29.90. Amounts in the table are module cost only; control card, cabinet or frame, labour and software are added separately. Installment payment is available, and we accept TL, USD, EUR and other currencies. For screens funded by an association or donations, the payment plan is stated in the written quote.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Can an LED screen be installed in a mosque?",
+          answer:
+            "Yes. An LED screen can be mounted beside the mihrab, in the women's gallery or in the courtyard. Wall load, power line and cable route are checked at the survey.",
+        },
+        {
+          question: "How big should an LED screen be for a mosque?",
+          answer:
+            "If the last row is 12 m away, about 2.56 × 1.44 m (72 modules, ≈ 3.7 m²) is a good start; indoor P3.07 module cost is 72 × 30.88 = USD 2,223.36 (module only, VAT and shipping excluded). Small neighbourhood mosques may need less.",
+        },
+        {
+          question: "How much does a mosque LED screen cost?",
+          answer:
+            "It depends on size, pitch and mounting. Panel prices are published (e.g. indoor P3.07 USD 30.88 per panel); the final amount is given in a written quote after survey. Installment payment is available.",
+        },
+        {
+          question: "Which screen suits a church?",
+          answer:
+            "The same rules apply: pitch follows the nearest viewer, size follows the farthest. Large halls suit LED; small rooms can use LCD.",
+        },
+        {
+          question: "What is the delivery time?",
+          answer:
+            "Delivery takes 3–21 days of preparation + 1–14 days of shipping. The date for your project is stated in the written quote.",
+        },
+      ],
+      relatedSlugs: ["ic-mekan-led-ekran", "konferans-salonu-led", "lcd-ekran"],
+      cta: {
+        title: "Let's plan the right screen for your mosque",
+        body:
+          "Send the hall size, the distance to the front and back rows and a photo of the wall; we will suggest size, pitch and budget.",
+      },
+      cardLabel: "Mosque and place-of-worship LED screens",
+      cardTeaser: "Screen size and pitch by congregation distance, plus prayer-time display.",
+    },
+    "led-ekran-ariza-belirtileri": {
+      slug: "led-ekran-ariza-belirtileri",
+      title: "LED Screen Fault Symptoms and Causes | ARLEDSCREEN",
+      description:
+        "LED screen partly black, flickering, showing lines or not turning on? Fault symptoms, likely causes and first checks. LED, LCD, kiosk and menu board repair: ARLEDSCREEN, Istanbul.",
+      keywords: ["LED screen fault", "LED screen flickering", "LED screen lines", "LED screen not turning on", "part of LED screen black", "LED screen repair", "LCD repair", "kiosk repair"],
+      h1: "LED screen fault symptoms: causes and what to do",
+      intro:
+        "Most LED screen faults can be recognised by their symptom: a dark area usually points to a power supply or receiving card, flicker to a cable or setting, and a line or wrong-coloured row to a module or ribbon cable. The table below lists the most common symptoms, likely causes and the first checks you can do yourself. The final diagnosis is made on site by measurement; besides LED screens, ARLEDSCREEN also repairs LCD advertising displays, kiosks and menu boards.",
+      sections: [
+        {
+          h2: "Part of the screen is black",
+          body:
+            "If a cabinet-sized rectangle is dark, the cause is usually that cabinet's power supply or receiving card. If every cabinet after one point is dark, the data cable chain may be broken. If a single module is out, the module or its ribbon cable has failed.",
+        },
+        {
+          h2: "Flicker, lines and wrong colours",
+          body:
+            "Flicker usually comes from a loose data or power cable, a weakening power supply or receiving card settings; flicker seen only on camera is linked to a low refresh rate. Horizontal or vertical lines and a single row in the wrong colour (for example a row stuck red) usually come from the module driver IC, a ribbon cable or a receiving card port.",
+        },
+        {
+          h2: "The screen will not turn on",
+          body:
+            "First check the breaker, the power line and the video source (PC or media player). On synchronous screens, the screen shows nothing when the PC is off. If these are fine, the sending card, power supplies or software settings need checking.",
+        },
+        {
+          h2: "Moisture, lightning and surges",
+          body:
+            "Outdoors, worn gaskets let moisture in, causing oxidised modules and dark patches. Lightning and power surges mostly damage power supplies, receiving cards and connections. Have the screen checked before switching it on again to avoid further damage.",
+        },
+        {
+          h2: "LCD, kiosk and menu board faults",
+          body:
+            "On LCD advertising displays, touch kiosks and digital menu boards the most common symptoms are no picture, an unresponsive touch screen, power board failures and connection problems. Send the brand and model with a photo or video of the fault; we will make a remote pre-diagnosis and plan the survey.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Part of my LED screen is black. What should I do?",
+          answer:
+            "Restarting is not a lasting fix. Take a photo of the dark area and send it to +90 530 507 88 34 on WhatsApp. Cabinet-sized dark areas usually come from a power supply or receiving card and are fixed by replacing the part.",
+        },
+        {
+          question: "How much does LED screen repair cost?",
+          answer:
+            "We do not publish fixed repair prices; the cause and parts differ on every job. The price is given in a written quote after pre-diagnosis and survey.",
+        },
+        {
+          question: "How often should an LED screen be maintained?",
+          answer:
+            "It depends on use. On outdoor screens, regular checks of gaskets, cables and connections reduce moisture faults. Maintenance scope and frequency are stated in the written quote; ARLEDSCREEN offers a 2-year warranty and 5 years of free technical service.",
+        },
+        {
+          question: "Do you repair scrolling text signs and digital screens?",
+          answer:
+            "Yes. We repair LED screens, LCD advertising displays, kiosks and menu boards. For scrolling text signs, share the brand and control card and we will assess service and spare-part fit.",
+        },
+      ],
+      relatedSlugs: ["led-ekran", "ic-mekan-led-ekran", "dis-mekan-led-ekran"],
+      cta: {
+        title: "Let's diagnose the fault together",
+        body:
+          "Send a photo or short video of the symptom on WhatsApp; we will make a remote pre-diagnosis and prepare the survey and repair quote.",
+      },
+      cardLabel: "LED screen fault symptoms",
+      cardTeaser: "Dark areas, flicker, lines and no power: likely causes and first checks.",
+    },
+    "led-ekran-ihracat": {
+      slug: "led-ekran-ihracat",
+      title: "LED Screens Shipped Abroad: Europe, Middle East, Balkans | ARLEDSCREEN",
+      description:
+        "ARLEDSCREEN ships NXTIONSTAR LED screens to all of Europe, the Middle East and the Balkans. CE-certified products, USD panel prices, payment in TL, USD, EUR and other currencies.",
+      keywords: ["LED screen export", "LED screen from Turkey", "LED screen supplier Europe", "LED screen Middle East", "LED screen Balkans", "CE certified LED screen", "NXTIONSTAR"],
+      h1: "LED screens shipped abroad: Europe, the Middle East and the Balkans",
+      intro:
+        "ARLEDSCREEN ships its own NXTIONSTAR LED screens from Istanbul to all of Europe, the Middle East and the Balkans. Our products are CE certified. Published panel prices are in USD and are the same in every language; we accept payment in TL, USD, EUR and other currencies.",
+      sections: [
+        {
+          h2: "Where do we ship?",
+          body:
+            "We ship LED screens to every European country, the Middle East and the Balkans (for example Bulgaria, Greece, Romania, Serbia, Bosnia and Herzegovina, North Macedonia, Albania and Kosovo). The destination and delivery terms are stated in the written quote.",
+        },
+        {
+          h2: "Price and payment",
+          body:
+            "Panel prices are in USD per panel, VAT and shipping excluded; for example indoor P2.5 USD 32.18 and outdoor P2.5 USD 63.70. Prices are the same in every language. We accept payment in TL, USD, EUR and other currencies; installment payment is also available. Shipping is quoted separately.",
+        },
+        {
+          h2: "Certification",
+          body:
+            "NXTIONSTAR products are CE certified. The model data sheet is shared with the written quote.",
+        },
+        {
+          h2: "Delivery time",
+          body:
+            "Delivery takes 3–21 days of preparation + 1–14 days of shipping. Preparation depends on the product, size and stock; shipping depends on the destination. The exact date is stated in the written quote.",
+        },
+        {
+          h2: "What we need for a quote",
+          body:
+            "Country and city, screen size, indoor or outdoor use, viewing distance and a photo of the mounting location. Installation and technical support scope is written into the quote.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Do you ship LED screens from Turkey abroad?",
+          answer:
+            "Yes. We ship LED screens to all of Europe, the Middle East and the Balkans. Shipping is quoted separately.",
+        },
+        {
+          question: "Are your products CE certified?",
+          answer:
+            "Yes, our products are CE certified.",
+        },
+        {
+          question: "Which currencies do you accept?",
+          answer:
+            "We accept payment in TL, USD, EUR and all other currencies. Published panel prices are in USD; installment payment is also available.",
+        },
+        {
+          question: "Are export prices different?",
+          answer:
+            "No. Panel prices are the same in every language and country; VAT and shipping are excluded. Shipping cost depends on the destination and is stated in the quote.",
+        },
+      ],
+      relatedSlugs: ["led-ekran", "dis-mekan-led-ekran", "ic-mekan-led-ekran"],
+      cta: {
+        title: "Let's prepare your export quote",
+        body:
+          "Share country, city, screen size and use; we will send a written quote with the panel list, shipping and payment plan.",
+      },
+      cardLabel: "LED screens abroad (export)",
+      cardTeaser: "Shipping to Europe, the Middle East and the Balkans; CE, payment and delivery time.",
+    },
+    "eczane-led-ekran": {
+      slug: "eczane-led-ekran",
+      title: "Pharmacy LED Screens: Window, Façade and Shelf-Top Displays | ARLEDSCREEN",
+      description:
+        "LED screens for pharmacies: window, façade, shelf-top and freestanding options; pixel pitch by viewing distance and published panel prices. Note on content rules. ARLEDSCREEN, Istanbul.",
+      keywords: ["pharmacy LED screen", "pharmacy digital display", "pharmacy window screen", "pharmacy sign LED", "on-duty pharmacy screen", "NXTIONSTAR"],
+      h1: "How to choose an LED screen for a pharmacy",
+      intro:
+        "Pharmacies use LED screens in four places: behind the window, on the façade, above the shelves behind the counter and as a freestanding screen at the entrance. Façade and window screens seen from the street need brightness; shelf-top screens seen up close need finer pitch. Indoor P2.5 (USD 32.18 per panel) is common inside, and outdoor P4 (USD 33.80) or P5 (USD 29.90) on the façade. Screen content must follow pharmacy professional rules and advertising regulations.",
+      sections: [
+        {
+          h2: "Window screens",
+          body:
+            "In a sunny window a standard indoor screen looks washed out; windows need a high-brightness window screen or transparent LED that keeps the glass clear. These are priced by written quote for the window size. Shaded windows may work with indoor P2.5 or P3.07; we measure this together at the survey.",
+        },
+        {
+          h2: "Façade and sign screens",
+          body:
+            "For façade screens seen from the road and the opposite pavement, outdoor P4 (USD 33.80 per panel) or P5 (USD 29.90 per panel) fit; low façades viewed closer look sharper with outdoor P3.07 (USD 44.20 per panel). Prices are per panel, VAT and shipping excluded.",
+        },
+        {
+          h2: "Shelf-top and behind the counter",
+          body:
+            "Customers stand 1.5–3 m from the counter, so indoor P2.5 or fine-pitch P1.86 GOB (USD 49.08 per panel) is chosen. Long, narrow shelf-top strips are built close to the required size from 320 × 160 mm modules.",
+        },
+        {
+          h2: "Content: what to watch",
+          body:
+            "The screen can show the on-duty pharmacy list, opening hours, health notices and non-promotional information. Regulations and professional rules on medicine promotion and pharmacy advertising may limit content; check the current rules of your pharmacists' chamber before preparing content.",
+        },
+        {
+          h2: "Payment, delivery and service",
+          body:
+            "Installment payment is available, and we accept TL, USD, EUR and other currencies. Our products are CE certified. Delivery takes 3–21 days of preparation + 1–14 days of shipping. We have completed projects in every Istanbul district, and we provide repair and technical service.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Which LED screen suits a pharmacy?",
+          answer:
+            "Indoor P2.5 (USD 32.18 per panel) for shelf-top and behind-counter screens, and outdoor P4 (USD 33.80) or P5 (USD 29.90) for the façade. Sunny windows need a high-brightness window screen or transparent LED, priced by quote.",
+        },
+        {
+          question: "Can the screen show the on-duty pharmacy?",
+          answer:
+            "Yes. The on-duty pharmacy list, opening hours and notices can be shown as scheduled content. The content source is agreed at the survey.",
+        },
+        {
+          question: "Can I show advertising on a pharmacy screen?",
+          answer:
+            "Regulations and professional rules on medicine promotion and pharmacy advertising limit content. Check the current rules of your pharmacists' chamber for what you plan to show.",
+        },
+        {
+          question: "How much does a pharmacy LED screen cost?",
+          answer:
+            "Panel prices are published; for example a 1.28 × 0.64 m indoor P2.5 shelf-top screen uses 16 modules, a module cost of 16 × 32.18 = USD 514.88 (module only, VAT and shipping excluded). The final amount is given in a written quote after survey; installment payment is available.",
+        },
+      ],
+      relatedSlugs: ["vitrin-led-ekran", "poster-led-ekran", "dis-mekan-led-ekran"],
+      cta: {
+        title: "Let's plan the screen for your pharmacy",
+        body:
+          "Send photos of the window and façade, the size of the mounting area and the customer viewing distance; we will prepare the right screen and budget.",
+      },
+      cardLabel: "Pharmacy LED screens",
+      cardTeaser: "Window, façade, shelf-top and freestanding screens: pitch, price and content notes.",
+    },
+    "dugun-salonu-led": {
+      slug: "dugun-salonu-led",
+      title: "Wedding Hall LED Screen: Size, Price, Buy or Rent | ARLEDSCREEN",
+      description:
+        "LED screens for wedding and event halls: stage screen size by hall depth, P3.07 / P4 choice, example module cost and comparison with USD 50 per m² per day rental. ARLEDSCREEN, Istanbul.",
+      keywords: ["wedding hall LED screen", "wedding stage LED wall", "event hall LED screen", "wedding LED screen price", "rent LED screen wedding", "NXTIONSTAR"],
+      h1: "Wedding hall LED screens: size, price and rental",
+      intro:
+        "In a wedding hall the LED screen usually sits behind the stage and shows the couple's entrance, photo and video slideshows, live camera feed and the venue logo. Guests sit at tables usually 4 m or more from the screen, so indoor P3.07 or P4 modules are enough. Screen height is about one eighth of the distance to the farthest table. Venue owners usually buy; one-off events can rent at USD 50 per m² per day.",
+      sections: [
+        {
+          h2: "Pixel pitch",
+          body:
+            "For video and photo content, use roughly 1 m of distance per 1 mm of pitch. With front tables around 3 m away choose indoor P3.07 (USD 30.88 per panel); from 4 m, indoor P4 (USD 26.98 per panel). Side screens watched from the dance floor look sharper with P2.5 (USD 32.18 per panel).",
+        },
+        {
+          h2: "Screen size",
+          body:
+            "Choose a screen height of about one eighth of the distance to the farthest table, rounded to 320 × 160 mm modules. A screen close to 16:9 shows video without empty edges, rather than covering the whole stage wall. The table examples follow this rule.",
+        },
+        {
+          h2: "Buy or rent?",
+          body:
+            "Halls that host events every week are better off buying; a single wedding or engagement is better rented. Indoor and outdoor rental LED is USD 50 per m² per day; weekly and monthly rentals use the same daily per-m² rate, and no deposit is required. Installation and shipping are quoted separately.",
+        },
+        {
+          h2: "Content and control",
+          body:
+            "A laptop, media player or camera feed connects to the screen. With an asynchronous control card (Huidu, NovaStar), the venue logo and promo videos play on schedule even with the PC off. Mention live filming at the survey.",
+        },
+        {
+          h2: "Payment, delivery and service",
+          body:
+            "Installment payment is available, and we accept TL, USD, EUR and other currencies. Our products are CE certified. Delivery takes 3–21 days of preparation + 1–14 days of shipping. We have completed projects in every Istanbul district, and we also provide repair and technical service.",
+        },
+      ],
+      faqs: [
+        {
+          question: "How many m² of LED screen does a wedding hall need?",
+          answer:
+            "With the farthest table 25 m away, a stage screen of about 5.44 × 3.04 m (323 modules, ≈ 16.5 m²) fits. Smaller halls may need about 3.52 × 1.92 m (≈ 6.8 m²).",
+        },
+        {
+          question: "How much does a wedding hall LED screen cost?",
+          answer:
+            "At published panel prices, a 323-module indoor P4 screen has a module cost of 323 × 26.98 = USD 8,714.54 (module only; control, cabinets, labour, VAT and shipping excluded). The final amount is given in a written quote after survey; installment payment is available.",
+        },
+        {
+          question: "Can I rent an LED screen for a wedding?",
+          answer:
+            "Yes. Rental LED is USD 50 per m² per day, so a 16.5 m² screen is about USD 827 for one day. Installation and shipping are quoted separately; no deposit is required.",
+        },
+        {
+          question: "Which pixel pitch suits a wedding hall?",
+          answer:
+            "With guests 3–4 m or farther away, indoor P3.07 or P4 is enough. Close side screens facing the dance floor look sharper with P2.5.",
+        },
+        {
+          question: "What is the delivery time?",
+          answer:
+            "Delivery takes 3–21 days of preparation + 1–14 days of shipping. Plan the survey early if you want the screen before the season.",
+        },
+      ],
+      relatedSlugs: ["konferans-salonu-led", "ic-mekan-led-ekran", "led-ekran"],
+      cta: {
+        title: "Let's plan the screen for your hall",
+        body:
+          "Send the hall size, a photo of the stage wall and the nearest and farthest table distances; we will quote purchase and rental options.",
+      },
+      cardLabel: "Wedding hall LED screen",
+      cardTeaser: "Stage screen size, P3.07/P4 choice, buying vs USD 50 per m² per day rental.",
+    },
+    "hastane-dijital-ekran": {
+      slug: "hastane-dijital-ekran",
+      title: "Hospital Digital Screens: Queue Systems, Wayfinding, Waiting Rooms | ARLEDSCREEN",
+      description:
+        "Digital screens inside hospitals: waiting-room and queue screens, clinic door screens, wayfinding totems, entrance and façade LED. LED or LCD, chosen by viewing distance. ARLEDSCREEN, Istanbul.",
+      keywords: ["hospital digital signage", "hospital LED screen", "queue management display", "waiting room screen", "hospital wayfinding screen", "clinic display"],
+      h1: "Digital screens inside hospitals: LED or LCD?",
+      intro:
+        "Hospitals use digital screens in five places: queue numbers and information in waiting rooms, doctor and queue details at clinic doors, wayfinding in the entrance lobby, notices in cafeterias and corridors, and outdoor screens on the façade and emergency entrance. LCD suits doors and small waiting areas; LED, which grows by adding modules, suits large waiting halls, lobbies and façades. In March 2026 we completed a 16 m² LED screen project for Lokman Hekim Hospital.",
+      sections: [
+        {
+          h2: "Waiting rooms and queue systems",
+          body:
+            "A queue screen shows the output of the hospital's queue software; an LED or LCD screen receives it from a PC or media player. A single LCD is enough for small waiting areas; large halls read from more than 6 m benefit from indoor P2.5 (USD 32.18 per panel) or P3.07 (USD 30.88 per panel) LED for a bigger, readable surface. The queue software and connection are agreed at the survey.",
+        },
+        {
+          h2: "Clinic doors and room screens",
+          body:
+            "Doctor name, room number and next patient are shown on small LCD screens beside the door. Their size and price are given in a written quote.",
+        },
+        {
+          h2: "Entrance lobby and wayfinding",
+          body:
+            "Freestanding poster LED or totem screens show floor plans, department directions and notices; a touch kiosk lets patients search for their department. These are priced by quote.",
+        },
+        {
+          h2: "Façade and emergency entrance",
+          body:
+            "Façade and emergency-entrance screens use outdoor P4 (USD 33.80 per panel) or P5 (USD 29.90 per panel) modules. Night brightness can be set so it does not disturb the surroundings.",
+        },
+        {
+          h2: "Payment, delivery and service",
+          body:
+            "Installment payment is available, and we accept TL, USD, EUR and other currencies. Our products are CE certified. Delivery takes 3–21 days of preparation + 1–14 days of shipping. Besides LED screens we also repair LCD screens and kiosks, and we have completed projects in every Istanbul district.",
+        },
+      ],
+      faqs: [
+        {
+          question: "LED or LCD for a hospital waiting room?",
+          answer:
+            "LCD is enough for small waiting areas. Large halls and lobbies read from a distance benefit from indoor P2.5 (USD 32.18 per panel) or P3.07 (USD 30.88 per panel) LED.",
+        },
+        {
+          question: "How does a queue screen work?",
+          answer:
+            "The screen shows the hospital's queue software output via a PC or media player. The software and connection are agreed at the survey.",
+        },
+        {
+          question: "What is used for hospital wayfinding?",
+          answer:
+            "Freestanding poster LED, totems or touch kiosks in the lobby. They are priced by quote.",
+        },
+        {
+          question: "Have you done hospital projects?",
+          answer:
+            "Yes. In March 2026 we completed a 16 m² LED screen for Lokman Hekim Hospital, and in July 2025 a high-resolution LED screen for Umut Radyoloji in Van.",
+        },
+        {
+          question: "Do you provide service if something fails?",
+          answer:
+            "Yes. Besides LED screens we repair LCD screens, kiosks and menu boards. ARLEDSCREEN offers a 2-year warranty and 5 years of free technical service.",
+        },
+      ],
+      relatedSlugs: ["lcd-ekran", "kiosk-ekran", "poster-led-ekran"],
+      cta: {
+        title: "Let's plan screens for your hospital",
+        body:
+          "Share photos of the waiting rooms, lobby and façade and the queue software you use; we will suggest LED or LCD and a budget for each area.",
+      },
+      cardLabel: "Hospital digital screens",
+      cardTeaser: "Queue systems, waiting rooms, wayfinding and façades: LED or LCD?",
+    },
+    "okul-led-ekran": {
+      slug: "okul-led-ekran",
+      title: "LED Screens for Schools: Primary, Secondary and University | ARLEDSCREEN",
+      description:
+        "School LED screens: entrance, corridor and playground screens for primary and secondary schools; lecture theatres, conference halls, campus and sports halls for high schools and universities. Pitch by distance and panel prices. ARLEDSCREEN.",
+      keywords: ["school LED screen", "school digital signage", "primary school LED screen", "university LED screen", "campus LED screen", "playground LED screen", "lecture theatre LED screen"],
+      h1: "LED screens for schools: from primary school to university",
+      intro:
+        "Schools mostly use LED screens as entrance notice boards, corridor information screens, playground screens for ceremonies and events, and presentation screens in halls and lecture theatres. Indoors students usually look from 3 m or more, so P3.07 (USD 30.88 per panel) is enough; lecture theatres use P2.5 (USD 32.18 per panel), and playgrounds and façades use outdoor P4 (USD 33.80) or P5 (USD 29.90). Classrooms and small screens viewed up close are better served by LCD or interactive displays.",
+      sections: [
+        {
+          h2: "Primary and lower secondary schools",
+          body:
+            "Entrance halls show notices, timetables, duty teachers and event calendars on indoor P3.07 LED or freestanding poster LED. For low mounts students can touch, protective GOB modules (P1.86 GOB USD 49.08 per panel) or mounting out of reach are preferred. Playground ceremony screens use outdoor P4 or P5.",
+        },
+        {
+          h2: "High schools",
+          body:
+            "Conference halls use a stage LED screen for graduations, plays and seminars, and canteens and corridors use notice screens. Screen height in a hall is about one eighth of the back-row distance; see our conference hall guide for details.",
+        },
+        {
+          h2: "Universities",
+          body:
+            "Lecture theatres have the front row 2.5–3 m away, so indoor P2.5 or P3.07 is chosen. Campus entrances, faculty façades and squares use outdoor P4 or P5. Freestanding digital screens suit libraries and student centres for wayfinding and notices.",
+        },
+        {
+          h2: "Sports halls",
+          body:
+            "Score and notice screens are usually 6 m or more from spectators, so indoor P4 (USD 26.98 per panel) is enough. Protection against ball impact is planned at the survey.",
+        },
+        {
+          h2: "Payment, delivery and service",
+          body:
+            "Installment payment is available, and we accept TL, USD, EUR and other currencies. Our products are CE certified. Delivery takes 3–21 days of preparation + 1–14 days of shipping. We have completed projects in every Istanbul district, and we provide repair and technical service.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Which LED screen suits a school?",
+          answer:
+            "Indoor P3.07 (USD 30.88 per panel) for entrances and corridors, P2.5 (USD 32.18) for lecture theatres and halls, and outdoor P4 (USD 33.80) or P5 (USD 29.90) for playgrounds and façades. Prices are per panel, VAT and shipping excluded.",
+        },
+        {
+          question: "How much is a school entrance notice screen?",
+          answer:
+            "For example a 1.92 × 0.96 m indoor P3.07 screen uses 36 modules, a module cost of 36 × 30.88 = USD 1,111.68 (module only; control, cabinets, labour, VAT and shipping excluded). The final amount is given in a written quote after survey.",
+        },
+        {
+          question: "Can an LED screen go in the school playground?",
+          answer:
+            "Yes. Outdoor P4 or P5 modules are used. Pole or wall mounting is checked for load and wind at the survey.",
+        },
+        {
+          question: "LED or LCD in the classroom?",
+          answer:
+            "Students sit close in a classroom, so LCD or interactive displays fit better. LED is mainly used at entrances, corridors, playgrounds, lecture theatres and halls.",
+        },
+        {
+          question: "What payment options do schools have?",
+          answer:
+            "Installment payment is available, and we accept TL, USD, EUR and other currencies. The payment plan is stated in the written quote.",
+        },
+      ],
+      relatedSlugs: ["konferans-salonu-led", "poster-led-ekran", "dis-mekan-led-ekran"],
+      cta: {
+        title: "Let's plan screens for your school",
+        body:
+          "Send photos of the entrance, corridors, playground and hall and the viewing distances; we will suggest a screen and budget for each area.",
+      },
+      cardLabel: "LED screens for schools",
+      cardTeaser: "Primary, secondary, high school and university: entrance, corridor, playground, lecture theatre and sports hall screens.",
     },
   },
 };

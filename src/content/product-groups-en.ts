@@ -220,7 +220,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       "Digital displays for stores, lobbies, cafés and offices: LCD/TV-type screens, touch kiosks, menu boards and LED. Sale, installation, repair and written quote. Istanbul.",
     short: "LCD/TV-type screens, kiosks, menu boards and LED from one team",
     tag: "Digital",
-    imageAlt: "LED wall and two freestanding digital screens in a library hall",
+    imageAlt: "Freestanding vertical digital signage totem in a store",
     quoteOnly: true,
     intro: [
       "A digital display is any screen whose content you change in software instead of reprinting. LCD/TV-type panels, touch kiosks, menu boards, freestanding totems and modular LED walls all belong here.",
@@ -256,7 +256,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       "Menu boards for cafés and restaurants: LED menu walls above the counter, LCD/TV-type menu screens and freestanding portrait menus. Sale, installation, repair and written quote.",
     short: "LED menu walls, LCD menu screens and freestanding portrait menus",
     tag: "Menu board",
-    imageAlt: "Indoor LED screen installed in a café-restaurant",
+    imageAlt: "Digital menu board above a café counter",
     quoteOnly: true,
     intro: [
       "A menu board shows your menu, prices and promotions above the counter or at the entrance. When a price or product changes, you update it in minutes without reprinting.",

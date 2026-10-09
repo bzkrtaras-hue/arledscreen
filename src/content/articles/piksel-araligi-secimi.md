@@ -67,6 +67,20 @@ Fiyatlar USD, panel (320 × 160 mm) başına, KDV ve nakliye hariç:
 
 P1.25 ile P4 arasında modül bedeli yaklaşık 3,5 kat fark eder. Bu yüzden ekranı izleme mesafesinin gerektirdiğinden daha ince pitch seçmek bütçeyi gereksiz artırabilir; daha kaba seçmek ise yakın izleyicide görüntü kalitesini düşürür.
 
+### P2, P3, P6 ve P10 için en yakın muadil
+
+P2, P3, P6 ve P10 NXTIONSTAR listesinde yer almaz. Bu değerleri arayanlar için en yakın muadiller ve yayımlanmış panel fiyatları (USD, panel başına, KDV ve nakliye hariç):
+
+| Aranan P değeri | En yakın NXTIONSTAR muadili | Panel fiyatı (USD) | ≈ m² modül bedeli (USD) | Yaklaşık en yakın izleme mesafesi |
+|---|---|---|---|---|
+| P2 (iç mekân) | P1.86 GOB veya P2.5 iç mekân | 49,08 / 32,18 | 959 / 629 | ≈ 2 m |
+| P3 (iç mekân) | P3.07 iç mekân | 30,88 | 603 | ≈ 3 m |
+| P3 (dış mekân) | P3.07 dış mekân | 44,20 | 863 | ≈ 3 m |
+| P6 (dış mekân) | P5 dış mekân veya P8 dış mekân | 29,90 / teklif üzerine | 584 / teklif üzerine | ≈ 5–8 m |
+| P10 (dış mekân) | P8 dış mekân | teklif üzerine | teklif üzerine | ≈ 8–10 m ve üzeri |
+
+İzleme mesafesi "1 mm ≈ 1 m" kuralına göre yaklaşıktır. m² bedeli 320 × 160 mm modülde 1 m² ≈ 19,53 panel üzerinden yalnızca modül bedelidir; işçilik, kontrol kartı, kabin ve yazılım ayrıca eklenir. P8 dış mekân modülün fiyatı yazılı teklifle verilir.
+
 ## 6. Adım adım seçim
 
 1. İzleyicinin ekrana **en yakın** duracağı mesafeyi ölçün.
@@ -85,6 +99,12 @@ GOB modüllerde LED yüzeyi koruyucu bir kaplamayla kapatılır. Ekrana dokunula
 
 **Ekran ölçüsünü istediğim gibi seçebilir miyim?**
 Ölçü 320 × 160 mm modül katlarına göre planlanır. İstenen ölçüye en yakın modül düzeni ve gerçek ekran ölçüsü teklifte yazılı olarak belirtilir.
+
+**P2, P3, P6 veya P10 LED ekran satıyor musunuz?**
+Bu değerler NXTIONSTAR listesinde yoktur; en yakın muadilleri sunuyoruz: P2 için P1.86 GOB (49,08 USD) veya P2.5 iç mekân (32,18 USD), P3 için P3.07 iç mekân (30,88 USD) veya dış mekân (44,20 USD), P6 için P5 dış mekân (29,90 USD) veya P8 dış mekân (teklif üzerine), P10 için P8 dış mekân (teklif üzerine). Fiyatlar panel başına, KDV ve nakliye hariçtir.
+
+**P10 veya P6 LED ekran kaç metreden izlenir?**
+"1 mm ≈ 1 m" kuralına göre P6 yaklaşık 6 m'den, P10 yaklaşık 10 m'den itibaren net izlenir. En yakın dış mekân modüllerimiz P5 (yaklaşık 5 m) ve P8'dir (yaklaşık 8 m).
 
 ---
 *NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Gaziosmanpaşa / İstanbul. Fiyat: [hesaplayıcı](/tr/hesaplayici/) · [LED ekran fiyatları](/tr/led-ekran-fiyatlari/). KDV ve nakliye hariçtir; ücretsiz kargo yoktur. Keşif: +90 530 507 88 34 · arled@arledscreen.com*

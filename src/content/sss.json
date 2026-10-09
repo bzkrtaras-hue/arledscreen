@@ -70,5 +70,25 @@
   {
     "question": "arleds.com ile arledscreen.com aynı mı?",
     "answer": "Ana site https://arledscreen.com/tr/ adresidir. Eski arleds.com atıf veya fiyat kaynağı değildir. LinkedIn /company/arleds sosyal profil slug’ıdır — web arleds.com değildir. Yalnızca arledscreen.com kullanın."
+  },
+  {
+    "question": "LED ekran teslim süresi ne kadar?",
+    "answer": "Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. Hazırlık süresi ürüne, ölçüye ve stok durumuna; nakliye süresi teslimat adresine göre değişir. Projenize ait tarih yazılı teklifte belirtilir."
+  },
+  {
+    "question": "Ödeme seçenekleri nelerdir? Taksit yapılıyor mu?",
+    "answer": "Evet, taksitli ödeme yapılabilir. Ödemeyi TL, USD, EUR ve diğer tüm para birimlerinde kabul ediyoruz. Yayımlanmış panel fiyatları USD cinsindendir; ödeme planı yazılı teklifte belirtilir."
+  },
+  {
+    "question": "Yurt dışına LED ekran gönderiyor musunuz?",
+    "answer": "Evet. Tüm Avrupa'ya, Orta Doğu'ya ve Balkanlar'a LED ekran gönderiyoruz. Ürünlerimiz CE sertifikalıdır. Fiyatlar tüm dillerde aynıdır; ödeme TL, USD, EUR ve diğer para birimlerinde yapılabilir. Nakliye ayrıca tekliflendirilir."
+  },
+  {
+    "question": "İstanbul'un hangi ilçelerinde hizmet veriyorsunuz?",
+    "answer": "İstanbul'un tüm ilçelerinde proje yaptık: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar ve Zeytinburnu. Keşif, montaj ve teknik servis Gaziosmanpaşa merkezimizden planlanır."
+  },
+  {
+    "question": "Kiralık LED ekran haftalık ve aylık kiralanabilir mi? Depozito var mı?",
+    "answer": "Evet. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Haftalık ve aylık kiralamalar aynı günlük m² fiyatı üzerinden hesaplanır. Depozito alınmaz. Kurulum ve nakliye ayrıca tekliflendirilir."
   }
 ]

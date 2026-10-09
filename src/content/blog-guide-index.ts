@@ -23,6 +23,14 @@ const TR: BlogGuideLink[] = [
   { href: "/tr/rehber/ic-mekan-led-ekran/", label: "İç mekân LED ekran", teaser: "Salon, mağaza ya da toplantı odasında yakından izlenen ekranlarda piksel aralığı nasıl seçilir, nelere dikkat edilir?" },
   { href: "/tr/rehber/dis-mekan-led-ekran/", label: "Dış mekân LED ekran", teaser: "Güneşe, yağmura ve uzaktan izlenmeye dayanması gereken cephe ve billboard ekranlarında öne çıkan noktalar." },
   { href: "/tr/rehber/poster-led-ekran/", label: "Ayaklı dijital ekran: poster LED ve totem", teaser: "Mağaza girişi ya da lobi için ayaklı ekran arıyorsanız poster LED ve totem seçeneklerini yan yana koyduk." },
+  { href: "/tr/rehber/konferans-salonu-led/", label: "Konferans salonu LED ekran", teaser: "İlk sıra piksel aralığını, son sıra ekran ölçüsünü belirler: salon derinliğine göre örnek ölçüler ve modül bedelleri." },
+  { href: "/tr/rehber/okul-led-ekran/", label: "Okullar için LED ekran", teaser: "İlkokuldan üniversiteye giriş, koridor, bahçe, amfi ve spor salonu için hangi ekran, hangi piksel aralığı?" },
+  { href: "/tr/rehber/hastane-dijital-ekran/", label: "Hastane dijital ekranları", teaser: "Sıra sistemi, bekleme salonu, poliklinik kapısı ve yönlendirme: hangi alanda LED, hangisinde LCD?" },
+  { href: "/tr/rehber/eczane-led-ekran/", label: "Eczane LED ekran", teaser: "Vitrin, cephe, raf üstü ve ayaklı ekran seçenekleri; içerik hazırlarken dikkat edilecek kurallar." },
+  { href: "/tr/rehber/dugun-salonu-led/", label: "Düğün salonu LED ekran", teaser: "Sahne ekranı ne büyüklükte olmalı, satın almak mı kiralamak mı? Örnek ölçüler ve günlük kiralama bedeli." },
+  { href: "/tr/rehber/cami-led-ekran/", label: "Cami ve ibadethane LED ekran", teaser: "Cemaat mesafesine göre ekran ölçüsü ve piksel aralığı; namaz vakti ve hutbe gösterimi." },
+  { href: "/tr/rehber/led-ekran-ariza-belirtileri/", label: "LED ekran arıza belirtileri", teaser: "Kararma, titreme, çizgi ya da hiç açılmama: belirtiden olası nedene ve ilk kontrollere." },
+  { href: "/tr/rehber/led-ekran-ihracat/", label: "Yurt dışına LED ekran", teaser: "Avrupa, Orta Doğu ve Balkanlar'a gönderim; CE, ödeme seçenekleri ve teslim süresi." },
 ];
 
 const EN: BlogGuideLink[] = [
@@ -40,6 +48,14 @@ const EN: BlogGuideLink[] = [
   { href: "/en/rehber/ic-mekan-led-ekran/", label: "Indoor LED displays", teaser: "How to pick pixel pitch for screens viewed up close in living rooms, shops and meeting rooms." },
   { href: "/en/rehber/dis-mekan-led-ekran/", label: "Outdoor LED displays", teaser: "What matters for façade and billboard screens that face sun, rain and long viewing distances." },
   { href: "/en/rehber/poster-led-ekran/", label: "Freestanding displays: poster LED and totems", teaser: "Looking for a freestanding screen for an entrance or lobby? Poster LED and totem options side by side." },
+  { href: "/en/rehber/konferans-salonu-led/", label: "Conference hall LED screens", teaser: "The front row sets the pitch, the back row sets the size: example sizes and module costs by hall depth." },
+  { href: "/en/rehber/okul-led-ekran/", label: "LED screens for schools", teaser: "From primary school to university: which screen and pitch for entrances, corridors, playgrounds, lecture theatres and sports halls?" },
+  { href: "/en/rehber/hastane-dijital-ekran/", label: "Hospital digital screens", teaser: "Queue systems, waiting rooms, clinic doors and wayfinding: where LED fits and where LCD does." },
+  { href: "/en/rehber/eczane-led-ekran/", label: "Pharmacy LED screens", teaser: "Window, façade, shelf-top and freestanding options, plus the content rules to keep in mind." },
+  { href: "/en/rehber/dugun-salonu-led/", label: "Wedding hall LED screens", teaser: "How big should the stage screen be, and should you buy or rent? Example sizes and the daily rental rate." },
+  { href: "/en/rehber/cami-led-ekran/", label: "Mosque and place-of-worship LED screens", teaser: "Screen size and pitch by congregation distance; showing prayer times and the sermon." },
+  { href: "/en/rehber/led-ekran-ariza-belirtileri/", label: "LED screen fault symptoms", teaser: "Dark areas, flicker, lines or no power: from symptom to likely cause and first checks." },
+  { href: "/en/rehber/led-ekran-ihracat/", label: "LED screens shipped abroad", teaser: "Shipping to Europe, the Middle East and the Balkans; CE, payment options and delivery time." },
 ];
 
 export const blogGuideLinks = (locale: "tr" | "en"): BlogGuideLink[] => (locale === "en" ? EN : TR);

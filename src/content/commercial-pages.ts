@@ -342,6 +342,25 @@ const INTENT_PAGES: CommercialPage[] = [
         answer:
           "Tek seferlik etkinliklerde kiralama; sürekli kullanımda satın alma genelde daha ekonomiktir. Ayrıntılı karşılaştırma için “Kiralık mı, satın alma mı?” rehberine bakın.",
       },
+      {
+        question: "Kiralık LED ekran fiyatı ne kadar?",
+        answer:
+          "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir. Örneğin 10 m² ekranın 1 günlük kirası 500 USD'dir.",
+      },
+      {
+        question: "Haftalık veya aylık LED ekran kiralanabilir mi?",
+        answer:
+          "Evet. Haftalık ve aylık kiralamalar aynı günlük m² fiyatı (50 USD/m²) üzerinden hesaplanır. Kurulum ve nakliye ayrıca tekliflendirilir.",
+      },
+      {
+        question: "Kiralamada depozito alınıyor mu?",
+        answer: "Hayır, kiralık LED ekranda depozito alınmaz.",
+      },
+      {
+        question: "Kiralık LED ekranın ödemesi nasıl yapılır?",
+        answer:
+          "Ödemeyi TL, USD, EUR ve diğer tüm para birimlerinde kabul ediyoruz; taksitli ödeme de yapılabilir. Ödeme planı yazılı teklifte belirtilir.",
+      },
     ],
     primaryCta: { href: "/tr/quote/", label: "Kiralama teklifi" },
     secondaryCta: { href: "/tr/products/kiralik-led-ekran/", label: "Kiralık ürün grubu" },
@@ -396,6 +415,7 @@ const INTENT_PAGES: CommercialPage[] = [
     intro: [
       "LED ekran tamirinde en sık karşılaştığımız arızalar şunlardır: ölü piksel ya da tamamen sönen modül; bölgeler arasında renk ve parlaklık farkı; güç kaynağı (PSU) arızası yüzünden kararan kabin; alıcı (receiving) veya gönderici (sending) karttan kaynaklanan görüntü kayması, donma ve sinyal kaybı; gevşemiş ya da oksitlenmiş flat kablo ve konnektörler; dış mekânda conta yıpranması sonrası içeri su ve nem girmesi.",
       "Ekran tamir süreci beş adımda ilerler. Arızanın fotoğrafını veya kısa videosunu WhatsApp'tan gönderirsiniz ve uzaktan ön teşhis yaparız. Ardından yerinde keşif ve ölçümle arızanın kaynağını tespit ederiz. Onayınızla modül, güç kaynağı, kart ya da kablo değiştirilir veya onarılır. Son adımda ekran test edilir, gerekirse renk ve parlaklık ayarı yapılır.",
+      "LED ekranların yanı sıra LCD reklam ekranı, kiosk ve menuboard tamiri de yapıyoruz: görüntü gelmemesi, dokunmatik arızası, güç kartı ve bağlantı sorunları yerinde incelenir. Ekran titremesi, yatay ya da dikey çizgi, tek sırada renk bozulması (ör. bir sıranın kırmızı yanması), hiç açılmama ve yıldırım ya da aşırı gerilim sonrası arızalar da bu kapsamdadır.",
       "NovaStar, Colorlight ve Huidu kontrol sistemli ekranlarda kart ve yazılım kontrolü yapıyoruz. Başka firmadan alınmış ekranlarda marka, model ve kontrol kartı bilgisiyle servis ve yedek parça uygunluğunu değerlendiriyoruz. Merkezimiz İstanbul Gaziosmanpaşa'dadır; Türkiye genelinde servis veriyoruz.",
       NAP,
     ],
@@ -405,6 +425,7 @@ const INTENT_PAGES: CommercialPage[] = [
       "Alıcı / gönderici kart ve yazılım kontrolü",
       "Kablo, konnektör ve nem kaynaklı arıza onarımı",
       "Renk ve parlaklık ayarı",
+      "LCD reklam ekranı, kiosk ve menuboard tamiri",
     ],
     images: [
       { src: "/projects/install-wiring.jpg", alt: "LED ekran arkasında alıcı kart, güç kaynağı ve kablo bağlantıları" },
@@ -440,6 +461,46 @@ const INTENT_PAGES: CommercialPage[] = [
         question: "Arızayı nasıl bildiririm?",
         answer:
           "Arızanın fotoğrafını veya kısa videosunu +90 530 507 88 34 WhatsApp hattına gönderin; uzaktan ön teşhis yapıp keşfi planlayalım.",
+      },
+      {
+        question: "LCD ekran, kiosk ve menuboard tamiri yapıyor musunuz?",
+        answer:
+          "Evet. LED ekranların yanı sıra LCD reklam ekranı, dokunmatik kiosk ve dijital menuboard tamiri de yapıyoruz. Marka ve model bilgisini, arızanın fotoğrafı veya videosuyla birlikte gönderin; fiyatı keşif sonrası yazılı teklifle veriyoruz.",
+      },
+      {
+        question: "LED ekran titriyor; nasıl düzelir?",
+        answer:
+          "Titreme çoğunlukla gevşek veri veya güç kablosu, arızalı güç kaynağı, alıcı kart ayarları ya da düşük tazeleme hızından kaynaklanır. Ekranı açıp kapatmak kalıcı çözüm değildir; kablo ve kart kontrolüyle kaynağı yerinde tespit edip gideriyoruz.",
+      },
+      {
+        question: "Ekranda yatay çizgi var ya da bir sıra kırmızı yanıyor; neden?",
+        answer:
+          "Yatay veya dikey çizgi ve tek sırada renk bozulması genellikle modülün sürücü entegresi, modüller arasındaki flat kablo ya da alıcı kart portundan kaynaklanır. Çoğu durumda ilgili modül veya kablo değiştirilerek giderilir.",
+      },
+      {
+        question: "LED ekran hiç açılmıyor; ne yapmalıyım?",
+        answer:
+          "Önce sigortayı, enerji hattını ve görüntü kaynağını (bilgisayar, medya oynatıcı) kontrol edin. Sorun sürüyorsa güç kaynağı, gönderici kart veya yazılım arızası olabilir; fotoğraf veya videoyu WhatsApp'tan gönderin, uzaktan ön teşhis yapalım.",
+      },
+      {
+        question: "Yıldırım veya elektrik dalgalanması sonrası LED ekran tamir edilir mi?",
+        answer:
+          "Evet. Aşırı gerilim çoğunlukla güç kaynaklarına, alıcı kartlara ve bağlantılara zarar verir. Etkilenen parçaları yerinde ölçümle tespit edip değiştiriyoruz; kapsam ve fiyat yazılı teklifte belirtilir.",
+      },
+      {
+        question: "Tamir ne kadar sürer?",
+        answer:
+          "Süre arızanın kaynağına, parça ihtiyacına ve ekrana erişim koşullarına göre değişir. Tahmini süreyi ön teşhis ve keşiften sonra yazılı teklifte belirtiyoruz.",
+      },
+      {
+        question: "Tamir garanti kapsamında mı?",
+        answer:
+          "ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar. Garanti dışı ya da başka firmadan alınmış ekranlarda tamir kapsamı ve ücreti yazılı teklifte belirtilir.",
+      },
+      {
+        question: "LED ekran nasıl temizlenir?",
+        answer:
+          "Ekranı kapatın, yüzeyi kuru ve yumuşak bir fırça veya mikrofiber bezle hafifçe temizleyin. Sıvıyı doğrudan ekrana püskürtmeyin, basınçlı su ve aşındırıcı kimyasal kullanmayın. Modül yüzeyine bastırmayın.",
       },
     ],
     primaryCta: { href: "/tr/quote/", label: "Tamir talebi" },
@@ -1912,7 +1973,21 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Is there a published fixed rental price?",
           answer:
-            "Yes. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+            "Yes. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. For example, one day for a 10 m² screen is USD 500.",
+        },
+        {
+          question: "Can I rent an LED screen weekly or monthly?",
+          answer:
+            "Yes. Weekly and monthly rentals are priced on the same daily rate (USD 50 per m² per day). Installation and shipping are quoted separately.",
+        },
+        {
+          question: "Is a deposit required for rental?",
+          answer: "No. No deposit is required for rental LED screens.",
+        },
+        {
+          question: "How do I pay for a rental?",
+          answer:
+            "We accept payment in TL, USD, EUR and all other currencies; installment payment is also available. The payment plan is stated in the written quote.",
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request a rental quote" },
@@ -1978,6 +2053,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       intro: [
         "The faults we see most often: dead pixels or a fully dark module; colour and brightness mismatch between areas; a dark cabinet caused by a failed power supply (PSU); image shift, freezing or signal loss from the receiving or sending card; loose or oxidised ribbon cables and connectors; and, outdoors, water and moisture getting in after gaskets wear.",
         "Repair runs in five steps. You send a photo or short video of the fault on WhatsApp and we make a remote pre-diagnosis. We then survey and measure on site to find the cause. With your approval the module, power supply, card or cable is replaced or repaired. Finally the screen is tested and, if needed, colour and brightness are adjusted.",
+        "Besides LED screens, we also repair LCD advertising displays, kiosks and menu boards: no picture, touch faults, power boards and connection problems are checked on site. Flickering, horizontal or vertical lines, a row showing the wrong colour (for example a row stuck red), a screen that will not turn on, and faults after lightning or power surges are also covered.",
         "We check cards and software on screens running NovaStar, Colorlight and Huidu control systems. For screens bought elsewhere we assess service and spare-part fit from brand, model and control card data. Our HQ is in Gaziosmanpaşa, Istanbul; we provide service across Turkey.",
         NAP_EN,
       ],
@@ -1987,6 +2063,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         "Receiving / sending card and software checks",
         "Cable, connector and moisture fault repair",
         "Colour and brightness adjustment",
+        "LCD advertising display, kiosk and menu board repair",
       ],
       images: [
         { src: "/projects/install-wiring.jpg", alt: "Receiving cards, power supplies and cabling behind an LED screen" },
@@ -2021,6 +2098,46 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
           question: "How do I report a fault?",
           answer:
             "Send a photo or short video of the fault to our WhatsApp line +90 530 507 88 34; we will make a remote pre-diagnosis and plan the survey.",
+        },
+        {
+          question: "Do you repair LCD screens, kiosks and menu boards?",
+          answer:
+            "Yes. Besides LED screens we repair LCD advertising displays, touch kiosks and digital menu boards. Send the brand and model with a photo or video of the fault; we price the repair in a written quote after survey.",
+        },
+        {
+          question: "My LED screen is flickering. How is it fixed?",
+          answer:
+            "Flicker usually comes from a loose data or power cable, a failing power supply, receiving card settings or a low refresh rate. Restarting is not a lasting fix; we find the cause on site by checking cables and cards.",
+        },
+        {
+          question: "Part of my LED screen is black or there is a line across it. Why?",
+          answer:
+            "A black cabinet or area usually points to a power supply, receiving card or cable. Horizontal or vertical lines and a single row in the wrong colour usually come from the module driver IC, the ribbon cable between modules or a receiving card port. Most cases are fixed by replacing that module or cable.",
+        },
+        {
+          question: "My LED screen will not turn on. What should I check?",
+          answer:
+            "First check the breaker, the power line and the video source (PC or media player). If it still will not start, the power supply, sending card or software may be at fault; send a photo or video on WhatsApp for a remote pre-diagnosis.",
+        },
+        {
+          question: "Can an LED screen be repaired after lightning or a power surge?",
+          answer:
+            "Yes. Surges mostly damage power supplies, receiving cards and connections. We identify the affected parts by on-site measurement and replace them; scope and price are stated in the written quote.",
+        },
+        {
+          question: "How long does a repair take?",
+          answer:
+            "It depends on the cause, the parts needed and access to the screen. We state the estimated time in the written quote after pre-diagnosis and survey.",
+        },
+        {
+          question: "Is the repair covered by warranty? Do you offer maintenance and technical support?",
+          answer:
+            "ARLEDSCREEN offers a 2-year warranty and 5 years of free technical service. For video walls and screens out of warranty or bought elsewhere, repair and maintenance scope and price are stated in the written quote. We provide service across Turkey.",
+        },
+        {
+          question: "How should an LED screen be cleaned?",
+          answer:
+            "Switch the screen off and clean the surface gently with a dry, soft brush or microfibre cloth. Do not spray liquid directly onto the screen, and do not use pressure washers or abrasive chemicals. Do not press on the module surface.",
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request repair" },
