@@ -16,7 +16,7 @@ import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
 import { modelUrlForPrice } from "@/content/models";
-import { PANEL_PRICES, panelProductsJsonLd, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { PANEL_PRICES, panelProductsJsonLd } from "@/content/prices";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
@@ -99,12 +99,6 @@ export default async function ProductsPage({ params }: PageProps) {
             description={seo.intro ?? pageCopy.description}
             cssSelectors={["#products-h1", "#products-lead"]}
             mainEntity={{ "@id": `${absoluteUrl(`/${locale}/products/`)}#service` }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/products/`))),
-            }}
           />
         </>
       ) : null}

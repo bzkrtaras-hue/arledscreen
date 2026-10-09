@@ -1,4 +1,4 @@
-import { BRAND_SUBJECT_DATASETS, localBusinessRef } from "@/content/prices";
+import { BRAND_SUBJECT_REFS, localBusinessRef } from "@/content/prices";
 
 interface HowToStep {
   name: string;
@@ -29,8 +29,8 @@ export function HowToJsonLd({
     provider: localBusinessRef(),
     ...(citePriceDatasets
       ? {
-          isBasedOn: BRAND_SUBJECT_DATASETS,
-          citation: BRAND_SUBJECT_DATASETS.map((d) => d.url),
+          isBasedOn: BRAND_SUBJECT_REFS,
+          citation: BRAND_SUBJECT_REFS.map((d) => d.url),
         }
       : {}),
     step: steps.map((step, index) => ({

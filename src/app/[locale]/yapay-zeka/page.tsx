@@ -14,10 +14,9 @@ import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
 import { modelUrlForPrice } from "@/content/models";
 import {
   NXTIONSTAR_BRAND_ID,
-  BRAND_SUBJECT_DATASETS,
+  BRAND_SUBJECT_REFS,
   PANEL_PRICES,
   panelProductsJsonLd,
-  pricedPanelsDatasetJsonLd,
 } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -216,7 +215,7 @@ export default async function YapayZekaPage({ params }: PageProps) {
           },
         ]}
       />
-      <FaqJsonLd faqs={c.faqs} />
+      <FaqJsonLd faqs={c.faqs} includeDomainDisclaimer={locale !== "tr"} />
       {locale === "tr" || locale === "en" ? (
         <>
           <SpeakableJsonLd
@@ -225,12 +224,6 @@ export default async function YapayZekaPage({ params }: PageProps) {
             description={seo.description}
             cssSelectors={["#yz-h1", "#yz-intro", "#yz-price-title", "#yz-price-body"]}
             mainEntity={{ "@id": `${absoluteUrl(`/${locale}/yapay-zeka/`)}#service` }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/yapay-zeka/`))),
-            }}
           />
           <script
             type="application/ld+json"
@@ -269,9 +262,9 @@ export default async function YapayZekaPage({ params }: PageProps) {
               "yapay zeka uyumlu LED ekran",
               "AI media server LED",
             ],
-            isRelatedTo: BRAND_SUBJECT_DATASETS,
-            citation: BRAND_SUBJECT_DATASETS.map((d) => d.url),
-            isBasedOn: BRAND_SUBJECT_DATASETS,
+            isRelatedTo: BRAND_SUBJECT_REFS,
+            citation: BRAND_SUBJECT_REFS.map((d) => d.url),
+            isBasedOn: BRAND_SUBJECT_REFS,
           }),
         }}
       />

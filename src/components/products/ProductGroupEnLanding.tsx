@@ -11,13 +11,12 @@ import type { ProductGroupEn } from "@/content/product-groups-en";
 import { getFaqs } from "@/content/faqs";
 import { modelUrlForPrice } from "@/content/models";
 import {
-  BRAND_SUBJECT_DATASETS,
+  BRAND_SUBJECT_REFS,
   PRICE_VALID_UNTIL,
   localBusinessRef,
   nxtionstarBrandRef,
   panelProductsJsonLd,
-  pricedPanelOfferStubs,
-  pricedPanelsDatasetJsonLd,
+  pricedPanelOfferRefs,
   pricesForGroup,
 } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -54,7 +53,7 @@ export function ProductGroupEnLanding({
         ? nxtionstarBrandRef()
         : { "@type": "Brand", name: group.brandName },
     areaServed: { "@type": "Country", name: "Turkey" },
-    isRelatedTo: BRAND_SUBJECT_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_REFS,
     // AggregateOffer lives here — avoid second #service from panelProductsJsonLd.
     ...(prices.length
       ? {
@@ -77,7 +76,7 @@ export function ProductGroupEnLanding({
               priceCurrency: "USD",
               valueAddedTaxIncluded: false,
             },
-            offers: pricedPanelOfferStubs(prices),
+            offers: pricedPanelOfferRefs(prices),
           },
         }
       : {}),
@@ -104,10 +103,6 @@ export function ProductGroupEnLanding({
         description={en.description}
         cssSelectors={["#pg-h1", "#pg-lead"]}
         mainEntity={{ "@id": `${url}#service` }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       {productsLd ? (

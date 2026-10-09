@@ -6,7 +6,7 @@ import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
-import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { BRAND_SUBJECT_REFS } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { ARTICLE_LINKS } from "@/content/article-links";
 
@@ -34,7 +34,7 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
     author: { "@id": `${SITE_URL}/#organization` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     image: absoluteUrl("/og/arledscreen-og.jpg"),
-    isRelatedTo: BRAND_SUBJECT_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_REFS,
   };
   const others = ARTICLE_LINKS.filter((l) => !l.href.includes(`/${slug}/`));
   return (
@@ -55,10 +55,6 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
         mainEntity={{ "@id": `${url}#article` }}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
-      />
       <article className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <nav aria-label="Sayfa yolu" className="text-[13px] text-ink-muted">

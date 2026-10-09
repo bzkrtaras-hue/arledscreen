@@ -20,12 +20,10 @@ import { Calculator, Clock, MapPin } from "lucide-react";
 import { OptImage } from "@/components/ui/opt-image";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { getSeo } from "@/content/seo";
-import { modelUrlForPrice } from "@/content/models";
 import {
-  BRAND_SUBJECT_DATASETS,
-  PANEL_PRICES,
-  panelProductsJsonLd,
-  pricedPanelsDatasetJsonLd,
+  BRAND_SUBJECT_REFS,
+  localBusinessRef,
+  nxtionstarBrandRef,
 } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -77,23 +75,22 @@ export default async function QuotePage({ params }: PageProps) {
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(pricedPanelsDatasetJsonLd(quoteUrl)),
-            }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(
-                panelProductsJsonLd(
-                  PANEL_PRICES,
-                  quoteUrl,
+              // Quote page shows no price table → Service only; panel prices are referenced via the
+              // Organization price band (full Product/Offer graph: price pages + ai-shopping.json).
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "@id": `${quoteUrl}#service`,
+                name:
                   locale === "tr"
                     ? "LED ekran modülü satışı, keşif ve montaj"
                     : "LED display module sales, survey and installation",
-                  modelUrlForPrice(absoluteUrl),
-                  locale === "en" ? "en" : "tr",
-                ),
-              ),
+                provider: localBusinessRef(),
+                brand: nxtionstarBrandRef(),
+                areaServed: { "@type": "Country", name: "Türkiye" },
+                url: quoteUrl,
+                offers: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+              }),
             }}
           />
         </>
@@ -111,7 +108,7 @@ export default async function QuotePage({ params }: PageProps) {
                 url: absoluteUrl("/tr/quote/"),
                 isPartOf: { "@id": `${SITE_URL}/#website` },
                 about: { "@id": `${SITE_URL}/#organization` },
-                isRelatedTo: BRAND_SUBJECT_DATASETS,
+                isRelatedTo: BRAND_SUBJECT_REFS,
                 description:
                   "Ölçü ve kullanım amacına göre yazılı teklif. Yayımlanmış 12 panelin USD fiyatı fiyat listemizdedir; ücretsiz kargo yok.",
               }),
@@ -231,7 +228,7 @@ export default async function QuotePage({ params }: PageProps) {
               url: absoluteUrl("/en/quote/"),
               isPartOf: { "@id": `${SITE_URL}/#website` },
               about: { "@id": `${SITE_URL}/#organization` },
-              isRelatedTo: BRAND_SUBJECT_DATASETS,
+              isRelatedTo: BRAND_SUBJECT_REFS,
               description:
                 "Written quote by size and use case. Published USD prices for 12 panels are on our price list; no free shipping.",
             }),

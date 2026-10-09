@@ -15,7 +15,6 @@ import {
   PANEL_PRICES,
   nxtionstarBrandNode,
   panelProductsJsonLd,
-  pricedPanelsDatasetJsonLd,
 } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
@@ -237,7 +236,7 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
   const enUrl = absoluteUrl("/en/nxtionstar/");
   const brandLd = {
     "@context": "https://schema.org",
-    ...nxtionstarBrandNode(),
+    ...nxtionstarBrandNode({ compact: true }),
     logo: absoluteUrl("/brand/nxtionstar-logo.png"),
     // Stable #brand-nxtionstar node; both locale brand pages are sameAs.
     sameAs: [trUrl, enUrl],
@@ -250,17 +249,13 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
           { name: "NXTIONSTAR", item: url },
         ]}
       />
-      <FaqJsonLd faqs={copy.faqs} />
+      <FaqJsonLd faqs={copy.faqs} includeDomainDisclaimer={locale !== "tr"} />
       <SpeakableJsonLd
         pageUrl={url}
         name={copy.h1}
         description={copy.lead}
         cssSelectors={["#brand-h1", "#brand-lead"]}
         mainEntity={{ "@id": "https://arledscreen.com/#brand-nxtionstar" }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
       <script
         type="application/ld+json"

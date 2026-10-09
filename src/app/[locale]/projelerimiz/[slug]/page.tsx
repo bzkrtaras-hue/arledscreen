@@ -10,7 +10,7 @@ import {
   getProjectCaseStudy,
   projectCasePath,
 } from "@/content/case-studies";
-import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { BRAND_SUBJECT_REFS } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -62,7 +62,7 @@ export default async function ProjectCasePage({
     about: "LED ekran kurulumu",
     provider: { "@id": `${SITE_URL}/#organization` },
     url,
-    isRelatedTo: BRAND_SUBJECT_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_REFS,
     ...(c.images[0]
       ? { image: absoluteUrl(c.images[0].src.startsWith("/blog/") ? c.images[0].src.replace("/blog/", "/opt/blog/") : c.images[0].src) }
       : {}),
@@ -98,10 +98,6 @@ export default async function ProjectCasePage({
         description={c.metaDescription}
         cssSelectors={["#case-h1", "#case-lead"]}
         mainEntity={{ "@id": `${url}#case` }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
 
       <section className="border-b border-border bg-surface/60">

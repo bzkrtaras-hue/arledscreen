@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
-import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { ClipboardList, Hammer, Wrench } from "lucide-react";
 import { FeaturedReferences } from "@/components/home/FeaturedReferences";
@@ -17,8 +16,6 @@ import { CompletedProjectsGallery } from "@/components/projects/CompletedProject
 import { ProjectVideos } from "@/components/projects/ProjectVideos";
 import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
-import { getFaqs } from "@/content/faqs";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { formatProjectDate, formatProjectDetail } from "@/lib/dates";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -57,19 +54,6 @@ export async function generateMetadata({
   });
 }
 
-const FAQS_EN = [
-  {
-    question: "Are project pages invented for SEO?",
-    answer:
-      "No. Case pages are built only from published reference records with size/pitch/location. No fabricated reviews or technical claims.",
-  },
-  {
-    question: "Where are published panel prices listed?",
-    answer:
-      "On our price list at /en/led-ekran-fiyatlari/ (12 NXTIONSTAR panel models, USD per panel, e.g. P1.25 GOB 95.88 USD). VAT and freight excluded; no free shipping.",
-  },
-];
-
 export default async function ProjelerimizPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
   if (raw !== "tr" && raw !== "en") notFound();
@@ -77,12 +61,6 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
   const en = locale === "en";
   const base = `/${locale}`;
   const pageUrl = absoluteUrl(`${base}/projelerimiz/`);
-  const entityFaqs = en
-    ? getFaqs("en").filter(
-        (f) => f.question.includes("NationStar") || f.question.includes("arleds.com"),
-      )
-    : [];
-  const faqs = en ? [...FAQS_EN, ...entityFaqs] : [];
 
   const process = en
     ? [
@@ -163,13 +141,6 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         }
         cssSelectors={["#projeler-h1", "#projeler-lead"]}
         mainEntity={{ "@id": `${pageUrl}#projects` }}
-      />
-      {faqs.length ? <FaqJsonLd faqs={faqs} /> : null}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricedPanelsDatasetJsonLd(pageUrl)),
-        }}
       />
       <section className="relative isolate overflow-hidden bg-navy">
         <OptImage

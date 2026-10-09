@@ -13,7 +13,7 @@ import { getSeo } from "@/content/seo";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
 import { modelUrlForPrice } from "@/content/models";
-import { PANEL_PRICES, panelProductsJsonLd, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { PANEL_PRICES, panelProductsJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { CompletedProjectsGallery } from "@/components/projects/CompletedProjectsGallery";
@@ -75,14 +75,6 @@ export default async function HomePage({ params }: PageProps) {
     return (
       <>
         <FaqJsonLd faqs={faqs} />
-        {(locale === "en" || locale === "ar" || locale === "ru") ? (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/`))),
-            }}
-          />
-        ) : null}
         {locale === "en" ? (
           <>
             <SpeakableJsonLd
@@ -174,12 +166,6 @@ export default async function HomePage({ params }: PageProps) {
         description={seo.description}
         cssSelectors={["#home-h1", "#home-lead"]}
         mainEntity={{ "@id": `${absoluteUrl("/tr/")}#service` }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/"))),
-        }}
       />
       <script
         type="application/ld+json"

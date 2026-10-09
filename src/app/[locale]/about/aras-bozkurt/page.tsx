@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
-import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { BRAND_SUBJECT_REFS } from "@/content/prices";
 import {
   ENTITY_CITE_MEDIUM,
   ENTITY_CITE_MEDIUM_EN,
@@ -74,7 +74,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
     worksFor: { "@id": `${SITE_URL}/#organization` },
     sameAs: ["https://www.linkedin.com/in/bozkurtaras"],
     description: cite,
-    subjectOf: BRAND_SUBJECT_DATASETS,
+    subjectOf: BRAND_SUBJECT_REFS,
   };
 
   const rows = en
@@ -123,10 +123,6 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
         }
         cssSelectors={["#founder-h1", "#founder-lead"]}
         mainEntity={{ "@id": `${url}#person` }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
 
       <section className="border-b border-border bg-surface/60">

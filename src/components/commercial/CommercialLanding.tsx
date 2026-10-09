@@ -11,14 +11,13 @@ import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
 import { modelUrlForPrice } from "@/content/models";
 import {
-  BRAND_SUBJECT_DATASETS,
+  BRAND_SUBJECT_REFS,
   PANEL_PRICES,
   PRICE_VALID_UNTIL,
   localBusinessRef,
   nxtionstarBrandRef,
   panelProductsJsonLd,
-  pricedPanelOfferStubs,
-  pricedPanelsDatasetJsonLd,
+  pricedPanelOfferRefs,
 } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -102,7 +101,7 @@ export function CommercialLanding({
     brand: nxtionstarBrandRef(),
     areaServed: { "@type": "Country", name: tr ? "Türkiye" : "Turkey" },
     url,
-    isRelatedTo: BRAND_SUBJECT_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_REFS,
     // Intent hubs: AggregateOffer on page Service (avoid dual #service with panelProductsJsonLd).
     ...(showPanelOffers
       ? {
@@ -126,7 +125,7 @@ export function CommercialLanding({
               priceCurrency: "USD",
               valueAddedTaxIncluded: false,
             },
-            offers: pricedPanelOfferStubs(PANEL_PRICES),
+            offers: pricedPanelOfferRefs(PANEL_PRICES),
           },
         }
       : {}),
@@ -162,10 +161,6 @@ export function CommercialLanding({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
       {showPanelOffers ? (
         <script

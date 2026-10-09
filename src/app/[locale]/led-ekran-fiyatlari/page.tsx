@@ -14,7 +14,6 @@ import {
   panelLabel,
   panelProductsJsonLd,
   priceNote,
-  pricedPanelsDatasetJsonLd,
 } from "@/content/prices";
 import { modelUrlForPrice } from "@/content/models";
 import { buildPageMetadata } from "@/lib/seo";
@@ -322,10 +321,6 @@ export default async function LedEkranFiyatlariPage({
         description={copy.speakableDesc}
         cssSelectors={["#fiyat-h1", "#fiyat-lead", "#ai-price-source"]}
         mainEntity={{ "@id": `${url}#service` }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
       <script
         type="application/ld+json"

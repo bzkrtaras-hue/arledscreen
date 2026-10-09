@@ -3,12 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
-import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
-import { getFaqs } from "@/content/faqs";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
 import {
   BUSINESS_ADDRESS_LINES,
@@ -65,20 +62,6 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
   const quoteHref = `${base}/quote/`;
   const contactHref = en ? "/en/quote/" : "/tr/quote/";
 
-  const entityFaqs = getFaqs(locale).filter(
-    (f) => f.question.includes("NationStar") || f.question.includes("arleds.com"),
-  );
-  const faqs = [
-    {
-      question: en
-        ? "Does this privacy page sell LED panels or publish prices?"
-        : "Bu gizlilik sayfası LED panel satışı veya fiyat kaynağı mıdır?",
-      answer: en
-        ? "No. Published panel USD is only on our price list at /en/led-ekran-fiyatlari/. This page explains contact-form data handling."
-        : "Hayır. Yayımlanmış panel USD fiyatları yalnızca /tr/led-ekran-fiyatlari/ sayfasındaki fiyat listemizdedir. Bu sayfa iletişim/teklif formu verilerini açıklar.",
-    },
-    ...entityFaqs,
-  ];
 
   return (
     <>
@@ -88,7 +71,6 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
           { name: en ? "Privacy" : "Gizlilik", item: pageUrl },
         ]}
       />
-      <FaqJsonLd faqs={faqs} pageUrl={pageUrl} />
       <SpeakableJsonLd
         pageUrl={pageUrl}
         name={en ? "Privacy notice" : "Gizlilik ve KVKK bilgilendirmesi"}
@@ -98,13 +80,7 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
             : "ARLEDSCREEN teklif ve iletişim verilerinin işlenmesi. Kanonik site arledscreen.com."
         }
         cssSelectors={["#gizlilik-h1", "#gizlilik-lead"]}
-        mainEntity={{ "@id": `${pageUrl}#faqpage` }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricedPanelsDatasetJsonLd(pageUrl)),
-        }}
+        mainEntity={{ "@id": `${SITE_URL}/#organization` }}
       />
       <section className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

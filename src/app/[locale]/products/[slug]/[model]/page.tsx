@@ -17,14 +17,13 @@ import {
 } from "@/content/models";
 import {
   CALC_EXTRAS,
-  BRAND_SUBJECT_DATASETS,
+  BRAND_SUBJECT_REFS,
   PRICE_DATASETS,
   fmtUsd,
   nxtionstarBrandRef,
   panelM2,
   panelModule,
   panelOffer,
-  pricedPanelsDatasetJsonLd,
   type PanelPrice,
 } from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
@@ -228,11 +227,11 @@ export default async function ModelPage({ params }: PageProps) {
       ? {
           offers: panelOffer(url, price.usd, { sku: catalogSku }),
           // Product → Dataset membership + related price/entity feeds (no invent).
-          isPartOf: PRICE_DATASETS[0],
-          isRelatedTo: BRAND_SUBJECT_DATASETS,
+          isPartOf: { "@id": PRICE_DATASETS[0]["@id"] },
+          isRelatedTo: BRAND_SUBJECT_REFS,
         }
       : {
-          isRelatedTo: BRAND_SUBJECT_DATASETS,
+          isRelatedTo: BRAND_SUBJECT_REFS,
         }),
   };
 
@@ -253,10 +252,6 @@ export default async function ModelPage({ params }: PageProps) {
         description={description}
         cssSelectors={["#model-h1", "#model-lead"]}
         {...(price ? { mainEntity: { "@id": `${url}#product` } } : {})}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
 
       <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-10">

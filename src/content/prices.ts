@@ -84,6 +84,19 @@ export const BRAND_SUBJECT_DATASETS = [
   },
 ];
 
+/**
+ * HTML-only compact form of BRAND_SUBJECT_DATASETS: `@id` + url references, no typed nodes.
+ * Full Dataset/Brand/Organization definitions stay in the machine files (ai-shopping.json,
+ * catalog.json, entity.json, brand.json …); HTML pages only point at them. Keeps per-page
+ * JSON-LD small (audit 2026-10-09: ~14k Dataset nodes across HTML pages).
+ */
+export const BRAND_SUBJECT_REFS = BRAND_SUBJECT_DATASETS.map((d) => ({ "@id": d["@id"], url: d.url }));
+
+/** Compact per-SKU Offer references (same @id as ai-shopping.json Offers) — no duplicated Offer/Product nodes. */
+export function pricedPanelOfferRefs(panels: PanelPrice[] = PANEL_PRICES) {
+  return panels.map((p) => ({ "@id": `${SITE_URL}/ai-shopping.json#offer-${p.id}` }));
+}
+
 /** Stable Brand @id — Org/Product graphs + catalog Offers point here. */
 export const NXTIONSTAR_BRAND_ID = `${SITE_URL}/#brand-nxtionstar`;
 
@@ -96,14 +109,14 @@ export function localBusinessRef() {
 }
 
 /** Full Brand node (use once in @graph); Product/Org may reference via `@id` only. */
-export function nxtionstarBrandNode() {
+export function nxtionstarBrandNode(opts?: { compact?: boolean }) {
   return {
     "@type": "Brand" as const,
     "@id": NXTIONSTAR_BRAND_ID,
     name: "NXTIONSTAR",
     url: `${SITE_URL}/tr/nxtionstar/`,
     slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
-    subjectOf: BRAND_SUBJECT_DATASETS,
+    subjectOf: opts?.compact ? BRAND_SUBJECT_REFS : BRAND_SUBJECT_DATASETS,
     // Brand-first agents (NXTIONSTAR panel price) join Org AggregateOffer band + catalog.
     makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
     hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
@@ -180,7 +193,7 @@ export function pricedPanelsHasPartStubs() {
 }
 
 /** HTML Dataset pointing AI shoppers at published price files (no invent). */
-export function pricedPanelsDatasetJsonLd(pageUrl: string) {
+export function pricedPanelsDatasetJsonLd(pageUrl: string, shownProductIds: string[] = []) {
   return {
     "@context": "https://schema.org",
     "@type": "Dataset",
@@ -193,8 +206,11 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
     // Join page Dataset orphan @id → canonical machine price roots.
     sameAs: [`${SITE_URL}/ai-shopping.json`, `${SITE_URL}/catalog.json`],
     isBasedOn: [...PRICE_DATASETS.map((d) => d.url), GEO_BASELINE_DATASET.url],
-    /** Mirror ai-shopping.json Dataset→Product join on every HTML hub (incl. quote-only groups). */
-    hasPart: pricedPanelsHasPartStubs(),
+    /**
+     * Product join only for panels actually shown on this page (as @id references).
+     * Full 12-SKU Product/Offer graph lives in ai-shopping.json / catalog.json (audit 2026-10-09).
+     */
+    ...(shownProductIds.length ? { hasPart: shownProductIds.map((id) => ({ "@id": id })) } : {}),
     // Parity with ai-shopping.json Dataset.distribution invent set (HTML-first agents).
     distribution: [
       {
@@ -517,6 +533,14 @@ export function organizationMakesOffer() {
   };
 }
 
+/**
+ * HTML variant of organizationMakesOffer(): same published USD band, but per-SKU Offers are
+ * @id references instead of 12 full Offer+Product stubs on every page. Prices unchanged.
+ */
+export function organizationMakesOfferCompact() {
+  return { ...organizationMakesOffer(), offers: pricedPanelOfferRefs() };
+}
+
 /** Organization.hasOfferCatalog — seller → catalog Collection edge. */
 export function organizationHasOfferCatalog() {
   return {
@@ -631,12 +655,12 @@ export function panelProductsJsonLd(
         ? {}
         : { offerId: `${pageUrl}#offer-${p.id}`, productId: `${pageUrl}#${p.id}` }),
     }),
-    isPartOf: PRICE_DATASETS[0],
-    isRelatedTo: BRAND_SUBJECT_DATASETS,
+    isPartOf: { "@id": PRICE_DATASETS[0]["@id"] },
+    isRelatedTo: BRAND_SUBJECT_REFS,
   };
   });
   const usd = panels.map((p) => p.usd);
-  const graph: Record<string, unknown>[] = [nxtionstarBrandNode(), ...products];
+  const graph: Record<string, unknown>[] = [nxtionstarBrandNode({ compact: true }), ...products];
   if (serviceName) {
     graph.splice(1, 0, {
       "@type": "Service",
@@ -647,7 +671,7 @@ export function panelProductsJsonLd(
       brand: nxtionstarBrandRef(),
       areaServed: { "@type": "Country", name: "Türkiye" },
       url: pageUrl,
-      isRelatedTo: BRAND_SUBJECT_DATASETS,
+      isRelatedTo: BRAND_SUBJECT_REFS,
       offers: {
         "@type": "AggregateOffer",
         "@id": `${pageUrl}#priced-panels-aggregate`,
@@ -668,8 +692,8 @@ export function panelProductsJsonLd(
           priceCurrency: "USD",
           valueAddedTaxIncluded: false,
         },
-        // Hub-first agents: band → per-SKU Offer @ids (scoped to panels on this page).
-        offers: pricedPanelOfferStubs(panels),
+        // Hub-first agents: band → per-SKU Offer @ids (scoped to panels on this page, references only).
+        offers: pricedPanelOfferRefs(panels),
       },
     });
   }

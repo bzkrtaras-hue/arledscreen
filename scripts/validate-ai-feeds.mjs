@@ -3770,8 +3770,7 @@ if (fs.existsSync(outDir)) {
     "en/led-ekran/index.html",
     "tr/hesaplayici/index.html",
     "en/hesaplayici/index.html",
-    "tr/quote/index.html",
-    "en/quote/index.html",
+    // quote pages removed 2026-10-09: no visible price table → no Product/Offer graph.
     "tr/yapay-zeka/index.html",
     "en/yapay-zeka/index.html",
     "tr/led-ekran-fiyatlari/index.html",
@@ -3969,12 +3968,17 @@ if (fs.existsSync(outDir)) {
         const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
         for (const node of nodes) {
           if (node?.["@type"] !== "LocalBusiness") continue;
-          if (
+          // 2026-10-09: LocalBusiness points at the Organization price band / catalog by @id
+          // (no duplicated 12-Offer graph per page). Full inline form still accepted.
+          const offerRef = node?.makesOffer?.["@id"] === "https://arledscreen.com/#priced-panels-aggregate";
+          const offerInline =
             node?.makesOffer?.["@type"] === "AggregateOffer" &&
             Array.isArray(node.makesOffer.offers) &&
-            node.makesOffer.offers.length === 12 &&
-            node?.hasOfferCatalog?.["@type"] === "OfferCatalog"
-          ) {
+            node.makesOffer.offers.length === 12;
+          const catalogOk =
+            node?.hasOfferCatalog?.["@type"] === "OfferCatalog" ||
+            String(node?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json");
+          if ((offerRef || offerInline) && catalogOk) {
             localOk = true;
             break;
           }
@@ -4036,64 +4040,69 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json faqs must include arleds.com vs arledscreen.com Q&A");
     process.exit(1);
   }
-  // FAQPage surfaces agents scrape for entity Q&A (SSS + home TR/EN + AI hub + commercial hubs).
-  const faqArledsPages = [
-    "tr/sss/index.html",
-    "en/sss/index.html",
-    "tr/index.html",
-    "en/index.html",
-    "tr/yapay-zeka/index.html",
-    "en/yapay-zeka/index.html",
-    "tr/led-ekran/index.html",
-    "en/led-ekran/index.html",
-    "en/led-ekran-satisi/index.html",
-    "en/led-ekran-ureticisi/index.html",
-    "en/led-ekran-montaj/index.html",
-    "en/led-ekran-kiralama/index.html",
-    "en/led-ekran-servis/index.html",
-    "en/products/gob-led-ekran/index.html",
-    "en/products/ic-mekan-led-ekran/index.html",
-    "en/products/dis-mekan-led-ekran/index.html",
-    "en/rehber/piksel-araligi-secimi/index.html",
-    "en/rehber/gob-vs-smd/index.html",
-    "en/rehber/kiralik-mi-satin-alma/index.html",
-    "en/rehber/led-tabela-mi-led-ekran-mi/index.html",
-    "en/hizmetler/index.html",
-    "en/bolgeler/index.html",
-    "en/projelerimiz/index.html",
-    "en/galeri/index.html",
-    "en/blog/index.html",
-    "tr/gizlilik/index.html",
-    "en/gizlilik/index.html",
-    "en/magaza-led-ekran/index.html",
-    "en/p2-5-led-ekran/index.html",
-    "tr/led-ekran-fiyatlari/index.html",
-    "en/led-ekran-fiyatlari/index.html",
-    "tr/nxtionstar/index.html",
-    "en/nxtionstar/index.html",
-  ];
-  for (const rel of faqArledsPages) {
-    const fp = path.join(outDir, rel);
-    if (!fs.existsSync(fp)) {
-      console.error(`❌ FAQ arleds page missing in out/: ${rel}`);
+  // FAQPage markup must match the visible page (audit 2026-10-09: 101 schema-only questions on 89 pages).
+  // Every FAQPage Question on every HTML page must appear in the page's visible text. The legacy-domain
+  // (arleds.com) and NationStar notes stay in Organization/Brand disambiguatingDescription, entity.json,
+  // ai-shopping.json and llms.txt (checked above), not as hidden FAQ entries.
+  {
+    const decode = (t) =>
+      t
+        .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+        .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+        .replace(/&quot;/g, '"')
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "&");
+    const norm = (t) => decode(t).replace(/\s+/g, " ").trim().toLowerCase();
+    const walkHtml = (dir) =>
+      fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+        const fp = path.join(dir, e.name);
+        if (e.isDirectory()) return walkHtml(fp);
+        return e.name.endsWith(".html") ? [fp] : [];
+      });
+    const collectQuestions = (o, acc) => {
+      if (Array.isArray(o)) o.forEach((x) => collectQuestions(x, acc));
+      else if (o && typeof o === "object") {
+        const t = o["@type"];
+        if ((t === "Question" || (Array.isArray(t) && t.includes("Question"))) && typeof o.name === "string") {
+          acc.push(o.name);
+        }
+        Object.values(o).forEach((v) => collectQuestions(v, acc));
+      }
+      return acc;
+    };
+    let faqTotal = 0;
+    const faqMissing = [];
+    for (const fp of walkHtml(outDir)) {
+      const html = fs.readFileSync(fp, "utf8");
+      if (!html.includes("FAQPage")) continue;
+      const questions = [];
+      for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+        try {
+          collectQuestions(JSON.parse(m[1]), questions);
+        } catch {
+          /* ignore */
+        }
+      }
+      if (!questions.length) continue;
+      const visible = norm(
+        html
+          .replace(/<script[\s\S]*?<\/script>/g, " ")
+          .replace(/<style[\s\S]*?<\/style>/g, " ")
+          .replace(/<[^>]+>/g, " "),
+      );
+      for (const q of questions) {
+        faqTotal += 1;
+        if (!visible.includes(norm(q))) faqMissing.push(`${path.relative(outDir, fp)}: ${q}`);
+      }
+    }
+    if (faqMissing.length) {
+      console.error(`❌ FAQPage questions not visible on page (${faqMissing.length}/${faqTotal}):`);
+      for (const line of faqMissing.slice(0, 20)) console.error(`   - ${line}`);
       process.exit(1);
     }
-    const html = fs.readFileSync(fp, "utf8");
-    const hasFaqPage = html.includes("FAQPage");
-    const hasArledsFaq =
-      html.includes("arleds.com ile arledscreen.com") ||
-      html.includes("Is arleds.com the same as arledscreen.com");
-    const hasNationStarFaq =
-      html.includes("NationStar") &&
-      (html.includes("NXTIONSTAR") || html.includes("N-X-T-I-O-N-S-T-A-R"));
-    if (!hasFaqPage || !hasArledsFaq) {
-      console.error(`❌ ${rel} FAQPage must include arleds.com vs arledscreen.com Q&A`);
-      process.exit(1);
-    }
-    if (!hasNationStarFaq) {
-      console.error(`❌ ${rel} FAQPage must disambiguate NXTIONSTAR vs NationStar`);
-      process.exit(1);
-    }
+    console.log(`✅ FAQPage: all ${faqTotal} schema questions are visible on their pages`);
   }
   // Sitewide Brand JSON-LD must carry NationStar disambiguatingDescription.
   const brandHtml = fs.readFileSync(path.join(outDir, "tr/index.html"), "utf8");
@@ -4431,8 +4440,9 @@ if (fs.existsSync(outDir)) {
     ["en/nxtionstar/index.html", (mid) => mid === "https://arledscreen.com/#brand-nxtionstar"],
     ["tr/index.html", (mid) => mid.includes("/tr/") && mid.endsWith("#service")],
     ["en/index.html", (mid) => mid.includes("/en/") && mid.endsWith("#service")],
-    ["tr/gizlilik/index.html", (mid) => mid.includes("/tr/gizlilik/") && mid.endsWith("#faqpage")],
-    ["en/gizlilik/index.html", (mid) => mid.includes("/en/gizlilik/") && mid.endsWith("#faqpage")],
+    // 2026-10-09: privacy page has no visible FAQ → no FAQPage; primary entity = Organization.
+    ["tr/gizlilik/index.html", (mid) => mid === "https://arledscreen.com/#organization"],
+    ["en/gizlilik/index.html", (mid) => mid === "https://arledscreen.com/#organization"],
     ["tr/rehber/index.html", (mid) => mid.includes("/tr/rehber/") && mid.endsWith("#rehber")],
     ["en/rehber/index.html", (mid) => mid.includes("/en/rehber/") && mid.endsWith("#rehber")],
   ]) {
@@ -4528,7 +4538,6 @@ if (fs.existsSync(outDir)) {
     ["tr/hesaplayici/index.html", "p2-5-ic"],
     ["en/led-ekran-fiyatlari/index.html", "p1-25-ic-gob"],
     ["en/hesaplayici/index.html", "p2-5-ic"],
-    ["en/quote/index.html", "p1-25-ic-gob"],
   ]) {
     const html = fs.readFileSync(path.join(outDir, rel), "utf8");
     let hubOk = false;
@@ -4586,10 +4595,13 @@ if (fs.existsSync(outDir)) {
             agg.offers.length >= 1 &&
             agg.offers.every(
               (o) =>
-                o?.["@type"] === "Offer" &&
-                String(o["@id"] || "").includes("/ai-shopping.json#offer-") &&
-                String(o?.description || "").includes("Ücretsiz kargo yok") &&
-                String(o?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar"),
+                String(o?.["@id"] || "").includes("/ai-shopping.json#offer-") &&
+                // 2026-10-09: @id-only references are the HTML default (full Offers live on the
+                // page's Product nodes + ai-shopping.json); a full inline Offer is still accepted.
+                (Object.keys(o).length === 1 ||
+                  (o?.["@type"] === "Offer" &&
+                    String(o?.description || "").includes("Ücretsiz kargo yok") &&
+                    String(o?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar"))),
             )
           ) {
             serviceOk = true;
@@ -4608,70 +4620,31 @@ if (fs.existsSync(outDir)) {
   }
   console.log("✅ AggregateOffer hubs (TR+EN) Product/Offer + Service→Org joins");
 
-  // HTML Dataset on quote-only + priced hubs must hasPart 12 Product stubs (mpn=sku).
-  for (const rel of [
-    "tr/products/esnek-led-ekran/index.html",
-    "tr/products/ince-pitch-led-ekran/index.html",
-    "tr/yapay-zeka/index.html",
-  ]) {
-    const html = fs.readFileSync(path.join(outDir, rel), "utf8");
-    let found = false;
-    for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
-      try {
-        const d = JSON.parse(m[1]);
-          if (d?.["@type"] === "Dataset" && Array.isArray(d.hasPart) && d.hasPart.length === 12) {
-          const dsSameAs = Array.isArray(d.sameAs) ? d.sameAs : [];
-          if (
-            dsSameAs.some((u) => String(u).includes("/ai-shopping.json")) &&
-            dsSameAs.some((u) => String(u).includes("/catalog.json")) &&
-            d.hasPart.every(
-              (p) =>
-                p?.sku &&
-                p.mpn === p.sku &&
-                String(p["@id"] || "").includes("#product") &&
-                Array.isArray(p.sameAs) &&
-                p.sameAs.some((u) => String(u).includes(`/catalog.json#${p.sku}`)) &&
-                p.mainEntityOfPage === p.url &&
-                String(p?.offers?.["@id"] || "").includes(`/ai-shopping.json#offer-${p.sku}`) &&
-                Array.isArray(p?.offers?.sameAs) &&
-                p.offers.sameAs.some((u) => String(u).includes("#offer")) &&
-                String(p?.offers?.itemOffered?.["@id"] || "").endsWith("#product") &&
-                String(p?.brand?.["@id"] || "").includes("#brand-nxtionstar") &&
-                Boolean(p?.offers?.price) &&
-                String(p?.offers?.description || "").includes("Ücretsiz kargo yok") &&
-                p?.offers?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness",
-            )
-          ) {
-            const dist = JSON.stringify(d.distribution || []);
-            if (
-              !dist.includes("/merchant.json") ||
-              !dist.includes("/offer.json") ||
-              !dist.includes("/panels.json") ||
-              !dist.includes("/modules.json") ||
-              !dist.includes("/sku.json") ||
-              !dist.includes("/.well-known/modules.json") ||
-              !dist.includes("/.well-known/sku.json") ||
-              !dist.includes("/.well-known/prices.json") ||
-              !dist.includes("/brand.json") ||
-              !dist.includes("/entity.json")
-            ) {
-              console.error(`❌ ${rel} Dataset.distribution must include invent aliases (modules/sku/well-known) + brand/entity/point-c`);
-              process.exit(1);
-            }
-            found = true;
-            break;
-          }
+  // 2026-10-09 (GSC Dataset report: "description alanı eksik", 66 items): normal HTML pages carry no
+  // Dataset/DataFeed JSON-LD. Price data stays in ai-shopping.json / catalog.json / feeds (checked above).
+  {
+    const walkHtml = (dir) =>
+      fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+        const fp = path.join(dir, e.name);
+        if (e.isDirectory()) return walkHtml(fp);
+        return e.name.endsWith(".html") ? [fp] : [];
+      });
+    const withDataset = [];
+    for (const fp of walkHtml(outDir)) {
+      const html = fs.readFileSync(fp, "utf8");
+      for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+        if (/"@type":"(Dataset|DataFeed)"/.test(m[1])) {
+          withDataset.push(path.relative(outDir, fp));
+          break;
         }
-      } catch {
-        /* ignore */
       }
     }
-    if (!found) {
-      console.error(`❌ ${rel} Dataset must hasPart 12 Products (mpn=sku, @id …#product)`);
+    if (withDataset.length) {
+      console.error(`❌ HTML JSON-LD must not contain Dataset/DataFeed nodes (${withDataset.length} pages), e.g. ${withDataset.slice(0, 5).join(", ")}`);
       process.exit(1);
     }
+    console.log("✅ HTML JSON-LD: no Dataset/DataFeed nodes (price data lives in JSON/TSV/RSS files)");
   }
-  console.log("✅ HTML Dataset hasPart×12 on quote-only + fine-pitch + yapay-zeka");
 
   const homeHtml = fs.readFileSync(path.join(outDir, "tr/index.html"), "utf8");
   for (const needle of [
@@ -4689,7 +4662,7 @@ if (fs.existsSync(outDir)) {
   console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms, ai.txt); product paths exist");
   console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);
   console.log(`✅ HTML/schema arleds.com disambiguation: ${orgSchemaPages.length} pages + about/founder body`);
-  console.log(`✅ FAQPage arleds Q&A: ${faqArledsPages.length} pages + IndexNow about/founder/sss/ai.txt`);
+  console.log("✅ FAQPage = visible FAQs only; arleds.com/NationStar notes in Org/Brand JSON-LD + entity/ai-shopping/llms");
 }
 
 // Live robots.txt is served by Pages Function — keep Allow list in sync with robots.ts.

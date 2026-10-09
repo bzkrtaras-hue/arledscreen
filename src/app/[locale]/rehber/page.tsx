@@ -9,7 +9,6 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { getSeoGuideHub, listSeoGuides } from "@/content/seo-guides";
 
 interface PageProps {
@@ -95,12 +94,6 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
           mainEntity={{ "@id": `${hubUrl}#rehber` }}
         />
       ) : null}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricedPanelsDatasetJsonLd(hubUrl)),
-        }}
-      />
 
       <Section
         titleAs="h1"

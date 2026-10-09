@@ -4,12 +4,9 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
-import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
-import { getFaqs } from "@/content/faqs";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
@@ -46,19 +43,6 @@ export async function generateMetadata({
   });
 }
 
-const FAQS_EN = [
-  {
-    question: "Are gallery photos from real installs?",
-    answer:
-      "Yes — field and reference photos grouped by use case. Project size/pitch details stay on published records under /en/projelerimiz/ (case pages TR).",
-  },
-  {
-    question: "Where are published panel USD prices?",
-    answer:
-      "Our price list at /en/led-ekran-fiyatlari/. VAT/freight excluded; no free shipping.",
-  },
-];
-
 export default async function GaleriPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
   if (raw !== "tr" && raw !== "en") notFound();
@@ -66,12 +50,6 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
   const en = locale === "en";
   const base = `/${locale}`;
   const pageUrl = absoluteUrl(`${base}/galeri/`);
-  const entityFaqs = en
-    ? getFaqs("en").filter(
-        (f) => f.question.includes("NationStar") || f.question.includes("arleds.com"),
-      )
-    : [];
-  const faqs = en ? [...FAQS_EN, ...entityFaqs] : [];
 
   return (
     <>
@@ -108,13 +86,6 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
         }
         cssSelectors={["#galeri-h1", "#galeri-lead"]}
         mainEntity={{ "@id": `${pageUrl}#gallery` }}
-      />
-      {faqs.length ? <FaqJsonLd faqs={faqs} /> : null}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricedPanelsDatasetJsonLd(pageUrl)),
-        }}
       />
 
       <section className="bg-white pt-8 pb-2 sm:pt-10 md:pt-12">
