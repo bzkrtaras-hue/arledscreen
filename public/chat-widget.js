@@ -377,6 +377,9 @@
     var r = teaser.getBoundingClientRect();
     teaser.hidden = true;
     teaser.classList.remove("acd-measure");
+    return !coversControl(r);
+  }
+  function coversControl(r) {
     var els = document.querySelectorAll('a[href],button,input,select,textarea,[role="button"]');
     for (var i = 0; i < els.length; i++) {
       var e = els[i];
@@ -384,9 +387,23 @@
       var q = e.getBoundingClientRect();
       if (!q.width || !q.height) continue;
       var ix = Math.min(r.right, q.right) - Math.max(r.left, q.left), iy = Math.min(r.bottom, q.bottom) - Math.max(r.top, q.top);
-      if (ix > 0 && iy > 0 && (ix * iy) / (q.width * q.height) > 0.2) return false; /* büyük kartın küçük bir köşesi sorun değil */
+      if (ix > 0 && iy > 0 && (ix * iy) / (q.width * q.height) > 0.2) return true; /* büyük kartın küçük bir köşesi sorun değil */
     }
-    return true;
+    return false;
+  }
+  /* Mobil: balon açıkken kaydırma onu bir düğmenin (ör. ilk ekrandaki "Fiyat hesapla") üstüne getirirse balonu kapat; bu ziyarette tekrar açılmaz, rozet kalır. */
+  var guardRaf = 0;
+  function teaserGuard() {
+    if (guardRaf) return;
+    guardRaf = requestAnimationFrame(function () {
+      guardRaf = 0;
+      if (!teaser || teaser.hidden || isOpen) return;
+      if (coversControl(teaser.getBoundingClientRect())) autoHideTeaser();
+    });
+  }
+  function stopGuard() {
+    window.removeEventListener("scroll", teaserGuard);
+    window.removeEventListener("resize", teaserGuard);
   }
   function waitForSpace() {
     if (spaceWait) return;
@@ -412,7 +429,11 @@
     badge.hidden = false;
     root.classList.add("acd-attn");
     clearTimeout(autoTimer);
-    if (mobile()) autoTimer = setTimeout(autoHideTeaser, 8000);
+    if (mobile()) {
+      autoTimer = setTimeout(autoHideTeaser, 8000);
+      window.addEventListener("scroll", teaserGuard, { passive: true });
+      window.addEventListener("resize", teaserGuard, { passive: true });
+    }
     if (reduced()) { setTeaserText(); return; }
     teaserMsg.textContent = "";
     var typing = el("span", "acd-typing", { role: "img", "aria-label": T.typing });
@@ -430,9 +451,11 @@
       n.textContent = T.note;
       teaserMsg.appendChild(n);
     }
+    if (mobile()) teaserGuard();
   }
   /* Mobil: ~8 sn sonra yalnızca başlatıcı + rozet kalır (bu ziyarette tekrar açılmaz). */
   function autoHideTeaser() {
+    stopGuard();
     if (!teaser || teaser.hidden || isOpen) return;
     teaser.hidden = true;
     root.classList.remove("acd-attn");
@@ -442,6 +465,7 @@
     clearTimeout(teaserTimer);
     clearTimeout(autoTimer);
     if (spaceWait) { window.removeEventListener("scroll", spaceWait); spaceWait = null; }
+    stopGuard();
     if (!teaser) return;
     teaser.hidden = true;
     badge.hidden = true;
