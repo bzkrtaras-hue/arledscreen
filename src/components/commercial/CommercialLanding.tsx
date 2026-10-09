@@ -293,8 +293,8 @@ export function CommercialLanding({
             </h2>
             <p className="mb-4 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
               {tr
-                ? "Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster, kiralık ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir."
-                : "Published 12 NXTIONSTAR panel USD. Quote-only groups (transparent, flexible, poster, rental, control) have no fixed list price — written quote."}
+                ? "Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir."
+                : "Published 12 NXTIONSTAR panel USD. Quote-only groups (transparent, flexible, poster, control) have no fixed list price — written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately."}
             </p>
             <PanelPriceTable
               locale={tr ? "tr" : "en"}

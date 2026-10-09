@@ -316,7 +316,7 @@ const INTENT_PAGES: CommercialPage[] = [
     eyebrow: "Kiralama",
     lead: "Kısa süreli etkinlik, sahne ve fuarlar için kiralık LED ekran kurulumu planlıyoruz.",
     intro: [
-      "Satın alma yerine kısa süreli ihtiyaçlarda kiralık LED ekran daha verimli olabilir. Ölçü, süre ve kurulum lokasyonu teklifi belirler.",
+      "Satın alma yerine kısa süreli ihtiyaçlarda kiralık LED ekran daha verimli olabilir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
       "Kiralık ürün grubu ve kiralık mı satın alma rehberi ile karşılaştırma yapabilirsiniz.",
       NAP,
     ],
@@ -1137,7 +1137,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Stage and event LED — purchase walls or rental cabinets with install/strike support.",
     intro: [
       "The published Kadıköy Matiz Sahne record is a stage/outdoor example. Short runs often favour rental cabinets.",
-      "Purchase panel USD is published; rental stays quote-only (no fixed rental price).",
+      "Purchase panel USD is published. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       NAP_EN,
     ],
     bullets: ["Rent or buy decision", "Size and days quote", "Install + strike plan"],
@@ -1146,7 +1146,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Is stage rental on the price list?",
         answer:
-          "No. Our price list is purchase panel USD only. Stage rental is quote-only after size, days and site. Compare purchase via /en/led-ekran-fiyatlari/.",
+          "No. Our price list is purchase panel USD only. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. Compare purchase via /en/led-ekran-fiyatlari/.",
       },
     ],
   },
@@ -1225,7 +1225,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Stage-backdrop and side-wall LED for wedding halls — rental for short runs, purchase for permanent installs.",
     intro: [
       "Stage and side-wall LED is common in wedding venues. Short events may favour rental cabinets.",
-      "Purchase panel USD published; rental stays quote-only (no fixed rental price).",
+      "Purchase panel USD published. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       NAP_EN,
     ],
     bullets: ["Rent or buy", "Stage size survey", "Install + strike plan"],
@@ -1234,7 +1234,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Is wedding-hall rental on the price list?",
         answer:
-          "No. Our price list is purchase panel USD only. Rental is quote-only after size, days and site.",
+          "Our price list is purchase panel USD. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       },
     ],
   },
@@ -1269,7 +1269,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Booth and temporary LED for fairs — rental or purchase by event duration.",
     intro: [
       "The published Ünye Belediyesi Ordu Günleri stand (Atatürk Airport Millet Bahçesi) is a booth example — not a template.",
-      "Purchase panel USD published; rental quote-only. No free shipping.",
+      "Purchase panel USD published. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Duration drives rent vs buy", "Booth size survey", "Install + strike"],
@@ -1278,7 +1278,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Rent or buy for a three-day fair?",
         answer:
-          "Short fairs usually favour rental. Compare purchase panel USD at /en/led-ekran-fiyatlari/; rental stays quote-only.",
+          "Short fairs usually favour rental. Compare purchase panel USD at /en/led-ekran-fiyatlari/. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       },
     ],
   },
@@ -1818,7 +1818,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       eyebrow: "Rental",
       lead: "We plan rental LED installs for short-run events, stages and fairs.",
       intro: [
-        "For short needs, rental can beat purchase. Size, duration and install location set the quote — rental is quote-only (no fixed published rental USD).",
+        "For short needs, rental can beat purchase. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
         "Compare with purchase using our price list and calculator when ownership makes more sense.",
         NAP_EN,
       ],
@@ -1843,12 +1843,12 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Rent or buy?",
           answer:
-            "One-off events usually favor rental; continuous use usually favors purchase. Panel purchase USD is published at /en/led-ekran-fiyatlari/; rental stays quote-only.",
+            "One-off events usually favor rental; continuous use usually favors purchase. Panel purchase USD is published at /en/led-ekran-fiyatlari/. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
         },
         {
           question: "Is there a published fixed rental price?",
           answer:
-            "No. Rental LED is quote-only after size, days and site conditions. There is no fixed rental price; the published list covers purchase panels only.",
+            "Yes. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request a rental quote" },

@@ -2,6 +2,16 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-009 — Garanti 2 yıl + 5 yıl servis, kiralık 50 USD/m²/gün (Aras Bey kararları)
+
+- **Kaynak:** Aras Bey: 2 yıl garanti + 5 yıl ücretsiz teknik servis (1 Eki 2026, site metni için onaylı); kiralık iç/dış mekân LED 50 USD/m²/gün, kurulum ve nakliye ayrı teklif (4 Eki 2026)
+- **Garanti:** "seriye/projeye göre belirlenir" ve "garanti yılı sitede sabit yayımlanmaz" yanıtları → "ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar." (TR/EN ana sayfa SSS cevabı, /tr/sss/, llms.txt, llms-full.txt, ai-shopping agentGuidelines.warranty, AGENTS.md)
+- **Kiralık:** "teklifle/quote-only, sabit fiyat yok" → "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir." (/tr/led-ekran-kiralama/, /tr/products/kiralik-led-ekran/, /tr/sss/, fiyat/ürün/yapay-zeka/hesaplayıcı notları, rehberler, EN eşleri, llms*, ai-shopping agentGuidelines.rental; quoteOnlyGroups'tan "Kiralık/Rental" çıkarıldı)
+- **Dokunulmadı:** ana sayfada garanti cevabı dışında hiçbir metin/yerleşim (TR/EN ana sayfa SSS fiyat cevabındaki "kiralık" ifadesi bilerek bırakıldı); header/title/H1/hero; FAQ JSON-LD üretimi; scripts/validate-ai-feeds.mjs; fiyat.arledscreen.com; CSS
+- **Görünen AI/geliştirici metni:** main'de (#70 sonrası) TR sayfalarda "AI ajanları panel fiyatını nereden okur?" / "Kaynak: ai-shopping.json …" görünen metni kalmamış; build çıktısında doğrulandı, ek değişiklik gerekmedi
+- **Doğrulama:** npm run build + postbuild validatörleri (13/13 feed, no-owner-gate) geçti; ana sayfa öncesi/sonrası tam sayfa ekran görüntüsü (1366 ve 390 px) piksel farkı yok (SSS kapalı)
+- **Production:** Ali / Aras Bey onayı → squash merge → manual deploy
+
 ## ARL-20261009-008 — EN "P1.86 GOB GOB" model link etiketi
 
 - **Kaynak:** Ali, canlı 390 px ekran görüntüsü (/en/p1-86-led-ekran/ "Related products")

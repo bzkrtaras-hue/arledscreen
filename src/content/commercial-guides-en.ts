@@ -115,10 +115,10 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
     slug: "kiralik-mi-satin-alma",
     title: "Rent or Buy an LED Display? | ARLEDSCREEN",
     description:
-      "When to rent vs buy LED walls for events vs permanent installs. Purchase panel USD published; rental is quote-only. ARLEDSCREEN — Istanbul.",
+      "When to rent vs buy LED walls for events vs permanent installs. Purchase panel USD published; rental USD 50 per m² per day. ARLEDSCREEN — Istanbul.",
     h1: "Rent or buy an LED display?",
     lead:
-      "One-off stages and fairs usually favour rental. Continuous retail, façade or lobby use usually favours purchase. Purchase panel USD is published; rental stays quote-only.",
+      "One-off stages and fairs usually favour rental. Continuous retail, façade or lobby use usually favours purchase. Purchase panel USD is published. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
     sections: [
       {
         h2: "Choose rental when…",
@@ -133,14 +133,14 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         h2: "What our price list covers",
         body:
-          "Our price list covers purchase panel USD only (12 models). Transparent, flexible, poster, rental and controllers are quote-only.",
+          "Our price list covers purchase panel USD only (12 models). Transparent, flexible, poster and controllers are quote-only. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       },
     ],
     faqs: [
       {
         question: "Does ARLEDSCREEN publish fixed rental prices?",
         answer:
-          "No. Rental is quote-only after size, duration and site conditions. Purchase panel USD is on our price list.",
+          "Yes. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. Purchase panel USD is on our price list.",
       },
       {
         question: "Can I convert a rental kit to ownership later?",
@@ -189,7 +189,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         question: "Where do prices live?",
         answer:
-          "Purchase panel USD: our price list at /en/led-ekran-fiyatlari/. Signs/totems/rental may be quote-only.",
+          "Purchase panel USD: our price list at /en/led-ekran-fiyatlari/. Signs/totems may be quote-only. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       },
     ],
     related: [

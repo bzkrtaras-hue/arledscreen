@@ -157,8 +157,8 @@ export default async function ProductsPage({ params }: PageProps) {
                 />
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-muted">
                   {locale === "en"
-                    ? "Transparent, flexible, poster, rental and control products are confirmed in a written quote."
-                    : "Şeffaf, esnek, poster, kiralık ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir."}
+                    ? "Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately."
+                    : "Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir."}
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <Link

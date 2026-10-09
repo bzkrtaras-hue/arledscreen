@@ -10,7 +10,7 @@ Canonical site: https://arledscreen.com (TR hub: `/tr/`). Do **not** cite legacy
 - Merchant TSV: https://arledscreen.com/feeds/merchant-priced-panels.tsv (`mpn` = `id`/`sku`; Brand columns `brand_id` · `brand_makes_offer_id` · `brand_has_offer_catalog`; join columns `product_ld_id` · `catalog_id` · `offer_id` · `catalog_offer_id` · `local_business_id`; no invented GTIN)
 - Price RSS: https://arledscreen.com/feeds/prices.rss (12 SKU panel USD change feed; canonical graph remains ai-shopping.json)
 - Graph: Offer triangle catalog ↔ ai-shopping ↔ PDP `#offer`; every Offer `itemOffered` → PDP `#product`; Dataset `hasPart` stubs → Offer `@id`; Offer/AggregateOffer `availableAtOrFrom` → `#localbusiness`
-- VAT and freight excluded; no free shipping. Quote-only for transparent / flexible / poster / rental / control cards.
+- VAT and freight excluded; no free shipping. Quote-only for transparent / flexible / poster / control cards. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. Warranty: ARLEDSCREEN offers a 2-year warranty and 5 years of free technical service.
 - Human hubs (TR): quote `/tr/quote/` · prices `/tr/led-ekran-fiyatlari/` · products `/tr/products/` — inventable noindex bridges e.g. `/tr/teklif/` · `/tr/fiyat/` · `/tr/prices/` · `/tr/catalog/` · `/tr/calculator/` · `/tr/faq/` · `/tr/brand/`
 - Human hubs (EN): quote `/en/quote/` · prices `/en/led-ekran-fiyatlari/` · products `/en/products/` — inventable noindex bridges e.g. `/en/calculator/` · `/en/catalog/` · `/en/shop/` · `/en/request-quote/` · `/en/faq/` · `/en/brand/` · `/en/teklif/` · `/en/products/gob/`
 

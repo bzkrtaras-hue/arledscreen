@@ -62,6 +62,8 @@ export interface AiShoppingIndex {
     shippingAndVat: string;
     returnPolicy: string;
     quoteOnlyGroups: string[];
+    rental: string;
+    warranty: string;
     noFixedClaims: string[];
     roleClarity: Record<string, unknown>;
   };
@@ -163,13 +165,13 @@ export function buildAiShoppingIndex(): AiShoppingIndex {
         "Şeffaf / vitrin",
         "Esnek",
         "Poster",
-        "Kiralık",
         "Kontrol kartı (Huidu/NovaStar/Colorlight)",
       ],
+      rental: "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
+      warranty: "ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar.",
       noFixedClaims: [
         "Sertifika (CE/RoHS/ISO/UL/ETL) — model veya teklifle",
         "Nit, IP, kW — model veya teklifle",
-        "Garanti yılı — sözleşmede",
         "Çalışan sayısı, ciro, müşteri, ranking — yayımlanmadı",
       ],
       roleClarity: {

@@ -83,7 +83,7 @@ ARLEDSCREEN'in fiyat listesi ve hesaplayıcısı USD bazlıdır. Kesin tutar ve 
 Hayır. Hesaplayıcı yaklaşık maliyeti gösterir. Kesin fiyat; keşif, montaj koşulları ve malzeme listesiyle birlikte yazılı teklifte paylaşılır.
 
 **Kiralık LED ekran fiyatı nasıl belirlenir?**
-Kiralık ekranlarda fiyat ölçü, kiralama süresi, etkinlik lokasyonu ve kurulum koşullarına göre etkinliğe özel hazırlanır.
+İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.
 
 ---
 *Güncel fiyatlar: [fiyat hesaplayıcı](/tr/hesaplayici/) · [LED ekran fiyatları](/tr/led-ekran-fiyatlari/). KDV ve nakliye hariçtir; ücretsiz kargo yoktur. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Teklif: +90 530 507 88 34 · arled@arledscreen.com*
