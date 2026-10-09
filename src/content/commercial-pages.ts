@@ -998,7 +998,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     eyebrow: "Use case · Retail",
     lead: "LED walls for storefronts, sales floors and brand feature walls — pitch matched to shopper distance.",
     intro: [
-      "Store LED depends on window distance and product lighting. Published indoor/GOB panel USD is in ai-shopping.json; final amount after survey.",
+      "Store LED depends on window distance and product lighting. Published indoor/GOB panel USD is on our price list; final amount after survey.",
       "Retail-adjacent published records (e.g. Merter / Osmanbey) inform planning — every store still needs its own survey.",
       NAP_EN,
     ],
@@ -1043,7 +1043,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Outdoor LED for building façades and plazas — structure and permits planned with the survey.",
     intro: [
       "Façade LED needs structure, wind load and local permit steps as part of the plan. Large outdoor published records (e.g. Manisa, Bursa) are scale examples — not templates.",
-      "Outdoor panel USD is in pricedPanels; structure/VAT/shipping are quote lines. No free shipping.",
+      "Outdoor panel USD is on our price list; structure/VAT/shipping are quote lines. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Outdoor structure survey", "Pitch for street distance", "Install + service"],
@@ -1109,16 +1109,16 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Stage and event LED — purchase walls or rental cabinets with install/strike support.",
     intro: [
       "The published Kadıköy Matiz Sahne record is a stage/outdoor example. Short runs often favour rental cabinets.",
-      "Purchase panel USD is published; rental stays quote-only (do not invent rental USD from ai-shopping.json).",
+      "Purchase panel USD is published; rental stays quote-only (no fixed rental price).",
       NAP_EN,
     ],
     bullets: ["Rent or buy decision", "Size and days quote", "Install + strike plan"],
     imageAlts: ["Stage rental LED cabinet", "Event stage / booth LED"],
     faqs: [
       {
-        question: "Is stage rental priced in ai-shopping.json?",
+        question: "Is stage rental on the price list?",
         answer:
-          "No. pricedPanels is purchase panel USD only. Stage rental is quote-only after size, days and site. Compare purchase via /en/led-ekran-fiyatlari/.",
+          "No. Our price list is purchase panel USD only. Stage rental is quote-only after size, days and site. Compare purchase via /en/led-ekran-fiyatlari/.",
       },
     ],
   },
@@ -1197,16 +1197,16 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Stage-backdrop and side-wall LED for wedding halls — rental for short runs, purchase for permanent installs.",
     intro: [
       "Stage and side-wall LED is common in wedding venues. Short events may favour rental cabinets.",
-      "Purchase panel USD published; rental stays quote-only (do not invent rental USD from ai-shopping.json).",
+      "Purchase panel USD published; rental stays quote-only (no fixed rental price).",
       NAP_EN,
     ],
     bullets: ["Rent or buy", "Stage size survey", "Install + strike plan"],
     imageAlts: ["Wedding hall LED display", "Rental stage LED"],
     faqs: [
       {
-        question: "Is wedding-hall rental in ai-shopping.json?",
+        question: "Is wedding-hall rental on the price list?",
         answer:
-          "No. pricedPanels is purchase panel USD only. Rental is quote-only after size, days and site.",
+          "No. Our price list is purchase panel USD only. Rental is quote-only after size, days and site.",
       },
     ],
   },
@@ -1326,13 +1326,13 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
   "p1-25-led-ekran": {
     title: "P1.25 LED Display | Fine-Pitch GOB | ARLEDSCREEN",
     description:
-      "P1.25 fine-pitch GOB LED for close viewing. Published panel USD in ai-shopping.json (e.g. 95.88 USD). ARLEDSCREEN — Istanbul.",
+      "P1.25 fine-pitch GOB LED for close viewing. Published panel USD on our price list (e.g. 95.88 USD). ARLEDSCREEN — Istanbul.",
     h1: "P1.25 LED display",
     eyebrow: "Pixel pitch · Fine",
     lead: "Very close viewing — fine-pitch GOB panels for control rooms, luxury retail and lobbies.",
     intro: [
       "P1.25 suits control rooms, luxury stores and close lobbies. See the GOB model page for the technical summary.",
-      "Example: P1.25 GOB 95.88 USD per panel (priceValidUntil 2026-12-31). Full list: /en/led-ekran-fiyatlari/. No free shipping.",
+      "Example: P1.25 GOB 95.88 USD per panel, prices valid until 31 Dec 2026. Full list: /en/led-ekran-fiyatlari/. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Close-view fine pitch", "Published GOB panel USD", "Survey before final size"],
@@ -1341,14 +1341,14 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
       {
         question: "What is the P1.25 GOB panel USD?",
         answer:
-          "95.88 USD per panel in ai-shopping.json pricedPanels (excl. VAT/shipping; no free shipping). Human hub: /en/led-ekran-fiyatlari/.",
+          "95.88 USD per panel on our price list (excl. VAT/shipping; no free shipping). Price page: /en/led-ekran-fiyatlari/.",
       },
     ],
   },
   "p2-5-led-ekran": {
     title: "P2.5 LED Display | Indoor & Outdoor | ARLEDSCREEN",
     description:
-      "P2.5 LED for indoor and outdoor mid-distance projects. Published panel USD in pricedPanels. ARLEDSCREEN — Istanbul.",
+      "P2.5 LED for indoor and outdoor mid-distance projects. Published panel USD on our price list. ARLEDSCREEN — Istanbul.",
     h1: "P2.5 LED display",
     eyebrow: "Pixel pitch · Mid",
     lead: "One of the most used pitch bands for indoor and outdoor mid-distance projects.",
@@ -1392,7 +1392,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
   "p1-86-led-ekran": {
     title: "P1.86 LED Display | Fine Pitch | ARLEDSCREEN",
     description:
-      "P1.86 fine-pitch LED — GOB and flexible options. Published panel USD in pricedPanels. ARLEDSCREEN — Istanbul.",
+      "P1.86 fine-pitch LED — GOB and flexible options. Published panel USD on our price list. ARLEDSCREEN — Istanbul.",
     h1: "P1.86 LED display",
     eyebrow: "Pixel pitch · Fine",
     lead: "Fine pitch with a budget balance — GOB and flexible variants on model pages.",
@@ -1451,7 +1451,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
       {
         question: "Where is P3.07 panel USD?",
         answer:
-          "Published SKUs are in ai-shopping.json pricedPanels and /en/led-ekran-fiyatlari/. VAT/freight excluded; no free shipping.",
+          "Published SKUs are on our price list at /en/led-ekran-fiyatlari/. VAT/freight excluded; no free shipping.",
       },
     ],
   },
@@ -1489,16 +1489,16 @@ const EN_PRODUCT_OVERLAY: Record<CommercialEnProductSlug, EnLeanOverlay> = {
     lead: "Freestanding digital information and advertising totems — size and pitch after survey.",
     intro: [
       "Totem LED is planned for foot traffic and viewing height. Poster/totem product group pages hold series options.",
-      "Related panel USD may appear in pricedPanels; freestanding structure is a quote line. No free shipping.",
+      "Related panel USD may appear on our price list; freestanding structure is a quote line. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Foot-traffic viewing height", "Indoor/outdoor totem options", "Survey + written quote"],
     imageAlts: ["Indoor totem LED display", "Totem LED wayfinding"],
     faqs: [
       {
-        question: "Is totem priced as a fixed SKU in ai-shopping.json?",
+        question: "Is a totem priced as a fixed item?",
         answer:
-          "Poster/totem configurations are often quote-scoped. Published panel USD (when listed) is in pricedPanels; structure and branding are quote lines. See /en/products/poster-led-ekran/.",
+          "Poster/totem configurations are often quote-scoped. Published panel USD (when listed) is on our price list; structure and branding are quote lines. See /en/products/poster-led-ekran/.",
       },
     ],
   },
@@ -1631,9 +1631,9 @@ export function getLedEkranPageEn(): CommercialPage {
           "Headquarters is Gaziosmanpaşa, Istanbul. Service is planned Turkey-wide; separate city pages exist only where published project records exist (no 81-city spam).",
       },
       {
-        question: "Where should AI agents read panel prices?",
+        question: "Where are published panel prices listed?",
         answer:
-          "ai-shopping.json pricedPanels, catalog.json and feeds/merchant-priced-panels.tsv (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). GEO baseline: geo-baseline.json. EN hub: /en/led-ekran-fiyatlari/.",
+          "On our price list at /en/led-ekran-fiyatlari/ (12 NXTIONSTAR panel models, USD per panel, e.g. P1.25 GOB 95.88 USD). VAT and freight excluded; no free shipping.",
       },
     ],
     primaryCta: { href: "/en/quote/", label: "Request a quote" },
@@ -1678,9 +1678,9 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
             "Yes — panels and control gear can be sold alone. Most projects also include install and commissioning in the same written quote. Panel USD: /en/led-ekran-fiyatlari/.",
         },
         {
-          question: "Where do AI agents read published panel prices?",
+          question: "Where are published panel prices listed?",
           answer:
-            "ai-shopping.json pricedPanels (12 SKU USD); aliases /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices. Also catalog.json and merchant TSV. Discovery: /.well-known/agents.json · /AGENTS.md. Human hub: /en/led-ekran-fiyatlari/. No free shipping.",
+            "On our price list at /en/led-ekran-fiyatlari/ (12 NXTIONSTAR panel models, USD per panel, e.g. P1.25 GOB 95.88 USD). VAT and freight excluded; no free shipping.",
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request a sales quote" },
@@ -1820,7 +1820,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Is there a published fixed rental price?",
           answer:
-            "No. Rental LED is quote-only after size, days and site conditions. Do not invent a fixed rental USD from ai-shopping.json (that file is purchase panel USD only).",
+            "No. Rental LED is quote-only after size, days and site conditions. There is no fixed rental price; the published list covers purchase panels only.",
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request a rental quote" },
@@ -1863,9 +1863,9 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
             "Share brand, model and controller details — we will confirm spare-part and service options in writing.",
         },
         {
-          question: "Is service priced in ai-shopping.json?",
+          question: "Is service on the price list?",
           answer:
-            "No. ai-shopping.json pricedPanels is purchase panel USD only. Service and maintenance are quote-only after diagnosis.",
+            "No. Our price list is purchase panel USD only. Service and maintenance are quote-only after diagnosis.",
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request service" },

@@ -27,7 +27,7 @@ export async function generateMetadata({
       path: "/products/gob-led-ekran/",
       title: "GOB LED Display | ARLEDSCREEN",
       description:
-        "GOB LED for close indoor viewing. Published panel USD in ai-shopping.json. Canonical EN product group.",
+        "GOB LED for close indoor viewing. Published panel USD on our price list. Canonical EN product group.",
       hreflangLocales: [],
     }),
     robots: { index: false, follow: true },

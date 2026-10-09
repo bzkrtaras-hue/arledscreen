@@ -112,7 +112,7 @@ export default async function QuotePage({ params }: PageProps) {
                 about: { "@id": `${SITE_URL}/#organization` },
                 isRelatedTo: BRAND_SUBJECT_DATASETS,
                 description:
-                  "Ölçü ve kullanım amacına göre yazılı teklif. Yayımlanmış 12 panel USD: ai-shopping.json pricedPanels / catalog.json; ücretsiz kargo yok.",
+                  "Ölçü ve kullanım amacına göre yazılı teklif. Yayımlanmış 12 panelin USD fiyatı fiyat listemizdedir; ücretsiz kargo yok.",
               }),
             }}
           />
@@ -232,7 +232,7 @@ export default async function QuotePage({ params }: PageProps) {
               about: { "@id": `${SITE_URL}/#organization` },
               isRelatedTo: BRAND_SUBJECT_DATASETS,
               description:
-                "Written quote by size and use case. Published 12 panel USD: ai-shopping.json pricedPanels / catalog.json; no free shipping.",
+                "Written quote by size and use case. Published USD prices for 12 panels are on our price list; no free shipping.",
             }),
           }}
         />

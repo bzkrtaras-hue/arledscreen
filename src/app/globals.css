@@ -24,6 +24,8 @@
     max-width: 100%;
     -webkit-text-size-adjust: 100%;
     touch-action: manipulation;
+    /* Anchor jumps (#panel-fiyatlari etc.) land below the fixed header (≤118px on mobile, 110px on desktop). */
+    scroll-padding-top: 8.25rem;
   }
 
   body {

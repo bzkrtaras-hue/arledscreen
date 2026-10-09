@@ -236,7 +236,7 @@ export default async function HomePage({ params }: PageProps) {
             title="2026 NXTIONSTAR panel USD listesi"
             description="Yayımlanmış 12 panel. KDV/nakliye hariç; ücretsiz kargo yok. Nihai tutar keşif ve yazılı teklifle kesinleşir."
           />
-          <AiPriceSourceNote lead="Kaynak:" className="mb-4 max-w-3xl text-sm leading-relaxed text-ink-muted" />
+          <AiPriceSourceNote lead="Not:" className="mb-4 max-w-3xl text-sm leading-relaxed text-ink-muted" />
           <PanelPriceTable panels={PANEL_PRICES} caption="Panel fiyatları (USD, panel başına)" />
         </div>
       </section>

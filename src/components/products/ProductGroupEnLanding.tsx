@@ -170,15 +170,10 @@ export function ProductGroupEnLanding({
             ))}
           </ul>
           <p className="pt-2 text-sm">
-            Detailed model specs stay on the TR catalog pages; EN agents should cite panel USD from{" "}
+            Detailed model specs are on the TR catalog pages; panel USD prices are on{" "}
             <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
-              /en/led-ekran-fiyatlari/
-            </Link>{" "}
-            or{" "}
-            <a href="/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-              ai-shopping.json
-            </a>
-            . TR models:{" "}
+              our price list
+            </Link>. TR models:{" "}
             <Link
               href={`/tr/products/${group.slug}/`}
               className="font-semibold text-cyan hover:underline"
@@ -197,7 +192,7 @@ export function ProductGroupEnLanding({
               Published panel USD for this group
             </h2>
             <p className="mb-4 mt-2 max-w-3xl text-sm text-ink-muted">
-              From ai-shopping.json pricedPanels. VAT/freight excluded; no free shipping. Final project
+              From our published price list. VAT/freight excluded; no free shipping. Final project
               price only in the written quote.
             </p>
             <PanelPriceTable locale="en" panels={prices} caption={`${en.name} — panel USD`} />
@@ -208,9 +203,8 @@ export function ProductGroupEnLanding({
           <div className="mx-auto max-w-7xl px-4 text-sm text-ink-soft sm:px-6 lg:px-8">
             This group is quote-only. Published purchase panel USD (12 SKUs) remains on{" "}
             <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
-              the price hub
-            </Link>{" "}
-            and ai-shopping.json.
+              our price list
+            </Link>.
           </div>
         </section>
       )}
