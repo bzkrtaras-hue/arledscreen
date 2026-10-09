@@ -2,6 +2,16 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-006 — LED ekran malzemeleri kataloğu (/tr/malzemeler/) + materials.json (TASLAK PR)
+
+- **Yeni sayfalar (yalnız TR, 32):** hub `/tr/malzemeler/`, 9 kategori (kontrol kartları, NovaStar alıcı/gönderici, video işlemci, trafo/adaptör, CNC kasa, ithal/rental kasa, esnek matrix, kablo/aksesuar, LED panel varyantları) ve 22 model sayfası (`/tr/malzemeler/<kategori>/<model>/`). Mevcut bileşen/sınıflar; tasarım değişikliği yok
+- **Fiyat kaynağı:** panel dışı kalemler sahibin 09.05.2026 listesinden birebir (`src/content/materials-data.ts`, 199 kalem / 243 fiyat noktası; CNC tek + çift yüzlü). Panel fiyatları yalnız `prices.ts`: aynı pitch/ortam site fiyatı (P2.5 GOB 32.18, P1.86 49.08, P1.86 GOB esnek 49.08, P3.07 45° kesik 44.20) veya `DERIVED_PANEL_PRICES` = eski liste (3840 Hz) × ortalama site/liste oranı (iç 1.8549, dış 1.8300; tek renk P10 dış oranı). `PANEL_PRICES` (12 SKU) değişmedi
+- **Mevcut sayfalar:** HD-W60, VX600, P8, P1.86/P2.5 esnek model sayfalarına fiyat kutusu + `offers`; footer, hesaplayıcı (TR) ve LED ekran fiyatları sayfasına /tr/malzemeler/ linki
+- **JSON-LD:** görselsiz kalemlerde üst düzey Product yok (Merchant "image eksik" hatası olmasın); kategori OfferCatalog, model sayfası Offer→itemOffered Product. Üçüncü taraf logo/görsel yok; yetkili temsilcilik iddiası yok
+- **Makine yüzeyleri:** `/materials.json` (Dataset), sitemap.xml (+32 URL), sitemap-ai (`/materials.json`), llms.txt ("kontrol = quote-only" düzeltildi + Malzemeler bölümü), llms-full.txt; `validate-ai-feeds.mjs` + geo-prod-ci materials kontrolleri
+- **Dokunulmadı:** hesaplayıcı (`fiyat-hesap/index.html` md5 main ile aynı `e5b5ac1b7a361a85c5847ff45be6afbc`), MailerLite CatDAx (/tr/, /en/), EN sayfaları, 12 panel fiyatı; CSS dosyaları main ile aynı (`6a2409a85769ee8b.css`, `8731584b389c7ace.css`)
+- **Görsel bekleyenler (Melis):** 22 yeni model sayfası ve kategori kalemlerinin hiçbirinde gerçek fotoğraf yok (üçüncü taraf logolu görseller kullanılmadı); panel varyantları P3.91 dış, P10 dış 4S-A1/A2, tek renk P10, P3.07 45° kesik
+
 ## ARL-20261009-005 — TR site denetimi düzeltmeleri: kırık proje görselleri, görünen teknik jargon, kontrol kartı P0, arleds.com notları
 
 - **Görseller:** `OptImage` / `lib/opt.ts` `/opt/blog/...` kaynaklarına ikinci kez `/opt` ekliyordu (`/opt/opt/blog/...-480.webp` → 404; 37 URL, 19 sayfa: /tr/, /tr/otel-led-ekran/, blog, 4 proje sayfası + EN karşılıkları). Önek artık tekil; out/ içindeki tüm `/opt/...` referansları dosyaya karşılık geliyor
