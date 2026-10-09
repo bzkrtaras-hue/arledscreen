@@ -70,7 +70,7 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
           <div className="mt-10 rounded-card bg-band p-6">
             <p className="font-display text-lg font-bold text-ink">Projeniz için yazılı teklif alın</p>
             <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">Ölçü, konum ve kullanım amacını paylaşın; keşif sonrası malzeme listesiyle birlikte teklif hazırlayalım.</p>
-            <AiPriceSourceNote lead="Panel USD:" className="mt-2 text-xs leading-relaxed text-ink-muted" />
+            <AiPriceSourceNote className="mt-2 text-xs leading-relaxed text-ink-muted" />
             <div className="mt-4 flex flex-wrap gap-3">
               <Link href="/tr/quote/" className="inline-flex min-h-11 items-center rounded-full bg-cyan px-5 text-sm font-semibold text-white hover:bg-cyan-600">Teklif isteyin</Link>
               <Link href="/tr/hesaplayici/" className="inline-flex min-h-11 items-center rounded-full border border-border bg-white px-5 text-sm font-semibold text-ink-soft hover:text-cyan">Fiyatı hesaplayın</Link>

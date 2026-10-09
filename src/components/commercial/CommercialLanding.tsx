@@ -268,12 +268,11 @@ export function CommercialLanding({
             </p>
             <AiPriceSourceNote
               locale={tr ? undefined : "en"}
-              lead="Panel USD:"
               className="mt-3 text-xs leading-relaxed text-ink-muted"
             />
             <p className="mt-2 text-xs text-ink-muted">
               {tr
-                ? "Şehir sayfaları, yayımlanmış proje kaydımız bulunan illerde yer alır."
+                ? "Türkiye genelinde hizmet veriyoruz; şehir sayfaları proje tamamladığımız illeri gösterir."
                 : "We serve all of Turkey; city pages exist for provinces where we have completed projects."}
             </p>
           </aside>
@@ -324,11 +323,11 @@ export function CommercialLanding({
         <section className="border-t border-border bg-band/30 py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-xl font-bold text-ink md:text-2xl">
-              {tr ? "Yayımlanmış proje kayıtları" : "Published project records"}
+              {tr ? "Tamamlanan projeler" : "Completed projects"}
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-ink-soft">
               {tr
-                ? "Aşağıdaki satırlar sitedeki referans kayıtlarından türetilir; uydurma şehir veya iş listesi yoktur."
+                ? "Bu kullanım alanında tamamladığımız projelerden örnekler."
                 : "Projects below come from our completed-work records."}
             </p>
             <div className="mt-6 overflow-x-auto">
@@ -336,7 +335,7 @@ export function CommercialLanding({
                 <thead className="border-b border-border text-xs uppercase tracking-wide text-ink-muted">
                   <tr>
                     <th className="py-2 pr-4 font-semibold">{tr ? "Tarih" : "Date"}</th>
-                    <th className="py-2 pr-4 font-semibold">{tr ? "Kayıt" : "Record"}</th>
+                    <th className="py-2 pr-4 font-semibold">{tr ? "Proje" : "Project"}</th>
                     <th className="py-2 pr-4 font-semibold">{tr ? "Detay" : "Detail"}</th>
                     <th className="py-2 font-semibold">{tr ? "Konum" : "Location"}</th>
                   </tr>
@@ -360,8 +359,8 @@ export function CommercialLanding({
               </table>
             </div>
             <p className="mt-4">
-              <Link href="/tr/projelerimiz/" className="text-sm font-semibold text-cyan hover:underline">
-                {tr ? "Tüm projeler" : "All projects (TR)"}
+              <Link href={tr ? "/tr/projelerimiz/" : "/en/projelerimiz/"} className="text-sm font-semibold text-cyan hover:underline">
+                {tr ? "Tüm projeler" : "All projects"}
               </Link>
             </p>
           </div>
@@ -371,17 +370,17 @@ export function CommercialLanding({
           <div className="mx-auto max-w-7xl px-4 text-sm text-ink-soft sm:px-6 lg:px-8">
             {tr ? (
               <>
-                Bu kullanım için henüz eşleşen yayımlanmış satır yok; genel proje listesine{" "}
+                Bu kullanım alanındaki örnekler için{" "}
                 <Link href="/tr/projelerimiz/" className="font-semibold text-cyan hover:underline">
                   projeler
                 </Link>{" "}
-                sayfasından bakabilirsiniz. Teklif için keşif yeterlidir.
+                sayfamıza bakabilirsiniz. Teklif için keşif yeterlidir.
               </>
             ) : (
               <>
-                No matching published rows for this use yet — see the{" "}
-                <Link href="/tr/projelerimiz/" className="font-semibold text-cyan hover:underline">
-                  projects list (TR)
+                For examples in this use case, see our{" "}
+                <Link href="/en/projelerimiz/" className="font-semibold text-cyan hover:underline">
+                  projects list
                 </Link>
                 . A survey is enough to quote.
               </>

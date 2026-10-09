@@ -98,6 +98,7 @@ function intentLinks(except?: string): CommercialLink[] {
     { href: "/tr/led-ekran-kiralama/", label: "LED ekran kiralama" },
     { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları" },
     { href: "/tr/led-ekran-servis/", label: "LED ekran servis" },
+    { href: "/tr/led-ekran-tamiri/", label: "LED ekran tamiri" },
   ];
   return all.filter((l) => !except || !l.href.includes(`/${except}/`));
 }
@@ -125,8 +126,8 @@ function usageLinks(except?: string): CommercialLink[] {
 
 function productClusterLinks(except?: string): CommercialLink[] {
   const slugs: [string, string][] = [
-    ["ic-mekan-led-ekran", "İç mekan LED ekran"],
-    ["dis-mekan-led-ekran", "Dış mekan LED ekran"],
+    ["ic-mekan-led-ekran", "İç mekân LED ekran"],
+    ["dis-mekan-led-ekran", "Dış mekân LED ekran"],
     ["gob-led-ekran", "GOB LED"],
     ["seffaf-led-ekran", "Şeffaf LED"],
     ["transparan-led-ekran", "Transparan LED"],
@@ -184,7 +185,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Hangi şehirlerde hizmet veriyorsunuz?",
         answer:
-          "Merkez İstanbul Gaziosmanpaşa’dadır. Hizmet Türkiye geneli planlanır; sitede yalnızca yayımlanmış proje kaydı olan iller için ayrı sayfa açılır.",
+          "Merkez İstanbul Gaziosmanpaşa’dadır. Hizmet Türkiye geneli planlanır; proje tamamladığımız iller için ayrı şehir sayfaları bulunur.",
       },
     ],
     primaryCta: { href: "/tr/quote/", label: "Teklif iste" },
@@ -383,6 +384,67 @@ const INTENT_PAGES: CommercialPage[] = [
     primaryCta: { href: "/tr/quote/", label: "Servis talebi" },
     secondaryCta: { href: "/tr/hizmetler/", label: "Hizmetler" },
   }),
+  page({
+    slug: "led-ekran-tamiri",
+    cluster: "intent",
+    title: "LED Ekran Tamiri ve Arıza Tespiti | ARLEDSCREEN",
+    description:
+      "LED ekran tamiri: ölü piksel, sönen modül, renk farkı, güç kaynağı ve kontrol kartı arızaları. İstanbul Gaziosmanpaşa merkezli servis; keşif sonrası teklif.",
+    h1: "LED ekran tamiri",
+    eyebrow: "Servis · Tamir",
+    lead: "Sönen modül, renk farkı, kararan bölge ya da hiç açılmayan ekran: arızayı yerinde tespit edip modül, güç kaynağı, kart ve kablo düzeyinde onarıyoruz. Fiyatı keşif sonrası teklifle veriyoruz.",
+    intro: [
+      "LED ekran tamirinde en sık karşılaştığımız arızalar şunlardır: ölü piksel ya da tamamen sönen modül; bölgeler arasında renk ve parlaklık farkı; güç kaynağı (PSU) arızası yüzünden kararan kabin; alıcı (receiving) veya gönderici (sending) karttan kaynaklanan görüntü kayması, donma ve sinyal kaybı; gevşemiş ya da oksitlenmiş flat kablo ve konnektörler; dış mekânda conta yıpranması sonrası içeri su ve nem girmesi.",
+      "Ekran tamir süreci beş adımda ilerler. Arızanın fotoğrafını veya kısa videosunu WhatsApp'tan gönderirsiniz ve uzaktan ön teşhis yaparız. Ardından yerinde keşif ve ölçümle arızanın kaynağını tespit ederiz. Onayınızla modül, güç kaynağı, kart ya da kablo değiştirilir veya onarılır. Son adımda ekran test edilir, gerekirse renk ve parlaklık ayarı yapılır.",
+      "NovaStar, Colorlight ve Huidu kontrol sistemli ekranlarda kart ve yazılım kontrolü yapıyoruz. Başka firmadan alınmış ekranlarda marka, model ve kontrol kartı bilgisiyle servis ve yedek parça uygunluğunu değerlendiriyoruz. Merkezimiz İstanbul Gaziosmanpaşa'dadır; Türkiye genelinde servis veriyoruz.",
+      NAP,
+    ],
+    bullets: [
+      "Ölü piksel ve modül değişimi",
+      "Güç kaynağı (PSU) değişimi",
+      "Alıcı / gönderici kart ve yazılım kontrolü",
+      "Kablo, konnektör ve nem kaynaklı arıza onarımı",
+      "Renk ve parlaklık ayarı",
+    ],
+    images: [
+      { src: "/projects/install-wiring.jpg", alt: "LED ekran arkasında alıcı kart, güç kaynağı ve kablo bağlantıları" },
+      { src: "/projects/modules/front-service-module.jpg", alt: "Önden servis edilen LED modül" },
+    ],
+    proofs: proofsFrom(() => true, 4),
+    relatedProducts: productClusterLinks(),
+    relatedUses: usageLinks(),
+    relatedCities: CORE_CITIES,
+    relatedIntents: intentLinks("led-ekran-tamiri"),
+    faqs: [
+      {
+        question: "LED ekran tamiri ne kadar tutar?",
+        answer:
+          "Tamir için sabit fiyat yayımlamıyoruz. Arızanın kaynağı, değişecek parça ve ekrana erişim koşulları her işte farklı olduğu için fiyatı keşif sonrası yazılı teklifle veriyoruz.",
+      },
+      {
+        question: "Ekranın bir bölümü karardı; sebebi ne olabilir?",
+        answer:
+          "Kabin ya da bölge bazında kararma çoğunlukla güç kaynağı, alıcı kart veya bağlantı kablosundan kaynaklanır. Tek modül sönmüşse modül veya flat kablo arızası olasıdır. Kesin teşhisi yerinde ölçümle koyarız.",
+      },
+      {
+        question: "Ekranda renk ve parlaklık farkı neden olur?",
+        answer:
+          "Farklı üretim partisinden modül takılması, LED'lerin zamanla eşit olmayan şekilde yıpranması veya kart ayarlarının bozulması renk ve parlaklık farkı yaratır. Doğru modül değişimi ve ayar ile giderilir.",
+      },
+      {
+        question: "Başka firmadan alınmış ekranı tamir ediyor musunuz?",
+        answer:
+          "Ekranın markası, modeli ve kontrol sistemi bilgisini paylaşırsanız servis ve yedek parça uygunluğunu değerlendirip size iletiriz. NovaStar, Colorlight ve Huidu kontrol sistemlerinde kontrol yapıyoruz.",
+      },
+      {
+        question: "Arızayı nasıl bildiririm?",
+        answer:
+          "Arızanın fotoğrafını veya kısa videosunu +90 530 507 88 34 WhatsApp hattına gönderin; uzaktan ön teşhis yapıp keşfi planlayalım.",
+      },
+    ],
+    primaryCta: { href: "/tr/quote/", label: "Tamir talebi" },
+    secondaryCta: { href: "/tr/hizmetler/", label: "Hizmetler" },
+  }),
 ];
 
 /**
@@ -404,8 +466,8 @@ const PRODUCT_ALIAS_PAGES: CommercialPage[] = [
     ],
     bullets: ["Ayaklı yapı", "İç / dış seçenek", "Tekli veya çift yüz"],
     images: [
-      { src: "/projects/totem-indoor.jpg", alt: "İç mekan totem LED ekran" },
-      { src: "/projects/totem-outdoor.jpg", alt: "Dış mekan totem LED ekran" },
+      { src: "/projects/totem-indoor.jpg", alt: "İç mekân totem LED ekran" },
+      { src: "/projects/totem-outdoor.jpg", alt: "Dış mekân totem LED ekran" },
     ],
     proofs: proofsFrom((r) => /vitrin|belediye|otel|resort/i.test(`${r.detail} ${r.company}`), 3),
     relatedProducts: productClusterLinks(),
@@ -416,7 +478,7 @@ const PRODUCT_ALIAS_PAGES: CommercialPage[] = [
       {
         question: "Totem LED dış mekânda dayanıklı mı?",
         answer:
-          "Dış mekan totemlerde koruma sınıfı ve konstrüksiyon keşifte seçilir; iç mekan üniteleri ayrı planlanır.",
+          "Dış mekân totemlerde koruma sınıfı ve konstrüksiyon keşifte seçilir; iç mekân üniteleri ayrı planlanır.",
       },
     ],
     primaryCta: { href: "/tr/products/poster-led-ekran/", label: "Poster / Totem grubu" },
@@ -492,7 +554,7 @@ const PITCH_PAGES: CommercialPage[] = [
     proof: (r) => /P1\.86/i.test(r.detail),
     images: [
       { src: "/projects/modules/fine-pitch-panel.jpg", alt: "P1.86 ince pitch LED" },
-      { src: "/projects/modules/indoor-wall.jpg", alt: "İç mekan ince pitch duvar" },
+      { src: "/projects/applications/indoor-stage-videowall.jpg", alt: "İç mekân sahnede panoramik LED video duvar" },
     ],
   }),
   pitchPage({
@@ -504,14 +566,14 @@ const PITCH_PAGES: CommercialPage[] = [
       "P2.5; mağaza, kafe, sahne yakını ve orta mesafe dış mekânlarda dengeli çözünürlük sunar. Kayıtlı projelerde sık geçer.",
     ],
     modelLinks: [
-      modelLink("ic-mekan-led-ekran", "p2-5", "P2.5 iç mekan"),
-      modelLink("dis-mekan-led-ekran", "p2-5", "P2.5 dış mekan"),
+      modelLink("ic-mekan-led-ekran", "p2-5", "P2.5 iç mekân"),
+      modelLink("dis-mekan-led-ekran", "p2-5", "P2.5 dış mekân"),
       modelLink("esnek-led-ekran", "p2-5-esnek", "P2.5 esnek"),
     ].filter((x): x is CommercialLink => Boolean(x)),
     proof: (r) => /P2\.5/i.test(r.detail),
     images: [
-      { src: "/projects/indoor-smd.jpg", alt: "P2.5 iç mekan LED" },
-      { src: "/projects/modules/outdoor-cab.jpg", alt: "P2.5 dış mekan kabin" },
+      { src: "/projects/indoor-smd.jpg", alt: "P2.5 iç mekân LED" },
+      { src: "/projects/urun-dis-mekan.jpg", alt: "Bina önünde dış mekân LED ekran" },
     ],
   }),
   pitchPage({
@@ -520,11 +582,11 @@ const PITCH_PAGES: CommercialPage[] = [
     h1: "P2.9 LED ekran",
     lead: "Dış mekân orta mesafe için P2.9 / P2.97 bandı.",
     intro: ["P2.9 dış mekân ekranlarda orta izleme mesafesi için dengeli bir seçenektir. Model sayfasında teknik özet yer alır."],
-    modelLinks: [modelLink("dis-mekan-led-ekran", "p2-9", "P2.9 dış mekan")!].filter(Boolean),
+    modelLinks: [modelLink("dis-mekan-led-ekran", "p2-9", "P2.9 dış mekân")!].filter(Boolean),
     proof: (r) => /P2\.9|P2\.97/i.test(r.detail),
     images: [
-      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Dış mekan halka açık LED ekran" },
-      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekan LED ekran" },
+      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Dış mekân halka açık LED ekran" },
+      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekân LED ekran" },
     ],
   }),
   pitchPage({
@@ -534,13 +596,13 @@ const PITCH_PAGES: CommercialPage[] = [
     lead: "İç ve dış mekân orta mesafe uygulamaları için P3.07.",
     intro: ["P3.07, iç ve dış mekân kataloglarında yer alan orta pitch seçeneğidir. Kullanım yerine göre iç veya dış seri seçilir."],
     modelLinks: [
-      modelLink("ic-mekan-led-ekran", "p3-07", "P3.07 iç mekan"),
-      modelLink("dis-mekan-led-ekran", "p3-07", "P3.07 dış mekan"),
+      modelLink("ic-mekan-led-ekran", "p3-07", "P3.07 iç mekân"),
+      modelLink("dis-mekan-led-ekran", "p3-07", "P3.07 dış mekân"),
     ].filter((x): x is CommercialLink => Boolean(x)),
     proof: (r) => /P3|P3\.0/i.test(r.detail),
     images: [
-      { src: "/projects/modules/indoor-smd-surface.jpg", alt: "P3 sınıfı iç mekan yüzey" },
-      { src: "/projects/modules/outdoor-cab.jpg", alt: "P3 sınıfı dış mekan kabin" },
+      { src: "/projects/modules/indoor-smd-surface.jpg", alt: "P3 sınıfı iç mekân yüzey" },
+      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Açık alanda dış mekân LED ekran" },
     ],
   }),
   pitchPage({
@@ -549,11 +611,11 @@ const PITCH_PAGES: CommercialPage[] = [
     h1: "P4 LED ekran",
     lead: "Cephe ve açık alan için sık tercih edilen P4 bandı.",
     intro: [
-      "P4, Manisa Büyükşehir Belediyesi kaydındaki 1344×128 cm Ultra 2026 uygulaması gibi geniş dış mekân işlerinde kullanılır. Önden servis varyantı da vardır.",
+      "P4, Manisa Büyükşehir Belediyesi için yaptığımız 1344×128 cm Ultra 2026 uygulaması gibi geniş dış mekân işlerinde kullanılır. Önden servis varyantı da vardır.",
     ],
     modelLinks: [
-      modelLink("ic-mekan-led-ekran", "p4", "P4 iç mekan"),
-      modelLink("dis-mekan-led-ekran", "p4", "P4 dış mekan"),
+      modelLink("ic-mekan-led-ekran", "p4", "P4 iç mekân"),
+      modelLink("dis-mekan-led-ekran", "p4", "P4 dış mekân"),
       modelLink("dis-mekan-led-ekran", "p4-on-servis", "P4 önden servis"),
     ].filter((x): x is CommercialLink => Boolean(x)),
     proof: (r) => /P4/i.test(r.detail),
@@ -567,12 +629,12 @@ const PITCH_PAGES: CommercialPage[] = [
     label: "P5 LED",
     h1: "P5 LED ekran",
     lead: "Uzak mesafeli dış mekân ve stadyum/cephe ölçeği için P5.",
-    intro: ["P5, Bursa kaydındaki 576×480 cm Premium dış mekân gibi büyük yüzeylerde tercih edilir."],
-    modelLinks: [modelLink("dis-mekan-led-ekran", "p5", "P5 dış mekan")!].filter(Boolean),
+    intro: ["P5, Bursa'da yaptığımız 576×480 cm Premium dış mekân uygulaması gibi büyük yüzeylerde tercih edilir."],
+    modelLinks: [modelLink("dis-mekan-led-ekran", "p5", "P5 dış mekân")!].filter(Boolean),
     proof: (r) => /P5/i.test(r.detail),
     images: [
       { src: "/projects/billboard-arled.jpg", alt: "P5 billboard / büyük yüzey LED" },
-      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Büyük dış mekan LED ekran" },
+      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Büyük dış mekân LED ekran" },
     ],
   }),
 ];
@@ -590,7 +652,7 @@ function usagePage(opts: {
     slug: opts.slug,
     cluster: "use",
     title: `${opts.name} | ARLEDSCREEN`,
-    description: `${opts.name}: satış, montaj ve servis. ARLEDSCREEN İstanbul merkezli; kayıtlı proje örnekleri ve keşif sonrası yazılı teklif.`,
+    description: `${opts.name}: satış, montaj ve servis. ARLEDSCREEN İstanbul merkezli; tamamlanan proje örnekleri ve keşif sonrası yazılı teklif.`,
     h1: opts.name,
     eyebrow: "Kullanım amacı",
     lead: opts.lead,
@@ -622,11 +684,11 @@ const USE_PAGES: CommercialPage[] = [
     name: "Mağaza LED ekran",
     lead: "Vitrin, satış alanı ve marka duvarı için mağaza LED ekran çözümleri.",
     intro: [
-      "Mağaza LED ekranında vitrin mesafesi ve ürün aydınlatması önemlidir. Merter ve Osmanbey gibi perakende kayıtlarımız bu kullanıma yakındır.",
+      "Mağaza LED ekranında vitrin mesafesi ve ürün aydınlatması önemlidir. Merter ve Osmanbey'deki perakende projelerimiz bu kullanıma yakındır.",
     ],
     proof: (r) => /triko|vitrin|mağaza|Prestij|Gnd/i.test(`${r.company} ${r.detail}`),
     images: [
-      { src: "/projects/modules/indoor-wall.jpg", alt: "Mağaza iç mekan LED duvar" },
+      { src: "/projects/applications/seffaf-led-vitrin.jpg", alt: "AVM mağazasının vitrininde LED ekran" },
       { src: "/projects/indoor-smd.jpg", alt: "Mağaza LED ekran" },
     ],
     products: ["ic-mekan-led-ekran", "gob-led-ekran", "poster-led-ekran"],
@@ -646,12 +708,12 @@ const USE_PAGES: CommercialPage[] = [
   usagePage({
     slug: "cephe-led-ekran",
     name: "Cephe LED ekran",
-    lead: "Bina cephesi ve meydan için dış mekan LED ekran.",
-    intro: ["Cephe LED ekranda konstrüksiyon, rüzgâr yükü ve belediye izin süreçleri planın parçasıdır. Manisa ve Bursa kayıtları geniş dış yüzey örnekleridir."],
+    lead: "Bina cephesi ve meydan için dış mekân LED ekran.",
+    intro: ["Cephe LED ekranda konstrüksiyon, rüzgâr yükü ve belediye izin süreçleri planın parçasıdır. Manisa ve Bursa projelerimiz geniş dış yüzey örnekleridir."],
     proof: (r) => /dış mekân|dış mekan|P4|P5|1344|576/i.test(r.detail),
     images: [
       { src: "/projects/modules/outdoor-facade.jpg", alt: "Cephe LED ekran" },
-      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekan cephe LED" },
+      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekân cephe LED" },
     ],
     products: ["dis-mekan-led-ekran", "transparan-led-ekran"],
   }),
@@ -672,11 +734,11 @@ const USE_PAGES: CommercialPage[] = [
     name: "Vitrin LED ekran",
     lead: "Mağaza vitrini ve kolon uygulamaları için LED ekran.",
     intro: [
-      "Aksaray Beren Kırtasiye kaydındaki 192×176 cm vitrin + kolon uygulaması bu kullanıma örnektir. Şeffaf LED alternatifi cam vitrinlerde değerlendirilir.",
+      "Aksaray'da Beren Kırtasiye için yaptığımız 192×176 cm vitrin + kolon uygulaması bu kullanıma örnektir. Şeffaf LED alternatifi cam vitrinlerde değerlendirilir.",
     ],
     proof: (r) => /vitrin|kolon/i.test(r.detail),
     images: [
-      { src: "/projects/modules/indoor-wall.jpg", alt: "Vitrin LED ekran" },
+      { src: "/projects/applications/seffaf-led-vitrin.jpg", alt: "Mağaza vitrininde şeffaf LED ekran" },
       { src: "/projects/indoor-led-lion.jpg", alt: "Vitrin yakın çekim LED" },
     ],
     products: ["ic-mekan-led-ekran", "seffaf-led-ekran", "gob-led-ekran"],
@@ -685,7 +747,7 @@ const USE_PAGES: CommercialPage[] = [
     slug: "otel-led-ekran",
     name: "Otel LED ekran",
     lead: "Otel lobi, ballroom ve dış cephe LED ekran çözümleri.",
-    intro: ["Alanya White City Resort Hotel kaydı otel ölçeğinde bir uygulamadır. Lobi ince pitch; dış alan daha büyük pitch ister."],
+    intro: ["Alanya White City Resort Hotel projemiz otel ölçeğinde bir uygulamadır. Lobi ince pitch; dış alan daha büyük pitch ister."],
     proof: (r) => /Hotel|Resort|otel/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/opt/blog/alanya-otel-led-ekran.jpg", alt: "Alanya otel LED ekran uygulaması" },
@@ -698,7 +760,7 @@ const USE_PAGES: CommercialPage[] = [
     name: "Restoran LED ekran",
     lead: "Restoran ve kafe oturma alanları için LED ekran.",
     intro: [
-      "Kafe/restoran kayıtlarımız arasında Beylikdüzü Yaşam Cafe, Prestij Cafe, Ouka Kafe ve Yozgat kampüs cafe uygulamaları bulunur.",
+      "Kafe/restoran projelerimiz arasında Beylikdüzü Yaşam Cafe, Prestij Cafe, Ouka Kafe ve Yozgat kampüs cafe uygulamaları bulunur.",
     ],
     proof: (r) => /Cafe|Kafe|cafe|kafe|Malt|Lounge/i.test(`${r.company} ${r.detail}`),
     images: [
@@ -724,11 +786,11 @@ const USE_PAGES: CommercialPage[] = [
     slug: "konferans-salonu-led-ekran",
     name: "Konferans salonu LED ekran",
     lead: "Konferans ve toplantı salonları için yüksek okunabilirlikli LED.",
-    intro: ["Konferans salonunda izleme mesafesi ve sunum içeriği pitch seçimini belirler. İnce pitch GOB ve iç mekan serileri sık değerlendirilir."],
+    intro: ["Konferans salonunda izleme mesafesi ve sunum içeriği pitch seçimini belirler. İnce pitch GOB ve iç mekân serileri sık değerlendirilir."],
     proof: (r) => /P1\.|P2\.5|konferans|lobi/i.test(`${r.detail} ${r.company}`),
     images: [
       { src: "/projects/neu-kutuphane.jpg", alt: "Konferans / kurumsal LED ekran" },
-      { src: "/projects/modules/indoor-wall.jpg", alt: "Salon LED duvar" },
+      { src: "/projects/modules/indoor-install.jpg", alt: "Toplantı salonunda duvara monte iç mekân LED ekran" },
     ],
     products: ["ic-mekan-led-ekran", "gob-led-ekran", "ince-pitch-led-ekran"],
   }),
@@ -736,7 +798,7 @@ const USE_PAGES: CommercialPage[] = [
     slug: "sahne-led-ekran",
     name: "Sahne LED ekran",
     lead: "Konser, tiyatro ve etkinlik sahnesi LED ekranları.",
-    intro: ["Kadıköy Matiz Sahne kaydı sahne/dış yüzey uygulamasına örnektir. Kısa süreli işlerde kiralık kabin de planlanabilir."],
+    intro: ["Kadıköy Matiz Sahne projemiz sahne/dış yüzey uygulamasına örnektir. Kısa süreli işlerde kiralık kabin de planlanabilir."],
     proof: (r) => /Sahne|sahne|kiralama|stand/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/projects/modules/rental-cabinet-labeled.jpg", alt: "Sahne kiralık LED kabin" },
@@ -764,7 +826,7 @@ const USE_PAGES: CommercialPage[] = [
     name: "Belediye LED ekran",
     lead: "Belediye meydan, bilgilendirme ve etkinlik LED ekranları.",
     intro: [
-      "Manisa Büyükşehir Belediyesi ve Beylikdüzü Belediyesi kayıtları kamu/belediye ölçeğinde uygulamalardır. İzin süreçleri konuma göre değişir.",
+      "Manisa Büyükşehir Belediyesi ve Beylikdüzü Belediyesi projelerimiz kamu/belediye ölçeğinde uygulamalardır. İzin süreçleri konuma göre değişir.",
     ],
     proof: (r) => /Belediye/i.test(r.company),
     images: [
@@ -802,7 +864,7 @@ const USE_PAGES: CommercialPage[] = [
     name: "Stadyum LED ekran",
     lead: "Stadyum ve büyük açık alan LED ekranları.",
     intro: [
-      "Stadyum ölçeği yüksek konstrüksiyon ve uzak izleme mesafesi ister. Bursa’daki 576×480 cm P5 Premium dış mekân kaydı büyük yüzey örneğidir; her stadyum için ayrı keşif gerekir.",
+      "Stadyum ölçeği yüksek konstrüksiyon ve uzak izleme mesafesi ister. Bursa’daki 576×480 cm P5 Premium dış mekân uygulamamız büyük yüzey örneğidir; her stadyum için ayrı keşif gerekir.",
     ],
     proof: (r) => /P5|576|1344|dış mekân|dış mekan/i.test(r.detail),
     images: [
@@ -833,6 +895,7 @@ export const COMMERCIAL_EN_INTENT_SLUGS = [
   "led-ekran-montaj",
   "led-ekran-kiralama",
   "led-ekran-servis",
+  "led-ekran-tamiri",
 ] as const;
 
 /** Use-case hubs AI agents invent under /en/<tr-slug>/ (full TR use cluster). */
@@ -917,6 +980,7 @@ function enIntentLinks(except: string): CommercialLink[] {
     { href: "/en/led-ekran-kiralama/", label: "LED display rental" },
     { href: "/en/led-ekran-fiyatlari/", label: "LED display prices" },
     { href: "/en/led-ekran-servis/", label: "LED display service" },
+    { href: "/en/led-ekran-tamiri/", label: "LED display repair" },
     { href: "/en/hizmetler/", label: "Services" },
     { href: "/en/quote/", label: "Request a quote" },
     { href: "/en/hesaplayici/", label: "Price calculator" },
@@ -1031,7 +1095,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Survey and measure", "Pitch for closest shopper", "Install + service"],
-    imageAlts: ["Indoor LED wall in a retail store", "Store LED display sample"],
+    imageAlts: ["LED display in a mall shop window", "Store LED display sample"],
     faqs: [
       {
         question: "How much does a store LED cost?",
@@ -1185,7 +1249,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Close-view pitch", "Window vs column survey", "Transparent LED option"],
-    imageAlts: ["Storefront window LED display", "Close-up storefront LED"],
+    imageAlts: ["Transparent LED display in a shop window", "Close-up storefront LED"],
     faqs: [
       {
         question: "Transparent LED or standard indoor for a window?",
@@ -1251,7 +1315,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Seated viewing distance", "Fine-pitch options", "Survey before order"],
-    imageAlts: ["Conference / corporate LED display", "Hall LED wall"],
+    imageAlts: ["Conference / corporate LED display", "Wall-mounted indoor LED display in a meeting room"],
     faqs: [
       {
         question: "P1.25 or P2.5 for a conference hall?",
@@ -1386,7 +1450,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Indoor and outdoor options", "Published panel USD", "Pitch vs viewing distance"],
-    imageAlts: ["P2.5 indoor LED", "P2.5 outdoor cabinet"],
+    imageAlts: ["P2.5 indoor LED", "Outdoor LED display in front of a building"],
     faqs: [
       {
         question: "Is P2.5 right for a store?",
@@ -1430,7 +1494,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Lobby / store fine pitch", "GOB and flexible options", "Published panel USD"],
-    imageAlts: ["P1.86 fine-pitch LED", "Indoor fine-pitch wall"],
+    imageAlts: ["P1.86 fine-pitch LED", "Panoramic indoor stage LED video wall"],
     faqs: [
       {
         question: "P1.86 or P1.25?",
@@ -1474,7 +1538,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Indoor and outdoor series", "Mid viewing distance", "Survey before order"],
-    imageAlts: ["P3-class indoor surface", "P3-class outdoor cabinet"],
+    imageAlts: ["P3-class indoor surface", "Open-area outdoor LED display"],
     faqs: [
       {
         question: "Where is P3.07 panel USD?",
@@ -1898,6 +1962,69 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       ],
       primaryCta: { href: "/en/quote/", label: "Request service" },
       secondaryCta: { href: "/en/led-ekran/", label: "LED displays" },
+    };
+  },
+  "led-ekran-tamiri": () => {
+    const tr = getCommercialPage("led-ekran-tamiri")!;
+    return {
+      ...tr,
+      title: "LED Display Repair & Fault Finding | ARLEDSCREEN",
+      description:
+        "LED display repair: dead pixels, dark modules, colour mismatch, power supply and control card faults. Istanbul-based service; priced on quote after survey.",
+      h1: "LED display repair",
+      eyebrow: "Service · Repair",
+      lead:
+        "Dead modules, colour mismatch, dark areas or a screen that won't start: we find the fault on site and repair it at module, power supply, card and cable level. Pricing is given in a quote after survey.",
+      intro: [
+        "The faults we see most often: dead pixels or a fully dark module; colour and brightness mismatch between areas; a dark cabinet caused by a failed power supply (PSU); image shift, freezing or signal loss from the receiving or sending card; loose or oxidised ribbon cables and connectors; and, outdoors, water and moisture getting in after gaskets wear.",
+        "Repair runs in five steps. You send a photo or short video of the fault on WhatsApp and we make a remote pre-diagnosis. We then survey and measure on site to find the cause. With your approval the module, power supply, card or cable is replaced or repaired. Finally the screen is tested and, if needed, colour and brightness are adjusted.",
+        "We check cards and software on screens running NovaStar, Colorlight and Huidu control systems. For screens bought elsewhere we assess service and spare-part fit from brand, model and control card data. Our HQ is in Gaziosmanpaşa, Istanbul; we provide service across Turkey.",
+        NAP_EN,
+      ],
+      bullets: [
+        "Dead pixel and module replacement",
+        "Power supply (PSU) replacement",
+        "Receiving / sending card and software checks",
+        "Cable, connector and moisture fault repair",
+        "Colour and brightness adjustment",
+      ],
+      images: [
+        { src: "/projects/install-wiring.jpg", alt: "Receiving cards, power supplies and cabling behind an LED screen" },
+        { src: "/projects/modules/front-service-module.jpg", alt: "Front-service LED module" },
+      ],
+      relatedProducts: EN_PRODUCT_LINKS,
+      relatedUses: enUseLinks(),
+      relatedCities: tr.relatedCities,
+      relatedIntents: enIntentLinks("led-ekran-tamiri"),
+      faqs: [
+        {
+          question: "How much does LED display repair cost?",
+          answer:
+            "We do not publish fixed repair prices. The cause, the parts to replace and access to the screen differ on every job, so we price in a written quote after survey.",
+        },
+        {
+          question: "Part of the screen went dark. What could cause it?",
+          answer:
+            "A dark cabinet or area is usually a power supply, receiving card or connecting cable. If a single module is out, the module or its ribbon cable is the likely cause. We confirm on site by measurement.",
+        },
+        {
+          question: "Why does a screen show colour and brightness differences?",
+          answer:
+            "Modules from a different production batch, uneven LED ageing or corrupted card settings cause colour and brightness mismatch. It is fixed with the right module replacement and adjustment.",
+        },
+        {
+          question: "Do you repair screens bought elsewhere?",
+          answer:
+            "Share the brand, model and control system and we will assess service and spare-part fit. We check NovaStar, Colorlight and Huidu control systems.",
+        },
+        {
+          question: "How do I report a fault?",
+          answer:
+            "Send a photo or short video of the fault to our WhatsApp line +90 530 507 88 34; we will make a remote pre-diagnosis and plan the survey.",
+        },
+      ],
+      primaryCta: { href: "/en/quote/", label: "Request repair" },
+      secondaryCta: { href: "/en/hizmetler/", label: "Services" },
     };
   },
 };

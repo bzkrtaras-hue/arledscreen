@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ClipboardCheck, Hammer, LifeBuoy, Ruler, Settings2, Truck } from "lucide-react";
+import { ClipboardCheck, Hammer, LifeBuoy, Ruler, Settings2, Truck, Wrench } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
@@ -57,6 +57,7 @@ const SERVICES_TR = [
   { Icon: Hammer, title: "Montaj", body: "Taşıyıcı konstrüksiyon, kabin montajı, güç ve sinyal kablolaması." },
   { Icon: Settings2, title: "Devreye alma", body: "Kontrol sisteminin kurulumu, kalibrasyon, içerik testi ve kullanım eğitimi." },
   { Icon: LifeBuoy, title: "Bakım ve teknik servis", body: "Periyodik bakım, arıza tespiti, modül ve güç kaynağı değişimi; mevcut ekranlar için servis talebi." },
+  { Icon: Wrench, title: "LED ekran tamiri", body: "Ölü piksel, kararan bölge, renk farkı, güç kaynağı ve kart arızalarında tespit ve onarım; fiyat keşif sonrası teklifle.", href: "/tr/led-ekran-tamiri/" },
 ];
 
 const SERVICES_EN = [
@@ -66,6 +67,7 @@ const SERVICES_EN = [
   { Icon: Hammer, title: "Install", body: "Supporting structure, cabinets, power and signal cabling." },
   { Icon: Settings2, title: "Commissioning", body: "Controller setup, calibration, content test and operator handover." },
   { Icon: LifeBuoy, title: "Maintenance & service", body: "Scheduled maintenance, fault finding, module/PSU swap; service for existing walls." },
+  { Icon: Wrench, title: "LED display repair", body: "Diagnosis and repair of dead pixels, dark areas, colour mismatch, PSU and card faults; priced on quote after survey.", href: "/en/led-ekran-tamiri/" },
 ];
 
 const FAQS_TR = [
@@ -257,10 +259,10 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
                 {en ? "Request survey & quote" : "Keşif ve teklif iste"}
               </Link>
               <Link
-                href="/tr/projelerimiz/"
+                href={`/${locale}/projelerimiz/`}
                 className="btn-soft inline-flex min-h-12 items-center justify-center border border-cyan/50 bg-white px-6 text-cyan hover:bg-cyan-50"
               >
-                {en ? "View projects (TR)" : "Projeleri inceleyin"}
+                {en ? "View projects" : "Projeleri inceleyin"}
               </Link>
             </div>
           </div>
@@ -287,12 +289,20 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
         className="prose-seo"
       >
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ Icon, title, body }) => (
+          {services.map(({ Icon, title, body, ...rest }) => (
             <li key={title} className="rounded-2xl p-6 glass-card">
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-50 text-cyan">
                 <Icon className="h-5 w-5" aria-hidden />
               </span>
-              <h2 className="mt-4 font-display text-base font-bold text-ink">{title}</h2>
+              <h2 className="mt-4 font-display text-base font-bold text-ink">
+                {"href" in rest && rest.href ? (
+                  <Link href={rest.href} className="hover:text-cyan hover:underline">
+                    {title}
+                  </Link>
+                ) : (
+                  title
+                )}
+              </h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">{body}</p>
             </li>
           ))}

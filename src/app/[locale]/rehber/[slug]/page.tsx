@@ -11,6 +11,8 @@ import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { BRAND_SUBJECT_REFS } from "@/content/prices";
+import { OptImage } from "@/components/ui/opt-image";
+import { getGuideImage, getGuideTable } from "@/content/seo-guide-media";
 import {
   SEO_GUIDE_SLUGS,
   getSeoGuide,
@@ -57,6 +59,8 @@ export default async function SeoGuidePage({ params }: PageProps) {
   const hub = getSeoGuideHub(locale);
   const dict = getDictionary(locale);
   const pageUrl = absoluteUrl(`/${locale}/rehber/${guide.slug}/`);
+  const image = getGuideImage(guide.slug, locale);
+  const table = getGuideTable(guide.slug, locale);
 
   return (
     <>
@@ -120,6 +124,17 @@ export default async function SeoGuidePage({ params }: PageProps) {
         className="min-w-0 prose-seo"
       >
         <div className="space-y-8">
+          {image ? (
+            <div className="relative aspect-[16/10] max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">
+              <OptImage
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+              />
+            </div>
+          ) : null}
           {guide.sections.map((s) => (
             <article key={s.h2} className="max-w-3xl">
               <h2 className="font-display text-xl font-bold tracking-[-0.02em] text-ink sm:text-2xl">
@@ -130,6 +145,42 @@ export default async function SeoGuidePage({ params }: PageProps) {
               </p>
             </article>
           ))}
+
+          {table ? (
+            <div className="max-w-3xl overflow-x-auto rounded-2xl glass-card">
+              <table className="w-full min-w-[640px] text-left text-sm [overflow-wrap:normal] [word-break:normal]">
+                <caption className="px-4 pt-4 text-left font-display text-base font-bold text-ink sm:px-5">
+                  {table.caption}
+                </caption>
+                <thead>
+                  <tr className="border-b border-border text-xs uppercase tracking-[0.08em] text-ink-muted">
+                    {table.headers.map((h) => (
+                      <th key={h} scope="col" className="whitespace-nowrap px-4 py-3">
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {table.rows.map((r, i) => (
+                    <tr key={r[0]} className={i % 2 ? "bg-band/60" : ""}>
+                      <th scope="row" className="px-4 py-2.5 font-semibold text-ink">
+                        {r[0]}
+                      </th>
+                      {r.slice(1).map((c, j) => (
+                        <td
+                          key={j}
+                          className={`px-4 py-2.5 text-ink-soft${j === r.length - 2 ? " whitespace-nowrap" : ""}`}
+                        >
+                          {c}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
 
           <div className="grid gap-4 md:grid-cols-2">
             {guide.faqs.map((f) => (
@@ -209,7 +260,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
                 <Link href={`/${locale}/products`}>{dict.nav.products}</Link>
               </Button>
               <Button asChild variant="secondary">
-                <Link href={"/tr/hesaplayici/"}>
+                <Link href={`/${locale}/hesaplayici/`}>
                   {dict.nav.priceCalculator}
                 </Link>
               </Button>

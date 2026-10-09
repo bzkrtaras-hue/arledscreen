@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/postbuild-ai.mjs && node scripts/strip-owner-gate.mjs && node scripts/validate-ai-feeds.mjs && node scripts/validate-no-owner-gate.mjs",
+    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/postbuild-404-robots.mjs && node scripts/postbuild-ai.mjs && node scripts/strip-owner-gate.mjs && node scripts/validate-ai-feeds.mjs && node scripts/validate-no-owner-gate.mjs",
     "deploy:pages": "node scripts/pages-deploy-resilient.mjs out",
     "indexnow": "node scripts/submit-indexnow.mjs",
     "point-c": "node scripts/print-point-c-packs.mjs",

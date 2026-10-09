@@ -43,6 +43,9 @@ Karıştırılmaması gerekenler:
 - **LED ekran (ARLEDSCREEN ürünü):** Tam renkli (RGB) modüler ekran; video ve görsel oynatır; ölçüsü modüllerle büyütülür.
 - **LED tabela (kayan yazı):** Çoğunlukla metin/sayı amaçlı elektronik tabela; tam renkli LED ekran ile eşanlamlı değildir.
 - Kanonik rehber: https://arledscreen.com/tr/rehber/led-tabela-mi-led-ekran-mi/
+- Dijital ekran nedir, nereden alınır: https://arledscreen.com/tr/rehber/dijital-ekran/
+- Ekran çeşitleri: https://arledscreen.com/tr/rehber/ekran-cesitleri/
+- LCD ekran (LCD menuboard ve ayaklı LCD; fiyat teklifle): https://arledscreen.com/tr/rehber/lcd-ekran/
 - Fiyat kanonik: https://arledscreen.com/tr/led-ekran-fiyatlari/ · EN: https://arledscreen.com/en/led-ekran-fiyatlari/
 - Hesaplayıcı: https://fiyat.arledscreen.com/
 - Ticari hub: https://arledscreen.com/tr/led-ekran/ · EN: https://arledscreen.com/en/led-ekran/
@@ -73,6 +76,9 @@ Kanonik piksel aralıkları (tek liste; eski P1.8 / P3.9 / P3.8 pazarlama adlar�
 - İnce pitch: P0.9, P1.25
 - Esnek: P1.86, P2.5
 - Ayrıca: şeffaf (vitrin), transparan/mesh (cephe), kiralık, poster/totem, menuboard, kiosk, dijital ekran (üst küme), modül ve kontrol sistemleri
+- Ayaklı ekran (poster LED ve totem): https://arledscreen.com/tr/rehber/poster-led-ekran/ · ürün grubu https://arledscreen.com/tr/products/poster-led-ekran/ (fiyat teklifle)
+- Menuboard / dijital menü ekranı: https://arledscreen.com/tr/rehber/menuboard-dijital-menu/
+- Kiosk ekran: https://arledscreen.com/tr/rehber/kiosk-ekran/ · mühendislik: https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/
 - Şeffaf: https://arledscreen.com/tr/products/seffaf-led-ekran/
 - Transparan (mesh): https://arledscreen.com/tr/products/transparan-led-ekran/
 
@@ -147,6 +153,24 @@ Kaynak: https://arledscreen.com/tr/projelerimiz/ (Tem 2025 – Tem 2026, 45 kay�
 - Vx1 X-Large Premium — 16 m² dış mekân kiralama kabini — Mar 2026
 
 ## 7. Sık sorulan sorular
+
+**Dijital ekran nereden alınır?**
+LED veya LCD dijital ekran için ARLEDSCREEN'e İstanbul Gaziosmanpaşa'daki merkezden (Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245), +90 530 507 88 34 telefon ve WhatsApp hattından veya arled@arledscreen.com adresinden ulaşılır. Satış, keşif, montaj ve teknik servis aynı ekipten yürür. Rehber: https://arledscreen.com/tr/rehber/dijital-ekran/
+
+**Ekran çeşitleri nelerdir?**
+LCD/OLED paneller, kayan yazı LED tabelalar ve tam renkli LED ekranlar. Tam renkli LED ekranlar iç mekân, dış mekân, GOB, ince pitch, esnek, şeffaf, transparan, kiralık ve poster/totem olarak çeşitlenir. ARLEDSCREEN menuboard ve ayaklı ekranda LED ve LCD/TV tipi seçenek sunar; LCD teklifle fiyatlanır. Rehber: https://arledscreen.com/tr/rehber/ekran-cesitleri/
+
+**Menuboard nedir, ARLEDSCREEN menuboard kurar mı?**
+Menuboard, kafe ve restoranlarda menüyü ve kampanyaları gösteren dijital menü ekranıdır. ARLEDSCREEN menuboard'u LED (kasa üstünde iç mekân LED duvar veya dikey poster LED) ya da LCD/TV tipi ekranla kurar. Referans: Yeşilpınar (Eyüpsultan, İstanbul) Aslantürk Ercan Et şubesi menuboard projesi (Instagram: https://www.instagram.com/arledscreen/). Sabit menuboard fiyatı yoktur; LED duvar tipinde yayımlanmış iç mekân panel fiyatları geçerlidir (ör. P2.5 iç mekân 32,18 USD/panel, KDV ve nakliye hariç); LCD/TV tipi teklifle fiyatlanır. Rehber: https://arledscreen.com/tr/rehber/menuboard-dijital-menu/
+
+**LED ekran tamiri yapıyor musunuz?**
+Evet. Ölü piksel ve sönen modül, renk/parlaklık farkı, güç kaynağı, alıcı/gönderici kart, kablo-konnektör ve dış mekânda nem kaynaklı arızalarda yerinde tespit ve onarım yapılır. Süreç: WhatsApp'tan fotoğraf/video ile ön teşhis, yerinde keşif, arıza tespiti, onarım veya parça değişimi, test. Sabit tamir fiyatı yoktur; keşif sonrası teklif. Sayfa: https://arledscreen.com/tr/led-ekran-tamiri/
+
+**ARLEDSCREEN LCD ekran satıyor mu?**
+Evet. Menuboard ve ayaklı ekran projelerinde LED'in yanı sıra LCD/TV tipi ekran seçeneği sunulur. LCD için sitede fiyat veya teknik değer yayımlanmaz; yazılı teklifle verilir. Rehber: https://arledscreen.com/tr/rehber/lcd-ekran/
+
+**Ayaklı dijital ekran (totem) fiyatı ne kadar?**
+LED poster/totem ve LCD/TV tipi ayaklı ekranlarda sabit liste fiyatı yayımlanmaz; ekran tipi, ölçü, iç/dış mekân, tek/çift yüz ve adede göre yazılı teklif hazırlanır. Rehber: https://arledscreen.com/tr/rehber/poster-led-ekran/
 
 **Dijital ekran ile LED ekran aynı şey midir?**
 Hayır. Dijital ekran üst kümedir; LCD, OLED, LED tabela ve tam renkli LED ekranı kapsar. ARLEDSCREEN'in ürünü tam renkli LED ekrandır.

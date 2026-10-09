@@ -190,9 +190,9 @@ export default async function ServiceRegionPage({
       ) : null}
 
       <Section
-        eyebrow="Kayıtlı projeler"
-        title={`${region.name} proje kayıtları`}
-        description={`${region.projectCount} yayımlanmış kayıt. Tarih, kapsam ve konum; stok görsel yok.`}
+        eyebrow="Tamamlanan projeler"
+        title={`${region.name} projelerimiz`}
+        description={`${region.projectCount} tamamlanan proje: tarih, kapsam ve konum.`}
         className="bg-surface/60 prose-seo"
       >
         <div className="overflow-x-auto">
@@ -200,7 +200,7 @@ export default async function ServiceRegionPage({
             <thead>
               <tr className="border-b border-border text-ink-muted">
                 <th className="py-2 pr-3 font-semibold">Tarih</th>
-                <th className="py-2 pr-3 font-semibold">Kayıt</th>
+                <th className="py-2 pr-3 font-semibold">Proje</th>
                 <th className="py-2 pr-3 font-semibold">Ölçü / P</th>
                 <th className="py-2 font-semibold">Konum</th>
               </tr>
