@@ -13,7 +13,12 @@ export type HeroClip = {
   height: number;
   /** Short scene label for a11y / dots */
   label: string;
+  /** Optional portrait clip + poster for phones (picked via media query) */
+  srcMobile?: string;
+  posterMobile?: string;
 };
+
+const MOBILE_MEDIA = "(max-width: 767px)";
 
 export type HeroPoint = {
   title: string;
@@ -158,23 +163,24 @@ export function HeroVideo({
       <div className="relative h-[100svh] min-h-[560px] max-h-[860px] md:h-[min(100dvh,920px)] md:min-h-[680px] md:max-h-[920px]">
         {/* Still / poster stack — HQ factory frames stay sharp under the wash */}
         {clips.map((clip, i) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            key={`still-${clipKey(clip)}`}
-            src={clip.poster}
-            alt={clip.label}
-            width={clip.width}
-            height={clip.height}
-            fetchPriority={i === 0 ? "high" : "low"}
-            decoding={i === 0 ? "sync" : "async"}
-            className={`${coverClass(clip)} transition-opacity duration-[1200ms] ease-out ${
-              !reduce && active === i && !clip.src ? "hero-still-drift" : ""
-            }`}
-            style={{
-              opacity: active === i ? 1 : 0,
-              zIndex: 0,
-            }}
-          />
+          <picture key={`still-${clipKey(clip)}`}>
+            {clip.posterMobile ? <source media={MOBILE_MEDIA} srcSet={clip.posterMobile} /> : null}
+            <img
+              src={clip.poster}
+              alt={clip.label}
+              width={clip.width}
+              height={clip.height}
+              fetchPriority={i === 0 ? "high" : "low"}
+              decoding={i === 0 ? "sync" : "async"}
+              className={`${coverClass(clip)} transition-opacity duration-[1200ms] ease-out ${
+                !reduce && active === i && !clip.src ? "hero-still-drift" : ""
+              }`}
+              style={{
+                opacity: active === i ? 1 : 0,
+                zIndex: 0,
+              }}
+            />
+          </picture>
         ))}
 
         {clips.map((clip, i) =>
@@ -184,7 +190,7 @@ export function HeroVideo({
               ref={(el) => {
                 videoRefs.current[i] = el;
               }}
-              src={clip.src}
+              src={clip.srcMobile ? undefined : clip.src}
               poster={clip.poster}
               width={clip.width}
               height={clip.height}
@@ -202,7 +208,14 @@ export function HeroVideo({
               onCanPlay={() => setReady((r) => ({ ...r, [i]: true }))}
               className={coverClass(clip)}
               style={{ zIndex: active === i ? 1 : 0 }}
-            />
+            >
+              {clip.srcMobile ? (
+                <>
+                  <source media={MOBILE_MEDIA} src={clip.srcMobile} type="video/mp4" />
+                  <source src={clip.src} type="video/mp4" />
+                </>
+              ) : null}
+            </m.video>
           ) : null,
         )}
 
