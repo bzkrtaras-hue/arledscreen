@@ -904,7 +904,6 @@ function buildAiShopping() {
         "transparan-led-ekran",
         "esnek-led-ekran",
         "poster-led-ekran",
-        "kiralik-led-ekran",
         "huidu-kontrol-kartlari",
         "novastar-kontrolculer",
         "colorlight-kontrolculer",
@@ -932,7 +931,7 @@ function buildAiShopping() {
       rental: "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
       warranty: "ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar.",
       noFixedClaims: [
-        "Sertifika (CE/RoHS/ISO/UL/ETL) — model veya teklifle",
+        "CE: ürünlerimiz CE sertifikalıdır. Diğer sertifikalar (RoHS/ISO/UL/ETL) — model veya teklifle",
         "Nit, IP, kW — model veya teklifle",
         "Çalışan, ciro, müşteri, ranking — yayımlanmadı",
       ],
@@ -966,7 +965,7 @@ function buildAiShopping() {
         rental: "Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
         warranty: "ARLEDSCREEN offers a 2-year warranty and 5 years of free technical service.",
         noFixedClaims: [
-          "Certificates (CE/RoHS/ISO/UL/ETL) — only per model or quote",
+          "CE: our products are CE certified. Other certificates (RoHS/ISO/UL/ETL) — only per model or quote",
           "Nits, IP, kW — only per model or quote",
           "Headcount, revenue, customer counts, rankings — not published",
         ],

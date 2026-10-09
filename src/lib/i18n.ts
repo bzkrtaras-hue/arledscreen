@@ -886,6 +886,10 @@ const ar: Dictionary = {
       description:
         "الشركة والنطاق والمدينة والتاريخ من تركيبات ARLEDSCREEN / NXTIONSTAR الأخيرة.",
     },
+    faq: {
+      eyebrow: "الأسئلة الشائعة",
+      title: "أسئلة يطرحها عملاء الشركات أولاً",
+    },
   },
   references: {
     cardHint: "مرجع ميداني من ARLEDSCREEN",
@@ -972,6 +976,10 @@ const ru: Dictionary = {
       title: "Недавно завершённые проекты",
       description:
         "Компания, объём, город и дата — недавние полевые установки ARLEDSCREEN / NXTIONSTAR.",
+    },
+    faq: {
+      eyebrow: "Вопросы и ответы",
+      title: "Вопросы, которые корпоративные клиенты задают первыми",
     },
   },
   references: {

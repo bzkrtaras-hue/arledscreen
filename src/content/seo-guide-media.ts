@@ -66,6 +66,18 @@ const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
     src: "/projects/modules/cabinet-500x1000.jpg",
     alt: { tr: "500 × 1000 mm LED kabin: ön yüz, arka iç yapı ve yan profil", en: "500 × 1000 mm LED cabinet: front, rear structure and side profile", ru: "LED-кабинет 500 × 1000 мм: лицевая сторона, задняя часть и профиль", ar: "خزانة LED بمقاس 500 × 1000 مم: الواجهة والهيكل الخلفي والجانب" },
   },
+  "cami-led-ekran": {
+    src: "/projects/hires/neu-library-1920.jpg",
+    alt: { tr: "Geniş bir salonda iç mekân LED ekran ve iki ayaklı dijital ekran", en: "Indoor LED wall and two freestanding digital screens in a large hall", ru: "LED-экран и два напольных цифровых экрана в большом зале", ar: "شاشة LED داخلية وشاشتان رقميتان أرضيتان في قاعة كبيرة" },
+  },
+  "led-ekran-ariza-belirtileri": {
+    src: "/projects/service-assembly.jpg",
+    alt: { tr: "Teknisyenler LED ekranın arkasında modül ve kablo bağlantılarını kontrol ediyor", en: "Technicians checking modules and cabling on the back of an LED screen", ru: "Техники проверяют модули и кабели с тыльной стороны LED-экрана", ar: "فنيون يفحصون الوحدات والكابلات في الجهة الخلفية لشاشة LED" },
+  },
+  "led-ekran-ihracat": {
+    src: "/projects/panels-warehouse.jpg",
+    alt: { tr: "Sevkiyata hazır LED ekran kabinleri", en: "LED screen cabinets ready for shipment", ru: "LED-кабинеты, готовые к отправке", ar: "خزائن شاشات LED جاهزة للشحن" },
+  },
 };
 
 export function getGuideImage(slug: SeoGuideSlug, locale: Locale): { src: string; alt: string } | undefined {
@@ -110,9 +122,57 @@ const CAPTION: L4 = {
   ar: "أنواع خزائن شاشات LED ومقاساتها القياسية",
 };
 
+// Mosque sizing examples: height ≈ farthest viewer / 8, 320 × 160 mm modules, published panel USD.
+const CAMI_HEAD: Record<"tr" | "en" | "ru" | "ar", string[]> = {
+  tr: ["En arka saf", "Örnek ekran ölçüsü", "Modül", "Önerilen P", "Modül bedeli (USD)"],
+  en: ["Farthest row", "Example screen size", "Modules", "Suggested pitch", "Module cost (USD)"],
+  ru: ["Последний ряд", "Пример размера", "Модули", "Шаг", "Модули (USD)"],
+  ar: ["أبعد صف", "مقاس الشاشة المقترح", "الوحدات", "مسافة البكسل", "تكلفة الوحدات (دولار)"],
+};
+const CAMI_CAPTION: L4 = {
+  tr: "Cami için örnek ekran ölçüleri (yalnızca modül bedeli; KDV ve nakliye hariç)",
+  en: "Example mosque screen sizes (module cost only; VAT and shipping excluded)",
+  ru: "Примеры размеров экрана для мечети (только модули; без НДС и доставки)",
+  ar: "أمثلة على مقاسات شاشات المساجد (تكلفة الوحدات فقط؛ دون الضريبة والشحن)",
+};
+const CAMI_ROWS: L4[][] = [
+  [{ tr: "≈ 6 m", en: "≈ 6 m", ru: "≈ 6 м", ar: "≈ 6 م" }, { tr: "1,60 × 0,96 m", en: "1.60 × 0.96 m", ru: "1,60 × 0,96 м", ar: "1.60 × 0.96 م" }, { tr: "30", en: "30", ru: "30", ar: "30" }, { tr: "P3.07 iç", en: "P3.07 indoor", ru: "P3.07 помещ.", ar: "P3.07 داخلي" }, { tr: "926,40", en: "926.40", ru: "926,40", ar: "926.40" }],
+  [{ tr: "≈ 12 m", en: "≈ 12 m", ru: "≈ 12 м", ar: "≈ 12 م" }, { tr: "2,56 × 1,44 m", en: "2.56 × 1.44 m", ru: "2,56 × 1,44 м", ar: "2.56 × 1.44 م" }, { tr: "72", en: "72", ru: "72", ar: "72" }, { tr: "P3.07 iç", en: "P3.07 indoor", ru: "P3.07 помещ.", ar: "P3.07 داخلي" }, { tr: "2.223,36", en: "2,223.36", ru: "2 223,36", ar: "2,223.36" }],
+  [{ tr: "≈ 20 m", en: "≈ 20 m", ru: "≈ 20 м", ar: "≈ 20 م" }, { tr: "4,16 × 2,40 m", en: "4.16 × 2.40 m", ru: "4,16 × 2,40 м", ar: "4.16 × 2.40 م" }, { tr: "195", en: "195", ru: "195", ar: "195" }, { tr: "P4 iç", en: "P4 indoor", ru: "P4 помещ.", ar: "P4 داخلي" }, { tr: "5.261,10", en: "5,261.10", ru: "5 261,10", ar: "5,261.10" }],
+];
+
+const ARIZA_HEAD: Record<"tr" | "en" | "ru" | "ar", string[]> = {
+  tr: ["Belirti", "Olası neden", "İlk kontrol", "Kim yapar"],
+  en: ["Symptom", "Likely cause", "First check", "Who"],
+  ru: ["Признак", "Вероятная причина", "Первая проверка", "Кто"],
+  ar: ["العَرَض", "السبب المحتمل", "الفحص الأول", "من يقوم به"],
+};
+const ARIZA_CAPTION: L4 = {
+  tr: "LED ekran arıza belirtileri ve olası nedenleri",
+  en: "LED screen fault symptoms and likely causes",
+  ru: "Признаки неисправности LED-экрана и вероятные причины",
+  ar: "أعراض أعطال شاشات LED وأسبابها المحتملة",
+};
+const YOU: L4 = { tr: "Siz", en: "You", ru: "Вы", ar: "أنت" };
+const TECH: L4 = { tr: "Teknik servis", en: "Technician", ru: "Сервис", ar: "الفني" };
+const ARIZA_ROWS: L4[][] = [
+  [{ tr: "Kabin büyüklüğünde kararma", en: "Cabinet-sized dark area", ru: "Тёмная зона размером с кабинет", ar: "منطقة مظلمة بحجم خزانة" }, { tr: "Güç kaynağı veya alıcı kart", en: "Power supply or receiving card", ru: "Блок питания или принимающая карта", ar: "مزود الطاقة أو بطاقة الاستقبال" }, { tr: "Fotoğraf çekip gönderin", en: "Send a photo", ru: "Пришлите фото", ar: "أرسل صورة" }, TECH],
+  [{ tr: "Bir noktadan sonrası tamamen karanlık", en: "Everything after one point is dark", ru: "Всё после определённой точки тёмное", ar: "كل ما بعد نقطة معينة مظلم" }, { tr: "Veri kablosu zinciri", en: "Data cable chain", ru: "Цепочка кабеля данных", ar: "سلسلة كابل البيانات" }, { tr: "Kablo bağlantıları", en: "Cable connections", ru: "Соединения кабелей", ar: "توصيلات الكابلات" }, TECH],
+  [{ tr: "Tek modül sönük", en: "Single module out", ru: "Не работает один модуль", ar: "وحدة واحدة مطفأة" }, { tr: "Modül veya flat kablo", en: "Module or ribbon cable", ru: "Модуль или шлейф", ar: "الوحدة أو الكابل الشريطي" }, { tr: "Fotoğraf çekip gönderin", en: "Send a photo", ru: "Пришлите фото", ar: "أرسل صورة" }, TECH],
+  [{ tr: "Titreme", en: "Flicker", ru: "Мерцание", ar: "ارتعاش" }, { tr: "Gevşek kablo, güç kaynağı, kart ayarı", en: "Loose cable, power supply, card settings", ru: "Кабель, блок питания, настройки карты", ar: "كابل مرتخٍ أو مزود طاقة أو إعدادات البطاقة" }, { tr: "Video çekip gönderin", en: "Send a video", ru: "Пришлите видео", ar: "أرسل فيديو" }, TECH],
+  [{ tr: "Yatay/dikey çizgi, tek sıra kırmızı", en: "Line or a row stuck red", ru: "Полоса или красный ряд", ar: "خط أو صف أحمر" }, { tr: "Sürücü entegresi, flat kablo, kart portu", en: "Driver IC, ribbon cable, card port", ru: "Драйвер, шлейф, порт карты", ar: "دائرة التشغيل أو الكابل الشريطي أو منفذ البطاقة" }, { tr: "Fotoğraf çekip gönderin", en: "Send a photo", ru: "Пришлите фото", ar: "أرسل صورة" }, TECH],
+  [{ tr: "Ekran hiç açılmıyor", en: "Screen will not turn on", ru: "Экран не включается", ar: "الشاشة لا تعمل" }, { tr: "Sigorta, enerji, kaynak, gönderici kart", en: "Breaker, power, source, sending card", ru: "Автомат, питание, источник, карта", ar: "القاطع أو الكهرباء أو المصدر أو بطاقة الإرسال" }, { tr: "Sigorta ve görüntü kaynağı", en: "Breaker and video source", ru: "Автомат и источник видео", ar: "القاطع ومصدر الفيديو" }, YOU],
+];
+
 export function getGuideTable(slug: SeoGuideSlug, locale: Locale): GuideTable | undefined {
-  if (slug !== "cnc-led-kasa") return undefined;
   const k = (["tr", "en", "ru", "ar"].includes(locale) ? locale : "en") as keyof L4;
+  if (slug === "cami-led-ekran") {
+    return { caption: CAMI_CAPTION[k], headers: CAMI_HEAD[k], rows: CAMI_ROWS.map((r) => r.map((c) => c[k])) };
+  }
+  if (slug === "led-ekran-ariza-belirtileri") {
+    return { caption: ARIZA_CAPTION[k], headers: ARIZA_HEAD[k], rows: ARIZA_ROWS.map((r) => r.map((c) => c[k])) };
+  }
+  if (slug !== "cnc-led-kasa") return undefined;
   return {
     caption: CAPTION[k],
     headers: HEAD[k],

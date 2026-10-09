@@ -16,6 +16,9 @@ export const SEO_GUIDE_SLUGS = [
   "kiosk-ekran",
   "kiosk-dijital-ekran",
   "cnc-led-kasa",
+  "cami-led-ekran",
+  "led-ekran-ariza-belirtileri",
+  "led-ekran-ihracat",
 ] as const;
 
 export type SeoGuideSlug = (typeof SEO_GUIDE_SLUGS)[number];
@@ -1096,6 +1099,212 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       cardLabel: "Kiosk",
       cardTeaser: "Dokunmatik bilgi ve self-servis kiosk dijital ekran.",
     },
+    "cami-led-ekran": {
+      slug: "cami-led-ekran",
+      title: "Cami ve İbadethane LED Ekran: Ölçü, Fiyat, Vakit Ekranı | ARLEDSCREEN",
+      description:
+        "Cami, kilise ve diğer ibadethaneler için LED ekran: cemaat mesafesine göre ölçü ve piksel aralığı, namaz vakti ve hutbe gösterimi, yayımlanmış panel fiyatları. ARLEDSCREEN, İstanbul.",
+      keywords: ["cami LED ekran", "camiye LED ekran", "namaz vakti ekranı", "ezan vakti ekranı", "cami dijital ekran", "ibadethane LED ekran", "kilise LED ekran", "NXTIONSTAR"],
+      h1: "Cami ve ibadethaneler için LED ekran nasıl seçilir?",
+      intro:
+        "Camiye LED ekran takılabilir; namaz vakitleri, hutbe metni, duyurular ve dini günler aynı ekranda gösterilebilir. Doğru ekran iki ölçüye göre seçilir: en öndeki cemaatin ekrana uzaklığı piksel aralığını, en arkadaki saftın uzaklığı ekran büyüklüğünü belirler. Aynı kurallar kilise, cemevi ve diğer ibadethaneler için de geçerlidir. ARLEDSCREEN, kendi markası NXTIONSTAR LED ekranların keşfini, montajını ve teknik servisini İstanbul Gaziosmanpaşa merkezinden yapar.",
+      sections: [
+        {
+          h2: "Camiye LED ekran mı, LCD ekran mı?",
+          body:
+            "Küçük bir mescitte yalnızca vakit çizelgesi gösterilecekse tek bir LCD ekran yeterli olabilir. Geniş bir harimde cemaatin büyük bölümü ekranı uzaktan izleyeceği için ölçüsü modül eklenerek büyütülebilen LED ekran daha uygundur. LED ekran 320 × 160 mm modüllerin yan yana birleşmesiyle kurulur; ölçü mihrap yanındaki ya da kadınlar mahfilindeki duvara göre planlanır.",
+        },
+        {
+          h2: "Ekran büyüklüğü nasıl belirlenir?",
+          body:
+            "Genel bir kural olarak ekran yüksekliği, en arkadaki izleyicinin ekrana uzaklığının yaklaşık sekizde biri kadar seçilir; böylece vakit ve hutbe yazıları arka saflardan okunur. Örneğin en arka saf 12 m uzaktaysa yaklaşık 1,44 m yüksekliğinde (9 modül) bir ekran başlangıç için uygundur. Tablodaki örnekler bu kurala göre hazırlanmıştır; kesin ölçü keşifte duvar ve saf düzenine göre verilir.",
+        },
+        {
+          h2: "Piksel aralığı nasıl seçilir?",
+          body:
+            "Piksel aralığı en öndeki cemaatin mesafesine göre seçilir: yaklaşık 1 mm piksel aralığı için 1 m mesafe (P3.07 ≈ 3 m). Cami içinde ön saflar çoğunlukla 3–4 m'den uzakta olduğu için iç mekân P3.07 veya P4 modüller yeterlidir. Ekran cemaate çok yakın monte edilecekse P2.5 tercih edilir. Avlu ve dış cephe ekranlarında dış mekân P4 veya P5 modüller kullanılır.",
+        },
+        {
+          h2: "Namaz vakitleri ve hutbe nasıl gösterilir?",
+          body:
+            "LED ekran kendisine gelen görüntüyü gösterir. Vakit çizelgesi, hutbe metni, duyurular ve ayet-hadis görselleri bir medya oynatıcı ya da asenkron kontrol kartı (Huidu, NovaStar) ile zamanlanmış içerik olarak oynatılabilir; bilgisayar kapalıyken de program devam eder. Kullanılacak içerik kaynağı ve kontrol sistemi keşifte netleşir ve teklifte yazılı olarak belirtilir.",
+        },
+        {
+          h2: "Fiyat ve ödeme",
+          body:
+            "Yayımlanmış panel fiyatları USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir: P2.5 iç mekân 32,18 USD, P3.07 iç mekân 30,88 USD, P4 iç mekân 26,98 USD, dış mekânda P4 33,80 USD ve P5 29,90 USD. Tablodaki tutarlar yalnızca modül bedelidir; kontrol kartı, kabin veya taşıyıcı, işçilik ve yazılım ayrıca eklenir. Taksitli ödeme yapılabilir; ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz. Dernek veya bağışla alınacak ekranlarda ödeme planı yazılı teklifte belirtilir.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Camiye LED ekran takılır mı?",
+          answer:
+            "Evet. Cami içinde mihrap yanına, kadınlar mahfiline veya avluya LED ekran monte edilebilir. Duvarın taşıma durumu, elektrik hattı ve kablo güzergâhı keşifte kontrol edilir.",
+        },
+        {
+          question: "Cami için kaç m² LED ekran gerekir?",
+          answer:
+            "En arka saf 12 m uzaktaysa yaklaşık 2,56 × 1,44 m (72 modül, ≈ 3,7 m²) bir ekran başlangıç için uygundur; P3.07 iç mekân modül bedeli 72 × 30,88 = 2.223,36 USD'dir (KDV ve nakliye hariç, yalnızca modül). Mahalle mescitlerinde daha küçük ölçüler yeterli olabilir.",
+        },
+        {
+          question: "Cami LED ekran fiyatı ne kadar?",
+          answer:
+            "Fiyat ekran ölçüsüne, piksel aralığına ve montaj koşuluna göre değişir. Panel fiyatları yayımlanmıştır (ör. P3.07 iç mekân 30,88 USD/panel); kesin tutar keşif sonrası yazılı teklifle verilir. Taksitli ödeme yapılabilir.",
+        },
+        {
+          question: "Kilise veya cemevi için hangi ekran uygundur?",
+          answer:
+            "Aynı kurallar geçerlidir: piksel aralığı en öndeki izleyicinin, ekran büyüklüğü en arkadaki izleyicinin mesafesine göre seçilir. Geniş salonlarda LED, küçük alanlarda LCD ekran tercih edilebilir.",
+        },
+        {
+          question: "Teslim süresi ne kadar?",
+          answer:
+            "Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. Projenize ait tarih yazılı teklifte belirtilir.",
+        },
+      ],
+      relatedSlugs: ["ic-mekan-led-ekran", "konferans-salonu-led", "lcd-ekran"],
+      cta: {
+        title: "Camiye uygun ekranı birlikte planlayalım",
+        body:
+          "Harimin ölçüsünü, en ön ve en arka saf mesafesini ve ekranın konacağı duvarın fotoğrafını gönderin; ölçü, piksel aralığı ve bütçe önerisi hazırlayalım.",
+      },
+      cardLabel: "Cami ve ibadethane LED ekran",
+      cardTeaser: "Cemaat mesafesine göre ekran ölçüsü, piksel aralığı ve namaz vakti gösterimi.",
+    },
+    "led-ekran-ariza-belirtileri": {
+      slug: "led-ekran-ariza-belirtileri",
+      title: "LED Ekran Arıza Belirtileri ve Nedenleri | ARLEDSCREEN",
+      description:
+        "LED ekran karardı, titriyor, çizgi var ya da hiç açılmıyor mu? Arıza belirtileri, olası nedenleri ve ilk kontroller. LED, LCD, kiosk ve menuboard tamiri: ARLEDSCREEN, İstanbul.",
+      keywords: ["LED ekran arıza", "LED ekran arıza belirtileri", "LED ekran titriyor", "LED ekran çizgi", "LED ekran açılmıyor", "LED ekran tamiri", "LCD ekran tamiri", "kiosk tamiri"],
+      h1: "LED ekran arıza belirtileri: neden olur, ne yapılır?",
+      intro:
+        "LED ekran arızalarının çoğu belirtisinden tanınır: bir bölümün kararması çoğunlukla güç kaynağı veya alıcı kartı, titreme kablo ya da ayar sorununu, tek sırada çizgi veya renk bozulması modül ya da flat kabloyu işaret eder. Aşağıdaki tablo en sık belirtileri, olası nedenlerini ve sizin yapabileceğiniz ilk kontrolleri gösterir. Kesin teşhis yerinde ölçümle konur; ARLEDSCREEN LED ekranların yanı sıra LCD reklam ekranı, kiosk ve menuboard tamiri de yapar.",
+      sections: [
+        {
+          h2: "Ekranın bir bölümü karardı",
+          body:
+            "Kabin büyüklüğünde dikdörtgen bir alan kararmışsa sebep genellikle o kabinin güç kaynağı veya alıcı kartıdır. Kararma bir kabinden sonraki tüm kabinlere yayılıyorsa veri kablosu zinciri kopmuş olabilir. Tek bir modül sönmüşse modülün kendisi ya da flat kablosu arızalıdır.",
+        },
+        {
+          h2: "Titreme, çizgi ve renk bozulması",
+          body:
+            "Titreme çoğunlukla gevşek veri veya güç kablosundan, zayıflayan güç kaynağından ya da alıcı kart ayarlarından kaynaklanır; kamerada görülen titreme düşük tazeleme hızıyla ilgilidir. Yatay veya dikey çizgi ve tek sırada renk bozulması (ör. bir sıranın sürekli kırmızı yanması) genellikle modülün sürücü entegresi, flat kablo ya da alıcı kart portundan kaynaklanır.",
+        },
+        {
+          h2: "Ekran hiç açılmıyor",
+          body:
+            "Önce sigortayı, enerji hattını ve görüntü kaynağını (bilgisayar, medya oynatıcı) kontrol edin. Senkron ekranlarda bilgisayar kapalıysa ekran da görüntü vermez. Bunlar sağlamsa gönderici kart, güç kaynakları veya yazılım ayarı kontrol edilmelidir.",
+        },
+        {
+          h2: "Nem, yıldırım ve aşırı gerilim",
+          body:
+            "Dış mekânda conta yıpranırsa nem girer; modüllerde oksitlenme ve bölgesel sönme görülür. Yıldırım ve elektrik dalgalanması çoğunlukla güç kaynaklarına, alıcı kartlara ve bağlantılara zarar verir. Bu durumlarda ekranı yeniden açmadan önce teknik kontrol yaptırmak ek hasarı önler.",
+        },
+        {
+          h2: "LCD, kiosk ve menuboard arızaları",
+          body:
+            "LCD reklam ekranlarında, dokunmatik kiosklarda ve dijital menuboardlarda en sık görülen belirtiler görüntü gelmemesi, dokunmatiğin tepki vermemesi, güç kartı arızası ve bağlantı sorunlarıdır. Marka ve model bilgisini, arızanın fotoğrafı veya videosuyla birlikte gönderin; uzaktan ön teşhis yapıp keşfi planlayalım.",
+        },
+      ],
+      faqs: [
+        {
+          question: "LED ekranın bir kısmı siyah kaldı; ne yapmalıyım?",
+          answer:
+            "Ekranı kapatıp açmak kalıcı çözüm değildir. Kararan alanın fotoğrafını çekin ve +90 530 507 88 34 WhatsApp hattına gönderin. Kabin büyüklüğündeki kararmalar çoğunlukla güç kaynağı veya alıcı karttan kaynaklanır ve parça değişimiyle giderilir.",
+        },
+        {
+          question: "LED ekran tamiri ne kadar tutar?",
+          answer:
+            "Tamir için sabit fiyat yayımlamıyoruz; arızanın kaynağı ve değişecek parça her işte farklıdır. Fiyat ön teşhis ve keşif sonrası yazılı teklifle verilir.",
+        },
+        {
+          question: "LED ekran bakımı ne sıklıkla yapılmalı?",
+          answer:
+            "Kullanım koşuluna göre değişir. Dış mekân ekranlarda conta, kablo ve bağlantıların düzenli kontrolü nem kaynaklı arızaları azaltır. Bakım kapsamı ve sıklığı yazılı teklifte belirtilir; ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar.",
+        },
+        {
+          question: "Kayan yazı tabela ve dijital ekran tamiri yapıyor musunuz?",
+          answer:
+            "Evet. LED ekran, LCD reklam ekranı, kiosk ve menuboard tamiri yapıyoruz. Kayan yazı tabelalar için marka ve kontrol kartı bilgisini paylaşın; servis ve yedek parça uygunluğunu değerlendirip iletelim.",
+        },
+      ],
+      relatedSlugs: ["led-ekran", "ic-mekan-led-ekran", "dis-mekan-led-ekran"],
+      cta: {
+        title: "Arızayı birlikte teşhis edelim",
+        body:
+          "Belirtinin fotoğrafını veya kısa videosunu WhatsApp'tan gönderin; uzaktan ön teşhis yapıp keşif ve tamir teklifini hazırlayalım.",
+      },
+      cardLabel: "LED ekran arıza belirtileri",
+      cardTeaser: "Kararma, titreme, çizgi ve açılmama: olası nedenler ve ilk kontroller.",
+    },
+    "led-ekran-ihracat": {
+      slug: "led-ekran-ihracat",
+      title: "Yurt Dışına LED Ekran Satışı ve İhracat | Avrupa, Orta Doğu, Balkanlar | ARLEDSCREEN",
+      description:
+        "ARLEDSCREEN, NXTIONSTAR LED ekranları tüm Avrupa'ya, Orta Doğu'ya ve Balkanlar'a gönderir. CE sertifikalı ürünler, USD panel fiyatları, TL, USD, EUR ve diğer para birimlerinde ödeme.",
+      keywords: ["LED ekran ihracat", "yurt dışı LED ekran", "Türkiye'den LED ekran", "LED ekran Avrupa", "LED ekran Orta Doğu", "LED ekran Balkanlar", "CE sertifikalı LED ekran", "NXTIONSTAR"],
+      h1: "Yurt dışına LED ekran: Avrupa, Orta Doğu ve Balkanlar",
+      intro:
+        "ARLEDSCREEN, kendi markası NXTIONSTAR LED ekranları İstanbul'dan tüm Avrupa'ya, Orta Doğu'ya ve Balkanlar'a gönderir. Ürünlerimiz CE sertifikalıdır. Yayımlanmış panel fiyatları USD cinsindendir ve tüm dillerde aynıdır; ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz.",
+      sections: [
+        {
+          h2: "Hangi ülkelere gönderiyoruz?",
+          body:
+            "Tüm Avrupa ülkelerine, Orta Doğu'ya ve Balkanlar'a (ör. Bulgaristan, Yunanistan, Romanya, Sırbistan, Bosna-Hersek, Kuzey Makedonya, Arnavutluk, Kosova) LED ekran gönderiyoruz. Varış adresi ve teslim koşulları yazılı teklifte belirtilir.",
+        },
+        {
+          h2: "Fiyat ve ödeme",
+          body:
+            "Panel fiyatları USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir; örneğin P2.5 iç mekân 32,18 USD, P2.5 dış mekân 63,70 USD. Fiyatlar tüm dillerde aynıdır. Ödemeyi TL, USD, EUR ve diğer para birimlerinde kabul ediyoruz; taksitli ödeme de yapılabilir. Nakliye ayrıca tekliflendirilir.",
+        },
+        {
+          h2: "Sertifika",
+          body:
+            "NXTIONSTAR ürünleri CE sertifikalıdır. Modele ait teknik föy yazılı teklifle birlikte paylaşılır.",
+        },
+        {
+          h2: "Teslim süresi",
+          body:
+            "Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. Hazırlık süresi ürüne, ölçüye ve stok durumuna; nakliye süresi varış adresine göre değişir. Kesin tarih yazılı teklifte belirtilir.",
+        },
+        {
+          h2: "Teklif için gerekenler",
+          body:
+            "Ülke ve şehir, ekran ölçüsü, iç veya dış mekân kullanımı, izleme mesafesi ve montaj yeri fotoğrafı yeterlidir. Kurulum ve teknik destek kapsamı teklifte yazılı olarak belirtilir.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Türkiye'den yurt dışına LED ekran gönderiyor musunuz?",
+          answer:
+            "Evet. Tüm Avrupa'ya, Orta Doğu'ya ve Balkanlar'a LED ekran gönderiyoruz. Nakliye ayrıca tekliflendirilir.",
+        },
+        {
+          question: "Ürünleriniz CE sertifikalı mı?",
+          answer:
+            "Evet, ürünlerimiz CE sertifikalıdır.",
+        },
+        {
+          question: "Hangi para birimlerinde ödeme kabul ediyorsunuz?",
+          answer:
+            "TL, USD, EUR ve diğer tüm para birimlerinde ödeme kabul ediyoruz. Yayımlanmış panel fiyatları USD cinsindendir; taksitli ödeme de yapılabilir.",
+        },
+        {
+          question: "Yurt dışı fiyatları farklı mı?",
+          answer:
+            "Hayır. Panel fiyatları tüm dillerde ve ülkelerde aynıdır; KDV ve nakliye hariçtir. Nakliye bedeli varış adresine göre teklifte belirtilir.",
+        },
+      ],
+      relatedSlugs: ["led-ekran", "dis-mekan-led-ekran", "ic-mekan-led-ekran"],
+      cta: {
+        title: "Yurt dışı teklifinizi hazırlayalım",
+        body:
+          "Ülke, şehir, ekran ölçüsü ve kullanım yerini paylaşın; panel listesi, nakliye ve ödeme planıyla yazılı teklif gönderelim.",
+      },
+      cardLabel: "Yurt dışına LED ekran (ihracat)",
+      cardTeaser: "Avrupa, Orta Doğu ve Balkanlar'a gönderim, CE sertifika, ödeme ve teslim süresi.",
+    },
   },
   en: {
     "led-ekran": {
@@ -1952,6 +2161,212 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       },
       cardLabel: "Kiosk",
       cardTeaser: "Touch info and self-service digital kiosk displays.",
+    },
+    "cami-led-ekran": {
+      slug: "cami-led-ekran",
+      title: "LED Screens for Mosques and Places of Worship: Size, Price, Prayer Times | ARLEDSCREEN",
+      description:
+        "LED screens for mosques, churches and other places of worship: size and pixel pitch by congregation distance, prayer-time and sermon display, published panel prices. ARLEDSCREEN, Istanbul.",
+      keywords: ["mosque LED screen", "LED screen for mosque", "prayer time display", "church LED screen", "place of worship LED screen", "NXTIONSTAR"],
+      h1: "How to choose an LED screen for a mosque or place of worship",
+      intro:
+        "An LED screen can be installed in a mosque to show prayer times, the sermon text, announcements and religious days. Two distances decide the right screen: the nearest worshipper sets the pixel pitch, and the farthest row sets the screen size. The same rules apply to churches, cemevis and other places of worship. ARLEDSCREEN surveys, installs and services its own NXTIONSTAR LED screens from its Gaziosmanpaşa, Istanbul HQ.",
+      sections: [
+        {
+          h2: "LED or LCD for a mosque?",
+          body:
+            "If a small masjid only needs a prayer-time chart, a single LCD screen may be enough. In a large prayer hall most worshippers watch from a distance, so an LED screen, which grows by adding modules, is the better fit. LED screens are built from 320 × 160 mm modules; the size is planned around the wall beside the mihrab or in the women's gallery.",
+        },
+        {
+          h2: "How big should the screen be?",
+          body:
+            "As a general rule, choose a screen height of about one eighth of the distance to the farthest viewer, so prayer times and sermon text stay readable from the back rows. For example, if the last row is 12 m away, a screen about 1.44 m high (9 modules) is a good starting point. The examples in the table follow this rule; the final size is set at the survey.",
+        },
+        {
+          h2: "How is pixel pitch chosen?",
+          body:
+            "Pitch follows the nearest viewer: roughly 1 m of distance per 1 mm of pitch (P3.07 ≈ 3 m). Inside a mosque the front rows are usually more than 3–4 m away, so indoor P3.07 or P4 modules are enough. If the screen sits very close to worshippers, P2.5 is preferred. Courtyard and façade screens use outdoor P4 or P5 modules.",
+        },
+        {
+          h2: "How are prayer times and the sermon shown?",
+          body:
+            "An LED screen displays the signal it receives. Prayer times, the sermon text, announcements and verse images can be played as scheduled content from a media player or an asynchronous control card (Huidu, NovaStar), so the programme keeps running with the PC off. The content source and control system are agreed at the survey and written into the quote.",
+        },
+        {
+          h2: "Price and payment",
+          body:
+            "Published panel prices are in USD per panel, VAT and shipping excluded: indoor P2.5 32.18, indoor P3.07 30.88, indoor P4 26.98, outdoor P4 33.80 and outdoor P5 29.90. Amounts in the table are module cost only; control card, cabinet or frame, labour and software are added separately. Installment payment is available, and we accept TL, USD, EUR and other currencies. For screens funded by an association or donations, the payment plan is stated in the written quote.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Can an LED screen be installed in a mosque?",
+          answer:
+            "Yes. An LED screen can be mounted beside the mihrab, in the women's gallery or in the courtyard. Wall load, power line and cable route are checked at the survey.",
+        },
+        {
+          question: "How big should an LED screen be for a mosque?",
+          answer:
+            "If the last row is 12 m away, about 2.56 × 1.44 m (72 modules, ≈ 3.7 m²) is a good start; indoor P3.07 module cost is 72 × 30.88 = USD 2,223.36 (module only, VAT and shipping excluded). Small neighbourhood mosques may need less.",
+        },
+        {
+          question: "How much does a mosque LED screen cost?",
+          answer:
+            "It depends on size, pitch and mounting. Panel prices are published (e.g. indoor P3.07 USD 30.88 per panel); the final amount is given in a written quote after survey. Installment payment is available.",
+        },
+        {
+          question: "Which screen suits a church?",
+          answer:
+            "The same rules apply: pitch follows the nearest viewer, size follows the farthest. Large halls suit LED; small rooms can use LCD.",
+        },
+        {
+          question: "What is the delivery time?",
+          answer:
+            "Delivery takes 3–21 days of preparation + 1–14 days of shipping. The date for your project is stated in the written quote.",
+        },
+      ],
+      relatedSlugs: ["ic-mekan-led-ekran", "konferans-salonu-led", "lcd-ekran"],
+      cta: {
+        title: "Let's plan the right screen for your mosque",
+        body:
+          "Send the hall size, the distance to the front and back rows and a photo of the wall; we will suggest size, pitch and budget.",
+      },
+      cardLabel: "Mosque and place-of-worship LED screens",
+      cardTeaser: "Screen size and pitch by congregation distance, plus prayer-time display.",
+    },
+    "led-ekran-ariza-belirtileri": {
+      slug: "led-ekran-ariza-belirtileri",
+      title: "LED Screen Fault Symptoms and Causes | ARLEDSCREEN",
+      description:
+        "LED screen partly black, flickering, showing lines or not turning on? Fault symptoms, likely causes and first checks. LED, LCD, kiosk and menu board repair: ARLEDSCREEN, Istanbul.",
+      keywords: ["LED screen fault", "LED screen flickering", "LED screen lines", "LED screen not turning on", "part of LED screen black", "LED screen repair", "LCD repair", "kiosk repair"],
+      h1: "LED screen fault symptoms: causes and what to do",
+      intro:
+        "Most LED screen faults can be recognised by their symptom: a dark area usually points to a power supply or receiving card, flicker to a cable or setting, and a line or wrong-coloured row to a module or ribbon cable. The table below lists the most common symptoms, likely causes and the first checks you can do yourself. The final diagnosis is made on site by measurement; besides LED screens, ARLEDSCREEN also repairs LCD advertising displays, kiosks and menu boards.",
+      sections: [
+        {
+          h2: "Part of the screen is black",
+          body:
+            "If a cabinet-sized rectangle is dark, the cause is usually that cabinet's power supply or receiving card. If every cabinet after one point is dark, the data cable chain may be broken. If a single module is out, the module or its ribbon cable has failed.",
+        },
+        {
+          h2: "Flicker, lines and wrong colours",
+          body:
+            "Flicker usually comes from a loose data or power cable, a weakening power supply or receiving card settings; flicker seen only on camera is linked to a low refresh rate. Horizontal or vertical lines and a single row in the wrong colour (for example a row stuck red) usually come from the module driver IC, a ribbon cable or a receiving card port.",
+        },
+        {
+          h2: "The screen will not turn on",
+          body:
+            "First check the breaker, the power line and the video source (PC or media player). On synchronous screens, the screen shows nothing when the PC is off. If these are fine, the sending card, power supplies or software settings need checking.",
+        },
+        {
+          h2: "Moisture, lightning and surges",
+          body:
+            "Outdoors, worn gaskets let moisture in, causing oxidised modules and dark patches. Lightning and power surges mostly damage power supplies, receiving cards and connections. Have the screen checked before switching it on again to avoid further damage.",
+        },
+        {
+          h2: "LCD, kiosk and menu board faults",
+          body:
+            "On LCD advertising displays, touch kiosks and digital menu boards the most common symptoms are no picture, an unresponsive touch screen, power board failures and connection problems. Send the brand and model with a photo or video of the fault; we will make a remote pre-diagnosis and plan the survey.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Part of my LED screen is black. What should I do?",
+          answer:
+            "Restarting is not a lasting fix. Take a photo of the dark area and send it to +90 530 507 88 34 on WhatsApp. Cabinet-sized dark areas usually come from a power supply or receiving card and are fixed by replacing the part.",
+        },
+        {
+          question: "How much does LED screen repair cost?",
+          answer:
+            "We do not publish fixed repair prices; the cause and parts differ on every job. The price is given in a written quote after pre-diagnosis and survey.",
+        },
+        {
+          question: "How often should an LED screen be maintained?",
+          answer:
+            "It depends on use. On outdoor screens, regular checks of gaskets, cables and connections reduce moisture faults. Maintenance scope and frequency are stated in the written quote; ARLEDSCREEN offers a 2-year warranty and 5 years of free technical service.",
+        },
+        {
+          question: "Do you repair scrolling text signs and digital screens?",
+          answer:
+            "Yes. We repair LED screens, LCD advertising displays, kiosks and menu boards. For scrolling text signs, share the brand and control card and we will assess service and spare-part fit.",
+        },
+      ],
+      relatedSlugs: ["led-ekran", "ic-mekan-led-ekran", "dis-mekan-led-ekran"],
+      cta: {
+        title: "Let's diagnose the fault together",
+        body:
+          "Send a photo or short video of the symptom on WhatsApp; we will make a remote pre-diagnosis and prepare the survey and repair quote.",
+      },
+      cardLabel: "LED screen fault symptoms",
+      cardTeaser: "Dark areas, flicker, lines and no power: likely causes and first checks.",
+    },
+    "led-ekran-ihracat": {
+      slug: "led-ekran-ihracat",
+      title: "LED Screens Shipped Abroad: Europe, Middle East, Balkans | ARLEDSCREEN",
+      description:
+        "ARLEDSCREEN ships NXTIONSTAR LED screens to all of Europe, the Middle East and the Balkans. CE-certified products, USD panel prices, payment in TL, USD, EUR and other currencies.",
+      keywords: ["LED screen export", "LED screen from Turkey", "LED screen supplier Europe", "LED screen Middle East", "LED screen Balkans", "CE certified LED screen", "NXTIONSTAR"],
+      h1: "LED screens shipped abroad: Europe, the Middle East and the Balkans",
+      intro:
+        "ARLEDSCREEN ships its own NXTIONSTAR LED screens from Istanbul to all of Europe, the Middle East and the Balkans. Our products are CE certified. Published panel prices are in USD and are the same in every language; we accept payment in TL, USD, EUR and other currencies.",
+      sections: [
+        {
+          h2: "Where do we ship?",
+          body:
+            "We ship LED screens to every European country, the Middle East and the Balkans (for example Bulgaria, Greece, Romania, Serbia, Bosnia and Herzegovina, North Macedonia, Albania and Kosovo). The destination and delivery terms are stated in the written quote.",
+        },
+        {
+          h2: "Price and payment",
+          body:
+            "Panel prices are in USD per panel, VAT and shipping excluded; for example indoor P2.5 USD 32.18 and outdoor P2.5 USD 63.70. Prices are the same in every language. We accept payment in TL, USD, EUR and other currencies; installment payment is also available. Shipping is quoted separately.",
+        },
+        {
+          h2: "Certification",
+          body:
+            "NXTIONSTAR products are CE certified. The model data sheet is shared with the written quote.",
+        },
+        {
+          h2: "Delivery time",
+          body:
+            "Delivery takes 3–21 days of preparation + 1–14 days of shipping. Preparation depends on the product, size and stock; shipping depends on the destination. The exact date is stated in the written quote.",
+        },
+        {
+          h2: "What we need for a quote",
+          body:
+            "Country and city, screen size, indoor or outdoor use, viewing distance and a photo of the mounting location. Installation and technical support scope is written into the quote.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Do you ship LED screens from Turkey abroad?",
+          answer:
+            "Yes. We ship LED screens to all of Europe, the Middle East and the Balkans. Shipping is quoted separately.",
+        },
+        {
+          question: "Are your products CE certified?",
+          answer:
+            "Yes, our products are CE certified.",
+        },
+        {
+          question: "Which currencies do you accept?",
+          answer:
+            "We accept payment in TL, USD, EUR and all other currencies. Published panel prices are in USD; installment payment is also available.",
+        },
+        {
+          question: "Are export prices different?",
+          answer:
+            "No. Panel prices are the same in every language and country; VAT and shipping are excluded. Shipping cost depends on the destination and is stated in the quote.",
+        },
+      ],
+      relatedSlugs: ["led-ekran", "dis-mekan-led-ekran", "ic-mekan-led-ekran"],
+      cta: {
+        title: "Let's prepare your export quote",
+        body:
+          "Share country, city, screen size and use; we will send a written quote with the panel list, shipping and payment plan.",
+      },
+      cardLabel: "LED screens abroad (export)",
+      cardTeaser: "Shipping to Europe, the Middle East and the Balkans; CE, payment and delivery time.",
     },
   },
 };

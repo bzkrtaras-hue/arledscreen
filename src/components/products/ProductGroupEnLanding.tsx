@@ -196,7 +196,10 @@ export function ProductGroupEnLanding({
       ) : (
         <section className="border-t border-border py-10">
           <div className="mx-auto max-w-7xl px-4 text-sm text-ink-soft sm:px-6 lg:px-8">
-            Prices for this group are given in a written quote. Our 12 published panel prices (USD) are on{" "}
+            {group.slug === "kiralik-led-ekran"
+              ? "Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. "
+              : "Prices for this group are given in a written quote. "}
+            Our 12 published panel prices (USD) are on{" "}
             <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
               our price list
             </Link>.

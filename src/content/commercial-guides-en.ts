@@ -59,6 +59,16 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
         answer:
           "If shoppers stand within ~2.5 m, start near P2.5; farther aisles can use coarser pitch. Share photos and viewing distances via /en/quote/.",
       },
+      {
+        question: "Do you sell P2, P3, P6 or P10 LED? What is the nearest equivalent?",
+        answer:
+          "P2, P3, P6 and P10 are not in the NXTIONSTAR line-up. Nearest equivalents (USD per panel, VAT and shipping excluded): P2 → P1.86 GOB 49.08 or indoor P2.5 32.18; P3 → indoor P3.07 30.88 or outdoor P3.07 44.20; P6 → outdoor P5 29.90 or outdoor P8 (on quote); P10 → outdoor P8 (on quote).",
+      },
+      {
+        question: "From how far is a P10 or P6 LED screen viewed?",
+        answer:
+          "By the 1 mm ≈ 1 m rule, P6 suits viewers from about 6 m and P10 from about 10 m. Our nearest outdoor modules are P5 (from about 5 m) and P8 (from about 8 m).",
+      },
     ],
     related: [
       { href: "/en/led-ekran-fiyatlari/", label: "LED display prices" },

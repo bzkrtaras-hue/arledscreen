@@ -53,6 +53,31 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       answer:
         "ARLEDSCREEN supplies and supports NXTIONSTAR LED products in Turkey. Local sales, engineering desk and spare-parts logistics run through ARLEDSCREEN; documentation is available in English, Turkish, Arabic and Russian.",
     },
+    {
+      question: "How long does LED display delivery take?",
+      answer:
+        "Delivery takes 3–21 days of preparation + 1–14 days of shipping. Preparation depends on the product, size and stock; shipping depends on the delivery address. The date for your project is stated in the written quote.",
+    },
+    {
+      question: "What payment options do you offer? Is installment payment available?",
+      answer:
+        "Yes, installment payment is available. We accept payment in TL, USD, EUR and all other currencies. Published panel prices are in USD; the payment plan is stated in the written quote.",
+    },
+    {
+      question: "Do you ship LED displays abroad?",
+      answer:
+        "Yes. We ship LED displays to all of Europe, the Middle East and the Balkans. Our products are CE certified. Prices are the same in every language; payment is accepted in TL, USD, EUR and other currencies. Shipping is quoted separately.",
+    },
+    {
+      question: "Which Istanbul districts do you serve?",
+      answer:
+        "We have completed projects in every Istanbul district: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar and Zeytinburnu. Survey, installation and technical service are planned from our Gaziosmanpaşa HQ.",
+    },
+    {
+      question: "Can I rent an LED screen weekly or monthly? Is there a deposit?",
+      answer:
+        "Yes. Indoor and outdoor rental LED: USD 50 per m² per day. Weekly and monthly rentals are priced on the same daily per-m² rate. No deposit is required. Installation and shipping are quoted separately.",
+    },
   ],
   tr: [
     {
@@ -120,6 +145,31 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       answer:
         "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür.",
     },
+    {
+      question: "LED ekran teslim süresi ne kadar?",
+      answer:
+        "Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir. Hazırlık süresi ürüne, ölçüye ve stok durumuna; nakliye süresi teslimat adresine göre değişir. Projenize ait tarih yazılı teklifte belirtilir.",
+    },
+    {
+      question: "Ödeme seçenekleri nelerdir? Taksit yapılıyor mu?",
+      answer:
+        "Evet, taksitli ödeme yapılabilir. Ödemeyi TL, USD, EUR ve diğer tüm para birimlerinde kabul ediyoruz. Yayımlanmış panel fiyatları USD cinsindendir; ödeme planı yazılı teklifte belirtilir.",
+    },
+    {
+      question: "Yurt dışına LED ekran gönderiyor musunuz?",
+      answer:
+        "Evet. Tüm Avrupa'ya, Orta Doğu'ya ve Balkanlar'a LED ekran gönderiyoruz. Ürünlerimiz CE sertifikalıdır. Fiyatlar tüm dillerde aynıdır; ödeme TL, USD, EUR ve diğer para birimlerinde yapılabilir. Nakliye ayrıca tekliflendirilir.",
+    },
+    {
+      question: "İstanbul'un hangi ilçelerinde hizmet veriyorsunuz?",
+      answer:
+        "İstanbul'un tüm ilçelerinde proje yaptık: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar ve Zeytinburnu. Keşif, montaj ve teknik servis Gaziosmanpaşa merkezimizden planlanır.",
+    },
+    {
+      question: "Kiralık LED ekran haftalık ve aylık kiralanabilir mi? Depozito var mı?",
+      answer:
+        "Evet. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Haftalık ve aylık kiralamalar aynı günlük m² fiyatı üzerinden hesaplanır. Depozito alınmaz. Kurulum ve nakliye ayrıca tekliflendirilir.",
+    },
   ],
   ar: [
     {
@@ -142,6 +192,31 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       answer:
         "NXTIONSTAR هي العلامة التجارية الخاصة بـ ARLEDSCREEN، وARLEDSCREEN هي نقطة البيع الوحيدة لها في تركيا: المبيعات والهندسة وقطع الغيار.",
     },
+    {
+      question: "ما مدة تسليم شاشة LED؟",
+      answer:
+        "مدة التسليم: 3–21 يومًا للتجهيز + 1–14 يومًا للشحن. يعتمد التجهيز على المنتج والمقاس والمخزون، ويعتمد الشحن على عنوان التسليم. يُحدَّد تاريخ مشروعك في عرض السعر المكتوب.",
+    },
+    {
+      question: "ما خيارات الدفع؟ هل يتوفر التقسيط؟",
+      answer:
+        "نعم، الدفع بالتقسيط متاح. نقبل الدفع بالليرة التركية والدولار واليورو وجميع العملات الأخرى. أسعار الألواح المنشورة بالدولار الأمريكي، وتُحدَّد خطة الدفع في عرض السعر المكتوب.",
+    },
+    {
+      question: "هل تشحنون شاشات LED إلى خارج تركيا؟",
+      answer:
+        "نعم. نشحن شاشات LED إلى جميع دول أوروبا والشرق الأوسط والبلقان. منتجاتنا حاصلة على شهادة CE. الأسعار واحدة بجميع اللغات، ونقبل الدفع بالليرة التركية والدولار واليورو وعملات أخرى. يُسعَّر الشحن بشكل منفصل.",
+    },
+    {
+      question: "في أي مناطق إسطنبول تقدمون خدماتكم؟",
+      answer:
+        "نفّذنا مشاريع في جميع مناطق إسطنبول: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar وZeytinburnu. يُخطَّط للمعاينة والتركيب والخدمة الفنية من مقرنا في غازي عثمان باشا.",
+    },
+    {
+      question: "هل يمكن استئجار شاشة LED أسبوعيًا أو شهريًا؟ هل يوجد تأمين؟",
+      answer:
+        "نعم. تأجير شاشات LED الداخلية والخارجية: 50 دولارًا أمريكيًا لكل م² يوميًا. يُحسب الإيجار الأسبوعي والشهري بالسعر اليومي نفسه لكل م². لا يُطلب أي تأمين. يُسعَّر التركيب والشحن بشكل منفصل.",
+    },
   ],
   ru: [
     {
@@ -163,6 +238,31 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       question: "Где купить NXTIONSTAR в Турции?",
       answer:
         "NXTIONSTAR — собственный бренд ARLEDSCREEN; единственная точка продаж в Турции — ARLEDSCREEN: продажи, инжиниринг и запчасти.",
+    },
+    {
+      question: "Каков срок поставки LED-экрана?",
+      answer:
+        "Срок поставки: 3–21 день подготовки + 1–14 дней доставки. Подготовка зависит от продукта, размера и наличия на складе, доставка — от адреса. Дата для вашего проекта указывается в письменном предложении.",
+    },
+    {
+      question: "Какие способы оплаты? Возможна ли рассрочка?",
+      answer:
+        "Да, возможна оплата в рассрочку. Мы принимаем оплату в TL, USD, EUR и любых других валютах. Опубликованные цены панелей указаны в USD; график оплаты фиксируется в письменном предложении.",
+    },
+    {
+      question: "Вы отправляете LED-экраны за границу?",
+      answer:
+        "Да. Мы поставляем LED-экраны во все страны Европы, Ближнего Востока и Балкан. Наша продукция имеет сертификат CE. Цены одинаковы на всех языках; оплата принимается в TL, USD, EUR и других валютах. Доставка рассчитывается отдельно.",
+    },
+    {
+      question: "В каких районах Стамбула вы работаете?",
+      answer:
+        "Мы выполняли проекты во всех районах Стамбула: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar и Zeytinburnu. Выезд, монтаж и сервис планируются из нашего офиса в Газиосманпаше.",
+    },
+    {
+      question: "Можно ли арендовать LED-экран на неделю или месяц? Нужен ли депозит?",
+      answer:
+        "Да. Аренда LED-экрана для помещений и улицы: 50 USD за м² в день. Недельная и месячная аренда считается по той же дневной ставке за м². Депозит не требуется. Монтаж и доставка рассчитываются отдельно.",
     },
   ],
 };
