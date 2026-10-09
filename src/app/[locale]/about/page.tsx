@@ -101,7 +101,7 @@ export default async function AboutPage({ params }: PageProps) {
               {about.body}
             </p>
             {locale !== "tr" ? (
-              <AiPriceSourceNote locale={locale === "en" ? "en" : "tr"} className="mt-3 text-sm leading-relaxed text-ink-muted" />
+              <AiPriceSourceNote locale={locale} className="mt-3 text-sm leading-relaxed text-ink-muted" />
             ) : null}
             <div className="grid grid-cols-3 gap-3 pt-2">
               {about.stats.map((stat) => (

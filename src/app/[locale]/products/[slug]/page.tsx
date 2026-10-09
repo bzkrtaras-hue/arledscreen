@@ -622,7 +622,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
             <SectionHeading
               eyebrow="Proje örnekleri"
               title="Bu gruptan tamamlanan projeler"
-              description="Bilgiler proje kayıtlarında yer aldığı şekliyle verilmiştir."
+              description="Bu ürün grubuyla tamamladığımız projelerden örnekler."
             />
             <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {refs.map((r) => (

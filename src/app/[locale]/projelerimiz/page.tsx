@@ -39,7 +39,7 @@ export async function generateMetadata({
       path: "/projelerimiz/",
       title: "LED Display Projects & References | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN LED projects: municipal, café, store, event and outdoor installs. Size, pitch, location and date from published records.",
+        "ARLEDSCREEN LED projects: municipal, café, store, event and outdoor installs. Size, pitch, location and date for each project.",
       hreflangLocales: ["tr", "en"],
     });
   }
@@ -167,7 +167,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
             className="mx-auto mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-white/85 sm:mt-3.5 sm:text-[0.95rem]"
           >
             {en
-              ? "Municipal, store, café, hotel and outdoor installs. Size, pixel pitch and location match the published project record. Case detail pages stay in Turkish."
+              ? "Municipal, store, café, hotel and outdoor installs. Each entry lists size, pixel pitch and location. Project detail pages are in Turkish."
               : "Belediye, mağaza, kafe, otel ve dış mekân kurulumları. Ölçü, piksel aralığı ve konum proje kaydındaki gibidir."}
           </p>
           <div className="mx-auto mt-3 max-w-2xl text-center [&_a]:text-[#9CC0F5] [&_p]:text-white/75">

@@ -180,7 +180,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "LED ekran fiyatı nasıl belirlenir?",
         answer:
-          "Panel USD listesi fiyat hesaplayıcıda yayımlanır. Nihai tutar ölçü, piksel aralığı, iç/dış mekân, konstrüksiyon ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
+          "Panel fiyatları (USD) fiyat hesaplayıcıda yayımlanır. Nihai tutar ölçü, piksel aralığı, iç/dış mekân, konstrüksiyon ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
       },
       {
         question: "Hangi şehirlerde hizmet veriyorsunuz?",
@@ -246,7 +246,7 @@ const INTENT_PAGES: CommercialPage[] = [
     bullets: [
       "NXTIONSTAR ürün hattı",
       "Proje bazlı panel ve kontrol konfigürasyonu",
-      "Fabrika/montaj görselleri ve saha kayıtları",
+      "Fabrika/montaj görselleri ve sahada tamamlanan işler",
     ],
     images: [
       { src: "/projects/factory-assembly.jpg", alt: "LED ekran üretim ve montaj hazırlığı" },
@@ -912,7 +912,7 @@ const USE_PAGES: CommercialPage[] = [
     slug: "spor-salonu-led-ekran",
     name: "Spor salonu LED ekran",
     lead: "Spor salonu ve kapalı arena skor/perimetre LED çözümleri.",
-    intro: ["Kapalı spor salonlarında izleme mesafesi ve darbe riski pitch/yüzey seçimini etkiler. GOB koruma iç mekanlarda değerlendirilebilir."],
+    intro: ["Kapalı spor salonlarında izleme mesafesi ve darbe riski pitch/yüzey seçimini etkiler. GOB koruma iç mekânlarda değerlendirilebilir."],
     proof: (r) => /P2\.5|P3|P4|Premium/i.test(r.detail),
     images: [
       { src: "/projects/lounge-football.jpg", alt: "Spor yayını LED ekran" },
@@ -1151,8 +1151,8 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     eyebrow: "Use case · Retail",
     lead: "LED walls for storefronts, sales floors and brand feature walls — pitch matched to shopper distance.",
     intro: [
-      "Store LED depends on window distance and product lighting. Published indoor/GOB panel USD is on our price list; final amount after survey.",
-      "Retail-adjacent published records (e.g. Merter / Osmanbey) inform planning — every store still needs its own survey.",
+      "Store LED depends on window distance and product lighting. Published indoor/GOB panel prices are on our price list; final amount after survey.",
+      "Our retail-area projects (e.g. Merter / Osmanbey) inform planning — every store still needs its own survey.",
       NAP_EN,
     ],
     bullets: ["Survey and measure", "Pitch for closest shopper", "Install + service"],
@@ -1161,7 +1161,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "How much does a store LED cost?",
         answer:
-          "No fixed m² price. Panel USD is published at /en/led-ekran-fiyatlari/; size, pitch and install set the written quote after survey. No free shipping.",
+          "No fixed m² price. Panel prices are published on our price list; size, pitch and install set the written quote after survey. No free shipping.",
       },
     ],
   },
@@ -1174,7 +1174,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Atrium, corridor and façade LED for shopping centres — indoor and outdoor pitches differ.",
     intro: [
       "Mall projects need wider viewing distances; indoor atrium and outdoor façade usually take different pitches.",
-      "Circulation and mounting height are measured on survey. Panel USD published; structure and install are quote lines.",
+      "Circulation and mounting height are measured on survey. Panel prices are published; structure and installation are itemised in the written quote.",
       NAP_EN,
     ],
     bullets: ["Atrium vs façade pitch", "Height and load survey", "Install + calibration"],
@@ -1183,7 +1183,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Indoor atrium or outdoor façade — same pitch?",
         answer:
-          "Usually not. Closer atrium viewing wants finer pitch; façades often use coarser outdoor pitch. Confirm after survey via /en/quote/.",
+          "Usually not. Closer atrium viewing wants finer pitch; façades often use coarser outdoor pitch. Confirm after survey via our quote form.",
       },
     ],
   },
@@ -1195,8 +1195,8 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     eyebrow: "Use case · Façade",
     lead: "Outdoor LED for building façades and plazas — structure and permits planned with the survey.",
     intro: [
-      "Façade LED needs structure, wind load and local permit steps as part of the plan. Large outdoor published records (e.g. Manisa, Bursa) are scale examples — not templates.",
-      "Outdoor panel USD is on our price list; structure/VAT/shipping are quote lines. No free shipping.",
+      "Façade LED needs structure, wind load and local permit steps as part of the plan. Our large outdoor projects (e.g. Manisa, Bursa) are scale examples — not templates.",
+      "Outdoor panel prices are on our price list; structure, VAT and shipping are itemised in the written quote. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Outdoor structure survey", "Pitch for street distance", "Install + service"],
@@ -1218,7 +1218,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Outdoor billboard LED for roadside and open areas — coarser pitch for long viewing distance.",
     intro: [
       "Billboards often evaluate the P4–P5 outdoor band because viewers are farther away. Permits and structure clear on survey.",
-      "Published outdoor panel USD helps material planning; final project price is written after survey.",
+      "Published outdoor panel prices help material planning; final project price is written after survey.",
       NAP_EN,
     ],
     bullets: ["Long-distance pitch", "Structure + power survey", "Written outdoor quote"],
@@ -1227,20 +1227,20 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Is billboard LED priced per m² online?",
         answer:
-          "Panel USD is published; there is no fixed installed billboard m² rate. Use /en/led-ekran-fiyatlari/ then /en/quote/ after site details.",
+          "Panel prices are published on our price list; there is no fixed installed billboard m² rate. Request a quote after sharing site details.",
       },
     ],
   },
   "otel-led-ekran": {
     title: "Hotel LED Display | Lobby & Façade | ARLEDSCREEN",
     description:
-      "Hotel lobby, ballroom and outdoor LED. ARLEDSCREEN Istanbul — published Alanya resort record as context; quote after survey.",
+      "Hotel lobby, ballroom and outdoor LED. ARLEDSCREEN Istanbul — our Alanya resort project as an example; quote after survey.",
     h1: "Hotel LED display",
     eyebrow: "Use case · Hotel",
     lead: "Lobby, ballroom and outdoor LED for hotels — fine pitch indoors; coarser outdoors.",
     intro: [
-      "The published Alanya White City Resort Hotel record is a hotel-scale example. Lobby often wants fine pitch; outdoor areas coarser.",
-      "Indoor/GOB panel USD published; install and structure after survey. No free shipping.",
+      "Our Alanya White City Resort Hotel project is a hotel-scale example. Lobby often wants fine pitch; outdoor areas coarser.",
+      "Indoor/GOB panel prices are published; install and structure after survey. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Lobby vs outdoor pitch", "Survey before order", "Install + handover"],
@@ -1249,7 +1249,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Can you reuse the Alanya hotel design elsewhere?",
         answer:
-          "No — that record is a published case, not a copy-paste design. Every hotel needs its own measure and written quote.",
+          "No — that project is an example, not a copy-paste design. Every hotel needs its own measure and written quote.",
       },
     ],
   },
@@ -1261,8 +1261,8 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     eyebrow: "Use case · Stage",
     lead: "Stage and event LED — purchase walls or rental cabinets with install/strike support.",
     intro: [
-      "The published Kadıköy Matiz Sahne record is a stage/outdoor example. Short runs often favour rental cabinets.",
-      "Purchase panel USD is published. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+      "Our Kadıköy Matiz Sahne project is a stage/outdoor example. Short runs often favour rental cabinets.",
+      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       NAP_EN,
     ],
     bullets: ["Rent or buy decision", "Size and days quote", "Install + strike plan"],
@@ -1271,20 +1271,20 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Is stage rental on the price list?",
         answer:
-          "No. Our price list is purchase panel USD only. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. Compare purchase via /en/led-ekran-fiyatlari/.",
+          "No. Our price list covers purchase prices per panel only. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. Compare purchase prices on our price list.",
       },
     ],
   },
   "belediye-led-ekran": {
     title: "Municipal LED Display | City & Plaza Screens | ARLEDSCREEN",
     description:
-      "Municipal plaza, info and event LED. ARLEDSCREEN Istanbul — published Manisa / Beylikdüzü records as context; quote after survey.",
+      "Municipal plaza, info and event LED. ARLEDSCREEN Istanbul — our Manisa / Beylikdüzü projects as examples; quote after survey.",
     h1: "Municipal LED display",
     eyebrow: "Use case · Municipal",
     lead: "Plaza, information and event LED for municipalities — permits and structure planned on survey.",
     intro: [
-      "Published Manisa Büyükşehir and Beylikdüzü municipal records are public-scale examples. Permit steps vary by location.",
-      "Outdoor panel USD published; structure, freight and VAT are quote lines. No free shipping.",
+      "Our Manisa Büyükşehir and Beylikdüzü municipal projects are public-scale examples. Permit steps vary by location.",
+      "Outdoor panel prices are published; structure, freight and VAT are itemised in the written quote. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Public-space survey", "Permit-aware planning", "Install + service"],
@@ -1300,13 +1300,13 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
   "vitrin-led-ekran": {
     title: "Window Display LED | Storefront & Column | ARLEDSCREEN",
     description:
-      "Storefront window and column LED. ARLEDSCREEN Istanbul — published Aksaray vitrin record as context; quote after survey.",
+      "Storefront window and column LED. ARLEDSCREEN Istanbul — our Aksaray storefront project as an example; quote after survey.",
     h1: "Window display LED",
     eyebrow: "Use case · Window",
     lead: "Storefront and column LED for close shopper viewing — transparent LED is an option for glass windows.",
     intro: [
-      "The published Aksaray Beren Kırtasiye 192×176 cm window + column record is a storefront example — not a template.",
-      "Indoor/GOB panel USD published; transparent LED for glass is quote-scoped after survey. No free shipping.",
+      "Our Aksaray Beren Kırtasiye 192×176 cm window + column project is a storefront example — not a template.",
+      "Indoor/GOB panel prices are published; transparent LED for glass is priced by written quote after survey. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Close-view pitch", "Window vs column survey", "Transparent LED option"],
@@ -1315,20 +1315,20 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Transparent LED or standard indoor for a window?",
         answer:
-          "Glass that must stay see-through often favours transparent LED; solid brand walls use indoor/GOB. Confirm via /en/quote/ with photos.",
+          "Glass that must stay see-through often favours transparent LED; solid brand walls use indoor/GOB. Confirm via our quote form with photos.",
       },
     ],
   },
   "restoran-led-ekran": {
     title: "Restaurant & Café LED Display | ARLEDSCREEN",
     description:
-      "Restaurant and café seating-area LED. ARLEDSCREEN Istanbul — published café records as context; quote after survey.",
+      "Restaurant and café seating-area LED. ARLEDSCREEN Istanbul — our café projects as examples; quote after survey.",
     h1: "Restaurant LED display",
     eyebrow: "Use case · Restaurant",
     lead: "LED walls for restaurant and café seating — pitch matched to table distance.",
     intro: [
-      "Published café records include Beylikdüzü Yaşam Cafe, Prestij Cafe, Ouka Kafe and a Yozgat campus café — planning context only.",
-      "Indoor/GOB panel USD published; install after survey. No free shipping.",
+      "Our café projects include Beylikdüzü Yaşam Cafe, Prestij Cafe, Ouka Kafe and a Yozgat campus café — planning context only.",
+      "Indoor/GOB panel prices are published; install after survey. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Seating-distance pitch", "Ambient light survey", "Install + service"],
@@ -1337,7 +1337,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Is there a fixed restaurant LED m² price?",
         answer:
-          "No. Panel USD is at /en/led-ekran-fiyatlari/; size, pitch and install set the written quote after survey.",
+          "No. Panel prices are on our price list; size, pitch and install set the written quote after survey.",
       },
     ],
   },
@@ -1350,7 +1350,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Stage-backdrop and side-wall LED for wedding halls — rental for short runs, purchase for permanent installs.",
     intro: [
       "Stage and side-wall LED is common in wedding venues. Short events may favour rental cabinets.",
-      "Purchase panel USD published. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       NAP_EN,
     ],
     bullets: ["Rent or buy", "Stage size survey", "Install + strike plan"],
@@ -1359,7 +1359,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Is wedding-hall rental on the price list?",
         answer:
-          "Our price list is purchase panel USD. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+          "Our price list covers purchase prices per panel. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       },
     ],
   },
@@ -1372,7 +1372,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "High-readability LED for conference and meeting halls — pitch from closest seated viewer.",
     intro: [
       "Viewing distance and presentation content set pitch. Fine-pitch GOB and indoor series are often reviewed.",
-      "Published panel USD for planning; final size after survey. No free shipping.",
+      "Panel prices are published for planning; final size after survey. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Seated viewing distance", "Fine-pitch options", "Survey before order"],
@@ -1381,20 +1381,20 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "P1.25 or P2.5 for a conference hall?",
         answer:
-          "Closest critical seats decide. Control-room closeness may need P1.25; larger halls can step up. Share photos via /en/quote/.",
+          "Closest critical seats decide. Control-room closeness may need P1.25; larger halls can step up. Share photos via our quote form.",
       },
     ],
   },
   "fuar-led-ekran": {
     title: "Fair & Booth LED Display | ARLEDSCREEN",
     description:
-      "Fair booth and temporary-area LED. Rent or buy — ARLEDSCREEN Istanbul; published Ünye stand record as context.",
+      "Fair booth and temporary-area LED. Rent or buy — ARLEDSCREEN Istanbul; our Ünye stand project as an example.",
     h1: "Fair / booth LED display",
     eyebrow: "Use case · Fair",
     lead: "Booth and temporary LED for fairs — rental or purchase by event duration.",
     intro: [
       "The published Ünye Belediyesi Ordu Günleri stand (Atatürk Airport Millet Bahçesi) is a booth example — not a template.",
-      "Purchase panel USD published. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. No free shipping.",
+      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Duration drives rent vs buy", "Booth size survey", "Install + strike"],
@@ -1403,7 +1403,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Rent or buy for a three-day fair?",
         answer:
-          "Short fairs usually favour rental. Compare purchase panel USD at /en/led-ekran-fiyatlari/. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+          "Short fairs usually favour rental. Compare purchase prices on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       },
     ],
   },
@@ -1416,7 +1416,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "LED for production sites, canteens and factory entrances — environment notes drive panel choice.",
     intro: [
       "Dust, viewing distance and mount height affect selection. Site conditions are noted on survey; exaggerated IP/kW claims are not published — values appear in the written quote.",
-      "Indoor/outdoor panel USD published; install after survey. No free shipping.",
+      "Indoor/outdoor panel prices are published; install after survey. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Environment survey", "Indoor vs outdoor choice", "Install + service"],
@@ -1438,7 +1438,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Score and perimeter LED for indoor sports halls — pitch and surface protection after survey.",
     intro: [
       "Indoor arenas need viewing distance and impact risk considered for pitch/surface. GOB protection can help close indoor use.",
-      "Panel USD published; install and structure are quote lines. No free shipping.",
+      "Panel prices are published; installation and structure are itemised in the written quote. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Arena viewing distance", "Surface protection options", "Survey + quote"],
@@ -1447,20 +1447,20 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Is sports-hall LED priced per m² online?",
         answer:
-          "Panel USD only. Installed arena m² rates are not published — use /en/quote/ after site details.",
+          "We publish panel prices only. Installed arena m² rates are not published — request a quote after sharing site details.",
       },
     ],
   },
   "stadyum-led-ekran": {
     title: "Stadium LED Display | Large Outdoor | ARLEDSCREEN",
     description:
-      "Stadium and large outdoor LED. ARLEDSCREEN Istanbul — published Bursa P5 record as scale context; quote after survey.",
+      "Stadium and large outdoor LED. ARLEDSCREEN Istanbul — our Bursa P5 project as a scale example; quote after survey.",
     h1: "Stadium LED display",
     eyebrow: "Use case · Stadium",
     lead: "Stadium-scale outdoor LED — structure and long viewing distance planned on survey.",
     intro: [
-      "Stadium jobs need tall structure and long viewing distance. The published Bursa 576×480 cm P5 Premium outdoor record is a large-surface example — every stadium needs its own survey.",
-      "Outdoor panel USD published; structure/VAT/shipping are quote lines. No free shipping.",
+      "Stadium jobs need tall structure and long viewing distance. Our Bursa 576×480 cm P5 Premium outdoor project is a large-surface example — every stadium needs its own survey.",
+      "Outdoor panel prices are published; structure, VAT and shipping are itemised in the written quote. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Long-distance pitch", "Structure survey", "Written outdoor quote"],
@@ -1469,7 +1469,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Can the Bursa P5 design be copied to another stadium?",
         answer:
-          "No — that record is published scale context, not a copy-paste design. Every site needs measure and a written quote.",
+          "No — that project shows scale; it is not a copy-paste design. Every site needs measure and a written quote.",
       },
     ],
   },
@@ -1479,57 +1479,57 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
   "p1-25-led-ekran": {
     title: "P1.25 LED Display | Fine-Pitch GOB | ARLEDSCREEN",
     description:
-      "P1.25 fine-pitch GOB LED for close viewing. Published panel USD on our price list (e.g. 95.88 USD). ARLEDSCREEN — Istanbul.",
+      "P1.25 fine-pitch GOB LED for close viewing. Published panel prices on our price list (e.g. 95.88 USD). ARLEDSCREEN — Istanbul.",
     h1: "P1.25 LED display",
     eyebrow: "Pixel pitch · Fine",
     lead: "Very close viewing — fine-pitch GOB panels for control rooms, luxury retail and lobbies.",
     intro: [
       "P1.25 suits control rooms, luxury stores and close lobbies. See the GOB model page for the technical summary.",
-      "Example: P1.25 GOB 95.88 USD per panel, prices valid until 31 Dec 2026. Full list: /en/led-ekran-fiyatlari/. No free shipping.",
+      "Example: P1.25 GOB 95.88 USD per panel, prices valid until 31 Dec 2026. The full list is on our price list page. No free shipping.",
       NAP_EN,
     ],
-    bullets: ["Close-view fine pitch", "Published GOB panel USD", "Survey before final size"],
+    bullets: ["Close-view fine pitch", "Published GOB panel prices", "Survey before final size"],
     imageAlts: ["Fine-pitch LED panel", "Fine-pitch surface technologies"],
     faqs: [
       {
-        question: "What is the P1.25 GOB panel USD?",
+        question: "What is the P1.25 GOB panel price?",
         answer:
-          "95.88 USD per panel on our price list (excl. VAT/shipping; no free shipping). Price page: /en/led-ekran-fiyatlari/.",
+          "95.88 USD per panel on our price list (excl. VAT/shipping; no free shipping).",
       },
     ],
   },
   "p2-5-led-ekran": {
     title: "P2.5 LED Display | Indoor & Outdoor | ARLEDSCREEN",
     description:
-      "P2.5 LED for indoor and outdoor mid-distance projects. Published panel USD on our price list. ARLEDSCREEN — Istanbul.",
+      "P2.5 LED for indoor and outdoor mid-distance projects. Published panel prices on our price list. ARLEDSCREEN — Istanbul.",
     h1: "P2.5 LED display",
     eyebrow: "Pixel pitch · Mid",
     lead: "One of the most used pitch bands for indoor and outdoor mid-distance projects.",
     intro: [
-      "P2.5 balances resolution for stores, cafés, near-stage and mid-distance outdoor use. It appears often in published project records.",
-      "Indoor and outdoor P2.5 panel USD is published; install and structure are quote lines.",
+      "P2.5 balances resolution for stores, cafés, near-stage and mid-distance outdoor use. It appears often in our completed projects.",
+      "Indoor and outdoor P2.5 panel prices are published; installation and structure are itemised in the written quote.",
       NAP_EN,
     ],
-    bullets: ["Indoor and outdoor options", "Published panel USD", "Pitch vs viewing distance"],
+    bullets: ["Indoor and outdoor options", "Published panel prices", "Pitch vs viewing distance"],
     imageAlts: ["P2.5 indoor LED", "Outdoor LED display in front of a building"],
     faqs: [
       {
         question: "Is P2.5 right for a store?",
         answer:
-          "If shoppers stand near ~2.5 m, start around P2.5. Closer critical viewers may need finer pitch. Confirm with photos via /en/quote/.",
+          "If shoppers stand near ~2.5 m, start around P2.5. Closer critical viewers may need finer pitch. Confirm with photos via our quote form.",
       },
     ],
   },
   "p4-led-ekran": {
     title: "P4 LED Display | Façade & Outdoor | ARLEDSCREEN",
     description:
-      "P4 LED for façades and open areas. Published outdoor panel USD; large Manisa outdoor record as scale context. ARLEDSCREEN — Istanbul.",
+      "P4 LED for façades and open areas. Published outdoor panel prices; our large Manisa outdoor project as a scale example. ARLEDSCREEN — Istanbul.",
     h1: "P4 LED display",
     eyebrow: "Pixel pitch · Outdoor",
     lead: "A common band for façades and open areas — front-service variants available.",
     intro: [
-      "P4 is used on large outdoor jobs such as the published Manisa Büyükşehir 1344×128 cm Ultra 2026 record — a scale example, not a template.",
-      "Indoor/outdoor/front-service model pages hold the technical summary. Panel USD published; structure after survey.",
+      "P4 is used on large outdoor jobs such as our Manisa Büyükşehir 1344×128 cm Ultra 2026 project — a scale example, not a template.",
+      "Indoor/outdoor/front-service model pages hold the technical summary. Panel prices are published; structure after survey.",
       NAP_EN,
     ],
     bullets: ["Façade-scale outdoor", "Front-service option", "Survey for structure"],
@@ -1545,79 +1545,79 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
   "p1-86-led-ekran": {
     title: "P1.86 LED Display | Fine Pitch | ARLEDSCREEN",
     description:
-      "P1.86 fine-pitch LED — GOB and flexible options. Published panel USD on our price list. ARLEDSCREEN — Istanbul.",
+      "P1.86 fine-pitch LED — GOB and flexible options. Published panel prices on our price list. ARLEDSCREEN — Istanbul.",
     h1: "P1.86 LED display",
     eyebrow: "Pixel pitch · Fine",
     lead: "Fine pitch with a budget balance — GOB and flexible variants on model pages.",
     intro: [
       "P1.86 is a common fine-pitch band for corporate lobbies and stores. GOB and flexible variants have model pages.",
-      "Panel USD published at /en/led-ekran-fiyatlari/; install after survey. No free shipping.",
+      "Panel prices are published on our price list; install after survey. No free shipping.",
       NAP_EN,
     ],
-    bullets: ["Lobby / store fine pitch", "GOB and flexible options", "Published panel USD"],
+    bullets: ["Lobby / store fine pitch", "GOB and flexible options", "Published panel prices"],
     imageAlts: ["P1.86 fine-pitch LED", "Panoramic indoor stage LED video wall"],
     faqs: [
       {
         question: "P1.86 or P1.25?",
         answer:
-          "Closer critical viewers push toward P1.25; slightly farther lobbies often use P1.86. Confirm with photos via /en/quote/.",
+          "Closer critical viewers push toward P1.25; slightly farther lobbies often use P1.86. Confirm with photos via our quote form.",
       },
     ],
   },
   "p2-9-led-ekran": {
     title: "P2.9 LED Display | Outdoor Mid-Distance | ARLEDSCREEN",
     description:
-      "P2.9 / P2.97 outdoor mid-distance LED. Published outdoor panel USD. ARLEDSCREEN — Istanbul.",
+      "P2.9 / P2.97 outdoor mid-distance LED. Published outdoor panel prices. ARLEDSCREEN — Istanbul.",
     h1: "P2.9 LED display",
     eyebrow: "Pixel pitch · Outdoor mid",
     lead: "Outdoor mid-distance band — P2.9 / P2.97 for façades and plazas at moderate range.",
     intro: [
       "P2.9 suits outdoor mid viewing distance. Model page holds the technical summary.",
-      "Outdoor panel USD published; structure after survey. No free shipping.",
+      "Outdoor panel prices are published; structure after survey. No free shipping.",
       NAP_EN,
     ],
-    bullets: ["Outdoor mid distance", "Published panel USD", "Structure survey"],
+    bullets: ["Outdoor mid distance", "Published panel prices", "Structure survey"],
     imageAlts: ["Outdoor public LED screen", "Outdoor LED display"],
     faqs: [
       {
         question: "P2.5 or P2.9 outdoors?",
         answer:
-          "Closer street viewers may stay near P2.5; farther façades often step up. Share site photos via /en/quote/.",
+          "Closer street viewers may stay near P2.5; farther façades often step up. Share site photos via our quote form.",
       },
     ],
   },
   "p3-07-led-ekran": {
     title: "P3.07 LED Display | Indoor & Outdoor Mid | ARLEDSCREEN",
     description:
-      "P3.07 mid-pitch for indoor and outdoor. Published panel USD. ARLEDSCREEN — Istanbul.",
+      "P3.07 mid-pitch for indoor and outdoor. Published panel prices. ARLEDSCREEN — Istanbul.",
     h1: "P3.07 LED display",
     eyebrow: "Pixel pitch · Mid",
     lead: "Mid-pitch option for indoor and outdoor mid-distance use.",
     intro: [
       "P3.07 appears in indoor and outdoor catalogs. Choose the series by environment after survey.",
-      "Panel USD published; install and structure are quote lines. No free shipping.",
+      "Panel prices are published; installation and structure are itemised in the written quote. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Indoor and outdoor series", "Mid viewing distance", "Survey before order"],
     imageAlts: ["P3-class indoor surface", "Open-area outdoor LED display"],
     faqs: [
       {
-        question: "Where is P3.07 panel USD?",
+        question: "Where is the P3.07 panel price?",
         answer:
-          "Published panel prices are on our price list at /en/led-ekran-fiyatlari/. VAT/freight excluded; no free shipping.",
+          "Published panel prices are on our price list. VAT/freight excluded; no free shipping.",
       },
     ],
   },
   "p5-led-ekran": {
     title: "P5 LED Display | Long-Distance Outdoor | ARLEDSCREEN",
     description:
-      "P5 outdoor LED for long distance and stadium/façade scale. Published Bursa large-surface record as context. ARLEDSCREEN — Istanbul.",
+      "P5 outdoor LED for long distance and stadium/façade scale. Our large Bursa project as an example. ARLEDSCREEN — Istanbul.",
     h1: "P5 LED display",
     eyebrow: "Pixel pitch · Long outdoor",
     lead: "Long-distance outdoor and stadium/façade scale — coarser pitch for far viewers.",
     intro: [
-      "P5 is used on large outdoor surfaces such as the published Bursa 576×480 cm Premium record — scale context, not a template.",
-      "Outdoor panel USD published; structure after survey. No free shipping.",
+      "P5 is used on large outdoor surfaces such as our Bursa 576×480 cm Premium project — scale context, not a template.",
+      "Outdoor panel prices are published; structure after survey. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Long viewing distance", "Large outdoor surfaces", "Structure survey"],
@@ -1642,7 +1642,7 @@ const EN_PRODUCT_OVERLAY: Record<CommercialEnProductSlug, EnLeanOverlay> = {
     lead: "Freestanding digital information and advertising totems — size and pitch after survey.",
     intro: [
       "Totem LED is planned for foot traffic and viewing height. Poster/totem product group pages hold series options.",
-      "Related panel USD may appear on our price list; freestanding structure is a quote line. No free shipping.",
+      "Related panel prices may be on our price list; the freestanding structure is itemised in the written quote. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Foot-traffic viewing height", "Indoor/outdoor totem options", "Survey + written quote"],
@@ -1651,7 +1651,7 @@ const EN_PRODUCT_OVERLAY: Record<CommercialEnProductSlug, EnLeanOverlay> = {
       {
         question: "Is a totem priced as a fixed item?",
         answer:
-          "Poster/totem configurations are often quote-scoped. Published panel USD (when listed) is on our price list; structure and branding are quote lines. See /en/products/poster-led-ekran/.",
+          "Poster/totem configurations are often priced by written quote. Published panel prices (where listed) are on our price list; structure and branding are itemised in the written quote. See our poster LED products.",
       },
     ],
   },
@@ -1776,17 +1776,17 @@ export function getLedEkranPageEn(): CommercialPage {
       {
         question: "How is LED display price set?",
         answer:
-          "Panel USD is published in the price calculator and https://arledscreen.com/en/led-ekran-fiyatlari/. Final amount depends on size, pitch, indoor/outdoor use, structure and install — confirmed after survey in a written quote. No free shipping.",
+          "Panel prices are published in the price calculator and at https://arledscreen.com/en/led-ekran-fiyatlari/. Final amount depends on size, pitch, indoor/outdoor use, structure and install — confirmed after survey in a written quote. No free shipping.",
       },
       {
         question: "Where do you serve?",
         answer:
-          "Headquarters is Gaziosmanpaşa, Istanbul. Service is planned Turkey-wide; separate city pages exist only where published project records exist.",
+          "Headquarters is Gaziosmanpaşa, Istanbul. Service is planned Turkey-wide; separate city pages exist where we have completed projects.",
       },
       {
         question: "Where are published panel prices listed?",
         answer:
-          "On our price list at /en/led-ekran-fiyatlari/ (12 NXTIONSTAR panel models, USD per panel, e.g. P1.25 GOB 95.88 USD). VAT and freight excluded; no free shipping.",
+          "On our price list (12 NXTIONSTAR panel models, USD per panel, e.g. P1.25 GOB 95.88 USD). VAT and freight excluded; no free shipping.",
       },
     ],
     primaryCta: { href: "/en/quote/", label: "Request a quote" },
@@ -1828,12 +1828,12 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Do you sell panels only?",
           answer:
-            "Yes — panels and control gear can be sold alone. Most projects also include install and commissioning in the same written quote. Panel USD: /en/led-ekran-fiyatlari/.",
+            "Yes — panels and control gear can be sold alone. Most projects also include install and commissioning in the same written quote. Panel prices are on our price list.",
         },
         {
           question: "Where are published panel prices listed?",
           answer:
-            "On our price list at /en/led-ekran-fiyatlari/ (12 NXTIONSTAR panel models, USD per panel, e.g. P1.25 GOB 95.88 USD). VAT and freight excluded; no free shipping.",
+            "On our price list (12 NXTIONSTAR panel models, USD per panel, e.g. P1.25 GOB 95.88 USD). VAT and freight excluded; no free shipping.",
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request a sales quote" },
@@ -1859,7 +1859,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       bullets: [
         "NXTIONSTAR product line",
         "Project-based panel and control configuration",
-        "Factory/assembly photos and published field records",
+        "Factory/assembly photos and completed field projects",
       ],
       images: [
         { src: "/projects/factory-assembly.jpg", alt: "LED display assembly preparation" },
@@ -1968,7 +1968,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Rent or buy?",
           answer:
-            "One-off events usually favor rental; continuous use usually favors purchase. Panel purchase USD is published at /en/led-ekran-fiyatlari/. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+            "One-off events usually favor rental; continuous use usually favors purchase. Purchase prices per panel are published on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
         },
         {
           question: "Is there a published fixed rental price?",
@@ -2032,7 +2032,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Is service on the price list?",
           answer:
-            "No. Our price list is purchase panel USD only. Service and maintenance are priced by written quote after diagnosis.",
+            "No. Our price list covers purchase prices per panel only. Service and maintenance are priced by written quote after diagnosis.",
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request service" },

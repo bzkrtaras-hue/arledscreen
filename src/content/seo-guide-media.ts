@@ -92,7 +92,7 @@ const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
   },
   "okul-led-ekran": {
     src: "/opt/blog/alanya-otel-led-ekran.jpg",
-    alt: { tr: "Salon sahnesinin arkasında geniş iç mekân LED ekran", en: "Wide indoor LED screen behind a hall stage", ru: "Широкий внутренний LED-экран за сценой зала", ar: "شاشة LED داخلية عريضة خلف منصة قاعة" },
+    alt: { tr: "Salon duvarına monte geniş iç mekân LED ekran", en: "Wide wall-mounted indoor LED screen in a hall", ru: "Широкий настенный LED-экран в зале", ar: "شاشة LED داخلية عريضة مثبتة على جدار قاعة" },
   },
 };
 

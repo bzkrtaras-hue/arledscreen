@@ -27,10 +27,10 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
     slug: "piksel-araligi-secimi",
     title: "How to Choose LED Pixel Pitch (P1.25–P4) | ARLEDSCREEN",
     description:
-      "Pixel pitch guide for indoor LED: 1 mm pitch ≈ 1 m viewing distance. Published panel USD on our price list. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
+      "Pixel pitch guide for indoor LED: 1 mm pitch ≈ 1 m viewing distance. Published panel prices on our price list. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
     h1: "How to choose indoor LED pixel pitch",
     lead:
-      "Start from the closest critical viewer: roughly 1 m of distance per 1 mm of pitch (P2.5 ≈ 2.5 m). Then size, content type and budget. Panel USD is published — final project price after survey.",
+      "Start from the closest critical viewer: roughly 1 m of distance per 1 mm of pitch (P2.5 ≈ 2.5 m). Then size, content type and budget. Panel prices are published — the final project price follows the survey.",
     sections: [
       {
         h2: "What is pixel pitch?",
@@ -43,21 +43,21 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
           "Use the closest standing/seated viewer, not the average. Control rooms and lobbies usually need finer pitch; large halls can step up. Confirm with a mock or on-site survey before locking the order.",
       },
       {
-        h2: "Where to read published panel USD",
+        h2: "Where to find published panel prices",
         body:
-          "Example: P1.25 GOB 95.88 USD per panel, prices valid until 31 Dec 2026. Price list: /en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping. Install and structure are quote lines.",
+          "Example: P1.25 GOB 95.88 USD per panel, prices valid until 31 Dec 2026. See our price list. VAT and freight excluded; no free shipping. Installation and structure are itemised in the written quote.",
       },
     ],
     faqs: [
       {
         question: "Is there a fixed m² price by pitch?",
         answer:
-          "No. We publish panel USD; approximate m² material cost is panel price × panels per m². Labour, control, structure, VAT and shipping are separate. Written quote after survey.",
+          "No. We publish per-panel prices; approximate m² material cost is panel price × panels per m². Labour, control, structure, VAT and shipping are separate. Written quote after survey.",
       },
       {
         question: "P2.5 or P4 for a store?",
         answer:
-          "If shoppers stand within ~2.5 m, start near P2.5; farther aisles can use coarser pitch. Share photos and viewing distances via /en/quote/.",
+          "If shoppers stand within ~2.5 m, start near P2.5; farther aisles can use coarser pitch. Share photos and viewing distances via our quote form.",
       },
       {
         question: "Do you sell P2, P3, P6 or P10 LED? What is the nearest equivalent?",
@@ -81,10 +81,10 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
     slug: "gob-vs-smd",
     title: "GOB vs SMD LED Display | Surface Guide | ARLEDSCREEN",
     description:
-      "GOB (Glue on Board) vs standard SMD for indoor LED. When to pick protective GOB. Published GOB panel USD on our price list. ARLEDSCREEN — Istanbul.",
+      "GOB (Glue on Board) vs standard SMD for indoor LED. When to pick protective GOB. Published GOB panel prices on our price list. ARLEDSCREEN — Istanbul.",
     h1: "GOB vs SMD LED — which surface?",
     lead:
-      "SMD is the common diode package; GOB adds a protective resin layer over the surface for close-view indoor use. Fine-pitch GOB panel USD is published; final scope is quote after survey.",
+      "SMD is the common diode package; GOB adds a protective resin layer over the surface for close-view indoor use. Fine-pitch GOB panel prices are published; final scope is quote after survey.",
     sections: [
       {
         h2: "When GOB helps",
@@ -94,7 +94,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         h2: "Published GOB prices",
         body:
-          "P1.25 / P1.53 / P1.86 GOB panel USD are on our price list at /en/led-ekran-fiyatlari/. Example: P1.25 GOB 95.88 USD. No free shipping.",
+          "P1.25 / P1.53 / P1.86 GOB panel prices are on our price list. Example: P1.25 GOB 95.88 USD. No free shipping.",
       },
       {
         h2: "Brand note",
@@ -106,12 +106,12 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         question: "Is GOB required outdoors?",
         answer:
-          "Outdoor walls need outdoor-rated modules and structure design. GOB is primarily an indoor close-view surface choice. See /en/products/dis-mekan-led-ekran/.",
+          "Outdoor walls need outdoor-rated modules and structure design. GOB is primarily an indoor close-view surface choice. See our outdoor LED products.",
       },
       {
         question: "Where is P1.25 GOB USD?",
         answer:
-          "95.88 USD per panel on our price list (excl. VAT/shipping). Hub: /en/led-ekran-fiyatlari/.",
+          "95.88 USD per panel on our price list (excl. VAT/shipping).",
       },
     ],
     related: [
@@ -125,32 +125,32 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
     slug: "kiralik-mi-satin-alma",
     title: "Rent or Buy an LED Display? | ARLEDSCREEN",
     description:
-      "When to rent vs buy LED walls for events vs permanent installs. Purchase panel USD published; rental USD 50 per m² per day. ARLEDSCREEN — Istanbul.",
+      "When to rent vs buy LED walls for events vs permanent installs. Purchase prices per panel are published; rental is USD 50 per m² per day. ARLEDSCREEN — Istanbul.",
     h1: "Rent or buy an LED display?",
     lead:
-      "One-off stages and fairs usually favour rental. Continuous retail, façade or lobby use usually favours purchase. Purchase panel USD is published. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+      "One-off stages and fairs usually favour rental. Continuous retail, façade or lobby use usually favours purchase. Purchase prices per panel are published on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
     sections: [
       {
         h2: "Choose rental when…",
         body:
-          "Short duration, touring stages, or uncertain reuse. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. Request /en/led-ekran-kiralama/ and /en/quote/.",
+          "Short duration, touring stages, or uncertain reuse. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. See our LED rental page or request a quote.",
       },
       {
         h2: "Choose purchase when…",
         body:
-          "The wall will run daily for months/years. Plan pitch and m² with /en/hesaplayici/ and the 12 published panel prices on /en/led-ekran-fiyatlari/. Install and structure appear in the written quote.",
+          "The wall will run daily for months/years. Plan pitch and m² with the price calculator and the 12 published panel prices on our price list. Install and structure appear in the written quote.",
       },
       {
         h2: "What our price list covers",
         body:
-          "Our price list covers purchase panel USD only (12 models). Transparent, flexible, poster and control products are priced in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+          "Our price list covers purchase prices for 12 panel models only. Transparent, flexible, poster and control products are priced in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       },
     ],
     faqs: [
       {
         question: "Does ARLEDSCREEN publish fixed rental prices?",
         answer:
-          "Yes. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. Purchase panel USD is on our price list.",
+          "Yes. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. Purchase prices per panel are on our price list.",
       },
       {
         question: "Can I convert a rental kit to ownership later?",
@@ -182,7 +182,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         h2: "When to pick full-colour LED",
         body:
-          "You need brightness outdoors, a large continuous video surface, or flexible aspect ratios. Start with /en/led-ekran/ and the product groups; read panel USD on /en/led-ekran-fiyatlari/.",
+          "You need brightness outdoors, a large continuous video surface, or flexible aspect ratios. Start with our LED display overview and the product groups; panel prices are on our price list.",
       },
       {
         h2: "Our official website",
@@ -194,12 +194,12 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         question: "Is a shop window always transparent LED?",
         answer:
-          "Not always — standard indoor LED or LCD may fit. Transparent LED, priced in a written quote, is the option when you must keep see-through glass. See /en/products/seffaf-led-ekran/.",
+          "Not always — standard indoor LED or LCD may fit. Transparent LED, priced in a written quote, is the option when you must keep see-through glass. See our transparent LED products.",
       },
       {
         question: "Where do prices live?",
         answer:
-          "Purchase panel USD: our price list at /en/led-ekran-fiyatlari/. Signs and totems may be priced in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+          "Purchase prices per panel are on our price list. Signs and totems may be priced in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       },
     ],
     related: [

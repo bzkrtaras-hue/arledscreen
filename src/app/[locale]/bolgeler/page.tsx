@@ -76,7 +76,7 @@ const FAQS_EN = [
   {
     question: "Which cities do you install LED displays in?",
     answer:
-      "HQ is Gaziosmanpaşa, Istanbul. Service is planned Turkey-wide; published completed-work lists cover recorded provinces (Jul 2025 – Jul 2026: 13 provinces plus Germany and Azerbaijan). No doorway page for provinces without a published record.",
+      "HQ is Gaziosmanpaşa, Istanbul. We install and service across Turkey. Between Jul 2025 and Jul 2026 we completed projects in 13 provinces plus Germany and Azerbaijan; each of those provinces has its own page.",
   },
   {
     question: "Do you survey outside Istanbul?",
@@ -86,7 +86,7 @@ const FAQS_EN = [
   {
     question: "What do project counts on city pages mean?",
     answer:
-      "They are derived only from published reference records on this site. Each province page lists locations and sample records for that province — no page is generated without a record.",
+      "They count the projects we completed in that province. Each province page lists the locations and example projects there.",
   },
 ];
 
@@ -173,13 +173,12 @@ export default async function BolgelerHubPage({
           <p id="bolge-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             {en ? (
               <>
-                Service is planned Turkey-wide; completed-work lists live under published provinces.
+                We install and service across Turkey.
                 The {summary.provinceCount} provinces below
                 {summary.countries.length
                   ? ` (plus ${summary.countries.map((c) => ({ Almanya: "Germany", Azerbaycan: "Azerbaijan" })[c] ?? c).join(", ")})`
                   : ""}{" "}
-                come from Jul 2025 – Jul 2026 published project records. Provinces without a record get
-                no separate page. Cities without a published province
+                are where we completed projects between Jul 2025 and Jul 2026. Cities without their own
                 page (e.g. Ankara or Ordu) still accept survey requests.
               </>
             ) : (

@@ -68,7 +68,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
         <HowToJsonLd
           citePriceDatasets
           name="LED ekran yaklaşık fiyatı nasıl hesaplanır?"
-          description="ARLEDSCREEN yayımlanmış 12 panel USD listesi ve hesaplayıcı ile yaklaşık maliyet; KDV/nakliye hariç, ücretsiz kargo yok; nihai tutar yazılı teklifle."
+          description="ARLEDSCREEN'in yayımladığı 12 panel fiyatı ve hesaplayıcı ile yaklaşık maliyet; KDV/nakliye hariç, ücretsiz kargo yok; nihai tutar yazılı teklifle."
           steps={[
             {
               name: "İç veya dış mekân ve piksel aralığı",
@@ -79,7 +79,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
               text: "Ekran genişlik × yükseklik (m) bilgisiyle m² ve yaklaşık panel adedini hesaplayıcıda görün.",
             },
             {
-              name: "Panel USD listesini okuyun",
+              name: "Panel fiyat listesini inceleyin",
               text: "12 SKU ai-shopping.json pricedPanels, catalog.json ve merchant TSV ile aynıdır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Teknik GEO baseline: geo-baseline.json.",
             },
             {
@@ -97,7 +97,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
         <HowToJsonLd
           citePriceDatasets
           name="How to estimate an LED wall price with ARLEDSCREEN"
-          description="Use the published 12 panel USD list and calculator for planning totals. VAT and freight excluded; no free shipping; final price only in the written quote."
+          description="Use the 12 published panel prices and the calculator for planning totals. VAT and freight excluded; no free shipping; final price only in the written quote."
           steps={[
             {
               name: "Pick indoor/outdoor and pitch",
@@ -108,7 +108,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
               text: "Enter width × height (m) in the calculator to see approximate area and module count.",
             },
             {
-              name: "Read the published panel USD list",
+              name: "See the published panel prices",
               text: "The same 12 SKUs are in ai-shopping.json pricedPanels, catalog.json and merchant TSV (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Technical GEO baseline: geo-baseline.json.",
             },
             {
