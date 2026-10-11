@@ -125,6 +125,11 @@ const HUB: InstallGuide = {
         "Asenkron sistemlerde günlük içerik değişikliği telefon uygulamasıyla da yapılabilir (Huidu için LedArt, NovaStar için ViPlex Handy). İlk kurulumdaki tarama dosyası ve ekran bağlantısı ayarları için çoğunlukla Windows bilgisayar gerekir.",
     },
     {
+      question: "Huidu, NovaStar ve Colorlight arasındaki fark nedir?",
+      answer:
+        "Üçü de ARLEDSCREEN'in kurduğu kontrol hatlarıdır. Fiyatları yayımlanmış panel listesinde yoktur; yazılı teklifle verilir. Huidu asenkron tabela ve Wi‑Fi veya USB içerik için sık kullanılır; masaüstünde HDPlayer, telefonda LedArt vardır. NovaStar yüksek piksel yükü ve sahne veya senkron işlerde öne çıkar; ekran ayarı NovaLCT, içerik ViPlex Express ve ViPlex Handy, uzaktan yönetim VNNOX ile yapılır. Colorlight X ve VX işlemciler ile S serisi göndericiler senkron ve çok kaynaklı işler içindir; yapılandırma iSet veya web arayüzüyle yapılır. Hangi hattın uygun olduğu kaynak tipi ve ekran ölçüsüne göre keşifte netleşir.",
+    },
+    {
       question: "Senkron ekranla asenkron ekran arasındaki fark nedir?",
       answer:
         "Senkron ekran bağlı kaynağın görüntüsünü anlık gösterir, kaynak kapanınca görüntü de gider. Asenkron ekran içeriği kendi hafızasında tutar ve zamanlanmış programa göre bilgisayardan bağımsız oynatır.",

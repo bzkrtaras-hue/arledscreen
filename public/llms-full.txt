@@ -214,6 +214,9 @@ Evet. Sahne, fuar ve etkinlik projeleri için kiralık ve satış seçenekleri b
 **Ekrana içerik nasıl yüklenir?**
 LED ekranlar bir kontrol sistemi (gönderici/alıcı kart veya medya oynatıcı) üzerinden yönetilir. Kullanım senaryosuna göre bilgisayardan canlı yayın, USB ile oynatma veya uzaktan içerik yönetimi seçenekleri keşifte belirlenir.
 
+**Huidu, NovaStar ve Colorlight arasındaki fark nedir?**
+Üçü de ARLEDSCREEN'in kurduğu kontrol hatlarıdır. Fiyatları yayımlanmış panel listesinde yoktur; yazılı teklifle verilir. Huidu asenkron tabela ve Wi‑Fi veya USB içerik için sık kullanılır (HDPlayer, LedArt). NovaStar yüksek piksel yükü ve sahne veya senkron işlerde öne çıkar (NovaLCT, ViPlex, VNNOX). Colorlight X ve VX işlemciler ile S serisi göndericiler senkron ve çok kaynaklı işler içindir (iSet veya web arayüzü). Seçim keşifte netleşir. Sayfalar: https://arledscreen.com/tr/rehber/led-ekran-kurulumu/ · https://arledscreen.com/tr/products/led-modul-ve-kontrol-sistemleri/ · https://arledscreen.com/tr/products/colorlight-kontrolculer/
+
 **Dış mekân ekranlar için izin gerekir mi?**
 Dış mekân reklam ve cephe ekranlarında ilgili belediyenin izin ve ruhsat koşulları geçerli olabilir. Süreç konuma göre değiştiği için başvuru öncesinde belediyeden bilgi alınması önerilir.
 

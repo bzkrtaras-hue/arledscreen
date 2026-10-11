@@ -124,6 +124,11 @@ const HUB: InstallGuide = {
         "On asynchronous systems everyday content changes can be made from a phone app (LedArt for Huidu, ViPlex Handy for NovaStar). The initial scan file and screen connection setup usually needs a Windows computer.",
     },
     {
+      question: "What is the difference between Huidu, NovaStar and Colorlight?",
+      answer:
+        "All three are control lines ARLEDSCREEN installs and configures. Their prices are not on the published panel list; they are confirmed in a written quote. Huidu is common for asynchronous signage and Wi-Fi or USB content; the desktop app is HDPlayer and the phone app is LedArt. NovaStar is used for higher pixel loads and stage or synchronous work; screen setup is NovaLCT, content is ViPlex Express and ViPlex Handy, and remote management is VNNOX. Colorlight X and VX processors and S-series senders are for synchronous and multi-source jobs; configuration uses iSet or the web interface. The right line is confirmed at survey from the source type and screen size.",
+    },
+    {
       question: "What is the difference between synchronous and asynchronous screens?",
       answer:
         "A synchronous screen shows the connected source in real time and goes blank when the source is off. An asynchronous screen keeps content in its own memory and plays it on a schedule, independently of a computer.",
