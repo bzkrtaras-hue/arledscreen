@@ -27,6 +27,7 @@ const ORG_PROFILE_SAME_AS = ORGANIZATION_SAME_AS.filter((u) => !u.startsWith("ht
 /**
  * Organization + LocalBusiness + WebSite JSON-LD (@graph).
  * Owner-verified NAP (1 Oct 2026): full address, geo, opening hours, founder.
+ * Primary name: ARLEDSCREEN. Product brand: NXTIONSTAR.
  */
 export function OrganizationJsonLd() {
   const address = {
@@ -83,7 +84,7 @@ export function OrganizationJsonLd() {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
         name: "ARLEDSCREEN",
-        alternateName: ["ARLED SCREEN", "AR-LED", "AR-LED Ekran Teknoloji Merkezi"],
+        alternateName: ["ARLED SCREEN"],
         url: SITE_URL,
         logo,
         image: logo,
