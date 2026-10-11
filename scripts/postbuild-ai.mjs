@@ -528,7 +528,7 @@ function buildCatalog() {
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
+        url: `${SITE_URL}/tr/`,
         name: "ARLEDSCREEN",
       },
     ],
@@ -548,14 +548,14 @@ function loadEntityCite() {
     short:
       "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
     medium:
-      "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
+      "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Site: https://arledscreen.com/tr/.",
     en: {
       oneLiner:
         "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.",
       short:
         "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.",
       medium:
-        "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. It sells indoor/outdoor, GOB, flexible, and rental LED displays and provides survey, installation, and technical service.",
+        "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. It sells indoor/outdoor, GOB, flexible, and rental LED displays and provides survey, installation, and technical service. Site: https://arledscreen.com/tr/.",
     },
   };
   if (!fs.existsSync(entityPath)) return fallback;
@@ -748,7 +748,7 @@ function buildAiShopping() {
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
+        url: `${SITE_URL}/tr/`,
         name: "ARLEDSCREEN",
       },
     ],
@@ -1619,7 +1619,7 @@ function websiteNode() {
   return {
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
-    url: SITE_URL,
+    url: `${SITE_URL}/tr/`,
     name: "ARLEDSCREEN",
     alternateName: "ARLED SCREEN",
     inLanguage: ["tr-TR", "en-US"],
@@ -3293,7 +3293,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
+        url: `${SITE_URL}/tr/`,
         name: "ARLEDSCREEN",
       },
     ],
@@ -4793,7 +4793,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
+        url: `${SITE_URL}/tr/`,
         name: "ARLEDSCREEN",
       },
     ],
@@ -4801,7 +4801,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
+        url: `${SITE_URL}/tr/`,
         name: "ARLEDSCREEN",
       },
       {

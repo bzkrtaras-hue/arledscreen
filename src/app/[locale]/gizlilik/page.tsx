@@ -102,7 +102,7 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
           <p id="gizlilik-lead" className="mt-3 leading-relaxed text-ink-soft">
             {en ? (
               <>
-                ARLEDSCREEN (AR-LED Display Technology Center) processes contact and quote-request
+                ARLEDSCREEN (https://arledscreen.com/tr/) processes contact and quote-request
                 data to respond to LED display projects. For current prices, see our{" "}
                 <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                   LED display prices
@@ -111,7 +111,7 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
               </>
             ) : (
               <>
-                ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), LED ekran projeleri için iletişim ve
+                ARLEDSCREEN (https://arledscreen.com/tr/), LED ekran projeleri için iletişim ve
                 teklif talebi verilerini yanıtlamak amacıyla işler. Güncel fiyatlar için{" "}
                 <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                   LED ekran fiyatları

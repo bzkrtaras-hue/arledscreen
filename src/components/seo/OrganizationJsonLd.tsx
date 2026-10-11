@@ -46,7 +46,7 @@ export function OrganizationJsonLd() {
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
+        url: absoluteUrl("/tr/"),
         name: "ARLEDSCREEN",
         alternateName: "ARLED SCREEN",
         inLanguage: ["tr-TR", "en-US"],
@@ -85,7 +85,7 @@ export function OrganizationJsonLd() {
         "@id": `${SITE_URL}/#organization`,
         name: "ARLEDSCREEN",
         alternateName: ["ARLED SCREEN"],
-        url: SITE_URL,
+        url: absoluteUrl("/tr/"),
         logo,
         image: logo,
         slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
@@ -161,7 +161,7 @@ export function OrganizationJsonLd() {
         name: "ARLEDSCREEN",
         description:
           "LED ekran satışı, keşif, montaj ve teknik servis. NXTIONSTAR markasının Türkiye'deki tek satış noktası. İstanbul / Gaziosmanpaşa.",
-        url: SITE_URL,
+        url: absoluteUrl("/tr/"),
         image: logo,
         logo,
         telephone: CONTACT_PHONE_E164,
