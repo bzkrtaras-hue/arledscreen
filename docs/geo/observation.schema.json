@@ -14,7 +14,7 @@
     "locale": { "type": "string", "examples": ["tr-TR", "en"] },
     "promptId": {
       "type": "string",
-      "description": "See docs/geo/blind-test-prompts.md (1–12, en-1…en-4)"
+      "description": "See docs/geo/blind-test-prompts.md (1–12, en-1…en-4, k-1…k-12). k-* is the ChatGPT month category set and is not a Tur1a matrix cell."
     },
     "mentioned": { "type": "string", "enum": ["yes", "no", "partial", ""] },
     "brandCorrect": { "type": "string", "enum": ["yes", "no", ""] },
