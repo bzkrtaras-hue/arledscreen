@@ -31,3 +31,10 @@ Yönetim: Arledscreen (Grok Bot) ekibin genel müdürüdür. Aras Bey'in talimat
 ## 6. Yayın
 - Her küçük değişiklikte production'a yayın yapılmaz. Denemeler önizleme dalında yapılır; production yayını günde en fazla bir kez, değişiklikler toplanarak yapılır.
 - Arledscreen her production yayınını canlıda denetler; site bozulursa son sağlam sürüme geri döner.
+
+## Cursor Cloud specific instructions
+
+- Node.js 22 is already on the default image. Install with `npm ci` (lockfile). Dev server: `npm run dev -- --hostname 0.0.0.0 --port 3000`.
+- `next dev` does not apply Cloudflare `_redirects`. Open `/tr/` (Turkish home) or `/en/`. Production apex `/` is a 301 to `/tr/`; `npm run build` must not leave `out/index.html`.
+- Checks that match CI: `npm run lint` (warnings are expected, exit 0), `npx tsc --noEmit`, `npm run build` (static export plus postbuild feed validation), then `npm run invent:smoke:local`.
+- Do not run `npm run deploy:pages` or IndexNow unless explicitly asked. Local dev, lint, build, and smoke need no Cloudflare token. `npm run build` rewrites `dateModified` in a few `public/` feeds; leave those uncommitted unless a content change was intended.
