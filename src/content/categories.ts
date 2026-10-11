@@ -991,7 +991,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Hangi kontrol markasını seçmeliyim?",
         answer:
-          "Asenkron tabela ve Wi‑Fi güncellemede sıkça Huidu; yüksek piksel yükü ve sahne/senkron işlerde NovaStar veya Colorlight öne çıkar. Keşifte kaynak tipi ve ekran ölçüsüne göre netleştiririz.",
+          "Huidu, NovaStar ve Colorlight fiyatları panel listesinde yoktur; yazılı teklifle verilir. Asenkron tabela ve Wi‑Fi veya USB içerik için sıkça Huidu kullanılır (masaüstü HDPlayer, telefon LedArt). Yüksek piksel yükü ve sahne veya senkron işlerde NovaStar öne çıkar (NovaLCT, ViPlex, VNNOX). Colorlight X ve VX işlemciler ile S serisi göndericiler senkron ve çok kaynaklı işler içindir; yapılandırma iSet veya web arayüzüyle yapılır. Seçim kaynak tipi ve ekran ölçüsüne göre keşifte netleşir.",
       },
       {
         question: "Kurulum ve yapılandırma desteği veriyor musunuz?",

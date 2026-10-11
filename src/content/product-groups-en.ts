@@ -399,6 +399,11 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
         answer:
           "Share the rear module label, size and a photo. We confirm compatible options before quoting.",
       },
+      {
+        question: "What is the difference between Huidu, NovaStar and Colorlight?",
+        answer:
+          "Controller prices are not on the panel list; they are confirmed in a written quote. Huidu is common for asynchronous signage (HDPlayer, LedArt). NovaStar suits higher loads and sync or stage work (NovaLCT, ViPlex, VNNOX). Colorlight X and VX processors and S-series senders suit synchronous, multi-source jobs (iSet or web). We confirm the line after source type and screen size.",
+      },
     ],
   },
   "huidu-kontrol-kartlari": {

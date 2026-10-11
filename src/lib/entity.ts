@@ -179,7 +179,354 @@ Site: https://arledscreen.com/tr/
 Tel: ${CONTACT_PHONE_DISPLAY}`,
 } as const;
 
-// NOTE: The rest of the file (EntityDocument type and buildEntityDocument function)
-// remains unchanged from the original. This commit only updates the primary cite strings
-// to remove "AR-LED" from the main company description texts.
-// Full original content after this point should be preserved in a complete edit.
+export type EntityDocument = {
+  "@context": "https://schema.org";
+  "@type": "Organization";
+  "@id": string;
+  name: string;
+  alternateName: string[];
+  url: string;
+  description: string;
+  disambiguatingDescription: string;
+  email: string;
+  telephone: string;
+  address: {
+    "@type": "PostalAddress";
+    streetAddress: string;
+    postalCode: string;
+    addressLocality: string;
+    addressRegion: string;
+    addressCountry: string;
+  };
+  geo: {
+    "@type": "GeoCoordinates";
+    latitude: number;
+    longitude: number;
+  };
+  hasMap: string;
+  openingHours: string[];
+  sameAs: string[];
+  logo: string;
+  image: string;
+  knowsAbout: string[];
+  knowsLanguage?: string[];
+  contactPoint: Array<{
+    "@type": "ContactPoint";
+    contactType: string;
+    email?: string;
+    telephone: string;
+    url?: string;
+    name?: string;
+    identifier?: string;
+    areaServed: Array<{ "@type": string; name: string }> | string;
+    availableLanguage: string[];
+  }>;
+  areaServed?: Array<{ "@type": string; name: string }>;
+  brand: {
+    "@type": "Brand";
+    "@id": string;
+    name: string;
+    url: string;
+    description?: string;
+    disambiguatingDescription?: string;
+    sameAs?: string[];
+    subjectOf?: unknown;
+    /** Full AggregateOffer×12 — Brand-path agents must not need a second fetch. */
+    makesOffer?: ReturnType<typeof organizationMakesOffer> | { "@id": string };
+    hasOfferCatalog?: { "@id": string };
+  };
+  /** Published 12-panel USD AggregateOffer — schema.org join for entity-first agents. */
+  makesOffer: ReturnType<typeof organizationMakesOffer>;
+  /** Seller → catalog Collection edge. */
+  hasOfferCatalog: ReturnType<typeof organizationHasOfferCatalog>;
+  /** Place+price for entity-only agents (mirrors HTML #localbusiness). */
+  location: Record<string, unknown>;
+  /** Quote OrderAction (TR+EN) — parity with WebSite potentialAction on HTML. */
+  potentialAction?: Array<Record<string, unknown>>;
+  /** WebSite #website with OrderAction — entity-only agents without HTML @graph. */
+  mainEntityOfPage?: Record<string, unknown>;
+  founder: { "@type": "Person"; name: string; url?: string; sameAs?: string[] };
+  citationPage: string;
+  llmsTxt: string;
+  entityJson: string;
+  aiShopping: string;
+  /** Inventable byte-identical aliases of ai-shopping.json. */
+  pricesJson: string;
+  organizationJson: string;
+  agentsJson: string;
+  agentsMd: string;
+  catalogJson: string;
+  merchantFeed: string;
+  pricesRss: string;
+  geoBaseline: string;
+  subjectOf: Array<{
+    "@type": "Dataset" | "DataFeed" | "DataDownload";
+    "@id": string;
+    name: string;
+    url: string;
+    encodingFormat?: string;
+  }>;
+  citeOneLiner: string;
+  citeShort: string;
+  citeMedium: string;
+  citeOneLinerEn: string;
+  citeShortEn: string;
+  citeMediumEn: string;
+  faqs: ReadonlyArray<{ question: string; answer: string }>;
+  /** English FAQ mirror for EN AI agents (same facts as `faqs`). */
+  faqsEn: ReadonlyArray<{ question: string; answer: string }>;
+};
+
+export function buildEntityDocument(): EntityDocument {
+  const logo = `${SITE_URL}/brand/arledscreen-logo-header.png`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: "ARLEDSCREEN",
+    alternateName: ["ARLED SCREEN"],
+    url: SITE_URL,
+    logo,
+    image: logo,
+    description: ENTITY_CITE_MEDIUM,
+    disambiguatingDescription: ENTITY_DISAMBIGUATING_DESCRIPTION,
+    email: CONTACT_EMAIL,
+    telephone: CONTACT_PHONE_E164,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: BUSINESS_ADDRESS.streetAddress,
+      postalCode: BUSINESS_ADDRESS.postalCode,
+      addressLocality: BUSINESS_ADDRESS.addressLocality,
+      addressRegion: BUSINESS_ADDRESS.addressRegion,
+      addressCountry: BUSINESS_ADDRESS.addressCountry,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: BUSINESS_GEO.latitude,
+      longitude: BUSINESS_GEO.longitude,
+    },
+    hasMap: BUSINESS_MAP_URL,
+    openingHours: [...BUSINESS_HOURS_TEXT],
+    sameAs: [...ORGANIZATION_SAME_AS],
+    knowsAbout: [
+      "LED ekran",
+      "dijital ekran",
+      "tam renkli LED ekran",
+      "İç mekân LED ekran",
+      "Dış mekân LED ekran",
+      "GOB LED ekran",
+      "Esnek LED ekran",
+      "Kiralık LED ekran",
+      "LED ekran montajı",
+      "LED ekran teknik servisi",
+      "LED ekran fiyatları",
+    ],
+    knowsLanguage: ["tr-TR", "en-US"],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: CONTACT_EMAIL,
+        telephone: CONTACT_PHONE_E164,
+        url: `${SITE_URL}/tr/quote/`,
+        areaServed: [
+          { "@type": "Country", name: "Türkiye" },
+          { "@type": "City", name: "İstanbul" },
+        ],
+        availableLanguage: ["Turkish", "English"],
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        name: "WhatsApp @arledscreen",
+        telephone: CONTACT_PHONE_E164,
+        url: "https://wa.me/905305078834",
+        identifier: "@arledscreen",
+        areaServed: [
+          { "@type": "Country", name: "Türkiye" },
+          { "@type": "City", name: "İstanbul" },
+        ],
+        availableLanguage: ["Turkish", "English"],
+      },
+    ],
+    areaServed: [
+      { "@type": "Country", name: "Türkiye" },
+      { "@type": "City", name: "İstanbul" },
+    ],
+    brand: {
+      "@type": "Brand",
+      "@id": `${SITE_URL}/#brand-nxtionstar`,
+      name: "NXTIONSTAR",
+      url: `${SITE_URL}/tr/nxtionstar/`,
+      description: NXTIONSTAR_DEFINITION_SHORT_TR,
+      disambiguatingDescription: NXTIONSTAR_DISAMBIGUATION_TR,
+      sameAs: [...NXTIONSTAR_PAGE_URLS, ...NXTIONSTAR_SOCIAL_SAME_AS],
+      subjectOf: BRAND_SUBJECT_DATASETS,
+      makesOffer: organizationMakesOffer(),
+      hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
+    },
+    makesOffer: organizationMakesOffer(),
+    hasOfferCatalog: organizationHasOfferCatalog(),
+    potentialAction: [
+      {
+        "@type": "OrderAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/tr/quote/`,
+          actionPlatform: [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform",
+          ],
+        },
+        name: "Teklif iste",
+      },
+      {
+        "@type": "OrderAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/en/quote/`,
+          actionPlatform: [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform",
+          ],
+        },
+        name: "Request a quote",
+      },
+    ],
+    mainEntityOfPage: {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "ARLEDSCREEN",
+      alternateName: "ARLED SCREEN",
+      inLanguage: ["tr-TR", "en-US"],
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      about: { "@id": `${SITE_URL}/#organization` },
+      potentialAction: [
+        {
+          "@type": "OrderAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${SITE_URL}/tr/quote/`,
+            actionPlatform: [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/MobileWebPlatform",
+            ],
+          },
+          name: "Teklif iste",
+        },
+        {
+          "@type": "OrderAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${SITE_URL}/en/quote/`,
+            actionPlatform: [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/MobileWebPlatform",
+            ],
+          },
+          name: "Request a quote",
+        },
+      ],
+    },
+    location: {
+      "@type": "LocalBusiness",
+      "@id": LOCALBUSINESS_ID,
+      name: "ARLEDSCREEN",
+      url: SITE_URL,
+      image: logo,
+      logo,
+      telephone: CONTACT_PHONE_E164,
+      email: CONTACT_EMAIL,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: BUSINESS_ADDRESS.streetAddress,
+        postalCode: BUSINESS_ADDRESS.postalCode,
+        addressLocality: BUSINESS_ADDRESS.addressLocality,
+        addressRegion: BUSINESS_ADDRESS.addressRegion,
+        addressCountry: BUSINESS_ADDRESS.addressCountry,
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: BUSINESS_GEO.latitude,
+        longitude: BUSINESS_GEO.longitude,
+      },
+      hasMap: BUSINESS_MAP_URL,
+      openingHoursSpecification: [...BUSINESS_HOURS_SPEC],
+      areaServed: [
+        { "@type": "Country", name: "Türkiye" },
+        { "@type": "City", name: "İstanbul" },
+      ],
+      parentOrganization: { "@id": `${SITE_URL}/#organization` },
+      sameAs: [...ORGANIZATION_SAME_AS],
+      brand: { "@id": `${SITE_URL}/#brand-nxtionstar` },
+      subjectOf: BRAND_SUBJECT_DATASETS,
+      makesOffer: organizationMakesOffer(),
+      hasOfferCatalog: organizationHasOfferCatalog(),
+    },
+    founder: {
+      "@type": "Person",
+      name: "Aras Bozkurt",
+      url: `${SITE_URL}/tr/about/aras-bozkurt/`,
+      sameAs: ["https://www.linkedin.com/in/bozkurtaras"],
+    },
+    citationPage: `${SITE_URL}/tr/about/`,
+    llmsTxt: `${SITE_URL}/llms.txt`,
+    entityJson: `${SITE_URL}/entity.json`,
+    aiShopping: `${SITE_URL}/ai-shopping.json`,
+    pricesJson: `${SITE_URL}/prices.json`,
+    organizationJson: `${SITE_URL}/organization.json`,
+    agentsJson: `${SITE_URL}/.well-known/agents.json`,
+    agentsMd: `${SITE_URL}/AGENTS.md`,
+    catalogJson: `${SITE_URL}/catalog.json`,
+    merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+    pricesRss: `${SITE_URL}/feeds/prices.rss`,
+    geoBaseline: `${SITE_URL}/geo-baseline.json`,
+    subjectOf: [
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/ai-shopping.json`,
+        name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
+        url: `${SITE_URL}/ai-shopping.json`,
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/prices.json`,
+        name: "ARLEDSCREEN pricedPanels (prices.json alias)",
+        url: `${SITE_URL}/prices.json`,
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/catalog.json`,
+        name: "ARLEDSCREEN priced panel catalog",
+        url: `${SITE_URL}/catalog.json`,
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+        name: "ARLEDSCREEN merchant priced panels TSV",
+        url: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      },
+      {
+        "@type": "DataFeed",
+        "@id": `${SITE_URL}/feeds/prices.rss`,
+        name: "ARLEDSCREEN panel price RSS",
+        url: `${SITE_URL}/feeds/prices.rss`,
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/geo-baseline.json`,
+        name: "ARLEDSCREEN GEO technical baseline",
+        url: `${SITE_URL}/geo-baseline.json`,
+      },
+    ],
+    citeOneLiner: ENTITY_CITE_ONE_LINER,
+    citeShort: ENTITY_CITE_SHORT,
+    citeMedium: ENTITY_CITE_MEDIUM,
+    citeOneLinerEn: ENTITY_CITE_ONE_LINER_EN,
+    citeShortEn: ENTITY_CITE_SHORT_EN,
+    citeMediumEn: ENTITY_CITE_MEDIUM_EN,
+    faqs: [...ENTITY_FAQS],
+    faqsEn: [...ENTITY_FAQS_EN],
+  };
+}
