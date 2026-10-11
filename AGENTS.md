@@ -31,3 +31,11 @@ Yönetim: Arledscreen (Grok Bot) ekibin genel müdürüdür. Aras Bey'in talimat
 ## 6. Yayın
 - Her küçük değişiklikte production'a yayın yapılmaz. Denemeler önizleme dalında yapılır; production yayını günde en fazla bir kez, değişiklikler toplanarak yapılır.
 - Arledscreen her production yayınını canlıda denetler; site bozulursa son sağlam sürüme geri döner.
+
+## Cursor Cloud specific instructions
+
+- Uygulama depo kökündedir. CI Node 22 ve `npm ci` kullanır. README içindeki `cd nxtionstar-platform` yolu yoktur.
+- Geliştirme sunucusu: `npm run dev -- --hostname 0.0.0.0 --port 3000`. Türkçe ana sayfa `http://localhost:3000/tr/` adresindedir. Ürün listesi `http://localhost:3000/tr/products/` adresindedir.
+- `output: "export"` açıkken `next dev`, `public/` altındaki `/fiyat-hesap/` sayfasını `[locale]` rotasına düşürüp 500 döndürür. Hesaplayıcıyı görmek için `npm run build` sonrası `python3 -m http.server 4173 --bind 0.0.0.0 --directory out` ile statik çıktıyı açın: `http://localhost:4173/tr/hesaplayici/` ve `http://localhost:4173/fiyat-hesap/`.
+- Denetim: `npm run lint` (mevcut uyarılarla çıkar), `npm run build`, ardından `npm run invent:smoke:local`.
+- `npm run deploy:pages` ve Cloudflare yayın betikleri çalıştırılmaz.
