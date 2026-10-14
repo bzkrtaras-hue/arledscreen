@@ -40,10 +40,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: LocaleLayoutProps) {
+export default async function LocaleLayout({ children, params }) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale = raw;
@@ -56,6 +53,8 @@ export default async function LocaleLayout({
       <SiteShell locale={locale}>{children}</SiteShell>
       {/* Canlı Destek (Melis): her sayfa türünde; /hesaplayici ve /fiyat-hesap widget içinde hariç tutulur. */}
       <Script src="/chat-widget.js" strategy="lazyOnload" data-locale={locale} data-pages="*" />
+      {/* Gemini 4 Argon danışman: her sayfada; anahtar sunucu tarafında (GEMINI_API_KEY). */}
+      <Script src="/gemini-danisman.js" strategy="lazyOnload" />
     </div>
   );
 }
