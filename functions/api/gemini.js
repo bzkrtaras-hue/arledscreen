@@ -18,14 +18,13 @@ const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
-  "Vary": "Origin",
+  "Vary": "Origin, Accept-Encoding",
   "Cache-Control": "no-store",
   "Pragma": "no-cache",
   "Expires": "0",
   "CDN-Cache-Control": "no-store",
   "Cloudflare-CDN-Cache-Control": "no-store",
   "Surrogate-Control": "no-store",
-  "Vary": "Origin, Accept-Encoding",
   "X-Content-Type-Options": "nosniff",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "X-Frame-Options": "SAMEORIGIN",
@@ -79,15 +78,18 @@ export async function onRequest(context) {
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ role: "user", parts: [{ text: SYSTEM_PROMPT + "\nMüşteri: " + message }] }],
-        generationConfig: {
-          temperature: 0.4,
-          maxOutputTokens: 600,
+      body: JSON.stringify([
+        {
+          role: "user",
+          parts: [{ text: SYSTEM_PROMPT + "\nMüşteri: " + message }],
         },
-      }),
-    }
-  );
+      ],
+      generationConfig: {
+        temperature: 0.4,
+        maxOutputTokens: 600,
+      },
+    })
+  };
 
   let data;
   try {
