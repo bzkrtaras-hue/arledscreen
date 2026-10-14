@@ -19,7 +19,21 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
   "Vary": "Origin",
-};
+  "Cache-Control": "no-store",
+  "Pragma": "no-cache",
+  "Expires": "0",
+  "CDN-Cache-Control": "no-store",
+  "Cloudflare-CDN-Cache-Control": "no-store",
+  "Surrogate-Control": "no-store",
+  "Vary": "Origin, Accept-Encoding",
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "X-Frame-Options": "SAMEORIGIN",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
+  "Cross-Origin-Opener-Policy": "same-origin-allow-popups",
+  "Cross-Origin-Resource-Policy": "same-site",
+  "Content-Security-Policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' mailto: https://wa.me https://api.whatsapp.com https://*.mailerlite.com; img-src 'self' https: data: blob: https://*.googleusercontent.com; script-src 'self' https://*.mailerlite.com https://*.mlcdn.com https://static.cloudflareinsights.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.mailerlite.com https://cloudflareinsights.com https://generativelanguage.googleapis.com"
+}
 
 function json(body, status) {
   return new Response(JSON.stringify(body), {
