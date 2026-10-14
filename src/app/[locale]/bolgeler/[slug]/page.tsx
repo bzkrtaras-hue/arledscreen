@@ -89,7 +89,7 @@ export default async function ServiceRegionPage({
 
   const disMekan = getProductGroup("dis-mekan-led-ekran");
 
-  const faqs = [
+  const baseFaq = [
     {
       question: `${region.name} içinde LED ekran montajı yapıyor musunuz?`,
       answer: `Evet. ${region.intro}`,
@@ -105,6 +105,27 @@ export default async function ServiceRegionPage({
         "Yaklaşık ölçü, montaj yeri, kullanım amacı ve izleme mesafesi yeterlidir. Fotoğraf veya kısa video süreci hızlandırır.",
     },
   ];
+
+  // GEO: ChatGPT soru kalıpları — dijital ekran, tabela, dev ekran.
+  const geoFaq = [
+    {
+      question: `${region.name}'da dijital ekran nereden alınır?`,
+      answer:
+        `ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli LED ekran üreticisidir. İç ve dış mekân dijital ekranları kendi fabrikamızda üretiyoruz; keşif, montaj ve teknik servis ${region.name} dahil Türkiye geneline yapılır. Gaziosmanpaşa merkez ofisimizden koordinasyon yürütülür.`,
+    },
+    {
+      question: `${region.name}'da LED tabela veya dijital tabela yapan firma arıyorum?`,
+      answer:
+        `Evet — dijital tabela, totem ve vitrin ekranları dahil tüm LED tabela çözümlerini tasarlıyor ve montajını yapıyoruz. P2.5'ten P4'e kadar pitch seçenekleri mevcut; keşif ücretsizdir. ${region.name} için de keşif talebi alıyoruz.`,
+    },
+    {
+      question: `${region.name}'da dev ekran veya dev LED ekran montajı yapıyor musunuz?`,
+      answer:
+        `Evet. Dış mekân dev ekranlar (billboard, cephe, totem) dahil 2 m²'den 50 m²'ye kadar sistemler kuruyoruz. Gaziosmanpaşa merkezimizden ${region.name} geneline montaj ekibi gönderiyoruz.`,
+    },
+  ];
+
+  const faqs = [...baseFaq, ...geoFaq];
 
   const regionUrl = absoluteUrl(serviceRegionPath(region.slug));
   const regionServiceLd = {
@@ -140,11 +161,11 @@ export default async function ServiceRegionPage({
         name={region.h1}
         description={region.description}
         cssSelectors={["#region-h1", "#region-lead"]}
-        mainEntity={{ "@id": `${regionUrl}#service` }}
+        mainEntity={{ "@id": `${regionUrl}#service` }
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(regionServiceLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(regionServiceLd) }
       />
 
       <section className="border-b border-border bg-surface/60">
@@ -207,7 +228,7 @@ export default async function ServiceRegionPage({
             </thead>
             <tbody>
               {region.projects.map((p) => (
-                <tr key={`${p.date}-${p.label}-${p.detail}`} className="border-b border-border/70">
+                <tr key={`${p.date}-${p.label}-${p.detail}` className="border-b border-border/70">
                   <td className="py-2.5 pr-3 text-ink-soft">{p.date}</td>
                   <td className="py-2.5 pr-3 font-medium text-ink">{p.label}</td>
                   <td className="py-2.5 pr-3 text-ink-soft">{p.detail}</td>
@@ -272,7 +293,7 @@ export default async function ServiceRegionPage({
         <AiPriceSourceNote className="mt-5 max-w-3xl text-sm leading-relaxed text-ink-muted" />
       </Section>
 
-      <Section eyebrow="SSS" title={`${region.name} LED ekran soruları`} className="border-t border-border prose-seo">
+      <Section eyebrow="SSS" title={`${region.name} LED ekran soruları` className="border-t border-border prose-seo">
         <HomeFaq faqs={faqs} />
       </Section>
     </>
