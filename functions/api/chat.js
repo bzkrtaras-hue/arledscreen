@@ -584,6 +584,7 @@ export async function onRequest(ctx) {
       else return fallback(lastUser, "guard_" + kind);
     }
     text = softenControl(text);
+    if (/kiral|rental|(?<![\p{L}])hire(?![\p{L}])/iu.test(lastUser) && !/teklif|quote/i.test(text)) text += lang === "tr" ? " Kiralık ekran fiyatı yalnızca yazılı teklifle verilir." : " Rental prices are given only in a written quote.";
     if (!waAllowed(msgs, lastUser, text)) text = dropSentences(text, (x) => WA_RE.test(x)) || text.replace(/https?:\/\/wa\.me\/\d+/g, "").trim();
     text = text.replace(/\[([^\]]*)\]\(https?:\/\/wa\.me\/\d+\)/g, "$1").replace(/\s*[:–-]?\s*\(?https?:\/\/wa\.me\/\d+\)?/g, "").replace(/:\s*([.!?]|$)/gm, "$1");
     const wa = WA_RE.test(text);
