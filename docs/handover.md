@@ -4,6 +4,17 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 16 Ekim 2026 — İade, iptal ve teslimat sayfası (PR: `feat/iade-politikasi-taslak`)
+
+- **Karar (Aras):** iade/değişim süresi teslimattan itibaren 14 gün. Diğer noktalar Türk ticaret ve tüketici hukuku uygulamasına göre belirlendi (hukuki inceleme önerilir; PR açıklamasında liste var).
+- **Sayfa:** `/tr/iade-politikasi/` ve `/en/iade-politikasi/`. Tüm "ONAY BEKLİYOR" alanları dolduruldu, `noindex` kaldırıldı, sayfa sitemap'e eklendi. Footer'da "İade ve teslimat" bağlantısı var.
+- **İçerik:** bireysel tüketici (6502 sayılı Kanun, Mesafeli Sözleşmeler Yönetmeliği md. 9, 12, 13, 15/1-b) ile kurumsal müşteri (sözleşme + TTK) ayrı anlatıldı. Stoktan standart ürün: 14 gün. Özel üretim: bireysel tüketicide cayma istisnası, iptal yazılı. Üretim öncesi iptalde ödenen tutar 14 gün içinde iade; üretim sonrası pay yazılı belirlenir (oran uydurulmadı). Hasar/eksik bildirimi: teslimattan 3 gün içinde yazılı (ÖNERİ, Aras onayı bekliyor); nakliye ARLEDSCREEN'e ait.
+- **Şema hizası:** tüm panel Offer'larında `hasMerchantReturnPolicy` artık `MerchantReturnFiniteReturnWindow`, `merchantReturnDays: 14`, `ReturnByMail`, `FullRefund`, `merchantReturnLink` = `/tr/iade-politikasi/` (eski: `MerchantReturnNotPermitted`). Kaynaklar: `src/content/prices.ts`, `scripts/postbuild-ai.mjs`, `src/lib/ai.ts`, `public/entity.json`; üretilen `ai-shopping.json`, `catalog.json`, `brand.json` yenilendi. `llms.txt` ve `llms-full.txt` güncellendi. OpenAI beslemesine `accepts_returns`, `return_deadline_in_days`, `return_policy` alanları eklendi.
+- **Doğrulama:** `scripts/validate-ai-feeds.mjs` yeni şemayı bekler; yeni `scripts/validate-iade-policy.mjs` sayfa, sitemap, şema ve llms dosyalarının hizasını build sonunda denetler.
+- **Production:** yok, birleştirilmedi. Önizleme: `iade-taslak-preview`. Yayın onayı Aras. Yayın `main`'den (workflow_dispatch ref=main), her seferinde Aras onayıyla. Dal `main` (`1feb4b26`) üzerine rebase edildi.
+- **Açık:** Shopify iade politikası metni bu sayfayla aynı hâle getirilmeli (Shopify yönetim panelinde, Aras onayıyla). Hasar/eksik bildirim süresi (3 gün) öneridir, Aras onayı bekliyor.
+- **Geri alma:** PR'ın commit'i `git revert` ile geri alınır; şema eski `MerchantReturnNotPermitted` değerine döner.
+
 ### 16 Ekim 2026 — Güncel durum: #117, #118, yayın düzeni, Shopify, Melis #107, iade sayfası
 
 - **#117 video hero (main `3edc1054`):** TR ana sayfadaki tam ekran video hero (`Hero`) main'e alındı; `QuietHero` + `SelectedProjects` kaldırıldı, CTA "Teklif alın". Dosya içerikleri `deploy/kiralama-1015` ile birebir aynı; ana sayfa değişmedi. Böylece main'den yayın yapmak ana sayfayı geri almıyor (#106 QuietHero sorunu kapandı).

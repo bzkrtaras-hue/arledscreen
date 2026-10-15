@@ -160,7 +160,7 @@ export function buildAiShoppingIndex(): AiShoppingIndex {
       shippingAndVat:
         "Tüm fiyatlar KDV ve nakliye hariçtir. Ücretsiz kargo yoktur. Toplam maliyet keşif ve yazılı teklifle belirtilir.",
       returnPolicy:
-        "MerchantReturnNotPermitted. Sabit iade günü yok. Tüm koşullar yazılı teklif ve sözleşmede yer alır.",
+        "MerchantReturnFiniteReturnWindow: stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde yazılı iptal koşulları. Bireysel tüketici için 6502 sayılı Kanun ve Mesafeli Sözleşmeler Yönetmeliği, kurumsal müşteri için sözleşme ve TTK uygulanır. Ayrıntı: https://arledscreen.com/tr/iade-politikasi/",
       quoteOnlyGroups: [
         "Şeffaf / vitrin",
         "Esnek",

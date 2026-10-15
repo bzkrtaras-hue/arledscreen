@@ -341,7 +341,7 @@
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p1-25-ic-gob",
             "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#offer"
@@ -397,7 +397,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -415,7 +419,7 @@
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p1-53-ic-gob",
             "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#offer"
@@ -471,7 +475,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -489,7 +497,7 @@
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p1-86-ic-gob",
             "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#offer"
@@ -545,7 +553,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -563,7 +575,7 @@
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p2-5-ic",
             "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#offer"
@@ -619,7 +631,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -637,7 +653,7 @@
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p3-07-ic",
             "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#offer"
@@ -693,7 +709,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -711,7 +731,7 @@
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p4-ic",
             "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#offer"
@@ -767,7 +787,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -785,7 +809,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p2-5-dis",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#offer"
@@ -841,7 +865,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -859,7 +887,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p2-9-dis",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#offer"
@@ -915,7 +943,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -933,7 +965,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p3-07-dis",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#offer"
@@ -989,7 +1021,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -1007,7 +1043,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p4-dis",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#offer"
@@ -1063,7 +1099,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -1081,7 +1121,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p4-dis-front",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#offer"
@@ -1137,7 +1177,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -1155,7 +1199,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p5-dis",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#offer"
@@ -1211,7 +1255,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -1259,7 +1307,7 @@
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-25-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#offer"
@@ -1315,7 +1363,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -1333,7 +1385,7 @@
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-53-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#offer"
@@ -1389,7 +1441,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -1407,7 +1463,7 @@
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-86-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#offer"
@@ -1463,7 +1519,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -1481,7 +1541,7 @@
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-5-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#offer"
@@ -1537,7 +1597,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -1555,7 +1619,7 @@
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p3-07-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#offer"
@@ -1611,7 +1675,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -1629,7 +1697,7 @@
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#offer"
@@ -1685,7 +1753,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -1703,7 +1775,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-5-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#offer"
@@ -1759,7 +1831,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -1777,7 +1853,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-9-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#offer"
@@ -1833,7 +1909,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -1851,7 +1931,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p3-07-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#offer"
@@ -1907,7 +1987,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -1925,7 +2009,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#offer"
@@ -1981,7 +2065,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -1999,7 +2087,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-dis-front",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#offer"
@@ -2055,7 +2143,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -2073,7 +2165,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p5-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#offer"
@@ -2129,7 +2221,11 @@
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -2322,7 +2418,7 @@
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p1-25-ic-gob",
             "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#offer"
@@ -2378,7 +2474,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -2396,7 +2496,7 @@
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p1-53-ic-gob",
             "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#offer"
@@ -2452,7 +2552,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -2470,7 +2574,7 @@
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p1-86-ic-gob",
             "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#offer"
@@ -2526,7 +2630,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -2544,7 +2652,7 @@
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p2-5-ic",
             "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#offer"
@@ -2600,7 +2708,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -2618,7 +2730,7 @@
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p3-07-ic",
             "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#offer"
@@ -2674,7 +2786,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -2692,7 +2808,7 @@
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p4-ic",
             "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#offer"
@@ -2748,7 +2864,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -2766,7 +2886,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p2-5-dis",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#offer"
@@ -2822,7 +2942,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -2840,7 +2964,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p2-9-dis",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#offer"
@@ -2896,7 +3020,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -2914,7 +3042,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p3-07-dis",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#offer"
@@ -2970,7 +3098,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -2988,7 +3120,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p4-dis",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#offer"
@@ -3044,7 +3176,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -3062,7 +3198,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p4-dis-front",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#offer"
@@ -3118,7 +3254,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
@@ -3136,7 +3276,7 @@
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "sameAs": [
             "https://arledscreen.com/catalog.json#offer-p5-dis",
             "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#offer"
@@ -3192,7 +3332,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "availableAtOrFrom": {
             "@type": "LocalBusiness",
