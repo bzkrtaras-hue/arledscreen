@@ -95,7 +95,7 @@ const FALLBACK = {
 function detectLang(t) {
   if (/[\u0600-\u06FF]/.test(t)) return "ar";
   if (/[\u0400-\u04FF]/.test(t)) return "ru";
-  if (/[çğıöşüÇĞİÖŞÜ]/.test(t) || /(?<![\p{L}])(merhaba|selam|fiyat|ne|nedir|kaç|mı|mi|mu|mü|musun|musunuz|mısın|mısınız|misin|misiniz|var|yok|ekran|teklif|nasıl|neden|garanti|için|ile|bir|bu|şu|ve|evet|hayır|tamam|teşekkürler|lütfen|istiyorum|istiyoruz|olur|kontrol|kart|bot|insan|gerçek)(?![\p{L}])/iu.test(t)) return "tr";
+  if (/[çğıöşüÇĞİÖŞÜ]/.test(t) || /(?<![\p{L}])(merhaba|selam|fiyat|ne|nedir|kaç|mı|mi|mu|mü|musun|musunuz|mısın|mısınız|misin|misiniz|var|yok|ekran|teklif|nasıl|neden|garanti|için|ile|bir|bu|şu|ve|evet|hayır|tamam|teşekkürler|lütfen|istiyorum|istiyoruz|olur|kontrol|kart)(?![\p{L}])/iu.test(t)) return "tr";
   return "en";
 }
 const LANG_NAME = { tr: "Turkish", en: "English", ar: "Arabic", ru: "Russian" };
