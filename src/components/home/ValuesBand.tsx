@@ -16,14 +16,14 @@ export function ValuesBand() {
         />
         <ul className="grid gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-3 lg:gap-y-12">
           {items.map(({ Icon, title, body, href, linkLabel }, i) => (
-            <FadeIn as="li" key={title} dir={i % 2 === 0 ? "left" : "right"} delay={(i % 3) * 0.12} className="text-center">
+            <FadeIn as="li" key={title} dir="up" delay={(i % 3) * 0.12} className="min-w-0 text-center">
               <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl text-cyan glass-card">
                 <Icon className="h-7 w-7" strokeWidth={1.7} aria-hidden />
               </span>
               <h3 className="mt-4 font-display text-lg font-bold text-ink">{title}</h3>
-              <p className="mx-auto mt-2 max-w-[380px] text-[15px] leading-relaxed text-ink-muted">{body}</p>
+              <p className="mx-auto mt-2 max-w-full sm:max-w-[380px] text-[15px] leading-relaxed text-ink-muted">{body}</p>
               {href ? (
-                <Link href={href} className="mt-3 inline-flex min-h-10 items-center text-sm font-semibold text-cyan hover:underline">
+                <Link href={href} className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-cyan hover:underline">
                   {linkLabel} →
                 </Link>
               ) : null}
