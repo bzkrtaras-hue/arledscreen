@@ -14,6 +14,7 @@ import {
   ChevronRight,
   FileText,
   Menu,
+  Search,
   X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -374,9 +375,18 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           </Link>
         </div>
 
+        {locale === "tr" || locale === "en" ? (
+          <Link
+            href={tr ? "/tr/ara/" : "/en/search/"}
+            aria-label={tr ? "Sitede ara" : "Search the site"}
+            className="liquid-glass-btn liquid-glass-btn--icon relative z-[2] ml-auto h-12 w-12 shrink-0 sm:ml-1.5"
+          >
+            <Search className="h-5 w-5" aria-hidden />
+          </Link>
+        ) : null}
         <button
           type="button"
-          className="liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon relative z-[2] ml-auto h-12 w-12 shrink-0 min-[1360px]:hidden"
+          className={cn("liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon relative z-[2] h-12 w-12 shrink-0 min-[1360px]:hidden", locale === "tr" || locale === "en" ? "ml-1.5" : "ml-auto")}
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
