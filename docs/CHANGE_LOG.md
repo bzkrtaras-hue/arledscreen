@@ -2,6 +2,38 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261015-021 — Ana sayfa video hero'su main'e alındı (canlıyla aynı)
+
+- **Neden:** Canlı ana sayfadaki tam ekran video hero yalnızca `tr-video-hero-restore` ve `deploy/*` dallarında vardı, `main`'de yoktu. `main`'den yapılacak bir yayın hero'yu eski sessiz görsele geri alırdı.
+- **Değişiklik (2 dosya):**
+  - `src/app/[locale]/page.tsx`: `QuietHero` ve `SelectedProjects` yerine `Hero` (video) kullanılıyor, üst boşluk canlıdaki değerde (`-mt-[6.75rem] md:-mt-[7.5rem]`).
+  - `src/components/hero/Hero.tsx`: CTA etiketi "Teklif Al" → "Teklif alın".
+- **Medya:** yeni dosya yok. `/videos/lounge-aquarium-wall.mp4` (2,3 MB) ve `/videos/hero/lounge-aquarium-wall*.webp` zaten `main`'de.
+- **Kaynak:** `tr-video-hero-restore` (abfa621c, e83cea9c). İçerik `deploy/kiralama-1015` ile aynı (dosya hash'leri eşit).
+- **Dokunulmadı:** diğer sayfalar, #100, #105, #111, #113, #60.
+- **Production:** Aras Bey / Ali onayı → squash merge → manual deploy
+
+## ARL-20261015-020 — Kiralama sayfalarına "Kapsam" tablosu (TR + EN)
+
+- **Amaç:** Kiralamada neyin nasıl ele alındığı (keşif, kurulum, söküm, teknik ekip, nakliye, fiyat) tek tabloda görünsün.
+- **Değişiklik:** yeni `RentalScope` tablosu şu sayfalara eklendi:
+  - `/tr/led-ekran-kiralama/` ve `/en/led-ekran-kiralama/` (uygulama görsellerinden önce)
+  - `/tr/products/kiralik-led-ekran/` ve `/en/products/kiralik-led-ekran/` ("Kiralık mı, satın alma mı?" tablosunun üstünde)
+- **Metin kaynağı:** yalnızca sitede zaten yayımlı bilgiler (kiralama sayfaları, kategori SSS'si, llms.txt). Yeni sayı ve fiyat yok; kiralık fiyat "yazılı teklifle" olarak kaldı.
+- **Dosyalar:** `src/components/geo/RentalScope.tsx` (yeni), `src/components/commercial/CommercialLanding.tsx`, `src/app/[locale]/products/[slug]/page.tsx`, `src/components/products/ProductGroupEnLanding.tsx`
+- **Dokunulmadı:** ana sayfa, seo-guides.ts, sitemap ve şema dosyaları, kiralık fiyat ifadesi, `ard.json`.
+- **Production:** Aras Bey / Ali onayı → squash merge → manual deploy
+
+## ARL-20261015-002 — Issue #66 EN kalanlar: başlık uzunlukları, /en/sartlar/, EN Offer açıklamaları
+
+- **Kontrol (main build, 15 Eki 2026):** #66 (a)(b)(c) maddeleri ve 9 Eki yorumundaki maddeler EN görünür metinde artık yok (kalan Türkçe yalnızca özel adlar). Kalanlar:
+  - 7 EN rehber `<title>` 60 karakteri aşıyordu → 30–60 aralığına kısaltıldı (`src/content/seo-guides.ts`, yalnız EN).
+  - `/en/sartlar/` başlık/H1 Türkçeydi ("Şartlar") → "Terms and Conditions".
+  - EN sayfalardaki panel Offer / AggregateOffer `description` Türkçeydi → `/en/` sayfalarında İngilizce (`panelOffer` + `panelProductsJsonLd`, locale). Fiyat, @id, sku değişmedi.
+- **Bilerek dokunulmadı:** site geneli Organization/LocalBusiness/Brand düğümleri (aynı `@id` her sayfada; dile göre değişirse çelişkili veri olur), `/en/products/dis-mekan-led-ekran/p4-on-servis/` başlığı (62 karakter, noindex köprü sayfa).
+- **TR:** 400+ TR sayfada JSON-LD, görünür metin, title/meta birebir aynı (karşılaştırma script'i).
+- **Production:** Ali onayı → squash merge → manual deploy
+
 ## ARL-20261009-015 — LCD "teknik değer yayımlanmaz" çelişkisi giderildi (llms + LCD rehberi)
 
 - **Sorun:** llms.txt, llms-full.txt ve LCD rehberi (TR / EN / RU / AR) "LCD için teknik değer yayımlanmaz" diyordu. Oysa yeni /tr/products/lcd-ekran/ ve /tr/products/kiosk/ sayfaları 49 / 55 / 65 inç, Android veya Windows ve USB / HDMI / LAN / Wi‑Fi bilgilerini veriyor.

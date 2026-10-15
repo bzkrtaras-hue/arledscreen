@@ -29,6 +29,7 @@ export function Footer({ locale }: FooterProps) {
   const dict = getDictionary(locale);
   const year = new Date().getFullYear();
   const tr = locale === "tr";
+  const ar = locale === "ar";
 
   const quickLinks = tr
     ? [
@@ -41,7 +42,7 @@ export function Footer({ locale }: FooterProps) {
         { href: "/tr/rehber/", label: "Rehber" },
         { href: "/tr/about/", label: "Hakkımızda" },
         { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
-        { href: "/tr/quote/", label: "Teklif iste" },
+        { href: "/tr/quote/", label: "Teklif alın" },
         { href: "/tr/sss/", label: "SSS" },
         { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
         { href: "/tr/blog/", label: "Blog" },
@@ -59,24 +60,24 @@ export function Footer({ locale }: FooterProps) {
         { href: "/en/magaza-led-ekran/", label: "Store LED" },
         { href: "/en/products/gob-led-ekran/", label: "GOB LED" },
         { href: `/${locale}/products/`, label: dict.nav.products },
-        { href: `/${locale}/rehber/`, label: "Guides" },
+        { href: `/${locale}/rehber/`, label: ar ? "الأدلة" : "Guides" },
         { href: `/${locale}/about/`, label: dict.nav.about },
         { href: `/${locale}/hesaplayici/`, label: dict.nav.priceCalculator },
         {
           href: locale === "en" ? "/en/led-ekran-fiyatlari/" : "/tr/led-ekran-fiyatlari/",
-          label: "LED display prices",
+          label: ar ? "أسعار شاشات LED" : "LED display prices",
         },
         { href: `/${locale}/quote/`, label: dict.nav.quote },
         {
           href: locale === "en" ? "/en/sss/" : "/tr/sss/",
-          label: "FAQ",
+          label: ar ? "الأسئلة الشائعة" : "FAQ",
         },
         {
           href: locale === "en" ? "/en/nxtionstar/" : "/tr/nxtionstar/",
           label: "NXTIONSTAR",
         },
-        { href: "/en/blog/", label: "Blog" },
-        { href: "/en/gizlilik/", label: "Privacy" },
+        { href: "/en/blog/", label: ar ? "المدونة" : "Blog" },
+        { href: "/en/gizlilik/", label: ar ? "الخصوصية" : "Privacy" },
       ];
 
   const columns = tr
@@ -119,20 +120,22 @@ export function Footer({ locale }: FooterProps) {
       <div className="mx-auto max-w-7xl min-w-0 px-4 pt-12 sm:px-6 lg:px-8">
         <section aria-labelledby="bulten-baslik" className="mx-auto mb-10 max-w-2xl text-center">
           <h2 id="bulten-baslik" className="font-display text-xl font-bold text-white sm:text-2xl">
-            {tr ? "Bültenimize abone olun" : "Subscribe to our newsletter"}
+            {tr ? "Bültenimize abone olun" : ar ? "اشترك في نشرتنا البريدية" : "Subscribe to our newsletter"}
           </h2>
           <p className="mt-2 text-sm text-white/80">
             {tr
               ? "Yeni projeler, ürünler ve LED ekran rehberleri e-postanıza gelsin."
-              : "New projects, products and LED display guides, straight to your inbox."}
+              : ar
+                ? "مشاريع ومنتجات وأدلة شاشات LED الجديدة تصلك مباشرة إلى بريدك الإلكتروني."
+                : "New projects, products and LED display guides, straight to your inbox."}
           </p>
           <div className="ml-embedded mt-5 min-h-[120px]" data-form="CatDAx" />
         </section>
-        <nav aria-label={tr ? "Alt menü" : "Footer"}>
+        <nav aria-label={tr ? "Alt menü" : ar ? "القائمة السفلية" : "Footer"}>
           <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[14px] font-semibold">
             {quickLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="inline-flex min-h-11 items-center text-white/90 hover:text-[#9CC0F5]">
+                <Link href={l.href} className="inline-flex min-h-11 min-w-11 items-center text-white/90 hover:text-[#9CC0F5]">
                   {l.label}
                 </Link>
               </li>
@@ -143,7 +146,7 @@ export function Footer({ locale }: FooterProps) {
           className="mt-5 justify-center"
           ids={["phone", "whatsapp", "instagram", "facebook", "email"]}
           onDark
-          label={tr ? "Sosyal medya ve iletişim" : "Social and contact"}
+          label={tr ? "Sosyal medya ve iletişim" : ar ? "تواصل معنا" : "Social and contact"}
           locale={locale}
         />
       </div>
@@ -151,12 +154,12 @@ export function Footer({ locale }: FooterProps) {
       <div className="mx-auto mt-10 grid max-w-7xl min-w-0 gap-10 border-t border-white/10 px-4 py-10 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div className="min-w-0">
           <div className="inline-flex flex-wrap items-center gap-3 rounded-2xl bg-white px-4 py-3">
-            <Link href={`/${locale}/`} className="inline-flex items-center" aria-label="ARLEDSCREEN">
+            <Link href={`/${locale}/`} className="inline-flex min-h-11 items-center" aria-label={tr ? "ARLEDSCREEN ana sayfa" : locale === "ar" ? "الصفحة الرئيسية لـ ARLEDSCREEN" : "ARLEDSCREEN home"}>
               <Image
-                src="/brand/arledscreen-logo-header-514.webp"
-                alt="ARLEDSCREEN"
+                src="/brand/arledscreen-yatay.svg"
+                alt=""
                 width={514}
-                height={160}
+                height={123}
                 className="h-9 w-auto max-w-[170px] object-contain"
                 unoptimized
               />
@@ -164,7 +167,7 @@ export function Footer({ locale }: FooterProps) {
             <span className="h-7 w-px bg-ink/15" aria-hidden />
             <Image
               src="/brand/nxtionstar-wordmark-header-478.webp"
-              alt="NXTIONSTAR"
+              alt=""
               width={478}
               height={137}
               className="h-6 w-auto object-contain"
@@ -181,7 +184,7 @@ export function Footer({ locale }: FooterProps) {
             <ul className="mt-4 space-y-1 text-sm">
               {col.links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="inline-flex min-h-8 items-center text-white/85 hover:text-[#9CC0F5]">
+                  <Link href={link.href} className="inline-flex min-h-11 min-w-11 items-center text-white/85 hover:text-[#9CC0F5]">
                     {link.label}
                   </Link>
                 </li>
@@ -191,7 +194,7 @@ export function Footer({ locale }: FooterProps) {
         ))}
 
         <div className={tr ? "min-w-0" : "min-w-0 lg:col-start-4"}>
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/55">{tr ? "İletişim" : "Contact"}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/55">{tr ? "İletişim" : ar ? "اتصل بنا" : "Contact"}</p>
           <address className="mt-4 space-y-3 text-sm not-italic text-white/85">
             <p className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#9CC0F5]" aria-hidden />
@@ -203,22 +206,32 @@ export function Footer({ locale }: FooterProps) {
                 {BUSINESS_ADDRESS_LINES[1]}
                 <br />
                 <a href={BUSINESS_MAP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-[#9CC0F5] underline-offset-2 hover:underline">
-                  {tr ? "Haritada görün" : "View on map"}
+                  {tr ? "Haritada görün" : ar ? "عرض على الخريطة" : "View on map"}
                 </a>
               </span>
             </p>
             <p className="flex items-start gap-2">
               <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[#9CC0F5]" aria-hidden />
               <span>
-                {businessHoursText(tr ? "tr" : "en")[0]}
-                <br />
-                {businessHoursText(tr ? "tr" : "en")[1]}
+                {ar ? (
+                  <>
+                    الاثنين–الجمعة: <bdi dir="ltr">{businessHoursText("en")[0].split(": ")[1]}</bdi>
+                    <br />
+                    السبت: <bdi dir="ltr">{businessHoursText("en")[1].split(": ")[1]}</bdi>
+                  </>
+                ) : (
+                  <>
+                    {businessHoursText(tr ? "tr" : "en")[0]}
+                    <br />
+                    {businessHoursText(tr ? "tr" : "en")[1]}
+                  </>
+                )}
               </span>
             </p>
             <p>
               <a href={CONTACT_PHONE_HREF} className="inline-flex min-h-11 items-center gap-2 hover:text-[#9CC0F5]">
                 <PhoneIcon className="h-4 w-4 text-[#9CC0F5]" />
-                {CONTACT_PHONE_DISPLAY}
+                {ar ? <bdi dir="ltr">{CONTACT_PHONE_DISPLAY}</bdi> : CONTACT_PHONE_DISPLAY}
               </a>
             </p>
             <p>
@@ -235,7 +248,7 @@ export function Footer({ locale }: FooterProps) {
                 className="inline-flex min-h-11 items-center gap-2 font-semibold text-white hover:text-[#9CC0F5]"
               >
                 <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
-                {tr ? "WhatsApp ile yazın" : "Message on WhatsApp"}
+                {tr ? "WhatsApp ile yazın" : ar ? "راسلنا عبر واتساب" : "Message on WhatsApp"}
               </a>
             </p>
             <p className="text-white/60">{dict.footer.engineering}</p>
@@ -247,9 +260,9 @@ export function Footer({ locale }: FooterProps) {
           © {year} ARLEDSCREEN · NXTIONSTAR. {dict.footer.rights}{" "}
           <Link
             href={tr ? "/tr/gizlilik/" : "/en/gizlilik/"}
-            className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline"
+            className="footer-privacy-link text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline"
           >
-            {tr ? "Gizlilik" : "Privacy"}
+            {tr ? "Gizlilik" : ar ? "الخصوصية" : "Privacy"}
           </Link>
         </p>
       </div>

@@ -9,9 +9,16 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
+import { AR_INDEX_ROBOTS, isArIndexableGuide } from "@/lib/ar-indexable";
+import { SEO_GUIDE_I18N } from "@/content/seo-guides-i18n";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { BRAND_SUBJECT_REFS } from "@/content/prices";
 import { OptImage } from "@/components/ui/opt-image";
+import { ShortAnswer } from "@/components/geo/ShortAnswer";
+import { ExportFacts } from "@/components/geo/ExportFacts";
+import { GEO_REVIEWED, shortAnswer } from "@/content/short-answers";
+import { guideShortAnswer } from "@/content/guide-short-answers";
+import { GUIDE_AUTHOR, guideDates } from "@/lib/guide-jsonld";
 import { getGuideImage, getGuideTable } from "@/content/seo-guide-media";
 import {
   SEO_GUIDE_SLUGS,
@@ -39,16 +46,20 @@ export async function generateMetadata({
     return { title: "Not found" };
   }
   const guide = getSeoGuide(locale, slug);
-  return buildPageMetadata({
+  // Reviewed Arabic guides: self canonical + index on /ar/, reciprocal ar/tr/en hreflang on all three.
+  const arIndexable = isArIndexableGuide(slug);
+  const meta = buildPageMetadata({
     locale,
     path: `/rehber/${slug}`,
-    // ar/ru guide pages show the English text: canonical → EN, hreflang only tr/en.
-    canonicalLocale: locale === "ar" || locale === "ru" ? "en" : undefined,
-    hreflangLocales: ["tr", "en"],
+    // Other ar/ru guide pages mirror EN text: canonical → EN, hreflang only tr/en (noindex via layout).
+    canonicalLocale:
+      (locale === "ar" && !arIndexable) || locale === "ru" ? "en" : undefined,
+    hreflangLocales: arIndexable ? ["ar", "tr", "en"] : ["tr", "en"],
     title: guide.title,
     description: guide.description,
     keywords: guide.keywords,
   });
+  return locale === "ar" && arIndexable ? { ...meta, robots: AR_INDEX_ROBOTS } : meta;
 }
 
 export default async function SeoGuidePage({ params }: PageProps) {
@@ -61,6 +72,14 @@ export default async function SeoGuidePage({ params }: PageProps) {
   const pageUrl = absoluteUrl(`/${locale}/rehber/${guide.slug}/`);
   const image = getGuideImage(guide.slug, locale);
   const table = getGuideTable(guide.slug, locale);
+  // GEO paket 3: visible "Kısa cevap" + "Son güncelleme" on TR/EN guides (export guide keeps its paket 2 block).
+  const shortText =
+    locale === "tr" || locale === "en"
+      ? slug === "led-ekran-ihracat"
+        ? shortAnswer("led-ekran-ihracat", locale)
+        : guideShortAnswer(slug, locale)
+      : null;
+  const dates = guideDates(slug, Boolean(shortText));
 
   return (
     <>
@@ -83,8 +102,9 @@ export default async function SeoGuidePage({ params }: PageProps) {
           pageUrl={pageUrl}
           name={guide.h1}
           description={guide.description}
-          cssSelectors={["#guide-h1", "#guide-lead"]}
+          cssSelectors={shortText ? ["#guide-h1", "#kisa-cevap", "#guide-lead"] : ["#guide-h1", "#guide-lead"]}
           mainEntity={{ "@id": `${pageUrl}#article` }}
+          {...(shortText ? { dateModified: GEO_REVIEWED } : {})}
         />
       ) : null}
 
@@ -105,7 +125,9 @@ export default async function SeoGuidePage({ params }: PageProps) {
                   : locale === "ru"
                     ? "ru"
                     : "en-US",
-            author: { "@id": `${SITE_URL}/#organization` },
+            datePublished: dates.datePublished,
+            dateModified: dates.dateModified,
+            author: GUIDE_AUTHOR,
             publisher: { "@id": `${SITE_URL}/#organization` },
             mainEntityOfPage: pageUrl,
             keywords: guide.keywords.join(", "),
@@ -124,6 +146,16 @@ export default async function SeoGuidePage({ params }: PageProps) {
         className="min-w-0 prose-seo"
       >
         <div className="space-y-8">
+          {shortText && (locale === "tr" || locale === "en") ? (
+            slug === "led-ekran-ihracat" ? (
+              <>
+                <ShortAnswer text={shortText} locale={locale} className="" />
+                <ExportFacts locale={locale} />
+              </>
+            ) : (
+              <ShortAnswer text={shortText} locale={locale} className="" />
+            )
+          ) : null}
           {image ? (
             <div className="relative aspect-[16/10] max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">
               <OptImage
@@ -198,7 +230,9 @@ export default async function SeoGuidePage({ params }: PageProps) {
               {hub.relatedLabel}
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
-              {guide.relatedSlugs.map((rel) => {
+              {guide.relatedSlugs
+                .filter((rel) => locale !== "ar" || Boolean(SEO_GUIDE_I18N.ar[rel]))
+                .map((rel) => {
                 const related = getSeoGuide(locale, rel);
                 return (
                   <li key={rel}>
@@ -215,6 +249,15 @@ export default async function SeoGuidePage({ params }: PageProps) {
                   </li>
                 );
               })}
+              {(locale === "tr" || locale === "en") && guide.links
+                ? guide.links.map((l) => (
+                    <li key={l.href}>
+                      <Link href={l.href} className="font-medium text-cyan hover:underline">
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))
+                : null}
               <li>
                 <Link
                   href={`/${locale}/rehber`}
@@ -241,6 +284,14 @@ export default async function SeoGuidePage({ params }: PageProps) {
                     fiyat listemizde
                   </Link>{" "}
                   yer alır. KDV ve nakliye hariçtir; ücretsiz kargo yoktur.
+                </>
+              ) : locale === "ar" ? (
+                <>
+                  أسعار 12 طرازًا من ألواح LED منشورة بالدولار الأمريكي (مثل P1.25 GOB بسعر 95.88 دولارًا للوح) في{" "}
+                  <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                    قائمة الأسعار
+                  </Link>
+                  . الأسعار لا تشمل ضريبة القيمة المضافة ولا الشحن، ولا يوجد شحن مجاني.
                 </>
               ) : (
                 <>

@@ -114,7 +114,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
       ]
     : [
         { href: `/${locale}/products/`, label: dict.nav.products },
-        { href: `/${locale}/rehber/`, label: "Guides" },
+        { href: `/${locale}/rehber/`, label: locale === "ar" ? "الأدلة" : "Guides" },
         { href: `/${locale}/about/`, label: dict.nav.about },
       ];
 
@@ -146,13 +146,13 @@ export function Header({ locale, groups, guides }: HeaderProps) {
         <Link
           href={`/${locale}/`}
           className="liquid-glass-btn liquid-glass-btn--brand relative z-[2] -ml-0.5 min-h-11 min-w-0 shrink-0 gap-2 px-2.5 py-1.5 sm:min-h-12 sm:gap-2.5 sm:px-3"
-          aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
+          aria-label={tr ? "ARLEDSCREEN ana sayfa" : locale === "ar" ? "الصفحة الرئيسية لـ ARLEDSCREEN" : "ARLEDSCREEN home"}
         >
           <Image
-            src="/brand/arledscreen-logo-header-514.webp"
-            alt="ARLEDSCREEN"
+            src="/brand/arledscreen-yatay.svg"
+            alt=""
             width={514}
-            height={160}
+            height={123}
             className="h-10 w-auto max-w-[170px] object-contain sm:h-11 sm:max-w-[200px]"
             priority
             unoptimized
@@ -395,10 +395,14 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             {open
               ? tr
                 ? "Menüyü kapat"
-                : "Close menu"
+                : locale === "ar"
+                  ? "أغلق القائمة"
+                  : "Close menu"
               : tr
                 ? "Menüyü aç"
-                : "Open menu"}
+                : locale === "ar"
+                  ? "افتح القائمة"
+                  : "Open menu"}
           </span>
           {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
         </button>
@@ -455,20 +459,20 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   href={`/${locale}/`}
                   onClick={() => setOpen(false)}
                   className="liquid-glass-btn liquid-glass-btn--brand min-h-12 min-w-0 flex-1 justify-start gap-2 px-3 py-1.5"
-                  aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
+                  aria-label={tr ? "ARLEDSCREEN ana sayfa" : locale === "ar" ? "الصفحة الرئيسية لـ ARLEDSCREEN" : "ARLEDSCREEN home"}
                 >
                   <Image
-                    src="/brand/arledscreen-logo-header-514.webp"
-                    alt="ARLEDSCREEN"
+                    src="/brand/arledscreen-yatay.svg"
+                    alt=""
                     width={514}
-                    height={160}
+                    height={123}
                     className="h-10 w-auto max-w-[170px] object-contain"
                     unoptimized
                   />
                   <span className="h-6 w-px shrink-0 bg-ink/15" aria-hidden />
                   <Image
                     src="/brand/nxtionstar-wordmark-header-478.webp"
-                    alt="NXTIONSTAR"
+                    alt=""
                     width={478}
                     height={137}
                     className="h-3.5 w-auto max-w-[88px] opacity-90 object-contain"
@@ -607,7 +611,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                 <div className="flex items-center justify-between gap-3 pt-1">
                   <a href={CONTACT_PHONE_HREF} className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-ink">
                     <PhoneIcon className="h-4 w-4 text-cyan" />
-                    {CONTACT_PHONE_DISPLAY}
+                    {locale === "ar" ? <bdi dir="ltr">{CONTACT_PHONE_DISPLAY}</bdi> : CONTACT_PHONE_DISPLAY}
                   </a>
                   {tr ? (
                     <Link href="/tr/hesaplayici/" className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-cyan">

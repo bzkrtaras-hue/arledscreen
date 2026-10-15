@@ -162,7 +162,7 @@ const INTENT_PAGES: CommercialPage[] = [
       NAP,
     ],
     bullets: [
-      "Keşif → tasarım → üretim/tedarik → montaj → kalibrasyon → servis",
+      "Keşif → tasarım → tedarik → montaj → kalibrasyon → servis",
       "Kayıtlı illerde yayımlanmış proje örnekleri",
       "İç/dış mekân, GOB, esnek, poster/totem ve kiralık seçenekler",
     ],
@@ -234,22 +234,22 @@ const INTENT_PAGES: CommercialPage[] = [
     cluster: "intent",
     title: "LED Ekran Üreticisi | ARLEDSCREEN NXTIONSTAR",
     description:
-      "LED ekran üreticisi ve tedarikçi: NXTIONSTAR paneller, İstanbul merkezli montaj ve servis. ARLEDSCREEN üretim/tedarik sürecini uçtan uca yönetir.",
-    h1: "LED ekran üreticisi ve teknoloji merkezi",
-    eyebrow: "Üretim · Tedarik",
+      "LED ekran üreticisi mi arıyorsunuz? NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa. Tedarik, montaj ve servis.",
+    h1: "LED ekran üreticisi mi? NXTIONSTAR ve ARLEDSCREEN",
+    eyebrow: "Marka · Tedarik",
     lead: "İstanbul merkezli teknoloji merkezimizde NXTIONSTAR LED ekran sistemlerini projelendiriyor, tedarik ediyor ve sahada uyguluyoruz.",
     intro: [
       "ARLEDSCREEN, NXTIONSTAR markalı LED ekran çözümlerini Türkiye’de satış, montaj ve servisle buluşturan teknoloji merkezidir.",
-      "Üretim/tedarik, kalite kontrol ve saha montajı aynı operasyon altında ilerler; proje ölçüsüne göre panel ve kontrol konfigürasyonu hazırlanır.",
+      "Tedarik, kalite kontrol ve saha montajı aynı operasyon altında ilerler; proje ölçüsüne göre panel ve kontrol konfigürasyonu hazırlanır.",
       NAP,
     ],
     bullets: [
       "NXTIONSTAR ürün hattı",
       "Proje bazlı panel ve kontrol konfigürasyonu",
-      "Fabrika/montaj görselleri ve sahada tamamlanan işler",
+      "Montaj/atölye görselleri ve sahada tamamlanan işler",
     ],
     images: [
-      { src: "/projects/factory-assembly.jpg", alt: "LED ekran üretim ve montaj hazırlığı" },
+      { src: "/projects/factory-assembly.jpg", alt: "LED ekran montaj hazırlığı" },
       { src: "/projects/frame-workshop.jpg", alt: "LED ekran konstrüksiyon atölyesi" },
       { src: "/projects/service-assembly.jpg", alt: "LED ekran servis ve montaj istasyonu" },
     ],
@@ -262,7 +262,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Üretici misiniz, bayi misiniz?",
         answer:
-          "ARLEDSCREEN, NXTIONSTAR LED ekran sistemlerini projelendiren, tedarik eden ve sahada uygulayan İstanbul merkezli teknoloji merkezidir. Marka ve operasyon ayrımı teklif sürecinde net yazılır.",
+          "ARLEDSCREEN üretici iddiasında bulunmaz. NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir. Projelendirme, tedarik, montaj ve servisi ARLEDSCREEN yapar.",
       },
     ],
     primaryCta: { href: "/tr/quote/", label: "Proje teklifi iste" },
@@ -317,7 +317,7 @@ const INTENT_PAGES: CommercialPage[] = [
     eyebrow: "Kiralama",
     lead: "Kısa süreli etkinlik, sahne ve fuarlar için kiralık LED ekran kurulumu planlıyoruz.",
     intro: [
-      "Satın alma yerine kısa süreli ihtiyaçlarda kiralık LED ekran daha verimli olabilir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
+      "Satın alma yerine kısa süreli ihtiyaçlarda kiralık LED ekran daha verimli olabilir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
       "Kiralık ürün grubu ve kiralık mı satın alma rehberi ile karşılaştırma yapabilirsiniz.",
       NAP,
     ],
@@ -345,16 +345,12 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Kiralık LED ekran fiyatı ne kadar?",
         answer:
-          "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir. Örneğin 10 m² ekranın 1 günlük kirası 500 USD'dir.",
+          "İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
       },
       {
         question: "Haftalık veya aylık LED ekran kiralanabilir mi?",
         answer:
-          "Evet. Haftalık ve aylık kiralamalar aynı günlük m² fiyatı (50 USD/m²) üzerinden hesaplanır. Kurulum ve nakliye ayrıca tekliflendirilir.",
-      },
-      {
-        question: "Kiralamada depozito alınıyor mu?",
-        answer: "Hayır, kiralık LED ekranda depozito alınmaz.",
+          "Evet. Günlük, haftalık ve aylık kiralamalarda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
       },
       {
         question: "Kiralık LED ekranın ödemesi nasıl yapılır?",
@@ -1262,7 +1258,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Stage and event LED — purchase walls or rental cabinets with install/strike support.",
     intro: [
       "Our Kadıköy Matiz Sahne project is a stage/outdoor example. Short runs often favour rental cabinets.",
-      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
       NAP_EN,
     ],
     bullets: ["Rent or buy decision", "Size and days quote", "Install + strike plan"],
@@ -1271,7 +1267,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Is stage rental on the price list?",
         answer:
-          "No. Our price list covers purchase prices per panel only. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. Compare purchase prices on our price list.",
+          "No. Our price list covers purchase prices per panel only. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately. Compare purchase prices on our price list.",
       },
     ],
   },
@@ -1350,7 +1346,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Stage-backdrop and side-wall LED for wedding halls — rental for short runs, purchase for permanent installs.",
     intro: [
       "Stage and side-wall LED is common in wedding venues. Short events may favour rental cabinets.",
-      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
       NAP_EN,
     ],
     bullets: ["Rent or buy", "Stage size survey", "Install + strike plan"],
@@ -1359,7 +1355,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Is wedding-hall rental on the price list?",
         answer:
-          "Our price list covers purchase prices per panel. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+          "Our price list covers purchase prices per panel. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
       },
     ],
   },
@@ -1394,7 +1390,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Booth and temporary LED for fairs — rental or purchase by event duration.",
     intro: [
       "The published Ünye Belediyesi Ordu Günleri stand (Atatürk Airport Millet Bahçesi) is a booth example — not a template.",
-      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. No free shipping.",
+      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Duration drives rent vs buy", "Booth size survey", "Install + strike"],
@@ -1403,7 +1399,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Rent or buy for a three-day fair?",
         answer:
-          "Short fairs usually favour rental. Compare purchase prices on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+          "Short fairs usually favour rental. Compare purchase prices on our price list. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
       },
     ],
   },
@@ -1846,8 +1842,8 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       ...tr,
       title: "LED Display Manufacturer | ARLEDSCREEN NXTIONSTAR",
       description:
-        "LED display manufacturer and supplier: NXTIONSTAR panels, Istanbul-based install and service. ARLEDSCREEN runs project supply end to end.",
-      h1: "LED display manufacturer and technology center",
+        "Looking for an LED display manufacturer? NXTIONSTAR is ARLEDSCREEN's own brand; its sole sales point in Turkey is Gaziosmanpaşa, Istanbul. Supply, install, service.",
+      h1: "LED display manufacturer? NXTIONSTAR and ARLEDSCREEN",
       eyebrow: "Supply · Technology center",
       lead:
         "From our Istanbul technology center we project, supply and install NXTIONSTAR LED display systems on site.",
@@ -1859,7 +1855,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       bullets: [
         "NXTIONSTAR product line",
         "Project-based panel and control configuration",
-        "Factory/assembly photos and completed field projects",
+        "Assembly/workshop photos and completed field projects",
       ],
       images: [
         { src: "/projects/factory-assembly.jpg", alt: "LED display assembly preparation" },
@@ -1874,7 +1870,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Are you a manufacturer or a reseller?",
           answer:
-            "ARLEDSCREEN projects, supplies and installs NXTIONSTAR LED systems from Istanbul. Brand and role are written clearly in the quote. Brand page: /en/nxtionstar/.",
+            "ARLEDSCREEN does not claim to be a manufacturer. NXTIONSTAR is ARLEDSCREEN's own LED display brand; its sole sales point in Turkey is the ARLEDSCREEN headquarters in Gaziosmanpaşa, Istanbul. Brand page: /en/nxtionstar/.",
         },
         {
           question: "Is NXTIONSTAR the same as NationStar?",
@@ -1938,12 +1934,12 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       ...tr,
       title: "LED Display Rental | Stage & Events | ARLEDSCREEN",
       description:
-        "LED display rental for stage, fair and events. ARLEDSCREEN rental cabinets: USD 50 per m² per day; installation and shipping quoted separately.",
+        "LED display rental for stage, fair and events. ARLEDSCREEN rental cabinets are priced by written quote; installation and shipping quoted separately.",
       h1: "LED display rental",
       eyebrow: "Rental",
       lead: "We plan rental LED installs for short-run events, stages and fairs.",
       intro: [
-        "For short needs, rental can beat purchase. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+        "For short needs, rental can beat purchase. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
         "Compare with purchase using our price list and calculator when ownership makes more sense.",
         NAP_EN,
       ],
@@ -1968,21 +1964,17 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Rent or buy?",
           answer:
-            "One-off events usually favor rental; continuous use usually favors purchase. Purchase prices per panel are published on our price list. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+            "One-off events usually favor rental; continuous use usually favors purchase. Purchase prices per panel are published on our price list. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
         },
         {
           question: "Is there a published fixed rental price?",
           answer:
-            "Yes. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. For example, one day for a 10 m² screen is USD 500.",
+            "Yes. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
         },
         {
           question: "Can I rent an LED screen weekly or monthly?",
           answer:
-            "Yes. Weekly and monthly rentals are priced on the same daily rate (USD 50 per m² per day). Installation and shipping are quoted separately.",
-        },
-        {
-          question: "Is a deposit required for rental?",
-          answer: "No. No deposit is required for rental LED screens.",
+            "Yes. Daily, weekly and monthly rentals are priced by written quote. Installation and shipping are quoted separately.",
         },
         {
           question: "How do I pay for a rental?",

@@ -47,6 +47,13 @@ import type { Locale } from "@/lib/i18n";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { whatsappHref } from "@/lib/whatsapp";
 
+import { ShortAnswer } from "@/components/geo/ShortAnswer";
+import { RentalCompare } from "@/components/geo/RentalCompare";
+import { RentalScope } from "@/components/geo/RentalScope";
+import { GEO_REVIEWED, shortAnswer, type ShortAnswerKey } from "@/content/short-answers";
+
+const SHORT_ANSWER_SLUGS: string[] = ["ic-mekan-led-ekran", "dis-mekan-led-ekran", "gob-led-ekran", "kiralik-led-ekran"];
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -240,7 +247,8 @@ export default async function ProductGroupPage({ params }: PageProps) {
         pageUrl={url}
         name={g.h1}
         description={g.description}
-        cssSelectors={["#pg-h1", "#pg-lead"]}
+        cssSelectors={SHORT_ANSWER_SLUGS.includes(g.slug) ? ["#pg-h1", "#kisa-cevap", "#pg-lead"] : ["#pg-h1", "#pg-lead"]}
+        {...(SHORT_ANSWER_SLUGS.includes(g.slug) ? { dateModified: GEO_REVIEWED } : {})}
         {...(prices.length ? { mainEntity: { "@id": `${url}#service` } } : {})}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
@@ -287,6 +295,9 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 {g.lead}
               </span>
             </h1>
+            {SHORT_ANSWER_SLUGS.includes(g.slug) ? (
+              <ShortAnswer text={shortAnswer(g.slug as ShortAnswerKey, "tr")} locale="tr" />
+            ) : null}
             <nav aria-label="Sayfa bölümleri" className="mt-5 flex flex-wrap gap-2">
               {tabs.map((t, i) => (
                 <a
@@ -457,7 +468,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 </h2>
                 <p className="mt-3 max-w-xl text-base leading-relaxed text-ink-soft">
                   {g.slug === "kiralik-led-ekran"
-                    ? "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz."
+                    ? "İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz."
                     : `${g.name} fiyatı ölçü, form, süre ve kurulum koşullarına göre hazırlanır. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz.`}
                 </p>
                 <p className="mt-2 max-w-xl text-xs leading-relaxed text-ink-muted">
@@ -615,6 +626,9 @@ export default async function ProductGroupPage({ params }: PageProps) {
           </p>
         </div>
       </section>
+
+      {g.slug === "kiralik-led-ekran" ? <RentalScope locale="tr" /> : null}
+      {g.slug === "kiralik-led-ekran" ? <RentalCompare locale="tr" /> : null}
 
       {refs.length ? (
         <section id="projeler" className="scroll-mt-28 border-t border-border bg-white py-14 md:py-16">

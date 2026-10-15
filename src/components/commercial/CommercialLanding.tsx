@@ -5,6 +5,9 @@ import { HomeFaq } from "@/components/home/HomeFaq";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { ShortAnswer } from "@/components/geo/ShortAnswer";
+import { GEO_REVIEWED } from "@/content/short-answers";
+import { pageShortAnswer } from "@/content/guide-short-answers";
 import type { CommercialPage } from "@/content/commercial-pages";
 import { commercialPath } from "@/content/commercial-pages";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
@@ -29,6 +32,7 @@ import {
 } from "@/lib/social";
 import { ENTITY_FAQ_BRAND_DISAMBIG, ENTITY_FAQ_CANONICAL_DOMAIN } from "@/lib/entity";
 import { getFaqs } from "@/content/faqs";
+import { RentalScope } from "@/components/geo/RentalScope";
 import { formatProjectDate, formatProjectDetail } from "@/lib/dates";
 
 const CLUSTER_LABEL: Record<"tr" | "en", Record<CommercialPage["cluster"], string>> = {
@@ -71,6 +75,8 @@ export function CommercialLanding({
 }) {
   const url = absoluteUrl(commercialPath(page.slug, locale));
   const tr = locale === "tr";
+  // GEO paket 3: only the sales landing gets the block (rental landings wait for the rental price decision).
+  const showShortAnswer = page.slug === "led-ekran-satisi";
   // Intent hubs (satış/montaj/kiralama…) get the 12-SKU Offer graph; pitch/use pages keep Dataset cites only.
   const showPanelOffers = page.cluster === "intent";
   const faqs = (() => {
@@ -155,8 +161,9 @@ export function CommercialLanding({
         pageUrl={url}
         name={page.h1}
         description={page.description}
-        cssSelectors={["#commercial-h1", "#commercial-lead"]}
+        cssSelectors={showShortAnswer ? ["#commercial-h1", "#kisa-cevap", "#commercial-lead"] : ["#commercial-h1", "#commercial-lead"]}
         mainEntity={{ "@id": `${url}#service` }}
+        {...(showShortAnswer ? { dateModified: GEO_REVIEWED } : {})}
       />
       <script
         type="application/ld+json"
@@ -196,6 +203,7 @@ export function CommercialLanding({
           <p id="commercial-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             {page.lead}
           </p>
+          {showShortAnswer ? <ShortAnswer text={pageShortAnswer("satis", locale)} locale={locale} /> : null}
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
               href={page.primaryCta.href}
@@ -287,8 +295,8 @@ export function CommercialLanding({
             </h2>
             <p className="mb-4 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
               {tr
-                ? "Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir."
-                : "Published prices for 12 NXTIONSTAR panels (USD). Transparent, flexible, poster and control products have no fixed list price; they are priced in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately."}
+                ? "Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir."
+                : "Published prices for 12 NXTIONSTAR panels (USD). Transparent, flexible, poster and control products have no fixed list price; they are priced in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately."}
             </p>
             <PanelPriceTable
               locale={tr ? "tr" : "en"}
@@ -298,6 +306,8 @@ export function CommercialLanding({
           </div>
         </section>
       ) : null}
+
+      {page.slug === "led-ekran-kiralama" ? <RentalScope locale={locale} /> : null}
 
       {page.images.length ? (
         <section className="border-t border-border bg-white py-12 md:py-16">

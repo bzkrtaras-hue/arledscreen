@@ -2,7 +2,6 @@ import type { Locale } from "@/lib/i18n";
 import { Header, type MenuGroup, type MenuLink } from "@/components/layout/Header";
 import { TopBar } from "@/components/layout/TopBar";
 import { Footer } from "@/components/layout/Footer";
-import { FloatingSocialRail } from "@/components/layout/FloatingSocialRail";
 import { MobileCtaBar } from "@/components/layout/MobileCtaBar";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { LEAD_GROUP_LABEL, PRODUCT_GROUPS, isLeadProductGroup, productGroupPath } from "@/content/categories";
@@ -45,7 +44,7 @@ export function SiteShell({ locale, children }: SiteShellProps) {
     <MotionProvider>
       <div className="has-mobile-cta flex min-h-screen flex-col">
         <a href="#main-content" className="skip-link">
-          {tr ? "İçeriğe geç" : "Skip to main content"}
+          {tr ? "İçeriğe geç" : locale === "ar" ? "تخطَّ إلى المحتوى الرئيسي" : "Skip to main content"}
         </a>
         {/* Fixed liquid-glass chrome floats over page content so blur reads clearly. */}
         <div className="pointer-events-none fixed inset-x-0 top-0 z-50">
@@ -61,7 +60,6 @@ export function SiteShell({ locale, children }: SiteShellProps) {
           {children}
         </main>
         <Footer locale={locale} />
-        <FloatingSocialRail locale={locale} />
         <MobileCtaBar locale={locale} />
       </div>
     </MotionProvider>

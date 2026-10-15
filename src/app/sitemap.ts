@@ -9,8 +9,47 @@ import { SERVICE_REGIONS } from "@/content/service-regions";
 import { COMMERCIAL_EN_SLUGS, COMMERCIAL_PAGES } from "@/content/commercial-pages";
 import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 import { lastmodForUrl } from "@/lib/sitemap-lastmod";
+import { AR_INDEXABLE_PATHS } from "@/lib/ar-indexable";
 
 export const dynamic = "force-static";
+
+/**
+ * GEO paket 3 — hreflang alternates in the sitemap (xhtml:link).
+ * A URL gets alternates only for locale twins that are themselves listed in this sitemap, i.e.
+ * indexable, self-canonical pages with real copy. Thin ar/ru mirrors, noindex bridges and
+ * canonical-to-other-locale pages never appear, so nothing can point at a missing or noindex page.
+ * x-default is the /tr/ twin and is emitted only when a /tr/ twin exists.
+ * scripts/validate-sitemap-hreflang.mjs re-checks the result against the built out/ folder.
+ */
+const HREFLANG_ORDER = ["tr", "en", "ar"] as const;
+type HrefLang = (typeof HREFLANG_ORDER)[number];
+
+function withHreflangAlternates(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
+  const split = (url: string) => {
+    const m = /^https?:\/\/[^/]+\/(tr|en|ar)(\/.*)$/.exec(url);
+    return m ? { lang: m[1] as HrefLang, rest: m[2] } : null;
+  };
+  const groups = new Map<string, Partial<Record<HrefLang, string>>>();
+  for (const e of entries) {
+    const p = split(e.url);
+    if (!p) continue;
+    const g = groups.get(p.rest) ?? {};
+    g[p.lang] = e.url;
+    groups.set(p.rest, g);
+  }
+  return entries.map((e) => {
+    const p = split(e.url);
+    if (!p) return e;
+    const g = groups.get(p.rest);
+    if (!g) return e;
+    const langs = HREFLANG_ORDER.filter((l) => g[l]);
+    if (langs.length < 2) return e; // single-language page: nothing to alternate
+    const languages: Record<string, string> = {};
+    for (const l of langs) languages[l] = g[l] as string;
+    if (g.tr) languages["x-default"] = g.tr;
+    return { ...e, alternates: { languages } };
+  });
+}
 
 /**
  * Sitemap lists only indexable, self-canonical HTML URLs (no noindex bridges,
@@ -18,7 +57,7 @@ export const dynamic = "force-static";
  * lastmod = git last-commit date of the page's route + content files (fallback: build date).
  * - TR: full site (products, models, bölgeler, blog, rehber…)
  * - EN: pages with real EN copy (home, about, hesaplayici, quote, yapay-zeka, rehber)
- * - Thin /en/products hub, /ar/* and /ru/* are omitted (no false language pairs).
+ * - AR: only reviewed Arabic pages (AR_INDEXABLE_PATHS); other /ar/*, /ru/* and thin /en/products hub omitted.
  */
 
 const TR_CORE: {
@@ -78,6 +117,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl(`/tr/rehber/${slug}/`),
       changeFrequency: "weekly",
       priority: 0.85,
+    });
+  }
+
+  for (const path of AR_INDEXABLE_PATHS) {
+    entries.push({
+      url: absoluteUrl(`/ar${path}`),
+      changeFrequency: "monthly",
+      priority: 0.7,
     });
   }
 
@@ -241,5 +288,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  return entries.map((e) => ({ ...e, lastModified: lastmodForUrl(e.url) }));
+  return withHreflangAlternates(entries.map((e) => ({ ...e, lastModified: lastmodForUrl(e.url) })));
 }

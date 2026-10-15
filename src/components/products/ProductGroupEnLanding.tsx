@@ -1,4 +1,10 @@
 import Link from "next/link";
+import { ShortAnswer } from "@/components/geo/ShortAnswer";
+import { RentalCompare } from "@/components/geo/RentalCompare";
+import { RentalScope } from "@/components/geo/RentalScope";
+import { GEO_REVIEWED, shortAnswer, type ShortAnswerKey } from "@/content/short-answers";
+
+const EN_SHORT_ANSWER_SLUGS: string[] = ["ic-mekan-led-ekran", "dis-mekan-led-ekran", "gob-led-ekran", "kiralik-led-ekran"];
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
@@ -101,8 +107,9 @@ export function ProductGroupEnLanding({
         pageUrl={url}
         name={en.h1}
         description={en.description}
-        cssSelectors={["#pg-h1", "#pg-lead"]}
+        cssSelectors={EN_SHORT_ANSWER_SLUGS.includes(group.slug) ? ["#pg-h1", "#kisa-cevap", "#pg-lead"] : ["#pg-h1", "#pg-lead"]}
         mainEntity={{ "@id": `${url}#service` }}
+        {...(EN_SHORT_ANSWER_SLUGS.includes(group.slug) ? { dateModified: GEO_REVIEWED } : {})}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       {productsLd ? (
@@ -132,6 +139,9 @@ export function ProductGroupEnLanding({
             <p id="pg-lead" className="mt-3 max-w-xl text-base leading-relaxed text-ink-soft">
               {en.lead}
             </p>
+            {EN_SHORT_ANSWER_SLUGS.includes(group.slug) ? (
+              <ShortAnswer text={shortAnswer(group.slug as ShortAnswerKey, "en")} locale="en" className="mt-4" />
+            ) : null}
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link
                 href={`/en/quote/?tip=${group.projectType}`}
@@ -197,7 +207,7 @@ export function ProductGroupEnLanding({
         <section className="border-t border-border py-10">
           <div className="mx-auto max-w-7xl px-4 text-sm text-ink-soft sm:px-6 lg:px-8">
             {group.slug === "kiralik-led-ekran"
-              ? "Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately. "
+              ? "Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately. "
               : "Prices for this group are given in a written quote. "}
             Our 12 published panel prices (USD) are on{" "}
             <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
@@ -226,6 +236,9 @@ export function ProductGroupEnLanding({
           </Link>
         </div>
       </section>
+
+      {group.slug === "kiralik-led-ekran" ? <RentalScope locale="en" /> : null}
+      {group.slug === "kiralik-led-ekran" ? <RentalCompare locale="en" /> : null}
 
       {faqs.length ? (
         <section className="border-t border-border py-12 md:py-16">

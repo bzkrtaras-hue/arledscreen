@@ -20,10 +20,14 @@ import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
 import { getSeo } from "@/content/seo";
 import { buildPageMetadata } from "@/lib/seo";
+import { AR_INDEX_ROBOTS } from "@/lib/ar-indexable";
 import { absoluteUrl } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
+import { ShortAnswer } from "@/components/geo/ShortAnswer";
+import { GEO_REVIEWED } from "@/content/short-answers";
+import { pageShortAnswer } from "@/content/guide-short-answers";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -35,13 +39,16 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "about");
-  return buildPageMetadata({
+  const meta = buildPageMetadata({
     locale,
     path: "/about",
+    // /ar/about/ has full Arabic copy: reciprocal ar/tr/en hreflang; index only on ar (ru stays noindex).
+    hreflangLocales: ["ar", "tr", "en"],
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
   });
+  return locale === "ar" ? { ...meta, robots: AR_INDEX_ROBOTS } : meta;
 }
 
 export default async function AboutPage({ params }: PageProps) {
@@ -66,8 +73,9 @@ export default async function AboutPage({ params }: PageProps) {
             pageUrl={absoluteUrl(`/${locale}/about/`)}
             name={seo.h1 ?? about.title}
             description={seo.description}
-            cssSelectors={["#about-h1", "#about-cite"]}
+            cssSelectors={["#about-h1", "#kisa-cevap", "#about-cite"]}
             mainEntity={{ "@id": "https://arledscreen.com/#organization" }}
+            dateModified={GEO_REVIEWED}
           />
         </>
       ) : null}
@@ -75,7 +83,7 @@ export default async function AboutPage({ params }: PageProps) {
         titleAs="h1"
         titleId="about-h1"
         eyebrow={about.eyebrow}
-        title={seo.h1 ?? about.title}
+        title={locale === "ar" ? "من نحن: ARLEDSCREEN" : (seo.h1 ?? about.title)}
         description={dict.brand.slogan}
         className="min-w-0 prose-seo"
       >
@@ -83,7 +91,7 @@ export default async function AboutPage({ params }: PageProps) {
           <div className="relative aspect-[16/10] min-w-0 overflow-hidden rounded-2xl border border-border bg-surface">
             <OptImage
               src="/projects/billboard-arled.jpg"
-              alt={dict.projects.shots.billboardArled}
+              alt={locale === "ar" ? "لوحة إعلانية LED خارجية على عمود تعرض شعار ARLEDSCREEN" : dict.projects.shots.billboardArled}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -91,6 +99,9 @@ export default async function AboutPage({ params }: PageProps) {
             />
           </div>
           <div className="min-w-0 space-y-5">
+            {locale === "tr" || locale === "en" ? (
+              <ShortAnswer text={pageShortAnswer("about", locale)} locale={locale} className="" />
+            ) : null}
             <p className="text-base font-semibold leading-snug text-cyan sm:text-lg">
               {dict.brand.slogan}
             </p>
