@@ -14,6 +14,8 @@ test("(1) intro questions → fixed answer without AI mention, no model call", a
     assert.equal(r.guard, "intro", q);
     assert.equal(r.calls.length, 0, q);
     assert.match(r.reply, /^(Ben Melis, ARLEDSCREEN satış danışmanıyım\.|I'm Melis, ARLEDSCREEN's sales consultant\.)/, q);
+    // answer language follows the question (short Turkish questions such as "Sen kimsin?" carry no marker words)
+    assert.equal(/^Ben Melis/.test(r.reply), !/^(?:who|what|introduce)/i.test(q.replace(/^[^a-z]*/i, "")) || /kimsin|tanıt|konuş|ad[ıi]n|ADINIZ/i.test(q) && !/^(?:who|what|introduce)/i.test(q), q);
     assert.doesNotMatch(r.reply, /yapay|(?<![\p{L}])AI(?![\p{L}])|artificial|bot\b/iu, q);
     assert.doesNotMatch(r.reply, BANNED_ID, q);
   }
@@ -35,6 +37,12 @@ test("(2) bot/human questions incl. capital İ, caps and ASCII spellings → app
     assert.match(r.reply, /WhatsApp/, q);
     assert.doesNotMatch(r.reply, BANNED_ID, q);
     assert.doesNotMatch(r.reply, /(?:ben|I am|I'm)\s+(?:bir\s+)?(?:gerçek\s+)?(?:insanım|human|a person|real)/i, q);
+  }
+});
+test("(1)(2) language of the fixed answers follows the question", async () => {
+  for (const [q, tr] of [["Sen kimsin?", true], ["Kimsiniz?", true], ["Who are you?", false], ["What is your name?", false], ["Bot musun?", true], ["Are you a bot?", false], ["INSAN MISIN", true]]) {
+    const r = await chat([q]);
+    assert.equal(/Ben Melis|Bakış açınıza/.test(r.reply), tr, q + " → " + r.reply);
   }
 });
 test("(2) normal sentences are not mistaken for identity questions", () => {
@@ -85,6 +93,9 @@ test("(4) 'Where are you located?' answer stays whole through the full pipeline"
   assert.match(bad.reply, /Merkez Mah\. Tuna Sok\. No:15-17 Kat 1, 34245 Gaziosmanpaşa\/İstanbul/);
   const tr = await chat(["Adresiniz nedir?"], { reply: "Merkez Mah. Tuna Sok. Başka bir sorunuz var mı?" });
   assert.match(tr.reply, /No:15-17 Kat 1, 34245 Gaziosmanpaşa\/İstanbul/);
+  // address without the postal code / different spelling from the model → exact approved address
+  const loose = await chat(["Where are you located?"], { reply: "Our office is located at Merkez Mah. Tuna Sok. No:15-17 Kat 1, Gaziosmanpaşa, Istanbul, Türkiye. Would you like directions?" });
+  assert.match(loose.reply, /Merkez Mah\. Tuna Sok\. No:15-17 Kat 1, 34245 Gaziosmanpaşa\/İstanbul/);
 });
 
 // (5) forbidden praise -------------------------------------------------------------------------------

@@ -11,23 +11,32 @@ export function normTr(s) {
 
 // ---- Identity ---------------------------------------------------------------
 // "Are you a bot / human / AI?" (patterns are written on the normalised text: only plain "i", no diacritic-only variants needed except ç/ğ/ş/ü/ö/â).
-const IDENTITY_Q = new RegExp([
+const IDENTITY_TR_PATTERNS = [
   "bot\\s*mu(?:sun|sunuz)?(?![\\p{L}])",
   "robot\\s*mu(?:sun|sunuz)?(?![\\p{L}])",
   "insan\\s*mi(?:sin|siniz)?(?![\\p{L}])",
   "(?:ger[cç]ek|canli)\\s*(?:bir\\s*)?(?:insan|kisi|biri)",
   "yapay\\s*zek[aâ]\\s*mi(?:sin|siniz)?(?![\\p{L}])",
   "(?<![\\p{L}])ai\\s*mi(?:sin|siniz)?(?![\\p{L}])",
+];
+const IDENTITY_EN_PATTERNS = [
   "are you (?:a |an )?(?:real |live )?(?:bot|robot|human|person|ai|real|chatbot|machine)",
   "is this (?:a |an )?(?:bot|human|real person|ai|robot)",
   "am i (?:talking|speaking|chatting) (?:to|with) (?:a |an )?(?:bot|human|real|person|robot|machine|ai)",
-].join("|"), "iu");
+];
+const IDENTITY_TR_RE = new RegExp(IDENTITY_TR_PATTERNS.join("|"), "iu"), IDENTITY_EN_RE = new RegExp(IDENTITY_EN_PATTERNS.join("|"), "iu");
 export function isIdentityQ(text) {
-  return IDENTITY_Q.test(normTr(text));
+  const t = normTr(text);
+  return IDENTITY_TR_RE.test(t) || IDENTITY_EN_RE.test(t);
+}
+// Language of an identity / introduction question: English only when an English pattern matched, otherwise Turkish (short Turkish questions such as "Sen kimsin?" have no marker words).
+export function identityLang(text) {
+  const t = normTr(text);
+  return IDENTITY_EN_RE.test(t) || INTRO_EN_RE.test(t) ? "en" : "tr";
 }
 
 // "Introduce yourself / who am I talking to / what is your name" -> fixed answer without any mention of AI.
-const INTRO_Q = new RegExp([
+const INTRO_TR_RE = new RegExp([
   "kendin(?:i|izi)\\s*tanit",
   "(?:biraz\\s*)?kendin(?:den|izden)\\s*bahset",
   "kimle\\s*(?:konusuyorum|gorusuyorum|yaziyorum)",
@@ -37,6 +46,8 @@ const INTRO_Q = new RegExp([
   "isim(?:in|iniz)\\s*(?:ne|nedir)(?![\\p{L}])",
   "(?:ne|nedir)\\s*ad(?:in|iniz)",
   "tanisalim",
+].join("|"), "iu");
+const INTRO_EN_RE = new RegExp([
   "introduce yourself",
   "who are you",
   "what(?:'s|\\u2019s| is) your name",
@@ -48,7 +59,8 @@ const INTRO_BLOCK = /(?:fiyat|price|cost|\bm\s*[²2]\b|metre|ölçü|olcu|kontro
 export function isIntroQ(text) {
   const t = String(text || "");
   if (t.length > 90 || INTRO_BLOCK.test(t)) return false;
-  return INTRO_Q.test(normTr(t));
+  const n = normTr(t);
+  return INTRO_TR_RE.test(n) || INTRO_EN_RE.test(n);
 }
 export const INTRO_TR = "Ben Melis, ARLEDSCREEN satış danışmanıyım. LED ekran seçimi, ölçü ve teklif konularında size yardımcı olabilirim. Ekranı iç mekâna mı, dış mekâna mı düşünüyorsunuz?";
 export const INTRO_EN = "I'm Melis, ARLEDSCREEN's sales consultant. I can help you with LED screen selection, size and quotes. Will the screen be indoor or outdoor?";
@@ -180,4 +192,4 @@ const ADDRESS_Q = /adres|neredesiniz|nerede\s+bulun|nerdesiniz|konum|where (?:ar
 export function isAddressQ(text) { return String(text || "").length <= 90 && ADDRESS_Q.test(text) && !/ekran|screen|install|kurulum|kirala|rental/i.test(text); }
 export const ADDRESS_TR = `Adresimiz: ${ADDRESS}. Hafta içi 09:00–18:00, cumartesi 10:00–15:00 çalışıyoruz.`;
 export const ADDRESS_EN = `Our address: ${ADDRESS}. We are open Monday–Friday 09:00–18:00 and Saturday 10:00–15:00.`;
-export function addressComplete(reply) { return /Tuna\s+Sok\.?\s+No:\s?15-17/.test(reply) && /Gaziosmanpa/i.test(reply); }
+export function addressComplete(reply) { return reply.replace(/\s*\/\s*/g, "/").includes(ADDRESS); }

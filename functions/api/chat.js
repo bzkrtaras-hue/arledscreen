@@ -6,7 +6,7 @@
 import { PANELS, PRICE_VALID_UNTIL } from "./_melis-prices.js";
 import { KB } from "./_melis-kb.js";
 import {
-  isIdentityQ, isIntroQ, IDENTITY_TR, IDENTITY_EN, INTRO_TR, INTRO_EN, aiSelfMention,
+  isIdentityQ, isIntroQ, identityLang, IDENTITY_TR, IDENTITY_EN, INTRO_TR, INTRO_EN, aiSelfMention,
   trimSentences, dropSentences, splitSent, enforceWarranty, enforceRental, enforcePhone, QUALITY_RE,
   sanitizeUserText, starProducts, repeatsStarProduct, isAddressQ, addressComplete, ADDRESS_TR, ADDRESS_EN,
 } from "./_melis-guards.js";
@@ -42,7 +42,7 @@ LANGUAGE: Always reply in the language of the customer's latest message (Turkish
 STYLE: Short, warm sentences. MAX 4 short sentences in total (about 50–70 words), including ONE helpful question at the end that moves the sale forward (indoor/outdoor, size or area, viewing distance, city). The FIRST sentence must directly answer what was asked. No broken or half sentences; write complete, natural sentences. Do not invent product vocabulary: say "LED panel", "modül" or "ekran" correctly, never "kasa" unless the customer used it. If the customer tells you their name, use only the first name, naturally (not in every sentence); never add "Bey" or "Hanım" (you do not know the gender). If you do not know the name yet and it is the first reply, you may ask it once, politely. In your FIRST reply (no earlier assistant message) begin with a short greeting that names you, e.g. "Merhaba, ben Melis." / "Hi, I'm Melis.", then answer directly; do NOT repeat that you are an AI or a digital representative unless the customer asks (the chat window already says so). In later replies answer directly with no greeting or self-introduction. Greetings must be real words in the customer's script (e.g. Arabic "مرحباً"), never transliterated or mixed-script. Plain text; you may use **bold** and "- " bullet lists. No tables, no HTML, no emojis.
 
 VERIFIED FACTS (the ONLY facts you may state):
-- Company: ARLEDSCREEN. Address: Merkez Mah. Tuna Sok. No:15-17 Kat 1, Gaziosmanpaşa, İstanbul, Türkiye.
+- Company: ARLEDSCREEN. Address: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul, Türkiye (always write it whole, exactly like this).
 - Hours: Weekdays 09:00–18:00, Saturday 10:00–15:00, Sunday closed.
 - Phone / WhatsApp: +90 530 507 88 34. WhatsApp link: https://wa.me/905305078834
 - E-mail: arled@arledscreen.com (never give any Gmail or other address). These are the ONLY contact details you may give.
@@ -467,11 +467,11 @@ export async function onRequest(ctx) {
   const lastUser = msgs[msgs.length - 1].text;
   // "Are you a bot / human?" → fixed, approved answer (witty but honest, offers the team on WhatsApp)
   if (!(body && body.image) && lastUser.length <= 90 && isIdentityQ(lastUser)) {
-    return json({ reply: detectLang(lastUser) === "en" ? IDENTITY_EN : IDENTITY_TR, wa: true, guard: "identity" });
+    return json({ reply: identityLang(lastUser) === "en" ? IDENTITY_EN : IDENTITY_TR, wa: true, guard: "identity" });
   }
   // "Introduce yourself / who am I talking to / what is your name" → fixed answer, no AI mention (only the explicit bot/human question above discloses it)
   if (!(body && body.image) && isIntroQ(lastUser)) {
-    return json({ reply: detectLang(lastUser) === "en" ? INTRO_EN : INTRO_TR, guard: "intro" });
+    return json({ reply: identityLang(lastUser) === "en" ? INTRO_EN : INTRO_TR, guard: "intro" });
   }
   if (!env.GEMINI_API_KEY) return fallback(lastUser, "not_configured");
   const primary = /^[a-z0-9.\-]+$/i.test(env.GEMINI_MODEL || "") ? env.GEMINI_MODEL : "gemini-flash-lite-latest";
