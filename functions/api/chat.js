@@ -100,19 +100,19 @@ export async function onRequest(ctx) {
     generationConfig: { maxOutputTokens: 2048, temperature: 0.4 },
   });
   try {
-    let r = null;
+    let r = null, lastErr = "";
     for (const model of models) {
       r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
         method: "POST",
         headers: { "content-type": "application/json", "x-goog-api-key": env.GEMINI_API_KEY },
         body: payload,
         signal: AbortSignal.timeout(25000),
-      }).catch(() => null);
+      }).catch((e) => { lastErr = String((e && e.name) || "fetch"); return null; });
       if (r && r.ok) break; // fall back on overload (429/503), retired model (404) or timeout
       if (r && ![404, 429, 500, 503].includes(r.status)) break;
     }
-    if (!r) return json({ error: "upstream" }, 502);
-    if (!r.ok) return json({ error: r.status === 429 ? "busy" : "upstream" }, 502);
+    if (!r) return json({ error: "upstream", detail: lastErr }, 502);
+    if (!r.ok) return json({ error: r.status === 429 ? "busy" : "upstream", status: r.status }, 502);
     const d = await r.json();
     const parts = (d.candidates && d.candidates[0] && d.candidates[0].content && d.candidates[0].content.parts) || [];
     const reply = parts.filter((p) => p.text && !p.thought).map((p) => p.text).join("").trim().slice(0, 3000);
