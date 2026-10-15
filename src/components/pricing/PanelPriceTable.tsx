@@ -94,7 +94,7 @@ export function PanelPriceTable({
           <>
             {priceNote("en")} The m² column is module cost only (≈ 19.53 panels/m² for a 320 × 160 mm
             module). Calculator totals also add workshop labour ({CALC_EXTRAS.laborPerM2} USD/m²),
-            control card ({CALC_EXTRAS.controlCard} USD) and driver + software (
+            control card ({CALC_EXTRAS.controlCard} USD per card; one extra card for each started 10 m² above 10 m²) and driver + software (
             {CALC_EXTRAS.driverSoftware} USD).
             {showCalcLink ? (
               <>
@@ -110,7 +110,7 @@ export function PanelPriceTable({
           <>
             {priceNote("tr")} m² sütunu yalnızca modül bedelidir (320 × 160 mm modülde 1 m² ≈ 19,53
             panel). Hesaplayıcı toplamına atölye işçiliği ({CALC_EXTRAS.laborPerM2} USD/m²), kontrol
-            kartı ({CALC_EXTRAS.controlCard} USD) ve sürücü + yazılım ({CALC_EXTRAS.driverSoftware}{" "}
+            kartı (kart başı {CALC_EXTRAS.controlCard} USD; 10 m² üzerinde her başlayan 10 m² için ek kontrol kartı) ve sürücü + yazılım ({CALC_EXTRAS.driverSoftware}{" "}
             USD) ayrıca eklenir.
             {showCalcLink ? (
               <>

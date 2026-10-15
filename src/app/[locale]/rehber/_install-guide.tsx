@@ -12,6 +12,10 @@ import { HowToJsonLd } from "@/components/seo/HowToJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { ShortAnswer } from "@/components/geo/ShortAnswer";
+import { GEO_REVIEWED } from "@/content/short-answers";
+import { guideShortAnswer } from "@/content/guide-short-answers";
+import { GUIDE_AUTHOR, guideDates } from "@/lib/guide-jsonld";
 import { getSeoGuideHub } from "@/content/seo-guides";
 import {
   INSTALL_GUIDE_LABELS,
@@ -60,6 +64,8 @@ export async function InstallGuidePage({
   const hub = getSeoGuideHub(locale);
   const dict = getDictionary(locale);
   const pageUrl = absoluteUrl(`/${raw}/rehber/${slug}/`);
+  const shortText = guideShortAnswer(slug, raw);
+  const dates = guideDates(slug, Boolean(shortText));
 
   return (
     <>
@@ -76,8 +82,9 @@ export async function InstallGuidePage({
         pageUrl={pageUrl}
         name={guide.h1}
         description={guide.description}
-        cssSelectors={["#guide-h1", "#guide-lead"]}
+        cssSelectors={shortText ? ["#guide-h1", "#kisa-cevap", "#guide-lead"] : ["#guide-h1", "#guide-lead"]}
         mainEntity={{ "@id": `${pageUrl}#article` }}
+        {...(shortText ? { dateModified: GEO_REVIEWED } : {})}
       />
       <script
         type="application/ld+json"
@@ -89,7 +96,9 @@ export async function InstallGuidePage({
             headline: guide.h1,
             description: guide.description,
             inLanguage: tr ? "tr-TR" : "en-US",
-            author: { "@id": `${SITE_URL}/#organization` },
+            datePublished: dates.datePublished,
+            dateModified: dates.dateModified,
+            author: GUIDE_AUTHOR,
             publisher: { "@id": `${SITE_URL}/#organization` },
             mainEntityOfPage: pageUrl,
             image: absoluteUrl(guide.image.src),
@@ -109,6 +118,7 @@ export async function InstallGuidePage({
         className="min-w-0 prose-seo"
       >
         <div className="space-y-8">
+          {shortText ? <ShortAnswer text={shortText} locale={raw} className="" /> : null}
           <div
             className={`relative aspect-[16/10] max-w-3xl overflow-hidden rounded-2xl border border-border ${
               guide.image.fit === "contain" ? "bg-white" : "bg-surface"

@@ -2,6 +2,17 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261015-021 — Ana sayfa video hero'su main'e alındı (canlıyla aynı)
+
+- **Neden:** Canlı ana sayfadaki tam ekran video hero yalnızca `tr-video-hero-restore` ve `deploy/*` dallarında vardı, `main`'de yoktu. `main`'den yapılacak bir yayın hero'yu eski sessiz görsele geri alırdı.
+- **Değişiklik (2 dosya):**
+  - `src/app/[locale]/page.tsx`: `QuietHero` ve `SelectedProjects` yerine `Hero` (video) kullanılıyor, üst boşluk canlıdaki değerde (`-mt-[6.75rem] md:-mt-[7.5rem]`).
+  - `src/components/hero/Hero.tsx`: CTA etiketi "Teklif Al" → "Teklif alın".
+- **Medya:** yeni dosya yok. `/videos/lounge-aquarium-wall.mp4` (2,3 MB) ve `/videos/hero/lounge-aquarium-wall*.webp` zaten `main`'de.
+- **Kaynak:** `tr-video-hero-restore` (abfa621c, e83cea9c). İçerik `deploy/kiralama-1015` ile aynı (dosya hash'leri eşit).
+- **Dokunulmadı:** diğer sayfalar, #100, #105, #111, #113, #60.
+- **Production:** Aras Bey / Ali onayı → squash merge → manual deploy
+
 ## ARL-20261015-020 — Kiralama sayfalarına "Kapsam" tablosu (TR + EN)
 
 - **Amaç:** Kiralamada neyin nasıl ele alındığı (keşif, kurulum, söküm, teknik ekip, nakliye, fiyat) tek tabloda görünsün.

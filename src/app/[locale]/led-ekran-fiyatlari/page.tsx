@@ -10,6 +10,7 @@ import { ShortAnswer } from "@/components/geo/ShortAnswer";
 import { GEO_REVIEWED, comparisonRows, shortAnswer } from "@/content/short-answers";
 import {
   CALC_EXTRAS,
+  controlCardCount,
   PANEL_PRICES,
   PANELS_PER_M2,
   fmtUsd,
@@ -59,7 +60,7 @@ function exampleCost(ex: Example) {
   const panels = Math.ceil(m2 * PANELS_PER_M2);
   const modules = panels * ex.panel.usd;
   const labor = m2 * CALC_EXTRAS.laborPerM2;
-  const extras = CALC_EXTRAS.controlCard + CALC_EXTRAS.driverSoftware;
+  const extras = controlCardCount(m2) * CALC_EXTRAS.controlCard + CALC_EXTRAS.driverSoftware;
   const subtotal = modules + labor + extras;
   return { m2, panels, modules, labor, extras, subtotal };
 }
@@ -133,7 +134,7 @@ const PAGE: Record<
     listRef: "Liste güncelleme: 1 Ekim 2026.",
     listH2: "2026 panel fiyat listesi",
     examplesH2: "Örnek m² hesapları",
-    examplesLead: `Formül: panel tutarı ≈ panel USD × (m² × ${PANELS_PER_M2.toFixed(2)} panel/m², 320×160 mm için) + işçilik ${CALC_EXTRAS.laborPerM2} USD/m² + kontrol ${CALC_EXTRAS.controlCard} USD + sürücü/yazılım ${CALC_EXTRAS.driverSoftware} USD. Konstrüksiyon, nakliye ve KDV hariçtir.`,
+    examplesLead: `Formül: panel tutarı ≈ panel USD × (m² × ${PANELS_PER_M2.toFixed(2)} panel/m², 320×160 mm için) + işçilik ${CALC_EXTRAS.laborPerM2} USD/m² + kontrol kartı ${CALC_EXTRAS.controlCard} USD (10 m² üzerinde her başlayan 10 m² için ek kontrol kartı) + sürücü/yazılım ${CALC_EXTRAS.driverSoftware} USD. Konstrüksiyon, nakliye ve KDV hariçtir.`,
     colExample: "Örnek",
     colModule: "Modül",
     colM2: "m²",
@@ -178,7 +179,7 @@ const PAGE: Record<
       {
         question: "Hangi maliyetler panellerin dışında kalır?",
         answer:
-          "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (yaklaşık 500 USD), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir. Ücretsiz kargo yoktur.",
+          "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (kart başı yaklaşık 500 USD; 10 m² üzerinde her başlayan 10 m² için ek kart), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir. Ücretsiz kargo yoktur.",
       },
       {
         question: "P2.5, P4 veya P5 fiyatı nerede?",
@@ -224,7 +225,7 @@ const PAGE: Record<
     listRef: "List update: 1 Oct 2026.",
     listH2: "2026 panel price list",
     examplesH2: "Worked m² examples",
-    examplesLead: `Formula: panel cost ≈ panel USD × (m² × ${PANELS_PER_M2.toFixed(2)} panels/m² for 320×160 mm) + labor ${CALC_EXTRAS.laborPerM2} USD/m² + control ${CALC_EXTRAS.controlCard} USD + driver/software ${CALC_EXTRAS.driverSoftware} USD. Structure, shipping and VAT excluded.`,
+    examplesLead: `Formula: panel cost ≈ panel USD × (m² × ${PANELS_PER_M2.toFixed(2)} panels/m² for 320×160 mm) + labor ${CALC_EXTRAS.laborPerM2} USD/m² + control card ${CALC_EXTRAS.controlCard} USD (one extra control card for each started 10 m² above 10 m²) + driver/software ${CALC_EXTRAS.driverSoftware} USD. Structure, shipping and VAT excluded.`,
     colExample: "Example",
     colModule: "Module",
     colM2: "m²",
@@ -270,7 +271,7 @@ const PAGE: Record<
       {
         question: "What costs sit outside the panels?",
         answer:
-          "Workshop/install labor (~100 USD/m²), control card (~500 USD), driver/software (~500 USD), supporting structure, shipping and VAT may appear as separate quote lines. No free shipping.",
+          "Workshop/install labor (~100 USD/m²), control card (~500 USD each; one extra card for each started 10 m² above 10 m²), driver/software (~500 USD), supporting structure, shipping and VAT may appear as separate quote lines. No free shipping.",
       },
       {
         question: "Where are P2.5, P4 or P5 prices?",

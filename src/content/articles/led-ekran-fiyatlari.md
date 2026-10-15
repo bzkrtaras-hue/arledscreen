@@ -19,7 +19,7 @@ last_reviewed: 2026-10-01
 3. **İç veya dış mekân.** Dış mekân modüller güneş altında okunabilmek için daha yüksek parlaklık, yağmur ve toza karşı daha yüksek koruma ister. Aynı P değerinde dış mekân modül daha pahalıdır: P2.5 iç mekân 32,18 USD, P2.5 dış mekân 63,70 USD.
 4. **Yüzey teknolojisi (ör. GOB).** GOB modüllerde LED yüzeyi koruyucu bir kaplamayla kapatılır. İnce piksel aralıklarında (P1.25, P1.53, P1.86) bu seçenek fiyatı etkiler.
 5. **Servis tipi (önden / arkadan).** Duvara sıfır montajda modüllere önden erişim gerekir. Hesaplayıcıda P4 dış mekân modül 33,80 USD, P4 dış mekân front (önden servis) modül 36,40 USD'dir.
-6. **Kontrol sistemi ve yazılım.** Hesaplayıcı toplamına kontrol kartı için 500 USD ve sürücü + yazılım için 500 USD ekler.
+6. **Kontrol sistemi ve yazılım.** Hesaplayıcı toplamına kontrol kartı için kart başı 500 USD (10 m² üzerinde her başlayan 10 m² için ek kart) ve sürücü + yazılım için 500 USD ekler.
 7. **İşçilik ve saha koşulları.** Hesaplayıcıda atölye işçiliği m² başına 100 USD'dir. Taşıyıcı konstrüksiyon, elektrik altyapısı, montaj yüksekliği ve saha izinleri keşifte değerlendirilir.
 8. **Vergi, nakliye ve kur.** Liste fiyatları USD'dir. KDV ve nakliye hesaplayıcı toplamına dahil değildir.
 
@@ -47,8 +47,8 @@ Fiyatlar USD, panel başınadır (320 × 160 mm; P2.9 dış mekân modülü 250 
 - Modül adedi = yukarı yuvarla(genişlik ÷ 32 cm) × yukarı yuvarla(yükseklik ÷ 16 cm)
 - Malzeme = modül adedi × panel fiyatı
 - Atölye işçiliği = alan (m²) × 100 USD
-- Sabit kalemler = kontrol kartı 500 USD + sürücü/yazılım 500 USD
-- **Toplam = malzeme + işçilik + sabit kalemler** (KDV ve nakliye hariç)
+- Ek kalemler = kontrol kartı (kart başı 500 USD; 10 m² üzerinde her başlayan 10 m² için ek kart) + sürücü/yazılım 500 USD
+- **Toplam = malzeme + işçilik + ek kalemler** (KDV ve nakliye hariç)
 
 ## 4. Örnek ölçüler için hesaplayıcı sonuçları
 
@@ -58,10 +58,10 @@ Aşağıdaki tutarlar hesaplayıcının formülüyle hesaplanmıştır; USD, KDV
 |---|---|---|---|---|---|
 | 200 × 120 cm | 7 × 8 = 56 modül (224 × 128 cm) | 3.042,08 | 2.750,88 | 3.132,80 | 2.914,40 |
 | 320 × 180 cm | 10 × 12 = 120 modül (320 × 192 cm) | 5.437,60 | 4.813,60 | 5.632,00 | 5.164,00 |
-| 480 × 240 cm | 15 × 15 = 225 modül (480 × 240 cm) | 9.392,50 | 8.222,50 | 9.757,00 | 8.879,50 |
-| 640 × 360 cm | 20 × 23 = 460 modül (640 × 368 cm) | 18.106,80 | 15.714,80 | 18.852,00 | 17.058,00 |
+| 480 × 240 cm | 15 × 15 = 225 modül (480 × 240 cm) | 9.892,50 | 8.722,50 | 10.257,00 | 9.379,50 |
+| 640 × 360 cm | 20 × 23 = 460 modül (640 × 368 cm) | 19.106,80 | 16.714,80 | 19.852,00 | 18.058,00 |
 
-Tabloda görüldüğü gibi küçük ekranlarda sabit kalemlerin (kontrol kartı ve yazılım, toplam 1.000 USD) payı büyüktür; ekran büyüdükçe toplamı ağırlıklı olarak modül bedeli belirler.
+Tabloda görüldüğü gibi küçük ekranlarda ek kalemlerin (kontrol kartı ve yazılım; 10 m² ve altında toplam 1.000 USD) payı büyüktür; ekran büyüdükçe toplamı ağırlıklı olarak modül bedeli belirler. 480 × 240 cm (≈11,52 m²) için 2, 640 × 360 cm (≈23,04 m²) için 3 kontrol kartı hesaba katılmıştır.
 
 ## 5. Teklif alırken nelere dikkat etmeli?
 

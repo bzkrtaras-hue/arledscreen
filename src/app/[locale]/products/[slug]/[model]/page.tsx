@@ -296,7 +296,7 @@ export default async function ModelPage({ params }: PageProps) {
                     </span>
                   </p>
                   <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted">
-                    Hesaplayıcıdaki 2026 listesine göre yaklaşık fiyattır; KDV ve nakliye hariçtir; ücretsiz kargo yoktur. İşçilik ({CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı ve yazılım ayrıca eklenir. Nihai fiyat yazılı teklifle kesinleşir.
+                    Hesaplayıcıdaki 2026 listesine göre yaklaşık fiyattır; KDV ve nakliye hariçtir; ücretsiz kargo yoktur. İşçilik ({CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı (10 m² üzerinde her başlayan 10 m² için ek kart) ve yazılım ayrıca eklenir. Nihai fiyat yazılı teklifle kesinleşir.
                   </p>
                 </div>
               ) : (
