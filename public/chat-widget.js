@@ -376,10 +376,10 @@
     msgsEl.appendChild(b);
     msgsEl.scrollTop = msgsEl.scrollHeight;
   }
-  /* Typing delay grows with the reply length (about 22 ms per character, 0.7–4.5 s), minus the time the request already took. */
+  /* Typing delay grows with the reply length (about 12 ms per character, 0.7–4 s), minus the time the request already took. */
   function typingDelay(reply, elapsed) {
     if (reduced()) return 0;
-    var want = Math.max(700, Math.min(4500, 400 + reply.length * 22));
+    var want = Math.max(700, Math.min(4000, 300 + reply.length * 12));
     return Math.max(0, want - elapsed);
   }
   function send() {
