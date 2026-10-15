@@ -1025,3 +1025,10 @@ details > summary::-webkit-details-marker {
   right: auto;
   left: 12px;
 }
+/* RTL mobile: keep the last lines of content clear of the fixed CTA bar (same idea as TR home spacing). */
+@media (max-width: 767.98px) {
+  [dir="rtl"] main {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+    scroll-padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+  }
+}

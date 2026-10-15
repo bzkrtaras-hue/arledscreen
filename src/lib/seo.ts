@@ -21,6 +21,13 @@ const META_DESCRIPTION_FALLBACK =
  * Next.js escapes meta attribute text (`'` → `&#x27;`, `&` → `&amp;`, …).
  * Bing counts the attribute source length, so clamp against encoded size.
  */
+export const OG_IMAGE_ALT: Record<string, string> = {
+  tr: "ARLEDSCREEN kurulumu: otel lobisinde iç mekân LED ekran",
+  ar: "تركيب من ARLEDSCREEN: شاشة LED داخلية في بهو فندق",
+  en: "ARLEDSCREEN installation: indoor LED screen in a hotel lobby",
+  ru: "ARLEDSCREEN installation: indoor LED screen in a hotel lobby",
+};
+
 export function htmlAttrEncodedLength(text: string): number {
   let n = 0;
   for (const ch of text) {
@@ -131,7 +138,7 @@ export function buildPageMetadata({
       siteName: "ARLEDSCREEN",
       locale: OG_LOCALE[locale],
       type: "website",
-      images: [{ url: "/og/arledscreen-og.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN — LED Ekran Teknoloji Merkezi" }],
+      images: [{ url: "/og/arledscreen-og.jpg", width: 1200, height: 630, alt: OG_IMAGE_ALT[locale] ?? OG_IMAGE_ALT.en }],
     },
     twitter: {
       card: "summary_large_image",
@@ -177,7 +184,7 @@ export function buildTrOnlyMetadata({
   };
 }): Metadata {
   const clean = normalizePath(path);
-  const og = image ?? { url: "/og/arledscreen-og.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN — LED Ekran Teknoloji Merkezi" };
+  const og = image ?? { url: "/og/arledscreen-og.jpg", width: 1200, height: 630, alt: OG_IMAGE_ALT.tr };
   const url = absoluteUrl(`/tr${clean}`);
   const desc = clampMetaDescription(description);
   const title = trMetaTitle(`/tr${clean}`, rawTitle);

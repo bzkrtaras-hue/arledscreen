@@ -79,7 +79,7 @@ export default async function AboutPage({ params }: PageProps) {
         titleAs="h1"
         titleId="about-h1"
         eyebrow={about.eyebrow}
-        title={seo.h1 ?? about.title}
+        title={locale === "ar" ? "من نحن: ARLEDSCREEN" : (seo.h1 ?? about.title)}
         description={dict.brand.slogan}
         className="min-w-0 prose-seo"
       >

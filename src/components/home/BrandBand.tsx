@@ -27,7 +27,7 @@ export function BrandBand({ locale }: { locale: Locale }) {
               <span className="flex h-12 items-center rounded-2xl bg-white px-3 shadow-pill sm:h-16 sm:px-5">
                 <Image
                   src="/brand/nxtionstar-wordmark-header-478.webp"
-                  alt="NXTIONSTAR"
+                  alt=""
                   width={478}
                   height={137}
                   className="h-6 w-auto sm:h-8"

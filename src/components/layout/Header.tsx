@@ -150,7 +150,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
         >
           <Image
             src="/brand/arledscreen-logo-header-514.webp"
-            alt="ARLEDSCREEN"
+            alt=""
             width={514}
             height={160}
             className="h-10 w-auto max-w-[170px] object-contain sm:h-11 sm:max-w-[200px]"
@@ -463,7 +463,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                 >
                   <Image
                     src="/brand/arledscreen-logo-header-514.webp"
-                    alt="ARLEDSCREEN"
+                    alt=""
                     width={514}
                     height={160}
                     className="h-10 w-auto max-w-[170px] object-contain"
@@ -472,7 +472,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   <span className="h-6 w-px shrink-0 bg-ink/15" aria-hidden />
                   <Image
                     src="/brand/nxtionstar-wordmark-header-478.webp"
-                    alt="NXTIONSTAR"
+                    alt=""
                     width={478}
                     height={137}
                     className="h-3.5 w-auto max-w-[88px] opacity-90 object-contain"
