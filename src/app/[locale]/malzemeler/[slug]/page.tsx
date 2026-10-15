@@ -59,7 +59,7 @@ export default async function MaterialCategoryPage({ params }: { params: Promise
     name: c.h1,
     url,
     isPartOf: { "@id": `${absoluteUrl("/tr/malzemeler/")}#collection` },
-    subjectOf: { "@type": "Dataset", "@id": `${SITE_URL}/materials.json`, url: `${SITE_URL}/materials.json` },
+    subjectOf: { "@id": `${SITE_URL}/materials.json`, url: `${SITE_URL}/materials.json` },
     itemListElement: sections.flatMap((s) =>
       s.items.flatMap((it): Record<string, unknown>[] => {
         const p = itemPrice(it);

@@ -71,7 +71,7 @@ export default async function MaterialsHubPage({ params }: { params: Promise<{ l
     inLanguage: "tr-TR",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     about: { "@id": `${SITE_URL}/#organization` },
-    subjectOf: { "@type": "Dataset", "@id": `${SITE_URL}/materials.json`, url: `${SITE_URL}/materials.json` },
+    subjectOf: { "@id": `${SITE_URL}/materials.json`, url: `${SITE_URL}/materials.json` },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: MATERIAL_CATEGORIES.length,
