@@ -4,6 +4,17 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 16 Ekim 2026 (gece) — Melis ikinci düzeltme turu (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
+
+- **Neden:** Grok Bot'un 271 vakalık yeniden testi (`/workspace/melis-kb/results-retest/RETEST_REPORT.md`) 4 gerçek hata buldu; hepsi sunucu tarafında düzeltildi. Üretime alınmadı, birleşmedi.
+  1. "Dijital asistan / dijital temsilci mısın" (TR/EN, büyük İ, ASCII) artık "bot musun / insan mısın" ile aynı onaylı dürüst yanıtı alır (modele gitmez, yasak ifade hiç yazılmaz).
+  2. "Nerede / ofis / showroom / ziyaret / randevu / adres" soruları modele gitmeden doğrulanmış adres + çalışma saatleri yanıtını alır; model "showroomumuz" ve "randevu" diyemez (filtre). "Ürünler nerede üretiliyor?", "Garanti nerede geçerli?", "Keşif ziyareti" gibi sorular adres sayılmaz.
+  3. Kalite filtresi genişledi: "kalitemiz/kalitesi/kaliteli", "standartlarında/standartlarımız", "yüksek çözünürlüklü", "high-resolution", "quality", "üretilmekte/manufactured". "Görüntü kalitesi / image quality" ve piksel aralığına bağlı çözünürlük bilgisi serbest. Bir cümle tamamen böyle bir iddiaysa hata yerine tarafsız yanıt gider.
+  4. "Kontrol kartını sonradan değiştirebilir miyim?" bilgi tabanında yok: evet/hayır denmez, "ekibimiz yazılı olarak teyit eder" + WhatsApp (modele gitmez).
+  - Küçük: "Huidu vs NovaStar" kullanıcının dilinde, yalnız bilgi tabanındaki bilgilerle karşılaştırılır (modele gitmez).
+- **Testler:** `npm run melis:test` 33 test. **Not:** yeniden test raporuna göre Cloudflare'deki `GEMINI_API_KEY` da Google ücretsiz katmanında (dakikada 15 istek); canlıya çıkmadan önce Google projesinde faturalandırma (Tier 1) açılmalı.
+- **Geri alma:** PR birleşmediği için gerek yok; önizlemeyi eski haline getirmek için `b9df4b38` dalını yeniden dağıtın.
+
 ### 16 Ekim 2026 — Melis düzeltmeleri (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
 
 - **Neden:** Grok Bot'un önizleme örnekleme testi (169 vaka, `PREVIEW_REPORT.md`) kimlik, garanti, adres, kiralık, telefon ve ölçü ayrıştırıcıda küçük hatalar buldu. Üretime alınmadı, birleşmedi.

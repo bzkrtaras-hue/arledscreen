@@ -212,3 +212,125 @@ test("normal product answers pass through unchanged (no over-trimming, no false 
     assert.equal(r.reply, a, q);
   }
 });
+
+// ===== Retest round (RETEST_REPORT 16 Oct 2026, head b9df4b38) ======================================================
+const ADDR = "Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul";
+
+// R1: "dijital asistan / temsilci mısın" → same honest bot/human answer, never the forbidden phrase, no model call
+test("(R1) 'dijital asistan / dijital temsilci mısın' (TR/EN, İ, caps, ASCII) → fixed honest answer, no model", async () => {
+  const qs = ["Sen dijital asistan mısın?", "Dijital temsilci misiniz?", "Dijital asistan mısın?", "Dijital temsilci misin?", "DİJİTAL ASİSTAN MISIN", "dijital asistan misin", "Dijital asistan mısınız", "Dijital temsilci mı bu?", "Are you a digital assistant?", "Are you a digital representative?", "ARE YOU A DIGITAL ASSISTANT?", "Is this a digital assistant?", "Asistan mısın?"];
+  for (const q of qs) {
+    const r = await chat([q], { reply: "model must not be called" });
+    assert.equal(r.guard, "identity", q);
+    assert.equal(r.calls.length, 0, q);
+    assert.equal(r.wa, true, q);
+    assert.match(r.reply, /yapay zekâ destekli ARLEDSCREEN satış danışmanıyım|AI-supported ARLEDSCREEN sales consultant/, q);
+    assert.match(r.reply, /WhatsApp/, q);
+    assert.doesNotMatch(r.reply, BANNED_ID, q);
+    assert.doesNotMatch(r.reply, /insanım|I am (?:a )?human|I'm (?:a )?human/i, q);
+    assert.equal(/Bakış açınıza/.test(r.reply), !/^(?:are|is)\b/i.test(q), q); // language follows the question
+  }
+});
+
+// R2: address / office / showroom / visit / appointment
+test("(R2) nerede / ofis / showroom / ziyaret / randevu questions → verified address only, no model", async () => {
+  const qs = ["Showroomunuz nerede, ziyaret etmek istiyorum", "Ofisiniz nerede?", "Randevu alabilir miyim?", "Mağazanız var mı, gelebilir miyim?", "Showroom var mı?", "SHOWROOMUNUZ NEREDE", "Neredesiniz?", "Merkeziniz nerede bulunuyor", "Yanınıza gelmek istiyorum", "Adresiniz nedir?", "Where is your office?", "Can I visit your showroom?", "I'd like to make an appointment, where are you?", "Where are you located?"];
+  for (const q of qs) {
+    const r = await chat([q], { reply: "model must not be called" });
+    assert.equal(r.guard, "address", q);
+    assert.equal(r.calls.length, 0, q);
+    assert.ok(r.reply.includes(ADDR), q + " → " + r.reply);
+    assert.match(r.reply, /09:00–18:00/, q);
+    assert.match(r.reply, /10:00–15:00/, q);
+    assert.doesNotMatch(r.reply, /showroom|randevu|appointment/i, q);
+    assert.equal(/^Adresimiz/.test(r.reply), !/^(?:where|can i|i'd)/i.test(q), q);
+  }
+});
+test("(R2) questions that merely contain 'nerede' / 'ziyaret' are NOT turned into the address answer", async () => {
+  for (const q of ["LED ekran nerede satılıyor?", "Ürünler nerede üretiliyor?", "Keşif ziyareti ne zaman yapılır?", "Garanti nerede geçerli?", "Kurulum nerede yapılıyor?"]) {
+    const r = await chat([q], { reply: "Bu konuyu yazılı teklifte netleştiririz. Ekran ölçünüz nedir?" });
+    assert.notEqual(r.guard, "address", q);
+    assert.equal(r.calls.length > 0, true, q);
+  }
+});
+test("(R2) the model may not claim a showroom or appointments", async () => {
+  const r = await chat(["Firmanız hakkında bilgi verir misiniz?"], { reply: "Showroomumuzu ziyaret edebilirsiniz. Randevu için bize yazın. İstanbul merkezli LED ekran firmasıyız. Ekran ölçünüz nedir?" });
+  assert.doesNotMatch(r.reply, /showroom|randevu/i, r.reply);
+  assert.match(r.reply, /İstanbul merkezli/);
+  // the customer's own showroom is fine to mention
+  const own = await chat(["Showroomuma 3x2 m ekran istiyorum, kontrol kartı?"], { reply: "Showroomunuz için 3 × 2 m ölçüsü yaklaşık 6 m²'dir. Genellikle Huidu kontrol sistemini öneriyoruz. Ekran iç mekânda mı olacak?" });
+  assert.match(own.reply, /Showroomunuz/);
+});
+
+// R3: quality / production / resolution wording
+test("(R3) 'kalitemiz', 'kalitesi', 'standartlarında üretilmekte', 'yüksek çözünürlüklü', EN 'quality' / 'high-resolution' / 'manufactured' are removed", async () => {
+  const cases = [
+    ["Ne kadar pahalısınız ya", "Modül kalitemiz ve montaj hizmetimizle projenizi destekliyoruz. Fiyat yazılı teklifle verilir. Ekran ölçünüz nedir?"],
+    ["Kaliteli mi ürünleriniz?", "Ürünlerimiz ARLEDSCREEN standartlarında üretilmekte ve CE sertifikalıdır. Teknik föy teklifle paylaşılır. Ekranı nerede kullanacaksınız?"],
+    ["Hangi panelleri önerirsiniz?", "Yüksek çözünürlüklü NXTIONSTAR panelleri sunuyoruz. Piksel aralığı izleme mesafesine göre seçilir. Ekran iç mekânda mı olacak?"],
+    ["Panel kalitesi nasıl?", "Panellerin kalitesi çok iyidir. CE sertifikalıdır. Ekran ölçünüz nedir?"],
+    ["How good are your panels?", "Our panels offer great quality and are manufactured to strict standards. They are CE certified. Is the screen indoor?"],
+    ["Do you have sharp displays?", "We offer high-resolution panels. Pixel pitch depends on the viewing distance. Is the screen indoor?"],
+  ];
+  for (const [q, a] of cases) {
+    const r = await chat([q], { reply: a });
+    assert.doesNotMatch(r.reply, /kalite|quality|standart|üretil|manufactur|çözünürlüklü|high-resolution/i, q + " → " + r.reply);
+    assert.ok(r.reply.length > 20 && !r.fallback, q + " → " + r.reply);
+  }
+});
+test("(R3) technical use of resolution / image quality is not broken", async () => {
+  const ok = [
+    ["Piksel aralığı neye göre seçilir?", "Küçük piksel aralığı yakın izlemede daha yüksek çözünürlük sağlar. Her 1 mm için yaklaşık 1 m minimum izleme mesafesi önerilir. Ekranı hangi mesafeden izleyeceksiniz?"],
+    ["Görüntü kalitesi neye bağlı?", "Görüntü kalitesi piksel aralığı ve izleme mesafesine bağlıdır. P2.5 yakın izleme için uygundur. Ekran iç mekânda mı olacak?"],
+    ["What does image quality depend on?", "Image quality depends on the pixel pitch and the viewing distance. P2.5 suits close viewing. Is the screen indoor?"],
+    ["Huidu kartı kaç piksel taşır?", "Huidu HD-C16 resmi föyde yaklaşık 200.000 piksele (640×320) kadar yükleme belirtir. Ekranınız kaç m² olacak?"],
+  ];
+  for (const [q, a] of ok) { const r = await chat([q], { reply: a }); assert.equal(r.reply, a, q); }
+});
+test("(R3) when every sentence is an unverified claim the customer gets a neutral answer, not an error", async () => {
+  const r = await chat(["Ürünleriniz iyi mi?"], { reply: "Modül kalitemiz çok yüksektir." });
+  assert.equal(r.guard, "claim_safe");
+  assert.ok(!r.fallback);
+  assert.doesNotMatch(r.reply, /kalite/i);
+  assert.match(r.reply, /yazılı teklif/);
+});
+
+// R4: changing the control card later is not in the KB → no yes/no
+test("(R4) control card changed later → no yes/no claim, team confirms in writing + WhatsApp, no model", async () => {
+  for (const q of ["Kontrol kartını sonradan değiştirebilir miyim?", "KONTROL KARTINI SONRADAN DEĞİŞTİREBİLİR MİYİM", "Sonradan NovaStar kartına geçebilir miyim?", "Kartı ileride yükseltebilir miyim?", "Can I change the control card later?"]) {
+    const r = await chat([q], { reply: "Evet, sonradan değiştirilebilir." });
+    assert.equal(r.guard, "card_change", q);
+    assert.equal(r.calls.length, 0, q);
+    assert.equal(r.wa, true, q);
+    assert.doesNotMatch(r.reply, /^Evet|değiştirilebilir\b|^Yes|is possible/i, q);
+    assert.match(r.reply, /yazılı olarak teyit|confirmed in writing/, q);
+    assert.match(r.reply, /WhatsApp/, q);
+  }
+  // ordinary control-card questions still reach the model
+  const n = await chat(["Kontrol kartı hangisi olmalı?"], { reply: "Ekran ölçünüze göre belirlenir. Kaç m² olacak?" });
+  assert.equal(n.calls.length, 1);
+});
+test("(R4) knowledge base has no statement about changing the card later (so the answer stays 'team confirms')", async () => {
+  const { readFileSync } = await import("node:fs");
+  const kb = readFileSync(new URL("../../docs/melis-knowledge-base.md", import.meta.url), "utf8");
+  assert.match(kb, /sonradan değiştirilip değiştirilemeyeceği hakkında kaynakta bilgi yoktur/);
+  assert.doesNotMatch(kb, /sonradan değiştirilebilir/);
+});
+
+// minor: Huidu vs NovaStar, KB facts, customer's language
+test("(minor) Huidu vs NovaStar → comparison from KB facts in the customer's language, no model", async () => {
+  for (const q of ["Huidu vs NovaStar", "Huidu mu NovaStar mı?", "Huidu ile NovaStar farkı nedir", "HUIDU Mİ NOVASTAR MI"]) {
+    const r = await chat([q], { reply: "model must not be called" });
+    assert.equal(r.guard, "control_compare", q);
+    assert.match(r.reply, /^Huidu, Wi-Fi veya USB/, q);
+    assert.match(r.reply, /NovaStar ise yüksek piksel yükü, sahne ve senkron/, q);
+    assert.match(r.reply, /20 m² altında Huidu, 20 m² ve üzerinde NovaStar/, q);
+    assert.doesNotMatch(r.reply, /\bthe\b|\bis an\b/, q);
+  }
+  const en = await chat(["Which is better, Huidu or NovaStar?"], {});
+  assert.equal(en.guard, "control_compare");
+  assert.match(en.reply, /^Huidu is an asynchronous system/);
+  // with a size or a price it is a project question → normal flow
+  const proj = await chat(["15 m² için Huidu mu NovaStar mı?"], { reply: "15 m² için genellikle Huidu öneriyoruz. Ekran iç mekân mı?" });
+  assert.equal(proj.calls.length, 1);
+});

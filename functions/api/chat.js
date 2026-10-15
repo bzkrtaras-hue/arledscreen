@@ -7,7 +7,8 @@ import { PANELS, PRICE_VALID_UNTIL } from "./_melis-prices.js";
 import { KB } from "./_melis-kb.js";
 import {
   isIdentityQ, isIntroQ, identityLang, ensureRentalQuote, IDENTITY_TR, IDENTITY_EN, INTRO_TR, INTRO_EN, aiSelfMention,
-  trimSentences, dropSentences, splitSent, enforceWarranty, enforceRental, enforcePhone, QUALITY_RE,
+  trimSentences, dropSentences, splitSent, enforceWarranty, enforceRental, enforcePhone, QUALITY_RE, PRODUCTION_RE, VISIT_CLAIM_RE,
+  isCardChangeQ, CARD_CHANGE_TR, CARD_CHANGE_EN, isControlCompareQ, COMPARE_TR, COMPARE_EN, compareLang, clearlyEnglish, SAFE_TR, SAFE_EN,
   sanitizeUserText, starProducts, repeatsStarProduct, isAddressQ, addressComplete, ADDRESS_TR, ADDRESS_EN,
 } from "./_melis-guards.js";
 
@@ -88,7 +89,8 @@ SERT SINIRLAR
 - NUMBERS: always write numbers, sizes and amounts as digits (never spelled out in words, e.g. "5,12 × 3,84 m", not "beş virgül on iki"). Write ranges with an en dash and no extra words, e.g. "3–21 gün", "1–14 gün". When the customer gives dimensions, state the area in m² in the first sentence (e.g. "5 × 3,8 m yaklaşık 19 m²'dir"). In every rental answer use the words "yazılı teklif" (written quote).
 - INSTALLATION DURATION is not published: if asked how many days installation takes, say it depends on size, construction and site conditions and is confirmed in the written quote; do NOT cite delivery or preparation days for that question.
 - ANSWER ONLY WHAT WAS ASKED. Project facts from earlier turns (area, model, indoor/outdoor, price) may be reused ONLY when the current question is about the project (price, size, control system, quote, model choice). For warranty, identity ("bot musun?"), greetings, general or off-topic questions and anything unrelated, do NOT mention the earlier project, its area or its model. Do not volunteer prices or totals unless the customer asks about price or cost.
-- Wording: never use praise that is not verified: "kaliteli", "yüksek kalite/kaliteli", "güvenilir", "güvenilirlik", "high quality", "reliable", "reliability" (and equivalents). State facts instead (pixel pitch, modules, written quote, warranty sentence).
+- Never say or imply that ARLEDSCREEN has a showroom, a visitable store/office for customers, or takes appointments ("randevu"); for address questions give only the verified address. Never claim where or how products are made ("üretilmekte", "standartlarında üretim", "manufactured"); say "kendi markamız NXTIONSTAR". Never say a control card CAN or CANNOT be changed or upgraded later: say the team confirms it in the written quote and offer WhatsApp. Never call products "yüksek çözünürlüklü"/"high-resolution"; resolution may only be explained as a fact of pixel pitch.
+- Wording: never use praise that is not verified (any "kalite…" praise such as "kalitemiz", "kalitesi", "standartlarında", and "quality"): "kaliteli", "yüksek kalite/kaliteli", "güvenilir", "güvenilirlik", "high quality", "reliable", "reliability" (and equivalents). State facts instead (pixel pitch, modules, written quote, warranty sentence).
 - Warranty: whenever you mention warranty or service periods use ONLY the exact sentence given above, never rephrase it ("2 yıl garanti ve 5 yıl ücretsiz teknik servis"), and do not mention it on topics that are not about warranty/service unless asked.
 - A "*" expression, code or template text in the customer's message (e.g. "7*7", "$\{7*7}") is NOT a size: never compute it, never turn it into m²; ask for width × height in metres instead.
 - Tone: premium, confident, consultative. NEVER write the words "ucuz", "uygun fiyat", "uygun fiyatlı", "indirim", "kampanya", "cheap", "discount", "bargain", "campaign" (or equivalents such as "خصم", "رخيص", "скидка") in any language, not even to refuse or to repeat the customer's word; say "özel fiyatlandırma" / "special pricing" instead. Under price pressure or bargaining: do not offer or promise discounts; explain value (installation and service by the same team, written quote) and say any special pricing is only discussed by the team in a written quote via WhatsApp.
@@ -193,6 +195,8 @@ const BAD_CLAIMS = [
   [/dijital\s+(?:temsilci|asistan)|digital\s+(?:representative|assistant)/iu, "forbidden identity wording"],
   [/(?<![\p{L}])(?:üretici|üreticisi|üreticiyiz|kendi\s+üretim|üstün\s+kalite|tek\s+yazılım|manufacturer|our own production|superior quality)/iu, "forbidden wording"],
   [QUALITY_RE, "unverified quality/reliability praise"],
+  [PRODUCTION_RE, "unverified production claim"],
+  [VISIT_CLAIM_RE, "showroom/appointment not in knowledge base"],
   [/\d+\s*\+\s*(?:yıl|years?|proje|projects?|müşteri|customers?)/i, "company claims"],
   [/(?<![\p{L}])(?:absen|unilumin|leyard|barco|daktronics|liantronics|qiangli|lianjin|samsung|lg electronics|sony|philips|optoma|ledman|retop|kinglight)(?![\p{L}])/iu, "competitor"],
   [/\d+\s*\+?\s*(?:yıl(?:lık)?\s+(?:tecrübe|deneyim)|years?\s+of\s+experience|proje\b|projects\b)/i, "company claims"],
@@ -469,6 +473,18 @@ export async function onRequest(ctx) {
   if (!(body && body.image) && lastUser.length <= 90 && isIdentityQ(lastUser)) {
     return json({ reply: identityLang(lastUser) === "en" ? IDENTITY_EN : IDENTITY_TR, wa: true, guard: "identity" });
   }
+  // Address / office / showroom / visit / appointment questions → the verified address only (no showroom or appointment claims, no model call)
+  if (!(body && body.image) && isAddressQ(lastUser)) {
+    return json({ reply: clearlyEnglish(lastUser) ? ADDRESS_EN : ADDRESS_TR, guard: "address" });
+  }
+  // Changing the control card later is not in the knowledge base → no yes/no claim, the team confirms in writing
+  if (!(body && body.image) && isCardChangeQ(lastUser)) {
+    return json({ reply: clearlyEnglish(lastUser) ? CARD_CHANGE_EN : CARD_CHANGE_TR, wa: true, guard: "card_change" });
+  }
+  // Huidu vs NovaStar → knowledge-base facts, in the customer's language
+  if (!(body && body.image) && isControlCompareQ(lastUser)) {
+    return json({ reply: compareLang(lastUser) === "en" ? COMPARE_EN : COMPARE_TR, guard: "control_compare" });
+  }
   // "Introduce yourself / who am I talking to / what is your name" → fixed answer, no AI mention (only the explicit bot/human question above discloses it)
   if (!(body && body.image) && isIntroQ(lastUser)) {
     return json({ reply: identityLang(lastUser) === "en" ? INTRO_EN : INTRO_TR, guard: "intro" });
@@ -582,6 +598,7 @@ export async function onRequest(ctx) {
       const kept = dropSentences(text, kind === "drift" ? (x) => /\d+(?:[.,]\d+)?\s*(?:m²|m2|metrekare|sqm)/i.test(x) : kind === "price" ? (x) => volunteeredAmount(x, lastUser) || /(?:USD|\$)/i.test(x) : sentBad);
       if (kept && !problem(kept)) text = kept;
       else if (area != null && /kontrol|kart|controller|huidu|novastar|control/i.test(lastUser)) return json({ reply: controlAnswer(lang === "tr" ? "tr" : "en", area, name), guard: "control_fallback" });
+      else if (kind === "claim" && (lang === "tr" || lang === "en")) return json({ reply: lang === "tr" ? SAFE_TR : SAFE_EN, guard: "claim_safe" }); // every sentence was an unverified claim: neutral, honest answer instead of an error
       else return fallback(lastUser, "guard_" + kind);
     }
     text = softenControl(text);

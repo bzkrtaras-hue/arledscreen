@@ -18,10 +18,17 @@ const IDENTITY_TR_PATTERNS = [
   "(?:ger[cç]ek|canli)\\s*(?:bir\\s*)?(?:insan|kisi|biri)",
   "yapay\\s*zek[aâ]\\s*mi(?:sin|siniz)?(?![\\p{L}])",
   "(?<![\\p{L}])ai\\s*mi(?:sin|siniz)?(?![\\p{L}])",
+  // "dijital asistan / temsilci / danışman mısın" (the answer is the same honest bot/human answer; the model never has to repeat the forbidden phrase)
+  "dijital\\s*(?:asistan|temsilci|danisman|calisan|insan)\\w*\\s*mi(?:sin|siniz)?(?![\\p{L}])",
+  "(?<![\\p{L}])(?:asistan|temsilci)\\s*mi(?:sin|siniz)(?![\\p{L}])",
+  "(?:sen|siz)\\s*dijital\\s*(?:asistan|temsilci|danisman)",
 ];
 const IDENTITY_EN_PATTERNS = [
   "are you (?:a |an )?(?:real |live )?(?:bot|robot|human|person|ai|real|chatbot|machine)",
   "is this (?:a |an )?(?:bot|human|real person|ai|robot)",
+  "are you (?:a |an )?(?:digital|virtual|automated) (?:assistant|representative|agent|advisor|consultant|person|human)",
+  "(?:is|are) (?:this|you) (?:a |an )?(?:digital|virtual) (?:assistant|representative|agent)",
+  "(?:^|[^\\p{L}])digital (?:assistant|representative|agent)\\s*\\?",
   "am i (?:talking|speaking|chatting) (?:to|with) (?:a |an )?(?:bot|human|real|person|robot|machine|ai)",
 ];
 const IDENTITY_TR_RE = new RegExp(IDENTITY_TR_PATTERNS.join("|"), "iu"), IDENTITY_EN_RE = new RegExp(IDENTITY_EN_PATTERNS.join("|"), "iu");
@@ -179,7 +186,19 @@ export function enforcePhone(text, question) {
 }
 
 // ---- Forbidden wording (quality / reliability praise is not verified) ---------------
-export const QUALITY_RE = /(?<![\p{L}])(?:kaliteli|yüksek\s+(?:görüntü\s+)?kalite\w*|üst\s+düzey\s+kalite\w*|üstün\s+kalite\w*|en\s+iyi\s+kalite\w*|güvenilir\w*|high[\s-]?quality|(?:top|superior|premium|best)[\s-]quality|reliab\w+|dependab\w+|trustworthy)(?![\p{L}])/iu;
+// Unverified praise / production claims. "Image/video quality" and resolution as a technical NOUN (pixel pitch, HD-C16 640×320) stay allowed;
+// "kalite…" in praise form, "yüksek çözünürlüklü <ürün>", "high-resolution <product>", "standartlarında üretilmekte" are not.
+export const QUALITY_RE = new RegExp([
+  "(?<![\\p{L}])(?:kaliteli|yüksek\\s+(?:görüntü\\s+)?kalite\\w*|üst\\s+düzey\\s+kalite\\w*|üstün\\s+kalite\\w*|en\\s+iyi\\s+kalite\\w*|güvenilir\\w*)(?![\\p{L}])",
+  "(?<![\\p{L}])(?<!(?:görüntü|baskı|video|sinyal|içerik|resim|fotoğraf)\\s)kalite(?:mi[zn]\\w*|si\\w*|nin|ye|de|den|yi|[sl]\\w*)?(?![\\p{L}])",
+  "high[\\s-]?quality|(?:top|superior|premium|best|excellent|great)[\\s-]quality|(?<![\\p{L}])(?<!(?:image|picture|video|signal|content|photo|print)\\s)quality(?![\\p{L}])|reliab\\w+|dependab\\w+|trustworthy",
+  "yüksek\\s+çözünürlüklü|(?:ultra[\\s-]?)?high[\\s-]resolution|full[\\s-]?hd|ultra[\\s-]?hd",
+  "standartlar(?:ımız|ı|ında|ıyla|ına)\\w*|(?:high|strict|quality|our) standards",
+].join("|"), "iu");
+// Production / manufacturing claims are not verified (KB rule 13: say "kendi markamız").
+export const PRODUCTION_RE = /(?<![\p{L}])(?:üretil\w*|üretiyoruz|üretiriz|üretimimiz\w*|manufactur\w*|(?<!content )produced|made by us|our production)(?![\p{L}])/iu;
+// A showroom or appointment is not in the knowledge base (customers can still be asked about THEIR showroom).
+export const VISIT_CLAIM_RE = /(?<![\p{L}])(?:showroom(?:umuz|larımız)\w*|sergi\s+salon\w*|randevu\w*|appointment\w*|our showroom|book a visit)/iu;
 
 // ---- Size expressions (customer text only) -------------------------------------------
 // Template / code expressions such as ${7*7}, {{7*7}} or <%= 7*7 %> are not part of a question: they are removed before the model sees the text.
@@ -201,8 +220,63 @@ export function repeatsStarProduct(sentence, products) {
 
 // ---- Address ---------------------------------------------------------------------------
 export const ADDRESS = "Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul";
-const ADDRESS_Q = /adres|neredesiniz|nerede\s+bulun|nerdesiniz|konum|where (?:are you|is your|is the|can i find)|your (?:address|location)|located|location of|office address|عنوان|أين|адрес|где/i;
-export function isAddressQ(text) { return String(text || "").length <= 90 && ADDRESS_Q.test(text) && !/ekran|screen|install|kurulum|kirala|rental/i.test(text); }
+// Where are you / address / office / showroom / visit / appointment (normalised text, so İ/I/ı and Turkish diacritics do not matter).
+const ADDRESS_Q = new RegExp([
+  "adres", "konum(?:unuz|uz)", "neredesiniz", "nerdesiniz", "nerede\\s+bulun", "nerede\\s+yer", "nerede\\s+oturuyor",
+  "(?:ofis|showroom|sergi|magaza|merkez|firma|sirket|depo|atolye|yer)\\w*\\s*(?:nerede|neresi|nerde)",
+  "(?:ofis|showroom|sergi\\s*salon|magaza)\\w*\\s*(?:var\\s*mi|mevcut)",
+  "ziyaret", "randevu", "yaniniza\\s*gel", "gelebilir\\s*miyim", "gelmek\\s*istiyorum", "ugra", "yuz\\s*yuze",
+  "where (?:are you|is your|is the|can i find|do i find)", "where.{0,25}located", "your (?:address|location|office|showroom)", "(?:are you|you) located", "location of",
+  "office address", "(?:visit|stop by|come by|drop by|come to) (?:you|your|the|our)", "showroom", "appointment", "street address",
+  "عنوان", "أين", "адрес", "где",
+].join("|"), "iu");
+const ADDRESS_NOT = /ekran|screen|install|kurulum|kirala|rental|kesif|survey|uret|produc|manufactur|fabrika|factory|garanti|warrant|teslim|deliver|kargo|ship|nakliye|odeme|payment|fiyat|price/i;
+export function isAddressQ(text) {
+  const t = String(text || "");
+  if (t.length > 90) return false;
+  const n = normTr(t);
+  return ADDRESS_Q.test(n) && !ADDRESS_NOT.test(n);
+}
 export const ADDRESS_TR = `Adresimiz: ${ADDRESS}. Hafta içi 09:00–18:00, cumartesi 10:00–15:00 çalışıyoruz.`;
 export const ADDRESS_EN = `Our address: ${ADDRESS}. We are open Monday–Friday 09:00–18:00 and Saturday 10:00–15:00.`;
 export function addressComplete(reply) { return reply.replace(/\s*\/\s*/g, "/").includes(ADDRESS); }
+
+// ---- Control card changed later: not in the knowledge base -> no yes/no claim ---------------------------------
+const CARD_WORD = /kart|card|controller|kontrol\s*sistem|control system|huidu|novastar|nova\s?star|colorlight/i;
+const CARD_CHANGE = /degistir|yukselt|upgrade|swap|replace|change|switch|takas|yenile|gec(?:ebil|ilir|ebilir)|baska\s*(?:bir\s*)?(?:kart|sistem)e/i;
+const CARD_LATER = /sonradan|sonra|ileride|ilerde|later|afterwards|in the future|down the line|after (?:the )?(?:purchase|installation|install)|kurulumdan sonra|aldiktan sonra/i;
+export function isCardChangeQ(text) {
+  const t = String(text || "");
+  if (t.length > 200) return false;
+  const n = normTr(t);
+  return CARD_WORD.test(n) && CARD_CHANGE.test(n) && CARD_LATER.test(n);
+}
+export const CARD_CHANGE_TR = "Kontrol kartının sonradan değiştirilip değiştirilemeyeceği projenize göre ekibimiz tarafından yazılı olarak teyit edilir; bu konuda kesin bir evet ya da hayır diyemem. İsterseniz ekibimizle WhatsApp'tan görüşebilirsiniz.";
+export const CARD_CHANGE_EN = "Whether the control card can be changed later is confirmed in writing by our team for your project, so I can't give a firm yes or no. If you like, you can talk to our team on WhatsApp.";
+
+// ---- Huidu vs NovaStar: knowledge-base facts only, in the customer's language -----------------------------------
+export function isControlCompareQ(text) {
+  const t = String(text || "");
+  if (t.length > 140) return false;
+  const n = normTr(t);
+  if (!/huidu/.test(n) || !/nova\s?star/.test(n)) return false;
+  if (/\d\s*(?:m\s*[²2]|metre|m\b|x|×)|fiyat|price|cost|ne kadar/.test(n)) return false; // a project/price question goes through the normal flow
+  return /\bvs\b|versus|ile|ve\b|veya|yoksa|mi\b|mu\b|or\b|and\b|fark|difference|compare|karsilastir|hangisi|which|better|iyi/.test(n);
+}
+export const COMPARE_TR = "Huidu, Wi-Fi veya USB ile içerik yüklenen asenkron bir sistemdir; içeriği kendi hafızasında tutup bilgisayardan bağımsız oynatır, mağaza, cephe ve tabela işlerinde pratiktir. NovaStar ise yüksek piksel yükü, sahne ve senkron (canlı görüntü aktarımı) işler için kullanılır. Genellikle 20 m² altında Huidu, 20 m² ve üzerinde NovaStar öneriyoruz; nihai model yazılı teklifte netleşir. Ekranınız yaklaşık kaç m² olacak?";
+export const COMPARE_EN = "Huidu is an asynchronous system: content is loaded over Wi-Fi or USB and stored on the card, so it plays independently of a computer, which suits stores, façades and signs. NovaStar is used for high pixel loads, stages and synchronous (live) work. We usually recommend Huidu below 20 m² and NovaStar from 20 m² upwards; the final model is confirmed in the written quote. About how many m² will your screen be?";
+// Language for these deterministic answers: English only when the message has English marker words, otherwise Turkish (the site is Turkish-first).
+export function compareLang(text) {
+  return /\b(?:the|is|are|you|your|do|does|can|what|how|which|better|difference|between|compare|versus|or|and|than|should)\b/i.test(String(text || "")) && !/[çğıöşüÇĞİÖŞÜ]/.test(text) && !/\b(?:ve|ile|veya|yoksa|mi|mu|mı|mü|fark|hangisi)\b/i.test(text) ? "en" : "tr";
+}
+
+// ---- Safe neutral answer when every sentence of a draft was an unverified claim ----------------------------------------
+export const SAFE_TR = "Bu konudaki ayrıntıları ekibimiz yazılı teklifle paylaşır. Ekranı iç mekâna mı, dış mekâna mı düşünüyorsunuz?";
+export const SAFE_EN = "Our team shares the details of this in the written quote. Will the screen be indoor or outdoor?";
+
+// Clearly English (English marker words, no Turkish letters or Turkish marker words); anything ambiguous is treated as Turkish.
+export function clearlyEnglish(text) {
+  const t = String(text || "");
+  return /\b(?:where|your|you|are|is|can|could|do|does|would|visit|office|located|location|address|appointment|come|stop|the|our|later|change|card|control)\b/i.test(t)
+    && !/[çğıöşüÇĞİÖŞÜ]/.test(t) && !/\b(?:nerede|ofis|ofisiniz|randevu|ziyaret|adres|adresiniz|var|mı|mi|mu|mü|bir|ve|ile|veya|kart|kartı|kontrol|sonradan)\b/i.test(t);
+}
