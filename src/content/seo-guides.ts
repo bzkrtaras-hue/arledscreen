@@ -1715,7 +1715,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Satın alma mı, kiralama mı?",
           body:
-            "Her hafta organizasyon yapan salonlar için satın alma, tek düğün veya nişan için kiralama daha mantıklıdır. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir; depozito alınmaz. Kurulum ve nakliye ayrıca tekliflendirilir.",
+            "Her hafta organizasyon yapan salonlar için satın alma, tek düğün veya nişan için kiralama daha mantıklıdır. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
         },
         {
           h2: "İçerik ve kontrol",
@@ -1742,7 +1742,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Düğün için LED ekran kiralanır mı?",
           answer:
-            "Evet. Kiralık LED ekranda fiyat, tarih ve ölçüye göre teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir, depozito alınmaz.",
+            "Evet. Kiralık LED ekranda fiyat, tarih ve ölçüye göre teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
         },
         {
           question: "Düğün salonu ekranında hangi piksel aralığı seçilmeli?",
@@ -3210,7 +3210,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Buy or rent?",
           body:
-            "Halls that host events every week are better off buying; a single wedding or engagement is better rented. Indoor and outdoor rental LED is priced by written quote; no deposit is required. Installation and shipping are quoted separately.",
+            "Halls that host events every week are better off buying; a single wedding or engagement is better rented. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
         },
         {
           h2: "Content and control",
@@ -3237,7 +3237,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Can I rent an LED screen for a wedding?",
           answer:
-            "Yes. Rental LED is priced by written quote based on dates and size. Installation and shipping are quoted separately; no deposit is required.",
+            "Yes. Rental LED is priced by written quote based on dates and size. Installation and shipping are quoted separately.",
         },
         {
           question: "Which pixel pitch suits a wedding hall?",

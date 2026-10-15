@@ -353,10 +353,6 @@ const INTENT_PAGES: CommercialPage[] = [
           "Evet. Günlük, haftalık ve aylık kiralamalarda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
       },
       {
-        question: "Kiralamada depozito alınıyor mu?",
-        answer: "Hayır, kiralık LED ekranda depozito alınmaz.",
-      },
-      {
         question: "Kiralık LED ekranın ödemesi nasıl yapılır?",
         answer:
           "Ödemeyi TL, USD, EUR ve diğer tüm para birimlerinde kabul ediyoruz; taksitli ödeme de yapılabilir. Ödeme planı yazılı teklifte belirtilir.",
@@ -1979,10 +1975,6 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
           question: "Can I rent an LED screen weekly or monthly?",
           answer:
             "Yes. Daily, weekly and monthly rentals are priced by written quote. Installation and shipping are quoted separately.",
-        },
-        {
-          question: "Is a deposit required for rental?",
-          answer: "No. No deposit is required for rental LED screens.",
         },
         {
           question: "How do I pay for a rental?",

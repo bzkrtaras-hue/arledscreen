@@ -74,9 +74,9 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "We have completed projects in every Istanbul district: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar and Zeytinburnu. Survey, installation and technical service are planned from our Gaziosmanpaşa HQ.",
     },
     {
-      question: "Can I rent an LED screen weekly or monthly? Is there a deposit?",
+      question: "Can I rent an LED screen weekly or monthly?",
       answer:
-        "Yes. Indoor and outdoor rental LED is priced by written quote. No deposit is required. Installation and shipping are quoted separately.",
+        "Yes. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
     },
   ],
   tr: [
@@ -166,9 +166,9 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "İstanbul'un tüm ilçelerinde proje yaptık: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar ve Zeytinburnu. Keşif, montaj ve teknik servis Gaziosmanpaşa merkezimizden planlanır.",
     },
     {
-      question: "Kiralık LED ekran haftalık ve aylık kiralanabilir mi? Depozito var mı?",
+      question: "Kiralık LED ekran haftalık ve aylık kiralanabilir mi?",
       answer:
-        "Evet. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Depozito alınmaz. Kurulum ve nakliye ayrıca tekliflendirilir.",
+        "Evet. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
     },
   ],
   ar: [
@@ -213,9 +213,9 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "نفّذنا مشاريع في جميع مناطق إسطنبول: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar وZeytinburnu. يُخطَّط للمعاينة والتركيب والخدمة الفنية من مقرنا في غازي عثمان باشا.",
     },
     {
-      question: "هل يمكن استئجار شاشة LED أسبوعيًا أو شهريًا؟ هل يوجد تأمين؟",
+      question: "هل يمكن استئجار شاشة LED أسبوعيًا أو شهريًا؟",
       answer:
-        "نعم. يُحدَّد سعر تأجير شاشات LED الداخلية والخارجية بعرض سعر مكتوب. لا يُطلب أي تأمين. يُسعَّر التركيب والشحن بشكل منفصل.",
+        "نعم. يُحدَّد سعر تأجير شاشات LED الداخلية والخارجية بعرض سعر مكتوب. يُسعَّر التركيب والشحن بشكل منفصل.",
     },
   ],
   ru: [
@@ -260,9 +260,9 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "Мы выполняли проекты во всех районах Стамбула: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar и Zeytinburnu. Выезд, монтаж и сервис планируются из нашего офиса в Газиосманпаше.",
     },
     {
-      question: "Можно ли арендовать LED-экран на неделю или месяц? Нужен ли депозит?",
+      question: "Можно ли арендовать LED-экран на неделю или месяц?",
       answer:
-        "Да. Аренда LED-экрана для помещений и улицы — цена по письменному предложению. Депозит не требуется. Монтаж и доставка рассчитываются отдельно.",
+        "Да. Аренда LED-экрана для помещений и улицы — цена по письменному предложению. Монтаж и доставка рассчитываются отдельно.",
     },
   ],
 };
