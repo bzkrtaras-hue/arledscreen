@@ -1523,31 +1523,31 @@ export const MATERIAL_SECTIONS: Record<string, MaterialSection[]> = {
         {
           "id": "pv-p2-5-gob-ic",
           "name": "P2.5 GOB iç mekân LED panel",
-          "spec": "3840 / 7680 Hz · 64 × 128 piksel",
+          "spec": "3840 Hz · 64 × 128 piksel",
           "panelPriceId": "p2-5-ic"
         },
         {
           "id": "pv-p1-86-ic",
           "name": "P1.86 iç mekân LED panel (GOB'suz)",
-          "spec": "3840 / 7680 Hz · 86 × 172 piksel",
+          "spec": "3840 Hz · 86 × 172 piksel",
           "panelPriceId": "p1-86-ic-gob"
         },
         {
           "id": "pv-p1-86-gob-esnek",
           "name": "P1.86 GOB esnek LED panel",
-          "spec": "3840 / 7680 Hz · 86 × 172 piksel",
+          "spec": "3840 Hz · 86 × 172 piksel",
           "panelPriceId": "p1-86-ic-gob"
         },
         {
           "id": "pv-p3-07-45-kesik",
           "name": "P3.07 45° kesik (köşe) dış mekân LED panel",
-          "spec": "3840 / 7680 Hz · 52 × 104 piksel",
+          "spec": "3840 Hz · 52 × 104 piksel",
           "panelPriceId": "p3-07-dis"
         },
         {
           "id": "pv-p3-91-dis",
           "name": "P3.91 dış mekân LED panel",
-          "spec": "25 × 25 cm · 3840 / 7680 Hz · 64 × 64 piksel",
+          "spec": "25 × 25 cm · 3840 Hz · 64 × 64 piksel",
           "derivedPriceId": "pv-p3-91-dis"
         },
         {
