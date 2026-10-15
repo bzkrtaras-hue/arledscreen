@@ -6,6 +6,7 @@
     "/brand",
     "/modules",
     "/api/geo",
+    "/api/chat",
     "/owner-*",
     "/geo-next*",
     "/geo-status*",

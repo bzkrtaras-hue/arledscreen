@@ -1,32 +1,25 @@
 /*!
- * ARLEDSCREEN "Canlı Destek" sohbet balonu — v1
- * Tek dosya, harici istek yok (yalnızca aynı kökenden avatar + /fiyat-hesap/?mode=chat iframe'i).
- * CSP: satır içi olay işleyicisi yok; stil <style> etiketiyle eklenir (style-src 'unsafe-inline' yeterli).
- * Kullanım: <script src="/chat-widget.js" data-locale="tr" defer></script>
- *   data-locale  : "tr" (varsayılan) | "en"
- *   data-src     : sohbet adresi (varsayılan "/fiyat-hesap/?mode=chat")
- *   data-avatar  : avatar yolu (varsayılan "/brand/canli-destek-avatar.webp")
- *   data-delay   : karşılama balonu gecikmesi, ms (varsayılan 3500)
- *   data-pages   : Next.js istemci içi geçişlerde balonun görüneceği yollar (RegExp). Varsayılan: yüklendiği sayfa
- *                  + /tr/ ve /en/ ana sayfaları. "*" = her sayfa. /hesaplayici ve /fiyat-hesap her zaman hariç.
- * API: window.openCanliDestek(), window.closeCanliDestek(); ya da herhangi bir öğeye data-open-canli-destek.
+ * ARLEDSCREEN Melis — yapay zekâ asistanı (Gemini) — v2
+ * Tek dosya. /api/chat üzerinden Gemini; otomatik ses yok; XSS güvenli markdown.
+ * <script src="/chat-widget.js" data-locale="tr" defer></script>
+ * data-locale | data-avatar | data-delay | data-pages (bkz. önceki sürüm)
+ * API: window.openCanliDestek(), window.closeCanliDestek(); [data-open-canli-destek]
  */
 (function () {
   "use strict";
   if (window.__arledCanliDestek) return;
   window.__arledCanliDestek = true;
 
-  /* Hesaplayıcı sayfasında gösterme (sohbet zaten sayfada). */
   var EXCLUDED = /\/(hesaplayici|fiyat-hesap)(\/|$)/;
   if (EXCLUDED.test(location.pathname)) return;
 
   var me = document.currentScript || document.querySelector('script[src*="chat-widget"]');
   var ds = (me && me.dataset) || {};
   var LANG = ds.locale === "en" ? "en" : "tr";
-  var SRC = ds.src || "/fiyat-hesap/?mode=chat";
   var AVATAR = ds.avatar || "/brand/canli-destek-avatar.webp";
   var DELAY = ds.delay != null && ds.delay !== "" && isFinite(+ds.delay) ? +ds.delay : 3500;
   var KEY = "arled-cd-dismissed";
+  var WA = "https://wa.me/905305078834";
   function normPath(p) { return (p || "/").replace(/\/+$/, "") || "/"; }
   var BOOT_PATH = normPath(location.pathname);
   var PAGES = null;
@@ -42,61 +35,77 @@
 
   var T = {
     tr: {
-      name: "Melis", online: "Canlı Destek • Çevrim içi",
-      teaser: "Merhaba, ben Melis. Size uygun LED ekranı ve fiyatı birlikte bulalım mı?",
-      teaserShort: "Merhaba, ben Melis. Uygun ekranı birlikte bulalım mı?",
+      name: "Melis",
+      role: "Yapay zekâ asistanı",
+      online: "Çevrimiçi",
+      teaser: "Merhaba, ben Melis — yapay zekâ asistanı. Size uygun LED ekranı birlikte bulalım mı?",
+      teaserShort: "Merhaba, ben Melis. LED ekran için yardımcı olayım mı?",
       note: "",
       open: "Melis ile sohbeti aç", close: "Sohbeti kapat", closeTeaser: "Mesajı kapat",
-      dialog: "Melis • Canlı Destek", frame: "Melis: LED ekran önerisi ve tahmini fiyat", loading: "Bağlanıyor…",
-      typing: "Melis yazıyor", minimize: "Sohbeti küçült"
+      dialog: "Melis • Yapay zekâ asistanı",
+      welcome: "Merhaba! Ben Melis, ARLEDSCREEN yapay zekâ asistanıyım (insan değilim). LED ekran, fiyat ve ürünler hakkında yardımcı olurum. Kesin teklif için WhatsApp’tan ekibe bağlarım.",
+      placeholder: "Mesajınızı yazın…",
+      send: "Gönder",
+      sending: "Melis yazıyor…",
+      err: "Şu an yanıt veremiyorum. WhatsApp’tan yazabilirsiniz.",
+      wa: "WhatsApp’ta yazın",
+      disclose: "Yapay zekâ asistanı • İnsan değil",
+      minimize: "Sohbeti küçült",
+      typing: "Melis yazıyor"
     },
     en: {
-      name: "Melis", online: "Live Support • Online",
-      teaser: "Hi, I'm Melis. Shall we find the right LED screen and an estimated price together?",
-      teaserShort: "Hi, I'm Melis. Shall we find the right screen together?",
-      note: "Chat is in Turkish.",
+      name: "Melis",
+      role: "AI assistant",
+      online: "Online",
+      teaser: "Hi, I’m Melis — an AI assistant. Shall we find the right LED screen together?",
+      teaserShort: "Hi, I’m Melis. Need help with an LED screen?",
+      note: "",
       open: "Open chat with Melis", close: "Close chat", closeTeaser: "Dismiss message",
-      dialog: "Melis • Live Support", frame: "Melis: LED screen recommendation and estimated price", loading: "Connecting…",
-      typing: "Melis is typing", minimize: "Minimise chat"
+      dialog: "Melis • AI assistant",
+      welcome: "Hi! I’m Melis, ARLEDSCREEN’s AI assistant (not a human). I can help with LED screens, prices and products. For a firm quote I’ll hand you to the team on WhatsApp.",
+      placeholder: "Type your message…",
+      send: "Send",
+      sending: "Melis is typing…",
+      err: "I can’t reply right now. Please message us on WhatsApp.",
+      wa: "Chat on WhatsApp",
+      disclose: "AI assistant • Not a human",
+      minimize: "Minimise chat",
+      typing: "Melis is typing"
     }
   }[LANG];
 
   var mqReduce = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
-  /* Match MobileCtaBar (md:hidden = <768px) so launcher clears Ara / WhatsApp / Teklif. */
   var mqMobile = window.matchMedia ? window.matchMedia("(max-width: 767px)") : null;
   function reduced() { return !!(mqReduce && mqReduce.matches); }
   function mobile() { return !!(mqMobile && mqMobile.matches); }
   function dismissed() { try { return window.sessionStorage.getItem(KEY) === "1"; } catch (e) { return false; } }
-  function dismiss() { try { window.sessionStorage.setItem(KEY, "1"); } catch (e) { /* özel mod */ } }
+  function dismiss() { try { window.sessionStorage.setItem(KEY, "1"); } catch (e) { /* */ } }
 
   var CSS = [
     ".acd-root[hidden]{display:none!important}",
     ".acd-root{--acd-b:calc(20px + env(safe-area-inset-bottom, 0px));--acd-r:calc(20px + env(safe-area-inset-right, 0px));--acd-navy:#0f2440;--acd-navy2:#1b3754;--acd-blue:#1e5bb8;--acd-ink:#0f172a;--acd-green:#22c55e;font-family:inherit;line-height:1.45;-webkit-font-smoothing:antialiased}",
     ".acd-root *,.acd-root *::before,.acd-root *::after{box-sizing:border-box}",
-    ":where(.acd-root) button{font:inherit;margin:0;border:0;background:none;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}",
+    ":where(.acd-root) button,:where(.acd-root) textarea{font:inherit;margin:0;border:0;background:none;color:inherit;-webkit-tap-highlight-color:transparent}",
+    ":where(.acd-root) button{cursor:pointer}",
     ".acd-root [hidden]{display:none!important}",
     ".acd-root :focus-visible{outline:3px solid rgba(30,91,184,.55);outline-offset:3px}",
-    /* Launcher */
     ".acd-launcher{position:fixed;right:var(--acd-r);bottom:var(--acd-b);z-index:55;width:64px;height:64px;padding:0;border-radius:50%;background:#fff;box-shadow:0 0 0 3px #fff,0 12px 28px -8px rgba(15,36,64,.55),0 4px 10px rgba(15,36,64,.18);transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,opacity .25s;animation:acd-pop .5s .2s cubic-bezier(.34,1.56,.64,1) both}",
-    ".acd-launcher:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 0 0 3px #fff,0 16px 32px -8px rgba(15,36,64,.6),0 4px 10px rgba(15,36,64,.2)}",
-    ".acd-launcher:active{transform:scale(.95)}",
-    ".acd-launcher img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;transition:opacity .2s,transform .25s}",
+    ".acd-launcher img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}",
+    ".acd-ring{position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(30,91,184,.45);animation:acd-ring 2s ease-out infinite;pointer-events:none}",
     ".acd-dot{position:absolute;right:1px;bottom:1px;width:16px;height:16px;border-radius:50%;background:var(--acd-green);border:3px solid #fff;animation:acd-dot 2.6s 1s ease-out infinite}",
-    ".acd-badge{position:absolute;top:-3px;right:-3px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:#e11d48;color:#fff;font-size:11px;font-weight:700;line-height:20px;text-align:center;box-shadow:0 0 0 2px #fff;animation:acd-pop .35s cubic-bezier(.34,1.56,.64,1) both}",
-    ".acd-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(34,197,94,.55);opacity:0;pointer-events:none}",
-    ".acd-root.acd-attn .acd-ring{animation:acd-ring 1.8s ease-out 3}",
-    ".acd-x-ico{position:absolute;inset:0;display:grid;place-items:center;border-radius:50%;background:var(--acd-navy);color:#fff;opacity:0;transform:rotate(-60deg) scale(.6);transition:opacity .2s,transform .25s cubic-bezier(.34,1.56,.64,1)}",
-    ".acd-root.acd-open .acd-x-ico{opacity:1;transform:none}",
-    ".acd-root.acd-open .acd-dot,.acd-root.acd-open .acd-badge{opacity:0}",
-    /* Teaser */
+    ".acd-badge{position:absolute;top:-2px;left:-2px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#e11d48;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;box-shadow:0 0 0 2px #fff}",
+    ".acd-x-ico{display:none;position:absolute;inset:0;place-items:center;background:var(--acd-navy);color:#fff;border-radius:50%}",
+    ".acd-root.acd-open .acd-x-ico{display:grid}",
+    ".acd-root.acd-open .acd-launcher img,.acd-root.acd-open .acd-ring,.acd-root.acd-open .acd-dot,.acd-root.acd-open .acd-badge{display:none}",
+    ".acd-root.acd-attn .acd-ring{animation-duration:1.2s}",
     ".acd-teaser{position:fixed;right:var(--acd-r);bottom:calc(var(--acd-b) + 78px);z-index:55;width:min(312px,calc(100vw - 32px));display:flex;align-items:flex-start;border-radius:18px 18px 6px 18px;background:#fff;color:var(--acd-ink);box-shadow:0 0 0 1px rgba(15,36,64,.08),0 22px 44px -18px rgba(15,36,64,.5),0 6px 14px -6px rgba(15,36,64,.18);transform-origin:100% 100%;animation:acd-teaser .5s cubic-bezier(.34,1.56,.64,1) both}",
     ".acd-teaser::after{content:\"\";position:absolute;right:22px;bottom:-7px;width:14px;height:14px;background:#fff;transform:rotate(45deg);border-radius:0 0 4px 0;box-shadow:3px 3px 6px -3px rgba(15,36,64,.18)}",
-    ".acd-teaser-body{flex:1 1 auto;display:flex;align-items:flex-start;gap:11px;min-width:0;padding:14px 4px 14px 14px;text-align:left;border-radius:18px 0 0 18px}",
-    ".acd-teaser-body img{flex:none;width:42px;height:42px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 2px 8px rgba(15,36,64,.25)}",
-    ".acd-t-name{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--acd-navy2)}",
-    ".acd-t-name i{width:8px;height:8px;border-radius:50%;background:var(--acd-green);box-shadow:0 0 0 3px rgba(34,197,94,.18)}",
-    ".acd-t-name small{font-size:11.5px;font-weight:500;color:#5b6573}",
-    ".acd-t-msg{display:block;margin-top:3px;font-size:14px;line-height:1.45;color:#1f2937}",
+    ".acd-teaser-body{flex:1;display:flex;gap:10px;align-items:flex-start;padding:12px 4px 12px 12px;text-align:left;border-radius:18px 0 0 18px;cursor:pointer;background:transparent}",
+    ".acd-teaser-body img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 2px #e8eef6}",
+    ".acd-t-name{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--acd-navy)}",
+    ".acd-t-name i{width:8px;height:8px;border-radius:50%;background:var(--acd-green);display:inline-block}",
+    ".acd-t-name small{font-weight:500;color:#64748b}",
+    ".acd-t-msg{display:block;margin-top:4px;font-size:13.5px;line-height:1.4;color:#334155}",
     ".acd-t-note{display:block;margin-top:4px;font-size:12px;color:#5b6573}",
     ".acd-typing{display:inline-flex;gap:4px;padding:8px 0 4px}",
     ".acd-typing span{width:7px;height:7px;border-radius:50%;background:#94a3b8;animation:acd-typing 1.1s ease-in-out infinite}",
@@ -104,19 +113,44 @@
     ".acd-msg-in{animation:acd-fade .35s ease-out both}",
     ".acd-teaser-x{flex:none;width:44px;height:44px;display:grid;place-items:center;border-radius:0 18px 0 12px;color:#64748b;transition:color .2s,background-color .2s}",
     ".acd-teaser-x:hover{color:var(--acd-ink);background:#f1f5f9}",
-    /* Panel */
-    ".acd-panel{position:fixed;right:var(--acd-r);bottom:calc(var(--acd-b) + 78px);z-index:56;width:400px;height:min(640px,calc(100vh - 140px));height:min(640px,calc(100dvh - 140px));overflow:hidden;border-radius:22px;background:var(--acd-navy);box-shadow:0 0 0 1px rgba(15,36,64,.1),0 32px 64px -24px rgba(15,36,64,.6),0 10px 24px -10px rgba(15,36,64,.25);transform-origin:100% 100%;animation:acd-panel .38s cubic-bezier(.22,1,.36,1) both;display:flex;flex-direction:column}",
-    ".acd-frame{display:block;flex:1 1 auto;min-height:0;width:100%;height:100%;border:0;background:#fff}",
+    ".acd-panel{position:fixed;right:var(--acd-r);bottom:calc(var(--acd-b) + 78px);z-index:56;width:400px;height:min(640px,calc(100vh - 140px));height:min(640px,calc(100dvh - 140px));overflow:hidden;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(15,36,64,.1),0 32px 64px -24px rgba(15,36,64,.6),0 10px 24px -10px rgba(15,36,64,.25);transform-origin:100% 100%;animation:acd-panel .38s cubic-bezier(.22,1,.36,1) both;display:flex;flex-direction:column}",
     ".acd-grab{display:none}",
+    ".acd-head{flex:none;display:flex;align-items:center;gap:10px;padding:12px 52px 12px 14px;background:linear-gradient(160deg,#0f2440,#1b3754);color:#fff}",
+    ".acd-head img{width:44px;height:44px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px rgba(255,255,255,.85)}",
+    ".acd-head-txt{min-width:0}",
+    ".acd-head-name{font-size:15px;font-weight:700;line-height:1.2}",
+    ".acd-head-role{font-size:12px;opacity:.88;margin-top:2px}",
+    ".acd-head-online{display:inline-flex;align-items:center;gap:5px;font-size:11px;opacity:.8;margin-top:3px}",
+    ".acd-head-online i{width:7px;height:7px;border-radius:50%;background:var(--acd-green)}",
     ".acd-close{position:absolute;top:8px;right:10px;z-index:2;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.22);transition:background-color .2s,transform .2s}",
     ".acd-close:hover{background:rgba(255,255,255,.22)}",
     ".acd-close:active{transform:scale(.94)}",
-    ".acd-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(160deg,#0f2440,#1b3754);color:#d6e4f5;font-size:14px;font-weight:500;transition:opacity .3s}",
-    ".acd-loading img{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px rgba(255,255,255,.9);animation:acd-breathe 1.6s ease-in-out infinite}",
-    ".acd-loading.acd-done{opacity:0;pointer-events:none}",
+    ".acd-msgs{flex:1 1 auto;min-height:0;overflow:auto;padding:14px 12px;background:#f4f7fb;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch}",
+    ".acd-bubble{max-width:88%;padding:10px 12px;border-radius:14px;font-size:14px;line-height:1.45;word-wrap:break-word;overflow-wrap:anywhere}",
+    ".acd-bubble.bot{align-self:flex-start;background:#fff;color:var(--acd-ink);border:1px solid #e2e8f0;border-bottom-left-radius:4px}",
+    ".acd-bubble.user{align-self:flex-end;background:var(--acd-blue);color:#fff;border-bottom-right-radius:4px}",
+    ".acd-bubble strong{font-weight:700}",
+    ".acd-bubble .acd-ltr{white-space:nowrap;unicode-bidi:isolate!important;direction:ltr!important;display:inline-block}",
+    ".acd-bubble a{color:inherit;text-decoration:underline;text-underline-offset:2px}",
+    ".acd-bubble.bot a{color:var(--acd-blue)}",
+    ".acd-bubble ul{margin:6px 0 0;padding-left:18px}",
+    ".acd-bubble li{margin:2px 0}",
+    ".acd-bubble p{margin:0 0 6px}.acd-bubble p:last-child{margin:0}",
+    ".acd-wait{align-self:flex-start;display:inline-flex;gap:4px;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:14px}",
+    ".acd-wait span{width:7px;height:7px;border-radius:50%;background:#94a3b8;animation:acd-typing 1.1s ease-in-out infinite}",
+    ".acd-wait span:nth-child(2){animation-delay:.15s}.acd-wait span:nth-child(3){animation-delay:.3s}",
+    ".acd-foot{flex:none;border-top:1px solid #e2e8f0;background:#fff;padding:8px 10px 10px}",
+    ".acd-form{display:flex;gap:8px;align-items:flex-end}",
+    ".acd-input{flex:1;min-height:42px;max-height:110px;resize:none;padding:10px 12px;border-radius:12px;border:1px solid #cbd5e1;background:#fff;color:var(--acd-ink);line-height:1.35}",
+    ".acd-input:focus{outline:none;border-color:var(--acd-blue);box-shadow:0 0 0 3px rgba(30,91,184,.18)}",
+    ".acd-send{flex:none;height:42px;padding:0 14px;border-radius:12px;background:var(--acd-navy);color:#fff;font-weight:600;font-size:13px}",
+    ".acd-send:disabled{opacity:.5;cursor:not-allowed}",
+    ".acd-wa{display:flex;justify-content:center;margin-top:6px}",
+    ".acd-wa a{font-size:12px;color:#15803d;text-decoration:none;font-weight:600}",
+    ".acd-wa a:hover{text-decoration:underline}",
+    ".acd-disclose{text-align:center;font-size:11px;color:#64748b;margin-top:4px}",
     "@media (max-width:767px){",
     "  .acd-launcher{width:58px;height:58px}",
-    /* Mobil karşılama: başlatıcının yanında küçük balon; hero düğmelerini ve alt çubuğu örtmez. */
     "  .acd-teaser{right:calc(var(--acd-r) + 68px);bottom:var(--acd-b);width:auto;max-width:min(260px,calc(100vw - 100px));min-height:58px;align-items:center;border-radius:20px 20px 6px 20px;transform-origin:100% 80%;animation-name:acd-teaser-m}",
     "  .acd-teaser::after{right:-5px;bottom:12px;width:12px;height:12px;border-radius:0 4px 0 0;box-shadow:3px -3px 6px -3px rgba(15,36,64,.14)}",
     "  .acd-teaser-body{gap:0;padding:8px 0 8px 13px;border-radius:20px 0 0 20px}",
@@ -124,18 +158,14 @@
     "  .acd-t-name{font-size:12px;gap:5px}",
     "  .acd-t-msg{margin-top:1px;font-size:13px;line-height:1.32;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}",
     "  .acd-teaser-x{width:38px;height:44px;align-self:flex-start;border-radius:0 20px 0 12px}",
-    /* Mobil alt sayfa: ana sayfa üstte görünür kalır; kaydırma kilidi ve karartma yok. */
-    "  .acd-panel{left:0;right:0;bottom:var(--acd-kb,0px);width:auto;height:var(--acd-sh,min(62dvh,560px));max-height:560px;border-radius:24px 24px 0 0;background:#fff;padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 0 0 1px rgba(15,42,79,.06),0 -22px 48px -18px rgba(11,27,51,.42),0 -4px 14px -6px rgba(11,27,51,.16);transform-origin:50% 100%;animation:acd-sheet .34s cubic-bezier(.22,1,.36,1) backwards;transition:transform .26s cubic-bezier(.22,1,.36,1)}",
+    "  .acd-panel{left:0;right:0;bottom:var(--acd-kb,0px);width:auto;height:var(--acd-sh,min(62dvh,560px));max-height:560px;border-radius:24px 24px 0 0;padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 0 0 1px rgba(15,42,79,.06),0 -22px 48px -18px rgba(11,27,51,.42),0 -4px 14px -6px rgba(11,27,51,.16);transform-origin:50% 100%;animation:acd-sheet .34s cubic-bezier(.22,1,.36,1) backwards;transition:transform .26s cubic-bezier(.22,1,.36,1)}",
     "  .acd-root.acd-kb .acd-panel{padding-bottom:0}",
     "  .acd-panel.acd-dragging{transition:none;animation:none}",
     "  .acd-panel.acd-out{transform:translateY(105%)!important;transition:transform .2s cubic-bezier(.4,0,1,1)}",
     "  .acd-grab{display:flex;flex:none;justify-content:center;height:24px;background:#0b1b33;touch-action:none;cursor:grab}",
     "  .acd-handle{width:112px;height:24px;display:grid;place-items:center;touch-action:none}",
-    "  .acd-handle::before{content:\"\";width:40px;height:5px;border-radius:3px;background:rgba(255,255,255,.42);transition:background-color .2s,width .2s}",
-    "  .acd-handle:hover::before,.acd-handle:focus-visible::before{background:rgba(255,255,255,.7);width:48px}",
-    "  .acd-root .acd-handle:focus-visible{outline-offset:-3px}",
+    "  .acd-handle::before{content:\"\";width:40px;height:5px;border-radius:3px;background:rgba(255,255,255,.42)}",
     "  .acd-close{top:32px}",
-    "  .acd-loading{top:24px}",
     "  .acd-root.acd-open .acd-launcher,.acd-root.acd-open .acd-teaser{display:none}",
     "  .acd-teaser.acd-measure{visibility:hidden;animation:none}",
     "}",
@@ -148,7 +178,6 @@
     "@keyframes acd-typing{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}",
     "@keyframes acd-dot{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%,100%{box-shadow:0 0 0 7px rgba(34,197,94,0)}}",
     "@keyframes acd-ring{0%{transform:scale(.95);opacity:.9}100%{transform:scale(1.35);opacity:0}}",
-    "@keyframes acd-breathe{50%{transform:scale(1.05)}}",
     "@media (prefers-reduced-motion:reduce){.acd-root *,.acd-root *::before,.acd-root *::after{animation:none!important;transition:none!important}}"
   ].join("\n");
 
@@ -162,19 +191,37 @@
     return n;
   }
   function avatarImg(size) {
-    // Bing Webmaster flags empty alt on 64×64 launcher / 72×72 loading avatars.
-    var i = el("img", "", {
-      src: AVATAR,
-      alt: T.name,
-      width: String(size),
-      height: String(size),
-      decoding: "async",
+    return el("img", "", { src: AVATAR, alt: T.name, width: String(size), height: String(size), decoding: "async" });
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  /* Escape first, then apply a small safe markdown subset. Regexes are NOT double-escaped. */
+  function formatMarkdown(raw) {
+    var s = esc(raw);
+    s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function (_, t, u) {
+      if (!/^https?:\/\//i.test(u)) return t;
+      return '<a href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + t + "</a>";
     });
-    return i;
+    s = s.replace(/(^|[\s(])(https?:\/\/[^\s<]*[^\s<.,;:!?)])/g, function (_, pre, u) {
+      return pre + '<a href="' + u + '" target="_blank" rel="noopener noreferrer">' + u + "</a>";
+    });
+    /* Keep phone numbers left-to-right inside Arabic (RTL) text. */
+    s = s.replace(/(^|[^\w\/=])(\+\d[\d ]{8,}\d)/g, '$1<span class="acd-ltr" dir="ltr">\u2066$2\u2069</span>');
+    s = s.replace(/(^|\n)((?:[-*] .+(?:\n|$))+)/g, function (_, pre, block) {
+      var items = block.trim().split(/\n/).map(function (line) {
+        return "<li>" + line.replace(/^[-*] /, "") + "</li>";
+      }).join("");
+      return pre + "<ul>" + items + "</ul>";
+    });
+    s = s.replace(/\n{2,}/g, "</p><p>").replace(/\n/g, "<br>").replace(/<br><ul>/g, "<ul>").replace(/<\/ul><br>/g, "</ul>");
+    return "<p>" + s + "</p>";
   }
 
-  var root, launcher, badge, teaser, teaserMsg, panel, closeBtn, grab, handle, frame, loading, lastFocus = null;
-  var isOpen = false, teaserTimer = 0, autoTimer = 0, drag = null, lastTap = 0, spaceWait = null;
+  var root, launcher, badge, teaser, teaserMsg, panel, closeBtn, grab, handle, head, msgsEl, form, input, sendBtn, lastFocus = null;
+  var isOpen = false, teaserTimer = 0, autoTimer = 0, drag = null, lastTap = 0, spaceWait = null, busy = false;
+  var chatHist = []; /* {role,text} for /api/chat */
 
   function build() {
     var style = el("style", "", { id: "acd-style" });
@@ -219,17 +266,46 @@
     panel.hidden = true;
     closeBtn = el("button", "acd-close", { type: "button", "aria-label": T.close });
     closeBtn.innerHTML = SVG_X;
-    loading = el("div", "acd-loading", { "aria-hidden": "true" });
-    loading.appendChild(avatarImg(72));
-    var lt = el("span", "");
-    lt.textContent = T.loading;
-    loading.appendChild(lt);
     grab = el("div", "acd-grab");
     handle = el("button", "acd-handle", { type: "button", "aria-label": T.minimize });
     grab.appendChild(handle);
+
+    head = el("div", "acd-head");
+    head.appendChild(avatarImg(44));
+    var ht = el("div", "acd-head-txt");
+    var hn = el("div", "acd-head-name"); hn.textContent = T.name;
+    var hr = el("div", "acd-head-role"); hr.textContent = T.role;
+    var ho = el("div", "acd-head-online");
+    ho.appendChild(el("i", "", { "aria-hidden": "true" }));
+    ho.appendChild(document.createTextNode(T.online + " · " + T.disclose));
+    ht.appendChild(hn); ht.appendChild(hr); ht.appendChild(ho);
+    head.appendChild(ht);
+
+    msgsEl = el("div", "acd-msgs", { "aria-live": "polite" });
+    addBubble("bot", T.welcome, true);
+
+    var foot = el("div", "acd-foot");
+    form = el("form", "acd-form");
+    input = el("textarea", "acd-input", { dir: "auto", rows: "1", maxlength: "800", placeholder: T.placeholder, "aria-label": T.placeholder });
+    sendBtn = el("button", "acd-send", { type: "submit" });
+    sendBtn.textContent = T.send;
+    form.appendChild(input);
+    form.appendChild(sendBtn);
+    var waRow = el("div", "acd-wa");
+    var waA = el("a", "", { href: WA, target: "_blank", rel: "noopener noreferrer" });
+    waA.textContent = T.wa;
+    waRow.appendChild(waA);
+    var disc = el("div", "acd-disclose");
+    disc.textContent = T.disclose;
+    foot.appendChild(form);
+    foot.appendChild(waRow);
+    foot.appendChild(disc);
+
     panel.appendChild(grab);
     panel.appendChild(closeBtn);
-    panel.appendChild(loading);
+    panel.appendChild(head);
+    panel.appendChild(msgsEl);
+    panel.appendChild(foot);
 
     root.appendChild(teaser);
     root.appendChild(panel);
@@ -240,15 +316,10 @@
     tb.addEventListener("click", function () { open(); });
     tx.addEventListener("click", function () { hideTeaser(); dismiss(); launcher.focus(); });
     closeBtn.addEventListener("click", function () { close(); });
-    /* Tutamaca dokunma (veya Enter/Boşluk) küçültür; işaretçi yakalandığı için tıklama şeritte dinlenir. */
-    grab.addEventListener("click", function () {
-      if (Date.now() - lastTap < 700) return; /* dokunma zaten işlendi */
-      minimize();
-    });
-    /* Tutamaçtan aşağı kaydırınca küçült. */
+    grab.addEventListener("click", function () { if (Date.now() - lastTap < 700) return; minimize(); });
     grab.addEventListener("pointerdown", function (e) {
       if (e.button) return;
-      try { grab.setPointerCapture(e.pointerId); } catch (x) { /* yok say */ }
+      try { grab.setPointerCapture(e.pointerId); } catch (x) { /* */ }
       dragStart(e.screenY, true);
     });
     grab.addEventListener("pointermove", function (e) { if (drag) dragMove(e.screenY); });
@@ -259,28 +330,81 @@
       var t = e.target && e.target.closest ? e.target.closest("[data-open-canli-destek]") : null;
       if (t && !root.hidden) { e.preventDefault(); open(); }
     });
+    form.addEventListener("submit", function (e) { e.preventDefault(); send(); });
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
+    });
+    input.addEventListener("input", function () {
+      input.style.height = "auto";
+      input.style.height = Math.min(110, input.scrollHeight) + "px";
+    });
     window.addEventListener("resize", place);
     if (mqMobile && mqMobile.addEventListener) mqMobile.addEventListener("change", function () { sheetSync(); place(); });
-    /* iOS/Android klavyesi: görünür alan küçülünce alt sayfayı klavyenin üstüne taşı. */
     if (window.visualViewport) {
       window.visualViewport.addEventListener("resize", sheetSync);
       window.visualViewport.addEventListener("scroll", sheetSync);
     }
     window.addEventListener("resize", sheetSync);
     place();
-    /* Mobil hızlı iletişim çubuğu sonradan gelebilir: boyutunu izle. */
     var bar = document.querySelector(".mobile-cta-bar");
     if (bar && "ResizeObserver" in window) new ResizeObserver(place).observe(bar);
-    /* Menü/drawer kapanınca CTA tekrar görünür — --acd-b'yi yeniden ölç. */
     if ("MutationObserver" in window) {
-      new MutationObserver(function () { place(); }).observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["class"],
-      });
+      new MutationObserver(function () { place(); }).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
     }
   }
 
-  /* Alt hızlı iletişim çubuğu görünürse balonu onun üstüne taşı. */
+  function addBubble(role, text, asHtmlWelcome) {
+    var b = el("div", "acd-bubble " + (role === "user" ? "user" : "bot"), { dir: "auto" });
+    if (role === "user") b.textContent = text;
+    else b.innerHTML = asHtmlWelcome ? esc(text) : formatMarkdown(text);
+    msgsEl.appendChild(b);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+    return b;
+  }
+  function setBusy(on) {
+    busy = on;
+    sendBtn.disabled = on;
+    input.disabled = on;
+  }
+  function send() {
+    if (busy) return;
+    var text = (input.value || "").trim().slice(0, 800);
+    if (!text) return;
+    input.value = "";
+    input.style.height = "auto";
+    addBubble("user", text);
+    chatHist.push({ role: "user", text: text });
+    if (chatHist.length > 12) chatHist = chatHist.slice(-12);
+    setBusy(true);
+    var wait = el("div", "acd-wait", { "aria-label": T.sending });
+    wait.appendChild(el("span")); wait.appendChild(el("span")); wait.appendChild(el("span"));
+    msgsEl.appendChild(wait);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+    fetch("/api/chat", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ messages: chatHist })
+    }).then(function (r) {
+      return r.json().then(function (d) { return { ok: r.ok, d: d }; });
+    }).then(function (res) {
+      wait.remove();
+      var reply = res.ok && res.d && typeof res.d.reply === "string" ? res.d.reply.trim() : "";
+      if (!reply) throw new Error("empty");
+      chatHist.push({ role: "assistant", text: reply });
+      addBubble("bot", reply);
+    }).catch(function () {
+      if (wait.parentNode) wait.remove();
+      var b = addBubble("bot", T.err + " " + T.wa + ": " + WA);
+      /* also make WA link clickable */
+      b.innerHTML = formatMarkdown(T.err + " [" + T.wa + "](" + WA + ")");
+    }).then(function () {
+      setBusy(false);
+      if (isOpen && window.matchMedia && window.matchMedia("(pointer: fine)").matches) {
+        try { input.focus({ preventScroll: true }); } catch (e) { /* */ }
+      }
+    });
+  }
+
   function place() {
     var bar = document.querySelector(".mobile-cta-bar");
     var h = 0;
@@ -289,7 +413,6 @@
       if (cs.display !== "none" && cs.visibility !== "hidden" && cs.position === "fixed") h = bar.getBoundingClientRect().height;
     }
     root.style.setProperty("--acd-b", h > 0 ? Math.round(h + 12) + "px" : "calc(20px + env(safe-area-inset-bottom, 0px))");
-    /* Sağ kenardaki yüzen WhatsApp/Instagram vb. düğmelerle çakışma varsa başlatıcıyı onların üstüne al. */
     if (!launcher || root.hidden) return;
     var sel = 'nav[aria-label="Hızlı iletişim"],nav[aria-label="Quick contact"],[data-floating-social],[class*="whatsapp-float"],[class*="float-whatsapp"],[class*="floating-social"]';
     var nodes = document.querySelectorAll(sel);
@@ -312,7 +435,6 @@
     }
   }
 
-  /* Mobil alt sayfa yüksekliği: görünür alanın ~%62'si (en çok 560px); klavye açıkken klavyenin üstünde. */
   function sheetSync() {
     if (!root) return;
     if (!isOpen || !mobile()) {
@@ -325,7 +447,7 @@
     if (vv) {
       vh = vv.height;
       kb = Math.max(0, Math.round(lh - vv.height - vv.offsetTop));
-      if (kb < 80) kb = 0; /* adres çubuğu oynamaları klavye değildir */
+      if (kb < 80) kb = 0;
     }
     var base = Math.min(Math.round(lh * 0.62), 560);
     var hgt = kb ? Math.max(220, Math.min(base, Math.round(vh) - 12)) : base;
@@ -353,7 +475,7 @@
     panel.classList.remove("acd-dragging");
     var v = d.dy / Math.max(1, Date.now() - d.t0);
     if (!cancel && (d.dy > 90 || (d.dy > 30 && v > 0.5))) { lastTap = Date.now(); minimize(); }
-    else if (!cancel && d.grab && !d.moved) { lastTap = Date.now(); panel.style.transform = ""; minimize(); } /* tutamaca dokunma */
+    else if (!cancel && d.grab && !d.moved) { lastTap = Date.now(); panel.style.transform = ""; minimize(); }
     else { if (d.moved) lastTap = Date.now(); panel.style.transform = ""; }
   }
   function minimize() {
@@ -368,7 +490,6 @@
     if (e.key === "Escape" && isOpen) { e.preventDefault(); close(); }
   }
 
-  /* Mobil: balon sayfadaki bir düğmeyi/bağlantıyı örtecekse göstermeyi ertele (rozet görünür kalır), kaydırınca yeniden dene. */
   function teaserFits() {
     teaserMsg.textContent = T.teaserShort;
     teaserMsg.className = "acd-t-msg";
@@ -384,7 +505,7 @@
       var q = e.getBoundingClientRect();
       if (!q.width || !q.height) continue;
       var ix = Math.min(r.right, q.right) - Math.max(r.left, q.left), iy = Math.min(r.bottom, q.bottom) - Math.max(r.top, q.top);
-      if (ix > 0 && iy > 0 && (ix * iy) / (q.width * q.height) > 0.2) return false; /* büyük kartın küçük bir köşesi sorun değil */
+      if (ix > 0 && iy > 0 && (ix * iy) / (q.width * q.height) > 0.2) return false;
     }
     return true;
   }
@@ -416,9 +537,7 @@
     if (reduced()) { setTeaserText(); return; }
     teaserMsg.textContent = "";
     var typing = el("span", "acd-typing", { role: "img", "aria-label": T.typing });
-    typing.appendChild(el("span"));
-    typing.appendChild(el("span"));
-    typing.appendChild(el("span"));
+    typing.appendChild(el("span")); typing.appendChild(el("span")); typing.appendChild(el("span"));
     teaserMsg.appendChild(typing);
     setTimeout(setTeaserText, 900);
   }
@@ -431,7 +550,6 @@
       teaserMsg.appendChild(n);
     }
   }
-  /* Mobil: ~8 sn sonra yalnızca başlatıcı + rozet kalır (bu ziyarette tekrar açılmaz). */
   function autoHideTeaser() {
     if (!teaser || teaser.hidden || isOpen) return;
     teaser.hidden = true;
@@ -448,64 +566,26 @@
     root.classList.remove("acd-attn");
   }
 
-  function ensureFrame() {
-    if (frame) return;
-    frame = el("iframe", "acd-frame", { title: T.frame, allow: "microphone; clipboard-write", referrerpolicy: "same-origin" });
-    frame.addEventListener("load", function () {
-      loading.classList.add("acd-done");
-      try {
-        /* Aynı köken: Esc ile kapat; masaüstünde yazma alanına odaklan. */
-        var fd = frame.contentWindow.document;
-        fd.addEventListener("keydown", onKey);
-        var head = fd.querySelector(".chat-head");
-        if (head) {
-          head.addEventListener("touchstart", function (e) { if (e.touches.length === 1 && !(e.target.closest && e.target.closest("button"))) dragStart(e.touches[0].screenY); }, { passive: true });
-          head.addEventListener("touchmove", function (e) { if (drag && e.touches.length === 1) dragMove(e.touches[0].screenY); }, { passive: true });
-          head.addEventListener("touchend", function () { dragEnd(); }, { passive: true });
-          head.addEventListener("touchcancel", function () { dragEnd(true); }, { passive: true });
-        }
-        if (isOpen && window.matchMedia && window.matchMedia("(pointer: fine)").matches) {
-          var input = frame.contentWindow.document.getElementById("ar-text");
-          if (input) input.focus({ preventScroll: true });
-        }
-      } catch (e) { /* farklı köken: yok say */ }
-    });
-    frame.src = SRC; /* yalnızca ilk açılışta yüklenir (tembel yükleme) */
-    panel.appendChild(frame);
-  }
-
   function open() {
     if (!root) return;
     hideTeaser();
     if (isOpen) return;
     isOpen = true;
     lastFocus = document.activeElement;
-    ensureFrame();
     panel.hidden = false;
     root.classList.add("acd-open");
     launcher.setAttribute("aria-expanded", "true");
     launcher.setAttribute("aria-label", T.close);
     panel.style.transform = "";
     sheetSync();
-    if (loading.classList.contains("acd-done")) {
-      try {
-        if (window.matchMedia && window.matchMedia("(pointer: fine)").matches) {
-          var input = frame.contentWindow.document.getElementById("ar-text");
-          if (input) { input.focus({ preventScroll: true }); return; }
-        }
-      } catch (e) { /* yok say */ }
+    if (window.matchMedia && window.matchMedia("(pointer: fine)").matches) {
+      try { input.focus({ preventScroll: true }); return; } catch (e) { /* */ }
     }
     closeBtn.focus({ preventScroll: true });
   }
 
-  /* Pencere kapanınca sohbetteki sesli dinleme/konuşma da durur (aynı köken iframe). */
-  function notifyFrameClosed() {
-    try { if (frame && frame.contentWindow) frame.contentWindow.dispatchEvent(new Event("arled-chat-close")); } catch (e) { /* yok say */ }
-  }
-
   function close() {
     if (!isOpen) return;
-    notifyFrameClosed();
     isOpen = false;
     dismiss();
     panel.hidden = true;
@@ -518,14 +598,12 @@
     try { back.focus({ preventScroll: true }); } catch (e) { launcher.focus(); }
   }
 
-  /* Next.js istemci içi sayfa geçişleri: izin verilmeyen sayfada balonu gizle (tam yükleme gerekmez). */
   function onRoute() {
     if (!root) return;
     var ok = allowedHere();
     if (ok === !root.hidden) return;
     if (!ok) {
       if (isOpen) {
-        notifyFrameClosed();
         isOpen = false;
         panel.hidden = true;
         root.classList.remove("acd-open");
