@@ -174,6 +174,7 @@ function badClaim(reply) {
 // Server-side length cap: at most 4 sentences. Lists are left alone; if a closing question is cut off it is kept.
 // Controller advice is a team guideline, not a guarantee: "öneriyoruz" -> "genellikle öneriyoruz".
 function softenControl(t) {
+  t = t.replace(/(?<![\p{L}])genellikle(\s+[^!?…\n]{0,70}?\s)genellikle(?![\p{L}])/giu, "$1genellikle"); // never say it twice
   return t.replace(/[^.!?…\n]*(?:huidu|nova\s?star)[^.!?…\n]*/gi, (x) =>
     /genellikle|usually|generally/i.test(x) ? x : x.replace(/(?<![\p{L}])öneriyoruz(?![\p{L}])/gu, "genellikle öneriyoruz").replace(/\b([Ww])e recommend\b/g, "$1e usually recommend"));
 }
@@ -245,12 +246,40 @@ function photoHint(ph) {
     (ph.pitch ? `Suggested pixel pitch range to mention as a suggestion: ${ph.pitch}${ph.scene === "indoor" ? " (indoor)" : " (outdoor)"}. ` : "") +
     `Present everything from the photo as APPROXIMATE ("yaklaşık") and say the exact size is confirmed at the site survey ("keşifte netleşir"); never state a photo-based size as certain. Do not describe people. Mention that the uploaded photo is only used to answer and is not stored if it fits naturally.`;
 }
+// Estimates computed in code (never by the model): for the customer's size, per standard-module model.
+function estimateValues(area, dims) {
+  if (area == null) return [];
+  const lay = dims ? moduleLayout(dims.w, dims.h) : null;
+  return PANELS.filter((p) => /320\s*×\s*160/.test(p.moduleMm || "320 × 160")).map((p) => {
+    const mat = lay ? lay.total * p.usd : area * (1e6 / (320 * 160)) * p.usd;
+    const base = mat + area * EXTRAS.laborPerM2;
+    return { p, base: Math.round(base), total: Math.round(base + EXTRAS.controlCard + EXTRAS.driverSoftware) };
+  });
+}
+// USD amounts of 1,000 or more in a reply (5.513 / 5,513 / 5513) that are NOT one of the code-computed estimates (±1 %).
+function wrongAmounts(reply, area, dims) {
+  if (area == null) return [];
+  const ok = estimateValues(area, dims).flatMap((e) => [e.base, e.total]).concat([EXTRAS.controlCard, EXTRAS.driverSoftware, EXTRAS.controlCard + EXTRAS.driverSoftware]);
+  const bad = [];
+  for (const m of reply.matchAll(/(\d{1,3}(?:[.,]\d{3})+|\d{4,})(?:[.,]\d{1,2})?\s*(?:USD|\$|dolar)/gi)) {
+    const v = Number(m[1].replace(/[.,]/g, ""));
+    if (!ok.some((x) => Math.abs(x - v) <= Math.max(2, x * 0.01))) bad.push(v);
+  }
+  return bad;
+}
+function estimateLines(area, dims) {
+  if (area == null) return "";
+  const big = area >= 20;
+  const lines = estimateValues(area, dims).map(({ p, base, total }) => `- ${p.pitch} ${p.use === "ic" ? "indoor" : "outdoor"}${p.gob ? " GOB" : ""}${p.front ? " front-service" : ""}: ${big ? `modules + labour ≈ ${base} USD (control system and total only in the written quote)` : `total ≈ ${total} USD (modules + labour + control card + driver/software)`}`);
+  return ` ESTIMATES FOR THIS SIZE (${fmtArea(area)} m², computed by code, VAT and shipping excluded): use exactly the line of the model you discuss, never compute your own totals:\n${lines.join("\n")}\n`;
+}
 function turnHint(msgs, area, name, dims) {
   const lang = LANG_NAME[detectLang(msgs[msgs.length - 1].text)];
   const follow = msgs.some((m) => m.role === "assistant");
   return `\n\nTHIS TURN: The customer's latest message is in ${lang} (if it is clearly another language, use that one). Write your whole reply in that language only (never answer an English or Arabic message in Turkish).` +
     (area != null ? ` PRE-CHECKED FACT: the customer's screen area is ${fmtArea(area)} m², so by the control system rule the recommendation is ${ctrlFor(area)} (${area >= 20 ? "20 m² or above → NovaStar" : "below 20 m² → Huidu"}). If you mention a control system, it MUST be ${ctrlFor(area)}.` : "") +
     (dims ? (() => { const L = moduleLayout(dims.w, dims.h); return ` MODULE LAYOUT (computed by code, standard 320 × 160 mm modules): ${fmtArea(dims.w)} × ${fmtArea(dims.h)} m needs ${L.cols} × ${L.rows} = ${L.total} modules, actual size ${fmtArea(L.wM)} × ${fmtArea(L.hM)} m. Use these numbers, do not recompute.`; })() : "") +
+    estimateLines(area, dims) +
     (name ? ` The customer's name is ${name}; use it naturally.` : "") +
     (follow ? " This is a follow-up message: do NOT greet, do NOT introduce yourself, do NOT mention that you are an AI assistant (unless asked now), and do not reuse any sentence from your earlier replies." : "");
 }
@@ -418,7 +447,8 @@ export async function onRequest(ctx) {
   // Problem with a draft (wrong controller for the m² rule, or an unverified claim) → null if clean.
   // For screens of 20 m² and above no grand total is given (NovaStar control cost differs from the calculator's fixed card price).
   const bigTotal = (r) => area != null && area >= 20 && /(?:\d{1,3}(?:[.,]\d{3})+|\d{4,})(?:[.,]\d+)?\s*(?:USD|\$|dolar)/i.test(r) && /toplam|total|bütçe|budget/i.test(r);
-  const problem = (reply) => (ctrlViolation(reply, area) ? "control" : badClaim(reply) ? "claim" : bigTotal(reply) ? "total" : null);
+  const dimsNow = customerDims(msgs);
+  const problem = (reply) => (ctrlViolation(reply, area) ? "control" : badClaim(reply) ? "claim" : bigTotal(reply) ? "total" : wrongAmounts(reply, area, dimsNow).length ? "amount" : null);
 
   try {
     let res = await ask();
@@ -427,14 +457,16 @@ export async function onRequest(ctx) {
       console.error("melis guard retry", kind);
       res = await ask(kind === "control"
         ? ` CORRECTION: your previous draft broke the control system rule. The area is ${fmtArea(area)} m², so recommend ${ctrlFor(area)} only. Rewrite the reply.`
-        : kind === "total"
+        : kind === "amount"
+          ? ` CORRECTION: the amount you wrote is not the computed estimate. Use exactly the matching line of ESTIMATES FOR THIS SIZE (or give no amount). Rewrite the reply.`
+          : kind === "total"
           ? " CORRECTION: for a screen of 20 m² or more do NOT state a grand total. Give only the approximate module + labour amount (area × the model's per-m² rate) and say the control system and the total come in the written quote. Rewrite the reply."
           : " CORRECTION: your previous draft contained a claim that is not verified (brightness/nit, IP rating, free survey, zero latency, price range, foreign e-mail). Rewrite without it; say the team confirms details in writing.");
     }
     if (!res.reply) return fallback(lastUser, res.why);
     const kind = problem(res.reply);
     if (kind === "control") return json({ reply: controlAnswer(lang === "tr" ? "tr" : "en", area, name), guard: "control" });
-    if (kind === "claim" || kind === "total") return fallback(lastUser, "guard_" + (kind === "claim" ? badClaim(res.reply) : kind));
+    if (kind === "claim" || kind === "total" || kind === "amount") return fallback(lastUser, "guard_" + (kind === "claim" ? badClaim(res.reply) : kind));
     let out = trimSentences(ensureIntro(softenControl(res.reply), msgs, lang, name), 5);
     if (photo && photo.area != null && !/keşif|survey/i.test(out)) out += " " + PHOTO_NOTE[lang === "tr" ? "tr" : "en"];
     return json(photo ? { reply: out, photo: "analysed" } : { reply: out });
