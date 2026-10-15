@@ -82,7 +82,7 @@ Harita: https://www.google.com/maps/search/?api=1&query=41.0538876%2C28.9121358
 Çalışma: Pazartesi–Cuma 09:00–18:00 · Cumartesi 10:00–15:00
 ```
 
-Marka yazılışları: **ARLEDSCREEN** (birincil) · ARLED SCREEN · AR-LED Ekran Teknoloji Merkezi  
+Marka yazılışları: **ARLEDSCREEN** (birincil) · ARLED SCREEN. Kanonik site: https://arledscreen.com/tr/
 Ürün markası: **NXTIONSTAR** (ARLEDSCREEN’in kendi markası; TR tek satış noktası ARLEDSCREEN)
 
 Karıştırma yasağı: Almanya ARLED Solutions GmbH / ARLED Cinema · Next&NextStar (NEXTSTAR) TV · NationStar
@@ -201,7 +201,7 @@ Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + entity.json** k
 ### GBP açıklama (yapıştır)
 
 ```text
-ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Site: https://arledscreen.com/tr/.
 
 https://arledscreen.com/tr/
 ```
@@ -233,7 +233,7 @@ Anahtar kelime yazmanıza gerek yok — kendi cümleleriniz yeterli.
 ### LinkedIn şirket About (yapıştır)
 
 ```text
-ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Site: https://arledscreen.com/tr/.
 
 Web: https://arledscreen.com/tr/
 Doğrulama: https://arledscreen.com/entity.json

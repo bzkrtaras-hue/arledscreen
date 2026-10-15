@@ -365,7 +365,7 @@
         "type": "Merchant Product Feed",
         "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
         "format": "text/tab-separated-values",
-        "description": "12 priced panel SKUs: id, mpn(=id), title, brand, brand_id (#brand-nxtionstar), brand_url (brand.json AggregateOffer×12), brand_makes_offer_id (#priced-panels-aggregate), brand_has_offer_catalog (catalog.json); Org join organization_id (#organization) + entity_url (entity.json); place join local_business_id (#localbusiness); JSON-LD join IDs product_ld_id/catalog_id/offer_id/catalog_offer_id",
+        "description": "12 priced panel SKUs: id, mpn(=id), title, brand, brand_id (#brand-nxtionstar), brand_url (brand.json AggregateOffer×12), brand_makes_offer_id (#priced-panels-aggregate), brand_has_offer_catalog (catalog.json); Org join organization_id (#organization) + entity_url (entity.json); place join local_business_id (#localbusiness)",
         "pricedPanels": 12,
         "mpnEqualsSku": true,
         "priceValidUntil": "2026-12-31",
@@ -1704,7 +1704,7 @@
       "en": {
         "oneLiner": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.",
         "short": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.",
-        "medium": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. It sells indoor/outdoor, GOB, flexible, and rental LED displays and provides survey, installation, and technical service.",
+        "medium": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. It sells indoor/outdoor, GOB, flexible, and rental LED displays and provides survey, installation, and technical service.",
         "source": "https://arledscreen.com/entity.json"
       }
     },

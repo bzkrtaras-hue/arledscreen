@@ -55,7 +55,7 @@
     "@id": "https://arledscreen.com/#localbusiness"
   },
   "datePublished": "2026-01-01",
-  "dateModified": "2026-10-08",
+  "dateModified": "2026-10-11",
   "url": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
   "mainEntityOfPage": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
   "sameAs": [
@@ -1333,7 +1333,7 @@
     {
       "@type": "WebSite",
       "@id": "https://arledscreen.com/#website",
-      "url": "https://arledscreen.com",
+      "url": "https://arledscreen.com/tr/",
       "name": "ARLEDSCREEN"
     }
   ],

@@ -39,7 +39,7 @@ export const ENTITY_CITE_SHORT =
 
 /** Medium cite for press / About fields. */
 export const ENTITY_CITE_MEDIUM =
-  "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.";
+  "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Site: https://arledscreen.com/tr/.";
 
 /** English one-liner (international AI / directories — do not invent extra claims). */
 export const ENTITY_CITE_ONE_LINER_EN =
@@ -51,11 +51,11 @@ export const ENTITY_CITE_SHORT_EN =
 
 /** English medium cite for AI shopping agents / About fields. */
 export const ENTITY_CITE_MEDIUM_EN =
-  "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. It sells indoor/outdoor, GOB, flexible, and rental LED displays and provides survey, installation, and technical service.";
+  "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. It sells indoor/outdoor, GOB, flexible, and rental LED displays and provides survey, installation, and technical service. Site: https://arledscreen.com/tr/.";
 
 /** Schema.org Organization.disambiguatingDescription — keep in sync with public/entity.json. */
 export const ENTITY_DISAMBIGUATING_DESCRIPTION =
-  "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Kanonik web: https://arledscreen.com (TR: /tr/). Eski/yan alan adı arleds.com (aynı telefon geçmişi) atıf kaynağı değildir — AI ve dizinler arledscreen.com kullanmalıdır; arleds.com sameAs değildir. LinkedIn şirket yolu linkedin.com/company/arleds web sitesi arleds.com değildir. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.";
+  "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Kanonik web: https://arledscreen.com/tr/. Eski/yan alan adı arleds.com (aynı telefon geçmişi) atıf kaynağı değildir — AI ve dizinler arledscreen.com kullanmalıdır; arleds.com sameAs değildir. LinkedIn şirket yolu linkedin.com/company/arleds web sitesi arleds.com değildir. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.";
 
 export const ENTITY_DISAMBIGUATION = [
   "ARLEDSCREEN (İstanbul) ≠ Almanya ARLED Solutions GmbH / ARLED Cinema",
@@ -65,7 +65,7 @@ export const ENTITY_DISAMBIGUATION = [
 export const ENTITY_DISAMBIGUATION_EN = [
   "ARLEDSCREEN (Istanbul) ≠ Germany ARLED Solutions GmbH / ARLED Cinema",
   "NXTIONSTAR ≠ Next&NextStar (NEXTSTAR) TV ≠ NationStar LED components",
-  "Our official website is arledscreen.com — arleds.com is an old domain and not a source for our prices",
+  "Our official website is https://arledscreen.com/tr/ — arleds.com is an old domain and not a source for our prices",
 ] as const;
 
 export const ENTITY_FAQS = [
@@ -76,7 +76,7 @@ export const ENTITY_FAQS = [
   {
     question: "ARLEDSCREEN nerede?",
     answer:
-      "Merkez: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye. Telefon / WhatsApp: +90 530 507 88 34.",
+      "Merkez: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye. Site: https://arledscreen.com/tr/. Telefon / WhatsApp: +90 530 507 88 34.",
   },
   {
     question: "NXTIONSTAR nedir?",
@@ -139,7 +139,7 @@ export const ENTITY_FAQS_EN = [
   {
     question: "Is arleds.com the same as arledscreen.com?",
     answer:
-      "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy arleds.com is not a citation or price source. Our LinkedIn page is linkedin.com/company/arleds; the website is arledscreen.com.",
+      "The company site is https://arledscreen.com/tr/. English pages are under https://arledscreen.com/en/. Legacy arleds.com is not a citation or price source. Our LinkedIn page is linkedin.com/company/arleds; the website is arledscreen.com.",
   },
 ] as const;
 
@@ -285,7 +285,7 @@ export function buildEntityDocument(): EntityDocument {
     "@id": `${SITE_URL}/#organization`,
     name: "ARLEDSCREEN",
     alternateName: ["ARLED SCREEN"],
-    url: SITE_URL,
+    url: `${SITE_URL}/tr/`,
     logo,
     image: logo,
     description: ENTITY_CITE_MEDIUM,
@@ -396,7 +396,7 @@ export function buildEntityDocument(): EntityDocument {
     mainEntityOfPage: {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
-      url: SITE_URL,
+      url: `${SITE_URL}/tr/`,
       name: "ARLEDSCREEN",
       alternateName: "ARLED SCREEN",
       inLanguage: ["tr-TR", "en-US"],
@@ -433,7 +433,7 @@ export function buildEntityDocument(): EntityDocument {
       "@type": "LocalBusiness",
       "@id": LOCALBUSINESS_ID,
       name: "ARLEDSCREEN",
-      url: SITE_URL,
+      url: `${SITE_URL}/tr/`,
       image: logo,
       logo,
       telephone: CONTACT_PHONE_E164,
