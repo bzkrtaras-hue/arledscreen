@@ -1,5 +1,5 @@
 /*!
- * ARLEDSCREEN Melis — yapay zekâ asistanı (Gemini) — v2
+ * ARLEDSCREEN Melis — dijital temsilci, yapay zekâ destekli (Gemini) — v2
  * Tek dosya. /api/chat üzerinden Gemini; otomatik ses yok; XSS güvenli markdown.
  * <script src="/chat-widget.js" data-locale="tr" defer></script>
  * data-locale | data-avatar | data-delay | data-pages (bkz. önceki sürüm)
@@ -36,39 +36,41 @@
   var T = {
     tr: {
       name: "Melis",
-      role: "Yapay zekâ asistanı",
+      role: "Dijital temsilci",
       online: "Çevrimiçi",
-      teaser: "Merhaba, ben Melis — yapay zekâ asistanı. Size uygun LED ekranı birlikte bulalım mı?",
+      teaser: "Merhaba, ben Melis, ARLEDSCREEN'in dijital temsilcisi. Size uygun LED ekranı birlikte bulalım mı?",
       teaserShort: "Merhaba, ben Melis. LED ekran için yardımcı olayım mı?",
       note: "",
       open: "Melis ile sohbeti aç", close: "Sohbeti kapat", closeTeaser: "Mesajı kapat",
-      dialog: "Melis • Yapay zekâ asistanı",
-      welcome: "Merhaba! Ben Melis, ARLEDSCREEN yapay zekâ asistanıyım (insan değilim). LED ekran, fiyat ve ürünler hakkında yardımcı olurum. Kesin teklif için WhatsApp’tan ekibe bağlarım.",
+      dialog: "Melis • ARLEDSCREEN dijital temsilcisi",
+      welcome: "Merhaba, ben Melis. ARLEDSCREEN’in dijital temsilcisiyim; yapay zekâ destekliyim, insan değilim. LED ekran, fiyat ve ürünler konusunda yardımcı olurum. Kesin teklif için sizi WhatsApp’tan ekibimizle görüştürürüm. Adınızı öğrenebilir miyim?",
       placeholder: "Mesajınızı yazın…",
       send: "Gönder",
       sending: "Melis yazıyor…",
-      err: "Şu an yanıt veremiyorum. Ekibimize WhatsApp’tan veya arled@arledscreen.com adresinden ulaşabilirsiniz.",
+      err: "Şu an yanıt veremiyorum, mesajınız iletilemedi. Tekrar deneyebilir veya ekibimize WhatsApp’tan ya da arled@arledscreen.com adresinden ulaşabilirsiniz.",
+      errRate: "Kısa sürede çok fazla mesaj gönderildi. Biraz sonra tekrar deneyin veya ekibimize WhatsApp’tan yazın.",
       wa: "WhatsApp’ta yazın",
-      disclose: "Yapay zekâ asistanı • İnsan değil",
+      disclose: "Yapay zekâ destekli • İnsan değil",
       minimize: "Sohbeti küçült",
       typing: "Melis yazıyor"
     },
     en: {
       name: "Melis",
-      role: "AI assistant",
+      role: "Digital representative",
       online: "Online",
-      teaser: "Hi, I’m Melis — an AI assistant. Shall we find the right LED screen together?",
+      teaser: "Hi, I’m Melis, ARLEDSCREEN’s digital representative. Shall we find the right LED screen together?",
       teaserShort: "Hi, I’m Melis. Need help with an LED screen?",
       note: "",
       open: "Open chat with Melis", close: "Close chat", closeTeaser: "Dismiss message",
-      dialog: "Melis • AI assistant",
-      welcome: "Hi! I’m Melis, ARLEDSCREEN’s AI assistant (not a human). I can help with LED screens, prices and products. For a firm quote I’ll hand you to the team on WhatsApp.",
+      dialog: "Melis • ARLEDSCREEN digital representative",
+      welcome: "Hi, I’m Melis, ARLEDSCREEN’s digital representative. I’m AI-powered, not a human. I can help with LED screens, prices and products, and for a firm quote I’ll connect you with our team on WhatsApp. May I ask your name?",
       placeholder: "Type your message…",
       send: "Send",
       sending: "Melis is typing…",
-      err: "I can’t reply right now. Please reach our team on WhatsApp or at arled@arledscreen.com.",
+      err: "I can’t reply right now and your message was not delivered. Please try again, or reach our team on WhatsApp or at arled@arledscreen.com.",
+      errRate: "Too many messages in a short time. Please try again shortly or write to our team on WhatsApp.",
       wa: "Chat on WhatsApp",
-      disclose: "AI assistant • Not a human",
+      disclose: "AI-powered • Not a human",
       minimize: "Minimise chat",
       typing: "Melis is typing"
     }
@@ -129,6 +131,7 @@
     ".acd-bubble{max-width:88%;padding:10px 12px;border-radius:14px;font-size:14px;line-height:1.45;word-wrap:break-word;overflow-wrap:anywhere}",
     ".acd-bubble.bot{align-self:flex-start;background:#fff;color:var(--acd-ink);border:1px solid #e2e8f0;border-bottom-left-radius:4px}",
     ".acd-bubble.user{align-self:flex-end;background:var(--acd-blue);color:#fff;border-bottom-right-radius:4px}",
+    ".acd-bubble.acd-err{background:#fff7ed;border-color:#fdba74}",
     ".acd-bubble strong{font-weight:700}",
     ".acd-bubble .acd-ltr{white-space:nowrap;unicode-bidi:isolate!important;direction:ltr!important;display:inline-block}",
     ".acd-bubble a{color:inherit;text-decoration:underline;text-underline-offset:2px}",
@@ -366,6 +369,19 @@
     sendBtn.disabled = on;
     input.disabled = on;
   }
+  var MAX_HIST = 12; /* same as MAX_TURNS in functions/api/chat.js */
+  function failBubble(msg) {
+    var b = el("div", "acd-bubble bot acd-err", { dir: "auto", role: "alert" });
+    b.innerHTML = formatMarkdown(msg + " [" + T.wa + "](" + WA + ")");
+    msgsEl.appendChild(b);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+  }
+  /* Typing delay grows with the reply length (about 22 ms per character, 0.7–4.5 s), minus the time the request already took. */
+  function typingDelay(reply, elapsed) {
+    if (reduced()) return 0;
+    var want = Math.max(700, Math.min(4500, 400 + reply.length * 22));
+    return Math.max(0, want - elapsed);
+  }
   function send() {
     if (busy) return;
     var text = (input.value || "").trim().slice(0, 800);
@@ -374,29 +390,41 @@
     input.style.height = "auto";
     addBubble("user", text);
     chatHist.push({ role: "user", text: text });
-    if (chatHist.length > 12) chatHist = chatHist.slice(-12);
+    if (chatHist.length > MAX_HIST) chatHist = chatHist.slice(-MAX_HIST);
     setBusy(true);
-    var wait = el("div", "acd-wait", { "aria-label": T.sending });
+    var t0 = Date.now();
+    var wait = el("div", "acd-wait", { "aria-label": T.sending, role: "status" });
     wait.appendChild(el("span")); wait.appendChild(el("span")); wait.appendChild(el("span"));
     msgsEl.appendChild(wait);
     msgsEl.scrollTop = msgsEl.scrollHeight;
+    var ctl = window.AbortController ? new AbortController() : null;
+    var tmo = setTimeout(function () { if (ctl) ctl.abort(); }, 40000);
+    /* Request:  POST /api/chat  {messages:[{role:"user"|"assistant", text}]}   Response: {reply} (or {reply, fallback:true} on server-side failure) */
     fetch("/api/chat", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ messages: chatHist })
+      body: JSON.stringify({ messages: chatHist }),
+      signal: ctl ? ctl.signal : undefined
     }).then(function (r) {
-      return r.json().then(function (d) { return { ok: r.ok, d: d }; });
+      return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, status: r.status, d: d || {} }; });
     }).then(function (res) {
+      clearTimeout(tmo);
+      var reply = res.ok && typeof res.d.reply === "string" ? res.d.reply.trim() : "";
+      if (!reply) { var e = new Error(res.status === 429 ? "rate" : "empty"); throw e; }
+      if (res.d.fallback) throw new Error("fallback"); /* server could not get an AI answer: show an honest error, never a canned "answer" */
+      return new Promise(function (ok) { setTimeout(function () { ok(reply); }, typingDelay(reply, Date.now() - t0)); });
+    }).then(function (reply) {
       wait.remove();
-      var reply = res.ok && res.d && typeof res.d.reply === "string" ? res.d.reply.trim() : "";
-      if (!reply) throw new Error("empty");
       chatHist.push({ role: "assistant", text: reply });
+      if (chatHist.length > MAX_HIST) chatHist = chatHist.slice(-MAX_HIST);
       addBubble("bot", reply);
-    }).catch(function () {
+    }).catch(function (e) {
+      clearTimeout(tmo);
       if (wait.parentNode) wait.remove();
-      var b = addBubble("bot", T.err + " " + T.wa + ": " + WA);
-      /* also make WA link clickable */
-      b.innerHTML = formatMarkdown(T.err + " [" + T.wa + "](" + WA + ")");
+      /* the failed question is dropped from the history so the next try starts clean; the text is put back into the box */
+      if (chatHist.length && chatHist[chatHist.length - 1].role === "user") chatHist.pop();
+      if (!input.value) input.value = text;
+      failBubble(e && e.message === "rate" ? T.errRate : T.err);
     }).then(function () {
       setBusy(false);
       if (isOpen && window.matchMedia && window.matchMedia("(pointer: fine)").matches) {
