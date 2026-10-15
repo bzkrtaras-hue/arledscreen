@@ -119,7 +119,7 @@ export interface GuideTable {
   rows: string[][];
 }
 
-const Q: L4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "بعرض خاص" };
+const Q: L4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "وفق مواصفات المشروع" };
 const IO: L4 = { tr: "İç / Dış", en: "Indoor / outdoor", ru: "Помещение / улица", ar: "داخلي / خارجي" };
 const IN: L4 = { tr: "İç", en: "Indoor", ru: "Помещение", ar: "داخلي" };
 const OUT: L4 = { tr: "Dış", en: "Outdoor", ru: "Улица", ar: "خارجي" };
@@ -194,7 +194,7 @@ const ARIZA_ROWS: L4[][] = [
 
 type T4 = Record<"tr" | "en" | "ru" | "ar", string>;
 const t = (tr: string, en: string, ru: string, ar: string): T4 => ({ tr, en, ru, ar });
-const Q4: T4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "بعرض خاص" };
+const Q4: T4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "وفق مواصفات المشروع" };
 
 const SIZE_HEAD: Record<"tr" | "en" | "ru" | "ar", string[]> = {
   tr: ["En arka sıra / masa", "Örnek ekran ölçüsü", "Modül", "Önerilen P", "Modül bedeli (USD)"],

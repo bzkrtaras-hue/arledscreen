@@ -20,6 +20,7 @@ import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
 import { getSeo } from "@/content/seo";
 import { buildPageMetadata } from "@/lib/seo";
+import { AR_INDEX_ROBOTS } from "@/lib/ar-indexable";
 import { absoluteUrl } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
@@ -35,13 +36,16 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "about");
-  return buildPageMetadata({
+  const meta = buildPageMetadata({
     locale,
     path: "/about",
+    // /ar/about/ has full Arabic copy: reciprocal ar/tr/en hreflang; index only on ar (ru stays noindex).
+    hreflangLocales: ["ar", "tr", "en"],
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
   });
+  return locale === "ar" ? { ...meta, robots: AR_INDEX_ROBOTS } : meta;
 }
 
 export default async function AboutPage({ params }: PageProps) {
