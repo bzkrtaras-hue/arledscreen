@@ -289,7 +289,7 @@ export function HeroVideo({
                   setActive(i);
                   playIndex(i, !userPaused);
                 }}
-                className={`-m-[9px] box-content h-1.5 rounded-full bg-clip-content p-[9px] transition-all duration-700 ease-out ${
+                className={`-my-[19px] -mx-[9px] box-content h-1.5 min-w-[26px] rounded-full bg-clip-content px-[9px] py-[19px] transition-all duration-700 ease-out ${
                   active === i ? "w-8 bg-white" : "w-1.5 bg-white/40 hover:bg-white/70"
                 }`}
               />

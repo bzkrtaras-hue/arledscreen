@@ -106,7 +106,7 @@ export function ProductGroupGrid({
                   <Link
                     href={m.href}
                     title={m.name}
-                    className="inline-flex min-h-11 items-center rounded-xl bg-white px-3 text-[12.5px] font-semibold text-ink-soft ring-1 ring-border transition hover:bg-cyan hover:text-white hover:ring-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan sm:min-h-9"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl bg-white px-3 text-[12.5px] font-semibold text-ink-soft ring-1 ring-border transition hover:bg-cyan hover:text-white hover:ring-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
                   >
                     {m.label}
                   </Link>

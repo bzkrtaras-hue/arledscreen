@@ -58,7 +58,7 @@ export function PanelPriceTable({
                       p.frontService ? (en ? " (front service)" : " (önden servis)") : ""
                     }`;
                     return m ? (
-                      <Link href={modelPath(m)} className="text-cyan hover:underline">
+                      <Link href={modelPath(m)} className="inline-flex min-h-11 min-w-11 items-center text-cyan hover:underline">
                         {label}
                       </Link>
                     ) : (

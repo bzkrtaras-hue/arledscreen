@@ -416,7 +416,7 @@ export function ShortQuoteForm({
           />
         </div>
         <div className="sm:col-span-2">
-          <label className="flex items-start gap-3 text-sm text-ink-soft">
+          <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm text-ink-soft">
             <input
               type="checkbox"
               className="mt-1 h-5 w-5 shrink-0 accent-[#1E5BB8]"

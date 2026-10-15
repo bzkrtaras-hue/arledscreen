@@ -132,7 +132,7 @@ export function Footer({ locale }: FooterProps) {
           <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[14px] font-semibold">
             {quickLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="inline-flex min-h-11 items-center text-white/90 hover:text-[#9CC0F5]">
+                <Link href={l.href} className="inline-flex min-h-11 min-w-11 items-center text-white/90 hover:text-[#9CC0F5]">
                   {l.label}
                 </Link>
               </li>
@@ -151,7 +151,7 @@ export function Footer({ locale }: FooterProps) {
       <div className="mx-auto mt-10 grid max-w-7xl min-w-0 gap-10 border-t border-white/10 px-4 py-10 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div className="min-w-0">
           <div className="inline-flex flex-wrap items-center gap-3 rounded-2xl bg-white px-4 py-3">
-            <Link href={`/${locale}/`} className="inline-flex items-center" aria-label="ARLEDSCREEN">
+            <Link href={`/${locale}/`} className="inline-flex min-h-11 items-center" aria-label="ARLEDSCREEN">
               <Image
                 src="/brand/arledscreen-logo-header-514.webp"
                 alt="ARLEDSCREEN"
@@ -181,7 +181,7 @@ export function Footer({ locale }: FooterProps) {
             <ul className="mt-4 space-y-1 text-sm">
               {col.links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="inline-flex min-h-8 items-center text-white/85 hover:text-[#9CC0F5]">
+                  <Link href={link.href} className="inline-flex min-h-11 min-w-11 items-center text-white/85 hover:text-[#9CC0F5]">
                     {link.label}
                   </Link>
                 </li>

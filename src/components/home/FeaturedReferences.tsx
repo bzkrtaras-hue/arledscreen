@@ -128,7 +128,7 @@ export function FeaturedReferences({
           <div className="flex flex-col justify-center gap-4 p-6 sm:p-8 lg:p-10">
             <Tags c={featured} locale={locale} />
             <h3 className="font-display text-xl font-bold text-ink sm:text-2xl">
-              <Link href={caseHref(featured)} className="hover:text-cyan">
+              <Link href={caseHref(featured)} className="inline-flex min-h-11 items-center hover:text-cyan">
                 {titleOf(featured)}
               </Link>
             </h3>
@@ -149,7 +149,7 @@ export function FeaturedReferences({
             <FadeIn as="li" key={c.refId} delay={i * 0.1} className="flex flex-col gap-3 rounded-2xl p-5 glass-card">
               <Tags c={c} locale={locale} />
               <h3 className="font-display text-base font-bold text-ink">
-                <Link href={caseHref(c)} className="hover:text-cyan">
+                <Link href={caseHref(c)} className="inline-flex min-h-11 items-center hover:text-cyan">
                   {titleOf(c)}
                 </Link>
               </h3>
