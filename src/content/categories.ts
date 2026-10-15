@@ -345,7 +345,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     imageAlt: "Konser sahnesinde LED ekran ve izleyiciler",
     intro: [
       "Etkinlikte ekranın zamanında kurulması, gün boyu sorunsuz çalışması ve etkinlik bitince hızla sökülmesi gerekir. Kiralık projelerde bu süreci etkinlik takviminize göre planlıyoruz.",
-      "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir. Net teklif için etkinlik bilgilerinizi paylaşmanız yeterlidir.",
+      "İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir. Net teklif için etkinlik bilgilerinizi paylaşmanız yeterlidir.",
     ],
     highlights: [
       "Hızlı kurulan kiralama kabinleri",
@@ -369,7 +369,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Kiralık LED ekran fiyatı neye göre belirlenir?",
         answer:
-          "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir. Etkinlik tarihi, ölçü ve lokasyonu paylaştığınızda yazılı teklif hazırlıyoruz.",
+          "İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir. Etkinlik tarihi, ölçü ve lokasyonu paylaştığınızda yazılı teklif hazırlıyoruz.",
       },
       {
         question: "Kurulum ve söküm teklife dahil mi?",
