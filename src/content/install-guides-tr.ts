@@ -262,7 +262,7 @@ const HUIDU: InstallGuide = {
     {
       h2: "İçerik hazırlama ve gönderme",
       paragraphs: [
-        "HDPlayer'da bir ekranın altına program, programın içine de video, resim, yazı, belge, saat ve sayaç gibi alanlar eklenir. Program özelliklerinden oynatma süresi, belirli saatlerde oynatma ve arka plan ayarlanır. Böylece örneğin sabah kahvaltı menüsü, öğleden sonra kampanya görseli kendiliğinden döner.",
+        "HDPlayer'da bir ekranın altına program, programın içine de video, resim, yazı, belge, saat ve sayaç gibi alanlar eklenir. Program özelliklerinden oynatma süresi, belirli saatlerde oynatma ve arka plan ayarlanır. Böylece örneğin sabah kahvaltı menüsü, öğleden sonra duyuru görseli kendiliğinden döner.",
         "Hazır içerik kablo ya da Wi-Fi üzerinden doğrudan gönderilir. Aynı model kart ve aynı ölçüdeki birden çok ekrana aynı içerik toplu gönderimle tek seferde yollanabilir. Ağ bağlantısı yoksa USB bellek de kullanılır:",
       ],
       steps: [

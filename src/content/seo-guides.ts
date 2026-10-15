@@ -1,4 +1,5 @@
 import { SEO_GUIDE_I18N } from "@/content/seo-guides-i18n";
+import { ARAMA_GUIDES, ARAMA_GUIDE_SLUGS } from "@/content/seo-guides-aramalar";
 import type { Locale } from "@/lib/i18n";
 
 export const SEO_GUIDE_SLUGS = [
@@ -32,6 +33,8 @@ export const SEO_GUIDE_SLUGS = [
   "kamera-yayin-icin-led-ekran",
   "led-ekran-omru-ve-bakim",
   "tasinabilir-p1-86-led-ekran",
+  // Arama listesi 16.10.2026 (dev ekran, mobil ekran, tabela ekran, P serileri): bkz. seo-guides-aramalar.ts
+  ...ARAMA_GUIDE_SLUGS,
 ] as const;
 
 export type SeoGuideSlug = (typeof SEO_GUIDE_SLUGS)[number];
@@ -241,6 +244,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         "iç mekân ekran",
         "dış mekân ekran",
         "ARLEDSCREEN",
+        "dev ekran",
+        "tabela ekran",
+        "ayaklı ekran",
       ],
       h1: "Ekran çeşitleri nelerdir?",
       intro:
@@ -264,7 +270,12 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Dikey ve etkileşimli ekranlar: poster, totem, menuboard, kiosk",
           body:
-            "Poster LED ekran ve totem, dar alanlara sığan dikey formatlı ekranlardır; ayaklı olarak tek başına ya da yan yana birleştirilerek kullanılır. Menuboard, kafe ve restoranlarda menüyü ve kampanyaları gösteren dijital menü ekranıdır. Kiosk ise dokunmatik veya QR etkileşimli bir bilgi ve self-servis noktasıdır; dokunmatik yüzey çoğunlukla paneldir, LED yan yüzey veya arka duvar olarak eklenir. ARLEDSCREEN menuboard ve ayaklı ekranı hem LED hem LCD/TV tipi olarak sunar; LCD seçeneklerinde fiyat teklifle verilir.",
+            "Poster LED ekran ve totem, dar alanlara sığan dikey formatlı ekranlardır; ayaklı olarak tek başına ya da yan yana birleştirilerek kullanılır. Menuboard, kafe ve restoranlarda menüyü ve duyuruları gösteren dijital menü ekranıdır. Kiosk ise dokunmatik veya QR etkileşimli bir bilgi ve self-servis noktasıdır; dokunmatik yüzey çoğunlukla paneldir, LED yan yüzey veya arka duvar olarak eklenir. ARLEDSCREEN menuboard ve ayaklı ekranı hem LED hem LCD/TV tipi olarak sunar; LCD seçeneklerinde fiyat teklifle verilir.",
+        },
+        {
+          h2: "Dev ekran, tabela ekran ve tekerlekli mobil ekran",
+          body:
+            "Dev ekran, bina cephesi ve meydan gibi geniş yüzeylerde uzaktan izlenen büyük boy dış mekân LED ekrandır. Tabela ekran, işyeri cephesinde klasik tabelanın yerini alan LED ekrandır; kayan yazı tabela metin gösterir, tam renkli tabela ekran logo ve video da oynatır. Tekerlekli taşınabilir mobil ekran ise etkinlik, showroom ve çekim alanında gerektiğinde yer değiştiren ekrandır. Piksel aralığına göre sınıflandırma için P1, P2, P3 ve P4 serileri rehberimize bakın.",
         },
         {
           h2: "Hangi ekran çeşidini seçmeliyim?",
@@ -294,6 +305,12 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Poster LED ve totem dikey formatlı, çoğunlukla tek yönlü yayın yapan ekranlardır. Kiosk ise dokunmatik veya QR etkileşimi olan bir bilgi ve işlem noktasıdır.",
         },
       ],
+      links: [
+        { href: "/tr/rehber/dev-led-ekran/", label: "Dev LED ekran" },
+        { href: "/tr/rehber/tabela-ekran/", label: "Tabela ekran" },
+        { href: "/tr/rehber/tekerlekli-mobil-led-ekran/", label: "Tekerlekli mobil ekran" },
+        { href: "/tr/rehber/p-serisi-led-ekran/", label: "P1, P2, P3, P4 serileri" },
+      ],
       relatedSlugs: ["dijital-ekran", "lcd-ekran", "kiosk-ekran"],
       cta: {
         title: "Size uygun ekran çeşidini birlikte seçelim",
@@ -321,7 +338,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       ],
       h1: "Menuboard: kafe ve restoranlar için dijital menü ekranı",
       intro:
-        "Menuboard, kafe ve restoranlarda basılı menü panosunun yerini alan dijital menü ekranıdır; fiyat, ürün görseli ve kampanyalar birkaç dakika içinde güncellenir. ARLEDSCREEN menuboard'u iki seçenekle kurar: LED (kasa üstünde yatay bir iç mekân LED duvar ya da girişte dikey bir poster LED) veya LCD/TV tipi menü ekranı. Keşif, montaj ve içerik yükleme kurulumu İstanbul Gaziosmanpaşa'daki ekibimiz tarafından yapılır.",
+        "Menuboard, kafe ve restoranlarda basılı menü panosunun yerini alan dijital menü ekranıdır; fiyat, ürün görseli ve duyurular birkaç dakika içinde güncellenir. ARLEDSCREEN menuboard'u iki seçenekle kurar: LED (kasa üstünde yatay bir iç mekân LED duvar ya da girişte dikey bir poster LED) veya LCD/TV tipi menü ekranı. Keşif, montaj ve içerik yükleme kurulumu İstanbul Gaziosmanpaşa'daki ekibimiz tarafından yapılır.",
       sections: [
         {
           h2: "LED menuboard mı, LCD (TV) menuboard mı?",
@@ -336,7 +353,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Menü içeriği nasıl güncellenir?",
           body:
-            "LED menuboard'da içerik, kontrol kartı üzerinden USB, Wi‑Fi veya yerel ağ ile yüklenir. Huidu kontrol kartlarında program bilgisayarda ya da telefonda HDPlayer veya LedArt ile hazırlanıp ekrana gönderilir; zamanlanmış kampanya yayını planlanabilir. Kurulumda yazılım, ekran haritası ve uzaktan erişim ayarları birlikte teslim edilir.",
+            "LED menuboard'da içerik, kontrol kartı üzerinden USB, Wi‑Fi veya yerel ağ ile yüklenir. Huidu kontrol kartlarında program bilgisayarda ya da telefonda HDPlayer veya LedArt ile hazırlanıp ekrana gönderilir; zamanlanmış duyuru yayını planlanabilir. Kurulumda yazılım, ekran haritası ve uzaktan erişim ayarları birlikte teslim edilir.",
         },
         {
           h2: "Montaj ve yerleşim",
@@ -363,7 +380,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Menuboard nedir?",
           answer:
-            "Kafe, restoran ve fast-food noktalarında menüyü, fiyatları ve kampanyaları gösteren dijital menü ekranıdır. Basılı panonun aksine içerik yazılımla hızlıca değiştirilir.",
+            "Kafe, restoran ve fast-food noktalarında menüyü, fiyatları ve duyuruları gösteren dijital menü ekranıdır. Basılı panonun aksine içerik yazılımla hızlıca değiştirilir.",
         },
         {
           question: "Menuboard fiyatı ne kadar?",
@@ -494,7 +511,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Kiosk, totem ve menuboard farkı",
           body:
-            "Kiosk etkileşimlidir: kullanıcı ekrana dokunur veya QR kod okutur. Totem ve poster ekran çoğunlukla tek yönlü reklam ve bilgilendirme yapar. Menuboard ise kasa önünde menüyü ve kampanyaları gösterir. Karma alanlarda kiosk ile poster LED yan yana planlanabilir.",
+            "Kiosk etkileşimlidir: kullanıcı ekrana dokunur veya QR kod okutur. Totem ve poster ekran çoğunlukla tek yönlü reklam ve bilgilendirme yapar. Menuboard ise kasa önünde menüyü ve duyuruları gösterir. Karma alanlarda kiosk ile poster LED yan yana planlanabilir.",
         },
         {
           h2: "Kiosk ekran seçerken nelere bakılır?",
@@ -632,6 +649,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         "cephe LED",
         "NXTIONSTAR",
         "ARLEDSCREEN",
+        "dev LED ekran",
       ],
       h1: "Dış mekân LED ekran: cephe, totem ve billboard",
       intro:
@@ -679,6 +697,10 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "Manisa Büyükşehir Belediyesi (1344 × 128 cm, P4), Bursa (576 × 480 cm, P5, dış mekân) ve Beylikdüzü Yaşam Cafe (640 × 128 cm, dış mekân) kayıtlı projelerimiz arasındadır. Tüm liste Projelerimiz sayfasındadır.",
         },
+      ],
+      links: [
+        { href: "/tr/rehber/dev-led-ekran/", label: "Dev LED ekran: cephe ve meydan" },
+        { href: "/tr/rehber/p-serisi-led-ekran/", label: "P1, P2, P3, P4 serileri" },
       ],
       relatedSlugs: ["led-ekran", "vitrin-led-ekran", "poster-led-ekran"],
       cta: {
@@ -751,6 +773,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "Yayımlanmış iç mekân ve GOB panel fiyatları 26,98 USD (P4) ile 95,88 USD (P1.25 GOB) arasındadır; fiyatlar panel başına, 320 × 160 mm modül içindir ve KDV ile nakliye hariçtir. Toplam tutar ölçü, kontrol sistemi ve montaja göre yazılı teklifle kesinleşir.",
         },
+      ],
+      links: [
+        { href: "/tr/rehber/p-serisi-led-ekran/", label: "P1, P2, P3, P4 serileri" },
       ],
       relatedSlugs: [
         "led-ekran",
@@ -940,7 +965,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "İçerik ve YZ / CMS hattı",
           body:
-            "Vitrin içeriği sık değişir: kampanya, stok, AI ile üretilen görseller. Medya oynatıcı veya CMS / AI motoru ile alıcı uyumu teklifte yazılır.",
+            "Vitrin içeriği sık değişir: duyuru, stok, AI ile üretilen görseller. Medya oynatıcı veya CMS / AI motoru ile alıcı uyumu teklifte yazılır.",
         },
       ],
       faqs: [
@@ -997,7 +1022,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Poster LED ile duvar LED farkı",
           body:
-            "Poster / totem bağımsız ayaklı veya duvara asılı dikey bir ünitedir; video duvar ise geniş yatay yüzeydir. Dar alan, yönlendirme ve tek mesajlı kampanyada poster LED öne çıkar. Pitch, izleme mesafesine göre seçilir — yakından okunan lobi posterinde ince pitch tercih edilir.",
+            "Poster / totem bağımsız ayaklı veya duvara asılı dikey bir ünitedir; video duvar ise geniş yatay yüzeydir. Dar alan, yönlendirme ve tek mesajlı duyuruda poster LED öne çıkar. Pitch, izleme mesafesine göre seçilir — yakından okunan lobi posterinde ince pitch tercih edilir.",
         },
         {
           h2: "İç mekân totem vs dış mekân totem",
@@ -1036,6 +1061,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "LED poster, totem ve LCD ayaklı ekranlarda sabit liste fiyatı yayımlamıyoruz. Ölçüye, ekran tipine (LED veya LCD), iç veya dış mekân kullanımına, tek ya da çift yüz seçimine ve adede göre yazılı teklif hazırlıyoruz.",
         },
+      ],
+      links: [
+        { href: "/tr/rehber/tekerlekli-mobil-led-ekran/", label: "Tekerlekli taşınabilir mobil ekran" },
       ],
       relatedSlugs: [
         "menuboard-dijital-menu",
@@ -1653,7 +1681,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "İçerik: dikkat edilmesi gerekenler",
           body:
-            "Ekranda nöbetçi eczane listesi, çalışma saatleri, sağlık duyuruları ve kampanyasız bilgilendirme içerikleri gösterilebilir. İlaç tanıtımı ve eczane reklamına ilişkin mevzuat ve meslek kuralları içeriği sınırlayabilir; içeriği hazırlamadan önce bağlı olduğunuz eczacı odasının güncel kurallarını kontrol edin.",
+            "Ekranda nöbetçi eczane listesi, çalışma saatleri, sağlık duyuruları ve reklam içermeyen bilgilendirme içerikleri gösterilebilir. İlaç tanıtımı ve eczane reklamına ilişkin mevzuat ve meslek kuralları içeriği sınırlayabilir; içeriği hazırlamadan önce bağlı olduğunuz eczacı odasının güncel kurallarını kontrol edin.",
         },
         {
           h2: "Ödeme, teslim ve servis",
@@ -1682,6 +1710,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "Panel fiyatları yayımlanmıştır; örneğin 1,28 × 0,64 m'lik raf üstü P2.5 ekran 16 modüldür ve modül bedeli 16 × 32,18 = 514,88 USD'dir (yalnızca modül, KDV ve nakliye hariç). Kesin tutar keşif sonrası yazılı teklifle verilir; taksitli ödeme yapılabilir.",
         },
+      ],
+      links: [
+        { href: "/tr/rehber/tabela-ekran/", label: "Tabela ekran: kayan yazı mı, tam renkli mi?" },
       ],
       relatedSlugs: ["vitrin-led-ekran", "poster-led-ekran", "dis-mekan-led-ekran"],
       cta: {
@@ -1908,6 +1939,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       cardLabel: "Okullar için LED ekran",
       cardTeaser: "İlkokul, ortaokul, lise ve üniversite: giriş, koridor, bahçe, amfi ve spor salonu ekranları.",
     },
+    ...ARAMA_GUIDES.tr,
   },
   en: {
     "led-ekran": {
@@ -2034,7 +2066,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       title: "Types of Displays: LED, LCD, Totem, Menu Board | ARLEDSCREEN",
       description:
         "Types of displays: LCD, LED signs and full-colour LED; indoor/outdoor, GOB, flexible, transparent, poster/totem, menu board and kiosk compared.",
-      keywords: ["types of displays", "LED display types", "digital signage types", "indoor display", "outdoor display", "ARLEDSCREEN"],
+      keywords: ["types of displays", "LED display types", "digital signage types", "indoor display", "outdoor display", "ARLEDSCREEN", "giant LED display", "sign display"],
       h1: "What types of displays are there?",
       intro:
         "Displays fall into three groups: fixed-size LCD/OLED panels, scrolling-text LED signs and full-colour LED screens that play video. Full-colour LED screens vary by location and form: indoor, outdoor, GOB, fine pitch, flexible, transparent, mesh, rental and poster/totem. ARLEDSCREEN sells, installs and services these LED display types under its own brand NXTIONSTAR, and also offers LCD/TV-type menu boards and freestanding screens (price on quote).",
@@ -2050,9 +2082,14 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Indoor (P1.25, P2.5, P3.07, P4) for shops, cafés, lobbies and meeting rooms; outdoor (P2.5, P2.9, P3.07, P4, P4 front-service, P5, P8) for façades, totems and billboards. GOB (P1.25, P1.53, P1.86) protects against impact and moisture; fine pitch (P0.9, P1.25) suits very close viewing; flexible (P1.86, P2.5) wraps columns and curves; transparent LED keeps shop windows see-through; mesh LED covers glass façades.",
         },
         {
+          h2: "Giant displays, sign displays and wheeled mobile screens",
+          body:
+            "A giant display is a large-format outdoor LED screen on wide surfaces such as building façades and squares, watched from far away. A sign display replaces the classic sign on a business façade; a scrolling sign shows text, while a full-colour sign display also plays logos and video. A wheeled portable mobile screen is one that moves from place to place at events, showrooms and shoots. For a classification by pixel pitch, see our P1, P2, P3 and P4 series guide.",
+        },
+        {
           h2: "Vertical and interactive: poster, totem, menu board, kiosk",
           body:
-            "Poster LED and totems are vertical, freestanding or side-by-side units. A menu board shows menus and promotions in cafés and restaurants. A kiosk adds touch or QR interaction; the touch surface is usually a panel, with LED as a side surface or backdrop.",
+            "Poster LED and totems are vertical, freestanding or side-by-side units. A menu board shows menus and announcements in cafés and restaurants. A kiosk adds touch or QR interaction; the touch surface is usually a panel, with LED as a side surface or backdrop.",
         },
       ],
       faqs: [
@@ -2066,6 +2103,12 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "GOB (Glue on Board) adds a protective clear layer over the LED module surface for extra impact and moisture protection.",
         },
+      ],
+      links: [
+        { href: "/en/rehber/dev-led-ekran/", label: "Giant LED display" },
+        { href: "/en/rehber/tabela-ekran/", label: "Sign display" },
+        { href: "/en/rehber/tekerlekli-mobil-led-ekran/", label: "Wheeled mobile screen" },
+        { href: "/en/rehber/p-serisi-led-ekran/", label: "P1–P4 series" },
       ],
       relatedSlugs: ["dijital-ekran", "ic-mekan-led-ekran", "dis-mekan-led-ekran"],
       cta: {
@@ -2083,7 +2126,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       keywords: ["menu board", "digital menu board", "LED menu board", "café menu display", "ARLEDSCREEN"],
       h1: "Digital menu boards for cafés and restaurants",
       intro:
-        "A menu board replaces the printed menu panel with a digital screen; prices, product photos and promotions update within minutes. ARLEDSCREEN offers two options: LED (a horizontal indoor LED wall above the counter or a vertical poster LED at the entrance) or an LCD/TV-type menu screen. One menu board reference is the Aslantürk Ercan Et branch in Yeşilpınar (Eyüpsultan, Istanbul), shared on our Instagram (instagram.com/arledscreen). Survey, installation and content setup are handled by our Istanbul Gaziosmanpaşa team.",
+        "A menu board replaces the printed menu panel with a digital screen; prices, product photos and announcements update within minutes. ARLEDSCREEN offers two options: LED (a horizontal indoor LED wall above the counter or a vertical poster LED at the entrance) or an LCD/TV-type menu screen. One menu board reference is the Aslantürk Ercan Et branch in Yeşilpınar (Eyüpsultan, Istanbul), shared on our Instagram (instagram.com/arledscreen). Survey, installation and content setup are handled by our Istanbul Gaziosmanpaşa team.",
       sections: [
         {
           h2: "Pixel pitch for LED menu boards",
@@ -2093,7 +2136,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Updating content",
           body:
-            "Content loads via the control card over USB, Wi‑Fi or local network. With Huidu cards, programmes are prepared in HDPlayer or LedArt and scheduled campaigns can be planned.",
+            "Content loads via the control card over USB, Wi‑Fi or local network. With Huidu cards, programmes are prepared in HDPlayer or LedArt and scheduled announcements can be planned.",
         },
         {
           h2: "Menu board sizes: indoor and outdoor",
@@ -2351,6 +2394,10 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Interval depends on pollution and duty cycle. Quotes can include cleaning, PSU checks and software updates.",
         },
       ],
+      links: [
+        { href: "/en/rehber/dev-led-ekran/", label: "Giant LED display: façade and square" },
+        { href: "/en/rehber/p-serisi-led-ekran/", label: "P1–P4 series" },
+      ],
       relatedSlugs: ["led-ekran", "vitrin-led-ekran", "poster-led-ekran"],
       cta: {
         title: "Plan your outdoor LED project",
@@ -2414,6 +2461,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "Wall depth and access decide. Thin lobby walls favour front service; tech rooms behind the wall favour rear service.",
         },
+      ],
+      links: [
+        { href: "/en/rehber/p-serisi-led-ekran/", label: "P1–P4 series" },
       ],
       relatedSlugs: [
         "led-ekran",
@@ -2602,7 +2652,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Content and AI/CMS pipelines",
           body:
-            "Campaign creative changes often. Media players or CMS/AI engines are matched to receivers in the quote — the same ARLEDSCREEN AI-ready standard used elsewhere.",
+            "Display content changes often. Media players or CMS/AI engines are matched to receivers in the quote — the same ARLEDSCREEN AI-ready standard used elsewhere.",
         },
       ],
       faqs: [
@@ -2655,7 +2705,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Poster LED vs wall LED",
           body:
-            "Posters/totems are freestanding or wall-hung vertical units; video walls are wide horizontal canvases. Narrow spaces and single-message campaigns favour poster LED with pitch matched to reading distance.",
+            "Posters/totems are freestanding or wall-hung vertical units; video walls are wide horizontal canvases. Narrow spaces and single-message use favours poster LED with pitch matched to reading distance.",
         },
         {
           h2: "Indoor vs outdoor totems",
@@ -2689,6 +2739,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "Yes for open rain-exposed sites. Semi-covered areas may allow intermediate protection.",
         },
+      ],
+      links: [
+        { href: "/en/rehber/tekerlekli-mobil-led-ekran/", label: "Wheeled portable mobile screen" },
       ],
       relatedSlugs: [
         "kiosk-dijital-ekran",
@@ -3178,6 +3231,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Panel prices are published; for example a 1.28 × 0.64 m indoor P2.5 shelf-top screen uses 16 modules, a module cost of 16 × 32.18 = USD 514.88 (module only, VAT and shipping excluded). The final amount is given in a written quote after survey; installment payment is available.",
         },
       ],
+      links: [
+        { href: "/en/rehber/tabela-ekran/", label: "Sign display: scrolling or full-colour?" },
+      ],
       relatedSlugs: ["vitrin-led-ekran", "poster-led-ekran", "dis-mekan-led-ekran"],
       cta: {
         title: "Let's plan the screen for your pharmacy",
@@ -3403,6 +3459,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       cardLabel: "LED screens for schools",
       cardTeaser: "Primary, secondary, high school and university: entrance, corridor, playground, lecture theatre and sports hall screens.",
     },
+    ...ARAMA_GUIDES.en,
   },
 };
 
@@ -3433,7 +3490,7 @@ export const SEO_GUIDE_HUB = {
       "LED, LCD ve dijital ekran, ekran çeşitleri, iç/dış mekân, vitrin, ayaklı ekran, menuboard ve kiosk ekran rehberleri. ARLEDSCREEN, İstanbul.",
     h1: "LED ekran çözüm rehberi — ARLEDSCREEN",
     intro:
-      "NXTIONSTAR LED ürünleri ve ARLEDSCREEN mühendislik ekibi için konu bazlı rehberler: LED ekran, LCD ekran ve dijital ekran nedir, ekran çeşitleri, iç ve dış mekân seçimi, mimari entegrasyon, konferans salonu, vitrin, ayaklı ekran (poster/totem), menuboard ve kiosk ekran. Her sayfa keşif ve teklif odaklıdır.",
+      "NXTIONSTAR LED ürünleri ve ARLEDSCREEN mühendislik ekibi için konu bazlı rehberler: LED ekran, LCD ekran ve dijital ekran nedir, ekran çeşitleri, iç ve dış mekân seçimi, mimari entegrasyon, konferans salonu, vitrin, ayaklı ekran (poster/totem), menuboard ve kiosk ekran; ayrıca dev ekran, tabela ekran, tekerlekli taşınabilir mobil ekran ve P1–P4 serileri. Her sayfa keşif ve teklif odaklıdır.",
     eyebrow: "Rehber",
     relatedLabel: "İlgili rehberler",
     allGuidesLabel: "Tüm rehberler",
@@ -3444,7 +3501,7 @@ export const SEO_GUIDE_HUB = {
       "Guides on LED displays, outdoor / indoor, conference halls, shopfronts, posters and kiosks. NXTIONSTAR products, Istanbul engineering — ARLEDSCREEN.",
     h1: "LED display solution guides — ARLEDSCREEN",
     intro:
-      "Topic guides for NXTIONSTAR products and the ARLEDSCREEN engineering desk: pitch selection, IP65 outdoor, fine-pitch indoor, architectural integration, conference halls, shopfronts, poster/totem and kiosks. Each page is survey- and quote-oriented — not pasted catalogue copy.",
+      "Topic guides for NXTIONSTAR products and the ARLEDSCREEN engineering desk: pitch selection, IP65 outdoor, fine-pitch indoor, architectural integration, conference halls, shopfronts, poster/totem and kiosks, plus giant displays, sign displays, wheeled mobile screens and the P1–P4 series. Each page is survey- and quote-oriented — not pasted catalogue copy.",
     eyebrow: "Guides",
     relatedLabel: "Related guides",
     allGuidesLabel: "All guides",
