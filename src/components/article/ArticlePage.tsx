@@ -9,6 +9,7 @@ import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { BRAND_SUBJECT_REFS } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { ARTICLE_LINKS } from "@/content/article-links";
+import { GUIDE_AUTHOR } from "@/lib/guide-jsonld";
 
 
 export function articleMetadata(slug: (typeof ARTICLE_SLUGS)[number]): Metadata {
@@ -31,7 +32,7 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
     mainEntityOfPage: url,
     datePublished: a.lastReviewed,
     dateModified: a.lastReviewed,
-    author: { "@id": `${SITE_URL}/#organization` },
+    author: GUIDE_AUTHOR,
     publisher: { "@id": `${SITE_URL}/#organization` },
     image: absoluteUrl("/og-image.jpg"),
     isRelatedTo: BRAND_SUBJECT_REFS,
