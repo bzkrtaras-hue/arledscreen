@@ -998,3 +998,11 @@ details > summary::-webkit-details-marker {
     right: calc(84px + env(safe-area-inset-right, 0px));
   }
 }
+
+/* Site araması ikonu eklendikten sonra 1360–1535 px başlığında çakışma olmasın: menü aralığını hafifçe daralt (öğe gizlenmez). */
+@media (min-width: 1360px) and (max-width: 1535.98px) {
+  header .liquid-glass-btn--nav {
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+}

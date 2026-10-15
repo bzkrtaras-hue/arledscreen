@@ -50,7 +50,7 @@ export function TopBar({ locale }: { locale: Locale }) {
             href={quoteWhatsappHref(locale)}
             target="_blank"
             rel="noopener noreferrer"
-            className="liquid-glass-btn liquid-glass-btn--compact text-[#1a2430] hover:text-[#0F7A41]"
+            className="liquid-glass-btn liquid-glass-btn--compact min-h-11 min-w-11 justify-center text-[#1a2430] hover:text-[#0F7A41]"
             aria-label="WhatsApp"
           >
             <WhatsAppIcon className="h-3 w-3 text-[#0F7A41]" />
