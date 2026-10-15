@@ -153,10 +153,10 @@ export function Footer({ locale }: FooterProps) {
           <div className="inline-flex flex-wrap items-center gap-3 rounded-2xl bg-white px-4 py-3">
             <Link href={`/${locale}/`} className="inline-flex min-h-11 items-center" aria-label="ARLEDSCREEN">
               <Image
-                src="/brand/arledscreen-logo-header-514.webp"
+                src="/brand/arledscreen-yatay.svg"
                 alt="ARLEDSCREEN"
                 width={514}
-                height={160}
+                height={123}
                 className="h-9 w-auto max-w-[170px] object-contain"
                 unoptimized
               />

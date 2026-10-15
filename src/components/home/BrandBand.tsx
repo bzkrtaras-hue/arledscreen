@@ -39,10 +39,10 @@ export function BrandBand({ locale }: { locale: Locale }) {
               </span>
               <span className="flex h-12 items-center rounded-2xl bg-white px-3 shadow-pill sm:h-16 sm:px-5">
                 <Image
-                  src="/brand/arledscreen-logo-header-514.webp"
+                  src="/brand/arledscreen-yatay.svg"
                   alt="ARLEDSCREEN"
                   width={514}
-                  height={160}
+                  height={123}
                   className="h-8 w-auto sm:h-11"
                   unoptimized
                 />

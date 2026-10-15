@@ -149,10 +149,10 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
         >
           <Image
-            src="/brand/arledscreen-logo-header-514.webp"
+            src="/brand/arledscreen-yatay.svg"
             alt="ARLEDSCREEN"
             width={514}
-            height={160}
+            height={123}
             className="h-10 w-auto max-w-[170px] object-contain sm:h-11 sm:max-w-[200px]"
             priority
             unoptimized
@@ -458,10 +458,10 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
                 >
                   <Image
-                    src="/brand/arledscreen-logo-header-514.webp"
+                    src="/brand/arledscreen-yatay.svg"
                     alt="ARLEDSCREEN"
                     width={514}
-                    height={160}
+                    height={123}
                     className="h-10 w-auto max-w-[170px] object-contain"
                     unoptimized
                   />
