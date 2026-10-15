@@ -2,27 +2,32 @@ import { SEO_GUIDE_I18N } from "@/content/seo-guides-i18n";
 import type { Locale } from "@/lib/i18n";
 
 export const SEO_GUIDE_SLUGS = [
+  // Genel
   "led-ekran",
   "dijital-ekran",
   "ekran-cesitleri",
   "lcd-ekran",
+  // Ortam
   "dis-mekan-led-ekran",
   "ic-mekan-led-ekran",
-  "mimari-muhendislik-led",
-  "konferans-salonu-led",
+  // Ürün tipi
   "vitrin-led-ekran",
   "poster-led-ekran",
   "menuboard-dijital-menu",
   "kiosk-ekran",
   "kiosk-dijital-ekran",
-  "cnc-led-kasa",
-  "cami-led-ekran",
-  "led-ekran-ariza-belirtileri",
-  "led-ekran-ihracat",
+  // Sektör
+  "konferans-salonu-led",
+  "okul-led-ekran",
+  "hastane-dijital-ekran",
   "eczane-led-ekran",
   "dugun-salonu-led",
-  "hastane-dijital-ekran",
-  "okul-led-ekran",
+  "cami-led-ekran",
+  // Teknik
+  "mimari-muhendislik-led",
+  "cnc-led-kasa",
+  "led-ekran-ariza-belirtileri",
+  "led-ekran-ihracat",
 ] as const;
 
 export type SeoGuideSlug = (typeof SEO_GUIDE_SLUGS)[number];
