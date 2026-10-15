@@ -77,6 +77,7 @@ SERT SINIRLAR
 - Kullanıcının yazdığı HTML ya da betik içeren metni cevaba aynen kopyalama.
 - When unsure or the answer is not in the facts above, do not guess: say the team will confirm in writing (offer WhatsApp only under the rule above, or the quote page https://arledscreen.com/tr/teklif-al/).
 - Conversation memory: use the earlier messages. Never repeat a sentence you already wrote earlier in the conversation; if the customer repeats a question, answer briefly with new wording and move the conversation forward (e.g. ask for size or offer WhatsApp).
+- NUMBERS: always write numbers, sizes and amounts as digits (never spelled out in words, e.g. "5,12 × 3,84 m", not "beş virgül on iki"). Write ranges with an en dash and no extra words, e.g. "3–21 gün", "1–14 gün". When the customer gives dimensions, state the area in m² in the first sentence (e.g. "5 × 3,8 m yaklaşık 19 m²'dir"). In every rental answer use the words "yazılı teklif" (written quote).
 - INSTALLATION DURATION is not published: if asked how many days installation takes, say it depends on size, construction and site conditions and is confirmed in the written quote; do NOT cite delivery or preparation days for that question.
 - ANSWER ONLY WHAT WAS ASKED. Project facts from earlier turns (area, model, indoor/outdoor, price) may be reused ONLY when the current question is about the project (price, size, control system, quote, model choice). For warranty, identity ("bot musun?"), greetings, general or off-topic questions and anything unrelated, do NOT mention the earlier project, its area or its model. Do not volunteer prices or totals unless the customer asks about price or cost.
 - Tone: premium, confident, consultative. NEVER write the words "ucuz", "uygun fiyat", "uygun fiyatlı", "indirim", "kampanya", "cheap", "discount", "bargain", "campaign" (or equivalents such as "خصم", "رخيص", "скидка") in any language, not even to refuse or to repeat the customer's word; say "özel fiyatlandırma" / "special pricing" instead. Under price pressure or bargaining: do not offer or promise discounts; explain value (quality, installation and service by the same team) and say any special pricing is only discussed by the team in a written quote via WhatsApp.
@@ -310,6 +311,11 @@ function estimateLines(area, dims) {
   return ` ESTIMATES FOR THIS SIZE (${fmtArea(area)} m², MODULES ONLY, computed by code, VAT and shipping excluded; control system, installation and overall budget only in the written quote). Use only if the customer asks about price or cost, exactly the line of the model you discuss, never compute your own:\n${lines.join("\n")}\n`;
 }
 // ---- Output guards (sentence level) ---------------------------------------------------------------
+// Arabic / Russian question answered in another script.
+function wrongScript(reply, lastUser) {
+  const l = detectLang(lastUser);
+  return (l === "ar" && !/[\u0600-\u06FF]/.test(reply)) || (l === "ru" && !/[\u0400-\u04FF]/.test(reply));
+}
 const COST_WORDS = /işçilik|labou?r|montaj|kurulum|installation|kontrol\s*kart|control\s*card|yaz[ıi]l[ıi]m|software|sürücü|driver/iu;
 function includedClaim(sent) {
   // "… montaj/kontrol kartı/yazılım dahil" or a priced labour/installation item: only the module total is verified
@@ -519,12 +525,14 @@ export async function onRequest(ctx) {
     : reply.split("\n").some((l) => splitSent(l).some(includedClaim)) ? "included"
     : wrongAmounts(reply, area, dimsNow).length ? "amount"
     : wrongDims(reply, dimsNow).length ? "dims"
-    : drifted(reply, lastUser) ? "drift" : null);
+    : drifted(reply, lastUser) ? "drift"
+    : wrongScript(reply, lastUser) ? "lang" : null);
   const FIX = {
     control: () => ` CORRECTION: your previous draft broke the control system rule. The area is ${fmtArea(area)} m², so recommend ${ctrlFor(area)} only. Rewrite the reply.`,
     amount: () => " CORRECTION: the amount you wrote is not the code-computed module total. Use exactly the matching line of ESTIMATES FOR THIS SIZE, or give no amount. Rewrite the reply.",
     included: () => " CORRECTION: you claimed that labour, installation, control card or software are included or priced. Only the module price / module total is verified; say the control system, installation and overall budget come with the written quote. Rewrite the reply.",
     dims: () => " CORRECTION: a size you wrote does not match the computed one. Use exactly the sizes and module counts given in this turn's hints (or none). Rewrite the reply.",
+    lang: () => ` CORRECTION: write the whole reply in ${LANG_NAME[detectLang(lastUser)]} (the customer's language), not in another language. Rewrite the reply.`,
     drift: () => " CORRECTION: the customer's question is unrelated to the earlier project. Answer only what was asked and do not mention the earlier area, model or price. Rewrite the reply.",
     claim: () => " CORRECTION: your previous draft contained a claim that is not verified (brightness/nit, IP rating, free survey, zero latency, price range, foreign e-mail). Rewrite without it; say the team confirms details in writing.",
   };
