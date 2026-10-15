@@ -1,5 +1,5 @@
 /*!
- * ARLEDSCREEN Melis — sanal danışman, yapay zekâ destekli (Gemini) — v2
+ * ARLEDSCREEN Melis — satış danışmanı, yapay zekâ destekli (Gemini) — v2
  * Tek dosya. /api/chat üzerinden Gemini; otomatik ses yok; XSS güvenli markdown.
  * <script src="/chat-widget.js" data-locale="tr" defer></script>
  * data-locale | data-avatar | data-delay | data-pages (bkz. önceki sürüm)
@@ -36,14 +36,14 @@
   var T = {
     tr: {
       name: "Melis",
-      role: "Sanal danışman",
+      role: "Satış danışmanı",
       online: "Çevrimiçi",
-      teaser: "Merhaba, ben Melis, ARLEDSCREEN'in sanal danışmanı. Size uygun LED ekranı birlikte bulalım mı?",
+      teaser: "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım. Size uygun LED ekranı birlikte bulalım mı?",
       teaserShort: "Merhaba, ben Melis. LED ekran için yardımcı olayım mı?",
       note: "",
       open: "Melis ile sohbeti aç", close: "Sohbeti kapat", closeTeaser: "Mesajı kapat",
-      dialog: "Melis • ARLEDSCREEN sanal danışmanı",
-      welcome: "Merhaba, ben Melis. ARLEDSCREEN’in yapay zekâ destekli sanal danışmanıyım; insan değilim. LED ekran, fiyat ve ürünler konusunda yardımcı olurum. Kesin teklif için sizi WhatsApp’tan ekibimizle görüştürürüm. Adınızı öğrenebilir miyim?",
+      dialog: "Melis • ARLEDSCREEN satış danışmanı",
+      welcome: "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım. Yapay zekâ destekliyim, insan değilim. LED ekran, fiyat ve ürünler konusunda yardımcı olurum. Kesin teklif için sizi WhatsApp’tan ekibimizle görüştürürüm. Adınızı öğrenebilir miyim?",
       placeholder: "Mesajınızı yazın…",
       send: "Gönder",
       sending: "Melis yazıyor…",
@@ -64,14 +64,14 @@
     },
     en: {
       name: "Melis",
-      role: "Virtual consultant",
+      role: "Sales consultant",
       online: "Online",
-      teaser: "Hi, I’m Melis, ARLEDSCREEN’s AI-powered virtual consultant. Shall we find the right LED screen together?",
+      teaser: "Hi, I’m Melis, ARLEDSCREEN’s sales consultant. Shall we find the right LED screen together?",
       teaserShort: "Hi, I’m Melis. Need help with an LED screen?",
       note: "",
       open: "Open chat with Melis", close: "Close chat", closeTeaser: "Dismiss message",
-      dialog: "Melis • ARLEDSCREEN virtual consultant",
-      welcome: "Hi, I’m Melis, ARLEDSCREEN’s AI-powered virtual consultant. I’m not a human. I can help with LED screens, prices and products, and for a firm quote I’ll connect you with our team on WhatsApp. May I ask your name?",
+      dialog: "Melis • ARLEDSCREEN sales consultant",
+      welcome: "Hi, I’m Melis, ARLEDSCREEN’s sales consultant. I’m AI-supported, not a person. I can help with LED screens, prices and products, and for a firm quote I’ll connect you with our team on WhatsApp. May I ask your name?",
       placeholder: "Type your message…",
       send: "Send",
       sending: "Melis is typing…",
@@ -147,6 +147,7 @@
     ".acd-bubble{max-width:88%;padding:10px 12px;border-radius:14px;font-size:14px;line-height:1.45;word-wrap:break-word;overflow-wrap:anywhere}",
     ".acd-bubble.bot{align-self:flex-start;background:#fff;color:var(--acd-ink);border:1px solid #e2e8f0;border-bottom-left-radius:4px}",
     ".acd-bubble.user{align-self:flex-end;background:var(--acd-blue);color:#fff;border-bottom-right-radius:4px}",
+    ".acd-wa{display:inline-block;margin:-2px 0 6px 4px;padding:6px 12px;border-radius:16px;background:#25d366;color:#fff;font-size:13px;font-weight:600;text-decoration:none}",
     ".acd-bubble.acd-err{background:#fff7ed;border-color:#fdba74}",
     ".acd-bubble strong{font-weight:700}",
     ".acd-bubble .acd-ltr{white-space:nowrap;unicode-bidi:isolate!important;direction:ltr!important;display:inline-block}",
@@ -536,12 +537,14 @@
       var reply = res.ok && typeof res.d.reply === "string" ? res.d.reply.trim() : "";
       if (!reply) { var e = new Error(res.d && res.d.error === "image_rate" ? "imgrate" : res.status === 429 ? "rate" : res.status === 413 ? "imgbig" : res.status === 415 ? "imgtype" : "empty"); throw e; }
       if (res.d.fallback) throw new Error("fallback"); /* server could not get an AI answer: show an honest error, never a canned "answer" */
-      return new Promise(function (ok) { setTimeout(function () { ok(reply); }, typingDelay(reply, Date.now() - t0)); });
-    }).then(function (reply) {
+      return new Promise(function (ok) { setTimeout(function () { ok({ text: reply, wa: res.d.wa === true }); }, typingDelay(reply, Date.now() - t0)); });
+    }).then(function (r) {
+      var reply = r.text;
       wait.remove();
       chatHist.push({ role: "assistant", text: reply });
       if (chatHist.length > MAX_HIST) chatHist = chatHist.slice(-MAX_HIST);
       addBubble("bot", reply);
+      if (r.wa) { var a = el("a", "acd-wa", { href: WA, target: "_blank", rel: "noopener noreferrer" }); a.textContent = T.wa; msgsEl.appendChild(a); msgsEl.scrollTop = msgsEl.scrollHeight; }
     }).catch(function (e) {
       clearTimeout(tmo);
       if (wait.parentNode) wait.remove();
