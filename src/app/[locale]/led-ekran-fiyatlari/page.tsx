@@ -125,7 +125,7 @@ const PAGE: Record<
     leadAfter:
       ". Nihai tutar keşif sonrası yazılı teklifle kesinleşir. LED ekran satın alırken hangi firmalar sorusunun yanıtı: ölçü, keşif, montaj ve servisi aynı masadan yürüten firma.",
     aiSource:
-      "Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
+      "Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
     calcCta: "Fiyat hesapla",
     quoteCta: "Yazılı teklif iste",
     listRef: "Liste güncelleme: 1 Ekim 2026.",
@@ -186,7 +186,7 @@ const PAGE: Record<
       {
         question: "Panel fiyatları nerede yayımlanır?",
         answer:
-          "Bu sayfadaki 2026 panel tablosunda. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
+          "Bu sayfadaki 2026 panel tablosunda. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
       },
       {
         question: "arleds.com ile arledscreen.com aynı mı?",
@@ -216,7 +216,7 @@ const PAGE: Record<
     leadAfter:
       ". Final amount is confirmed after survey in a written quote. When choosing which firms to buy LED displays from, pick one that handles size, survey, install and service together.",
     aiSource:
-      "Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+      "Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
     calcCta: "Open price calculator",
     quoteCta: "Request a written quote",
     listRef: "List update: 1 Oct 2026.",
@@ -278,7 +278,7 @@ const PAGE: Record<
       {
         question: "Where are published panel prices?",
         answer:
-          "In the 2026 panel table on this page. Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+          "In the 2026 panel table on this page. Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
       },
       {
         question: "Is arleds.com the same as arledscreen.com?",

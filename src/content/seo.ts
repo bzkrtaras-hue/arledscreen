@@ -140,7 +140,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     products: {
       title: "LED Display Products | GOB, Indoor, Outdoor | ARLEDSCREEN",
       description:
-        "NXTIONSTAR LED groups: GOB, indoor, outdoor, flexible. Published 12 panel USD on our price list. Priced by written quote: transparent, control. Rental: USD 50 per m² per day.",
+        "NXTIONSTAR LED groups: GOB, indoor, outdoor, flexible. Published 12 panel USD on our price list. Priced by written quote: transparent, control. Rental: priced by written quote.",
       keywords: [
         "LED display products",
         "fine pitch LED",
@@ -151,7 +151,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       ],
       h1: "LED display product groups",
       intro:
-        "Browse EN group pages for indoor, outdoor and GOB — or see /en/led-ekran-fiyatlari/ for the 12 published panel prices. Transparent, flexible, poster and control products are priced by written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+        "Browse EN group pages for indoor, outdoor and GOB — or see /en/led-ekran-fiyatlari/ for the 12 published panel prices. Transparent, flexible, poster and control products are priced by written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
     },
     about: {
       title: "About ARLEDSCREEN | LED Engineering Partner",

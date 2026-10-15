@@ -215,6 +215,15 @@ export default async function SeoGuidePage({ params }: PageProps) {
                   </li>
                 );
               })}
+              {(locale === "tr" || locale === "en") && guide.links
+                ? guide.links.map((l) => (
+                    <li key={l.href}>
+                      <Link href={l.href} className="font-medium text-cyan hover:underline">
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))
+                : null}
               <li>
                 <Link
                   href={`/${locale}/rehber`}

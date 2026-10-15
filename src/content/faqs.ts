@@ -6,7 +6,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Where are published panel prices listed?",
       answer:
-        "The published 12 panel USD prices are on https://arledscreen.com/en/led-ekran-fiyatlari/ (TR: /tr/led-ekran-fiyatlari/) and in the price calculator. Prices are in USD per panel; VAT and shipping are excluded; there is no free shipping. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+        "The published 12 panel USD prices are on https://arledscreen.com/en/led-ekran-fiyatlari/ (TR: /tr/led-ekran-fiyatlari/) and in the price calculator. Prices are in USD per panel; VAT and shipping are excluded; there is no free shipping. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
     },
     {
       question: "Is arleds.com the same as arledscreen.com?",
@@ -76,7 +76,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Can I rent an LED screen weekly or monthly? Is there a deposit?",
       answer:
-        "Yes. Indoor and outdoor rental LED: USD 50 per m² per day. Weekly and monthly rentals are priced on the same daily per-m² rate. No deposit is required. Installation and shipping are quoted separately.",
+        "Yes. Indoor and outdoor rental LED is priced by written quote. No deposit is required. Installation and shipping are quoted separately.",
     },
   ],
   tr: [
@@ -88,7 +88,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Panel fiyatları nerede yayımlanır?",
       answer:
-        "Yayımlanmış 12 panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasında ve fiyat hesaplayıcıdadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir; ücretsiz kargo yoktur. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
+        "Yayımlanmış 12 panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasında ve fiyat hesaplayıcıdadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir; ücretsiz kargo yoktur. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
     },
     {
       question: "arleds.com ile arledscreen.com aynı mı?",
@@ -168,7 +168,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Kiralık LED ekran haftalık ve aylık kiralanabilir mi? Depozito var mı?",
       answer:
-        "Evet. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Haftalık ve aylık kiralamalar aynı günlük m² fiyatı üzerinden hesaplanır. Depozito alınmaz. Kurulum ve nakliye ayrıca tekliflendirilir.",
+        "Evet. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Depozito alınmaz. Kurulum ve nakliye ayrıca tekliflendirilir.",
     },
   ],
   ar: [
@@ -215,7 +215,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "هل يمكن استئجار شاشة LED أسبوعيًا أو شهريًا؟ هل يوجد تأمين؟",
       answer:
-        "نعم. تأجير شاشات LED الداخلية والخارجية: 50 دولارًا أمريكيًا لكل م² يوميًا. يُحسب الإيجار الأسبوعي والشهري بالسعر اليومي نفسه لكل م². لا يُطلب أي تأمين. يُسعَّر التركيب والشحن بشكل منفصل.",
+        "نعم. يُحدَّد سعر تأجير شاشات LED الداخلية والخارجية بعرض سعر مكتوب. لا يُطلب أي تأمين. يُسعَّر التركيب والشحن بشكل منفصل.",
     },
   ],
   ru: [
@@ -262,7 +262,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Можно ли арендовать LED-экран на неделю или месяц? Нужен ли депозит?",
       answer:
-        "Да. Аренда LED-экрана для помещений и улицы: 50 USD за м² в день. Недельная и месячная аренда считается по той же дневной ставке за м². Депозит не требуется. Монтаж и доставка рассчитываются отдельно.",
+        "Да. Аренда LED-экрана для помещений и улицы — цена по письменному предложению. Депозит не требуется. Монтаж и доставка рассчитываются отдельно.",
     },
   ],
 };
