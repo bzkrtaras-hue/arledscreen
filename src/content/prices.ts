@@ -376,7 +376,7 @@ export function panelShippingDetails() {
 export function panelOffer(
   url: string,
   usd: number,
-  opts?: { sku?: string; offerId?: string; productId?: string },
+  opts?: { sku?: string; offerId?: string; productId?: string; locale?: "tr" | "en" },
 ) {
   const sku = opts?.sku;
   const offerId = opts?.offerId ?? (sku ? `${url}#offer` : undefined);
@@ -418,7 +418,9 @@ export function panelOffer(
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
     description:
-      "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+      opts?.locale === "en"
+        ? "Price per panel (module) in USD; excl. VAT and shipping. No free shipping. Return terms are set in the written quote and contract (MerchantReturnNotPermitted)."
+        : "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
     priceSpecification: {
       "@type": "UnitPriceSpecification",
       price: usd.toFixed(2),
@@ -654,6 +656,7 @@ export function panelProductsJsonLd(
     // sku → Offer @id + sameAs catalog/ai-shopping offer @ids (unique when hub has no PDP url).
     offers: panelOffer(u, p.usd, {
       sku: p.id,
+      locale,
       ...(hasPdp
         ? {}
         : { offerId: `${pageUrl}#offer-${p.id}`, productId: `${pageUrl}#${p.id}` }),
@@ -687,7 +690,9 @@ export function panelProductsJsonLd(
         // Join hub band → Organization AggregateOffer (entity-first agents).
         sameAs: [`${SITE_URL}/#priced-panels-aggregate`],
         description:
-          "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. İade: yazılı teklif/sözleşme (MerchantReturnNotPermitted).",
+          en
+          ? "Per-panel (module) USD price range; excl. VAT and shipping. No free shipping. Returns: written quote/contract (MerchantReturnNotPermitted)."
+          : "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. İade: yazılı teklif/sözleşme (MerchantReturnNotPermitted).",
         seller: org,
         availableAtOrFrom: localBusinessRef(),
         priceSpecification: {
