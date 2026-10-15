@@ -23,6 +23,8 @@ export const GUIDE_AUTHOR = {
  */
 export function guideDates(slug: string, hasVisibleReview: boolean, fallbackModified: string = GUIDE_I18N_MODIFIED) {
   const datePublished = GUIDE_PUBLISHED[slug];
-  const dateModified = hasVisibleReview ? GEO_REVIEWED : fallbackModified;
+  const base = hasVisibleReview ? GEO_REVIEWED : fallbackModified;
+  // A guide first published after the last review date must not claim to be modified before it was published.
+  const dateModified = datePublished && datePublished > base ? datePublished : base;
   return { datePublished, dateModified };
 }

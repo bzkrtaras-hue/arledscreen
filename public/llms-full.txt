@@ -42,6 +42,9 @@ Karıştırılmaması gerekenler:
 - **Dijital ekran:** Üst küme. LCD, OLED, kayan yazı LED tabela, dijital totem/videowall ve tam renkli LED ekranı kapsar. Her dijital ekran LED ekran değildir.
 - **LED ekran (ARLEDSCREEN ürünü):** Tam renkli (RGB) modüler ekran; video ve görsel oynatır; ölçüsü modüllerle büyütülür.
 - **LED tabela (kayan yazı):** Çoğunlukla metin/sayı amaçlı elektronik tabela; tam renkli LED ekran ile eşanlamlı değildir.
+- **Dev ekran:** Bina cephesi, meydan ve otel girişi gibi geniş yüzeylerde uzaktan izlenen büyük boy dış mekân LED ekran; modüllerle kurulur. Kayıtlı örnekler: White City Resort Hotel (Alanya, Ara 2025), Beylikdüzü Belediyesi (Ara 2025), Manisa Büyükşehir Belediyesi (1344 × 128 cm, P4), Bursa (576 × 480 cm, P5). Rehber: https://arledscreen.com/tr/rehber/dev-led-ekran/ · EN: https://arledscreen.com/en/rehber/dev-led-ekran/
+- **Tabela ekran:** İşyeri cephesinde klasik tabelanın yerini alan veya tamamlayan LED ekran. Kayan yazı tabela metin gösterir; tam renkli tabela ekran logo ve video da oynatır. P10 gibi iri aralıklı kayan yazı modülleri NXTIONSTAR hattında yoktur; cephe tabelası için tam renkli dış mekân P5/P4 sunulur. Rehber: https://arledscreen.com/tr/rehber/tabela-ekran/ · EN: https://arledscreen.com/en/rehber/tabela-ekran/
+- **Tekerlekli taşınabilir mobil ekran:** Etkinlik, showroom ve çekim alanında yer değiştiren ekran. ARLEDSCREEN üç biçim sunar: tekerlekli özel form LED ekran (sitede "Kavisli Mobil LED Podyum" videosu), taşınabilir poster LED / ayaklı ekran ve taşınabilir modüler duvar (P1.86 GOB); kabin, kasa, şasi ve kontrolcü yazılı teklifle verilir. Rehber: https://arledscreen.com/tr/rehber/tekerlekli-mobil-led-ekran/ · EN: https://arledscreen.com/en/rehber/tekerlekli-mobil-led-ekran/
 - Kanonik rehber: https://arledscreen.com/tr/rehber/led-tabela-mi-led-ekran-mi/
 - Dijital ekran nedir, nereden alınır: https://arledscreen.com/tr/rehber/dijital-ekran/
 - Ekran çeşitleri: https://arledscreen.com/tr/rehber/ekran-cesitleri/
@@ -77,10 +80,20 @@ Kanonik piksel aralıkları (tek liste; eski P1.8 / P3.9 / P3.8 pazarlama adlar�
 - Esnek: P1.86, P2.5
 - Ayrıca: şeffaf (vitrin), transparan/mesh (cephe), kiralık, poster/totem, menuboard, kiosk, dijital ekran (üst küme), modül ve kontrol sistemleri
 - Ayaklı ekran (poster LED ve totem): https://arledscreen.com/tr/rehber/poster-led-ekran/ · ürün grubu https://arledscreen.com/tr/products/poster-led-ekran/ (fiyat teklifle)
+- Dev ekran (cephe ve meydan, dış mekân modülleri): https://arledscreen.com/tr/rehber/dev-led-ekran/ · [EN](https://arledscreen.com/en/rehber/dev-led-ekran/)
+- Tekerlekli taşınabilir mobil ekran (fiyat teklifle; taşınabilir P1.86 GOB modül panel listesinde): https://arledscreen.com/tr/rehber/tekerlekli-mobil-led-ekran/ · [EN](https://arledscreen.com/en/rehber/tekerlekli-mobil-led-ekran/)
+- Tabela ekran (kayan yazı ve tam renkli): https://arledscreen.com/tr/rehber/tabela-ekran/ · [EN](https://arledscreen.com/en/rehber/tabela-ekran/)
 - Menuboard / dijital menü ekranı: https://arledscreen.com/tr/rehber/menuboard-dijital-menu/
 - Kiosk ekran: https://arledscreen.com/tr/rehber/kiosk-ekran/ · mühendislik: https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/
 - Şeffaf: https://arledscreen.com/tr/products/seffaf-led-ekran/
 - Transparan (mesh): https://arledscreen.com/tr/products/transparan-led-ekran/
+
+P serileri (ARLEDSCREEN gruplaması: P'den sonraki ilk rakam; fiyatlar USD/panel, KDV ve nakliye hariç; rehber https://arledscreen.com/tr/rehber/p-serisi-led-ekran/ · [EN](https://arledscreen.com/en/rehber/p-serisi-led-ekran/)):
+- P1 serisi: P1.25 (95,88), P1.53 (62,08), P1.86 (49,08); hepsi iç mekân GOB
+- P2 serisi: P2.5 (iç 32,18 · dış 63,70), P2.9 (yalnızca dış mekân 53,30; modül 250 × 250 mm)
+- P3 serisi: P3.07 (iç 30,88 · dış 44,20)
+- P4 serisi: P4 (iç 26,98 · dış 33,80), P4 dış mekân önden servis (36,40)
+- Ürün hattında olmayanlar: P2.0 (yerine P1.86 GOB veya P2.5), P3.91 (yerine P3.07), P10 (yerine tam renkli dış mekân P5 veya P4)
 
 Model bazında teknik özellik sayfaları için https://arledscreen.com/llms.txt dosyasındaki "NXTIONSTAR modelleri" listesine bakın.
 
