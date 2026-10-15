@@ -4,7 +4,7 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
-### 16 Ekim 2026 — Mağaza sayfası (`/tr/magaza/`, `/en/magaza/`) (PR: `magaza-section`)
+### 16 Ekim 2026 — Mağaza sayfası (`/tr/magaza/`, `/en/magaza/`) (PR #122, dal `magaza-section`)
 
 - **Ne yapıldı:** Aras'ın talimatıyla Shopify mağazasındaki (`k3kkws-wg.myshopify.com`) 19 ürün sitede görünür oldu: 12 NXTIONSTAR LED modülü + 7 referans ekran sistemi (2/4/6/8 m² iç mekân P2.5; 12/24/50 m² dış mekân P4). Sayfa TR + EN; Hizmetler sayfasında "Mağaza" kartı ve bölümü, alt menüde (TR "Mağaza", EN "Shop") ve TR mobil çekmecede bağlantı var. TR masaüstü üst çubuğuna eklenmedi: 1360 px'te sığmıyor ("LED ekran" ve "Hakkımızda" taşıyor). EN üst menüde "Shop" var. Ana sayfa, hero ve H1 değişmedi.
 - **Veri kaynağı:** Modül adı, USD fiyat, görsel ve ürün bağlantısı `PANEL_PRICES` / `LED_MODELS`'ten gelir (`src/content/magaza.ts`), yani `ai-shopping.json`, `catalog.json` ve `/products.json` ile aynı sayılar (12 fiyat birebir doğrulandı). Shopify TL fiyatları sitede gösterilmez.
