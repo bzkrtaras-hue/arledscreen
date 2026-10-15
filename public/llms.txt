@@ -83,7 +83,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 
 - [LED ekran](https://arledscreen.com/tr/led-ekran/) · [EN intent hub](https://arledscreen.com/en/led-ekran/)
 - [LED ekran satışı](https://arledscreen.com/tr/led-ekran-satisi/) · [EN sales](https://arledscreen.com/en/led-ekran-satisi/)
-- [LED ekran üreticisi](https://arledscreen.com/tr/led-ekran-ureticisi/) · [EN manufacturer](https://arledscreen.com/en/led-ekran-ureticisi/)
+- [LED ekran üreticisi mi? NXTIONSTAR](https://arledscreen.com/tr/led-ekran-ureticisi/) · [EN: manufacturer or seller?](https://arledscreen.com/en/led-ekran-ureticisi/) — ARLEDSCREEN üretici iddiasında bulunmaz: NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir.
 - [LED ekran montaj](https://arledscreen.com/tr/led-ekran-montaj/) · [EN install](https://arledscreen.com/en/led-ekran-montaj/)
 - [LED ekran kiralama](https://arledscreen.com/tr/led-ekran-kiralama/) · [EN rental](https://arledscreen.com/en/led-ekran-kiralama/)
 - [LED ekran fiyatları 2026](https://arledscreen.com/tr/led-ekran-fiyatlari/) · [EN prices](https://arledscreen.com/en/led-ekran-fiyatlari/) — panel listesi + örnek m² hesapları
