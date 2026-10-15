@@ -2185,7 +2185,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
     },
     "konferans-salonu-led": {
       slug: "konferans-salonu-led",
-      title: "Conference Hall LED Screen: Size, Pixel Pitch and Price | ARLEDSCREEN",
+      title: "Conference Hall LED Screen: Pitch, Price | ARLEDSCREEN",
       description:
         "LED screens for conference halls and auditoriums: screen size by hall depth, pixel pitch by the front row, example size and module cost table, AV connections. NXTIONSTAR — ARLEDSCREEN, Istanbul.",
       keywords: ["conference hall LED screen", "auditorium LED screen", "school conference hall", "meeting room LED wall", "LED video wall", "NXTIONSTAR", "ARLEDSCREEN"],
@@ -2460,7 +2460,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
     },
     "cami-led-ekran": {
       slug: "cami-led-ekran",
-      title: "LED Screens for Mosques and Places of Worship: Size, Price, Prayer Times | ARLEDSCREEN",
+      title: "Mosque LED Screens: Size, Price, Prayer Times | ARLEDSCREEN",
       description:
         "LED screens for mosques, churches and other places of worship: size and pixel pitch by congregation distance, prayer-time and sermon display, published panel prices. ARLEDSCREEN, Istanbul.",
       keywords: ["mosque LED screen", "LED screen for mosque", "prayer time display", "church LED screen", "place of worship LED screen", "NXTIONSTAR"],
@@ -2599,7 +2599,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
     },
     "led-ekran-ihracat": {
       slug: "led-ekran-ihracat",
-      title: "LED Screens Shipped Abroad: Europe, Middle East, Balkans | ARLEDSCREEN",
+      title: "LED Screen Export: Europe, Middle East | ARLEDSCREEN",
       description:
         "ARLEDSCREEN ships NXTIONSTAR LED screens to all of Europe, the Middle East and the Balkans. CE-certified products, USD panel prices, payment in TL, USD, EUR and other currencies.",
       keywords: ["LED screen export", "LED screen from Turkey", "LED screen supplier Europe", "LED screen Middle East", "LED screen Balkans", "CE certified LED screen", "NXTIONSTAR"],
@@ -2666,7 +2666,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
     },
     "eczane-led-ekran": {
       slug: "eczane-led-ekran",
-      title: "Pharmacy LED Screens: Window, Façade and Shelf-Top Displays | ARLEDSCREEN",
+      title: "Pharmacy LED Screens: Window and Façade | ARLEDSCREEN",
       description:
         "LED screens for pharmacies: window, façade, shelf-top and freestanding options; pixel pitch by viewing distance and published panel prices. Note on content rules. ARLEDSCREEN, Istanbul.",
       keywords: ["pharmacy LED screen", "pharmacy digital display", "pharmacy window screen", "pharmacy sign LED", "on-duty pharmacy screen", "NXTIONSTAR"],
@@ -2733,7 +2733,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
     },
     "dugun-salonu-led": {
       slug: "dugun-salonu-led",
-      title: "Wedding Hall LED Screen: Size, Price, Buy or Rent | ARLEDSCREEN",
+      title: "Wedding Hall LED Screen: Size, Price, Rent | ARLEDSCREEN",
       description:
         "LED screens for wedding and event halls: stage screen size by hall depth, P3.07 / P4 choice, example module cost and comparison with USD 50 per m² per day rental. ARLEDSCREEN, Istanbul.",
       keywords: ["wedding hall LED screen", "wedding stage LED wall", "event hall LED screen", "wedding LED screen price", "rent LED screen wedding", "NXTIONSTAR"],
@@ -2805,7 +2805,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
     },
     "hastane-dijital-ekran": {
       slug: "hastane-dijital-ekran",
-      title: "Hospital Digital Screens: Queue Systems, Wayfinding, Waiting Rooms | ARLEDSCREEN",
+      title: "Hospital Digital Screens: Queue, Wayfinding | ARLEDSCREEN",
       description:
         "Digital screens inside hospitals: waiting-room and queue screens, clinic door screens, wayfinding totems, entrance and façade LED. LED or LCD, chosen by viewing distance. ARLEDSCREEN, Istanbul.",
       keywords: ["hospital digital signage", "hospital LED screen", "queue management display", "waiting room screen", "hospital wayfinding screen", "clinic display"],
@@ -2877,7 +2877,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
     },
     "okul-led-ekran": {
       slug: "okul-led-ekran",
-      title: "LED Screens for Schools: Primary, Secondary and University | ARLEDSCREEN",
+      title: "LED Screens for Schools and Universities | ARLEDSCREEN",
       description:
         "School LED screens: entrance, corridor and playground screens for primary and secondary schools; lecture theatres, conference halls, campus and sports halls for high schools and universities. Pitch by distance and panel prices. ARLEDSCREEN.",
       keywords: ["school LED screen", "school digital signage", "primary school LED screen", "university LED screen", "campus LED screen", "playground LED screen", "lecture theatre LED screen"],
