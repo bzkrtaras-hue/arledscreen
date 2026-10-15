@@ -264,6 +264,17 @@ export function Footer({ locale }: FooterProps) {
           >
             {tr ? "Gizlilik" : ar ? "الخصوصية" : "Privacy"}
           </Link>
+          {!ar ? (
+            <>
+              {" · "}
+              <Link
+                href={tr ? "/tr/iade-politikasi/" : "/en/iade-politikasi/"}
+                className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline"
+              >
+                {tr ? "İade ve teslimat" : "Returns & delivery"}
+              </Link>
+            </>
+          ) : null}
         </p>
       </div>
     </footer>
