@@ -2280,7 +2280,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Steel or aluminium cabinet?",
           answer:
-            "Steel is cheaper but heavier and is fine for fixed installations. Aluminium and die-cast cabinets are lighter, rust-resistant and more precise; they suit fine pitch, rental and weight-sensitive façades.",
+            "Steel is more economical but heavier and is fine for fixed installations. Aluminium and die-cast cabinets are lighter, rust-resistant and more precise; they suit fine pitch, rental and weight-sensitive façades.",
         },
         {
           question: "How much does an LED cabinet cost?",

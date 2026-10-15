@@ -13,7 +13,8 @@ export function generateMetadata(): Metadata {
   return {
     ...buildPageMetadata({
       locale: "en" as Locale,
-      hreflangLocales: ["en"],
+      // No hreflang: there is no /tr/search/ (the TR search page is /tr/ara/), so an x-default to /tr/search/ was a 404.
+      hreflangLocales: [],
       path: "/search/",
       title: "Search the site | ARLEDSCREEN",
       description: "Search ARLEDSCREEN products, guides, projects and price pages by keyword.",
