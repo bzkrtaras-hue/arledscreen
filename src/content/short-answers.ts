@@ -32,8 +32,8 @@ const pitches = (ps: PanelPrice[]) => {
   return `P${s[0]} – P${s[s.length - 1]}`;
 };
 
-export function reviewedLabel(l: L): string {
-  const d = new Date(GEO_REVIEWED + "T12:00:00Z");
+export function reviewedLabel(l: L, iso: string = GEO_REVIEWED): string {
+  const d = new Date(iso + "T12:00:00Z");
   return l === "en"
     ? `Last updated: ${d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}`
     : `Son güncelleme: ${d.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}`;

@@ -121,6 +121,12 @@ export function OrganizationJsonLd() {
           "LED ekran montajı",
           "LED ekran teknik servisi",
           "LED ekran fiyatları",
+          "Ekran çeşitleri",
+          "Dev LED ekran",
+          "Ayaklı dijital ekran",
+          "Tekerlekli taşınabilir mobil LED ekran",
+          "Tabela ekran (LED tabela)",
+          "P1, P2, P3 ve P4 serisi LED ekran",
         ],
         knowsLanguage: ["tr-TR", "en-US"],
         contactPoint: [
