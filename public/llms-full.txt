@@ -18,7 +18,7 @@
 - Ürün markası: NXTIONSTAR. NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir. Satış, kurulum ve servis süreçleri ARLEDSCREEN üzerinden yürütülür. Uydurma «küresel standart» sloganı yok.
 - Kurucu: Aras Bozkurt (https://arledscreen.com/tr/about/aras-bozkurt/ · EN https://arledscreen.com/en/about/aras-bozkurt/ · https://www.linkedin.com/in/bozkurtaras)
 - Çalışma saatleri: Pazartesi–Cuma 09:00–18:00, Cumartesi 10:00–15:00
-- Merkez: Merkez Mahallesi, Tuna Sokak No:15-17, Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye
+- Merkez: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye
 - Telefon ve WhatsApp: +90 530 507 88 34 · `@arledscreen` (https://wa.me/905305078834 — WhatsApp @username deep-link yok)
 - E-posta: arled@arledscreen.com
 - Web sitesi: https://arledscreen.com
@@ -242,5 +242,5 @@ NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satı
 
 ## 9. İletişim
 
-ARLEDSCREEN — Merkez Mahallesi, Tuna Sokak No:15-17, Kat 1, 34245 Gaziosmanpaşa / İstanbul
+ARLEDSCREEN — Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul
 Telefon / WhatsApp: +90 530 507 88 34 · E-posta: arled@arledscreen.com · Teklif: https://arledscreen.com/tr/quote/
