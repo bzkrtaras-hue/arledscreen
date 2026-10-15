@@ -196,12 +196,16 @@ export default async function ModelPage({ params }: PageProps) {
   // (same as catalog / ai-shopping / merchant TSV). Honest mpn=sku; no GTIN invent.
   const displaySku = `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`;
   const catalogSku = price?.id ?? m.priceId ?? displaySku;
-  // GSC Merchant listings require offers.price (or priceSpecification.price).
-  // Quote-only models (P8, esnek, kontrol) have no published USD — omit Offer
-  // entirely. An Offer without price marks the item invalid in Search Console.
+  // GSC Merchant listings require offers.price (or priceSpecification.price), and Product
+  // snippets require offers, review or aggregateRating.
+  // Quote-only models (P8, esnek, kontrol) have no published USD. An Offer without a price
+  // (or a made-up price) is not acceptable, and a typed Product without offers/review/
+  // aggregateRating is a critical Search Console error. These pages are datasheet pages, so
+  // they are typed schema.org/ProductModel (a Product subtype that Google does not read as
+  // a Product snippet / merchant item). Name, sku, brand and specs stay in the markup.
   const productLd = {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": price ? "Product" : "ProductModel",
     "@id": `${url}#product`,
     name: m.name,
     sku: catalogSku,
