@@ -14,6 +14,9 @@ import { SEO_GUIDE_I18N } from "@/content/seo-guides-i18n";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { BRAND_SUBJECT_REFS } from "@/content/prices";
 import { OptImage } from "@/components/ui/opt-image";
+import { ShortAnswer } from "@/components/geo/ShortAnswer";
+import { ExportFacts } from "@/components/geo/ExportFacts";
+import { GEO_REVIEWED, shortAnswer } from "@/content/short-answers";
 import { getGuideImage, getGuideTable } from "@/content/seo-guide-media";
 import {
   SEO_GUIDE_SLUGS,
@@ -89,8 +92,9 @@ export default async function SeoGuidePage({ params }: PageProps) {
           pageUrl={pageUrl}
           name={guide.h1}
           description={guide.description}
-          cssSelectors={["#guide-h1", "#guide-lead"]}
+          cssSelectors={slug === "led-ekran-ihracat" ? ["#guide-h1", "#kisa-cevap", "#guide-lead"] : ["#guide-h1", "#guide-lead"]}
           mainEntity={{ "@id": `${pageUrl}#article` }}
+          {...(slug === "led-ekran-ihracat" ? { dateModified: GEO_REVIEWED } : {})}
         />
       ) : null}
 
@@ -130,6 +134,12 @@ export default async function SeoGuidePage({ params }: PageProps) {
         className="min-w-0 prose-seo"
       >
         <div className="space-y-8">
+          {slug === "led-ekran-ihracat" && (locale === "tr" || locale === "en") ? (
+            <>
+              <ShortAnswer text={shortAnswer("led-ekran-ihracat", locale)} locale={locale} className="" />
+              <ExportFacts locale={locale} />
+            </>
+          ) : null}
           {image ? (
             <div className="relative aspect-[16/10] max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">
               <OptImage
