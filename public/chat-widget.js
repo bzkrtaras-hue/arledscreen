@@ -49,6 +49,14 @@
       sending: "Melis yazıyor…",
       err: "Şu an yanıt veremiyorum, mesajınız iletilemedi. Tekrar deneyebilir veya ekibimize WhatsApp’tan ya da arled@arledscreen.com adresinden ulaşabilirsiniz.",
       errRate: "Kısa sürede çok fazla mesaj gönderildi. Biraz sonra tekrar deneyin veya ekibimize WhatsApp’tan yazın.",
+      attach: "Fotoğraf ekle",
+      imgNote: "Yüklediğiniz görsel yalnızca cevap için kullanılır ve saklanmaz.",
+      imgMsg: "Fotoğraf gönderdim.",
+      imgBig: "Görsel 10 MB’dan büyük. Daha küçük bir JPG veya PNG seçin.",
+      imgType: "Yalnızca JPG veya PNG görsel yükleyebilirsiniz.",
+      imgFail: "Görsel işlenemedi. Başka bir JPG veya PNG deneyin.",
+      imgRate: "Bugün için görsel yükleme sınırına ulaşıldı. Ölçüleri yazabilir veya ekibimize WhatsApp’tan fotoğraf gönderebilirsiniz.",
+      imgRemove: "Görseli kaldır",
       wa: "WhatsApp’ta yazın",
       disclose: "Yapay zekâ destekli • İnsan değil",
       minimize: "Sohbeti küçült",
@@ -69,6 +77,14 @@
       sending: "Melis is typing…",
       err: "I can’t reply right now and your message was not delivered. Please try again, or reach our team on WhatsApp or at arled@arledscreen.com.",
       errRate: "Too many messages in a short time. Please try again shortly or write to our team on WhatsApp.",
+      attach: "Add a photo",
+      imgNote: "The photo you upload is used only to answer and is not stored.",
+      imgMsg: "I sent a photo.",
+      imgBig: "The image is larger than 10 MB. Please choose a smaller JPG or PNG.",
+      imgType: "Only JPG or PNG images can be uploaded.",
+      imgFail: "The image could not be processed. Please try another JPG or PNG.",
+      imgRate: "The daily photo limit has been reached. You can type the dimensions or send the photo to our team on WhatsApp.",
+      imgRemove: "Remove photo",
       wa: "Chat on WhatsApp",
       disclose: "AI-powered • Not a human",
       minimize: "Minimise chat",
@@ -148,6 +164,14 @@
     ".acd-input:focus{outline:none;border-color:var(--acd-blue);box-shadow:0 0 0 3px rgba(30,91,184,.18)}",
     ".acd-send{flex:none;height:42px;padding:0 14px;border-radius:12px;background:var(--acd-navy);color:#fff;font-weight:600;font-size:13px}",
     ".acd-send:disabled{opacity:.5;cursor:not-allowed}",
+    ".acd-attach{flex:none;width:42px;height:42px;display:grid;place-items:center;border-radius:12px;border:1px solid #cbd5e1;background:#fff;color:var(--acd-navy)}",
+    ".acd-attach:hover{background:#f1f5f9}.acd-attach:disabled{opacity:.5;cursor:not-allowed}",
+    ".acd-chip{display:flex;align-items:center;gap:8px;margin:0 0 8px;padding:6px 8px;border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc;font-size:12px;color:#334155}",
+    ".acd-chip img{width:44px;height:44px;border-radius:8px;object-fit:cover;flex:none}",
+    ".acd-chip span{flex:1;min-width:0}",
+    ".acd-chip button{flex:none;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;color:#64748b}",
+    ".acd-chip button:hover{background:#e2e8f0}",
+    ".acd-bubble img.acd-photo{display:block;max-width:100%;max-height:180px;border-radius:10px;margin-bottom:6px}",
     ".acd-wa{display:flex;justify-content:center;margin-top:6px}",
     ".acd-wa a{font-size:12px;color:#15803d;text-decoration:none;font-weight:600}",
     ".acd-wa a:hover{text-decoration:underline}",
@@ -225,6 +249,8 @@
   var root, launcher, badge, teaser, teaserMsg, panel, closeBtn, grab, handle, head, msgsEl, form, input, sendBtn, lastFocus = null;
   var isOpen = false, teaserTimer = 0, autoTimer = 0, drag = null, lastTap = 0, spaceWait = null, busy = false;
   var chatHist = []; /* {role,text} for /api/chat */
+  var pendingImg = null; /* {b64, url, mime} downscaled photo waiting to be sent (client memory only) */
+  var attachBtn, fileInput, chipEl;
 
   function build() {
     var style = el("style", "", { id: "acd-style" });
@@ -292,6 +318,12 @@
     input = el("textarea", "acd-input", { dir: "auto", rows: "1", maxlength: "800", placeholder: T.placeholder, "aria-label": T.placeholder });
     sendBtn = el("button", "acd-send", { type: "submit" });
     sendBtn.textContent = T.send;
+    attachBtn = el("button", "acd-attach", { type: "button", "aria-label": T.attach, title: T.attach });
+    attachBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.4 11.1 12.2 20.3a5.5 5.5 0 0 1-7.8-7.8l9.2-9.2a3.7 3.7 0 0 1 5.2 5.2l-9.2 9.2a1.8 1.8 0 0 1-2.6-2.6l8.5-8.5"/></svg>';
+    fileInput = el("input", "", { type: "file", accept: "image/jpeg,image/png", hidden: "", "aria-hidden": "true", tabindex: "-1" });
+    chipEl = el("div", "acd-chip");
+    chipEl.hidden = true;
+    form.appendChild(attachBtn);
     form.appendChild(input);
     form.appendChild(sendBtn);
     var waRow = el("div", "acd-wa");
@@ -300,7 +332,9 @@
     waRow.appendChild(waA);
     var disc = el("div", "acd-disclose");
     disc.textContent = T.disclose;
+    foot.appendChild(chipEl);
     foot.appendChild(form);
+    foot.appendChild(fileInput);
     foot.appendChild(waRow);
     foot.appendChild(disc);
 
@@ -334,6 +368,12 @@
       if (t && !root.hidden) { e.preventDefault(); open(); }
     });
     form.addEventListener("submit", function (e) { e.preventDefault(); send(); });
+    attachBtn.addEventListener("click", function () { if (!busy) fileInput.click(); });
+    fileInput.addEventListener("change", function () {
+      var f = fileInput.files && fileInput.files[0];
+      fileInput.value = "";
+      if (f) pickImage(f);
+    });
     input.addEventListener("keydown", function (e) {
       if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
     });
@@ -368,7 +408,84 @@
     busy = on;
     sendBtn.disabled = on;
     input.disabled = on;
+    if (attachBtn) attachBtn.disabled = on;
   }
+  /* ---- Photo upload: type/size check, client-side downscale (long edge <= 2560 px, JPEG <= ~3 MB), nothing is stored ---- */
+  var IMG_RAW_MAX = 10 * 1024 * 1024, IMG_OUT_MAX = 3000000, IMG_EDGE = 2560;
+  function clearPending() {
+    pendingImg = null;
+    chipEl.hidden = true;
+    chipEl.textContent = "";
+  }
+  function showChip() {
+    chipEl.textContent = "";
+    var im = el("img", "", { alt: "", src: pendingImg.url });
+    var tx = el("span", ""); tx.textContent = T.imgNote;
+    var rm = el("button", "", { type: "button", "aria-label": T.imgRemove, title: T.imgRemove });
+    rm.innerHTML = SVG_X_SM;
+    rm.addEventListener("click", function () { clearPending(); });
+    chipEl.appendChild(im); chipEl.appendChild(tx); chipEl.appendChild(rm);
+    chipEl.hidden = false;
+  }
+  function loadBitmap(file) {
+    if (window.createImageBitmap) {
+      return createImageBitmap(file, { imageOrientation: "from-image" }).catch(function () { return createImageBitmap(file); });
+    }
+    return new Promise(function (ok, no) {
+      var fr = new FileReader();
+      fr.onload = function () { var i = new Image(); i.onload = function () { ok(i); }; i.onerror = function () { no(new Error("img")); }; i.src = String(fr.result); };
+      fr.onerror = function () { no(new Error("img")); };
+      fr.readAsDataURL(file);
+    });
+  }
+  function downscale(file) {
+    return loadBitmap(file).then(function (bmp) {
+      var w0 = bmp.width, h0 = bmp.height;
+      if (!w0 || !h0) throw new Error("img");
+      var k = Math.min(1, IMG_EDGE / Math.max(w0, h0));
+      var th = document.createElement("canvas"), tk = Math.min(1, 160 / Math.max(w0, h0));
+      th.width = Math.max(1, Math.round(w0 * tk)); th.height = Math.max(1, Math.round(h0 * tk));
+      var tg = th.getContext("2d"); tg.fillStyle = "#fff"; tg.fillRect(0, 0, th.width, th.height); tg.drawImage(bmp, 0, 0, th.width, th.height);
+      var thumb = th.toDataURL("image/jpeg", 0.7); /* small preview as data: URL (CSP img-src allows data:, not blob:) */
+      var tries = [[1, 0.92], [1, 0.85], [1, 0.78], [0.85, 0.82], [0.7, 0.8], [0.55, 0.78]];
+      function enc(i) {
+        var t = tries[i], c = document.createElement("canvas");
+        c.width = Math.max(1, Math.round(w0 * k * t[0])); c.height = Math.max(1, Math.round(h0 * k * t[0]));
+        var g = c.getContext("2d");
+        g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); /* PNG transparency → white; re-encoding also drops EXIF/GPS */
+        g.drawImage(bmp, 0, 0, c.width, c.height);
+        return new Promise(function (ok, no) {
+          c.toBlob(function (b) { b ? ok(b) : no(new Error("img")); }, "image/jpeg", t[1]);
+        }).then(function (b) {
+          if (b.size <= IMG_OUT_MAX || i === tries.length - 1) { if (bmp.close) bmp.close(); return { blob: b, thumb: thumb }; }
+          return enc(i + 1);
+        });
+      }
+      return enc(0);
+    });
+  }
+  function toB64(blob) {
+    return new Promise(function (ok, no) {
+      var r = new FileReader();
+      r.onload = function () { ok(String(r.result).split(",")[1] || ""); };
+      r.onerror = function () { no(new Error("img")); };
+      r.readAsDataURL(blob);
+    });
+  }
+  function pickImage(f) {
+    if (f.type !== "image/jpeg" && f.type !== "image/png") { failBubble(T.imgType); return; }
+    if (f.size > IMG_RAW_MAX) { failBubble(T.imgBig); return; }
+    attachBtn.disabled = true;
+    downscale(f).then(function (res) {
+      if (res.blob.size > IMG_OUT_MAX * 1.4) throw new Error("img");
+      return toB64(res.blob).then(function (b64) {
+        clearPending();
+        pendingImg = { b64: b64, url: res.thumb, mime: "image/jpeg" };
+        showChip();
+      });
+    }).catch(function () { failBubble(T.imgFail); }).then(function () { attachBtn.disabled = false; });
+  }
+
   var MAX_HIST = 12; /* same as MAX_TURNS in functions/api/chat.js */
   function failBubble(msg) {
     var b = el("div", "acd-bubble bot acd-err", { dir: "auto", role: "alert" });
@@ -385,10 +502,17 @@
   function send() {
     if (busy) return;
     var text = (input.value || "").trim().slice(0, 800);
-    if (!text) return;
+    var photo = pendingImg;
+    if (!text && !photo) return;
+    if (!text) text = T.imgMsg;
     input.value = "";
     input.style.height = "auto";
-    addBubble("user", text);
+    var ub = addBubble("user", text);
+    if (photo) {
+      var ph = el("img", "acd-photo", { alt: "", src: photo.url });
+      ub.insertBefore(ph, ub.firstChild);
+      clearPending(); /* thumbnail stays in the bubble; the photo is held only in this page's memory */
+    }
     chatHist.push({ role: "user", text: text });
     if (chatHist.length > MAX_HIST) chatHist = chatHist.slice(-MAX_HIST);
     setBusy(true);
@@ -398,19 +522,19 @@
     msgsEl.appendChild(wait);
     msgsEl.scrollTop = msgsEl.scrollHeight;
     var ctl = window.AbortController ? new AbortController() : null;
-    var tmo = setTimeout(function () { if (ctl) ctl.abort(); }, 40000);
-    /* Request:  POST /api/chat  {messages:[{role:"user"|"assistant", text}]}   Response: {reply} (or {reply, fallback:true} on server-side failure) */
+    var tmo = setTimeout(function () { if (ctl) ctl.abort(); }, photo ? 70000 : 40000);
+    /* Request:  POST /api/chat  {messages:[{role:"user"|"assistant", text}], image?:{mime,data}}   Response: {reply} (or {reply, fallback:true} on server-side failure) */
     fetch("/api/chat", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ messages: chatHist }),
+      body: JSON.stringify(photo ? { messages: chatHist, image: { mime: photo.mime, data: photo.b64 } } : { messages: chatHist }),
       signal: ctl ? ctl.signal : undefined
     }).then(function (r) {
       return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, status: r.status, d: d || {} }; });
     }).then(function (res) {
       clearTimeout(tmo);
       var reply = res.ok && typeof res.d.reply === "string" ? res.d.reply.trim() : "";
-      if (!reply) { var e = new Error(res.status === 429 ? "rate" : "empty"); throw e; }
+      if (!reply) { var e = new Error(res.d && res.d.error === "image_rate" ? "imgrate" : res.status === 429 ? "rate" : res.status === 413 ? "imgbig" : res.status === 415 ? "imgtype" : "empty"); throw e; }
       if (res.d.fallback) throw new Error("fallback"); /* server could not get an AI answer: show an honest error, never a canned "answer" */
       return new Promise(function (ok) { setTimeout(function () { ok(reply); }, typingDelay(reply, Date.now() - t0)); });
     }).then(function (reply) {
@@ -423,8 +547,10 @@
       if (wait.parentNode) wait.remove();
       /* the failed question is dropped from the history so the next try starts clean; the text is put back into the box */
       if (chatHist.length && chatHist[chatHist.length - 1].role === "user") chatHist.pop();
-      if (!input.value) input.value = text;
-      failBubble(e && e.message === "rate" ? T.errRate : T.err);
+      if (!input.value && text !== T.imgMsg) input.value = text;
+      if (photo && !pendingImg && !(e && e.message === "imgrate")) { pendingImg = photo; showChip(); } /* keep the photo for a retry */
+      var m = e && e.message;
+      failBubble(m === "rate" ? T.errRate : m === "imgrate" ? T.imgRate : m === "imgbig" ? T.imgBig : m === "imgtype" ? T.imgType : T.err);
     }).then(function () {
       setBusy(false);
       if (isOpen && window.matchMedia && window.matchMedia("(pointer: fine)").matches) {
