@@ -930,6 +930,12 @@ img{max-width:100%;height:auto}
 
         const _calcLang = window.ARLED_CALC_LANG || "tr";
         const _isEn = _calcLang === "en";
+        /* Kontrol kartı: 10 m² dahil 1 kart; 10 m² üzerinde her başlayan 10 m² için ek kart. */
+        const CONTROL_CARD_STEP_M2 = 10;
+        const CONTROL_CARD_UNIT_USD = 500;
+        function controlCardCount(areaM2) {
+            return Math.max(1, Math.ceil(areaM2 / CONTROL_CARD_STEP_M2));
+        }
         const indoorModules = [
             { name: _isEn ? "P1.25 (INDOOR • GOB)" : "P1.25 (İÇ MEKÂN • GOB)", price: 95.88 },
             { name: _isEn ? "P1.53 (INDOOR • GOB)" : "P1.53 (İÇ MEKÂN • GOB)", price: 62.08 },
@@ -1034,7 +1040,8 @@ img{max-width:100%;height:auto}
             const areaM2 = (widthInput / 100) * (heightInput / 100);
             const materialCost = totalModules * price;
             const laborCost = areaM2 * 100;
-            const controlCardCost = 500;
+            const controlCards = controlCardCount(areaM2);
+            const controlCardCost = controlCards * CONTROL_CARD_UNIT_USD;
             const driverSoftwareCost = 500;
             const totalCost = materialCost + laborCost + controlCardCost + driverSoftwareCost;
 
@@ -1045,7 +1052,7 @@ img{max-width:100%;height:auto}
             document.getElementById("result-grid").textContent = _isEn ? `${modulesX} wide × ${modulesY} high modules` : `${modulesX} yatay × ${modulesY} dikey modül`;
             document.getElementById("result-material").innerHTML = formatCurrency(materialCost);
             document.getElementById("result-labor").innerHTML = formatCurrency(laborCost);
-            document.getElementById("result-control-card").innerHTML = formatCurrency(controlCardCost);
+            document.getElementById("result-control-card").innerHTML = formatCurrency(controlCardCost) + (controlCards > 1 ? " <small>(" + controlCards + (_isEn ? " cards" : " adet") + ")</small>" : "");
             document.getElementById("result-driver").innerHTML = formatCurrency(driverSoftwareCost);
             document.getElementById("result-total").innerHTML = formatCurrency(totalCost);
 
@@ -1056,7 +1063,7 @@ img{max-width:100%;height:auto}
             lastCalculation = {
                 moduleName, width: widthInput, height: heightInput, actualWidth: actualWidthCm,
                 actualHeight: actualHeightCm, totalModules, modulesX, modulesY, materialCost,
-                laborCost, controlCardCost, driverSoftwareCost, totalCost
+                laborCost, controlCards, controlCardCost, driverSoftwareCost, totalCost
             };
         }
 
@@ -1078,12 +1085,12 @@ Qty: ${calculation.totalModules} (${calculation.modulesX} × ${calculation.modul
 
 Material: ${calculation.materialCost.toFixed(2)} USD
 Workshop labor: ${calculation.laborCost.toFixed(2)} USD
-Control card: ${calculation.controlCardCost.toFixed(2)} USD
+Control card: ${calculation.controlCardCost.toFixed(2)} USD${calculation.controlCards > 1 ? " (" + calculation.controlCards + " cards)" : ""}
 Driver + software: ${calculation.driverSoftwareCost.toFixed(2)} USD
 Total: ${calculation.totalCost.toFixed(2)} USD
 
 Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed from project details.`
-              : `ARLEDSCREEN LED Ekran Tahmini\n\nÖlçü: ${calculation.width} × ${calculation.height} cm\nUyarlanmış ölçü: ${calculation.actualWidth} × ${calculation.actualHeight} cm\n\nModül: ${calculation.moduleName}\nAdet: ${calculation.totalModules} (${calculation.modulesX} × ${calculation.modulesY})\n\nMalzeme: ${calculation.materialCost.toFixed(2)} USD\nAtölye işçiliği: ${calculation.laborCost.toFixed(2)} USD\nKontrol kartı: ${calculation.controlCardCost.toFixed(2)} USD\nSürücü + yazılım: ${calculation.driverSoftwareCost.toFixed(2)} USD\nToplam: ${calculation.totalCost.toFixed(2)} USD\n\nNot: Atölye işçiliği dahildir. Nakliye ve KDV dahil değildir. Nihai tutar proje detaylarına göre teyit edilir.`;
+              : `ARLEDSCREEN LED Ekran Tahmini\n\nÖlçü: ${calculation.width} × ${calculation.height} cm\nUyarlanmış ölçü: ${calculation.actualWidth} × ${calculation.actualHeight} cm\n\nModül: ${calculation.moduleName}\nAdet: ${calculation.totalModules} (${calculation.modulesX} × ${calculation.modulesY})\n\nMalzeme: ${calculation.materialCost.toFixed(2)} USD\nAtölye işçiliği: ${calculation.laborCost.toFixed(2)} USD\nKontrol kartı: ${calculation.controlCardCost.toFixed(2)} USD${calculation.controlCards > 1 ? " (" + calculation.controlCards + " adet)" : ""}\nSürücü + yazılım: ${calculation.driverSoftwareCost.toFixed(2)} USD\nToplam: ${calculation.totalCost.toFixed(2)} USD\n\nNot: Atölye işçiliği dahildir. Nakliye ve KDV dahil değildir. Nihai tutar proje detaylarına göre teyit edilir.`;
             window.open(`https://wa.me/905305078834?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
         }
 
@@ -1601,10 +1608,11 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     const areaM2 = (widthCm / 100) * (heightCm / 100);
     const materialCost = totalModules * panelUsd;
     const laborCost = areaM2 * 100;
-    const controlCardCost = 500;
+    const controlCards = controlCardCount(areaM2);
+    const controlCardCost = controlCards * CONTROL_CARD_UNIT_USD;
     const driverSoftwareCost = 500;
     const totalCost = materialCost + laborCost + controlCardCost + driverSoftwareCost;
-    return { modulesX, modulesY, totalModules, actualWidthCm, actualHeightCm, areaM2, materialCost, laborCost, controlCardCost, driverSoftwareCost, totalCost };
+    return { modulesX, modulesY, totalModules, actualWidthCm, actualHeightCm, areaM2, materialCost, laborCost, controlCards, controlCardCost, driverSoftwareCost, totalCost };
   }
 
   function money(value) {
@@ -1891,7 +1899,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     setRow("ar-mods", q.totalModules + " adet (" + q.modulesX + " × " + q.modulesY + ")");
     setRow("ar-mat", money(q.materialCost));
     setRow("ar-labor", money(q.laborCost));
-    setRow("ar-cardcost", money(q.controlCardCost));
+    setRow("ar-cardcost", money(q.controlCardCost) + (q.controlCards > 1 ? " (" + q.controlCards + " adet)" : ""));
     setRow("ar-driver", money(q.driverSoftwareCost));
     setRow("ar-total", money(q.totalCost));
   }
@@ -2098,7 +2106,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
         if (lastOffer && lastOffer.price) return { text: lastOffer.name + " panel başı " + money(lastOffer.price) + ". Bir panel 32 × 16 cm.", wa: false };
         return { text: "Panel fiyatı modele göre değişir.", wa: false };
       case "breakdown":
-        if (q) return { text: "Malzeme " + money(q.materialCost) + ", işçilik " + money(q.laborCost) + ". Kontrol kartı " + money(q.controlCardCost) + ", sürücü ve yazılım " + money(q.driverSoftwareCost) + ".", wa: false };
+        if (q) return { text: "Malzeme " + money(q.materialCost) + ", işçilik " + money(q.laborCost) + ". Kontrol kartı " + money(q.controlCardCost) + (q.controlCards > 1 ? " (" + q.controlCards + " adet; 10 m² üzerinde her başlayan 10 m² için ek kart)" : "") + ", sürücü ve yazılım " + money(q.driverSoftwareCost) + ".", wa: false };
         return { text: "Fiyata panel, işçilik, kontrol kartı ve yazılım dahil. KDV ve nakliye hariç.", wa: false };
       case "price":
         if (q) return { text: addr(lastOffer.name + " için tahmini fiyat " + money(q.totalCost) + ".") + " KDV ve nakliye hariç.", wa: false };

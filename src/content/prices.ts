@@ -144,9 +144,17 @@ export function nxtionstarBrandRef() {
 }
 
 export const PANELS_PER_M2 = 1 / (0.32 * 0.16);
+/** Kontrol kartı kademesi: 10 m² dahil 1 kart; 10 m² üzerinde her başlayan 10 m² için ek kart. */
+export const CONTROL_CARD_STEP_M2 = 10;
+export const CONTROL_CARD_UNIT_USD = 500;
+export function controlCardCount(areaM2: number): number {
+  return Math.max(1, Math.ceil(areaM2 / CONTROL_CARD_STEP_M2));
+}
+
 export const CALC_EXTRAS = {
   laborPerM2: 100,
-  controlCard: 500,
+  /** Kart başına USD (birim fiyat); toplam kart adedi controlCardCount(m²) ile hesaplanır. */
+  controlCard: CONTROL_CARD_UNIT_USD,
   driverSoftware: 500,
 };
 
