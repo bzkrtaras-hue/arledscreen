@@ -25,6 +25,9 @@ import { absoluteUrl } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
+import { ShortAnswer } from "@/components/geo/ShortAnswer";
+import { GEO_REVIEWED } from "@/content/short-answers";
+import { pageShortAnswer } from "@/content/guide-short-answers";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -70,8 +73,9 @@ export default async function AboutPage({ params }: PageProps) {
             pageUrl={absoluteUrl(`/${locale}/about/`)}
             name={seo.h1 ?? about.title}
             description={seo.description}
-            cssSelectors={["#about-h1", "#about-cite"]}
+            cssSelectors={["#about-h1", "#kisa-cevap", "#about-cite"]}
             mainEntity={{ "@id": "https://arledscreen.com/#organization" }}
+            dateModified={GEO_REVIEWED}
           />
         </>
       ) : null}
@@ -95,6 +99,9 @@ export default async function AboutPage({ params }: PageProps) {
             />
           </div>
           <div className="min-w-0 space-y-5">
+            {locale === "tr" || locale === "en" ? (
+              <ShortAnswer text={pageShortAnswer("about", locale)} locale={locale} className="" />
+            ) : null}
             <p className="text-base font-semibold leading-snug text-cyan sm:text-lg">
               {dict.brand.slogan}
             </p>

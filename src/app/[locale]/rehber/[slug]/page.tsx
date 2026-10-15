@@ -17,6 +17,8 @@ import { OptImage } from "@/components/ui/opt-image";
 import { ShortAnswer } from "@/components/geo/ShortAnswer";
 import { ExportFacts } from "@/components/geo/ExportFacts";
 import { GEO_REVIEWED, shortAnswer } from "@/content/short-answers";
+import { guideShortAnswer } from "@/content/guide-short-answers";
+import { GUIDE_AUTHOR, guideDates } from "@/lib/guide-jsonld";
 import { getGuideImage, getGuideTable } from "@/content/seo-guide-media";
 import {
   SEO_GUIDE_SLUGS,
@@ -70,6 +72,14 @@ export default async function SeoGuidePage({ params }: PageProps) {
   const pageUrl = absoluteUrl(`/${locale}/rehber/${guide.slug}/`);
   const image = getGuideImage(guide.slug, locale);
   const table = getGuideTable(guide.slug, locale);
+  // GEO paket 3: visible "Kısa cevap" + "Son güncelleme" on TR/EN guides (export guide keeps its paket 2 block).
+  const shortText =
+    locale === "tr" || locale === "en"
+      ? slug === "led-ekran-ihracat"
+        ? shortAnswer("led-ekran-ihracat", locale)
+        : guideShortAnswer(slug, locale)
+      : null;
+  const dates = guideDates(slug, Boolean(shortText));
 
   return (
     <>
@@ -92,9 +102,9 @@ export default async function SeoGuidePage({ params }: PageProps) {
           pageUrl={pageUrl}
           name={guide.h1}
           description={guide.description}
-          cssSelectors={slug === "led-ekran-ihracat" ? ["#guide-h1", "#kisa-cevap", "#guide-lead"] : ["#guide-h1", "#guide-lead"]}
+          cssSelectors={shortText ? ["#guide-h1", "#kisa-cevap", "#guide-lead"] : ["#guide-h1", "#guide-lead"]}
           mainEntity={{ "@id": `${pageUrl}#article` }}
-          {...(slug === "led-ekran-ihracat" ? { dateModified: GEO_REVIEWED } : {})}
+          {...(shortText ? { dateModified: GEO_REVIEWED } : {})}
         />
       ) : null}
 
@@ -115,7 +125,9 @@ export default async function SeoGuidePage({ params }: PageProps) {
                   : locale === "ru"
                     ? "ru"
                     : "en-US",
-            author: { "@id": `${SITE_URL}/#organization` },
+            datePublished: dates.datePublished,
+            dateModified: dates.dateModified,
+            author: GUIDE_AUTHOR,
             publisher: { "@id": `${SITE_URL}/#organization` },
             mainEntityOfPage: pageUrl,
             keywords: guide.keywords.join(", "),
@@ -134,11 +146,15 @@ export default async function SeoGuidePage({ params }: PageProps) {
         className="min-w-0 prose-seo"
       >
         <div className="space-y-8">
-          {slug === "led-ekran-ihracat" && (locale === "tr" || locale === "en") ? (
-            <>
-              <ShortAnswer text={shortAnswer("led-ekran-ihracat", locale)} locale={locale} className="" />
-              <ExportFacts locale={locale} />
-            </>
+          {shortText && (locale === "tr" || locale === "en") ? (
+            slug === "led-ekran-ihracat" ? (
+              <>
+                <ShortAnswer text={shortText} locale={locale} className="" />
+                <ExportFacts locale={locale} />
+              </>
+            ) : (
+              <ShortAnswer text={shortText} locale={locale} className="" />
+            )
           ) : null}
           {image ? (
             <div className="relative aspect-[16/10] max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">

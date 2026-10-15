@@ -8,6 +8,11 @@ import type { CommercialGuideEn } from "@/content/commercial-guides-en";
 import { getFaqs } from "@/content/faqs";
 import { BRAND_SUBJECT_REFS } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { ShortAnswer } from "@/components/geo/ShortAnswer";
+import { GEO_REVIEWED } from "@/content/short-answers";
+import { EN_COMMERCIAL_GUIDE_SHORT_ANSWERS } from "@/content/guide-short-answers";
+import { GUIDE_AUTHOR } from "@/lib/guide-jsonld";
+import { GUIDE_EN_MODIFIED, GUIDE_EN_PUBLISHED } from "@/content/guide-dates";
 
 export function CommercialGuideEnLanding({ guide }: { guide: CommercialGuideEn }) {
   const url = absoluteUrl(`/en/rehber/${guide.slug}/`);
@@ -19,6 +24,8 @@ export function CommercialGuideEnLanding({ guide }: { guide: CommercialGuideEn }
     ...(brand && !guide.faqs.some((f) => f.question.includes("NationStar")) ? [brand] : []),
     ...(domain && !guide.faqs.some((f) => f.question.includes("arleds.com")) ? [domain] : []),
   ];
+  // GEO paket 3: visible short answer + date on the EN guides (rental guide stays out until the rental price decision).
+  const shortText = EN_COMMERCIAL_GUIDE_SHORT_ANSWERS[guide.slug] ?? null;
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
@@ -29,8 +36,9 @@ export function CommercialGuideEnLanding({ guide }: { guide: CommercialGuideEn }
     inLanguage: "en",
     url,
     mainEntityOfPage: url,
-    dateModified: "2026-10-07",
-    author: { "@id": `${SITE_URL}/#organization` },
+    datePublished: GUIDE_EN_PUBLISHED[guide.slug],
+    dateModified: shortText ? GEO_REVIEWED : GUIDE_EN_MODIFIED,
+    author: GUIDE_AUTHOR,
     publisher: { "@id": `${SITE_URL}/#organization` },
     isRelatedTo: BRAND_SUBJECT_REFS,
   };
@@ -49,8 +57,9 @@ export function CommercialGuideEnLanding({ guide }: { guide: CommercialGuideEn }
         pageUrl={url}
         name={guide.h1}
         description={guide.description}
-        cssSelectors={["#article-h1", "#article-lead"]}
+        cssSelectors={shortText ? ["#article-h1", "#kisa-cevap", "#article-lead"] : ["#article-h1", "#article-lead"]}
         mainEntity={{ "@id": `${url}#article` }}
+        {...(shortText ? { dateModified: GEO_REVIEWED } : {})}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <article className="bg-white py-10 md:py-14">
@@ -74,6 +83,7 @@ export function CommercialGuideEnLanding({ guide }: { guide: CommercialGuideEn }
             {guide.lead}
           </p>
           <AiPriceSourceNote locale="en" className="mt-3 text-xs leading-relaxed text-ink-muted" />
+          {shortText ? <ShortAnswer text={shortText} locale="en" className="mt-5" /> : null}
 
           {guide.sections.map((s) => (
             <section key={s.h2} className="mt-10">
