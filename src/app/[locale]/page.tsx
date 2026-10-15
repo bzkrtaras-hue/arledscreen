@@ -23,7 +23,8 @@ import { HomeCtaBand } from "@/components/home/HomeCtaBand";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { LearningHub } from "@/components/home/LearningHub";
 import { HomeFaq } from "@/components/home/HomeFaq";
-import { InstallStrip } from "@/components/home/InstallStrip";
+import { SelectedProjects } from "@/components/home/SelectedProjects";
+import { QuietHero } from "@/components/hero/QuietHero";
 import { GatewayTiles } from "@/components/home/GatewayTiles";
 import { ValuesBand } from "@/components/home/ValuesBand";
 import { FeaturedReferences } from "@/components/home/FeaturedReferences";
@@ -176,11 +177,11 @@ export default async function HomePage({ params }: PageProps) {
         }}
       />
 
-      {/* 1. Full-bleed video hero under liquid-glass chrome → 2. gateway tiles → 3. values */}
-      <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
-        <Hero locale={locale} />
+      {/* 1. Quiet full-bleed still hero (no video) → 2. selected projects → 3. gateway tiles → 4. values */}
+      <div className="-mt-[7.25rem] md:-mt-[8rem]">
+        <QuietHero />
       </div>
-      <InstallStrip />
+      <SelectedProjects />
       <GatewayTiles />
       <ValuesBand />
 
