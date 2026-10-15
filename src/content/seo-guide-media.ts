@@ -56,7 +56,7 @@ const IMAGES: Partial<Record<SeoGuideSlug, { src: string; alt: L4 }>> = {
   },
   "kiosk-ekran": {
     src: "/projects/guides/dokunmatik-kiosk-49-inc.jpg",
-    alt: { tr: "49 inç dokunmatik dijital kiosk, iki ayaklı gövde", en: "Two 49-inch touch digital kiosks on floor stands", ru: "Два сенсорных цифровых киоска 49 дюймов", ar: "كشكان رقميان لمسيان بمقاس 49 بوصة" },
+    alt: { tr: "İki adet 49 inç dokunmatik dijital kiosk", en: "Two 49-inch touch digital kiosks on floor stands", ru: "Два сенсорных цифровых киоска 49 дюймов", ar: "كشكان رقميان لمسيان بمقاس 49 بوصة" },
   },
   "kiosk-dijital-ekran": {
     src: "/projects/guides/dijital-ekran-totem.jpg",
@@ -68,7 +68,7 @@ const IMAGES: Partial<Record<SeoGuideSlug, { src: string; alt: L4 }>> = {
   },
   "cami-led-ekran": {
     src: "/projects/modules/indoor-install.jpg",
-    alt: { tr: "Duvara monte iç mekân LED ekran", en: "Wall-mounted indoor LED screen", ru: "Настенный LED-экран для помещений", ar: "شاشة LED داخلية مثبتة على الجدار" },
+    alt: { tr: "Duvara monte iç mekân LED ekran", en: "Wall-mounted indoor LED screen", ru: "Настенный LED-экран для помещений", ar: "شاشة LED داخلية على جدار قاعة اجتماعات" },
   },
   "led-ekran-ariza-belirtileri": {
     src: "/projects/service-assembly.jpg",

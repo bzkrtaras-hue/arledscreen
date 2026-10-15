@@ -29,6 +29,7 @@ export function Footer({ locale }: FooterProps) {
   const dict = getDictionary(locale);
   const year = new Date().getFullYear();
   const tr = locale === "tr";
+  const ar = locale === "ar";
 
   const quickLinks = tr
     ? [
@@ -59,24 +60,24 @@ export function Footer({ locale }: FooterProps) {
         { href: "/en/magaza-led-ekran/", label: "Store LED" },
         { href: "/en/products/gob-led-ekran/", label: "GOB LED" },
         { href: `/${locale}/products/`, label: dict.nav.products },
-        { href: `/${locale}/rehber/`, label: "Guides" },
+        { href: `/${locale}/rehber/`, label: ar ? "الأدلة" : "Guides" },
         { href: `/${locale}/about/`, label: dict.nav.about },
         { href: `/${locale}/hesaplayici/`, label: dict.nav.priceCalculator },
         {
           href: locale === "en" ? "/en/led-ekran-fiyatlari/" : "/tr/led-ekran-fiyatlari/",
-          label: "LED display prices",
+          label: ar ? "أسعار شاشات LED" : "LED display prices",
         },
         { href: `/${locale}/quote/`, label: dict.nav.quote },
         {
           href: locale === "en" ? "/en/sss/" : "/tr/sss/",
-          label: "FAQ",
+          label: ar ? "الأسئلة الشائعة" : "FAQ",
         },
         {
           href: locale === "en" ? "/en/nxtionstar/" : "/tr/nxtionstar/",
           label: "NXTIONSTAR",
         },
-        { href: "/en/blog/", label: "Blog" },
-        { href: "/en/gizlilik/", label: "Privacy" },
+        { href: "/en/blog/", label: ar ? "المدونة" : "Blog" },
+        { href: "/en/gizlilik/", label: ar ? "الخصوصية" : "Privacy" },
       ];
 
   const columns = tr
@@ -247,9 +248,9 @@ export function Footer({ locale }: FooterProps) {
           © {year} ARLEDSCREEN · NXTIONSTAR. {dict.footer.rights}{" "}
           <Link
             href={tr ? "/tr/gizlilik/" : "/en/gizlilik/"}
-            className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline"
+            className="footer-privacy-link text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline"
           >
-            {tr ? "Gizlilik" : "Privacy"}
+            {tr ? "Gizlilik" : ar ? "الخصوصية" : "Privacy"}
           </Link>
         </p>
       </div>

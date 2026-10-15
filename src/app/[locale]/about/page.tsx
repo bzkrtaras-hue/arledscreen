@@ -87,7 +87,7 @@ export default async function AboutPage({ params }: PageProps) {
           <div className="relative aspect-[16/10] min-w-0 overflow-hidden rounded-2xl border border-border bg-surface">
             <OptImage
               src="/projects/billboard-arled.jpg"
-              alt={dict.projects.shots.billboardArled}
+              alt={locale === "ar" ? "لوحة إعلانية LED خارجية على عمود تعرض شعار ARLEDSCREEN" : dict.projects.shots.billboardArled}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"

@@ -1006,3 +1006,22 @@ details > summary::-webkit-details-marker {
     padding-right: 0.6rem;
   }
 }
+
+/* PR #110 RTL polish (Arabic template): tap targets >= 44px + chat launcher on the start side. */
+[dir="rtl"] li > a.text-cyan,
+[dir="rtl"] p.mt-3 > a.text-cyan,
+[dir="rtl"] a.footer-privacy-link,
+[dir="rtl"] #locale-select {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+[dir="rtl"] a.footer-privacy-link {
+  min-width: 44px;
+  justify-content: center;
+  padding-inline: 8px;
+}
+[dir="rtl"] .acd-launcher {
+  right: auto;
+  left: 12px;
+}
