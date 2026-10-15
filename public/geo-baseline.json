@@ -1247,8 +1247,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "80cc3cb8a1cb9276c485f2c56933ec009cef6a1606d6a3951149f0290fd24df0",
-    "catalogSha256": "e965a8d92a8dfd5b486f222572691ad27aafe2824dd49cf3a3ef7cc067f7f09b",
+    "aiShoppingSha256": "790956b83ff1629cc42198969f321c429f024d27f512e0073762a37aafb6737f",
+    "catalogSha256": "5982d8147548ef1111b85e0347821858c56c70706aefe2074e1bef8ef03a7d37",
     "merchantTsvSha256": "5c6b433e739a0460b09a6b823d409b81e0318a2f511b854cff7c9c2c90af7611",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },

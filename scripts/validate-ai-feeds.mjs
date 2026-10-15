@@ -8,6 +8,19 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+
+/** MerchantReturnPolicy: 14-day finite window for standard stock products; links to the public policy page. */
+function returnPolicyOk(rp) {
+  return (
+    rp?.["@type"] === "MerchantReturnPolicy" &&
+    rp?.returnPolicyCategory === "https://schema.org/MerchantReturnFiniteReturnWindow" &&
+    rp?.merchantReturnDays === 14 &&
+    rp?.returnMethod === "https://schema.org/ReturnByMail" &&
+    rp?.refundType === "https://schema.org/FullRefund" &&
+    rp?.merchantReturnLink === "https://arledscreen.com/tr/iade-politikasi/"
+  );
+}
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
 const publicDir = path.join(repoRoot, "public");
@@ -144,8 +157,7 @@ if (fs.existsSync(outDir)) {
         String(p?.offers?.price || "") === String(p?.price || ai.pricedPanels.find((x) => x.sku === p.sku)?.price) &&
         String(p?.offers?.description || "").includes("Ücretsiz kargo yok") &&
         p?.offers?.shippingDetails?.["@type"] === "OfferShippingDetails" &&
-        p?.offers?.hasMerchantReturnPolicy?.returnPolicyCategory ===
-          "https://schema.org/MerchantReturnNotPermitted" &&
+        returnPolicyOk(p?.offers?.hasMerchantReturnPolicy) &&
         p?.offers?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness",
     )
   ) {
@@ -1533,8 +1545,7 @@ if (fs.existsSync(outDir)) {
         o?.priceSpecification?.valueAddedTaxIncluded === false &&
         String(o?.description || "").includes("Ücretsiz kargo yok") &&
         o?.shippingDetails?.["@type"] === "OfferShippingDetails" &&
-        o?.hasMerchantReturnPolicy?.returnPolicyCategory ===
-          "https://schema.org/MerchantReturnNotPermitted" &&
+        returnPolicyOk(o?.hasMerchantReturnPolicy) &&
         o?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness",
     )
   ) {
@@ -3690,11 +3701,8 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ pricedPanels ${panel.sku} Offer.seller must be #organization`);
       process.exit(1);
     }
-    if (
-      panel.offers?.hasMerchantReturnPolicy?.returnPolicyCategory !==
-      "https://schema.org/MerchantReturnNotPermitted"
-    ) {
-      console.error(`❌ pricedPanels ${panel.sku} must declare MerchantReturnNotPermitted`);
+    if (!returnPolicyOk(panel.offers?.hasMerchantReturnPolicy)) {
+      console.error(`❌ pricedPanels ${panel.sku} must declare MerchantReturnFiniteReturnWindow (14 days) + merchantReturnLink`);
       process.exit(1);
     }
   }

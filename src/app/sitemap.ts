@@ -230,6 +230,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "yearly",
     priority: 0.35,
   });
+  // Returns, cancellation and delivery policy (indexable: no placeholders; see page.tsx).
+  for (const locale of ["tr", "en"] as const) {
+    entries.push({
+      url: absoluteUrl(`/${locale}/iade-politikasi/`),
+      changeFrequency: "yearly",
+      priority: 0.5,
+    });
+  }
   // EN lean commercial guides (AI agents invent these TR rehber paths under /en/).
   for (const path of [
     "/rehber/piksel-araligi-secimi/",

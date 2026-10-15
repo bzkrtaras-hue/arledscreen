@@ -1438,7 +1438,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -1464,7 +1464,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
@@ -1573,7 +1577,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -1599,7 +1603,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
@@ -1708,7 +1716,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -1734,7 +1742,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
@@ -1838,7 +1850,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -1864,7 +1876,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
@@ -1968,7 +1984,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -1994,7 +2010,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
@@ -2098,7 +2118,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -2124,7 +2144,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
@@ -2228,7 +2252,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -2254,7 +2278,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
@@ -2358,7 +2386,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -2384,7 +2412,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
@@ -2488,7 +2520,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -2514,7 +2546,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
@@ -2618,7 +2654,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -2644,7 +2680,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
@@ -2748,7 +2788,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -2774,7 +2814,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
@@ -2878,7 +2922,7 @@
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingDestination": {
@@ -2904,7 +2948,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "TR",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://arledscreen.com/tr/iade-politikasi/"
           },
           "seller": {
             "@type": "Organization",
