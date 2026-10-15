@@ -2,6 +2,27 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261015-020 — Kiralama sayfalarına "Kapsam" tablosu (TR + EN)
+
+- **Amaç:** Kiralamada neyin nasıl ele alındığı (keşif, kurulum, söküm, teknik ekip, nakliye, fiyat) tek tabloda görünsün.
+- **Değişiklik:** yeni `RentalScope` tablosu şu sayfalara eklendi:
+  - `/tr/led-ekran-kiralama/` ve `/en/led-ekran-kiralama/` (uygulama görsellerinden önce)
+  - `/tr/products/kiralik-led-ekran/` ve `/en/products/kiralik-led-ekran/` ("Kiralık mı, satın alma mı?" tablosunun üstünde)
+- **Metin kaynağı:** yalnızca sitede zaten yayımlı bilgiler (kiralama sayfaları, kategori SSS'si, llms.txt). Yeni sayı ve fiyat yok; kiralık fiyat "yazılı teklifle" olarak kaldı.
+- **Dosyalar:** `src/components/geo/RentalScope.tsx` (yeni), `src/components/commercial/CommercialLanding.tsx`, `src/app/[locale]/products/[slug]/page.tsx`, `src/components/products/ProductGroupEnLanding.tsx`
+- **Dokunulmadı:** ana sayfa, seo-guides.ts, sitemap ve şema dosyaları, kiralık fiyat ifadesi, `ard.json`.
+- **Production:** Aras Bey / Ali onayı → squash merge → manual deploy
+
+## ARL-20261015-002 — Issue #66 EN kalanlar: başlık uzunlukları, /en/sartlar/, EN Offer açıklamaları
+
+- **Kontrol (main build, 15 Eki 2026):** #66 (a)(b)(c) maddeleri ve 9 Eki yorumundaki maddeler EN görünür metinde artık yok (kalan Türkçe yalnızca özel adlar). Kalanlar:
+  - 7 EN rehber `<title>` 60 karakteri aşıyordu → 30–60 aralığına kısaltıldı (`src/content/seo-guides.ts`, yalnız EN).
+  - `/en/sartlar/` başlık/H1 Türkçeydi ("Şartlar") → "Terms and Conditions".
+  - EN sayfalardaki panel Offer / AggregateOffer `description` Türkçeydi → `/en/` sayfalarında İngilizce (`panelOffer` + `panelProductsJsonLd`, locale). Fiyat, @id, sku değişmedi.
+- **Bilerek dokunulmadı:** site geneli Organization/LocalBusiness/Brand düğümleri (aynı `@id` her sayfada; dile göre değişirse çelişkili veri olur), `/en/products/dis-mekan-led-ekran/p4-on-servis/` başlığı (62 karakter, noindex köprü sayfa).
+- **TR:** 400+ TR sayfada JSON-LD, görünür metin, title/meta birebir aynı (karşılaştırma script'i).
+- **Production:** Ali onayı → squash merge → manual deploy
+
 ## ARL-20261009-015 — LCD "teknik değer yayımlanmaz" çelişkisi giderildi (llms + LCD rehberi)
 
 - **Sorun:** llms.txt, llms-full.txt ve LCD rehberi (TR / EN / RU / AR) "LCD için teknik değer yayımlanmaz" diyordu. Oysa yeni /tr/products/lcd-ekran/ ve /tr/products/kiosk/ sayfaları 49 / 55 / 65 inç, Android veya Windows ve USB / HDMI / LAN / Wi‑Fi bilgilerini veriyor.

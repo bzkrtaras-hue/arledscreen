@@ -49,6 +49,7 @@ import { whatsappHref } from "@/lib/whatsapp";
 
 import { ShortAnswer } from "@/components/geo/ShortAnswer";
 import { RentalCompare } from "@/components/geo/RentalCompare";
+import { RentalScope } from "@/components/geo/RentalScope";
 import { GEO_REVIEWED, shortAnswer, type ShortAnswerKey } from "@/content/short-answers";
 
 const SHORT_ANSWER_SLUGS: string[] = ["ic-mekan-led-ekran", "dis-mekan-led-ekran", "gob-led-ekran", "kiralik-led-ekran"];
@@ -626,6 +627,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
         </div>
       </section>
 
+      {g.slug === "kiralik-led-ekran" ? <RentalScope locale="tr" /> : null}
       {g.slug === "kiralik-led-ekran" ? <RentalCompare locale="tr" /> : null}
 
       {refs.length ? (
