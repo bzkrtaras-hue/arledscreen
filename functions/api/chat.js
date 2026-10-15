@@ -11,6 +11,8 @@ const MAX_BODY = 16000, MAX_MSG = 800, MAX_TURNS = 12, MAX_HIST_CHARS = 6000;
 // never stored (no KV/R2/cache) and never logged. Counters below only hold timestamps per IP.
 const IMG_MAX_B64 = 4400000, IMG_MAX_BODY = 4700000, IMG_PER_DAY = 5, IMG_WINDOW = 24 * 3600 * 1000;
 const imgRl = new Map();
+// Models that just answered 429 (quota) are skipped for a few minutes (isolate-local, best effort).
+const deadModels = new Map();
 const RL_WINDOW = 10 * 60 * 1000, RL_MAX = 20; // istek / 10 dk / IP (izolat başına, en iyi çaba)
 const rl = new Map();
 const ALLOWED_HOST = /(^|\.)arledscreen\.(com|pages\.dev)$|^localhost$|^127\.0\.0\.1$/;
@@ -475,7 +477,8 @@ export async function onRequest(ctx) {
     const payload = JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, contents, generationConfig: gen });
     let r = null;
     outer: for (const base of (quiet ? [DIRECT] : bases)) { // photo requests skip AI Gateway (it can log request bodies)
-      for (const model of models) {
+      const alive = models.filter((m) => (deadModels.get(m) || 0) < Date.now());
+      for (const model of (alive.length ? alive : models)) {
         const left = deadline - Date.now();
         if (left < 1500) break outer;
         r = await fetch(`${base}/v1beta/models/${model}:generateContent`, {
@@ -489,6 +492,7 @@ export async function onRequest(ctx) {
           // Server-side log only (Pages real-time logs). Google error bodies never contain the key; photo requests log the status only.
           const errTxt = quiet ? "" : (await r.clone().text().catch(() => "")).slice(0, 600);
           console.error("melis upstream", r.status, base.slice(8, 40), model, "colo=" + ((request.cf && request.cf.colo) || "?"), errTxt.replace(/\s+/g, " "));
+          if (r.status === 429) deadModels.set(model, Date.now() + 180000);
           if (![400, 403, 404, 429, 500, 503].includes(r.status)) break outer;
           if (r.status === 400 || r.status === 403) break; // not model-specific: try next base
         }
