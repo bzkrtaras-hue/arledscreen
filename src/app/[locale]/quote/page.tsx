@@ -252,11 +252,11 @@ export default async function QuotePage({ params }: PageProps) {
             </a>
             <a href={quoteWhatsappHref(locale)} target="_blank" rel="noopener noreferrer" className="rounded-2xl p-6 hover:border-cyan/50 glass-card">
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">WhatsApp</p>
-              <p className="mt-2 font-display font-bold text-ink">{CONTACT_PHONE_DISPLAY}</p>
+              <p className="mt-2 font-display font-bold text-ink">{locale === "ar" ? <bdi dir="ltr">{CONTACT_PHONE_DISPLAY}</bdi> : CONTACT_PHONE_DISPLAY}</p>
             </a>
             <a href={CONTACT_PHONE_HREF} className="rounded-2xl p-6 hover:border-cyan/50 glass-card">
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">Phone</p>
-              <p className="mt-2 font-display font-bold text-ink">{CONTACT_PHONE_DISPLAY}</p>
+              <p className="mt-2 font-display font-bold text-ink">{locale === "ar" ? <bdi dir="ltr">{CONTACT_PHONE_DISPLAY}</bdi> : CONTACT_PHONE_DISPLAY}</p>
             </a>
             <p className="text-sm text-ink-muted sm:col-span-3">
               Please share dimensions, indoor/outdoor use, location and timeline. ARLEDSCREEN · Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa, Istanbul, Turkey · Mon–Fri 09:00–18:00, Sat 10:00–15:00.

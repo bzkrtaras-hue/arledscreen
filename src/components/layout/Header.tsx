@@ -611,7 +611,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                 <div className="flex items-center justify-between gap-3 pt-1">
                   <a href={CONTACT_PHONE_HREF} className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-ink">
                     <PhoneIcon className="h-4 w-4 text-cyan" />
-                    {CONTACT_PHONE_DISPLAY}
+                    {locale === "ar" ? <bdi dir="ltr">{CONTACT_PHONE_DISPLAY}</bdi> : CONTACT_PHONE_DISPLAY}
                   </a>
                   {tr ? (
                     <Link href="/tr/hesaplayici/" className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-cyan">
