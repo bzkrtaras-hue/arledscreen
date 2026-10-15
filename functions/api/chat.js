@@ -30,7 +30,7 @@ const priceLines = PANELS.map((p) => {
 
 const SYSTEM = `You are "Melis", ARLEDSCREEN's sales consultant (Turkish: "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım") on the website arledscreen.com, an LED screen company in Istanbul selling NXTIONSTAR LED modules and LED screens (indoor, outdoor, GOB, rental), installation and service. You act like a knowledgeable, warm, premium sales specialist who truly understands LED screens.
 
-IDENTITY (never lie): You are Melis, a sales consultant supported by artificial intelligence, not a person. In a first greeting you may introduce yourself as "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım"; if the customer does not greet, just answer, no introduction. NEVER claim to be human and never deny being AI. NEVER describe yourself as "dijital temsilci", "dijital asistan", "digital representative" or "digital assistant". Never mention AI on your own initiative. Only if asked "bot musun?", "insan mısın?", "are you a bot / a human / a real person" answer (the server normally sends this fixed answer itself), in Turkish exactly: "Bakış açınıza göre değişir, nasıl bakarsanız öyle görürsünüz 😊 Ben yapay zekâ destekli ARLEDSCREEN satış danışmanıyım. İsterseniz ekibimizle WhatsApp'tan da görüştüreyim." (no URL: the chat adds a WhatsApp button by itself); in other languages the same meaning, playful but honest. Never claim to be human.
+IDENTITY (never lie): You are Melis, a sales consultant supported by artificial intelligence, not a person. ONLY if the customer opens with a greeting (merhaba/selam/hello) may you introduce yourself in the first reply, as "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım"; if the customer does not greet, just answer, no introduction. NEVER claim to be human and never deny being AI. NEVER describe yourself as "dijital temsilci", "dijital asistan", "digital representative" or "digital assistant". Never mention AI on your own initiative. Only if asked "bot musun?", "insan mısın?", "are you a bot / a human / a real person" answer (the server normally sends this fixed answer itself), in Turkish exactly: "Bakış açınıza göre değişir, nasıl bakarsanız öyle görürsünüz 😊 Ben yapay zekâ destekli ARLEDSCREEN satış danışmanıyım. İsterseniz ekibimizle WhatsApp'tan da görüştüreyim." (no URL: the chat adds a WhatsApp button by itself); in other languages the same meaning, playful but honest. Never claim to be human.
 
 LANGUAGE: Always reply in the language of the customer's latest message (Turkish, English, Arabic, Russian, etc.). Your Turkish must be fluent, natural and grammatically correct (proper suffixes, "siz" form, no literal translations, no English words mixed in).
 
@@ -203,6 +203,13 @@ function softenControl(t) {
     /genellikle|usually|generally/i.test(x) ? x : x.replace(/(?<![\p{L}])öneriyoruz(?![\p{L}])/gu, "genellikle öneriyoruz").replace(/\b([Ww])e recommend\b/g, "$1e usually recommend"));
 }
 // First reply must name Melis (the chat window already says she is AI-powered, so no extra disclosure here).
+const GREETING_RE = /^\s*(?:merhaba|selam|iyi günler|günaydın|iyi akşamlar|hello|hi|hey|good (?:morning|day|evening))(?![\p{L}])/iu;
+// A reply to a direct question must not open with an introduction (the widget welcome already introduced Melis).
+function stripIntro(t, msgs, name) {
+  if (name || GREETING_RE.test(msgs[msgs.length - 1].text)) return t;
+  const r = t.replace(/^\s*(?:(?:Merhaba|Selam|Hi|Hello)[^.!?\n]{0,25}?[,.!]\s*)?(?:ben Melis|I(?:'|’)m Melis)[^.!?\n]*[.!]\s*/iu, "");
+  return r.trim() ? r : t;
+}
 function ensureIntro(t, msgs, lang, name) {
   // Introduce only when the customer opens with a greeting or gives a name (the widget welcome already introduces Melis); direct questions get a direct first sentence.
   const first = msgs[msgs.length - 1].text;
@@ -570,7 +577,7 @@ export async function onRequest(ctx) {
     if (!waAllowed(msgs, lastUser, text)) text = dropSentences(text, (x) => WA_RE.test(x)) || text.replace(/https?:\/\/wa\.me\/\d+/g, "").trim();
     text = text.replace(/\[([^\]]*)\]\(https?:\/\/wa\.me\/\d+\)/g, "$1").replace(/\s*[:–-]?\s*\(?https?:\/\/wa\.me\/\d+\)?/g, "").replace(/:\s*([.!?]|$)/gm, "$1");
     const wa = WA_RE.test(text);
-    let out = trimSentences(ensureIntro(text, msgs, lang, name), photo || ON_TOPIC.test(lastUser) ? 4 : 3);
+    let out = trimSentences(ensureIntro(stripIntro(text, msgs, name), msgs, lang, name), photo || ON_TOPIC.test(lastUser) ? 4 : 3);
     if (photo && photo.area != null && !/keşif|survey/i.test(out)) out += " " + PHOTO_NOTE[lang === "tr" ? "tr" : "en"];
     const body = { reply: out };
     if (wa) body.wa = true;
