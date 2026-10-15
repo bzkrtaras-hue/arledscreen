@@ -24,8 +24,9 @@ on:
       - "scripts/queue-*.mjs"
       - ".github/workflows/daily-content-queue.yml"
 
+# Real runs share the production deploy lock; dry runs (PR / manual default) do not.
 concurrency:
-  group: cloudflare-pages-production
+  group: ${{ (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.dry_run == 'false')) && 'cloudflare-pages-production' || format('content-queue-dry-{0}', github.ref) }}
   cancel-in-progress: false
 
 jobs:
@@ -195,4 +196,5 @@ jobs:
           gh label create content-draft --color FBCA04 --description "Gemini draft — review before queueing" 2>/dev/null || true
           gh pr create --base main --head "$b" --label content-draft \
             --title "Taslak (Gemini): ${{ steps.d.outputs.slug }} — inceleme gerekli" \
-            --body "Kuyruk boş olduğu için Gemini tek taslak üretti. OTOMATİK YAYINLANMAZ. Onay için: ⚠️ işaretli bilgileri doğrula/çıkar, \`status: draft\` satırını sil, dosyayı \`content-queue/\` köküne taşı (ad: YYYY-MM-DD-NN-slug.md)."
+            --body "Kuyruk boş olduğu için Gemini tek taslak üretti. OTOMATİK YAYINLANMAZ. Onay için: ⚠️ işaretli bilgileri doğrula/çıkar, \`status: draft\` satırını sil, dosyayı \`content-queue/\` köküne taşı (ad: YYYY-MM-DD-NN-slug.md)." \
+            || echo "::warning::PR could not be opened (repo setting 'Allow GitHub Actions to create pull requests' is off). Draft branch pushed: $b"
