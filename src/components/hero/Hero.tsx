@@ -80,7 +80,7 @@ export function Hero({ locale }: HeroProps) {
           : "Survey, supply, installation and after-sales service are run by the same team. Headquarters is in Gaziosmanpaşa, Istanbul; sales, installation and service cover Turkey. City pages list only recorded projects."
       }
       quoteHref={`/${locale}/quote/`}
-      quoteLabel={tr ? "Teklif Al" : "Get a quote"}
+      quoteLabel={tr ? "Teklif alın" : "Get a quote"}
       secondaryHref={`/${locale}/hesaplayici/`}
       secondaryLabel={tr ? "Fiyat hesapla" : "Price calculator"}
       labels={
