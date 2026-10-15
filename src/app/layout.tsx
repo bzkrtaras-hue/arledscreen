@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "ARLEDSCREEN",
     locale: "tr_TR",
     images: [
-      { url: "/og-image.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN — LED Ekran Teknoloji Merkezi" },
+      { url: "/og-image.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN kurulumu: otel lobisinde iç mekân LED ekran" },
     ],
   },
   twitter: {

@@ -146,11 +146,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
         <Link
           href={`/${locale}/`}
           className="liquid-glass-btn liquid-glass-btn--brand relative z-[2] -ml-0.5 min-h-11 min-w-0 shrink-0 gap-2 px-2.5 py-1.5 sm:min-h-12 sm:gap-2.5 sm:px-3"
-          aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
+          aria-label={tr ? "ARLEDSCREEN ana sayfa" : locale === "ar" ? "الصفحة الرئيسية لـ ARLEDSCREEN" : "ARLEDSCREEN home"}
         >
           <Image
             src="/brand/arledscreen-yatay.svg"
-            alt="ARLEDSCREEN"
+            alt=""
             width={514}
             height={123}
             className="h-10 w-auto max-w-[170px] object-contain sm:h-11 sm:max-w-[200px]"
@@ -455,11 +455,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   href={`/${locale}/`}
                   onClick={() => setOpen(false)}
                   className="liquid-glass-btn liquid-glass-btn--brand min-h-12 min-w-0 flex-1 justify-start gap-2 px-3 py-1.5"
-                  aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
+                  aria-label={tr ? "ARLEDSCREEN ana sayfa" : locale === "ar" ? "الصفحة الرئيسية لـ ARLEDSCREEN" : "ARLEDSCREEN home"}
                 >
                   <Image
                     src="/brand/arledscreen-yatay.svg"
-                    alt="ARLEDSCREEN"
+                    alt=""
                     width={514}
                     height={123}
                     className="h-10 w-auto max-w-[170px] object-contain"
@@ -468,7 +468,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   <span className="h-6 w-px shrink-0 bg-ink/15" aria-hidden />
                   <Image
                     src="/brand/nxtionstar-wordmark-header-478.webp"
-                    alt="NXTIONSTAR"
+                    alt=""
                     width={478}
                     height={137}
                     className="h-3.5 w-auto max-w-[88px] opacity-90 object-contain"

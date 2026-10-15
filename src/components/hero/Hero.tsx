@@ -8,29 +8,14 @@ interface HeroProps {
 
 /**
  * Homepage hero — landscape-first field clips so desktop shows the LED wall.
- * Lead: Eskişehir Sinan Polat Sigorta vitrin.
+ * Single clip: lounge aquarium wall (Eskişehir vitrin, sphere and club clips removed).
  * H1 carries the local query; NXTIONSTAR slogan stays in the top bar only.
  */
 const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
   {
-    slug: "eskisehir-sigorta-led-ekran-vitrin",
-    labelTr: "Eskişehir vitrin",
-    labelEn: "Eskişehir storefront",
-  },
-  {
     slug: "lounge-aquarium-wall",
     labelTr: "Lounge LED",
     labelEn: "Lounge LED",
-  },
-  {
-    slug: "sphere-led-showroom",
-    labelTr: "Küresel LED",
-    labelEn: "Sphere LED",
-  },
-  {
-    slug: "club-curved-led-ribbon",
-    labelTr: "Kulüp kavisli",
-    labelEn: "Club curved",
   },
 ];
 
@@ -53,28 +38,9 @@ const HERO_MEDIA: Record<
     height?: number;
   }
 > = {
-  "eskisehir-sigorta-led-ekran-vitrin": {
-    poster: "/videos/hero/eskisehir-sigorta-led-ekran-vitrin.webp",
-    posterMobile: "/videos/hero/eskisehir-sigorta-led-ekran-vitrin-m.webp",
-  },
   "lounge-aquarium-wall": {
     poster: "/videos/hero/lounge-aquarium-wall.webp",
     posterMobile: "/videos/hero/lounge-aquarium-wall-m.webp",
-  },
-  "sphere-led-showroom": {
-    src: "/videos/hero/sphere-led-showroom.mp4",
-    poster: "/videos/hero/sphere-led-showroom.webp",
-    posterMobile: "/videos/hero/sphere-led-showroom-m.webp",
-  },
-  // Club slot: Drive IMG_3366.MOV 0–10 s (1920×1080, HLG → SDR BT.709 tone-mapped),
-  // H.264 CRF 23 slow. ≤767px gets a native-density centre 1080×1080 crop.
-  "club-curved-led-ribbon": {
-    src: "/videos/hero/club-led-kabin-1080.mp4",
-    srcMobile: "/videos/hero/club-led-kabin-1080-m.mp4",
-    poster: "/videos/hero/club-led-kabin-1080.webp",
-    posterMobile: "/videos/hero/club-led-kabin-1080-m.webp",
-    width: 1920,
-    height: 1080,
   },
 };
 
