@@ -2,6 +2,17 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261015-020 — Kiralama sayfalarına "Kapsam" tablosu (TR + EN)
+
+- **Amaç:** Kiralamada neyin nasıl ele alındığı (keşif, kurulum, söküm, teknik ekip, nakliye, fiyat) tek tabloda görünsün.
+- **Değişiklik:** yeni `RentalScope` tablosu şu sayfalara eklendi:
+  - `/tr/led-ekran-kiralama/` ve `/en/led-ekran-kiralama/` (uygulama görsellerinden önce)
+  - `/tr/products/kiralik-led-ekran/` ve `/en/products/kiralik-led-ekran/` ("Kiralık mı, satın alma mı?" tablosunun üstünde)
+- **Metin kaynağı:** yalnızca sitede zaten yayımlı bilgiler (kiralama sayfaları, kategori SSS'si, llms.txt). Yeni sayı ve fiyat yok; kiralık fiyat "yazılı teklifle" olarak kaldı.
+- **Dosyalar:** `src/components/geo/RentalScope.tsx` (yeni), `src/components/commercial/CommercialLanding.tsx`, `src/app/[locale]/products/[slug]/page.tsx`, `src/components/products/ProductGroupEnLanding.tsx`
+- **Dokunulmadı:** ana sayfa, seo-guides.ts, sitemap ve şema dosyaları, kiralık fiyat ifadesi, `ard.json`.
+- **Production:** Aras Bey / Ali onayı → squash merge → manual deploy
+
 ## ARL-20261015-002 — Issue #66 EN kalanlar: başlık uzunlukları, /en/sartlar/, EN Offer açıklamaları
 
 - **Kontrol (main build, 15 Eki 2026):** #66 (a)(b)(c) maddeleri ve 9 Eki yorumundaki maddeler EN görünür metinde artık yok (kalan Türkçe yalnızca özel adlar). Kalanlar:
