@@ -131,13 +131,13 @@ export function buildPageMetadata({
       siteName: "ARLEDSCREEN",
       locale: OG_LOCALE[locale],
       type: "website",
-      images: [{ url: "/og/arledscreen-og.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN — LED Ekran Teknoloji Merkezi" }],
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN — LED Ekran Teknoloji Merkezi" }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: desc,
-      images: ["/og/arledscreen-og.jpg"],
+      images: ["/og-image.jpg"],
     },
     alternates: {
       canonical: url,
@@ -177,7 +177,7 @@ export function buildTrOnlyMetadata({
   };
 }): Metadata {
   const clean = normalizePath(path);
-  const og = image ?? { url: "/og/arledscreen-og.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN — LED Ekran Teknoloji Merkezi" };
+  const og = image ?? { url: "/og-image.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN — LED Ekran Teknoloji Merkezi" };
   const url = absoluteUrl(`/tr${clean}`);
   const desc = clampMetaDescription(description);
   const title = trMetaTitle(`/tr${clean}`, rawTitle);
