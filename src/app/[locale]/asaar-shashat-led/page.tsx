@@ -6,7 +6,7 @@ import { GlassPanel } from "@/components/ui/glass-panel";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { absoluteUrl } from "@/lib/site";
-import { CALC_EXTRAS, PANEL_PRICES, PANELS_PER_M2, PRICE_VALID_UNTIL, panelModule } from "@/content/prices";
+import { CALC_EXTRAS, PANEL_PRICES, PANELS_PER_M2, PRICE_VALID_FROM, PRICE_VALID_UNTIL, panelModule, panelShippingDetails } from "@/content/prices";
 
 /**
  * Arabic LED price page (brief 2026-10-15). Native Arabic review is PENDING:
@@ -101,8 +101,21 @@ export default async function ArPricePage({ params }: { params: Promise<{ locale
           "@type": "Offer",
           price: p.usd.toFixed(2),
           priceCurrency: "USD",
+          validFrom: PRICE_VALID_FROM,
           priceValidUntil: PRICE_VALID_UNTIL,
           availability: "https://schema.org/InStock",
+          ...(p.productPath ? { url: absoluteUrl(p.productPath) } : {}),
+          // Same facts as panelOffer() / /tr/iade-politikasi/: no shippingRate (freight is quoted in writing).
+          shippingDetails: panelShippingDetails(),
+          hasMerchantReturnPolicy: {
+            "@type": "MerchantReturnPolicy",
+            applicableCountry: "TR",
+            returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+            merchantReturnDays: 14,
+            returnMethod: "https://schema.org/ReturnByMail",
+            refundType: "https://schema.org/FullRefund",
+            merchantReturnLink: absoluteUrl("/tr/iade-politikasi/"),
+          },
           seller: { "@type": "Organization", name: "ARLEDSCREEN", url: absoluteUrl("/") },
         },
       },
@@ -170,7 +183,7 @@ export default async function ArPricePage({ params }: { params: Promise<{ locale
           <article className="max-w-3xl">
             <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">كيف تحسب السعر الإجمالي</h2>
             <p className="mt-3 text-base leading-[1.7] text-ink-soft">
-              السعر الإجمالي = عدد الألواح × سعر اللوح + العمالة {CALC_EXTRAS.laborPerM2} USD للمتر المربع + بطاقة التحكم {CALC_EXTRAS.controlCard} USD + المشغّل والبرنامج {CALC_EXTRAS.driverSoftware} USD. يحتوي المتر المربع على نحو 19.53 لوحًا مقاس 320 × 160 مم. الضريبة والشحن غير مشمولين، ويُحدَّد السعر النهائي في عرض سعر مكتوب.
+              السعر الإجمالي = عدد الألواح × سعر اللوح + العمالة {CALC_EXTRAS.laborPerM2} USD للمتر المربع + بطاقة التحكم {CALC_EXTRAS.controlCard} USD لكل بطاقة (مع بطاقة تحكم إضافية لكل 10 م² مبدوءة فوق 10 م²) + المشغّل والبرنامج {CALC_EXTRAS.driverSoftware} USD. يحتوي المتر المربع على نحو 19.53 لوحًا مقاس 320 × 160 مم. الضريبة والشحن غير مشمولين، ويُحدَّد السعر النهائي في عرض سعر مكتوب.
             </p>
           </article>
 

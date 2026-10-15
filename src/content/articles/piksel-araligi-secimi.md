@@ -49,7 +49,7 @@ Bu tablo "1 mm ≈ 1 m" kuralına dayanan bir başlangıç noktasıdır; kesin s
 ## 4. İçerik türü seçimi nasıl etkiler?
 
 - **Küçük yazı, tablo, sunum:** Yakından okunacaksa daha küçük P değeri gerekir.
-- **Video ve kampanya görselleri:** Biraz daha büyük P değeri genellikle yeterlidir.
+- **Video ve tanıtım görselleri:** Biraz daha büyük P değeri genellikle yeterlidir.
 - **Kamera ile çekim (stüdyo, konferans yayını):** Kamera çekimi yapılacaksa bunu keşifte belirtin; ince pitch ve kontrol sistemi ayarları buna göre planlanır.
 
 ## 5. Bütçe karşılaştırması (ARLEDSCREEN 2026 panel fiyatları)

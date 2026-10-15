@@ -144,14 +144,24 @@ export function nxtionstarBrandRef() {
 }
 
 export const PANELS_PER_M2 = 1 / (0.32 * 0.16);
+/** Kontrol kartı kademesi: 10 m² dahil 1 kart; 10 m² üzerinde her başlayan 10 m² için ek kart. */
+export const CONTROL_CARD_STEP_M2 = 10;
+export const CONTROL_CARD_UNIT_USD = 500;
+export function controlCardCount(areaM2: number): number {
+  return Math.max(1, Math.ceil(areaM2 / CONTROL_CARD_STEP_M2));
+}
+
 export const CALC_EXTRAS = {
   laborPerM2: 100,
-  controlCard: 500,
+  /** Kart başına USD (birim fiyat); toplam kart adedi controlCardCount(m²) ile hesaplanır. */
+  controlCard: CONTROL_CARD_UNIT_USD,
   driverSoftware: 500,
 };
 
 /** Published list validity — keep in sync with ai-shopping.json / catalog.json. */
 export const PRICE_VALID_UNTIL = "2026-12-31";
+/** Start of the published list ("Liste güncelleme: 1 Ekim 2026" on /tr/led-ekran-fiyatlari/), Istanbul time. */
+export const PRICE_VALID_FROM = "2026-10-01T00:00:00+03:00";
 
 /** hasPart stubs — same Product @id as ai-shopping.json (productUrl#product; mpn=sku). */
 export function pricedPanelsHasPartStubs() {
@@ -179,7 +189,7 @@ export function pricedPanelsHasPartStubs() {
         priceValidUntil: PRICE_VALID_UNTIL,
         availability: "https://schema.org/InStock" as const,
         description:
-          "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         sameAs: [`${SITE_URL}/catalog.json#offer-${p.id}`, `${url}#offer`],
         itemOffered: {
           "@type": "Product" as const,
@@ -414,13 +424,14 @@ export function panelOffer(
     url,
     price: usd.toFixed(2),
     priceCurrency: "USD",
+    validFrom: PRICE_VALID_FROM,
     priceValidUntil: PRICE_VALID_UNTIL,
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
     description:
       opts?.locale === "en"
-        ? "Price per panel (module) in USD; excl. VAT and shipping. No free shipping. Return terms are set in the written quote and contract (MerchantReturnNotPermitted)."
-        : "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        ? "Price per panel (module) in USD; excl. VAT and shipping. No free shipping. Standard stock products can be returned or exchanged within 14 days of delivery; made-to-order terms are in writing (arledscreen.com/en/iade-politikasi/)."
+        : "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
     priceSpecification: {
       "@type": "UnitPriceSpecification",
       price: usd.toFixed(2),
@@ -432,7 +443,11 @@ export function panelOffer(
     hasMerchantReturnPolicy: {
       "@type": "MerchantReturnPolicy",
       applicableCountry: "TR",
-      returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+      returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+      merchantReturnDays: 14,
+      returnMethod: "https://schema.org/ReturnByMail",
+      refundType: "https://schema.org/FullRefund",
+      merchantReturnLink: `${SITE_URL}/tr/iade-politikasi/`,
     },
     seller: { "@id": `${SITE_URL}/#organization` },
     availableAtOrFrom: localBusinessRef(),
@@ -474,7 +489,7 @@ export function pricedPanelOfferStubs(panels: PanelPrice[] = PANEL_PRICES) {
       availability: "https://schema.org/InStock" as const,
       itemCondition: "https://schema.org/NewCondition" as const,
       description:
-        "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
       sameAs: [`${SITE_URL}/catalog.json#offer-${p.id}`, `${url}#offer`],
       itemOffered: {
         "@type": "Product" as const,
@@ -500,7 +515,11 @@ export function pricedPanelOfferStubs(panels: PanelPrice[] = PANEL_PRICES) {
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy" as const,
         applicableCountry: "TR",
-        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 14,
+        returnMethod: "https://schema.org/ReturnByMail",
+        refundType: "https://schema.org/FullRefund",
+        merchantReturnLink: `${SITE_URL}/tr/iade-politikasi/`,
       },
       availableAtOrFrom: localBusinessRef(),
     };
@@ -691,8 +710,8 @@ export function panelProductsJsonLd(
         sameAs: [`${SITE_URL}/#priced-panels-aggregate`],
         description:
           en
-          ? "Per-panel (module) USD price range; excl. VAT and shipping. No free shipping. Returns: written quote/contract (MerchantReturnNotPermitted)."
-          : "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. İade: yazılı teklif/sözleşme (MerchantReturnNotPermitted).",
+          ? "Per-panel (module) USD price range; excl. VAT and shipping. No free shipping. Returns: 14 days from delivery for standard stock products; made-to-order terms in writing."
+          : "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. İade: stoktan standart ürünlerde teslimattan itibaren 14 gün; özel üretimde yazılı koşullar.",
         seller: org,
         availableAtOrFrom: localBusinessRef(),
         priceSpecification: {

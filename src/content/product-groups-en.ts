@@ -361,7 +361,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     lead: "Freestanding poster and totem LED — priced by written quote",
     title: "Poster / Totem LED Display | ARLEDSCREEN",
     description:
-      "Poster and totem LED units for indoor/outdoor wayfinding and promo. Priced by written quote. ARLEDSCREEN — Istanbul.",
+      "Poster and totem LED units for indoor/outdoor wayfinding and announcements. Priced by written quote. ARLEDSCREEN — Istanbul.",
     short: "Poster / totem LED",
     tag: "Poster",
     imageAlt: "Totem LED display",

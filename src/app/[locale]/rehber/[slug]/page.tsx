@@ -16,7 +16,7 @@ import { BRAND_SUBJECT_REFS } from "@/content/prices";
 import { OptImage } from "@/components/ui/opt-image";
 import { ShortAnswer } from "@/components/geo/ShortAnswer";
 import { ExportFacts } from "@/components/geo/ExportFacts";
-import { GEO_REVIEWED, shortAnswer } from "@/content/short-answers";
+import { shortAnswer } from "@/content/short-answers";
 import { guideShortAnswer } from "@/content/guide-short-answers";
 import { GUIDE_AUTHOR, guideDates } from "@/lib/guide-jsonld";
 import { getGuideImage, getGuideTable } from "@/content/seo-guide-media";
@@ -104,7 +104,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
           description={guide.description}
           cssSelectors={shortText ? ["#guide-h1", "#kisa-cevap", "#guide-lead"] : ["#guide-h1", "#guide-lead"]}
           mainEntity={{ "@id": `${pageUrl}#article` }}
-          {...(shortText ? { dateModified: GEO_REVIEWED } : {})}
+          {...(shortText ? { dateModified: dates.dateModified } : {})}
         />
       ) : null}
 
@@ -149,11 +149,11 @@ export default async function SeoGuidePage({ params }: PageProps) {
           {shortText && (locale === "tr" || locale === "en") ? (
             slug === "led-ekran-ihracat" ? (
               <>
-                <ShortAnswer text={shortText} locale={locale} className="" />
+                <ShortAnswer text={shortText} locale={locale} className="" reviewed={dates.dateModified} />
                 <ExportFacts locale={locale} />
               </>
             ) : (
-              <ShortAnswer text={shortText} locale={locale} className="" />
+              <ShortAnswer text={shortText} locale={locale} className="" reviewed={dates.dateModified} />
             )
           ) : null}
           {image ? (

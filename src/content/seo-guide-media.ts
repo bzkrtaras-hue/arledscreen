@@ -5,6 +5,7 @@
  */
 import type { Locale } from "@/lib/i18n";
 import type { SeoGuideSlug } from "@/content/seo-guides";
+import { pSeriesTable } from "@/content/seo-guides-aramalar";
 
 type L4 = Record<"tr" | "en" | "ru" | "ar", string>;
 const pick = (v: L4, locale: Locale) => v[locale as keyof L4] ?? v.en;
@@ -25,6 +26,10 @@ const IMAGES: Partial<Record<SeoGuideSlug, { src: string; alt: L4 }>> = {
   "lcd-ekran": {
     src: "/projects/guides/lcd-dikey-ekran-55-inc.jpg",
     alt: { tr: "55 inç dikey LCD dijital ekran, ayaklı gövde", en: "55-inch portrait LCD digital screen on a floor stand", ru: "Вертикальный LCD-экран 55 дюймов на напольной стойке", ar: "شاشة LCD رأسية مقاس 55 بوصة على حامل أرضي" },
+  },
+  "tekerlekli-mobil-led-ekran": {
+    src: "/videos/curved-mobile-led-podium.jpg",
+    alt: { tr: "Tekerlekli, kavisli mobil LED podyum / banko", en: "Wheeled curved mobile LED podium / counter", ru: "Mobile LED podium on wheels", ar: "Mobile LED podium on wheels" },
   },
   "dis-mekan-led-ekran": {
     src: "/projects/modules/outdoor-facade.jpg",
@@ -290,6 +295,7 @@ const CMP_CAPTION = t(
 
 export function getGuideTable(slug: SeoGuideSlug, locale: Locale): GuideTable | undefined {
   const k = (["tr", "en", "ru", "ar"].includes(locale) ? locale : "en") as keyof L4;
+  if (slug === "p-serisi-led-ekran") return pSeriesTable(locale === "tr" ? "tr" : "en");
   if (slug === "p1-86-vs-p2-5") {
     return { caption: CMP_CAPTION[k], headers: CMP_HEAD[k], rows: CMP_ROWS.map((r) => r.map((c) => c[k])) };
   }

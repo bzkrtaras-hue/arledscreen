@@ -34,7 +34,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
       "Kurulum, haritalama ve operatör bilgilendirmesi ARLEDSCREEN’de",
     ],
     uses: [
-      { title: "Mağaza tabelası", body: "Vitrin ve kapı üstü LED’lerde zamanlanmış kampanya yayını." },
+      { title: "Mağaza tabelası", body: "Vitrin ve kapı üstü LED’lerde zamanlanmış duyuru yayını." },
       { title: "Belediye duyurusu", body: "Metin, saat ve görsel alanların birlikte yönetimi." },
       { title: "Kafe menuboard", body: "USB veya Wi‑Fi ile menü ve fırsat güncellemesi." },
       { title: "Yedek / servis", body: "Mevcut Huidu sistemlerde kart değişimi ve yeniden yapılandırma." },

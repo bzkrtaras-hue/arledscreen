@@ -13,10 +13,18 @@ export interface SiteVideo {
   caption: string;
   captionEn: string;
   /**
-   * ISO 8601 date of the Instagram post. Full date only where it is known
-   * (linked blog post); otherwise year-month from the caption. Never guessed.
+   * Required by Google for VideoObject: ISO 8601 date-time with time zone.
+   * Never guessed — see `uploadDateBasis` for what supports each value.
    */
-  uploadDate?: string;
+  uploadDate: string;
+  /**
+   * What the date rests on:
+   * - "instagram-blog": date of the linked @arledscreen Instagram post / blog entry (src/content/blog.ts).
+   * - "caption-month": month shown in the clip caption (project month); day set to the 1st, 12:00 +03:00 (day not known).
+   * - "repo-first-commit": no public date exists; date the clip was first committed to this repo
+   *   (first time it was added to the site source). Replace with the real Instagram date when known.
+   */
+  uploadDateBasis: "instagram-blog" | "caption-month" | "repo-first-commit";
 }
 
 export const PROJECT_VIDEOS: SiteVideo[] = [
@@ -30,6 +38,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Lounge — fine-pitch LED wall",
     caption: "4K saha görüntüsü: lounge oturma alanında yüksek çözünürlüklü LED duvar testi",
     captionEn: "4K field clip: high-resolution LED wall test in a lounge seating area",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "lounge-gob-install",
@@ -41,6 +51,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Lounge — GOB LED install",
     caption: "İç mekân lounge’da GOB ince pitch LED duvar montajı ve saha kurulumu",
     captionEn: "Indoor lounge GOB fine-pitch LED wall install on site",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "event-lounge-led-wall",
@@ -52,6 +64,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Event lounge — LED stage wall",
     caption: "Karanlık lounge’da yüksek kontrast içerikli iç mekân LED duvar",
     captionEn: "Indoor LED wall with high-contrast content in a dark lounge",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "immersive-ceiling-led-tunnel",
@@ -63,6 +77,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Immersive LED — ceiling and side walls",
     caption: "Tavan ve yan yüzeyleri kaplayan immersif iç mekân LED tünel kurulumu",
     captionEn: "Immersive indoor LED tunnel covering ceiling and side surfaces",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "club-immersive-led-stage",
@@ -74,6 +90,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Club — immersive LED stage",
     caption: "Dikey LED paneller ve zemin LED ile immersif kulüp / lounge uygulaması",
     captionEn: "Immersive club / lounge install with vertical LED panels and floor LED",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "lounge-aquarium-wall",
@@ -85,6 +103,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Lounge — aquarium-content LED wall",
     caption: "Kafe / lounge salonunda yatay iç mekân LED duvar yayını",
     captionEn: "Horizontal indoor LED wall playback in a café / lounge hall",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "lounge-football-night",
@@ -96,6 +116,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Lounge — night match broadcast",
     caption: "Gece lounge ortamında canlı spor yayını yapan geniş LED ekran",
     captionEn: "Wide LED display showing a live sports broadcast in a night lounge",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "curved-mobile-led-podium",
@@ -107,6 +129,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Curved mobile LED podium",
     caption: "Tekerlekli, kavisli LED banko / podyum — özel form üretim testi",
     captionEn: "Wheeled curved LED counter / podium — custom-form production test",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "showroom-wall-arled-branding",
@@ -118,6 +142,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Showroom — branded LED wall",
     caption: "İç mekân showroom duvarında ARLEDSCREEN marka animasyonu",
     captionEn: "ARLEDSCREEN brand animation on an indoor showroom LED wall",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "outdoor-event-led-truss",
@@ -129,6 +155,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Outdoor event — LED truss install",
     caption: "Gece etkinliğinde truss üzerine kurulan modüler dış mekân LED duvar",
     captionEn: "Modular outdoor LED wall mounted on truss at a night event",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "sphere-led-showroom",
@@ -140,6 +168,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Spherical LED display — showroom",
     caption: "Asılı küresel LED ekran, yüksek çözünürlüklü içerik yayını",
     captionEn: "Suspended spherical LED display with high-resolution content",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "flexible-module-bend-demo",
@@ -151,6 +181,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Flexible LED module — bend demo",
     caption: "Esnek LED modülün kavisli yüzeye uyumunu gösteren yakın plan",
     captionEn: "Close-up of a flexible LED module conforming to a curved surface",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "club-curved-led-ribbon",
@@ -162,6 +194,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Club — curved LED and ribbon display",
     caption: "İç mekân kavisli LED duvar ve balkon şerit ekran uygulaması",
     captionEn: "Indoor curved LED wall and balcony ribbon display",
+    uploadDate: "2026-10-05T21:10:24+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "eskisehir-sigorta-led-ekran-vitrin",
@@ -173,7 +207,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Sinan Polat Insurance Eskişehir branch",
     caption: "Vitrin arkasından görünen iç mekân LED ekran · Ağustos 2025",
     captionEn: "Indoor LED display visible through the storefront · August 2025",
-    uploadDate: "2025-08-14",
+    uploadDate: "2025-08-14T12:00:00+03:00",
+    uploadDateBasis: "instagram-blog",
   },
   {
     slug: "kafe-led-ekran-uygulamasi",
@@ -185,7 +220,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Three-display install for café and lounge",
     caption: "Salonda 576 × 192 cm, girişte iki adet 256 × 128 cm LED ekran · Ağustos 2025",
     captionEn: "576 × 192 cm in the hall, two 256 × 128 cm LED displays at the entrance · August 2025",
-    uploadDate: "2025-08",
+    uploadDate: "2025-08-01T12:00:00+03:00",
+    uploadDateBasis: "caption-month",
   },
   {
     slug: "ic-mekan-led-ekran-montaji",
@@ -197,6 +233,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Indoor LED wall: from install to first image",
     caption: "Kabin montajı, test görüntüsü ve devreye alma aşamaları",
     captionEn: "Cabinet install, test image and commissioning stages",
+    uploadDate: "2026-10-04T19:05:11+03:00",
+    uploadDateBasis: "repo-first-commit",
   },
   {
     slug: "istanbul-drama-sanat-atolyesi-dis-mekan-led",
@@ -208,7 +246,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Façade install in Istanbul",
     caption: "2 adet 128 × 160 cm dış mekân LED ekran · Ağustos 2025",
     captionEn: "Two 128 × 160 cm outdoor LED displays · August 2025",
-    uploadDate: "2025-08",
+    uploadDate: "2025-08-01T12:00:00+03:00",
+    uploadDateBasis: "caption-month",
   },
   {
     slug: "manisa-kulup-oval-led-ekran",
@@ -220,7 +259,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Oval LED display inside a club in Manisa",
     caption: "Tavana asılı, dairesel formda iç mekân LED ekran · Temmuz 2025",
     captionEn: "Ceiling-hung circular indoor LED display · July 2025",
-    uploadDate: "2025-07",
+    uploadDate: "2025-07-01T12:00:00+03:00",
+    uploadDateBasis: "caption-month",
   },
   {
     slug: "eskisehir-sigorta-led-ekran-ic",
@@ -232,7 +272,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Eskişehir branch: from façade to indoor",
     caption: "Şube girişinden ekrana uzanan görünüm · Ağustos 2025",
     captionEn: "View from the branch entrance to the display · August 2025",
-    uploadDate: "2025-08",
+    uploadDate: "2025-08-01T12:00:00+03:00",
+    uploadDateBasis: "caption-month",
   },
   {
     slug: "aslanturk-yesilpinar-led-ekran",
@@ -244,7 +285,8 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     titleEn: "Restaurant façade in Yeşilpınar",
     caption: "Tabela hattına yerleştirilen LED ekranlar, gece görünümü · Mart 2026",
     captionEn: "LED displays set into the signage line, night view · March 2026",
-    uploadDate: "2026-03",
+    uploadDate: "2026-03-01T12:00:00+03:00",
+    uploadDateBasis: "caption-month",
   },
 ];
 
@@ -274,7 +316,7 @@ export function videoObjectJsonLd(
     width: v.width,
     height: v.height,
     inLanguage: locale === "en" ? "en" : "tr-TR",
-    ...(v.uploadDate ? { uploadDate: v.uploadDate } : {}),
+    uploadDate: v.uploadDate,
     publisher: { "@id": orgId },
     isFamilyFriendly: true,
   };

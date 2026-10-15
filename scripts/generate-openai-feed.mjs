@@ -5,6 +5,8 @@
  * image, availability and URL are copied from the owner-approved TSV.
  * No gtin / mpn: NXTIONSTAR panels have no assigned GTIN and the internal slug
  * is not a manufacturer part number (OpenAI: "do not invent a value").
+ * Return fields (accepts_returns, return_deadline_in_days, return_policy) mirror the
+ * public policy page + MerchantReturnPolicy (14 days from delivery, standard stock products).
  * Run: node scripts/generate-openai-feed.mjs
  */
 import { readFileSync, writeFileSync } from "node:fs";
@@ -28,6 +30,9 @@ const out = rows.map((r) => {
     availability: avail[r.availability] ?? "unknown",
     condition: r.condition || "new",
     product_category: `Electronics > LED displays > ${use === "indoor" ? "Indoor" : "Outdoor"} LED modules`,
+    accepts_returns: true,
+    return_deadline_in_days: 14,
+    return_policy: "https://arledscreen.com/en/iade-politikasi/",
     is_eligible_search: true,
     is_eligible_checkout: false,
   });

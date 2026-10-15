@@ -174,7 +174,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "Kurulum sonrası teknik servis",
     ],
     uses: [
-      { title: "Mağaza ve vitrin", body: "Ürün tanıtımı ve kampanya içerikleri için dikkat çeken yüzeyler." },
+      { title: "Mağaza ve vitrin", body: "Ürün ve marka tanıtım içerikleri için dikkat çeken yüzeyler." },
       { title: "Kafe ve restoran", body: "Maç yayını, menü ve atmosfer içerikleri için geniş ekranlar." },
       { title: "Showroom ve lobi", body: "Marka deneyimini destekleyen büyük formatlı video duvarları." },
       { title: "Toplantı ve konferans", body: "Sunum ve video konferans için net, parlak ve dikişsiz görüntü." },
@@ -473,10 +473,10 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "Keşif, montaj ve teknik servis tek ekipten",
     ],
     uses: [
-      { title: "Mağaza vitrini", body: "Ürün teşhirini kapatmadan kampanya ve marka içeriği gösterme." },
+      { title: "Mağaza vitrini", body: "Ürün teşhirini kapatmadan marka ve tanıtım içeriği gösterme." },
       { title: "Showroom", body: "Bölmeler ve iç camlarda hafif, göz yormayan içerik alanı." },
       { title: "Fuar ve sergi", body: "Stantlarda katmanlı ve derinlik hissi veren tasarımlar." },
-      { title: "Perakende lobi", body: "Cam bölmelerde yönlendirme ve kampanya yayını." },
+      { title: "Perakende lobi", body: "Cam bölmelerde yönlendirme ve duyuru yayını." },
     ],
     pitches: [],
     seriesCategories: ["transparent"],
@@ -533,7 +533,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     ],
     uses: [
       { title: "Cam cephe", body: "Bina cephesindeki camları dijital yüzeye dönüştürme." },
-      { title: "AVM dış / ara cephe", body: "Geniş cam yüzeylerde marka ve kampanya yayını." },
+      { title: "AVM dış / ara cephe", body: "Geniş cam yüzeylerde marka ve duyuru yayını." },
       { title: "Showroom cephe", body: "Dışarıdan görünen ama içeriyi tamamen kesmeyen uygulamalar." },
       { title: "Etkinlik mimarisi", body: "Geçici veya sabit cephe katmanlı tasarımlar." },
     ],
@@ -655,9 +655,9 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "2 yıl garanti + 5 yıl ücretsiz teknik servis",
     ],
     uses: [
-      { title: "Mağaza ve vitrin", body: "Kampanya, yeni ürün ve fiyat duyuruları." },
+      { title: "Mağaza ve vitrin", body: "Yeni ürün ve fiyat duyuruları." },
       { title: "AVM ve otel lobisi", body: "Karşılama, yönlendirme ve etkinlik bilgisi." },
-      { title: "Kafe ve restoran", body: "Menü, günün önerisi ve kampanya ekranı." },
+      { title: "Kafe ve restoran", body: "Menü, günün önerisi ve duyuru ekranı." },
       { title: "Ofis, kurum ve salon", body: "Duyuru, bekleme alanı bilgisi ve sunum." },
     ],
     pitches: [],
@@ -709,17 +709,17 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     cardImage: "/projects/guides/menuboard-kafe-tezgah-kart.jpg",
     imageAlt: "Kafe tezgâhının üstünde menü gösteren dijital ekran",
     intro: [
-      "Menüboard, kasanın üstünde ya da girişte duran ve menüyü, fiyatları, kampanyaları gösteren dijital ekrandır. Fiyat değiştiğinde ya da yeni ürün geldiğinde baskı beklemeden içeriği birkaç dakikada güncellersiniz.",
+      "Menüboard, kasanın üstünde ya da girişte duran ve menüyü, fiyatları ve duyuruları gösteren dijital ekrandır. Fiyat değiştiğinde ya da yeni ürün geldiğinde baskı beklemeden içeriği birkaç dakikada güncellersiniz.",
       "İki yoldan kuruyoruz. LCD/TV tipi menü ekranları hazır ölçülerde gelir ve yan yana dizilir; kasa arkasında çoğunlukla 43–55 inç ekranlar kullanılır. LED menü duvarı ise duvarın ölçüsüne göre modüllerle kurulur ve çerçevesiz, uzaktan okunan tek bir yüzey verir. Girişte ayaklı menü için 49, 55 veya 65 inç dikey gövde ya da poster LED tercih edilir.",
     ],
     highlights: [
       "LED ya da LCD; seçim keşifte alana göre",
       "Yatay kasa üstü veya dikey ayaklı yerleşim",
-      "İçerik USB, Wi‑Fi veya yerel ağ ile; zamanlanmış kampanya yayını",
+      "İçerik USB, Wi‑Fi veya yerel ağ ile; zamanlanmış duyuru yayını",
       "2 yıl garanti + 5 yıl ücretsiz teknik servis",
     ],
     uses: [
-      { title: "Kafe", body: "İçecek menüsü, günün tatlısı ve sezon kampanyası." },
+      { title: "Kafe", body: "İçecek menüsü, günün tatlısı ve sezon duyurusu." },
       { title: "Restoran ve fast food", body: "Kasa üstü menü, set menüler ve fiyat listesi." },
       { title: "Pastane ve fırın", body: "Ürün görselleri ve saat bazlı ürün değişimi." },
       { title: "Pencere ve arabaya servis", body: "Dış mekâna dayanıklı kasada okunur menü." },
@@ -849,7 +849,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "Video, fotoğraf ve ses oynatma; içerik anında değiştirilebilir",
     ],
     uses: [
-      { title: "AVM ve mağaza", body: "Kampanya, ürün tanıtımı ve mağaza içi yönlendirme." },
+      { title: "AVM ve mağaza", body: "Ürün tanıtımı ve mağaza içi yönlendirme." },
       { title: "Toplantı ve konferans salonu", body: "Program, salon bilgisi ve karşılama ekranı." },
       { title: "Restoran ve kafe", body: "Menü, günün önerileri ve self-servis bilgi noktası." },
       { title: "Lobi ve bekleme alanı", body: "Bilgilendirme, duyuru ve kat / birim yönlendirmesi." },
@@ -913,7 +913,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "İç ve dış mekân totem seçenekleri",
     ],
     uses: [
-      { title: "Mağaza girişi", body: "Kampanya ve yeni ürün duyuruları için dikkat çeken nokta." },
+      { title: "Mağaza girişi", body: "Yeni ürün duyuruları için dikkat çeken nokta." },
       { title: "AVM ve lobi", body: "Yönlendirme, duyuru ve marka içerikleri." },
       { title: "Etkinlik ve fuar", body: "Kolay taşınan, hızlı kurulan tanıtım ekranı." },
       { title: "Restoran ve kafe", body: "Menü ve günlük öneri gösterimi." },

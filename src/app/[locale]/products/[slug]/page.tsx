@@ -133,7 +133,7 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
       (lo.moduleMm || hi.moduleMm
         ? ""
         : `1 m² yaklaşık 19,53 panel ettiği için yalnızca modül bedeli m² başına yaklaşık ${fmtM2(lo.usd)} – ${fmtM2(hi.usd)} USD olur. `) +
-      `Toplam maliyete atölye işçiliği (${CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı (${CALC_EXTRAS.controlCard} USD) ve sürücü + yazılım (${CALC_EXTRAS.driverSoftware} USD) eklenir; nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`,
+      `Toplam maliyete atölye işçiliği (${CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı (kart başı ${CALC_EXTRAS.controlCard} USD; 10 m² üzerinde her başlayan 10 m² için ek kart) ve sürücü + yazılım (${CALC_EXTRAS.driverSoftware} USD) eklenir; nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`,
   };
 }
 
