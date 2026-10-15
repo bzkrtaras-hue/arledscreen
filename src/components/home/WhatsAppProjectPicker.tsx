@@ -20,7 +20,7 @@ export function WhatsAppProjectPicker({
             rel="noopener noreferrer"
             className="flex h-full min-h-12 items-center gap-3 rounded-xl border border-border bg-white px-4 py-3 text-sm font-semibold text-ink-soft transition hover:border-[#0F7A41]/60 hover:text-[#12813F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
           >
-            <WhatsAppIcon />
+            <WhatsAppIcon className="h-5 w-5 shrink-0" />
             <span className="flex-1">{projectTypeLabel(t.id, locale)}</span>
             <span className="text-ink-muted" aria-hidden>
               →
