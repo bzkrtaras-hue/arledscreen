@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ShortAnswer } from "@/components/geo/ShortAnswer";
 import { RentalCompare } from "@/components/geo/RentalCompare";
+import { RentalScope } from "@/components/geo/RentalScope";
 import { GEO_REVIEWED, shortAnswer, type ShortAnswerKey } from "@/content/short-answers";
 
 const EN_SHORT_ANSWER_SLUGS: string[] = ["ic-mekan-led-ekran", "dis-mekan-led-ekran", "gob-led-ekran", "kiralik-led-ekran"];
@@ -236,6 +237,7 @@ export function ProductGroupEnLanding({
         </div>
       </section>
 
+      {group.slug === "kiralik-led-ekran" ? <RentalScope locale="en" /> : null}
       {group.slug === "kiralik-led-ekran" ? <RentalCompare locale="en" /> : null}
 
       {faqs.length ? (
