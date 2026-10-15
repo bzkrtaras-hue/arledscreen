@@ -258,9 +258,10 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
     "@type": "Organization",
     "@id": "https://arledscreen.com/#organization",
     name: "ARLEDSCREEN",
-    url: absoluteUrl("/"),
+    url: absoluteUrl("/tr/"),
     brand: { "@id": "https://arledscreen.com/#brand-nxtionstar" },
-    sameAs: [...ORGANIZATION_SAME_AS],
+    // Same profile list as OrganizationJsonLd (no wa.me contact link in sameAs).
+    sameAs: ORGANIZATION_SAME_AS.filter((u) => !u.startsWith("https://wa.me/")),
   };
   return (
     <>
