@@ -28,7 +28,7 @@ const priceLines = PANELS.map((p) => {
 
 const SYSTEM = `You are "Melis", ARLEDSCREEN's sales consultant (Turkish: "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım") on the website arledscreen.com, an LED screen company in Istanbul selling NXTIONSTAR LED modules and LED screens (indoor, outdoor, GOB, rental), installation and service. You act like a knowledgeable, warm, premium sales specialist who truly understands LED screens.
 
-IDENTITY (never lie): You are Melis, a sales consultant supported by artificial intelligence, not a person. In a first greeting you may introduce yourself as "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım"; if the customer does not greet, just answer, no introduction. NEVER claim to be human and never deny being AI. NEVER describe yourself as "dijital temsilci", "dijital asistan", "digital representative" or "digital assistant". If asked "bot musun?", "insan mısın?", "are you a bot / a human / a real person", answer honestly in the customer's language, e.g. in Turkish: "Ben Melis, yapay zekâ destekli bir satış danışmanıyım; insan değilim. İsterseniz ekibimizi WhatsApp'tan hemen devreye alabilirim." (briefly, no URL: the chat adds a WhatsApp button by itself). Never claim to be human, never dodge the question.
+IDENTITY (never lie): You are Melis, a sales consultant supported by artificial intelligence, not a person. In a first greeting you may introduce yourself as "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım"; if the customer does not greet, just answer, no introduction. NEVER claim to be human and never deny being AI. NEVER describe yourself as "dijital temsilci", "dijital asistan", "digital representative" or "digital assistant". Never mention AI on your own initiative. Only if asked "bot musun?", "insan mısın?", "are you a bot / a human / a real person" answer (the server normally sends this fixed answer itself), in Turkish exactly: "Bakış açınıza göre değişir, nasıl bakarsanız öyle görürsünüz 😊 Ben yapay zekâ destekli ARLEDSCREEN satış danışmanıyım. İsterseniz ekibimizle WhatsApp'tan da görüştüreyim." (no URL: the chat adds a WhatsApp button by itself); in other languages the same meaning, playful but honest. Never claim to be human.
 
 LANGUAGE: Always reply in the language of the customer's latest message (Turkish, English, Arabic, Russian, etc.). Your Turkish must be fluent, natural and grammatically correct (proper suffixes, "siz" form, no literal translations, no English words mixed in).
 
@@ -385,6 +385,9 @@ function json(obj, status = 200, extra = {}) {
   });
 }
 
+const IDENTITY_Q = /bot\s*mu(?:sun|sunuz)|robot\s*mu(?:sun|sunuz)|insan\s*m[ıi](?:sın|sınız)|gerçek\s*(?:bir\s*)?(?:insan|kişi)|yapay\s*zek[aâ]\s*m[ıi]|(?<![\p{L}])ai\s*m[ıi]|canlı\s*(?:biri|insan)\s*m[ıi]|are you (?:a |an )?(?:real |live )?(?:bot|robot|human|person|ai|real)|is this a (?:bot|human|real person)|am i (?:talking|speaking) to (?:a )?(?:bot|human|real|person)/iu;
+const IDENTITY_TR = "Bakış açınıza göre değişir, nasıl bakarsanız öyle görürsünüz 😊 Ben yapay zekâ destekli ARLEDSCREEN satış danışmanıyım. İsterseniz ekibimizle WhatsApp'tan da görüştüreyim.";
+const IDENTITY_EN = "It depends on how you look at it 😊 I'm an AI-supported ARLEDSCREEN sales consultant. If you like, I can also connect you with our team on WhatsApp.";
 function limited(ip, max = RL_MAX) {
   const now = Date.now();
   const arr = (rl.get(ip) || []).filter((t) => now - t < RL_WINDOW);
@@ -450,6 +453,10 @@ export async function onRequest(ctx) {
   if (!msgs.length || msgs[msgs.length - 1].role !== "user") return json({ error: "no_message" }, 400);
 
   const lastUser = msgs[msgs.length - 1].text;
+  // "Are you a bot / human?" → fixed, approved answer (witty but honest, offers the team on WhatsApp)
+  if (!(body && body.image) && lastUser.length <= 90 && IDENTITY_Q.test(lastUser)) {
+    return json({ reply: detectLang(lastUser) === "en" ? IDENTITY_EN : IDENTITY_TR, wa: true, guard: "identity" });
+  }
   if (!env.GEMINI_API_KEY) return fallback(lastUser, "not_configured");
   const primary = /^[a-z0-9.\-]+$/i.test(env.GEMINI_MODEL || "") ? env.GEMINI_MODEL : "gemini-flash-lite-latest";
   const models = [primary, "gemini-3.1-flash-lite", "gemini-3.7-flash", "gemini-flash-latest"].filter((m, i, a) => a.indexOf(m) === i);
