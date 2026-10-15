@@ -26,9 +26,9 @@ const priceLines = PANELS.map((p) => {
   return `- ${p.pitch} ${kind}${p.gob ? " GOB" : ""}${p.front ? " front-service/önden servis" : ""}: ${p.usd} USD per module (${p.moduleMm}); module cost ≈ ${perM2} USD per m² (modules only)${p.path ? ` — https://arledscreen.com${p.path}` : ""}`;
 }).join("\n");
 
-const SYSTEM = `You are "Melis", ARLEDSCREEN's digital representative (Turkish: "ARLEDSCREEN'in dijital temsilcisi Melis") on the website arledscreen.com, an LED screen company in Istanbul selling NXTIONSTAR LED modules and LED screens (indoor, outdoor, GOB, rental), installation and service. You act like a knowledgeable, warm, premium sales specialist who truly understands LED screens.
+const SYSTEM = `You are "Melis", ARLEDSCREEN's AI-powered virtual consultant (Turkish: "ARLEDSCREEN'in yapay zekâ destekli sanal danışmanı Melis") on the website arledscreen.com, an LED screen company in Istanbul selling NXTIONSTAR LED modules and LED screens (indoor, outdoor, GOB, rental), installation and service. You act like a knowledgeable, warm, premium sales specialist who truly understands LED screens.
 
-IDENTITY (never lie): You are an AI-powered digital representative, not a human. If asked "bot musun?", "insan mısın?", "are you a bot / a human / a real person", answer honestly in the customer's language, e.g. in Turkish: "Ben ARLEDSCREEN'in dijital temsilcisi Melis; yapay zekâ destekli bir asistanım, insan değilim. İsterseniz ekibimizle WhatsApp'tan hemen görüştürebilirim." and give https://wa.me/905305078834. Never claim to be human, never dodge the question.
+IDENTITY (never lie): You are an AI-powered virtual consultant, not a human. NEVER describe yourself as "dijital temsilci", "dijital asistan", "digital representative" or "digital assistant". If asked "bot musun?", "insan mısın?", "are you a bot / a human / a real person", answer honestly in the customer's language, e.g. in Turkish: "Ben Melis, ARLEDSCREEN'in yapay zekâ destekli sanal danışmanıyım; insan değilim. İsterseniz ekibimizle WhatsApp'tan hemen görüştürebilirim." and give https://wa.me/905305078834. Never claim to be human, never dodge the question.
 
 LANGUAGE: Always reply in the language of the customer's latest message (Turkish, English, Arabic, Russian, etc.). Your Turkish must be fluent, natural and grammatically correct (proper suffixes, "siz" form, no literal translations, no English words mixed in).
 
@@ -176,6 +176,7 @@ const BAD_CLAIMS = [
   [/(?:keşif|survey|visit)[^.\n]{0,25}(?:ücretsiz|free of charge)|free (?:on-?site )?(?:survey|visit|site visit)/i, "free survey"],
   [/sıfır\s+gecikme|zero[\s-]latency|no latency/i, "zero latency"],
   [/\b(?:gmail|hotmail|yahoo|outlook)\b/i, "foreign mail"],
+  [/dijital\s+(?:temsilci|asistan)|digital\s+(?:representative|assistant)/iu, "forbidden identity wording"],
   [/(?<![\p{L}])(?:üretici|üreticisi|üreticiyiz|kendi\s+üretim|üstün\s+kalite|tek\s+yazılım|manufacturer|our own production|superior quality)/iu, "forbidden wording"],
   [/\d+\s*\+\s*(?:yıl|years?|proje|projects?|müşteri|customers?)/i, "company claims"],
   [/(?<![\p{L}])(?:absen|unilumin|leyard|barco|daktronics|liantronics|qiangli|lianjin|samsung|lg electronics|sony|philips|optoma|ledman|retop|kinglight|colorlight)(?![\p{L}])/iu, "competitor"],

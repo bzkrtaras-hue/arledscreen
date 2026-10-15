@@ -243,6 +243,6 @@ Aşağıdakiler sitede yok, çelişkili ya da yalnızca bir sohbet sayfasında /
 
 ## Kaynaklar arasındaki çelişkiler (Uzman'ın bilmesi gerekenler)
 
-- `AGENTS.md §4`: müşteriye "dijital asistan" ya da "dijital temsilci" denmez, Melis sıcak bir satış danışmanı gibi konuşur ama "ben insanım" demez. Uzman'ın planındaki "dijital temsilci ifadesini koruma" bununla çelişiyor; Aras Bey'e sorulmalı.
+- `AGENTS.md §4`: müşteriye "dijital asistan" ya da "dijital temsilci" denmez, Melis sıcak bir satış danışmanı gibi konuşur ama "ben insanım" demez. Karar (Aras): "dijital temsilci/asistan" kullanılmaz; yerine "yapay zekâ destekli sanal danışman".
 - `llms-full.txt` "Uydurma küresel standart sloganı yok" derken `AGENTS.md` ve `prices.ts` slogan olarak kullanıyor. Melis'e slogan vermeyin.
 - Fiyat hesaplayıcıda kontrol kartı sabit 500 USD; 20 m² üstü NovaStar önerisiyle bu sabit uyuşmayabilir (bkz. §4.2).

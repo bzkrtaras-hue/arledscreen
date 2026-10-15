@@ -18,7 +18,7 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
   - Fotoğraf yükleme: JPG/PNG, ham en çok 10 MB; tarayıcıda uzun kenar 2560 px ve en çok yaklaşık 3 MB JPEG'e küçültülür (EXIF/GPS silinir). Sunucu 4,7 MB üstü gövdeyi, JPG/PNG dışını ve bozuk veriyi reddeder. Görsel hiçbir yerde saklanmaz (KV/R2/önbellek yok), loglanmaz, fotoğraf istekleri AI Gateway'den geçmez (Gateway istek gövdesini kaydedebilir). Yüz veya kimlik görünürse görsel analiz edilmez. Ölçü fotoğraftan "yaklaşık, keşifte netleşir" diye verilir; m² kodda hesaplanır. IP başına günlük 5 görsel (izolat başına, en iyi çaba).
 - **Mobil:** karşılama balonundaki × yazının üstüne binmiyor (390×844 ölçüldü).
 - **Üretim için eksik:** Cloudflare Pages `arledscreen` projesinin **Production** ortamında `GEMINI_API_KEY` (secret) ve istenirse `AI_GATEWAY_BASE` yok; yalnız **Preview** ortamında var. Üretime almadan önce eklenmeli. Preview'daki `GEMINI_API_KEY` geçersizdi ("API key not valid"); 15 Ekim gece geçerli anahtarla yeniden yazıldı.
-- **Açık karar (Aras):** `AGENTS.md` §4 ve `docs/CURSOR_EK_KURALLAR.md` Melis için "dijital asistan / dijital temsilci" demeyi yasaklıyor; bu PR "ARLEDSCREEN'in dijital temsilcisi Melis, yapay zekâ destekli, insan değil" diyor (dürüstlük için). Birleşirse bu dosyalar güncellenmeli.
+- **Karar (Aras):** Melis "dijital temsilci / dijital asistan" demez (AGENTS.md §4 ile uyumlu). Kimlik sorusunda: "Ben Melis, ARLEDSCREEN'in yapay zekâ destekli sanal danışmanıyım; insan değilim" + WhatsApp teklifi.
 - **Sınırlar:** hız ve günlük görsel sınırı izolat başına sayılır (Pages'de paylaşımlı sayaç yok); sıkı sınır için Cloudflare Rate Limiting kuralı gerekir.
 - **Geri alma:** PR birleşmediği için gerek yok; birleşirse `git revert`.
 
