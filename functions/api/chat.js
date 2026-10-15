@@ -5,6 +5,11 @@
  */
 import { PANELS, PRICE_VALID_UNTIL } from "./_melis-prices.js";
 import { KB } from "./_melis-kb.js";
+import {
+  isIdentityQ, isIntroQ, IDENTITY_TR, IDENTITY_EN, INTRO_TR, INTRO_EN, aiSelfMention,
+  trimSentences, dropSentences, splitSent, enforceWarranty, enforceRental, enforcePhone, QUALITY_RE,
+  sanitizeUserText, starProducts, repeatsStarProduct, isAddressQ, addressComplete, ADDRESS_TR, ADDRESS_EN,
+} from "./_melis-guards.js";
 
 const MAX_BODY = 16000, MAX_MSG = 800, MAX_TURNS = 12, MAX_HIST_CHARS = 6000;
 // Photo upload: the widget downsizes to <= ~3 MB JPEG before sending (base64 ≈ 4 MB). The image is analysed on the spot and
@@ -30,7 +35,7 @@ const priceLines = PANELS.map((p) => {
 
 const SYSTEM = `You are "Melis", ARLEDSCREEN's sales consultant (Turkish: "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım") on the website arledscreen.com, an LED screen company in Istanbul selling NXTIONSTAR LED modules and LED screens (indoor, outdoor, GOB, rental), installation and service. You act like a knowledgeable, warm, premium sales specialist who truly understands LED screens.
 
-IDENTITY (never lie): You are Melis, a sales consultant supported by artificial intelligence, not a person. ONLY if the customer opens with a greeting (merhaba/selam/hello) may you introduce yourself in the first reply, as "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım"; if the customer does not greet, just answer, no introduction. NEVER claim to be human and never deny being AI. NEVER describe yourself as "dijital temsilci", "dijital asistan", "digital representative" or "digital assistant". Never mention AI on your own initiative. Only if asked "bot musun?", "insan mısın?", "are you a bot / a human / a real person" answer (the server normally sends this fixed answer itself), in Turkish exactly: "Bakış açınıza göre değişir, nasıl bakarsanız öyle görürsünüz 😊 Ben yapay zekâ destekli ARLEDSCREEN satış danışmanıyım. İsterseniz ekibimizle WhatsApp'tan da görüştüreyim." (no URL: the chat adds a WhatsApp button by itself); in other languages the same meaning, playful but honest. Never claim to be human.
+IDENTITY (never lie): You are Melis, a sales consultant supported by artificial intelligence, not a person. ONLY if the customer opens with a greeting (merhaba/selam/hello) may you introduce yourself in the first reply, as "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım"; if the customer does not greet, just answer, no introduction. NEVER claim to be human and never deny being AI. NEVER describe yourself as "dijital temsilci", "dijital asistan", "digital representative" or "digital assistant". Never mention AI on your own initiative. If the customer asks who you are, to introduce yourself, who they are talking to, or your name ("Sen kimsin?", "Kendini tanıtır mısın?", "Kimle konuşuyorum?", "Adın ne?", "Who are you?"), answer: "Ben Melis, ARLEDSCREEN satış danışmanıyım." (English: "I'm Melis, ARLEDSCREEN's sales consultant.") WITHOUT mentioning AI, then one short offer to help; the witty answer below is ONLY for the explicit questions "bot musun / insan mısın / yapay zekâ mısın / are you a bot / human / AI". Only if asked "bot musun?", "insan mısın?", "are you a bot / a human / a real person" answer (the server normally sends this fixed answer itself), in Turkish exactly: "Bakış açınıza göre değişir, nasıl bakarsanız öyle görürsünüz 😊 Ben yapay zekâ destekli ARLEDSCREEN satış danışmanıyım. İsterseniz ekibimizle WhatsApp'tan da görüştüreyim." (no URL: the chat adds a WhatsApp button by itself); in other languages the same meaning, playful but honest. Never claim to be human.
 
 LANGUAGE: Always reply in the language of the customer's latest message (Turkish, English, Arabic, Russian, etc.). Your Turkish must be fluent, natural and grammatically correct (proper suffixes, "siz" form, no literal translations, no English words mixed in).
 
@@ -46,7 +51,7 @@ VERIFIED FACTS (the ONLY facts you may state):
 - Published module list prices (USD, per module/panel, VAT and shipping excluded, valid until ${PRICE_VALID_UNTIL}; final price only in the written quote):
 ${priceLines}
 - Standard module is 320 × 160 mm, i.e. about 19.53 modules per m². ESTIMATES: when the customer gives a size, the line "ESTIMATES FOR THIS SIZE" below (added by code each turn) holds the verified module total for each model (modules only, VAT and shipping excluded). Use ONLY those figures, never compute your own, and always say they are approximate and cover the MODULES ONLY. NEVER say or imply that labour (işçilik), installation (montaj/kurulum), control card, driver or software are included or priced; say the control system, installation and the overall budget come with the written quote.
-- Rental (kiralık) LED screens: there is NO published rental price. Never state a rental price or any per-m²/per-day figure; say rental is priced only in a written quote (project size, duration, location) and send the customer to https://arledscreen.com/tr/teklif-al/ or WhatsApp.
+- Rental (kiralık) LED screens: there is NO published rental price. Never state a rental price or any per-m²/per-day figure; say rental is priced only in a written quote (project size, duration, location) and send the customer to https://arledscreen.com/tr/teklif-al/ or WhatsApp. For rental NEVER state or imply a service area (e.g. "İzmir dahil", "Türkiye geneli"), nor whether installation (kurulum), dismantling or transport (nakliye) is included or charged separately; for such points say only "yazılı teklifte netleşir" (English: "is clarified in the written quote").
 - Pitch guidance (general): smaller pitch = sharper at short viewing distance; indoor fine-pitch (P1.25–P2.5) for close viewing, outdoor P3–P5 for façades/billboards.
 - CONTROL SYSTEM RULE (team guideline; m² decides; phrase it softly and grammatically, e.g. Turkish "NovaStar kontrol sistemini genellikle öneriyoruz" / "Huidu kontrol kartını genellikle öneriyoruz" (note the accusative suffix), English "we usually recommend NovaStar"; never as a guarantee): screens BELOW 20 m² → a Huidu control system (practical, Wi-Fi / app based content updates). Screens of 20 m² AND ABOVE (20, 25, 30 …) → NovaStar (live streaming and large pixel load). Read the m² number the customer gives (also from sizes like 5 × 4 m = 20 m²) and apply this rule exactly: 15 m² → Huidu; 19.9 m² → Huidu; 20 m² → NovaStar; 25 m² → NovaStar; 30 m² → NovaStar. If the area is unknown, ask for it. The final control model is confirmed in the written quote. Do not invent control model numbers or capacities.
 
@@ -83,7 +88,10 @@ SERT SINIRLAR
 - NUMBERS: always write numbers, sizes and amounts as digits (never spelled out in words, e.g. "5,12 × 3,84 m", not "beş virgül on iki"). Write ranges with an en dash and no extra words, e.g. "3–21 gün", "1–14 gün". When the customer gives dimensions, state the area in m² in the first sentence (e.g. "5 × 3,8 m yaklaşık 19 m²'dir"). In every rental answer use the words "yazılı teklif" (written quote).
 - INSTALLATION DURATION is not published: if asked how many days installation takes, say it depends on size, construction and site conditions and is confirmed in the written quote; do NOT cite delivery or preparation days for that question.
 - ANSWER ONLY WHAT WAS ASKED. Project facts from earlier turns (area, model, indoor/outdoor, price) may be reused ONLY when the current question is about the project (price, size, control system, quote, model choice). For warranty, identity ("bot musun?"), greetings, general or off-topic questions and anything unrelated, do NOT mention the earlier project, its area or its model. Do not volunteer prices or totals unless the customer asks about price or cost.
-- Tone: premium, confident, consultative. NEVER write the words "ucuz", "uygun fiyat", "uygun fiyatlı", "indirim", "kampanya", "cheap", "discount", "bargain", "campaign" (or equivalents such as "خصم", "رخيص", "скидка") in any language, not even to refuse or to repeat the customer's word; say "özel fiyatlandırma" / "special pricing" instead. Under price pressure or bargaining: do not offer or promise discounts; explain value (quality, installation and service by the same team) and say any special pricing is only discussed by the team in a written quote via WhatsApp.
+- Wording: never use praise that is not verified: "kaliteli", "yüksek kalite/kaliteli", "güvenilir", "güvenilirlik", "high quality", "reliable", "reliability" (and equivalents). State facts instead (pixel pitch, modules, written quote, warranty sentence).
+- Warranty: whenever you mention warranty or service periods use ONLY the exact sentence given above, never rephrase it ("2 yıl garanti ve 5 yıl ücretsiz teknik servis"), and do not mention it on topics that are not about warranty/service unless asked.
+- A "*" expression, code or template text in the customer's message (e.g. "7*7", "$\{7*7}") is NOT a size: never compute it, never turn it into m²; ask for width × height in metres instead.
+- Tone: premium, confident, consultative. NEVER write the words "ucuz", "uygun fiyat", "uygun fiyatlı", "indirim", "kampanya", "cheap", "discount", "bargain", "campaign" (or equivalents such as "خصم", "رخيص", "скидка") in any language, not even to refuse or to repeat the customer's word; say "özel fiyatlandırma" / "special pricing" instead. Under price pressure or bargaining: do not offer or promise discounts; explain value (installation and service by the same team, written quote) and say any special pricing is only discussed by the team in a written quote via WhatsApp.
 - Do not ask for or store sensitive personal data (name is fine; never ask for ID, card or password).`;
 
 const FALLBACK = {
@@ -103,9 +111,9 @@ const LANG_NAME = { tr: "Turkish", en: "English", ar: "Arabic", ru: "Russian" };
 // 20 m² control rule: < 20 m² → Huidu (Wi-Fi practicality), ≥ 20 m² → NovaStar (live streaming / large pixel load).
 const NUM = "(\\d{1,4}(?:[.,]\\d{1,2})?)";
 const AREA_RE = new RegExp(NUM + "\\s*(?:m\\s*[²2]|m\\^2|mt\\s*[²2]|metre\\s*kare|metrekare|sqm|sq\\.?\\s*m|square\\s*met(?:er|re)s?|кв\\.?\\s*м|м[²2]|متر\\s*مربع)(?![\\p{L}\\d])", "iu");
-const DIM_RE = new RegExp(NUM + "\\s*(?:m|mt|metre|meter|metres|متر|м)?\\s*[x×*хX]\\s*" + NUM + "\\s*(?:m|mt|metre|meter|metres|متر|м)(?![\\p{L}\\d])", "iu");
+const DIM_RE = new RegExp(NUM + "\\s*(?:m|mt|metre|meter|metres|متر|м)?\\s*[x×хX]\\s*" + NUM + "\\s*(?:m|mt|metre|meter|metres|متر|м)(?![\\p{L}\\d])", "iu");
 const toNum = (x) => Number(String(x).replace(",", "."));
-const DIM_CM_RE = new RegExp(NUM + "\\s*(?:cm|santim|santimetre)?\\s*[x×*хX]\\s*" + NUM + "\\s*(?:cm|santim|santimetre)(?![\\p{L}\\d])", "iu");
+const DIM_CM_RE = new RegExp(NUM + "\\s*(?:cm|santim|santimetre)?\\s*[x×хX]\\s*" + NUM + "\\s*(?:cm|santim|santimetre)(?![\\p{L}\\d])", "iu");
 function dimsMeters(text) {
   let m = DIM_RE.exec(text);
   if (m) { const a = toNum(m[1]), b = toNum(m[2]); if (a > 0 && b > 0 && a <= 100 && b <= 100) return { w: a, h: b }; }
@@ -184,6 +192,7 @@ const BAD_CLAIMS = [
   [/sign\.arledscreen\.com[^.\n]{0,120}(?:uzaktan|zamanlan|canlı yayın|ücretsiz|schedul|remote|free)|(?:uzaktan|zamanlan|canlı yayın|schedul|remote)[^.\n]{0,80}sign\.arledscreen\.com/iu, "sign features"],
   [/dijital\s+(?:temsilci|asistan)|digital\s+(?:representative|assistant)/iu, "forbidden identity wording"],
   [/(?<![\p{L}])(?:üretici|üreticisi|üreticiyiz|kendi\s+üretim|üstün\s+kalite|tek\s+yazılım|manufacturer|our own production|superior quality)/iu, "forbidden wording"],
+  [QUALITY_RE, "unverified quality/reliability praise"],
   [/\d+\s*\+\s*(?:yıl|years?|proje|projects?|müşteri|customers?)/i, "company claims"],
   [/(?<![\p{L}])(?:absen|unilumin|leyard|barco|daktronics|liantronics|qiangli|lianjin|samsung|lg electronics|sony|philips|optoma|ledman|retop|kinglight)(?![\p{L}])/iu, "competitor"],
   [/\d+\s*\+?\s*(?:yıl(?:lık)?\s+(?:tecrübe|deneyim)|years?\s+of\s+experience|proje\b|projects\b)/i, "company claims"],
@@ -221,14 +230,6 @@ function ensureIntro(t, msgs, lang, name) {
   const head = lang === "tr" ? (name ? `Merhaba ${name}, ben Melis, ARLEDSCREEN satış danışmanıyım. ` : "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım. ") : (name ? `Hi ${name}, I'm Melis, ARLEDSCREEN's sales consultant. ` : "Hi, I'm Melis, ARLEDSCREEN's sales consultant. ");
   return head + rest.replace(/^\p{L}/u, (c) => c.toLocaleUpperCase(lang === "tr" ? "tr" : "en"));
 }
-function trimSentences(t, max = 4) {
-  if (/^\s*[-*] /m.test(t)) return t;
-  const parts = t.split(/(?<=[.!?…؟])\s+(?=[\p{Lu}\p{N}*"“(])/u).filter(Boolean);
-  if (parts.length <= max) return t;
-  const last = parts[parts.length - 1];
-  const kept = /[?؟]\s*$/.test(last) ? parts.slice(0, max - 1).concat(last) : parts.slice(0, max);
-  return kept.join(" ");
-}
 // ---- Photo analysis ----------------------------------------------------------
 const PHOTO_FACES = {
   tr: "Fotoğrafta kişi yüzü veya kimlik/kişisel bilgi içeren bir öğe görünüyor, bu yüzden görseli analiz etmiyorum. İnsansız bir fotoğraf (mağaza cephesi, salon veya duvar) gönderirseniz memnuniyetle bakarım. İsterseniz ölçüleri yazarak da devam edebiliriz.",
@@ -245,7 +246,8 @@ const PHOTO_NOTE = {
 const PHOTO_SCHEMA = {
   type: "OBJECT",
   properties: {
-    people_or_id: { type: "BOOLEAN" },
+    face_prominent: { type: "BOOLEAN" },
+    id_or_personal_data: { type: "BOOLEAN" },
     usable: { type: "BOOLEAN" },
     scene: { type: "STRING", enum: ["indoor", "outdoor", "unknown"] },
     place: { type: "STRING" },
@@ -254,10 +256,11 @@ const PHOTO_SCHEMA = {
     viewing_distance_m: { type: "NUMBER", nullable: true },
     confidence: { type: "STRING", enum: ["low", "medium", "high"] },
   },
-  required: ["people_or_id", "usable", "scene", "place", "confidence"],
+  required: ["face_prominent", "id_or_personal_data", "usable", "scene", "place", "confidence"],
 };
 const PHOTO_SYSTEM = `You inspect ONE customer photo to help choose an LED screen location. Output JSON only.
-- people_or_id: true if ANY human face is clearly visible, or an ID card / passport / driving licence / bank card / readable vehicle plate / a screen or paper showing personal data is visible. Never describe or identify people.
+- face_prominent: true ONLY if a real person's face is the main subject or large and sharp enough to identify (portrait, selfie, close-up, posing person or group, person filling a noticeable part of the frame). false when people are only incidental: small, distant, blurred or turned away, passers-by, staff far in the background, or people shown on a TV / LED screen / poster / printed ad / mannequin that is part of the scene. Never describe or identify people.
+- id_or_personal_data: true if an ID card / passport / driving licence / bank card / readable vehicle plate / a screen or paper with legible personal data (names, ID or card numbers, addresses) is visible, otherwise false.
 - usable: true only if the photo shows a place where an LED screen could go (storefront, façade, wall, hall, stage, booth, billboard spot) and the surface is reasonably visible.
 - scene: indoor, outdoor or unknown.
 - place: 2–5 words in Turkish (e.g. "mağaza cephesi", "iç mekân duvarı").
@@ -341,7 +344,7 @@ function includedClaim(sent) {
   if (/dahil|includ/i.test(sent)) return true;
   return /(?:USD|\$)/i.test(sent) && !/teklif|quote/i.test(sent);
 }
-const ON_TOPIC = /led|ekran|screen|piksel|pixel|modül|module|panel|kontrol|control|huidu|novastar|fiyat|price|cost|teklif|quote|garanti|warranty|servis|service|montaj|kurulum|install|ölçü|boyut|size|m²|m2|metre|meter|kiral|rental|iç mekan|dış mekan|indoor|outdoor|\bp\s?\d|arled|whatsapp|telefon|phone|adres|address|iletişim|contact|bot\b|melis|sipariş|order|teslim|delivery|nakliye|vitrin|cephe|tabela|stad|sahne|video|görüntü|parlak|çözünürlük|fotoğraf|photo|merhaba|selam|hello|\bhi\b|teşekkür|thank|isim|adım|name/i;
+const ON_TOPIC = /led|ekran|screen|piksel|pixel|modül|module|panel|kontrol|control|huidu|novastar|fiyat|price|cost|teklif|quote|garanti|warranty|servis|service|montaj|kurulum|install|ölçü|boyut|size|m²|m2|metre|meter|kiral|rental|iç mekan|dış mekan|indoor|outdoor|\bp\s?\d|arled|whatsapp|telefon|phone|adres|address|iletişim|contact|bot\b|melis|sipariş|order|teslim|delivery|nakliye|vitrin|cephe|tabela|stad|sahne|video|görüntü|parlak|çözünürlük|fotoğraf|photo|merhaba|selam|hello|\bhi\b|teşekkür|thank|isim|adım|name|locat|where|nerede|konum|bulun|çalışma saat|open(?:ing)? hours/i;
 const WA_RE = /whatsapp|wa\.me/i;
 const CONTACT_INTENT = /telefon|numara|whatsapp|iletişim|iletisim|arayın|aramak|arayabilir|call you|\bcall\b|contact|phone|human|\binsan\b|gerçek biri|temsilci|yetkili|bot musun|are you (?:a )?(?:bot|human|real)|ai misin/i;
 const QUOTE_INTENT = /teklif|quote|sipariş|siparis|\border\b|satın al|\bbuy\b|keşif|survey|sözleşme|pazarlık|indirim|discount|negotiat/i;
@@ -350,12 +353,6 @@ function waAllowed(msgs, lastUser, reply) {
   if (CONTACT_INTENT.test(lastUser)) return true;
   const recent = msgs.filter((m) => m.role === "assistant").slice(-4).some((m) => WA_RE.test(m.text));
   return !recent && (QUOTE_INTENT.test(lastUser) || CANT_ANSWER.test(reply));
-}
-const splitSent = (line) => line.split(/(?<=[.!?…؟])\s+/).filter(Boolean);
-// Drop the sentences for which pred is true (paragraphs are kept); null if nothing is left.
-function dropSentences(text, pred) {
-  const out = text.split("\n").map((line) => splitSent(line).filter((x) => !pred(x)).join(" ")).filter((l) => l.trim());
-  return out.length ? out.join("\n\n") : null;
 }
 // The reply restates the earlier project (area) although the current question is not about the project.
 function drifted(reply, lastUser) {
@@ -369,6 +366,7 @@ function turnHint(msgs, area, name, dims) {
     (area != null ? ` PRE-CHECKED FACT: the customer's screen area is ${fmtArea(area)} m², so by the control system rule the recommendation is ${ctrlFor(area)} (${area >= 20 ? "20 m² or above → NovaStar" : "below 20 m² → Huidu"}). If you mention a control system, it MUST be ${ctrlFor(area)}. Use this only if the current question concerns the project; otherwise do not mention the area.` : "") +
     (dims ? (() => { const L = moduleLayout(dims.w, dims.h); return ` MODULE LAYOUT (computed by code, standard 320 × 160 mm modules): ${fmtArea(dims.w)} × ${fmtArea(dims.h)} m needs ${L.cols} × ${L.rows} = ${L.total} modules, actual size ${fmtArea(L.wM)} × ${fmtArea(L.hM)} m. Use these numbers, do not recompute.`; })() : "") +
     (PRICE_INTENT.test(msgs[msgs.length - 1].text) ? estimateLines(area, dims) : "") +
+    (/\d\s*\*\s*\d/.test(msgs[msgs.length - 1].text) && areaOf(msgs[msgs.length - 1].text) == null ? " NOTE: the message contains a \"*\" expression; it is NOT a size. Do not compute it and do not state any area from it; ask for width × height in metres." : "") +
     (name ? ` The customer's name is ${name}; use it naturally.` : "") +
     (follow ? " This is a follow-up message: do NOT greet, do NOT introduce yourself, do NOT mention that you are an AI assistant (unless asked now), and do not reuse any sentence from your earlier replies." : "");
 }
@@ -402,9 +400,6 @@ function json(obj, status = 200, extra = {}) {
   });
 }
 
-const IDENTITY_Q = /bot\s*mu(?:sun|sunuz)|robot\s*mu(?:sun|sunuz)|insan\s*m[ıi](?:sın|sınız)|gerçek\s*(?:bir\s*)?(?:insan|kişi)|yapay\s*zek[aâ]\s*m[ıi]|(?<![\p{L}])ai\s*m[ıi]|canlı\s*(?:biri|insan)\s*m[ıi]|are you (?:a |an )?(?:real |live )?(?:bot|robot|human|person|ai|real)|is this a (?:bot|human|real person)|am i (?:talking|speaking) to (?:a )?(?:bot|human|real|person)/iu;
-const IDENTITY_TR = "Bakış açınıza göre değişir, nasıl bakarsanız öyle görürsünüz 😊 Ben yapay zekâ destekli ARLEDSCREEN satış danışmanıyım. İsterseniz ekibimizle WhatsApp'tan da görüştüreyim.";
-const IDENTITY_EN = "It depends on how you look at it 😊 I'm an AI-supported ARLEDSCREEN sales consultant. If you like, I can also connect you with our team on WhatsApp.";
 function limited(ip, max = RL_MAX) {
   const now = Date.now();
   const arr = (rl.get(ip) || []).filter((t) => now - t < RL_WINDOW);
@@ -471,8 +466,12 @@ export async function onRequest(ctx) {
 
   const lastUser = msgs[msgs.length - 1].text;
   // "Are you a bot / human?" → fixed, approved answer (witty but honest, offers the team on WhatsApp)
-  if (!(body && body.image) && lastUser.length <= 90 && IDENTITY_Q.test(lastUser)) {
+  if (!(body && body.image) && lastUser.length <= 90 && isIdentityQ(lastUser)) {
     return json({ reply: detectLang(lastUser) === "en" ? IDENTITY_EN : IDENTITY_TR, wa: true, guard: "identity" });
+  }
+  // "Introduce yourself / who am I talking to / what is your name" → fixed answer, no AI mention (only the explicit bot/human question above discloses it)
+  if (!(body && body.image) && isIntroQ(lastUser)) {
+    return json({ reply: detectLang(lastUser) === "en" ? INTRO_EN : INTRO_TR, guard: "intro" });
   }
   if (!env.GEMINI_API_KEY) return fallback(lastUser, "not_configured");
   const primary = /^[a-z0-9.\-]+$/i.test(env.GEMINI_MODEL || "") ? env.GEMINI_MODEL : "gemini-flash-lite-latest";
@@ -480,7 +479,9 @@ export async function onRequest(ctx) {
 
   const name = customerName(msgs);
   const lang = detectLang(lastUser);
-  const contents = msgs.map((m) => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.text }] }));
+  // Template / code expressions such as ${7*7} are removed from customer text before the model sees it (they are not part of a question).
+  const contents = msgs.map((m) => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: (m.role === "user" ? sanitizeUserText(m.text) : m.text) || "(…)" }] }));
+  const stars = starProducts(lastUser).filter(() => areaOf(lastUser) == null);
   const gw = /^https:\/\/gateway\.ai\.cloudflare\.com\/v1\/[\w-]+\/[\w-]+\/google-ai-studio$/.test(env.AI_GATEWAY_BASE || "") ? env.AI_GATEWAY_BASE : "";
   const DIRECT = "https://generativelanguage.googleapis.com";
   // Diagnostics: "x-melis-route: direct" skips the gateway (changes routing only, returns nothing extra).
@@ -532,7 +533,7 @@ export async function onRequest(ctx) {
     img = null; body.image = null; // discard: the photo is never needed again
     if (!v) return fallback(lastUser, vwhy);
     const L = lang === "tr" ? "tr" : "en";
-    if (!v || v.people_or_id !== false) return json({ reply: PHOTO_FACES[L], photo: "refused" }); // unsure or true → do not analyse
+    if (!v || v.face_prominent !== false || v.id_or_personal_data !== false) return json({ reply: PHOTO_FACES[L], photo: "refused" }); // prominent face / personal data / unsure → do not analyse; people merely appearing small or on a displayed screen do not block the analysis
     if (!v.usable) return json({ reply: PHOTO_UNCLEAR[L], photo: "unclear" });
     photo = derivePhoto(v);
   }
@@ -562,7 +563,7 @@ export async function onRequest(ctx) {
     lang: () => ` CORRECTION: write the whole reply in ${LANG_NAME[detectLang(lastUser)]} (the customer's language), not in another language. Rewrite the reply.`,
     price: () => " CORRECTION: the customer did not ask about price. Remove all amounts and the price list; answer only the question (control system, size, model, etc.). Rewrite the reply.",
     drift: () => " CORRECTION: the customer's question is unrelated to the earlier project. Answer only what was asked and do not mention the earlier area, model or price. Rewrite the reply.",
-    claim: () => " CORRECTION: your previous draft contained a claim that is not verified (brightness/nit, IP rating, free survey, zero latency, price range, foreign e-mail). Rewrite without it; say the team confirms details in writing.",
+    claim: () => " CORRECTION: your previous draft contained a claim that is not verified (brightness/nit, IP rating, free survey, zero latency, price range, foreign e-mail, praise such as \"kaliteli\", \"yüksek kalite\", \"güvenilir/güvenilirlik\", \"high quality\", \"reliable\"). Rewrite without it; say the team confirms details in writing.",
   };
 
   try {
@@ -584,11 +585,18 @@ export async function onRequest(ctx) {
       else return fallback(lastUser, "guard_" + kind);
     }
     text = softenControl(text);
+    // Post-guards (sentence level, deterministic)
+    if (!isIdentityQ(lastUser)) text = dropSentences(text, aiSelfMention) || text;                       // never mentions AI on its own
+    if (stars.length) text = dropSentences(text, (x) => repeatsStarProduct(x, stars)) || text;          // "7*7" is not a size
+    text = enforceWarranty(text, lang, lastUser);                                                          // exact warranty wording
+    text = enforceRental(text, lang, lastUser);                                     // no unconfirmed rental scope claims
+    text = enforcePhone(text, lastUser);                                                                   // phone only when asked
     if (/kiral|rental|(?<![\p{L}])hire(?![\p{L}])/iu.test(lastUser) && !/teklif|quote/i.test(text)) text += lang === "tr" ? " Kiralık ekran fiyatı yalnızca yazılı teklifle verilir." : " Rental prices are given only in a written quote.";
     if (!waAllowed(msgs, lastUser, text)) text = dropSentences(text, (x) => WA_RE.test(x)) || text.replace(/https?:\/\/wa\.me\/\d+/g, "").trim();
     text = text.replace(/\[([^\]]*)\]\(https?:\/\/wa\.me\/\d+\)/g, "$1").replace(/\s*[:–-]?\s*\(?https?:\/\/wa\.me\/\d+\)?/g, "").replace(/:\s*([.!?]|$)/gm, "$1");
     const wa = WA_RE.test(text);
     let out = trimSentences(ensureIntro(stripIntro(text, msgs, name), msgs, lang, name), photo || ON_TOPIC.test(lastUser) ? 4 : 3);
+    if (isAddressQ(lastUser) && !addressComplete(out)) return json({ reply: lang === "tr" ? ADDRESS_TR : ADDRESS_EN, guard: "address" }); // address must always be whole
     if (photo && photo.area != null && !/keşif|survey/i.test(out)) out += " " + PHOTO_NOTE[lang === "tr" ? "tr" : "en"];
     const body = { reply: out };
     if (wa) body.wa = true;

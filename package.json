@@ -33,7 +33,8 @@
     "invent:smoke": "node scripts/live-invent-smoke.mjs",
     "invent:smoke:local": "node scripts/local-invent-smoke.mjs",
     "melis:prices": "node scripts/gen-melis-prices.mjs",
-    "melis:kb": "node scripts/gen-melis-kb.mjs"
+    "melis:kb": "node scripts/gen-melis-kb.mjs",
+    "melis:test": "node --test scripts/melis-tests/"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
