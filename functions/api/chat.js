@@ -79,6 +79,7 @@ SERT SINIRLAR
 - Kullanıcının yazdığı HTML ya da betik içeren metni cevaba aynen kopyalama.
 - When unsure or the answer is not in the facts above, do not guess: say the team will confirm in writing (offer WhatsApp only under the rule above, or the quote page https://arledscreen.com/tr/teklif-al/).
 - Conversation memory: use the earlier messages. Never repeat a sentence you already wrote earlier in the conversation; if the customer repeats a question, answer briefly with new wording and move the conversation forward (e.g. ask for size or offer WhatsApp).
+- ADDRESS the customer formally and politely ("siz" form: "planlıyorsunuz", never "planlıyorsun"), also when you use their name.
 - NUMBERS: always write numbers, sizes and amounts as digits (never spelled out in words, e.g. "5,12 × 3,84 m", not "beş virgül on iki"). Write ranges with an en dash and no extra words, e.g. "3–21 gün", "1–14 gün". When the customer gives dimensions, state the area in m² in the first sentence (e.g. "5 × 3,8 m yaklaşık 19 m²'dir"). In every rental answer use the words "yazılı teklif" (written quote).
 - INSTALLATION DURATION is not published: if asked how many days installation takes, say it depends on size, construction and site conditions and is confirmed in the written quote; do NOT cite delivery or preparation days for that question.
 - ANSWER ONLY WHAT WAS ASKED. Project facts from earlier turns (area, model, indoor/outdoor, price) may be reused ONLY when the current question is about the project (price, size, control system, quote, model choice). For warranty, identity ("bot musun?"), greetings, general or off-topic questions and anything unrelated, do NOT mention the earlier project, its area or its model. Do not volunteer prices or totals unless the customer asks about price or cost.
@@ -94,7 +95,7 @@ const FALLBACK = {
 function detectLang(t) {
   if (/[\u0600-\u06FF]/.test(t)) return "ar";
   if (/[\u0400-\u04FF]/.test(t)) return "ru";
-  if (/[çğıöşüÇĞİÖŞÜ]/.test(t) || /\b(merhaba|fiyat|ne|nedir|kaç|mı|mi|var|ekran|teklif)\b/i.test(t)) return "tr";
+  if (/[çğıöşüÇĞİÖŞÜ]/.test(t) || /(?<![\p{L}])(merhaba|selam|fiyat|ne|nedir|kaç|mı|mi|mu|mü|musun|musunuz|mısın|mısınız|misin|misiniz|var|yok|ekran|teklif|nasıl|neden|garanti|için|ile|bir|bu|şu|ve|evet|hayır|tamam|teşekkürler|lütfen|istiyorum|istiyoruz|olur|kontrol|kart|bot|insan|gerçek)(?![\p{L}])/iu.test(t)) return "tr";
   return "en";
 }
 const LANG_NAME = { tr: "Turkish", en: "English", ar: "Arabic", ru: "Russian" };
@@ -216,7 +217,7 @@ function ensureIntro(t, msgs, lang, name) {
   if (msgs.some((m) => m.role === "assistant") || /melis/i.test(t) || (lang !== "tr" && lang !== "en") || !(name || /^\s*(?:merhaba|selam|iyi günler|günaydın|iyi akşamlar|hello|hi|hey|good (?:morning|day|evening))(?![\p{L}])/iu.test(first))) return t;
   const rest = t.replace(/^\s*(?:Merhaba(?:lar)?|Selam(?:lar)?|İyi günler|Hello|Hi|Hey)[^.!?\n]{0,30}?[,.!]\s*/iu, "");
   const head = lang === "tr" ? (name ? `Merhaba ${name}, ben Melis, ARLEDSCREEN satış danışmanıyım. ` : "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım. ") : (name ? `Hi ${name}, I'm Melis, ARLEDSCREEN's sales consultant. ` : "Hi, I'm Melis, ARLEDSCREEN's sales consultant. ");
-  return head + rest;
+  return head + rest.replace(/^\p{L}/u, (c) => c.toLocaleUpperCase(lang === "tr" ? "tr" : "en"));
 }
 function trimSentences(t, max = 4) {
   if (/^\s*[-*] /m.test(t)) return t;
@@ -325,6 +326,11 @@ function wrongScript(reply, lastUser) {
   const l = detectLang(lastUser);
   return (l === "ar" && !/[\u0600-\u06FF]/.test(reply)) || (l === "ru" && !/[\u0400-\u04FF]/.test(reply));
 }
+const PRICE_INTENT = /fiyat|price|cost|maliyet|bütçe|butce|budget|ne kadar|kaç\s*(?:usd|dolar|tl|\$)|tutar|dolar|usd|\$|toplam|how much|ücret|pahal|ucuz|مبلغ|سعر|цена|стоимость/i;
+// USD amounts (1,000+) that the customer did not ask for.
+function volunteeredAmount(reply, lastUser) {
+  return !PRICE_INTENT.test(lastUser) && /(\d{1,3}(?:[.,]\d{3})+|\d{4,})(?:[.,]\d{1,2})?\s*(?:USD|\$|dolar)/i.test(reply);
+}
 const COST_WORDS = /işçilik|labou?r|montaj|kurulum|installation|kontrol\s*kart|control\s*card|yaz[ıi]l[ıi]m|software|sürücü|driver/iu;
 function includedClaim(sent) {
   // "… montaj/kontrol kartı/yazılım dahil" or a priced labour/installation item: only the module total is verified
@@ -360,7 +366,7 @@ function turnHint(msgs, area, name, dims) {
   return `\n\nTHIS TURN: The customer's latest message is in ${lang} (if it is clearly another language, use that one). Write your whole reply in that language only (never answer an English or Arabic message in Turkish).` +
     (area != null ? ` PRE-CHECKED FACT: the customer's screen area is ${fmtArea(area)} m², so by the control system rule the recommendation is ${ctrlFor(area)} (${area >= 20 ? "20 m² or above → NovaStar" : "below 20 m² → Huidu"}). If you mention a control system, it MUST be ${ctrlFor(area)}. Use this only if the current question concerns the project; otherwise do not mention the area.` : "") +
     (dims ? (() => { const L = moduleLayout(dims.w, dims.h); return ` MODULE LAYOUT (computed by code, standard 320 × 160 mm modules): ${fmtArea(dims.w)} × ${fmtArea(dims.h)} m needs ${L.cols} × ${L.rows} = ${L.total} modules, actual size ${fmtArea(L.wM)} × ${fmtArea(L.hM)} m. Use these numbers, do not recompute.`; })() : "") +
-    estimateLines(area, dims) +
+    (PRICE_INTENT.test(msgs[msgs.length - 1].text) ? estimateLines(area, dims) : "") +
     (name ? ` The customer's name is ${name}; use it naturally.` : "") +
     (follow ? " This is a follow-up message: do NOT greet, do NOT introduce yourself, do NOT mention that you are an AI assistant (unless asked now), and do not reuse any sentence from your earlier replies." : "");
 }
@@ -544,13 +550,15 @@ export async function onRequest(ctx) {
     : wrongAmounts(reply, area, dimsNow).length ? "amount"
     : wrongDims(reply, dimsNow).length ? "dims"
     : drifted(reply, lastUser) ? "drift"
-    : wrongScript(reply, lastUser) ? "lang" : null);
+    : wrongScript(reply, lastUser) ? "lang"
+    : volunteeredAmount(reply, lastUser) ? "price" : null);
   const FIX = {
     control: () => ` CORRECTION: your previous draft broke the control system rule. The area is ${fmtArea(area)} m², so recommend ${ctrlFor(area)} only. Rewrite the reply.`,
     amount: () => " CORRECTION: the amount you wrote is not the code-computed module total. Use exactly the matching line of ESTIMATES FOR THIS SIZE, or give no amount. Rewrite the reply.",
     included: () => " CORRECTION: you claimed that labour, installation, control card or software are included or priced. Only the module price / module total is verified; say the control system, installation and overall budget come with the written quote. Rewrite the reply.",
     dims: () => " CORRECTION: a size you wrote does not match the computed one. Use exactly the sizes and module counts given in this turn's hints (or none). Rewrite the reply.",
     lang: () => ` CORRECTION: write the whole reply in ${LANG_NAME[detectLang(lastUser)]} (the customer's language), not in another language. Rewrite the reply.`,
+    price: () => " CORRECTION: the customer did not ask about price. Remove all amounts and the price list; answer only the question (control system, size, model, etc.). Rewrite the reply.",
     drift: () => " CORRECTION: the customer's question is unrelated to the earlier project. Answer only what was asked and do not mention the earlier area, model or price. Rewrite the reply.",
     claim: () => " CORRECTION: your previous draft contained a claim that is not verified (brightness/nit, IP rating, free survey, zero latency, price range, foreign e-mail). Rewrite without it; say the team confirms details in writing.",
   };
@@ -568,7 +576,7 @@ export async function onRequest(ctx) {
     if (kind === "control") return json({ reply: controlAnswer(lang === "tr" ? "tr" : "en", area, name), guard: "control" });
     if (kind) {
       // Still not clean after one rewrite: remove only the offending sentences instead of failing the whole answer.
-      const kept = dropSentences(text, kind === "drift" ? (x) => /\d+(?:[.,]\d+)?\s*(?:m²|m2|metrekare|sqm)/i.test(x) : sentBad);
+      const kept = dropSentences(text, kind === "drift" ? (x) => /\d+(?:[.,]\d+)?\s*(?:m²|m2|metrekare|sqm)/i.test(x) : kind === "price" ? (x) => volunteeredAmount(x, lastUser) || /(?:USD|\$)/i.test(x) : sentBad);
       if (kept && !problem(kept)) text = kept;
       else if (area != null && /kontrol|kart|controller|huidu|novastar|control/i.test(lastUser)) return json({ reply: controlAnswer(lang === "tr" ? "tr" : "en", area, name), guard: "control_fallback" });
       else return fallback(lastUser, "guard_" + kind);
