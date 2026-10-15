@@ -385,10 +385,10 @@ function json(obj, status = 200, extra = {}) {
   });
 }
 
-function limited(ip) {
+function limited(ip, max = RL_MAX) {
   const now = Date.now();
   const arr = (rl.get(ip) || []).filter((t) => now - t < RL_WINDOW);
-  if (arr.length >= RL_MAX) { rl.set(ip, arr); return true; }
+  if (arr.length >= max) { rl.set(ip, arr); return true; }
   arr.push(now); rl.set(ip, arr);
   if (rl.size > 5000) for (const k of rl.keys()) { rl.delete(k); if (rl.size < 4000) break; }
   return false;
@@ -405,7 +405,7 @@ export async function onRequest(ctx) {
     if (!ALLOWED_HOST.test(host)) return json({ error: "origin" }, 403);
   }
   const ip = request.headers.get("cf-connecting-ip") || "0";
-  if (limited(ip)) return json({ error: "rate", retryAfter: 600 }, 429, { "retry-after": "600" });
+  if (limited(ip, Number(env.MELIS_RATE_MAX) > 0 ? Number(env.MELIS_RATE_MAX) : RL_MAX)) return json({ error: "rate", retryAfter: 600 }, 429, { "retry-after": "600" });
 
   const len = Number(request.headers.get("content-length") || 0);
   if (len > IMG_MAX_BODY) return json({ error: "too_large" }, 413);
