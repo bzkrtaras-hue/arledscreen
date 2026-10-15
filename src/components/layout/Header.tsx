@@ -14,6 +14,7 @@ import {
   ChevronRight,
   FileText,
   Menu,
+  Search,
   X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -141,7 +142,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
   return (
     <header className="pl-2 pr-3 pb-2.5 pt-1.5 sm:pl-3 sm:pr-4 md:pl-4 md:pr-6 lg:pl-5 lg:pr-8">
-      <div className="mx-auto flex max-w-[90rem] min-w-0 items-center gap-2 md:gap-2.5">
+      <div className="mx-auto flex max-w-[90rem] min-w-0 items-center gap-1.5 md:gap-2 2xl:gap-2.5">
         <Link
           href={`/${locale}/`}
           className="liquid-glass-btn liquid-glass-btn--brand relative z-[2] -ml-0.5 min-h-11 min-w-0 shrink-0 gap-2 px-2.5 py-1.5 sm:min-h-12 sm:gap-2.5 sm:px-3"
@@ -171,7 +172,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           className="ml-auto hidden min-w-0 flex-1 justify-center min-[1360px]:flex"
           aria-label={tr ? "Ana menü" : "Primary"}
         >
-          <ul className="flex w-full flex-nowrap items-center justify-end gap-1 xl:justify-center 2xl:gap-1.5">
+          <ul className="flex w-full flex-nowrap items-center justify-end gap-0.5 xl:justify-center 2xl:gap-1.5">
             {links.map((link) =>
               link.dropdown && (link.dropdown === "products" ? groups.length : guides.length) ? (
                 <li
@@ -360,23 +361,32 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           <Link
             href={priceHref}
             aria-current={isActive(priceHref) ? "page" : undefined}
-            className="liquid-glass-btn liquid-glass-btn--primary min-h-11 gap-1.5 px-3.5 text-[13px] font-bold sm:min-h-12"
+            className="liquid-glass-btn liquid-glass-btn--primary min-h-11 gap-1.5 px-3 text-[13px] 2xl:px-3.5 font-bold sm:min-h-12"
           >
             <Calculator className="h-3.5 w-3.5" aria-hidden />
             {priceLabel}
           </Link>
           <Link
             href={`/${locale}/quote/`}
-            className="liquid-glass-btn liquid-glass-btn--primary min-h-11 gap-1.5 px-3.5 text-[13px] font-bold sm:min-h-12"
+            className="liquid-glass-btn liquid-glass-btn--primary min-h-11 gap-1.5 px-3 text-[13px] 2xl:px-3.5 font-bold sm:min-h-12"
           >
             <FileText className="h-3.5 w-3.5" aria-hidden />
             {dict.nav.quote}
           </Link>
         </div>
 
+        {locale === "tr" || locale === "en" ? (
+          <Link
+            href={tr ? "/tr/ara/" : "/en/search/"}
+            aria-label={tr ? "Sitede ara" : "Search the site"}
+            className="liquid-glass-btn liquid-glass-btn--icon relative z-[2] ml-auto h-12 w-12 shrink-0 sm:ml-1.5 min-[1360px]:ml-1 min-[1360px]:h-11 min-[1360px]:w-11 2xl:h-12 2xl:w-12"
+          >
+            <Search className="h-5 w-5" aria-hidden />
+          </Link>
+        ) : null}
         <button
           type="button"
-          className="liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon relative z-[2] ml-auto h-12 w-12 shrink-0 min-[1360px]:hidden"
+          className={cn("liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon relative z-[2] h-12 w-12 shrink-0 min-[1360px]:hidden", locale === "tr" || locale === "en" ? "ml-1.5" : "ml-auto")}
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
