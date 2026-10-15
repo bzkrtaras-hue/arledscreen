@@ -157,9 +157,9 @@ function findCssFiles() {
 }
 
 function asyncStylesheet(href) {
-  // Preload + apply; noscript fallback keeps layout without JS.
+  // media=print avoids VeryHigh contention with the LCP image; swap to all on load.
   return (
-    `<link rel="preload" href="${href}" as="style" onload="this.onload=null;this.rel='stylesheet'"/>` +
+    `<link rel="stylesheet" href="${href}" media="print" onload="this.media='all'"/>` +
     `<noscript><link rel="stylesheet" href="${href}"/></noscript>`
   );
 }
@@ -185,10 +185,7 @@ function processHtml(fileRel, mainCss, fontCss) {
     /<link rel="stylesheet" href="(\/_next\/static\/css\/[^"]+)"[^>]*>/g;
   let replaced = 0;
   html = html.replace(cssLinkRe, (full, href) => {
-    if (fontCss && href === fontCss.rel) {
-      // Keep tiny font-face CSS blocking (≤8KB) — cheap, avoids FOIT flash.
-      return full;
-    }
+    // Async both font-face and Tailwind — critical CSS + system-ui cover first paint.
     replaced++;
     return asyncStylesheet(href);
   });
