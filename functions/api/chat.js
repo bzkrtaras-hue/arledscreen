@@ -176,6 +176,7 @@ const BAD_CLAIMS = [
   [/(?:keşif|survey|visit)[^.\n]{0,25}(?:ücretsiz|free of charge)|free (?:on-?site )?(?:survey|visit|site visit)/i, "free survey"],
   [/sıfır\s+gecikme|zero[\s-]latency|no latency/i, "zero latency"],
   [/\b(?:gmail|hotmail|yahoo|outlook)\b/i, "foreign mail"],
+  [/sign\.arledscreen\.com[^.\n]{0,120}(?:uzaktan|zamanlan|canlı yayın|ücretsiz|schedul|remote|free)|(?:uzaktan|zamanlan|canlı yayın|schedul|remote)[^.\n]{0,80}sign\.arledscreen\.com/iu, "sign features"],
   [/dijital\s+(?:temsilci|asistan)|digital\s+(?:representative|assistant)/iu, "forbidden identity wording"],
   [/(?<![\p{L}])(?:üretici|üreticisi|üreticiyiz|kendi\s+üretim|üstün\s+kalite|tek\s+yazılım|manufacturer|our own production|superior quality)/iu, "forbidden wording"],
   [/\d+\s*\+\s*(?:yıl|years?|proje|projects?|müşteri|customers?)/i, "company claims"],
