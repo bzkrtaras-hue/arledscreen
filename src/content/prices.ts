@@ -160,6 +160,8 @@ export const CALC_EXTRAS = {
 
 /** Published list validity — keep in sync with ai-shopping.json / catalog.json. */
 export const PRICE_VALID_UNTIL = "2026-12-31";
+/** Start of the published list ("Liste güncelleme: 1 Ekim 2026" on /tr/led-ekran-fiyatlari/), Istanbul time. */
+export const PRICE_VALID_FROM = "2026-10-01T00:00:00+03:00";
 
 /** hasPart stubs — same Product @id as ai-shopping.json (productUrl#product; mpn=sku). */
 export function pricedPanelsHasPartStubs() {
@@ -422,6 +424,7 @@ export function panelOffer(
     url,
     price: usd.toFixed(2),
     priceCurrency: "USD",
+    validFrom: PRICE_VALID_FROM,
     priceValidUntil: PRICE_VALID_UNTIL,
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
