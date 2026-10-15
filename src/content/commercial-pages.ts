@@ -162,7 +162,7 @@ const INTENT_PAGES: CommercialPage[] = [
       NAP,
     ],
     bullets: [
-      "Keşif → tasarım → üretim/tedarik → montaj → kalibrasyon → servis",
+      "Keşif → tasarım → tedarik → montaj → kalibrasyon → servis",
       "Kayıtlı illerde yayımlanmış proje örnekleri",
       "İç/dış mekân, GOB, esnek, poster/totem ve kiralık seçenekler",
     ],
@@ -234,22 +234,22 @@ const INTENT_PAGES: CommercialPage[] = [
     cluster: "intent",
     title: "LED Ekran Üreticisi | ARLEDSCREEN NXTIONSTAR",
     description:
-      "LED ekran üreticisi ve tedarikçi: NXTIONSTAR paneller, İstanbul merkezli montaj ve servis. ARLEDSCREEN üretim/tedarik sürecini uçtan uca yönetir.",
-    h1: "LED ekran üreticisi ve teknoloji merkezi",
-    eyebrow: "Üretim · Tedarik",
+      "LED ekran üreticisi mi arıyorsunuz? NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa. Tedarik, montaj ve servis.",
+    h1: "LED ekran üreticisi mi? NXTIONSTAR ve ARLEDSCREEN",
+    eyebrow: "Marka · Tedarik",
     lead: "İstanbul merkezli teknoloji merkezimizde NXTIONSTAR LED ekran sistemlerini projelendiriyor, tedarik ediyor ve sahada uyguluyoruz.",
     intro: [
       "ARLEDSCREEN, NXTIONSTAR markalı LED ekran çözümlerini Türkiye’de satış, montaj ve servisle buluşturan teknoloji merkezidir.",
-      "Üretim/tedarik, kalite kontrol ve saha montajı aynı operasyon altında ilerler; proje ölçüsüne göre panel ve kontrol konfigürasyonu hazırlanır.",
+      "Tedarik, kalite kontrol ve saha montajı aynı operasyon altında ilerler; proje ölçüsüne göre panel ve kontrol konfigürasyonu hazırlanır.",
       NAP,
     ],
     bullets: [
       "NXTIONSTAR ürün hattı",
       "Proje bazlı panel ve kontrol konfigürasyonu",
-      "Fabrika/montaj görselleri ve sahada tamamlanan işler",
+      "Montaj/atölye görselleri ve sahada tamamlanan işler",
     ],
     images: [
-      { src: "/projects/factory-assembly.jpg", alt: "LED ekran üretim ve montaj hazırlığı" },
+      { src: "/projects/factory-assembly.jpg", alt: "LED ekran montaj hazırlığı" },
       { src: "/projects/frame-workshop.jpg", alt: "LED ekran konstrüksiyon atölyesi" },
       { src: "/projects/service-assembly.jpg", alt: "LED ekran servis ve montaj istasyonu" },
     ],
@@ -262,7 +262,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Üretici misiniz, bayi misiniz?",
         answer:
-          "ARLEDSCREEN, NXTIONSTAR LED ekran sistemlerini projelendiren, tedarik eden ve sahada uygulayan İstanbul merkezli teknoloji merkezidir. Marka ve operasyon ayrımı teklif sürecinde net yazılır.",
+          "ARLEDSCREEN üretici iddiasında bulunmaz. NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir. Projelendirme, tedarik, montaj ve servisi ARLEDSCREEN yapar.",
       },
     ],
     primaryCta: { href: "/tr/quote/", label: "Proje teklifi iste" },
@@ -1846,8 +1846,8 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       ...tr,
       title: "LED Display Manufacturer | ARLEDSCREEN NXTIONSTAR",
       description:
-        "LED display manufacturer and supplier: NXTIONSTAR panels, Istanbul-based install and service. ARLEDSCREEN runs project supply end to end.",
-      h1: "LED display manufacturer and technology center",
+        "Looking for an LED display manufacturer? NXTIONSTAR is ARLEDSCREEN's own brand; its sole sales point in Turkey is Gaziosmanpaşa, Istanbul. Supply, install, service.",
+      h1: "LED display manufacturer? NXTIONSTAR and ARLEDSCREEN",
       eyebrow: "Supply · Technology center",
       lead:
         "From our Istanbul technology center we project, supply and install NXTIONSTAR LED display systems on site.",
@@ -1859,7 +1859,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       bullets: [
         "NXTIONSTAR product line",
         "Project-based panel and control configuration",
-        "Factory/assembly photos and completed field projects",
+        "Assembly/workshop photos and completed field projects",
       ],
       images: [
         { src: "/projects/factory-assembly.jpg", alt: "LED display assembly preparation" },
@@ -1874,7 +1874,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Are you a manufacturer or a reseller?",
           answer:
-            "ARLEDSCREEN projects, supplies and installs NXTIONSTAR LED systems from Istanbul. Brand and role are written clearly in the quote. Brand page: /en/nxtionstar/.",
+            "ARLEDSCREEN does not claim to be a manufacturer. NXTIONSTAR is ARLEDSCREEN's own LED display brand; its sole sales point in Turkey is the ARLEDSCREEN headquarters in Gaziosmanpaşa, Istanbul. Brand page: /en/nxtionstar/.",
         },
         {
           question: "Is NXTIONSTAR the same as NationStar?",
