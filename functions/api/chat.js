@@ -8,7 +8,7 @@ import { KB } from "./_melis-kb.js";
 import {
   isIdentityQ, isIntroQ, identityLang, ensureRentalQuote, IDENTITY_TR, IDENTITY_EN, INTRO_TR, INTRO_EN, aiSelfMention,
   trimSentences, dropSentences, splitSent, enforceWarranty, enforceRental, enforcePhone, QUALITY_RE, PRODUCTION_RE, VISIT_CLAIM_RE,
-  isCardChangeQ, CARD_CHANGE_TR, CARD_CHANGE_EN, isControlCompareQ, COMPARE_TR, COMPARE_EN, compareLang, clearlyEnglish, SAFE_TR, SAFE_EN,
+  isCardChangeQ, CARD_CHANGE_TR, CARD_CHANGE_EN, isControlCompareQ, COMPARE_TR, COMPARE_EN, compareLang, clearlyEnglish, warrantyOtherLang, SAFE_TR, SAFE_EN,
   sanitizeUserText, starProducts, repeatsStarProduct, isAddressQ, addressComplete, ADDRESS_TR, ADDRESS_EN,
 } from "./_melis-guards.js";
 
@@ -91,7 +91,7 @@ SERT SINIRLAR
 - ANSWER ONLY WHAT WAS ASKED. Project facts from earlier turns (area, model, indoor/outdoor, price) may be reused ONLY when the current question is about the project (price, size, control system, quote, model choice). For warranty, identity ("bot musun?"), greetings, general or off-topic questions and anything unrelated, do NOT mention the earlier project, its area or its model. Do not volunteer prices or totals unless the customer asks about price or cost.
 - Never say or imply that ARLEDSCREEN has a showroom, a visitable store/office for customers, or takes appointments ("randevu"); for address questions give only the verified address. Never claim where or how products are made ("üretilmekte", "standartlarında üretim", "manufactured"); say "kendi markamız NXTIONSTAR". Never say a control card CAN or CANNOT be changed or upgraded later: say the team confirms it in the written quote and offer WhatsApp. Never call products "yüksek çözünürlüklü"/"high-resolution"; resolution may only be explained as a fact of pixel pitch.
 - Wording: never use praise that is not verified (any "kalite…" praise such as "kalitemiz", "kalitesi", "standartlarında", and "quality"): "kaliteli", "yüksek kalite/kaliteli", "güvenilir", "güvenilirlik", "high quality", "reliable", "reliability" (and equivalents). State facts instead (pixel pitch, modules, written quote, warranty sentence).
-- Warranty: whenever you mention warranty or service periods use ONLY the exact sentence given above, never rephrase it ("2 yıl garanti ve 5 yıl ücretsiz teknik servis"), and do not mention it on topics that are not about warranty/service unless asked.
+- Warranty: whenever you mention warranty or service periods use ONLY the exact sentence given above, never rephrase it ("2 yıl garanti ve 5 yıl ücretsiz teknik servis"); in Arabic or Russian translate that sentence faithfully and keep the reply in the customer's language, and do not mention it on topics that are not about warranty/service unless asked.
 - A "*" expression, code or template text in the customer's message (e.g. "7*7", "$\{7*7}") is NOT a size: never compute it, never turn it into m²; ask for width × height in metres instead.
 - Tone: premium, confident, consultative. NEVER write the words "ucuz", "uygun fiyat", "uygun fiyatlı", "indirim", "kampanya", "cheap", "discount", "bargain", "campaign" (or equivalents such as "خصم", "رخيص", "скидка") in any language, not even to refuse or to repeat the customer's word; say "özel fiyatlandırma" / "special pricing" instead. Under price pressure or bargaining: do not offer or promise discounts; explain value (installation and service by the same team, written quote) and say any special pricing is only discussed by the team in a written quote via WhatsApp.
 - Do not ask for or store sensitive personal data (name is fine; never ask for ID, card or password).`;
@@ -477,6 +477,8 @@ export async function onRequest(ctx) {
   if (!(body && body.image) && isAddressQ(lastUser)) {
     return json({ reply: clearlyEnglish(lastUser) ? ADDRESS_EN : ADDRESS_TR, guard: "address" });
   }
+  // Warranty question in Arabic / Russian → approved sentence translated faithfully (no model call)
+  if (!(body && body.image) && warrantyOtherLang(lastUser)) return json({ reply: warrantyOtherLang(lastUser), guard: "warranty" });
   // Changing the control card later is not in the knowledge base → no yes/no claim, the team confirms in writing
   if (!(body && body.image) && isCardChangeQ(lastUser)) {
     return json({ reply: clearlyEnglish(lastUser) ? CARD_CHANGE_EN : CARD_CHANGE_TR, wa: true, guard: "card_change" });

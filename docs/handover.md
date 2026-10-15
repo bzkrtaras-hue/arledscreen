@@ -4,6 +4,14 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 16 Ekim 2026 (gece, 3) — Melis yeniden test 2 düzeltmeleri (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
+
+- **Kaynak:** `/workspace/melis-kb/results-retest2/RETEST2_REPORT.md` (head 6f7eec6a). Üretime alınmadı, birleşmedi.
+- **Düzeltmeler:** (1) Soruda "colorlight" geçiyorsa Huidu–NovaStar karşılaştırma koruması atlanır, model üçünü de anlatır. (2) Adres koruması piksel, pixel, pitch, P değeri, çözünürlük, modül, panel, kontrol içeren soruları adres saymaz ("Showroom için hangi piksel aralığı?"). (3) Adres şablonu yalnız Türkçe ve İngilizce sorularda; Rusça ve Arapça adres soruları modele gider (dil korunur, yalnız bilgi tabanı adresi; "шоурум" iddiası da süzülür).
+- **Notlar:** (a) Arapça/Rusça garanti sorusu artık modele gitmez: onaylı cümlenin sadık çevirisi döner (model İngilizce cümleyi kopyalayıp dil korumasına takılıyordu; bu, önceki turda eklediğim "garanti cümlesini aynen kullan" kuralının yan etkisiydi). Dil koruması duruyor (yanıtta hedef dilde hiç harf yoksa reddeder; tek tük yazım hatası reddettirmez). (b) "titizlikle seçilmektedir", "güvenle tercih edilmektedir" (ve EN karşılıkları) kalite filtresine eklendi.
+- **Testler:** `npm run melis:test` 39 test.
+- **Geri alma:** önizlemeyi eski haline getirmek için `6f7eec6a` dalını yeniden dağıtın.
+
 ### 16 Ekim 2026 (gece) — Melis ikinci düzeltme turu (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
 
 - **Neden:** Grok Bot'un 271 vakalık yeniden testi (`/workspace/melis-kb/results-retest/RETEST_REPORT.md`) 4 gerçek hata buldu; hepsi sunucu tarafında düzeltildi. Üretime alınmadı, birleşmedi.

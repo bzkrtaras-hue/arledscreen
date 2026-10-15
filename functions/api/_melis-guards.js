@@ -194,11 +194,12 @@ export const QUALITY_RE = new RegExp([
   "high[\\s-]?quality|(?:top|superior|premium|best|excellent|great)[\\s-]quality|(?<![\\p{L}])(?<!(?:image|picture|video|signal|content|photo|print)\\s)quality(?![\\p{L}])|reliab\\w+|dependab\\w+|trustworthy",
   "yüksek\\s+çözünürlüklü|(?:ultra[\\s-]?)?high[\\s-]resolution|full[\\s-]?hd|ultra[\\s-]?hd",
   "standartlar(?:ımız|ı|ında|ıyla|ına)\\w*|(?:high|strict|quality|our) standards",
+  "titizlikle\\s+seç\\w*|carefully\\s+(?:selected|chosen)|güvenle\\s+tercih\\s+edil\\w*|(?:trusted|preferred)\\s+(?:by|with confidence)",
 ].join("|"), "iu");
 // Production / manufacturing claims are not verified (KB rule 13: say "kendi markamız").
 export const PRODUCTION_RE = /(?<![\p{L}])(?:üretil\w*|üretiyoruz|üretiriz|üretimimiz\w*|manufactur\w*|(?<!content )produced|made by us|our production)(?![\p{L}])/iu;
 // A showroom or appointment is not in the knowledge base (customers can still be asked about THEIR showroom).
-export const VISIT_CLAIM_RE = /(?<![\p{L}])(?:showroom(?:umuz|larımız)\w*|sergi\s+salon\w*|randevu\w*|appointment\w*|our showroom|book a visit)/iu;
+export const VISIT_CLAIM_RE = /(?<![\p{L}])(?:showroom(?:umuz|larımız)\w*|sergi\s+salon\w*|randevu\w*|appointment\w*|our showroom|book a visit|шоурум\w*)/iu;
 
 // ---- Size expressions (customer text only) -------------------------------------------
 // Template / code expressions such as ${7*7}, {{7*7}} or <%= 7*7 %> are not part of a question: they are removed before the model sees the text.
@@ -230,10 +231,11 @@ const ADDRESS_Q = new RegExp([
   "office address", "(?:visit|stop by|come by|drop by|come to) (?:you|your|the|our)", "showroom", "appointment", "street address",
   "عنوان", "أين", "адрес", "где",
 ].join("|"), "iu");
-const ADDRESS_NOT = /ekran|screen|install|kurulum|kirala|rental|kesif|survey|uret|produc|manufactur|fabrika|factory|garanti|warrant|teslim|deliver|kargo|ship|nakliye|odeme|payment|fiyat|price/i;
+const ADDRESS_NOT = /piksel|pixel|pitch|(?<![a-z])p\s?-?\d|p\s*degeri|cozunur|resolution|modul|module|panel|kontrol|control|ekran|screen|install|kurulum|kirala|rental|kesif|survey|uret|produc|manufactur|fabrika|factory|garanti|warrant|teslim|deliver|kargo|ship|nakliye|odeme|payment|fiyat|price/i;
 export function isAddressQ(text) {
   const t = String(text || "");
   if (t.length > 90) return false;
+  if (/[\u0600-\u06FF\u0400-\u04FF]/.test(t)) return false; // template only for Turkish and English; other languages are answered by the model (KB address facts, customer's language)
   const n = normTr(t);
   return ADDRESS_Q.test(n) && !ADDRESS_NOT.test(n);
 }
@@ -260,6 +262,7 @@ export function isControlCompareQ(text) {
   if (t.length > 140) return false;
   const n = normTr(t);
   if (!/huidu/.test(n) || !/nova\s?star/.test(n)) return false;
+  if (/colo[u]?rlight|kolorlayt/.test(n)) return false; // three-brand question: the model answers about all three
   if (/\d\s*(?:m\s*[²2]|metre|m\b|x|×)|fiyat|price|cost|ne kadar/.test(n)) return false; // a project/price question goes through the normal flow
   return /\bvs\b|versus|ile|ve\b|veya|yoksa|mi\b|mu\b|or\b|and\b|fark|difference|compare|karsilastir|hangisi|which|better|iyi/.test(n);
 }
@@ -279,4 +282,15 @@ export function clearlyEnglish(text) {
   const t = String(text || "");
   return /\b(?:where|your|you|are|is|can|could|do|does|would|visit|office|located|location|address|appointment|come|stop|the|our|later|change|card|control)\b/i.test(t)
     && !/[çğıöşüÇĞİÖŞÜ]/.test(t) && !/\b(?:nerede|ofis|ofisiniz|randevu|ziyaret|adres|adresiniz|var|mı|mi|mu|mü|bir|ve|ile|veya|kart|kartı|kontrol|sonradan)\b/i.test(t);
+}
+
+// ---- Warranty in Arabic / Russian: faithful translation of the approved sentence (the model tends to copy the English wording and fail the language guard) ----
+export const WARRANTY_AR = "تقدم ARLEDSCREEN ضمانًا لمدة سنتين وخدمة فنية مجانية لمدة 5 سنوات.";
+export const WARRANTY_RU = "ARLEDSCREEN предоставляет 2 года гарантии и 5 лет бесплатного технического обслуживания.";
+export function warrantyOtherLang(text) {
+  const t = String(text || "");
+  if (t.length > 90) return null;
+  if (/[\u0600-\u06FF]/.test(t) && /ضمان|كفالة/.test(t)) return WARRANTY_AR;
+  if (/[\u0400-\u04FF]/.test(t) && /гаранти/i.test(t)) return WARRANTY_RU;
+  return null;
 }

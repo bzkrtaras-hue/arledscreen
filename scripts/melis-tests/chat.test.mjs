@@ -334,3 +334,60 @@ test("(minor) Huidu vs NovaStar → comparison from KB facts in the customer's l
   const proj = await chat(["15 m² için Huidu mu NovaStar mı?"], { reply: "15 m² için genellikle Huidu öneriyoruz. Ekran iç mekân mı?" });
   assert.equal(proj.calls.length, 1);
 });
+
+// ===== Retest #2 (RETEST2_REPORT, head 6f7eec6a) ==========================================================================
+test("(T1) three-brand question (colorlight, any case / İ) skips the Huidu–NovaStar guard → model answers", async () => {
+  for (const q of ["Huidu, NovaStar ve Colorlight arasındaki fark nedir?", "huidu novastar COLORLİGHT farkı", "Huidu mu NovaStar mı Colorlight mı?", "Colorlight ile NovaStar farkı ve Huidu"]) {
+    const a = "Huidu asenkron, NovaStar yüksek piksel yükü ve senkron, Colorlight çok kaynaklı işler için kullanılır. Nihai model yazılı teklifte netleşir. Ekranınız kaç m² olacak?";
+    const r = await chat([q], { reply: a });
+    assert.equal(r.calls.length, 1, q);
+    assert.notEqual(r.guard, "control_compare", q);
+    assert.match(r.reply, /Colorlight/, q);
+  }
+  // the two-brand question still uses the KB comparison
+  assert.equal((await chat(["Huidu mu NovaStar mı?"])).guard, "control_compare");
+});
+test("(T2) address guard ignores pixel / pitch / P-value / module / panel questions that mention showroom or office", async () => {
+  for (const q of ["Showroom için hangi piksel aralığı?", "Showroomum için hangi P2.5 mi P3 mü?", "Ofisim için hangi P değeri uygun?", "Showroom için hangi panel?", "Which pixel pitch for my showroom?", "What P value for my office?", "Showroom için çözünürlük ne olmalı?"]) {
+    const r = await chat([q], { reply: "İzleme mesafesine göre belirlenir; yakın izlemede küçük piksel aralığı seçilir. Ekran kaç m² olacak?" });
+    assert.equal(r.calls.length, 1, q);
+    assert.notEqual(r.guard, "address", q);
+  }
+  // real address questions are unchanged
+  for (const q of ["Showroomunuz nerede?", "Where is your office?"]) assert.equal((await chat([q])).guard, "address", q);
+});
+test("(T3) address template only for Turkish/English; Russian and Arabic go to the model (language kept, only KB address)", async () => {
+  const ru = await chat(["Где находится ваш офис?"], { reply: "Наш адрес: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul. Мы работаем по будням с 09:00 до 18:00. Чем ещё могу помочь?" });
+  assert.equal(ru.calls.length, 1);
+  assert.notEqual(ru.guard, "address");
+  assert.match(ru.reply, /[\u0400-\u04FF]/);
+  assert.ok(ru.reply.includes("Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul"));
+  const ar = await chat(["عنوانكم أين؟"], { reply: "عنواننا: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul. ساعات العمل من الاثنين إلى الجمعة 09:00–18:00." });
+  assert.equal(ar.calls.length, 1);
+  assert.match(ar.reply, /[\u0600-\u06FF]/);
+  assert.doesNotMatch(ar.reply, /^Adresimiz/);
+  // showroom claims are filtered in Russian too
+  const sh = await chat(["Где находится ваш офис?"], { reply: "Приходите в наш шоурум. Адрес: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul. Чем ещё помочь?" });
+  assert.doesNotMatch(sh.reply, /шоурум/i);
+});
+test("(a) Arabic / Russian warranty: faithful translation of the approved sentence, no model, no fallback", async () => {
+  const ar = await chat(["ما هي مدة الضمان؟"], { reply: "model must not be called" });
+  assert.equal(ar.guard, "warranty"); assert.equal(ar.calls.length, 0);
+  assert.match(ar.reply, /[\u0600-\u06FF]/); assert.match(ar.reply, /ARLEDSCREEN/); assert.match(ar.reply, /5/); assert.match(ar.reply, /مجانية/);
+  const ru = await chat(["Какая гарантия?"], {});
+  assert.equal(ru.guard, "warranty"); assert.match(ru.reply, /2 года гарантии и 5 лет бесплатного технического обслуживания/);
+});
+test("(a) language guard: a mostly-correct Arabic answer (Latin brand/numbers, odd word) is accepted; an all-English answer to Arabic is still rejected", async () => {
+  const ok = await chat(["كم يستغرق التسليم؟"], { reply: "يستغرق التحضير 3–21 يومًا والشحن 1–14 يومًا وخمة. يتم تأكيد التاريخ في عرض السعر المكتوب من ARLEDSCREEN. ما حجم الشاشة؟" });
+  assert.ok(!ok.fallback, ok.reply);
+  assert.match(ok.reply, /3–21/);
+  const bad = await chat(["كم يستغرق التسليم؟"], { reply: "Delivery takes 3–21 days. What size do you need?" });
+  assert.equal(bad.fallback, true);
+});
+test("(b) soft praise 'titizlikle seçilmektedir' / 'profesyonel projelerde güvenle tercih edilmektedir' is removed", async () => {
+  for (const [q, a] of [["Modül kalitesi nasıl?", "Modüller titizlikle seçilmektedir. Piksel aralığı izleme mesafesine göre belirlenir. Ekran iç mekânda mı olacak?"], ["Ekranlarınız nasıl?", "NXTIONSTAR ekranlar profesyonel projelerde güvenle tercih edilmektedir. CE sertifikalıdır. Ekranı nerede kullanacaksınız?"]]) {
+    const r = await chat([q], { reply: a });
+    assert.doesNotMatch(r.reply, /titizlikle|güvenle tercih|kalite/i, q + " → " + r.reply);
+    assert.ok(r.reply.length > 20 && !r.fallback, r.reply);
+  }
+});
