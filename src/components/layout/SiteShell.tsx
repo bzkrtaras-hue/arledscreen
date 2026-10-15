@@ -2,7 +2,6 @@ import type { Locale } from "@/lib/i18n";
 import { Header, type MenuGroup, type MenuLink } from "@/components/layout/Header";
 import { TopBar } from "@/components/layout/TopBar";
 import { Footer } from "@/components/layout/Footer";
-import { FloatingSocialRail } from "@/components/layout/FloatingSocialRail";
 import { MobileCtaBar } from "@/components/layout/MobileCtaBar";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { LEAD_GROUP_LABEL, PRODUCT_GROUPS, isLeadProductGroup, productGroupPath } from "@/content/categories";
@@ -61,7 +60,6 @@ export function SiteShell({ locale, children }: SiteShellProps) {
           {children}
         </main>
         <Footer locale={locale} />
-        <FloatingSocialRail locale={locale} />
         <MobileCtaBar locale={locale} />
       </div>
     </MotionProvider>
