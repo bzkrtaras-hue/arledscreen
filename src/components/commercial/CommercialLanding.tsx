@@ -287,8 +287,8 @@ export function CommercialLanding({
             </h2>
             <p className="mb-4 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
               {tr
-                ? "Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir."
-                : "Published prices for 12 NXTIONSTAR panels (USD). Transparent, flexible, poster and control products have no fixed list price; they are priced in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately."}
+                ? "Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir."
+                : "Published prices for 12 NXTIONSTAR panels (USD). Transparent, flexible, poster and control products have no fixed list price; they are priced in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately."}
             </p>
             <PanelPriceTable
               locale={tr ? "tr" : "en"}

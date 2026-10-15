@@ -68,7 +68,7 @@ export function LocaleSelect({
         id={id}
         className={cn(
           "glass-select rounded-full text-ink-soft",
-          size === "sm" ? "min-h-7 px-2.5 text-[11px]" : "min-h-11 w-full px-3 text-base",
+          size === "sm" ? "min-h-11 px-3 text-[12px]" : "min-h-11 w-full px-3 text-base",
         )}
         value={locale}
         onChange={(e) => {

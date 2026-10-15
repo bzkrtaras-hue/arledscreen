@@ -38,7 +38,7 @@ export function OrganizationJsonLd() {
     addressRegion: BUSINESS_ADDRESS.addressRegion,
     addressCountry: BUSINESS_ADDRESS.addressCountry,
   };
-  const logo = absoluteUrl("/brand/arledscreen-logo-header.png");
+  const logo = absoluteUrl("/brand/arledscreen-yatay-1024.png");
 
   const jsonLd = {
     "@context": "https://schema.org",

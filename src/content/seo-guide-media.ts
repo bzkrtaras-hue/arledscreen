@@ -9,7 +9,7 @@ import type { SeoGuideSlug } from "@/content/seo-guides";
 type L4 = Record<"tr" | "en" | "ru" | "ar", string>;
 const pick = (v: L4, locale: Locale) => v[locale as keyof L4] ?? v.en;
 
-const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
+const IMAGES: Partial<Record<SeoGuideSlug, { src: string; alt: L4 }>> = {
   "led-ekran": {
     src: "/projects/hero.jpg",
     alt: { tr: "Gece aydınlatılmış bina cephesinde büyük LED ekran", en: "Large LED screen on a lit building façade at night", ru: "Большой LED-экран на фасаде здания ночью", ar: "شاشة LED كبيرة على واجهة مبنى مضاءة ليلًا" },
@@ -56,7 +56,7 @@ const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
   },
   "kiosk-ekran": {
     src: "/projects/guides/dokunmatik-kiosk-49-inc.jpg",
-    alt: { tr: "49 inç dokunmatik dijital kiosk, iki ayaklı gövde", en: "Two 49-inch touch digital kiosks on floor stands", ru: "Два сенсорных цифровых киоска 49 дюймов", ar: "كشكان رقميان لمسيان بمقاس 49 بوصة" },
+    alt: { tr: "İki adet 49 inç dokunmatik dijital kiosk", en: "Two 49-inch touch digital kiosks on floor stands", ru: "Два сенсорных цифровых киоска 49 дюймов", ar: "كشكان رقميان لمسيان بمقاس 49 بوصة" },
   },
   "kiosk-dijital-ekran": {
     src: "/projects/guides/dijital-ekran-totem.jpg",
@@ -68,7 +68,7 @@ const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
   },
   "cami-led-ekran": {
     src: "/projects/modules/indoor-install.jpg",
-    alt: { tr: "Duvara monte iç mekân LED ekran", en: "Wall-mounted indoor LED screen", ru: "Настенный LED-экран для помещений", ar: "شاشة LED داخلية مثبتة على الجدار" },
+    alt: { tr: "Duvara monte iç mekân LED ekran", en: "Wall-mounted indoor LED screen", ru: "Настенный LED-экран для помещений", ar: "شاشة LED داخلية على جدار قاعة اجتماعات" },
   },
   "led-ekran-ariza-belirtileri": {
     src: "/projects/service-assembly.jpg",
@@ -94,6 +94,18 @@ const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
     src: "/opt/blog/alanya-otel-led-ekran.jpg",
     alt: { tr: "Salon duvarına monte geniş iç mekân LED ekran", en: "Wide wall-mounted indoor LED screen in a hall", ru: "Широкий настенный LED-экран в зале", ar: "شاشة LED داخلية عريضة مثبتة على جدار قاعة" },
   },
+  "p1-86-vs-p2-5": {
+    src: "/modules/nxtionstar-p1-86-ic-mekan-modul.webp",
+    alt: { tr: "NXTIONSTAR P1.86 iç mekân LED modül", en: "NXTIONSTAR P1.86 indoor LED module", ru: "LED-модуль NXTIONSTAR P1.86", ar: "وحدة LED داخلية NXTIONSTAR P1.86" },
+  },
+  "led-ekran-omru-ve-bakim": {
+    src: "/projects/modules/front-service-module.jpg",
+    alt: { tr: "Önden servis edilebilen LED modül", en: "Front-serviceable LED module", ru: "LED-модуль с фронтальным обслуживанием", ar: "وحدة LED قابلة للصيانة من الأمام" },
+  },
+  "tasinabilir-p1-86-led-ekran": {
+    src: "/modules/nxtionstar-p1-86-ic-mekan-modul.webp",
+    alt: { tr: "NXTIONSTAR P1.86 GOB iç mekân LED modül", en: "NXTIONSTAR P1.86 GOB indoor LED module", ru: "LED-модуль NXTIONSTAR P1.86 GOB", ar: "وحدة LED داخلية NXTIONSTAR P1.86 GOB" },
+  },
 };
 
 export function getGuideImage(slug: SeoGuideSlug, locale: Locale): { src: string; alt: string } | undefined {
@@ -107,7 +119,7 @@ export interface GuideTable {
   rows: string[][];
 }
 
-const Q: L4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "بعرض خاص" };
+const Q: L4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "وفق مواصفات المشروع" };
 const IO: L4 = { tr: "İç / Dış", en: "Indoor / outdoor", ru: "Помещение / улица", ar: "داخلي / خارجي" };
 const IN: L4 = { tr: "İç", en: "Indoor", ru: "Помещение", ar: "داخلي" };
 const OUT: L4 = { tr: "Dış", en: "Outdoor", ru: "Улица", ar: "خارجي" };
@@ -182,7 +194,7 @@ const ARIZA_ROWS: L4[][] = [
 
 type T4 = Record<"tr" | "en" | "ru" | "ar", string>;
 const t = (tr: string, en: string, ru: string, ar: string): T4 => ({ tr, en, ru, ar });
-const Q4: T4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "بعرض خاص" };
+const Q4: T4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "وفق مواصفات المشروع" };
 
 const SIZE_HEAD: Record<"tr" | "en" | "ru" | "ar", string[]> = {
   tr: ["En arka sıra / masa", "Örnek ekran ölçüsü", "Modül", "Önerilen P", "Modül bedeli (USD)"],
@@ -202,21 +214,21 @@ const KONF_CAPTION = t(
   "أمثلة على مقاسات شاشات قاعات المؤتمرات (تكلفة الوحدات فقط؛ دون الضريبة والشحن)",
 );
 const DUGUN_HEAD: Record<"tr" | "en" | "ru" | "ar", string[]> = {
-  tr: ["En arka masa", "Örnek ekran ölçüsü", "Modül", "Satın alma: P ve modül bedeli (USD)", "Kiralık (USD/gün)"],
-  en: ["Farthest table", "Example screen size", "Modules", "Purchase: pitch and module cost (USD)", "Rental (USD/day)"],
-  ru: ["Дальний стол", "Пример размера", "Модули", "Покупка: шаг и модули (USD)", "Аренда (USD/день)"],
-  ar: ["أبعد طاولة", "مقاس الشاشة المقترح", "الوحدات", "الشراء: المسافة وتكلفة الوحدات (دولار)", "الإيجار (دولار/يوم)"],
+  tr: ["En arka masa", "Örnek ekran ölçüsü", "Modül", "Satın alma: P ve modül bedeli (USD)", "Kiralık"],
+  en: ["Farthest table", "Example screen size", "Modules", "Purchase: pitch and module cost (USD)", "Rental"],
+  ru: ["Дальний стол", "Пример размера", "Модули", "Покупка: шаг и модули (USD)", "Аренда"],
+  ar: ["أبعد طاولة", "مقاس الشاشة المقترح", "الوحدات", "الشراء: المسافة وتكلفة الوحدات (دولار)", "الإيجار"],
 };
 const DUGUN_ROWS: T4[][] = [
-  [t("≈ 15 m", "≈ 15 m", "≈ 15 м", "≈ 15 م"), t("3,52 × 1,92 m", "3.52 × 1.92 m", "3,52 × 1,92 м", "3.52 × 1.92 م"), t("132", "132", "132", "132"), t("P3.07 iç · 4.076,16", "P3.07 indoor · 4,076.16", "P3.07 · 4 076,16", "P3.07 داخلي · 4,076.16"), t("337,92", "337.92", "337,92", "337.92")],
-  [t("≈ 25 m", "≈ 25 m", "≈ 25 м", "≈ 25 م"), t("5,44 × 3,04 m", "5.44 × 3.04 m", "5,44 × 3,04 м", "5.44 × 3.04 م"), t("323", "323", "323", "323"), t("P4 iç · 8.714,54", "P4 indoor · 8,714.54", "P4 · 8 714,54", "P4 داخلي · 8,714.54"), t("826,88", "826.88", "826,88", "826.88")],
-  [t("≈ 35 m", "≈ 35 m", "≈ 35 м", "≈ 35 م"), t("7,68 × 4,48 m", "7.68 × 4.48 m", "7,68 × 4,48 м", "7.68 × 4.48 م"), t("672", "672", "672", "672"), t("P4 iç · 18.130,56", "P4 indoor · 18,130.56", "P4 · 18 130,56", "P4 داخلي · 18,130.56"), t("1.720,32", "1,720.32", "1 720,32", "1,720.32")],
+  [t("≈ 15 m", "≈ 15 m", "≈ 15 м", "≈ 15 م"), t("3,52 × 1,92 m", "3.52 × 1.92 m", "3,52 × 1,92 м", "3.52 × 1.92 م"), t("132", "132", "132", "132"), t("P3.07 iç · 4.076,16", "P3.07 indoor · 4,076.16", "P3.07 · 4 076,16", "P3.07 داخلي · 4,076.16"), Q4],
+  [t("≈ 25 m", "≈ 25 m", "≈ 25 м", "≈ 25 م"), t("5,44 × 3,04 m", "5.44 × 3.04 m", "5,44 × 3,04 м", "5.44 × 3.04 م"), t("323", "323", "323", "323"), t("P4 iç · 8.714,54", "P4 indoor · 8,714.54", "P4 · 8 714,54", "P4 داخلي · 8,714.54"), Q4],
+  [t("≈ 35 m", "≈ 35 m", "≈ 35 м", "≈ 35 م"), t("7,68 × 4,48 m", "7.68 × 4.48 m", "7,68 × 4,48 м", "7.68 × 4.48 م"), t("672", "672", "672", "672"), t("P4 iç · 18.130,56", "P4 indoor · 18,130.56", "P4 · 18 130,56", "P4 داخلي · 18,130.56"), Q4],
 ];
 const DUGUN_CAPTION = t(
-  "Düğün salonu için örnek ekran ölçüleri: satın alma (yalnızca modül bedeli) ve günlük 50 USD/m² kiralama; KDV ve nakliye hariç",
-  "Example wedding-hall screen sizes: purchase (module cost only) and rental at USD 50 per m² per day; VAT and shipping excluded",
-  "Примеры для свадебного зала: покупка (только модули) и аренда 50 USD за м² в день; без НДС и доставки",
-  "أمثلة لقاعات الأفراح: الشراء (تكلفة الوحدات فقط) والإيجار بـ 50 دولارًا لكل م² يوميًا؛ دون الضريبة والشحن",
+  "Düğün salonu için örnek ekran ölçüleri: satın alma (yalnızca modül bedeli) ve kiralama (fiyat teklifle verilir); KDV ve nakliye hariç",
+  "Example wedding-hall screen sizes: purchase (module cost only) and rental (priced by quote); VAT and shipping excluded",
+  "Примеры для свадебного зала: покупка (только модули) и аренда (цена по предложению); без НДС и доставки",
+  "أمثلة لقاعات الأفراح: الشراء (تكلفة الوحدات فقط) والإيجار (السعر بعرض مكتوب)؛ دون الضريبة والشحن",
 );
 const AREA_HEAD: Record<"tr" | "en" | "ru" | "ar", string[]> = {
   tr: ["Alan", "Önerilen ekran", "İzleme mesafesi", "Fiyat (USD/panel)"],
@@ -255,8 +267,32 @@ const AREA_ROWS: Record<string, T4[][]> = {
   "okul-led-ekran": OKUL_ROWS,
 };
 
+const CMP_HEAD: Record<"tr" | "en" | "ru" | "ar", string[]> = {
+  tr: ["Özellik", "P1.86 GOB", "P2.5 iç mekân"],
+  en: ["Feature", "P1.86 GOB", "Indoor P2.5"],
+  ru: ["Параметр", "P1.86 GOB", "P2.5"],
+  ar: ["الخاصية", "P1.86 GOB", "P2.5 داخلي"],
+};
+const CMP_ROWS: T4[][] = [
+  [t("Piksel aralığı", "Pixel pitch", "Шаг пикселя", "مسافة البكسل"), t("1,86 mm", "1.86 mm", "1,86 мм", "1.86 مم"), t("2,5 mm", "2.5 mm", "2,5 мм", "2.5 مم")],
+  [t("Modül", "Module", "Модуль", "الوحدة"), t("320 × 160 mm, 172 × 86 piksel", "320 × 160 mm, 172 × 86 px", "320 × 160 мм, 172 × 86", "320 × 160 مم، 172 × 86 بكسل"), t("320 × 160 mm", "320 × 160 mm", "320 × 160 мм", "320 × 160 مم")],
+  [t("Yüzey", "Surface", "Поверхность", "السطح"), t("GOB, önden bakım", "GOB, front service", "GOB, фронтальный сервис", "GOB، صيانة أمامية"), t("Teknik föyde", "In datasheet", "В спецификации", "في ورقة البيانات")],
+  [t("Panel fiyatı (USD)", "Panel price (USD)", "Цена панели (USD)", "سعر اللوح (دولار)"), t("49,08", "49.08", "49,08", "49.08"), t("32,18", "32.18", "32,18", "32.18")],
+  [t("Modül bedeli (USD/m²)", "Module cost (USD/m²)", "Модули (USD/м²)", "تكلفة الوحدات (دولار/م²)"), t("≈ 959", "≈ 959", "≈ 959", "≈ 959"), t("≈ 629", "≈ 629", "≈ 629", "≈ 629")],
+  [t("Önerilen min. mesafe", "Suggested min. distance", "Мин. дистанция", "الحد الأدنى للمسافة"), t("≈ 1,9 m", "≈ 1.9 m", "≈ 1,9 м", "≈ 1.9 م"), t("≈ 2,5 m", "≈ 2.5 m", "≈ 2,5 м", "≈ 2.5 م")],
+];
+const CMP_CAPTION = t(
+  "P1.86 vs P2.5 karşılaştırma (fiyatlar panel başına, KDV ve nakliye hariç)",
+  "P1.86 vs P2.5 comparison (prices per panel, VAT and shipping excluded)",
+  "Сравнение P1.86 и P2.5 (цены за панель, без НДС и доставки)",
+  "مقارنة P1.86 و P2.5 (الأسعار لكل لوح دون الضريبة والشحن)",
+);
+
 export function getGuideTable(slug: SeoGuideSlug, locale: Locale): GuideTable | undefined {
   const k = (["tr", "en", "ru", "ar"].includes(locale) ? locale : "en") as keyof L4;
+  if (slug === "p1-86-vs-p2-5") {
+    return { caption: CMP_CAPTION[k], headers: CMP_HEAD[k], rows: CMP_ROWS.map((r) => r.map((c) => c[k])) };
+  }
   if (slug === "cami-led-ekran") {
     return { caption: CAMI_CAPTION[k], headers: CAMI_HEAD[k], rows: CAMI_ROWS.map((r) => r.map((c) => c[k])) };
   }

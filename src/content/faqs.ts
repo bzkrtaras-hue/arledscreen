@@ -6,7 +6,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Where are published panel prices listed?",
       answer:
-        "The published 12 panel USD prices are on https://arledscreen.com/en/led-ekran-fiyatlari/ (TR: /tr/led-ekran-fiyatlari/) and in the price calculator. Prices are in USD per panel; VAT and shipping are excluded; there is no free shipping. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+        "The published 12 panel USD prices are on https://arledscreen.com/en/led-ekran-fiyatlari/ (TR: /tr/led-ekran-fiyatlari/) and in the price calculator. Prices are in USD per panel; VAT and shipping are excluded; there is no free shipping. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
     },
     {
       question: "Is arleds.com the same as arledscreen.com?",
@@ -74,9 +74,9 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "We have completed projects in every Istanbul district: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar and Zeytinburnu. Survey, installation and technical service are planned from our Gaziosmanpaşa HQ.",
     },
     {
-      question: "Can I rent an LED screen weekly or monthly? Is there a deposit?",
+      question: "Can I rent an LED screen weekly or monthly?",
       answer:
-        "Yes. Indoor and outdoor rental LED: USD 50 per m² per day. Weekly and monthly rentals are priced on the same daily per-m² rate. No deposit is required. Installation and shipping are quoted separately.",
+        "Yes. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
     },
   ],
   tr: [
@@ -88,7 +88,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Panel fiyatları nerede yayımlanır?",
       answer:
-        "Yayımlanmış 12 panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasında ve fiyat hesaplayıcıdadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir; ücretsiz kargo yoktur. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
+        "Yayımlanmış 12 panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasında ve fiyat hesaplayıcıdadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir; ücretsiz kargo yoktur. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
     },
     {
       question: "arleds.com ile arledscreen.com aynı mı?",
@@ -166,9 +166,9 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "İstanbul'un tüm ilçelerinde proje yaptık: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar ve Zeytinburnu. Keşif, montaj ve teknik servis Gaziosmanpaşa merkezimizden planlanır.",
     },
     {
-      question: "Kiralık LED ekran haftalık ve aylık kiralanabilir mi? Depozito var mı?",
+      question: "Kiralık LED ekran haftalık ve aylık kiralanabilir mi?",
       answer:
-        "Evet. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Haftalık ve aylık kiralamalar aynı günlük m² fiyatı üzerinden hesaplanır. Depozito alınmaz. Kurulum ve nakliye ayrıca tekliflendirilir.",
+        "Evet. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
     },
   ],
   ar: [
@@ -213,9 +213,9 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "نفّذنا مشاريع في جميع مناطق إسطنبول: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar وZeytinburnu. يُخطَّط للمعاينة والتركيب والخدمة الفنية من مقرنا في غازي عثمان باشا.",
     },
     {
-      question: "هل يمكن استئجار شاشة LED أسبوعيًا أو شهريًا؟ هل يوجد تأمين؟",
+      question: "هل يمكن استئجار شاشة LED أسبوعيًا أو شهريًا؟",
       answer:
-        "نعم. تأجير شاشات LED الداخلية والخارجية: 50 دولارًا أمريكيًا لكل م² يوميًا. يُحسب الإيجار الأسبوعي والشهري بالسعر اليومي نفسه لكل م². لا يُطلب أي تأمين. يُسعَّر التركيب والشحن بشكل منفصل.",
+        "نعم. يُحدَّد سعر تأجير شاشات LED الداخلية والخارجية بعرض سعر مكتوب. يُسعَّر التركيب والشحن بشكل منفصل.",
     },
   ],
   ru: [
@@ -260,9 +260,9 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "Мы выполняли проекты во всех районах Стамбула: Adalar, Arnavutköy, Ataşehir, Avcılar, Bağcılar, Bahçelievler, Bakırköy, Başakşehir, Bayrampaşa, Beşiktaş, Beykoz, Beylikdüzü, Beyoğlu, Büyükçekmece, Çatalca, Çekmeköy, Esenler, Esenyurt, Eyüpsultan, Fatih, Gaziosmanpaşa, Güngören, Kadıköy, Kağıthane, Kartal, Küçükçekmece, Maltepe, Pendik, Sancaktepe, Sarıyer, Silivri, Sultanbeyli, Sultangazi, Şile, Şişli, Tuzla, Ümraniye, Üsküdar и Zeytinburnu. Выезд, монтаж и сервис планируются из нашего офиса в Газиосманпаше.",
     },
     {
-      question: "Можно ли арендовать LED-экран на неделю или месяц? Нужен ли депозит?",
+      question: "Можно ли арендовать LED-экран на неделю или месяц?",
       answer:
-        "Да. Аренда LED-экрана для помещений и улицы: 50 USD за м² в день. Недельная и месячная аренда считается по той же дневной ставке за м². Депозит не требуется. Монтаж и доставка рассчитываются отдельно.",
+        "Да. Аренда LED-экрана для помещений и улицы — цена по письменному предложению. Монтаж и доставка рассчитываются отдельно.",
     },
   ],
 };

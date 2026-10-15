@@ -23,6 +23,8 @@ import { HomeCtaBand } from "@/components/home/HomeCtaBand";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { LearningHub } from "@/components/home/LearningHub";
 import { HomeFaq } from "@/components/home/HomeFaq";
+import { SelectedProjects } from "@/components/home/SelectedProjects";
+import { QuietHero } from "@/components/hero/QuietHero";
 import { GatewayTiles } from "@/components/home/GatewayTiles";
 import { ValuesBand } from "@/components/home/ValuesBand";
 import { FeaturedReferences } from "@/components/home/FeaturedReferences";
@@ -175,10 +177,11 @@ export default async function HomePage({ params }: PageProps) {
         }}
       />
 
-      {/* 1. Full-bleed video hero under liquid-glass chrome → 2. gateway tiles → 3. values */}
-      <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
-        <Hero locale={locale} />
+      {/* 1. Quiet full-bleed still hero (no video) → 2. selected projects → 3. gateway tiles → 4. values */}
+      <div className="-mt-[7.25rem] md:-mt-[8rem]">
+        <QuietHero />
       </div>
+      <SelectedProjects />
       <GatewayTiles />
       <ValuesBand />
 
@@ -190,7 +193,7 @@ export default async function HomePage({ params }: PageProps) {
             title="Kullanım alanına göre LED ekran çözümleri"
             description="Ekran seçimi, kullanım amacı ve izleme mesafesiyle başlar. Size en yakın grubu seçin; seçenekleri, kullanım alanlarını ve ilgili projeleri inceleyin."
           />
-          <ProductGroupGrid mobileStrip />
+          <ProductGroupGrid mobileStrip skipCatalogCards />
           <p className="mt-8 text-sm text-ink-muted">
             Fiyat için{" "}
             <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
@@ -230,7 +233,7 @@ export default async function HomePage({ params }: PageProps) {
             title={dict.sections.references.title}
             description="Yakın süreçte tamamladığımız projelerden bir seçki."
           />
-          <FeaturedReferences />
+          <FeaturedReferences decorativeImage />
           <AllReferencesNote />
         </div>
       </section>
