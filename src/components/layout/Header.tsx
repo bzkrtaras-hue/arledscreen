@@ -114,7 +114,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
       ]
     : [
         { href: `/${locale}/products/`, label: dict.nav.products },
-        { href: `/${locale}/rehber/`, label: "Guides" },
+        { href: `/${locale}/rehber/`, label: locale === "ar" ? "الأدلة" : "Guides" },
         { href: `/${locale}/about/`, label: dict.nav.about },
       ];
 
@@ -395,10 +395,14 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             {open
               ? tr
                 ? "Menüyü kapat"
-                : "Close menu"
+                : locale === "ar"
+                  ? "أغلق القائمة"
+                  : "Close menu"
               : tr
                 ? "Menüyü aç"
-                : "Open menu"}
+                : locale === "ar"
+                  ? "افتح القائمة"
+                  : "Open menu"}
           </span>
           {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
         </button>

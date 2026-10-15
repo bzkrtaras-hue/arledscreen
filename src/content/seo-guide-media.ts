@@ -56,7 +56,7 @@ const IMAGES: Partial<Record<SeoGuideSlug, { src: string; alt: L4 }>> = {
   },
   "kiosk-ekran": {
     src: "/projects/guides/dokunmatik-kiosk-49-inc.jpg",
-    alt: { tr: "49 inç dokunmatik dijital kiosk, iki ayaklı gövde", en: "Two 49-inch touch digital kiosks on floor stands", ru: "Два сенсорных цифровых киоска 49 дюймов", ar: "كشكان رقميان لمسيان بمقاس 49 بوصة" },
+    alt: { tr: "İki adet 49 inç dokunmatik dijital kiosk", en: "Two 49-inch touch digital kiosks on floor stands", ru: "Два сенсорных цифровых киоска 49 дюймов", ar: "كشكان رقميان لمسيان بمقاس 49 بوصة" },
   },
   "kiosk-dijital-ekran": {
     src: "/projects/guides/dijital-ekran-totem.jpg",
@@ -68,7 +68,7 @@ const IMAGES: Partial<Record<SeoGuideSlug, { src: string; alt: L4 }>> = {
   },
   "cami-led-ekran": {
     src: "/projects/modules/indoor-install.jpg",
-    alt: { tr: "Duvara monte iç mekân LED ekran", en: "Wall-mounted indoor LED screen", ru: "Настенный LED-экран для помещений", ar: "شاشة LED داخلية مثبتة على الجدار" },
+    alt: { tr: "Duvara monte iç mekân LED ekran", en: "Wall-mounted indoor LED screen", ru: "Настенный LED-экран для помещений", ar: "شاشة LED داخلية على جدار قاعة اجتماعات" },
   },
   "led-ekran-ariza-belirtileri": {
     src: "/projects/service-assembly.jpg",
@@ -119,7 +119,7 @@ export interface GuideTable {
   rows: string[][];
 }
 
-const Q: L4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "بعرض خاص" };
+const Q: L4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "وفق مواصفات المشروع" };
 const IO: L4 = { tr: "İç / Dış", en: "Indoor / outdoor", ru: "Помещение / улица", ar: "داخلي / خارجي" };
 const IN: L4 = { tr: "İç", en: "Indoor", ru: "Помещение", ar: "داخلي" };
 const OUT: L4 = { tr: "Dış", en: "Outdoor", ru: "Улица", ar: "خارجي" };
@@ -194,7 +194,7 @@ const ARIZA_ROWS: L4[][] = [
 
 type T4 = Record<"tr" | "en" | "ru" | "ar", string>;
 const t = (tr: string, en: string, ru: string, ar: string): T4 => ({ tr, en, ru, ar });
-const Q4: T4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "بعرض خاص" };
+const Q4: T4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "وفق مواصفات المشروع" };
 
 const SIZE_HEAD: Record<"tr" | "en" | "ru" | "ar", string[]> = {
   tr: ["En arka sıra / masa", "Örnek ekran ölçüsü", "Modül", "Önerilen P", "Modül bedeli (USD)"],

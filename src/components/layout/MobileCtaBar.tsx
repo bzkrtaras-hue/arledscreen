@@ -19,7 +19,7 @@ export function MobileCtaBar({ locale }: { locale: Locale }) {
 
   return (
     <nav
-      aria-label={tr ? "Hızlı iletişim" : "Quick contact"}
+      aria-label={tr ? "Hızlı iletişim" : locale === "ar" ? "تواصل سريع" : "Quick contact"}
       className="mobile-cta-bar fixed inset-x-0 bottom-0 z-50 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:hidden"
     >
       <div className="mx-auto flex max-w-lg items-center gap-2">
@@ -28,7 +28,7 @@ export function MobileCtaBar({ locale }: { locale: Locale }) {
           className="liquid-glass-btn min-h-[52px] flex-1 flex-col gap-0.5 px-2 text-xs font-semibold text-ink-soft"
         >
           <PhoneIcon className="h-5 w-5 text-cyan" />
-          {tr ? "Ara" : "Call"}
+          {tr ? "Ara" : locale === "ar" ? "اتصل" : "Call"}
         </a>
         <a
           href={quoteWhatsappHref(locale)}
@@ -37,14 +37,14 @@ export function MobileCtaBar({ locale }: { locale: Locale }) {
           className="liquid-glass-btn min-h-[52px] flex-1 flex-col gap-0.5 px-2 text-xs font-semibold text-ink-soft"
         >
           <WhatsAppIcon className="h-5 w-5 text-[#0F7A41]" />
-          WhatsApp
+          {locale === "ar" ? "واتساب" : "WhatsApp"}
         </a>
         <Link
           href={`/${locale}/quote/`}
           className="liquid-glass-btn liquid-glass-btn--primary min-h-[52px] flex-[1.35] flex-col gap-0.5 px-2 text-xs font-semibold"
         >
           <FileText className="h-5 w-5" aria-hidden />
-          {tr ? "Teklif alın" : "Get a quote"}
+          {tr ? "Teklif alın" : locale === "ar" ? "اطلب عرض سعر" : "Get a quote"}
         </Link>
       </div>
     </nav>

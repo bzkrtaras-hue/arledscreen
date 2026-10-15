@@ -3452,5 +3452,8 @@ export const SEO_GUIDE_HUB = {
 } as const;
 
 export function getSeoGuideHub(locale: Locale) {
+  if (locale === "ar") {
+    return { ...SEO_GUIDE_HUB.en, eyebrow: "الأدلة", relatedLabel: "أدلة ذات صلة", allGuidesLabel: "جميع الأدلة" };
+  }
   return locale === "tr" ? SEO_GUIDE_HUB.tr : SEO_GUIDE_HUB.en;
 }

@@ -9,6 +9,8 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
+import { AR_INDEX_ROBOTS, isArIndexableGuide } from "@/lib/ar-indexable";
+import { SEO_GUIDE_I18N } from "@/content/seo-guides-i18n";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { BRAND_SUBJECT_REFS } from "@/content/prices";
 import { OptImage } from "@/components/ui/opt-image";
@@ -39,16 +41,20 @@ export async function generateMetadata({
     return { title: "Not found" };
   }
   const guide = getSeoGuide(locale, slug);
-  return buildPageMetadata({
+  // Reviewed Arabic guides: self canonical + index on /ar/, reciprocal ar/tr/en hreflang on all three.
+  const arIndexable = isArIndexableGuide(slug);
+  const meta = buildPageMetadata({
     locale,
     path: `/rehber/${slug}`,
-    // ar/ru guide pages show the English text: canonical → EN, hreflang only tr/en.
-    canonicalLocale: locale === "ar" || locale === "ru" ? "en" : undefined,
-    hreflangLocales: ["tr", "en"],
+    // Other ar/ru guide pages mirror EN text: canonical → EN, hreflang only tr/en (noindex via layout).
+    canonicalLocale:
+      (locale === "ar" && !arIndexable) || locale === "ru" ? "en" : undefined,
+    hreflangLocales: arIndexable ? ["ar", "tr", "en"] : ["tr", "en"],
     title: guide.title,
     description: guide.description,
     keywords: guide.keywords,
   });
+  return locale === "ar" && arIndexable ? { ...meta, robots: AR_INDEX_ROBOTS } : meta;
 }
 
 export default async function SeoGuidePage({ params }: PageProps) {
@@ -198,7 +204,9 @@ export default async function SeoGuidePage({ params }: PageProps) {
               {hub.relatedLabel}
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
-              {guide.relatedSlugs.map((rel) => {
+              {guide.relatedSlugs
+                .filter((rel) => locale !== "ar" || Boolean(SEO_GUIDE_I18N.ar[rel]))
+                .map((rel) => {
                 const related = getSeoGuide(locale, rel);
                 return (
                   <li key={rel}>
@@ -250,6 +258,14 @@ export default async function SeoGuidePage({ params }: PageProps) {
                     fiyat listemizde
                   </Link>{" "}
                   yer alır. KDV ve nakliye hariçtir; ücretsiz kargo yoktur.
+                </>
+              ) : locale === "ar" ? (
+                <>
+                  أسعار 12 طرازًا من ألواح LED منشورة بالدولار الأمريكي (مثل P1.25 GOB بسعر 95.88 دولارًا للوح) في{" "}
+                  <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                    قائمة الأسعار
+                  </Link>
+                  . الأسعار لا تشمل ضريبة القيمة المضافة ولا الشحن، ولا يوجد شحن مجاني.
                 </>
               ) : (
                 <>
