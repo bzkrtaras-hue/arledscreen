@@ -4,6 +4,7 @@
  * Yalnızca doğrulanmış site bilgisi; fiyatlar src/content/prices.ts'ten üretilen _melis-prices.js'ten.
  */
 import { PANELS, EXTRAS, PRICE_VALID_UNTIL } from "./_melis-prices.js";
+import { KB } from "./_melis-kb.js";
 
 const MAX_BODY = 16000, MAX_MSG = 800, MAX_TURNS = 12, MAX_HIST_CHARS = 6000;
 // Photo upload: the widget downsizes to <= ~3 MB JPEG before sending (base64 ≈ 4 MB). The image is analysed on the spot and
@@ -42,15 +43,18 @@ VERIFIED FACTS (the ONLY facts you may state):
 - Warranty and service (the ONLY wording allowed): Turkish "ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar." / English "ARLEDSCREEN offers a 2-year warranty and 5 years of free technical service." If asked about the warranty, answer with exactly this wording; do not add conditions, coverage details or other periods (those are in the written quote).
 - Published module list prices (USD, per module/panel, VAT and shipping excluded, valid until ${PRICE_VALID_UNTIL}; final price only in the written quote):
 ${priceLines}
-- Standard module is 320 × 160 mm, i.e. about 19.53 modules per m². The calculator also adds about ${EXTRAS.laborPerM2} USD/m² labour, ${EXTRAS.controlCard} USD control card and ${EXTRAS.driverSoftware} USD driver/software. ESTIMATE FORMULA (use exactly this, do not do your own module arithmetic): total ≈ area_m² × (estimate rate per m² of that model) + ${EXTRAS.controlCard + EXTRAS.driverSoftware} USD (control card + driver/software). Example: 15 m² of a model with rate 684 → 15 × 684 + 1000 = 11,260 USD. Always label it a rough estimate, VAT and shipping excluded; when you quote a TOTAL say it includes modules, labour, control card and driver/software. The per-m² rate covers modules + labour only; the control card and driver/software are added once on top (never say they are included in the per-m² rate or in the module price).
+- Standard module is 320 × 160 mm, i.e. about 19.53 modules per m². The calculator also adds about ${EXTRAS.laborPerM2} USD/m² labour, ${EXTRAS.controlCard} USD control card and ${EXTRAS.driverSoftware} USD driver/software. ESTIMATE FORMULA (use exactly this, do not do your own module arithmetic): total ≈ area_m² × (estimate rate per m² of that model) + ${EXTRAS.controlCard + EXTRAS.driverSoftware} USD (control card + driver/software). Example: 15 m² of a model with rate 684 → 15 × 684 + 1000 = 11,260 USD. Always label it a rough estimate, VAT and shipping excluded; when you quote a TOTAL say it includes modules, labour, control card and driver/software. For screens of 20 m² and above do NOT give a grand total (the NovaStar control cost differs from the calculator's fixed card price): give only the approximate module + labour amount and say control system and the total come in the written quote. The per-m² rate covers modules + labour only; the control card and driver/software are added once on top (never say they are included in the per-m² rate or in the module price).
 - Rental (kiralık) LED screens: there is NO published rental price. Never state a rental price or any per-m²/per-day figure; say rental is priced only in a written quote (project size, duration, location) and send the customer to https://arledscreen.com/tr/teklif-al/ or WhatsApp.
 - Pitch guidance (general): smaller pitch = sharper at short viewing distance; indoor fine-pitch (P1.25–P2.5) for close viewing, outdoor P3–P5 for façades/billboards.
 - CONTROL SYSTEM RULE (team guideline; m² decides; phrase it softly and grammatically, e.g. Turkish "NovaStar kontrol sistemini genellikle öneriyoruz" / "Huidu kontrol kartını genellikle öneriyoruz" (note the accusative suffix), English "we usually recommend NovaStar"; never as a guarantee): screens BELOW 20 m² → a Huidu control system (practical, Wi-Fi / app based content updates). Screens of 20 m² AND ABOVE (20, 25, 30 …) → NovaStar (live streaming and large pixel load). Read the m² number the customer gives (also from sizes like 5 × 4 m = 20 m²) and apply this rule exactly: 15 m² → Huidu; 19.9 m² → Huidu; 20 m² → NovaStar; 25 m² → NovaStar; 30 m² → NovaStar. If the area is unknown, ask for it. The final control model is confirmed in the written quote. Do not invent control model numbers or capacities.
 
+KNOWLEDGE BASE (verified by the team; answer from it; the part headed "DOĞRULANMADI" lists things you must NEVER say; the rules below always win if anything conflicts):
+${KB}
+
 RULES:
 - For estimates use ONLY the module price, module count, labour, control card and driver/software items above. Never add or mention any other cost item or component (e.g. cabinet/kasa, frame, steel construction, power supply, shipping amount).
 - PRICES come ONLY from the list above (USD, the same as our Turkish pages). Never quote any other price or price range. For anything not listed (rental, special sizes, services, other brands) say the price is given "teklifle" (in a written quote), never a number.
-- NEVER state or imply any of these (they are NOT verified): brightness / nit values, IP ratings (IP65 etc.), "free" site survey / free on-site visit ("ücretsiz keşif", "ücretsiz yerinde keşif"), "zero latency" / "sıfır gecikme", delivery or installation times, stock counts, certificates, references, discounts, other warranty or service periods, price ranges per m² ("600–1.200 USD/m²" is FALSE). If asked, say the team confirms it in writing and offer WhatsApp.
+- NEVER state or imply any of these (they are NOT verified): brightness / nit values, refresh rates, IP ratings (say the team shares the technical datasheet with the quote), "free" site survey / free on-site visit ("ücretsiz keşif", "ücretsiz yerinde keşif"), "zero latency" / "sıfır gecikme", installation dates, stock counts, certificates other than CE, references beyond the knowledge base, discounts, other warranty or service periods, price ranges per m² ("600–1.200 USD/m²" is FALSE). Delivery time, payment, shipping and CE may be stated exactly as in the knowledge base. If asked, say the team confirms it in writing and offer WhatsApp.
 - For a quote, order, site visit, delivery or anything you cannot answer: hand off to WhatsApp https://wa.me/905305078834.
 - Contact details: give the phone number ONLY when the customer asks for a phone / call / contact number; for hand-offs give just the WhatsApp link (at most one contact channel per reply).
 - Never invent company facts: no company age, years of experience, project counts ("10+ years", "500+ projects"), "software only" claims, or comparisons with other companies or brands (never name competitors; say you cannot compare other companies and describe ARLEDSCREEN's own offer in one sentence).
@@ -81,12 +85,19 @@ const NUM = "(\\d{1,4}(?:[.,]\\d{1,2})?)";
 const AREA_RE = new RegExp(NUM + "\\s*(?:m\\s*[²2]|m\\^2|mt\\s*[²2]|metre\\s*kare|metrekare|sqm|sq\\.?\\s*m|square\\s*met(?:er|re)s?|кв\\.?\\s*м|м[²2]|متر\\s*مربع)(?![\\p{L}\\d])", "iu");
 const DIM_RE = new RegExp(NUM + "\\s*(?:m|mt|metre|meter|metres|متر|м)?\\s*[x×*хX]\\s*" + NUM + "\\s*(?:m|mt|metre|meter|metres|متر|м)(?![\\p{L}\\d])", "iu");
 const toNum = (x) => Number(String(x).replace(",", "."));
+const DIM_CM_RE = new RegExp(NUM + "\\s*(?:cm|santim|santimetre)?\\s*[x×*хX]\\s*" + NUM + "\\s*(?:cm|santim|santimetre)(?![\\p{L}\\d])", "iu");
+function dimsMeters(text) {
+  let m = DIM_RE.exec(text);
+  if (m) { const a = toNum(m[1]), b = toNum(m[2]); if (a > 0 && b > 0 && a <= 100 && b <= 100) return { w: a, h: b }; }
+  m = DIM_CM_RE.exec(text);
+  if (m) { const a = toNum(m[1]) / 100, b = toNum(m[2]) / 100; if (a >= 0.3 && b >= 0.3 && a <= 100 && b <= 100) return { w: a, h: b }; }
+  return null;
+}
 function areaOf(text) {
   let m = AREA_RE.exec(text);
   if (m) { const v = toNum(m[1]); if (v > 0 && v <= 5000) return v; }
-  m = DIM_RE.exec(text);
-  if (m) { const a = toNum(m[1]), b = toNum(m[2]); if (a > 0 && b > 0 && a <= 100 && b <= 100) return Math.round(a * b * 100) / 100; }
-  return null;
+  const d = dimsMeters(text);
+  return d ? Math.round(d.w * d.h * 100) / 100 : null;
 }
 // Area from the latest user message that states one (the customer may ask about the controller in a later message).
 function customerArea(msgs) {
@@ -95,6 +106,19 @@ function customerArea(msgs) {
     const a = areaOf(msgs[i].text);
     if (a != null) return a;
   }
+  return null;
+}
+function dimsOf(text) {
+  if (AREA_RE.test(text)) return null;
+  return dimsMeters(text);
+}
+// Standard module layout (320 × 160 mm), computed in code: columns × rows, actual size.
+function moduleLayout(w, h) {
+  const cols = Math.ceil(Math.round(w * 1000) / 320 - 1e-9), rows = Math.ceil(Math.round(h * 1000) / 160 - 1e-9);
+  return { cols, rows, total: cols * rows, wM: Math.round(cols * 0.32 * 100) / 100, hM: Math.round(rows * 0.16 * 100) / 100 };
+}
+function customerDims(msgs) {
+  for (let i = msgs.length - 1; i >= 0; i--) { if (msgs[i].role === "user") { const d = dimsOf(msgs[i].text); if (d) return d; } }
   return null;
 }
 function ctrlFor(area) { return area >= 20 ? "NovaStar" : "Huidu"; }
@@ -137,12 +161,14 @@ const BAD_CLAIMS = [
   [/(?:keşif|survey|visit)[^.\n]{0,25}(?:ücretsiz|free of charge)|free (?:on-?site )?(?:survey|visit|site visit)/i, "free survey"],
   [/sıfır\s+gecikme|zero[\s-]latency|no latency/i, "zero latency"],
   [/\b(?:gmail|hotmail|yahoo|outlook)\b/i, "foreign mail"],
-  [/(?:kontrol\s*kart[ıi]|yaz[ıi]l[ıi]m|control\s*card|driver)[^.\n]{0,40}\bdahil\b(?!\s*değil)/iu, "control card included"],
-  [/(?:control\s*card|software|driver)[^.\n]{0,40}(?<!not )\bincluded\b/i, "control card included"],
   [/\d+\s*\+?\s*(?:yıl(?:lık)?\s+(?:tecrübe|deneyim)|years?\s+of\s+experience|proje\b|projects\b)/i, "company claims"],
 ];
 function badClaim(reply) {
   for (const [re, why] of BAD_CLAIMS) if (re.test(reply)) return why;
+  // "control card / software included" is only true for a TOTAL (never for the per-m² rate or module price)
+  for (const sent of reply.split(/(?<=[.!?…])\s+|\n+/)) {
+    if (/(?:kontrol\s*kart[ıi]|yaz[ıi]l[ıi]m|control\s*card|software|driver)[^.\n]{0,40}(?:\bdahil(?!\s*değil)|(?<!not )\bincluded\b)/iu.test(sent) && !/toplam|total|bütçe|budget/i.test(sent)) return "control card included";
+  }
   return null;
 }
 // Server-side length cap: at most 4 sentences. Lists are left alone; if a closing question is cut off it is kept.
@@ -219,11 +245,12 @@ function photoHint(ph) {
     (ph.pitch ? `Suggested pixel pitch range to mention as a suggestion: ${ph.pitch}${ph.scene === "indoor" ? " (indoor)" : " (outdoor)"}. ` : "") +
     `Present everything from the photo as APPROXIMATE ("yaklaşık") and say the exact size is confirmed at the site survey ("keşifte netleşir"); never state a photo-based size as certain. Do not describe people. Mention that the uploaded photo is only used to answer and is not stored if it fits naturally.`;
 }
-function turnHint(msgs, area, name) {
+function turnHint(msgs, area, name, dims) {
   const lang = LANG_NAME[detectLang(msgs[msgs.length - 1].text)];
   const follow = msgs.some((m) => m.role === "assistant");
   return `\n\nTHIS TURN: The customer's latest message is in ${lang} (if it is clearly another language, use that one). Write your whole reply in that language only (never answer an English or Arabic message in Turkish).` +
     (area != null ? ` PRE-CHECKED FACT: the customer's screen area is ${fmtArea(area)} m², so by the control system rule the recommendation is ${ctrlFor(area)} (${area >= 20 ? "20 m² or above → NovaStar" : "below 20 m² → Huidu"}). If you mention a control system, it MUST be ${ctrlFor(area)}.` : "") +
+    (dims ? (() => { const L = moduleLayout(dims.w, dims.h); return ` MODULE LAYOUT (computed by code, standard 320 × 160 mm modules): ${fmtArea(dims.w)} × ${fmtArea(dims.h)} m needs ${L.cols} × ${L.rows} = ${L.total} modules, actual size ${fmtArea(L.wM)} × ${fmtArea(L.hM)} m. Use these numbers, do not recompute.`; })() : "") +
     (name ? ` The customer's name is ${name}; use it naturally.` : "") +
     (follow ? " This is a follow-up message: do NOT greet, do NOT introduce yourself, do NOT mention that you are an AI assistant (unless asked now), and do not reuse any sentence from your earlier replies." : "");
 }
@@ -384,12 +411,14 @@ export async function onRequest(ctx) {
   }
   const area = customerArea(msgs) ?? (photo && photo.area);
   async function ask(extraHint) {
-    const r = await gemini(SYSTEM + turnHint(msgs, area, name) + (photo ? photoHint(photo) : "") + (extraHint || ""), contents, { maxOutputTokens: 2048, temperature: 0.4 }, !!photo);
+    const r = await gemini(SYSTEM + turnHint(msgs, area, name, customerDims(msgs)) + (photo ? photoHint(photo) : "") + (extraHint || ""), contents, { maxOutputTokens: 2048, temperature: 0.4 }, !!photo);
     if (!r.text) return { why: r.why };
     return { reply: tone(r.text.slice(0, 3000)) };
   }
   // Problem with a draft (wrong controller for the m² rule, or an unverified claim) → null if clean.
-  const problem = (reply) => (ctrlViolation(reply, area) ? "control" : badClaim(reply) ? "claim" : null);
+  // For screens of 20 m² and above no grand total is given (NovaStar control cost differs from the calculator's fixed card price).
+  const bigTotal = (r) => area != null && area >= 20 && /(?:\d{1,3}(?:[.,]\d{3})+|\d{4,})(?:[.,]\d+)?\s*(?:USD|\$|dolar)/i.test(r) && /toplam|total|bütçe|budget/i.test(r);
+  const problem = (reply) => (ctrlViolation(reply, area) ? "control" : badClaim(reply) ? "claim" : bigTotal(reply) ? "total" : null);
 
   try {
     let res = await ask();
@@ -398,12 +427,14 @@ export async function onRequest(ctx) {
       console.error("melis guard retry", kind);
       res = await ask(kind === "control"
         ? ` CORRECTION: your previous draft broke the control system rule. The area is ${fmtArea(area)} m², so recommend ${ctrlFor(area)} only. Rewrite the reply.`
-        : " CORRECTION: your previous draft contained a claim that is not verified (brightness/nit, IP rating, free survey, zero latency, price range, foreign e-mail). Rewrite without it; say the team confirms details in writing.");
+        : kind === "total"
+          ? " CORRECTION: for a screen of 20 m² or more do NOT state a grand total. Give only the approximate module + labour amount (area × the model's per-m² rate) and say the control system and the total come in the written quote. Rewrite the reply."
+          : " CORRECTION: your previous draft contained a claim that is not verified (brightness/nit, IP rating, free survey, zero latency, price range, foreign e-mail). Rewrite without it; say the team confirms details in writing.");
     }
     if (!res.reply) return fallback(lastUser, res.why);
     const kind = problem(res.reply);
     if (kind === "control") return json({ reply: controlAnswer(lang === "tr" ? "tr" : "en", area, name), guard: "control" });
-    if (kind === "claim") return fallback(lastUser, "guard");
+    if (kind === "claim" || kind === "total") return fallback(lastUser, "guard_" + (kind === "claim" ? badClaim(res.reply) : kind));
     let out = trimSentences(ensureIntro(softenControl(res.reply), msgs, lang, name), 5);
     if (photo && photo.area != null && !/keşif|survey/i.test(out)) out += " " + PHOTO_NOTE[lang === "tr" ? "tr" : "en"];
     return json(photo ? { reply: out, photo: "analysed" } : { reply: out });

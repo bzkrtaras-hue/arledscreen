@@ -4,6 +4,24 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 15 Ekim 2026 (gece) — Melis yapay zekâ (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
+
+- **Önizleme:** https://melis-ai-preview.arledscreen.pages.dev (Cloudflare Pages dalı `melis-ai-preview`, noindex; canlıyı etkilemez). Üretime alınmadı, birleştirilmedi.
+- **Ne yapıldı:**
+  - 20 m² kuralı kodda ve istemde: ölçüyü (m², "5x4 m", "320x180 cm") sunucu okur, 20 m² altı Huidu, 20 m² ve üstü NovaStar; yanlış marka çıkarsa cevap düzeltilir. İfade "genellikle öneriyoruz".
+  - Doğrulanmamış iddia filtresi: IP, nit, "ücretsiz keşif", "sıfır gecikme", m² aralığı, "kontrol kartı dahil" (toplam dışında) vb. çıkarsa model bir kez düzeltmeye zorlanır, yine olursa dürüst hata mesajı gider (uydurma cevap gösterilmez).
+  - Garanti yalnız "2 yıl garanti ve 5 yıl ücretsiz teknik servis"; kiralık için rakam yok; 20 m² ve üstünde genel toplam verilmez.
+  - İstek/yanıt biçimi: `{messages:[{role,text}]}` → `{reply}`; sunucu hatasında `fallback:true` dönerse widget hata balonu gösterir, geçmişe yazmaz. Zaman aşımı: sunucu 28 sn bütçe (fotoğrafla 45 sn), widget 40 sn (fotoğrafla 70 sn). Geçmiş sınırı iki tarafta 12 mesaj.
+  - Melis: ilk cevapta "Merhaba, ben Melis", müşterinin adını kullanır (Bey/Hanım eklemez), en çok 4–5 kısa cümle (sunucuda kesilir), "bot musun?" sorusuna dürüst cevap ve WhatsApp önerisi, yazma gecikmesi cevap uzunluğuna göre (0,7–4 sn), otomatik ses yok.
+  - Konu dışı sorulara kısa doğru cevap + LED ekrana dönüş; tıbbi, hukuki, siyasi tavsiye, uygunsuz içerik ve rakip karşılaştırması yok.
+  - Bilgi tabanı: `docs/melis-knowledge-base.md` → `npm run melis:kb` → `functions/api/_melis-kb.js` (istemin içine girer). Fiyatlar yine `src/content/prices.ts` → `npm run melis:prices`.
+  - Fotoğraf yükleme: JPG/PNG, ham en çok 10 MB; tarayıcıda uzun kenar 2560 px ve en çok yaklaşık 3 MB JPEG'e küçültülür (EXIF/GPS silinir). Sunucu 4,7 MB üstü gövdeyi, JPG/PNG dışını ve bozuk veriyi reddeder. Görsel hiçbir yerde saklanmaz (KV/R2/önbellek yok), loglanmaz, fotoğraf istekleri AI Gateway'den geçmez (Gateway istek gövdesini kaydedebilir). Yüz veya kimlik görünürse görsel analiz edilmez. Ölçü fotoğraftan "yaklaşık, keşifte netleşir" diye verilir; m² kodda hesaplanır. IP başına günlük 5 görsel (izolat başına, en iyi çaba).
+- **Mobil:** karşılama balonundaki × yazının üstüne binmiyor (390×844 ölçüldü).
+- **Üretim için eksik:** Cloudflare Pages `arledscreen` projesinin **Production** ortamında `GEMINI_API_KEY` (secret) ve istenirse `AI_GATEWAY_BASE` yok; yalnız **Preview** ortamında var. Üretime almadan önce eklenmeli. Preview'daki `GEMINI_API_KEY` geçersizdi ("API key not valid"); 15 Ekim gece geçerli anahtarla yeniden yazıldı.
+- **Açık karar (Aras):** `AGENTS.md` §4 ve `docs/CURSOR_EK_KURALLAR.md` Melis için "dijital asistan / dijital temsilci" demeyi yasaklıyor; bu PR "ARLEDSCREEN'in dijital temsilcisi Melis, yapay zekâ destekli, insan değil" diyor (dürüstlük için). Birleşirse bu dosyalar güncellenmeli.
+- **Sınırlar:** hız ve günlük görsel sınırı izolat başına sayılır (Pages'de paylaşımlı sayaç yok); sıkı sınır için Cloudflare Rate Limiting kuralı gerekir.
+- **Geri alma:** PR birleşmediği için gerek yok; birleşirse `git revert`.
+
 ### 15 Ekim 2026 (gece) — GEO paket 3 (PR: `seo/geo-paket3`)
 
 - **Ne yapıldı:**
