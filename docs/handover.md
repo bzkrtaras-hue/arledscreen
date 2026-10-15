@@ -4,6 +4,14 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 15 Ekim 2026 (gece) — PR #113, #100 ve #105 yayınlandı
+
+- **Birleştirilenler (squash, main):** #113 `8453a0a2` (AR/RU üst "teklif" bağlantısı, AR alt bilgi, /en/search/ hreflang, "ucuz" ifadesi), #100 `d2da71eb` (işletme bilgisi tutarlılığı, "üretici" ifadesi), #105 `e2de17a9` (EN başlık uzunlukları, /en/sartlar/, EN Offer açıklamaları). Her biri birleştirmeden önce güncel main ile birleştirilip yerelde `npm run build` (exit 0) ve CI (`build-validate`) ile doğrulandı. #102, #104 ve #107 birleştirilmedi.
+- **Yayın:** GitHub Actions "Deploy Cloudflare Pages", `deploy/video-hero-1015` dalı (= `deploy/pr111-video-hero` + main `e2de17a9`), run 38793855808. Ana sayfa değişmedi: TR ve EN ana sayfanın görünür HTML'i yayın öncesi ve sonrası aynı (yalnız chunk karmaları farklı).
+- **Not:** Aynı anda main'den başlatılan bir yayın (run 38793697619, #114 sonrası) QuietHero ana sayfasını canlıya alacağı için deploy adımında iptal edildi; canlıya bir şey çıkmadı. #114 (kiralama kapsam tablosu) main'de ama henüz canlıda değil.
+- **Geri alma noktası:** bir önceki canlı sürüm = run 38788599943, `deploy/pr111-video-hero` (`ce61c3ff`). Geri dönmek için iş akışını bu dalla çalıştırın. Bir önceki ana sayfa kaynağı `tr-video-hero-restore`.
+- **Hâlâ geçerli:** main'den yayın yapılırsa ana sayfa QuietHero olur; karar Aras / Ali'de. Yayın dalı: `deploy/video-hero-1015`.
+
 ### 15 Ekim 2026 — Hata taraması (PR: fix/hata-taramasi-1015)
 
 **Yapan:** Grok Bot (Aras Bozkurt adına). Yayın yapılmadı; yalnızca PR + önizleme.
