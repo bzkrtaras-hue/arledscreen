@@ -413,6 +413,22 @@ img{max-width:100%;height:auto}
   .fx-blob,.hero-led span,.offer-led span{animation:none!important}
 }
 
+/* "Fiyatı e-postama gönder" (MailerLite form 200815800926340514). Sonuç kartının altında; hesaplamaya dokunmaz. */
+.mail-quote{margin:0 18px 18px;padding:14px;border:1px solid rgba(30,91,184,.22);border-radius:16px;background:rgba(30,91,184,.05)}
+.mail-quote__title{display:block;margin:0 0 8px;font-size:15px;font-weight:700;color:#0B1B33}
+.mail-quote__row{display:flex;flex-wrap:wrap;gap:8px}
+.mail-quote__input{flex:1 1 200px;min-width:0;min-height:48px;padding:0 14px;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--line-2);border-radius:12px}
+.mail-quote__input:focus{outline:none;border-color:#1E5BB8;box-shadow:0 0 0 3px rgba(30,91,184,.18)}
+.mail-quote__btn{flex:0 0 auto;min-height:48px;padding:0 22px;border:0;border-radius:12px;background:#1E5BB8;color:#fff;font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+.mail-quote__btn:hover{background:#0B1B33}
+.mail-quote__btn:disabled{opacity:.6;cursor:default}
+@media (max-width:480px){.mail-quote__btn{flex:1 1 100%}}
+.mail-quote__consent{display:flex;align-items:flex-start;gap:10px;margin-top:10px;font-size:14px;line-height:1.45;color:#32373C;cursor:pointer}
+.mail-quote__consent input{flex:none;width:20px;height:20px;margin:1px 0 0;accent-color:#1E5BB8}
+.mail-quote__consent a{color:#1E5BB8;font-weight:600;text-decoration:underline}
+.mail-quote__msg{margin-top:10px;font-size:14px;line-height:1.45;font-weight:600}
+.mail-quote__msg--ok{color:#0f7a41}
+.mail-quote__msg--err{color:#B42318}
     </style>
 </head>
 <body>
@@ -678,6 +694,65 @@ img{max-width:100%;height:auto}
                     </button>
                     <p class="res-hint">Hesaplama özeti mesaja otomatik eklenir.</p>
                 </div>
+                <form id="ml-fiyat-form" class="mail-quote" action="https://assets.mailerlite.com/jsonp/2682439/forms/200815800926340514/subscribe" method="post" novalidate>
+                    <label for="ml-fiyat-email" class="mail-quote__title">Bu fiyatı e-postama gönder</label>
+                    <div class="mail-quote__row">
+                        <input id="ml-fiyat-email" class="mail-quote__input" type="email" name="fields[email]" placeholder="E-posta adresiniz" required autocomplete="email" inputmode="email">
+                        <button type="submit" class="mail-quote__btn">Gönder</button>
+                    </div>
+                    <input type="hidden" name="fields[fiyat_olcu]" value="">
+                    <input type="hidden" name="fields[fiyat_model]" value="">
+                    <input type="hidden" name="fields[fiyat_toplam]" value="">
+                    <label class="mail-quote__consent">
+                        <input type="checkbox" id="ml-fiyat-izin" name="fields[pazarlama_izni]" value="evet">
+                        <span>İsteğe bağlı: ARLEDSCREEN'den kampanya ve fiyat güncellemelerini e-posta ile almak istiyorum. <a href="/tr/gizlilik/" target="_blank" rel="noopener">Gizlilik politikası</a></span>
+                    </label>
+                    <input type="hidden" name="ml-submit" value="1">
+                    <input type="hidden" name="anticsrf" value="true">
+                    <p class="mail-quote__msg mail-quote__msg--ok" role="status" hidden>Talebiniz alındı, ekibimiz fiyatınızı e-postanıza iletecek.</p>
+                    <p class="mail-quote__msg mail-quote__msg--err" role="alert" hidden>Gönderilemedi. Lütfen e-posta adresinizi kontrol edin veya WhatsApp'tan yazın.</p>
+                </form>
+                <script>
+                /* Yalnızca okur: hesaplayıcının ekrandaki sonucunu (ölçü, model, toplam) gizli alanlara kopyalar. Hesaplama koduna dokunmaz. */
+                (function () {
+                  var f = document.getElementById("ml-fiyat-form");
+                  if (!f) return;
+                  if (window.ARLED_CALC_LANG === "en") { f.hidden = true; return; }   /* metinler yalnızca Türkçe */
+                  function txt(id) { var e = document.getElementById(id); return e ? e.textContent.replace(/\s+/g, " ").trim() : ""; }
+                  function fill() {
+                    var adj = txt("result-adjusted"), req = txt("result-requested");
+                    window.ARLED_FIYAT_OLCU = adj && req && adj !== req ? adj + " (istenen " + req + ")" : (adj || req);
+                    window.ARLED_FIYAT_MODEL = txt("result-module-name");
+                    window.ARLED_FIYAT_TOPLAM = txt("result-total");
+                    f.querySelector('[name="fields[fiyat_olcu]"]').value   = window.ARLED_FIYAT_OLCU   || "";
+                    f.querySelector('[name="fields[fiyat_model]"]').value  = window.ARLED_FIYAT_MODEL  || "";
+                    f.querySelector('[name="fields[fiyat_toplam]"]').value = window.ARLED_FIYAT_TOPLAM || "";
+                  }
+                  var total = document.getElementById("result-total");
+                  if (total && typeof MutationObserver === "function") {
+                    new MutationObserver(function () {
+                      fill();
+                      /* yeni fiyat: form yeniden gönderilebilir */
+                      f.querySelector(".mail-quote__btn").disabled = false;
+                      f.querySelector(".mail-quote__msg--ok").hidden = true;
+                      f.querySelector(".mail-quote__msg--err").hidden = true;
+                    }).observe(total, { childList: true, characterData: true, subtree: true });
+                  }
+                  f.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    var email = f.querySelector('[name="fields[email]"]');
+                    if (!email.checkValidity()) { email.reportValidity(); return; }
+                    fill();
+                    var btn = f.querySelector(".mail-quote__btn");
+                    btn.disabled = true;
+                    f.querySelector(".mail-quote__msg--err").hidden = true;
+                    /* İşaretsiz onay kutusu FormData'ya hiç girmez; işaretliyse fields[pazarlama_izni]=evet gider. */
+                    fetch(f.action, { method: "POST", mode: "no-cors", body: new FormData(f) })
+                      .then(function () { f.querySelector(".mail-quote__msg--ok").hidden = false; })
+                      .catch(function () { btn.disabled = false; f.querySelector(".mail-quote__msg--err").hidden = false; });
+                  });
+                })();
+                </script>
             </section>
         </div>
 
