@@ -116,7 +116,7 @@ Hesaplayıcının toplam formülü:
 - Modül adedi = yukarı_yuvarla(genişlik_mm / 320) × yukarı_yuvarla(yükseklik_mm / 160)
 - Malzeme = modül adedi × panel fiyatı
 - Atölye işçiliği = alan (m²) × 100 USD
-- Kontrol kartı = 500 USD
+- Kontrol kartı = kart başı 500 USD (10 m² dahil 1 kart; 10 m² üzerinde her başlayan 10 m² için ek kart: kart adedi = en az 1, m²/10 yukarı yuvarlanır)
 - Sürücü + yazılım = 500 USD
 - Toplam = malzeme + işçilik + kontrol kartı + sürücü/yazılım (KDV ve nakliye hariç)
 

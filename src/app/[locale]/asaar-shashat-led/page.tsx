@@ -170,7 +170,7 @@ export default async function ArPricePage({ params }: { params: Promise<{ locale
           <article className="max-w-3xl">
             <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">كيف تحسب السعر الإجمالي</h2>
             <p className="mt-3 text-base leading-[1.7] text-ink-soft">
-              السعر الإجمالي = عدد الألواح × سعر اللوح + العمالة {CALC_EXTRAS.laborPerM2} USD للمتر المربع + بطاقة التحكم {CALC_EXTRAS.controlCard} USD + المشغّل والبرنامج {CALC_EXTRAS.driverSoftware} USD. يحتوي المتر المربع على نحو 19.53 لوحًا مقاس 320 × 160 مم. الضريبة والشحن غير مشمولين، ويُحدَّد السعر النهائي في عرض سعر مكتوب.
+              السعر الإجمالي = عدد الألواح × سعر اللوح + العمالة {CALC_EXTRAS.laborPerM2} USD للمتر المربع + بطاقة التحكم {CALC_EXTRAS.controlCard} USD لكل بطاقة (مع بطاقة تحكم إضافية لكل 10 م² مبدوءة فوق 10 م²) + المشغّل والبرنامج {CALC_EXTRAS.driverSoftware} USD. يحتوي المتر المربع على نحو 19.53 لوحًا مقاس 320 × 160 مم. الضريبة والشحن غير مشمولين، ويُحدَّد السعر النهائي في عرض سعر مكتوب.
             </p>
           </article>
 
