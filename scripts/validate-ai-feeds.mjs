@@ -3021,7 +3021,6 @@ if (fs.existsSync(outDir)) {
     ["tr/modules/index.html", "/tr/products/"],
     ["tr/gob/index.html", "/tr/products/gob-led-ekran/"],
     ["tr/indoor-led/index.html", "/tr/products/ic-mekan-led-ekran/"],
-    ["en/magaza/index.html", "/en/products/"],
     ["teklif/index.html", "/tr/quote/"],
     ["quote/index.html", "/tr/quote/"],
     ["fiyat/index.html", "/tr/led-ekran-fiyatlari/"],

@@ -140,14 +140,6 @@ export const TR_INVENT_BRIDGES: TrInventBridge[] = [
     description: "Canonical TR products hub is /tr/products/. Inventable bridge: /tr/shop/.",
     cta: "Open products",
   },
-  {
-    slug: "magaza",
-    target: "/tr/products/",
-    title: "LED Mağaza | ARLEDSCREEN",
-    h1: "LED mağaza",
-    description: "Kanonik TR ürün hub /tr/products/. Inventable köprü: /tr/magaza/.",
-    cta: "Ürünleri aç",
-  },
   // EN-vocab hub mirrors under /tr/ (EN already has these)
   {
     slug: "calculator",
