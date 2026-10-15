@@ -4,6 +4,22 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 16 Ekim 2026 — Melis düzeltmeleri (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
+
+- **Neden:** Grok Bot'un önizleme örnekleme testi (169 vaka, `PREVIEW_REPORT.md`) kimlik, garanti, adres, kiralık, telefon ve ölçü ayrıştırıcıda küçük hatalar buldu. Üretime alınmadı, birleşmedi.
+- **Düzeltmeler (sunucu tarafı, `functions/api/_melis-guards.js` + `chat.js`):**
+  1. "Sen kimsin / kendini tanıtır mısın / kimle konuşuyorum / adın ne" (TR ve EN) → sabit cevap "Ben Melis, ARLEDSCREEN satış danışmanıyım." (yapay zekâdan kendiliğinden söz edilmez; model kendiliğinden söylerse o cümle silinir).
+  2. "Bot musun / insan mısın / yapay zekâ mısın" tespiti büyük İ, I, ı ve ASCII yazımlarını da yakalar (Türkçe katlama); cevap Aras'ın onayladığı esprili-dürüst sabit metin + WhatsApp teklifi (değişmedi).
+  3. Garanti cümlesi her zaman aynen "2 yıl garanti ve 5 yıl ücretsiz teknik servis" (sunucu, garanti sorusunda başa koyar; başka yerde farklı yazılmışsa o cümle değiştirilir).
+  4. Cümle kırpıcı "Mah.", "Sok.", "No:" gibi kısaltmalarda kesmez; adres sorusunda adres eksikse sabit tam adres gider.
+  5. "kaliteli, yüksek kalite, güvenilir, güvenilirlik, high quality, reliable" yasak ifade filtresine eklendi (model bir kez düzeltmeye zorlanır, yine olursa yalnız o cümle silinir).
+  6. Kiralıkta "İzmir dahil / Türkiye geneli" ve "kurulum/nakliye ayrı/dahil" cümleleri "yazılı teklifte netleşir" ile değiştirilir (bilgi tabanı ve istem de güncellendi). Kiralık fiyatı yine söylenmez (50 USD/m² kararı bekliyor).
+  7. Telefon numarası yalnız müşteri telefon/iletişim isterse yazılır; aksi halde o cümle silinir.
+  8. Ölçü ayrıştırıcı "*" işaretini ölçü saymaz; `${7*7}`, `{{..}}` gibi kod ifadeleri modele gitmeden temizlenir, "7*7" yüzünden çıkan m² cümlesi silinir. 4x3, 4×3, 4 x 3 m gibi gerçek ölçüler okunur.
+  9. Fotoğraf reddi: eskiden kadrajda herhangi bir yüz ret nedeniydi; şimdi yalnız yüzün ana konu/net tanınır olması veya kimlik/kişisel veri görünmesi reddedilir. Uzaktaki/arka plandaki kişiler, ekran-poster-TV içindeki kişiler engel değil. Emin olunamazsa yine reddedilir.
+- **Testler:** `npm run melis:test` (21 test; Gemini taklit edilerek `onRequest` çalıştırılır, her madde için ayrı test). Önizleme canlı testi: `/workspace/melis-107/fix-results/`.
+- **Geri alma:** PR birleşmediği için gerek yok; önizlemeyi eski haline getirmek için `9544be2d` dalını yeniden dağıtın.
+
 ### 15 Ekim 2026 (gece) — Melis yapay zekâ (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
 
 - **Önizleme:** https://melis-ai-preview.arledscreen.pages.dev (Cloudflare Pages dalı `melis-ai-preview`, noindex; canlıyı etkilemez). Üretime alınmadı, birleştirilmedi.
