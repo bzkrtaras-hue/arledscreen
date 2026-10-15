@@ -154,12 +154,12 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "kafe-ve-restoranlar-icin-led-ekran",
     title: "Kafe ve Restoranlar İçin LED Ekran Çözümleri",
-    h1: "Kafe ve Restoranlar İçin LED Ekran: Maç Yayınından Kampanya Duyurusuna",
+    h1: "Kafe ve Restoranlar İçin LED Ekran: Maç Yayınından Günlük Duyurulara",
     description:
-      "Kafe ve restoranlarda LED ekran kullanımı: maç yayınları, menü tanıtımları, kampanya ve günlük fırsat duyuruları için ARLEDSCREEN'in işletmelere sunduğu çözümler.",
+      "Kafe ve restoranlarda LED ekran kullanımı: maç yayınları, menü tanıtımları ve günlük duyurular için ARLEDSCREEN'in işletmelere sunduğu çözümler.",
     date: "2025-08-17",
     category: "Uygulama",
-    excerpt: "Geniş bir LED ekran; maç yayınlarından menü ve kampanya duyurularına kadar kafe ve restoranlarda müşteri deneyimini doğrudan etkiliyor.",
+    excerpt: "Geniş bir LED ekran; maç yayınlarından menü ve günlük duyurulara kadar kafe ve restoranlarda müşteri deneyimini doğrudan etkiliyor.",
     hero: { src: "/opt/blog/kafe-restoran-led-ekran.jpg", alt: "Bir restoranın oturma alanında maç yayını gösteren geniş LED ekran" },
     sections: [
       {
@@ -173,7 +173,7 @@ export const BLOG_POSTS: BlogPost[] = [
         list: [
           "Maç ve canlı yayınlar",
           "Menü ve ürün tanıtımları",
-          "Kampanya ve günlük fırsat duyuruları",
+          "Günlük duyurular ve bilgilendirmeler",
           "Marka ve sosyal medya içerikleri",
         ],
       },
@@ -214,7 +214,7 @@ export const BLOG_POSTS: BlogPost[] = [
     sections: [
       {
         p: [
-          "Ağustos 2025'te Sinan Polat Sigorta'nın Eskişehir Şubesi için LED ekran uygulamasını tamamlayarak teslim ettik. Ekran, şubenin iç mekânında duvar yüzeyine monte edildi. Sigorta acenteleri, bankalar ve hizmet ofisleri gibi müşteriyle yüz yüze çalışan işletmelerde LED ekran; kampanyaları, hizmet başlıklarını ve kurumsal kimliği tek bir yüzeyde, dikkat çekici biçimde sunmanın etkili bir yoludur.",
+          "Ağustos 2025'te Sinan Polat Sigorta'nın Eskişehir Şubesi için LED ekran uygulamasını tamamlayarak teslim ettik. Ekran, şubenin iç mekânında duvar yüzeyine monte edildi. Sigorta acenteleri, bankalar ve hizmet ofisleri gibi müşteriyle yüz yüze çalışan işletmelerde LED ekran; duyuruları, hizmet başlıklarını ve kurumsal kimliği tek bir yüzeyde, dikkat çekici biçimde sunmanın etkili bir yoludur.",
         ],
       },
       {
@@ -253,7 +253,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "NXTIONSTAR iç mekân LED ekran sistemleri: mağaza, showroom, alışveriş merkezi, otel, galeri ve fuar alanları için kurulum, kalibrasyon ve içerik yönetimi.",
     date: "2025-08-03",
     category: "Ürün",
-    excerpt: "Statik afişlerin yerini alan iç mekân LED ekranlar; mağaza içi kampanyalardan showroom ve fuar alanlarına kadar markanızı dijital olarak öne çıkarıyor.",
+    excerpt: "Statik afişlerin yerini alan iç mekân LED ekranlar; mağaza içi tanıtımlardan showroom ve fuar alanlarına kadar markanızı dijital olarak öne çıkarıyor.",
     hero: { src: "/opt/blog/ic-mekan-led-ekran-kalibrasyon.jpg", alt: "Kurulumu tamamlanan iç mekân LED ekranda kabin yerleşiminin yazılımla ayarlanması" },
     gallery: [
       { src: "/opt/blog/ic-mekan-led-ekran-montaj.jpg", alt: "İç mekân LED ekranın arka yüzünde kabin ve kablo bağlantıları" },
@@ -268,7 +268,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         h2: "Hangi alanlarda kullanılır?",
         list: [
-          "Mağaza içi kampanya ve ürün tanıtımları",
+          "Mağaza içi duyurular ve ürün tanıtımları",
           "Kurumsal showroom'lar",
           "Alışveriş merkezleri",
           "Otel, galeri ve fuar alanları",

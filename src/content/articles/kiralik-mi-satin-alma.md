@@ -41,7 +41,7 @@ Satın alma şu durumlarda öne çıkar:
 | Tipik kullanım | Sahne, fuar, lansman | Mağaza, cephe, salon, totem |
 | Maliyet modeli | Süre + ölçü + kurulum | Panel + montaj + kontrol |
 | Süreklilik | Geçici | Kalıcı |
-| İçerik | Etkinlik programı | Kampanya / kurumsal |
+| İçerik | Etkinlik programı | Tanıtım / kurumsal |
 | Servis | Etkinlik boyunca | Kurulum sonrası teknik servis |
 
 ## 4. Karar için gerekli bilgiler

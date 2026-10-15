@@ -69,7 +69,7 @@ const KIND_LABEL: Record<ModelKind, string> = {
 
 const USES: Record<ModelKind, { title: string; body: string }[]> = {
   ic: [
-    { title: "Mağaza ve showroom", body: "Ürün tanıtımı, kampanya ve marka içerikleri." },
+    { title: "Mağaza ve showroom", body: "Ürün tanıtımı ve marka içerikleri." },
     { title: "Kafe ve restoran", body: "Menü, maç yayını ve etkinlik duyuruları." },
     { title: "Toplantı salonu", body: "Sunum ve video konferans için tek parça ekran." },
     { title: "Lobi ve karşılama", body: "Kurumsal girişlerde bilgilendirme ve yönlendirme." },

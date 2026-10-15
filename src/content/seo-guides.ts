@@ -270,7 +270,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Dikey ve etkileşimli ekranlar: poster, totem, menuboard, kiosk",
           body:
-            "Poster LED ekran ve totem, dar alanlara sığan dikey formatlı ekranlardır; ayaklı olarak tek başına ya da yan yana birleştirilerek kullanılır. Menuboard, kafe ve restoranlarda menüyü ve kampanyaları gösteren dijital menü ekranıdır. Kiosk ise dokunmatik veya QR etkileşimli bir bilgi ve self-servis noktasıdır; dokunmatik yüzey çoğunlukla paneldir, LED yan yüzey veya arka duvar olarak eklenir. ARLEDSCREEN menuboard ve ayaklı ekranı hem LED hem LCD/TV tipi olarak sunar; LCD seçeneklerinde fiyat teklifle verilir.",
+            "Poster LED ekran ve totem, dar alanlara sığan dikey formatlı ekranlardır; ayaklı olarak tek başına ya da yan yana birleştirilerek kullanılır. Menuboard, kafe ve restoranlarda menüyü ve duyuruları gösteren dijital menü ekranıdır. Kiosk ise dokunmatik veya QR etkileşimli bir bilgi ve self-servis noktasıdır; dokunmatik yüzey çoğunlukla paneldir, LED yan yüzey veya arka duvar olarak eklenir. ARLEDSCREEN menuboard ve ayaklı ekranı hem LED hem LCD/TV tipi olarak sunar; LCD seçeneklerinde fiyat teklifle verilir.",
         },
         {
           h2: "Dev ekran, tabela ekran ve tekerlekli mobil ekran",
@@ -338,7 +338,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       ],
       h1: "Menuboard: kafe ve restoranlar için dijital menü ekranı",
       intro:
-        "Menuboard, kafe ve restoranlarda basılı menü panosunun yerini alan dijital menü ekranıdır; fiyat, ürün görseli ve kampanyalar birkaç dakika içinde güncellenir. ARLEDSCREEN menuboard'u iki seçenekle kurar: LED (kasa üstünde yatay bir iç mekân LED duvar ya da girişte dikey bir poster LED) veya LCD/TV tipi menü ekranı. Keşif, montaj ve içerik yükleme kurulumu İstanbul Gaziosmanpaşa'daki ekibimiz tarafından yapılır.",
+        "Menuboard, kafe ve restoranlarda basılı menü panosunun yerini alan dijital menü ekranıdır; fiyat, ürün görseli ve duyurular birkaç dakika içinde güncellenir. ARLEDSCREEN menuboard'u iki seçenekle kurar: LED (kasa üstünde yatay bir iç mekân LED duvar ya da girişte dikey bir poster LED) veya LCD/TV tipi menü ekranı. Keşif, montaj ve içerik yükleme kurulumu İstanbul Gaziosmanpaşa'daki ekibimiz tarafından yapılır.",
       sections: [
         {
           h2: "LED menuboard mı, LCD (TV) menuboard mı?",
@@ -353,7 +353,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Menü içeriği nasıl güncellenir?",
           body:
-            "LED menuboard'da içerik, kontrol kartı üzerinden USB, Wi‑Fi veya yerel ağ ile yüklenir. Huidu kontrol kartlarında program bilgisayarda ya da telefonda HDPlayer veya LedArt ile hazırlanıp ekrana gönderilir; zamanlanmış kampanya yayını planlanabilir. Kurulumda yazılım, ekran haritası ve uzaktan erişim ayarları birlikte teslim edilir.",
+            "LED menuboard'da içerik, kontrol kartı üzerinden USB, Wi‑Fi veya yerel ağ ile yüklenir. Huidu kontrol kartlarında program bilgisayarda ya da telefonda HDPlayer veya LedArt ile hazırlanıp ekrana gönderilir; zamanlanmış duyuru yayını planlanabilir. Kurulumda yazılım, ekran haritası ve uzaktan erişim ayarları birlikte teslim edilir.",
         },
         {
           h2: "Montaj ve yerleşim",
@@ -380,7 +380,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Menuboard nedir?",
           answer:
-            "Kafe, restoran ve fast-food noktalarında menüyü, fiyatları ve kampanyaları gösteren dijital menü ekranıdır. Basılı panonun aksine içerik yazılımla hızlıca değiştirilir.",
+            "Kafe, restoran ve fast-food noktalarında menüyü, fiyatları ve duyuruları gösteren dijital menü ekranıdır. Basılı panonun aksine içerik yazılımla hızlıca değiştirilir.",
         },
         {
           question: "Menuboard fiyatı ne kadar?",
@@ -511,7 +511,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Kiosk, totem ve menuboard farkı",
           body:
-            "Kiosk etkileşimlidir: kullanıcı ekrana dokunur veya QR kod okutur. Totem ve poster ekran çoğunlukla tek yönlü reklam ve bilgilendirme yapar. Menuboard ise kasa önünde menüyü ve kampanyaları gösterir. Karma alanlarda kiosk ile poster LED yan yana planlanabilir.",
+            "Kiosk etkileşimlidir: kullanıcı ekrana dokunur veya QR kod okutur. Totem ve poster ekran çoğunlukla tek yönlü reklam ve bilgilendirme yapar. Menuboard ise kasa önünde menüyü ve duyuruları gösterir. Karma alanlarda kiosk ile poster LED yan yana planlanabilir.",
         },
         {
           h2: "Kiosk ekran seçerken nelere bakılır?",
@@ -965,7 +965,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "İçerik ve YZ / CMS hattı",
           body:
-            "Vitrin içeriği sık değişir: kampanya, stok, AI ile üretilen görseller. Medya oynatıcı veya CMS / AI motoru ile alıcı uyumu teklifte yazılır.",
+            "Vitrin içeriği sık değişir: duyuru, stok, AI ile üretilen görseller. Medya oynatıcı veya CMS / AI motoru ile alıcı uyumu teklifte yazılır.",
         },
       ],
       faqs: [
@@ -1022,7 +1022,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Poster LED ile duvar LED farkı",
           body:
-            "Poster / totem bağımsız ayaklı veya duvara asılı dikey bir ünitedir; video duvar ise geniş yatay yüzeydir. Dar alan, yönlendirme ve tek mesajlı kampanyada poster LED öne çıkar. Pitch, izleme mesafesine göre seçilir — yakından okunan lobi posterinde ince pitch tercih edilir.",
+            "Poster / totem bağımsız ayaklı veya duvara asılı dikey bir ünitedir; video duvar ise geniş yatay yüzeydir. Dar alan, yönlendirme ve tek mesajlı duyuruda poster LED öne çıkar. Pitch, izleme mesafesine göre seçilir — yakından okunan lobi posterinde ince pitch tercih edilir.",
         },
         {
           h2: "İç mekân totem vs dış mekân totem",
@@ -1681,7 +1681,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "İçerik: dikkat edilmesi gerekenler",
           body:
-            "Ekranda nöbetçi eczane listesi, çalışma saatleri, sağlık duyuruları ve kampanyasız bilgilendirme içerikleri gösterilebilir. İlaç tanıtımı ve eczane reklamına ilişkin mevzuat ve meslek kuralları içeriği sınırlayabilir; içeriği hazırlamadan önce bağlı olduğunuz eczacı odasının güncel kurallarını kontrol edin.",
+            "Ekranda nöbetçi eczane listesi, çalışma saatleri, sağlık duyuruları ve reklam içermeyen bilgilendirme içerikleri gösterilebilir. İlaç tanıtımı ve eczane reklamına ilişkin mevzuat ve meslek kuralları içeriği sınırlayabilir; içeriği hazırlamadan önce bağlı olduğunuz eczacı odasının güncel kurallarını kontrol edin.",
         },
         {
           h2: "Ödeme, teslim ve servis",
@@ -2089,7 +2089,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Vertical and interactive: poster, totem, menu board, kiosk",
           body:
-            "Poster LED and totems are vertical, freestanding or side-by-side units. A menu board shows menus and promotions in cafés and restaurants. A kiosk adds touch or QR interaction; the touch surface is usually a panel, with LED as a side surface or backdrop.",
+            "Poster LED and totems are vertical, freestanding or side-by-side units. A menu board shows menus and announcements in cafés and restaurants. A kiosk adds touch or QR interaction; the touch surface is usually a panel, with LED as a side surface or backdrop.",
         },
       ],
       faqs: [
@@ -2126,7 +2126,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       keywords: ["menu board", "digital menu board", "LED menu board", "café menu display", "ARLEDSCREEN"],
       h1: "Digital menu boards for cafés and restaurants",
       intro:
-        "A menu board replaces the printed menu panel with a digital screen; prices, product photos and promotions update within minutes. ARLEDSCREEN offers two options: LED (a horizontal indoor LED wall above the counter or a vertical poster LED at the entrance) or an LCD/TV-type menu screen. One menu board reference is the Aslantürk Ercan Et branch in Yeşilpınar (Eyüpsultan, Istanbul), shared on our Instagram (instagram.com/arledscreen). Survey, installation and content setup are handled by our Istanbul Gaziosmanpaşa team.",
+        "A menu board replaces the printed menu panel with a digital screen; prices, product photos and announcements update within minutes. ARLEDSCREEN offers two options: LED (a horizontal indoor LED wall above the counter or a vertical poster LED at the entrance) or an LCD/TV-type menu screen. One menu board reference is the Aslantürk Ercan Et branch in Yeşilpınar (Eyüpsultan, Istanbul), shared on our Instagram (instagram.com/arledscreen). Survey, installation and content setup are handled by our Istanbul Gaziosmanpaşa team.",
       sections: [
         {
           h2: "Pixel pitch for LED menu boards",
@@ -2136,7 +2136,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Updating content",
           body:
-            "Content loads via the control card over USB, Wi‑Fi or local network. With Huidu cards, programmes are prepared in HDPlayer or LedArt and scheduled campaigns can be planned.",
+            "Content loads via the control card over USB, Wi‑Fi or local network. With Huidu cards, programmes are prepared in HDPlayer or LedArt and scheduled announcements can be planned.",
         },
         {
           h2: "Menu board sizes: indoor and outdoor",
@@ -2652,7 +2652,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Content and AI/CMS pipelines",
           body:
-            "Campaign creative changes often. Media players or CMS/AI engines are matched to receivers in the quote — the same ARLEDSCREEN AI-ready standard used elsewhere.",
+            "Display content changes often. Media players or CMS/AI engines are matched to receivers in the quote — the same ARLEDSCREEN AI-ready standard used elsewhere.",
         },
       ],
       faqs: [
@@ -2705,7 +2705,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Poster LED vs wall LED",
           body:
-            "Posters/totems are freestanding or wall-hung vertical units; video walls are wide horizontal canvases. Narrow spaces and single-message campaigns favour poster LED with pitch matched to reading distance.",
+            "Posters/totems are freestanding or wall-hung vertical units; video walls are wide horizontal canvases. Narrow spaces and single-message use favours poster LED with pitch matched to reading distance.",
         },
         {
           h2: "Indoor vs outdoor totems",
