@@ -33,7 +33,7 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
     dateModified: a.lastReviewed,
     author: { "@id": `${SITE_URL}/#organization` },
     publisher: { "@id": `${SITE_URL}/#organization` },
-    image: absoluteUrl("/og/arledscreen-og.jpg"),
+    image: absoluteUrl("/og-image.jpg"),
     isRelatedTo: BRAND_SUBJECT_REFS,
   };
   const others = ARTICLE_LINKS.filter((l) => !l.href.includes(`/${slug}/`));

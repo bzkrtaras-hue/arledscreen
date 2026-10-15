@@ -21,13 +21,28 @@ export const metadata: Metadata = {
   description: clampMetaDescription(
     "ARLEDSCREEN — İstanbul Gaziosmanpaşa LED ekran satış, keşif, montaj ve teknik servis. NXTIONSTAR kendi markamız.",
   ),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  manifest: "/site.webmanifest",
+  themeColor: "#0B1B33",
   openGraph: {
     type: "website",
     siteName: "ARLEDSCREEN",
     locale: "tr_TR",
+    images: [
+      { url: "/og-image.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN kurulumu: otel lobisinde iç mekân LED ekran" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,

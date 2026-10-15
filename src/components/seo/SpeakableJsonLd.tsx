@@ -9,6 +9,8 @@ interface SpeakableJsonLdProps {
   cssSelectors: string[];
   /** Optional page→Product forward join (priced PDPs). */
   mainEntity?: { "@id": string };
+  /** Optional ISO date (YYYY-MM-DD) of the last content review; omitted when not given. */
+  dateModified?: string;
 }
 
 /**
@@ -21,6 +23,7 @@ export function SpeakableJsonLd({
   description,
   cssSelectors,
   mainEntity,
+  dateModified,
 }: SpeakableJsonLdProps) {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -32,6 +35,7 @@ export function SpeakableJsonLd({
     isPartOf: { "@id": `${SITE_URL}/#website` },
     about: { "@id": `${SITE_URL}/#organization` },
     ...(mainEntity ? { mainEntity } : {}),
+    ...(dateModified ? { dateModified } : {}),
     isBasedOn: BRAND_SUBJECT_REFS,
     speakable: {
       "@type": "SpeakableSpecification",

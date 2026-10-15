@@ -9,6 +9,7 @@ import { SERVICE_REGIONS } from "@/content/service-regions";
 import { COMMERCIAL_EN_SLUGS, COMMERCIAL_PAGES } from "@/content/commercial-pages";
 import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 import { lastmodForUrl } from "@/lib/sitemap-lastmod";
+import { AR_INDEXABLE_PATHS } from "@/lib/ar-indexable";
 
 export const dynamic = "force-static";
 
@@ -18,7 +19,7 @@ export const dynamic = "force-static";
  * lastmod = git last-commit date of the page's route + content files (fallback: build date).
  * - TR: full site (products, models, bölgeler, blog, rehber…)
  * - EN: pages with real EN copy (home, about, hesaplayici, quote, yapay-zeka, rehber)
- * - Thin /en/products hub, /ar/* and /ru/* are omitted (no false language pairs).
+ * - AR: only reviewed Arabic pages (AR_INDEXABLE_PATHS); other /ar/*, /ru/* and thin /en/products hub omitted.
  */
 
 const TR_CORE: {
@@ -78,6 +79,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl(`/tr/rehber/${slug}/`),
       changeFrequency: "weekly",
       priority: 0.85,
+    });
+  }
+
+  for (const path of AR_INDEXABLE_PATHS) {
+    entries.push({
+      url: absoluteUrl(`/ar${path}`),
+      changeFrequency: "monthly",
+      priority: 0.7,
     });
   }
 

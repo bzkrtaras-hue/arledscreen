@@ -7,7 +7,7 @@ export function BlogTeaser() {
   const posts = latestBlogPosts(3);
   return (
     <div>
-      <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="flex flex-wrap justify-center gap-5 [&>li]:w-full sm:[&>li]:w-[calc(50%-0.625rem)] lg:[&>li]:w-[calc(33.333%-0.834rem)]">
         {posts.map((p) => (
           <li key={p.slug}>
             <Link

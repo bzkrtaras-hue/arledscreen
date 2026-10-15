@@ -96,7 +96,7 @@ export const ENTITY_FAQS = [
   {
     question: "Panel fiyatları nerede yayımlanır?",
     answer:
-      "Yayımlanmış 12 panel fiyatı sitedeki LED ekran fiyatları sayfasındadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
+      "Yayımlanmış 12 panel fiyatı sitedeki LED ekran fiyatları sayfasındadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
   },
   {
     question: "arleds.com ile arledscreen.com aynı mı?",
@@ -134,7 +134,7 @@ export const ENTITY_FAQS_EN = [
   {
     question: "Where are published panel prices?",
     answer:
-      "The published 12 panel prices are on the LED display prices page. Prices are in USD per panel; VAT and shipping are excluded. For transparent, flexible, poster and control products the final amount is confirmed in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+      "The published 12 panel prices are on the LED display prices page. Prices are in USD per panel; VAT and shipping are excluded. For transparent, flexible, poster and control products the final amount is confirmed in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
   },
   {
     question: "Is arleds.com the same as arledscreen.com?",
@@ -278,7 +278,7 @@ export type EntityDocument = {
 };
 
 export function buildEntityDocument(): EntityDocument {
-  const logo = `${SITE_URL}/brand/arledscreen-logo-header.png`;
+  const logo = `${SITE_URL}/brand/arledscreen-yatay-1024.png`;
   return {
     "@context": "https://schema.org",
     "@type": "Organization",

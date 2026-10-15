@@ -2,27 +2,36 @@ import { SEO_GUIDE_I18N } from "@/content/seo-guides-i18n";
 import type { Locale } from "@/lib/i18n";
 
 export const SEO_GUIDE_SLUGS = [
+  // Genel
   "led-ekran",
   "dijital-ekran",
   "ekran-cesitleri",
   "lcd-ekran",
+  // Ortam
   "dis-mekan-led-ekran",
   "ic-mekan-led-ekran",
-  "mimari-muhendislik-led",
-  "konferans-salonu-led",
+  // Ürün tipi
   "vitrin-led-ekran",
   "poster-led-ekran",
   "menuboard-dijital-menu",
   "kiosk-ekran",
   "kiosk-dijital-ekran",
-  "cnc-led-kasa",
-  "cami-led-ekran",
-  "led-ekran-ariza-belirtileri",
-  "led-ekran-ihracat",
+  // Sektör
+  "konferans-salonu-led",
+  "okul-led-ekran",
+  "hastane-dijital-ekran",
   "eczane-led-ekran",
   "dugun-salonu-led",
-  "hastane-dijital-ekran",
-  "okul-led-ekran",
+  "cami-led-ekran",
+  // Teknik
+  "mimari-muhendislik-led",
+  "cnc-led-kasa",
+  "led-ekran-ariza-belirtileri",
+  "led-ekran-ihracat",
+  "p1-86-vs-p2-5",
+  "kamera-yayin-icin-led-ekran",
+  "led-ekran-omru-ve-bakim",
+  "tasinabilir-p1-86-led-ekran",
 ] as const;
 
 export type SeoGuideSlug = (typeof SEO_GUIDE_SLUGS)[number];
@@ -52,6 +61,8 @@ export interface SeoGuide {
   faqs: SeoGuideFaq[];
   relatedSlugs: SeoGuideSlug[];
   cta: { title: string; body: string };
+  /** Optional internal links to non-guide pages (products, calculator, services). */
+  links?: { href: string; label: string }[];
   /** Short card label for hub / related links */
   cardLabel: string;
   cardTeaser: string;
@@ -1313,6 +1324,307 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       cardLabel: "Yurt dışına LED ekran (ihracat)",
       cardTeaser: "Avrupa, Orta Doğu ve Balkanlar'a gönderim, CE sertifika, ödeme ve teslim süresi.",
     },
+    "p1-86-vs-p2-5": {
+      slug: "p1-86-vs-p2-5",
+      title: "P1.86 mı P2.5 mi? İç Mekân LED Ekran Karşılaştırması | ARLEDSCREEN",
+      description:
+        "P1.86 vs P2.5 iç mekân LED ekran: izleme mesafesi, modül çözünürlüğü, m² modül bedeli ve 3,20 × 1,92 m örnek maliyet. Yayımlanmış NXTIONSTAR panel fiyatlarıyla.",
+      keywords: ["P1.86 mı P2.5 mi", "P1.86 vs P2.5", "P2.5 LED ekran fiyatı", "P1.86 LED ekran fiyatı", "izleme mesafesi piksel aralığı", "NXTIONSTAR"],
+      h1: "P1.86 mı P2.5 mi? (P1.86 vs P2.5) Mesafe, görüntü ve fiyat karşılaştırması",
+      intro:
+        "P1.86 mı P2.5 mi sorusunun kısa cevabı: izleyici ekrana 2,5 m'den yakınsa ya da ekran kamerayla çekiliyorsa P1.86, 2,5 m ve üzeri mesafede P2.5 genellikle yeterlidir. Kabaca her 1 mm piksel aralığı yaklaşık 1 m minimum izleme mesafesine karşılık gelir. Yayımlanmış listemizde P1.86 GOB 49,08 USD/panel (≈959 USD/m² modül bedeli), iç mekân P2.5 32,18 USD/panel (≈629 USD/m²) olarak yer alır; KDV ve nakliye hariçtir.",
+      sections: [
+        {
+          h2: "İzleme mesafesi kuralı",
+          body:
+            "Piksel aralığı (pitch), iki LED'in merkezleri arasındaki mesafedir. Pratik kural: 1 mm piksel aralığı için yaklaşık 1 m minimum izleme mesafesi. Buna göre P1.86 yaklaşık 1,9 m'den, P2.5 yaklaşık 2,5 m'den itibaren pikselleri belli etmeden izlenir. İzleyicilerin çoğu daha uzaktaysa ince pitch'e ek bütçe ayırmak görüntüde belirgin fark yaratmaz.",
+        },
+        {
+          h2: "Örnek: 3,20 × 1,92 m ekranın maliyeti",
+          body:
+            "3,20 × 1,92 m ekran 10 × 12 = 120 adet 320 × 160 mm modülden oluşur (≈6,14 m²). Fiyat hesaplayıcımızın formülüyle: P1.86 GOB için 120 × 49,08 = 5.889,60 USD modül, P2.5 iç mekân için 120 × 32,18 = 3.861,60 USD modül. Her ikisine işçilik 100 USD/m² (≈614,40 USD), kontrol kartı 500 USD ve sürücü + yazılım 500 USD eklenir. Toplam yaklaşık 7.504 USD (P1.86) ve 5.476 USD (P2.5) olur; KDV ve nakliye hariçtir, kesin tutar yazılı teklifle verilir.",
+        },
+        {
+          h2: "Çözünürlük farkı",
+          body:
+            "P1.86 GOB modül 172 × 86 piksel çözünürlüğündedir; aynı 3,20 × 1,92 m ekranda 1.720 × 1.032 piksel elde edilir. P2.5'te aynı ölçüde piksel sayısı daha düşüktür; modele ait kesin değer teknik föyde yazılı teklifle paylaşılır.",
+        },
+        {
+          h2: "Hangi kullanımda hangisi?",
+          body:
+            "Stüdyo, yakın plan çekim, toplantı odası ve masaya yakın ekranlarda P1.86 GOB; mağaza duvarı, düğün salonu sahnesi, konferans salonu ve 2,5 m'den uzaktan izlenen alanlarda P2.5 iç mekân uygundur. P1.86 GOB modüller önden bakımlıdır ve mıknatıslı montajla duvardan sökülmeden değiştirilebilir; GOB kaplama yüzeyi darbeye karşı korur.",
+        },
+      ],
+      faqs: [
+        {
+          question: "P1.86 mı P2.5 mi almalıyım?",
+          answer:
+            "İzleyici 2,5 m'den yakınsa veya ekran kamerayla çekiliyorsa P1.86, 2,5 m ve üzerinde P2.5 genellikle yeterlidir.",
+        },
+        {
+          question: "P1.86 ile P2.5 arasındaki fiyat farkı ne kadar?",
+          answer:
+            "Yayımlanmış listede P1.86 GOB 49,08 USD/panel (≈959 USD/m²), iç mekân P2.5 32,18 USD/panel (≈629 USD/m²). Fiyatlar panel başına, KDV ve nakliye hariçtir.",
+        },
+        {
+          question: "Gereğinden ince piksel aralığı almak mantıklı mı?",
+          answer:
+            "İzleyiciler genellikle uzaktaysa hayır; fark gözle zor seçilir, maliyet artar. Yakın izleme veya kamera çekimi varsa ince pitch tercih edilir.",
+        },
+        {
+          question: "Kesin fiyatı nasıl öğrenirim?",
+          answer:
+            "Ölçü ve kullanım yerini WhatsApp (+90 530 507 88 34) veya arled@arledscreen.com adresine gönderin; yazılı teklif hazırlayalım. Fiyat hesaplayıcıyla ön hesap da yapabilirsiniz.",
+        },
+      ],
+      relatedSlugs: ["kamera-yayin-icin-led-ekran", "tasinabilir-p1-86-led-ekran", "ic-mekan-led-ekran"],
+      links: [
+        { href: "/tr/products/gob-led-ekran/p1-86-gob/", label: "NXTIONSTAR P1.86 GOB" },
+        { href: "/tr/products/ic-mekan-led-ekran/p2-5/", label: "NXTIONSTAR P2.5 iç mekân" },
+        { href: "/tr/rehber/piksel-araligi-secimi/", label: "Piksel aralığı seçimi" },
+        { href: "/tr/rehber/gob-vs-smd/", label: "GOB mu SMD mi?" },
+        { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
+      ],
+      cta: {
+        title: "Mesafenize göre P1.86 ya da P2.5 önerelim",
+        body:
+          "Ekran ölçüsünü, en yakın izleyici mesafesini ve kamera çekimi olup olmadığını WhatsApp'tan (+90 530 507 88 34) veya arled@arledscreen.com adresine gönderin.",
+      },
+      cardLabel: "P1.86 mı P2.5 mi?",
+      cardTeaser: "İzleme mesafesi, çözünürlük ve yayımlanmış fiyatlarla 3,20 × 1,92 m örnek maliyet.",
+    },
+    "kamera-yayin-icin-led-ekran": {
+      slug: "kamera-yayin-icin-led-ekran",
+      title: "Kamera ve Yayın İçin LED Ekran: Yenileme Hızı, Moiré, Titreme | ARLEDSCREEN",
+      description:
+        "Kamerayla çekilecek LED ekranda yenileme hızı, moiré, titreme, kamera ayarları ve piksel aralığı seçimi. Stüdyo, TV, düğün çekimi ve canlı yayın için rehber.",
+      keywords: ["kamera için LED ekran", "LED ekran moiré", "LED ekran kamerada titreme", "yayın stüdyosu LED wall", "yenileme hızı LED ekran", "NXTIONSTAR"],
+      h1: "Kamera ve yayın için LED ekran: yenileme hızı, moiré ve doğru piksel aralığı",
+      intro:
+        "Kamerayla çekilecek bir LED ekranda üç şey belirleyicidir: yüksek yenileme hızı, kamera mesafesine uygun piksel aralığı ve doğru kamera ayarları. Düşük yenileme hızı çekimde yatay çizgi ve titreme yapar; moiré ise piksel aralığı, odak ve kamera mesafesiyle ilgilidir. Modelin yenileme hızı yazılı teklifle birlikte teknik föyde belirtilir.",
+      sections: [
+        {
+          h2: "Yenileme hızı nedir?",
+          body:
+            "Yenileme hızı, LED'lerin saniyede kaç kez sürüldüğünü gösterir ve Hz ile ifade edilir. Göz düşük değerleri fark etmez, ancak kamera sensörü kısa pozlama sürelerinde ekranın tazelenmesini yakalar. Bu yüzden çekim yapılacak ekranlarda yüksek yenileme hızlı sürücü ve kontrol kartı seçilir.",
+        },
+        {
+          h2: "Moiré nedir, nasıl azaltılır?",
+          body:
+            "Moiré, ekranın piksel ızgarası ile kamera sensörünün ızgarası üst üste geldiğinde oluşan dalgalı desendir. Azaltmak için ekranı odak düzleminin hafifçe dışında tutun, kamerayı ekrana tam dik yerine küçük bir açıyla konumlandırın, kamera mesafesini veya objektif odak uzunluğunu değiştirin ve mesafeye uygun ince piksel aralığı seçin.",
+        },
+        {
+          h2: "Kamera ayarları: shutter, kare hızı, senkron",
+          body:
+            "Çekimden önce ekran içeriğini oynatırken kamerada kısa bir test yapın. Çizgi görürseniz shutter hızını ve kare hızını ekranın tazelemesiyle uyumlu olacak şekilde değiştirin; yerel şebeke frekansına uygun değerler genellikle titremeyi azaltır. Çok kameralı yayınlarda senkron gereksinimini keşifte belirtin, uygun kontrolcü yapılandırması teklifte netleştirilir.",
+        },
+        {
+          h2: "Piksel aralığı ve kamera mesafesi",
+          body:
+            "Kamera ekrana ne kadar yakınsa piksel aralığı o kadar ince seçilmelidir. İnce pitch seçeneklerimiz P1.25, P1.53 ve P1.86 GOB'dur. Yakın plan stüdyo çekimlerinde bu modeller, daha uzak geniş planlarda P2.5 iç mekân değerlendirilir. Yayımlanmış fiyatlar: P1.25 GOB 95,88 USD, P1.53 GOB 62,08 USD, P1.86 GOB 49,08 USD (panel başına, KDV ve nakliye hariç).",
+        },
+        {
+          h2: "Kontrolcü seçimi",
+          body:
+            "Görüntü işlemci ve gönderici kart, çekimdeki sonuç kadar ekranın kendisi kadar önemlidir. NovaStar ve Colorlight kontrolcü ailelerini sunuyoruz; hangi yapılandırmanın projenize uyduğu kamera sayısı, kaynak çözünürlüğü ve ekran ölçüsüne göre teklifte belirlenir.",
+        },
+        {
+          h2: "Kullanım alanları",
+          body:
+            "TV ve podcast stüdyoları, düğün ve davet çekimleri, kurumsal canlı yayınlar ve ürün çekimleri. Her biri için kamera konumu ve mesafesini keşifte birlikte planlıyoruz.",
+        },
+      ],
+      faqs: [
+        {
+          question: "LED ekran kamerada neden titrer?",
+          answer:
+            "Ekranın yenileme hızı ile kameranın shutter hızı ve kare hızı uyumsuz olduğunda kamera tazelemeyi çizgi veya titreme olarak kaydeder. Yüksek yenileme hızlı ekran ve uygun kamera ayarları bunu önler.",
+        },
+        {
+          question: "Moiré nasıl önlenir?",
+          answer:
+            "Ekranı odak düzleminin hafifçe dışında tutun, kamera açısını ve mesafesini değiştirin, mesafeye uygun ince piksel aralığı seçin.",
+        },
+        {
+          question: "NXTIONSTAR modellerinin yenileme hızı nedir?",
+          answer:
+            "Model bazında yenileme hızı ve diğer teknik değerler yazılı teklifle birlikte teknik föyde paylaşılır.",
+        },
+        {
+          question: "Stüdyo için hangi piksel aralığı uygun?",
+          answer:
+            "Yakın çekimde P1.25, P1.53 veya P1.86 GOB; kamera ekrandan uzaksa P2.5 iç mekân değerlendirilir.",
+        },
+      ],
+      relatedSlugs: ["p1-86-vs-p2-5", "tasinabilir-p1-86-led-ekran", "ic-mekan-led-ekran"],
+      links: [
+        { href: "/tr/products/ince-pitch-led-ekran/", label: "İnce pitch LED ekran" },
+        { href: "/tr/products/gob-led-ekran/p1-86-gob/", label: "NXTIONSTAR P1.86 GOB" },
+        { href: "/tr/products/novastar-kontrolculer/", label: "NovaStar kontrolcüler" },
+        { href: "/tr/products/colorlight-kontrolculer/", label: "Colorlight kontrolcüler" },
+        { href: "/tr/rehber/piksel-araligi-secimi/", label: "Piksel aralığı seçimi" },
+      ],
+      cta: {
+        title: "Çekim düzeninize uygun ekranı planlayalım",
+        body:
+          "Kamera mesafesini, ekran ölçüsünü ve çekim türünü WhatsApp'tan (+90 530 507 88 34) veya arled@arledscreen.com adresine gönderin; teknik föyle birlikte yazılı teklif hazırlayalım.",
+      },
+      cardLabel: "Kamera ve yayın için LED ekran",
+      cardTeaser: "Yenileme hızı, moiré, kamera ayarları ve stüdyo için piksel aralığı.",
+    },
+    "led-ekran-omru-ve-bakim": {
+      slug: "led-ekran-omru-ve-bakim",
+      title: "LED Ekran Ömrü, Bakımı ve Ölü Piksel | ARLEDSCREEN",
+      description:
+        "LED ekranın ömrünü ne belirler, periyodik bakım nasıl yapılır, ölü piksel ve modül arızası nasıl çözülür, yedek modül neden önemlidir? ARLEDSCREEN servis rehberi.",
+      keywords: ["LED ekran ömrü", "LED ekran bakımı", "ölü piksel", "LED modül değişimi", "yedek modül", "LED ekran kaç yıl dayanır"],
+      h1: "LED ekran ömrü, bakımı ve ölü piksel: bilmeniz gerekenler",
+      intro:
+        "LED ekranın ömrü kullanım saatine, parlaklık ayarına, ısıya, toza, neme ve elektrik kalitesine bağlıdır. Ekranın ömrü boyunca tek tek LED veya modül arızası normaldir ve modül değişimiyle giderilir. Önden bakımlı modüller duvardan sökülmeden değiştirilebilir. Garanti ve servis koşulları yazılı teklifte belirtilir.",
+      sections: [
+        {
+          h2: "Ömrü ne belirler?",
+          body:
+            "Günlük çalışma saati, parlaklığın gereğinden yüksek tutulması, kabin içindeki ısı ve havalandırma, toz ve nem, gerilim dalgalanmaları ömrü en çok etkileyen etkenlerdir. Parlaklığı ortama göre ayarlamak, ekranı gece otomatik kapatmak ve topraklı, korumalı bir elektrik hattı kullanmak ömrü uzatır.",
+        },
+        {
+          h2: "Periyodik bakım listesi",
+          body:
+            "İç mekânda yüzeyi kuru ve yumuşak fırçayla tozdan arındırın, fan ve havalandırma açıklıklarını kontrol edin, kablo ve konnektörlerin gevşekliğine bakın. Dış mekânda ek olarak conta ve su yalıtımını, kabin bağlantılarını ve güç kaynaklarını mevsim geçişlerinde kontrol edin. Bakım planı ve kapsamı servis teklifinde yazılı olarak verilir.",
+        },
+        {
+          h2: "Ölü piksel ve modül arızası",
+          body:
+            "Tek bir LED'in yanmaması (ölü piksel) genellikle darbe, nem veya lehim yorulmasından kaynaklanır. Bir modülün tamamen ya da kısmen sönmesi ise çoğunlukla modül, kablo veya güç kaynağı arızasıdır. Çözüm, arızalı modülü aynı üretim partisinden bir yedekle değiştirmek ve gerekiyorsa kalibrasyon yapmaktır.",
+        },
+        {
+          h2: "Yedek modül ve güç kaynağı stoku",
+          body:
+            "Farklı üretim partilerindeki modüller arasında renk ve parlaklık farkı olabilir. Bu yüzden kurulumla birlikte aynı partiden birkaç yedek modül ve güç kaynağı ayırmak önerilir. Yedek miktarı ekran ölçüsüne göre teklifte belirlenir.",
+        },
+        {
+          h2: "GOB modüllerin dayanıklılık farkı",
+          body:
+            "GOB (Glue on Board) modüllerde LED'lerin üzeri şeffaf bir kaplamayla kapatılır. Bu kaplama taşıma, kurulum ve temizlik sırasında LED'leri darbeye karşı korur; yakın erişilen alanlarda ölü piksel riskini azaltır.",
+        },
+        {
+          h2: "Servis",
+          body:
+            "Yerinde inceleme, arıza tespiti, yedek parça, kalibrasyon, modül ve güç kaynağı değişimi ve periyodik bakım planı sunuyoruz; başka markaların ekranları için de uygunluk değerlendirmesi yapıyoruz. Garanti kapsamı ve koşulları yazılı teklifte belirtilir.",
+        },
+      ],
+      faqs: [
+        {
+          question: "LED ekran kaç yıl dayanır?",
+          answer:
+            "Ömür; kullanım saati, parlaklık, ısı, toz, nem ve elektrik kalitesine bağlıdır. Doğru parlaklık ayarı, iyi havalandırma ve periyodik bakımla ömür uzar.",
+        },
+        {
+          question: "Ölü piksel olursa ne yapılır?",
+          answer:
+            "Arızalı modül aynı partiden bir yedekle değiştirilir, gerekirse kalibrasyon yapılır. Önden bakımlı modüller duvardan sökülmeden değiştirilir.",
+        },
+        {
+          question: "Ölü piksel garanti kapsamında mı?",
+          answer:
+            "Garanti kapsamı ve koşulları yazılı teklifte belirtilir. Sorunuzu WhatsApp'tan (+90 530 507 88 34) iletebilirsiniz.",
+        },
+        {
+          question: "Başka markanın ekranına servis veriyor musunuz?",
+          answer:
+            "Evet, başka markaların ekranları için uygunluk değerlendirmesi yapıyoruz.",
+        },
+      ],
+      relatedSlugs: ["led-ekran-ariza-belirtileri", "kamera-yayin-icin-led-ekran", "dis-mekan-led-ekran"],
+      links: [
+        { href: "/tr/led-ekran-servis/", label: "LED ekran servis" },
+        { href: "/tr/led-ekran-tamiri/", label: "LED ekran tamiri" },
+        { href: "/tr/rehber/gob-vs-smd/", label: "GOB mu SMD mi?" },
+        { href: "/tr/products/led-modul-ve-kontrol-sistemleri/", label: "LED modül ve kontrol sistemleri" },
+        { href: "/tr/sss/", label: "Sık sorulan sorular" },
+      ],
+      cta: {
+        title: "Ekranınız için bakım veya servis planlayalım",
+        body:
+          "Ekranın fotoğrafını, ölçüsünü ve arıza belirtisini WhatsApp'tan (+90 530 507 88 34) veya arled@arledscreen.com adresine gönderin.",
+      },
+      cardLabel: "LED ekran ömrü ve bakımı",
+      cardTeaser: "Ömrü ne belirler, bakım listesi, ölü piksel, yedek modül ve GOB.",
+    },
+    "tasinabilir-p1-86-led-ekran": {
+      slug: "tasinabilir-p1-86-led-ekran",
+      title: "Stüdyo ve Düğün Çekimi İçin Taşınabilir P1.86 LED Ekran | ARLEDSCREEN",
+      description:
+        "Düğün videosu ve stüdyo çekimi için taşınabilir P1.86 GOB LED ekran: neden P1.86, neden GOB, örnek ölçü ve fiyat hesabı, satın alma veya kiralama.",
+      keywords: ["taşınabilir LED ekran P1.86", "stüdyo LED ekran", "düğün çekimi LED ekran", "portatif LED duvar", "P1.86 GOB", "NXTIONSTAR"],
+      h1: "Stüdyo ve düğün çekimi için taşınabilir P1.86 LED ekran",
+      intro:
+        "Düğün videosu ve stüdyo çekimi için taşınabilir iç mekân ekranda P1.86 GOB, yaklaşık 2 m ve üzeri mesafede pikseli belli etmez; GOB kaplama taşıma ve kurulumda modülleri darbeye karşı korur. NXTIONSTAR P1.86 GOB modülün liste fiyatı 49,08 USD/panel (≈959 USD/m² modül bedeli, KDV ve nakliye hariç). Kasa, taşıma çantası ve kontrolcü projeye göre tekliflendirilir.",
+      sections: [
+        {
+          h2: "Neden P1.86 ve neden GOB?",
+          body:
+            "P1.86, kamera ve izleyicinin ekrana yakın olduğu stüdyo ve düğün çekimlerinde net görüntü verir. GOB kaplama, sık söküp takılan taşınabilir ekranlarda en büyük risk olan darbe kaynaklı LED kopmalarına karşı koruma sağlar. Modül 320 × 160 mm, 172 × 86 piksel, 5 V DC; önden bakımlı ve mıknatıslı montajlıdır.",
+        },
+        {
+          h2: "Taşınabilir kurulum",
+          body:
+            "Taşınabilir kullanımda modüller hafif kabin veya çerçeveye monte edilir ve taşıma kasasında korunur. Kabin, kasa ve taşıma çantası seçenekleri ile kurulum süresi, ekran ölçüsüne göre teklifte belirtilir.",
+        },
+        {
+          h2: "Kamerayla çekimde dikkat edilecekler",
+          body:
+            "Çekimde titreme ve moiré görmemek için yüksek yenileme hızlı kontrol sistemi, uygun kamera shutter ve kare hızı ayarı ve doğru mesafe gerekir. Ayrıntılar kamera ve yayın rehberimizde. Modelin yenileme hızı teklifteki teknik föyde belirtilir.",
+        },
+        {
+          h2: "Örnek ölçüler ve fiyat hesabı",
+          body:
+            "1,92 × 0,96 m ekran 6 × 6 = 36 modülden oluşur (≈1,84 m², 1.032 × 516 piksel); modül bedeli 36 × 49,08 = 1.766,88 USD. 3,20 × 1,92 m ekran 120 modülden oluşur (≈6,14 m², 1.720 × 1.032 piksel); modül bedeli 120 × 49,08 = 5.889,60 USD. Hesaplayıcımızda bunlara işçilik 100 USD/m², kontrol kartı 500 USD ve sürücü + yazılım 500 USD eklenir; KDV ve nakliye hariçtir. Kesin tutar yazılı teklifle verilir.",
+        },
+        {
+          h2: "Satın al mı, kirala mı?",
+          body:
+            "Düzenli çekim yapan stüdyo ve organizasyon firmaları için satın alma, tek seferlik etkinlikler için kiralama daha uygundur. Kiralık LED ekranda fiyat, tarih ve ölçüye göre teklifle verilir.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Düğün çekimi için hangi P değeri uygun?",
+          answer:
+            "Kamera ve izleyici ekrana yakınsa P1.86 GOB uygundur; daha uzak salon sahnelerinde P2.5 veya P3.07 iç mekân değerlendirilir.",
+        },
+        {
+          question: "P1.86 GOB modülün fiyatı nedir?",
+          answer:
+            "Liste fiyatı 49,08 USD/panel (≈959 USD/m² modül bedeli), KDV ve nakliye hariç. Kasa ve kontrolcü projeye göre tekliflendirilir.",
+        },
+        {
+          question: "Taşınabilir ekran kiralanabilir mi?",
+          answer:
+            "Evet. Kiralık LED ekranda fiyat teklifle verilir; tarih, ölçü ve lokasyonu paylaşmanız yeterlidir.",
+        },
+        {
+          question: "Modül arızalanırsa nasıl değiştirilir?",
+          answer:
+            "P1.86 GOB modüller önden bakımlı ve mıknatıslıdır; arızalı modül ön taraftan çıkarılıp yedekle değiştirilir.",
+        },
+      ],
+      relatedSlugs: ["kamera-yayin-icin-led-ekran", "p1-86-vs-p2-5", "dugun-salonu-led"],
+      links: [
+        { href: "/tr/products/gob-led-ekran/p1-86-gob/", label: "NXTIONSTAR P1.86 GOB" },
+        { href: "/tr/rehber/gob-vs-smd/", label: "GOB mu SMD mi?" },
+        { href: "/tr/rehber/kiralik-mi-satin-alma/", label: "Kiralık mı satın alma mı?" },
+        { href: "/tr/products/kiralik-led-ekran/", label: "Kiralık LED ekran" },
+        { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
+      ],
+      cta: {
+        title: "Ölçünüzü ve kullanımınızı gönderin",
+        body:
+          "Ekran ölçüsünü, çekim türünü ve taşıma ihtiyacını WhatsApp'tan (+90 530 507 88 34) veya arled@arledscreen.com adresine yazın; yazılı teklif hazırlayalım.",
+      },
+      cardLabel: "Taşınabilir P1.86 LED ekran",
+      cardTeaser: "Stüdyo ve düğün çekimi için P1.86 GOB: neden GOB, örnek ölçü ve fiyat.",
+    },
     "eczane-led-ekran": {
       slug: "eczane-led-ekran",
       title: "Eczane LED Ekran: Vitrin, Tabela ve Raf Üstü Ekran Seçimi | ARLEDSCREEN",
@@ -1384,11 +1696,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       slug: "dugun-salonu-led",
       title: "Düğün Salonu LED Ekran: Ölçü, Fiyat, Satın Alma ve Kiralama | ARLEDSCREEN",
       description:
-        "Düğün ve davet salonu için LED ekran: salon derinliğine göre sahne ekranı ölçüsü, P3.07 / P4 seçimi, örnek modül bedeli ve günlük 50 USD/m² kiralama karşılaştırması. ARLEDSCREEN, İstanbul.",
+        "Düğün ve davet salonu için LED ekran: salon derinliğine göre sahne ekranı ölçüsü, P3.07 / P4 seçimi, örnek modül bedeli ve kiralama karşılaştırması. ARLEDSCREEN, İstanbul.",
       keywords: ["düğün salonu LED ekran", "düğün salonu sahne ekranı", "davet salonu LED ekran", "düğün LED ekran fiyatı", "kiralık düğün LED ekran", "NXTIONSTAR"],
       h1: "Düğün salonu LED ekran: ölçü, fiyat ve kiralama",
       intro:
-        "Düğün salonunda LED ekran çoğunlukla sahnenin arkasına kurulur; gelin-damat girişi, fotoğraf ve video gösterisi, canlı çekim ve salon logosu bu ekranda oynar. Konuklar masalarda ekrandan genellikle 4 m ve daha uzakta oturduğu için iç mekân P3.07 veya P4 modüller yeterlidir. Ekran yüksekliği salonun en arka masasının uzaklığının yaklaşık sekizde biri seçilir. Salon sahibi için satın alma, tek seferlik organizasyon için günlük 50 USD/m² kiralama uygundur.",
+        "Düğün salonunda LED ekran çoğunlukla sahnenin arkasına kurulur; gelin-damat girişi, fotoğraf ve video gösterisi, canlı çekim ve salon logosu bu ekranda oynar. Konuklar masalarda ekrandan genellikle 4 m ve daha uzakta oturduğu için iç mekân P3.07 veya P4 modüller yeterlidir. Ekran yüksekliği salonun en arka masasının uzaklığının yaklaşık sekizde biri seçilir. Salon sahibi için satın alma, tek seferlik organizasyon için kiralama uygundur.",
       sections: [
         {
           h2: "Piksel aralığı",
@@ -1403,7 +1715,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Satın alma mı, kiralama mı?",
           body:
-            "Her hafta organizasyon yapan salonlar için satın alma, tek düğün veya nişan için kiralama daha mantıklıdır. İç ve dış mekân kiralık LED ekran günlük 50 USD/m²'dir; haftalık ve aylık kiralamalar aynı günlük m² fiyatı üzerinden hesaplanır, depozito alınmaz. Kurulum ve nakliye ayrıca tekliflendirilir.",
+            "Her hafta organizasyon yapan salonlar için satın alma, tek düğün veya nişan için kiralama daha mantıklıdır. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
         },
         {
           h2: "İçerik ve kontrol",
@@ -1430,7 +1742,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Düğün için LED ekran kiralanır mı?",
           answer:
-            "Evet. Kiralık LED ekran günlük 50 USD/m²'dir; örneğin 16,5 m² ekran bir günlüğüne yaklaşık 827 USD'dir. Kurulum ve nakliye ayrıca tekliflendirilir, depozito alınmaz.",
+            "Evet. Kiralık LED ekranda fiyat, tarih ve ölçüye göre teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
         },
         {
           question: "Düğün salonu ekranında hangi piksel aralığı seçilmeli?",
@@ -1450,7 +1762,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           "Salon ölçüsünü, sahne duvarının fotoğrafını ve en ön ve en arka masa mesafesini gönderin; satın alma ve kiralama seçenekleriyle teklif hazırlayalım.",
       },
       cardLabel: "Düğün salonu LED ekran",
-      cardTeaser: "Sahne ekranı ölçüsü, P3.07/P4 seçimi, satın alma ve günlük 50 USD/m² kiralama.",
+      cardTeaser: "Sahne ekranı ölçüsü, P3.07/P4 seçimi, satın alma ve kiralama.",
     },
     "hastane-dijital-ekran": {
       slug: "hastane-dijital-ekran",
@@ -1968,7 +2280,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Steel or aluminium cabinet?",
           answer:
-            "Steel is cheaper but heavier and is fine for fixed installations. Aluminium and die-cast cabinets are lighter, rust-resistant and more precise; they suit fine pitch, rental and weight-sensitive façades.",
+            "Steel is more economical but heavier and is fine for fixed installations. Aluminium and die-cast cabinets are lighter, rust-resistant and more precise; they suit fine pitch, rental and weight-sensitive façades.",
         },
         {
           question: "How much does an LED cabinet cost?",
@@ -2664,6 +2976,150 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       cardLabel: "LED screens abroad (export)",
       cardTeaser: "Shipping to Europe, the Middle East and the Balkans; CE, payment and delivery time.",
     },
+    "p1-86-vs-p2-5": {
+      slug: "p1-86-vs-p2-5",
+      title: "P1.86 vs P2.5: Indoor LED Screen Comparison | ARLEDSCREEN",
+      description:
+        "P1.86 vs P2.5 indoor LED screen: viewing distance, module resolution, module cost per m² and a 3.20 × 1.92 m example cost, using published NXTIONSTAR panel prices.",
+      keywords: ["P1.86 vs P2.5", "P2.5 LED screen price", "P1.86 LED screen price", "viewing distance pixel pitch", "NXTIONSTAR"],
+      h1: "P1.86 vs P2.5: viewing distance, image and price compared",
+      intro:
+        "P1.86 vs P2.5 in short: if viewers are closer than 2.5 m or the screen will be filmed, choose P1.86; from 2.5 m and beyond P2.5 is usually enough. Roughly, each 1 mm of pixel pitch equals about 1 m of minimum viewing distance. On our published list P1.86 GOB is USD 49.08 per panel (≈ USD 959/m² module cost) and indoor P2.5 is USD 32.18 per panel (≈ USD 629/m²), VAT and shipping excluded.",
+      sections: [
+        {
+          h2: "The viewing-distance rule",
+          body:
+            "Pixel pitch is the distance between the centres of two LEDs. Rule of thumb: about 1 m of minimum viewing distance per 1 mm of pitch. P1.86 looks seamless from about 1.9 m, P2.5 from about 2.5 m. If most viewers sit further away, paying for finer pitch adds little visible benefit.",
+        },
+        {
+          h2: "Example: cost of a 3.20 × 1.92 m screen",
+          body:
+            "A 3.20 × 1.92 m screen uses 10 × 12 = 120 modules of 320 × 160 mm (≈ 6.14 m²). With our price calculator formula: P1.86 GOB 120 × 49.08 = USD 5,889.60 in modules; indoor P2.5 120 × 32.18 = USD 3,861.60. Both add labour at USD 100/m² (≈ USD 614.40), a USD 500 control card and USD 500 driver + software. Totals are about USD 7,504 (P1.86) and USD 5,476 (P2.5), excluding VAT and shipping; the final price is set in a written quote.",
+        },
+        {
+          h2: "Resolution difference",
+          body:
+            "A P1.86 GOB module is 172 × 86 pixels, so the same 3.20 × 1.92 m screen gives 1,720 × 1,032 pixels. P2.5 gives fewer pixels at the same size; the exact model value is in the datasheet sent with the quote.",
+        },
+        {
+          h2: "Which one for which use?",
+          body:
+            "P1.86 GOB suits studios, close-up filming, meeting rooms and screens near tables; indoor P2.5 suits shop walls, wedding stages, conference halls and anything viewed from 2.5 m or more. P1.86 GOB modules are front-serviceable with magnetic mounting, and the GOB coating protects the surface against knocks.",
+        },
+      ],
+      faqs: [
+        { question: "Should I buy P1.86 or P2.5?", answer: "If viewers are closer than 2.5 m or the screen is filmed, P1.86; at 2.5 m and beyond, P2.5 is usually enough." },
+        { question: "What is the price difference?", answer: "Published list: P1.86 GOB USD 49.08 per panel (≈ USD 959/m²), indoor P2.5 USD 32.18 per panel (≈ USD 629/m²). Per panel, VAT and shipping excluded." },
+        { question: "Is a finer pitch than needed worth it?", answer: "Not if viewers are mostly far away: the difference is hard to see and the cost rises. Close viewing or filming justifies finer pitch." },
+        { question: "How do I get an exact price?", answer: "Send the size and location via WhatsApp (+90 530 507 88 34) or to arled@arledscreen.com for a written quote, or estimate with the price calculator." },
+      ],
+      relatedSlugs: ["kamera-yayin-icin-led-ekran", "tasinabilir-p1-86-led-ekran", "ic-mekan-led-ekran"],
+      links: [
+        { href: "/en/rehber/piksel-araligi-secimi/", label: "Choosing pixel pitch" },
+        { href: "/en/rehber/gob-vs-smd/", label: "GOB vs SMD" },
+        { href: "/en/led-ekran-fiyatlari/", label: "LED panel price list" },
+        { href: "/en/hesaplayici/", label: "Price calculator" },
+      ],
+      cta: { title: "We'll recommend P1.86 or P2.5 for your distance", body: "Send the screen size, the nearest viewer distance and whether it will be filmed via WhatsApp (+90 530 507 88 34) or to arled@arledscreen.com." },
+      cardLabel: "P1.86 vs P2.5",
+      cardTeaser: "Viewing distance, resolution and a 3.20 × 1.92 m cost example with published prices.",
+    },
+    "kamera-yayin-icin-led-ekran": {
+      slug: "kamera-yayin-icin-led-ekran",
+      title: "LED Screens for Camera and Broadcast: Refresh Rate, Moiré, Flicker | ARLEDSCREEN",
+      description:
+        "LED screens on camera: refresh rate, moiré, flicker, camera settings and pixel pitch for studios, TV, wedding filming and live streams.",
+      keywords: ["LED screen for camera", "LED wall moiré", "LED screen flicker on camera", "broadcast studio LED wall", "LED refresh rate", "NXTIONSTAR"],
+      h1: "LED screens for camera and broadcast: refresh rate, moiré and the right pixel pitch",
+      intro:
+        "Three things decide how an LED screen looks on camera: a high refresh rate, a pixel pitch suited to the camera distance and correct camera settings. A low refresh rate shows as lines and flicker; moiré depends on pitch, focus and camera distance. The model's refresh rate is listed in the datasheet sent with the written quote.",
+      sections: [
+        { h2: "What is refresh rate?", body: "Refresh rate is how many times per second the LEDs are driven, in Hz. The eye does not notice low values, but a camera sensor with short exposure captures the refresh. Screens that will be filmed therefore use high-refresh drivers and control cards." },
+        { h2: "What is moiré and how to reduce it", body: "Moiré is the wavy pattern that appears when the screen's pixel grid overlaps the camera sensor grid. Keep the screen slightly out of the focal plane, angle the camera a little instead of square-on, change the camera distance or focal length, and choose a fine pitch suited to the distance." },
+        { h2: "Camera settings: shutter, frame rate, sync", body: "Run a short camera test while content plays. If you see lines, adjust shutter speed and frame rate to match the screen refresh; values matched to the local mains frequency usually reduce flicker. For multi-camera productions mention sync needs at the survey; the controller configuration is set in the quote." },
+        { h2: "Pixel pitch and camera distance", body: "The closer the camera, the finer the pitch. Our fine-pitch options are P1.25, P1.53 and P1.86 GOB; for wider shots indoor P2.5 is considered. Published prices: P1.25 GOB USD 95.88, P1.53 GOB USD 62.08, P1.86 GOB USD 49.08 (per panel, VAT and shipping excluded)." },
+        { h2: "Choosing the controller", body: "We offer NovaStar and Colorlight controller families; the right configuration depends on camera count, source resolution and screen size and is specified in the quote." },
+        { h2: "Uses", body: "TV and podcast studios, wedding and event filming, corporate live streams and product shoots. We plan camera position and distance together at the survey." },
+      ],
+      faqs: [
+        { question: "Why does an LED screen flicker on camera?", answer: "When the screen refresh rate and the camera shutter and frame rate do not match, the camera records the refresh as lines or flicker. A high-refresh screen and correct settings prevent it." },
+        { question: "How do I avoid moiré?", answer: "Keep the screen slightly out of focus, change camera angle and distance, and choose a fine pitch suited to the distance." },
+        { question: "What is the refresh rate of NXTIONSTAR models?", answer: "Per-model refresh rate and other technical values are shared in the datasheet with the written quote." },
+        { question: "Which pitch suits a studio?", answer: "For close shots P1.25, P1.53 or P1.86 GOB; if the camera is far from the screen, indoor P2.5." },
+      ],
+      relatedSlugs: ["p1-86-vs-p2-5", "tasinabilir-p1-86-led-ekran", "ic-mekan-led-ekran"],
+      links: [
+        { href: "/en/rehber/piksel-araligi-secimi/", label: "Choosing pixel pitch" },
+        { href: "/en/led-ekran-fiyatlari/", label: "LED panel price list" },
+      ],
+      cta: { title: "Let's plan a screen for your shoot", body: "Send the camera distance, screen size and type of shoot via WhatsApp (+90 530 507 88 34) or to arled@arledscreen.com; we will quote with the datasheet." },
+      cardLabel: "LED screens for camera and broadcast",
+      cardTeaser: "Refresh rate, moiré, camera settings and pitch for studios.",
+    },
+    "led-ekran-omru-ve-bakim": {
+      slug: "led-ekran-omru-ve-bakim",
+      title: "LED Screen Lifetime, Maintenance and Dead Pixels | ARLEDSCREEN",
+      description:
+        "What decides LED screen lifetime, a maintenance checklist, how dead pixels and module faults are fixed, and why spare modules matter. ARLEDSCREEN service guide.",
+      keywords: ["LED screen lifetime", "LED screen maintenance", "dead pixel", "LED module replacement", "spare modules"],
+      h1: "LED screen lifetime, maintenance and dead pixels: what to know",
+      intro:
+        "An LED screen's lifetime depends on operating hours, brightness setting, heat, dust, humidity and power quality. Single LED or module faults during the screen's life are normal and are fixed by replacing the module. Front-service modules can be swapped without removing the screen from the wall. Warranty and service terms are set out in the written quote.",
+      sections: [
+        { h2: "What decides lifetime?", body: "Daily operating hours, brightness set higher than needed, heat and ventilation inside the cabinet, dust and humidity, and voltage fluctuations matter most. Matching brightness to the environment, switching off at night and using an earthed, protected power line extend lifetime." },
+        { h2: "Maintenance checklist", body: "Indoors, dust the surface with a dry soft brush, check fans and vents and look for loose cables and connectors. Outdoors, also check seals and waterproofing, cabinet connections and power supplies at each change of season. The maintenance plan and scope are given in writing in the service quote." },
+        { h2: "Dead pixels and module faults", body: "A single dark LED (dead pixel) usually comes from impact, moisture or solder fatigue. A module going fully or partly dark is usually a module, cable or power supply fault. The fix is to replace the module with a spare from the same production batch and recalibrate if needed." },
+        { h2: "Spare modules and power supplies", body: "Modules from different batches can differ in colour and brightness, so it is wise to set aside spare modules and power supplies from the same batch at installation. The quantity is set in the quote by screen size." },
+        { h2: "Why GOB modules are tougher", body: "In GOB (Glue on Board) modules the LEDs are sealed under a clear coating that protects them from knocks during transport, installation and cleaning, reducing dead-pixel risk where the screen is within reach." },
+        { h2: "Service", body: "We offer on-site inspection, fault diagnosis, spare parts, calibration, module and power-supply replacement and planned maintenance, and also assess screens of other brands. Warranty scope and terms are set out in the written quote." },
+      ],
+      faqs: [
+        { question: "How many years does an LED screen last?", answer: "It depends on operating hours, brightness, heat, dust, humidity and power quality. Correct brightness, good ventilation and regular maintenance extend it." },
+        { question: "What happens if a pixel dies?", answer: "The faulty module is replaced with a spare from the same batch and recalibrated if needed. Front-service modules are swapped without removing the screen." },
+        { question: "Are dead pixels covered by warranty?", answer: "Warranty scope and terms are set out in the written quote. Ask us on WhatsApp (+90 530 507 88 34)." },
+        { question: "Do you service other brands?", answer: "Yes, we assess screens of other brands for service." },
+      ],
+      relatedSlugs: ["led-ekran-ariza-belirtileri", "kamera-yayin-icin-led-ekran", "dis-mekan-led-ekran"],
+      links: [
+        { href: "/en/rehber/gob-vs-smd/", label: "GOB vs SMD" },
+        { href: "/en/sss/", label: "FAQ" },
+      ],
+      cta: { title: "Let's plan maintenance or service for your screen", body: "Send a photo, the size and the symptom via WhatsApp (+90 530 507 88 34) or to arled@arledscreen.com." },
+      cardLabel: "LED screen lifetime and maintenance",
+      cardTeaser: "What decides lifetime, maintenance checklist, dead pixels, spares and GOB.",
+    },
+    "tasinabilir-p1-86-led-ekran": {
+      slug: "tasinabilir-p1-86-led-ekran",
+      title: "Portable P1.86 LED Screen for Studio and Wedding Filming | ARLEDSCREEN",
+      description:
+        "Portable P1.86 GOB LED screen for wedding videos and studio shoots: why P1.86, why GOB, example sizes and cost, buy or rent.",
+      keywords: ["portable LED screen P1.86", "studio LED screen", "wedding filming LED screen", "portable LED wall", "P1.86 GOB", "NXTIONSTAR"],
+      h1: "Portable P1.86 LED screen for studio and wedding filming",
+      intro:
+        "For wedding videos and studio shoots, a portable indoor P1.86 GOB screen looks seamless from about 2 m, and the GOB coating protects modules from knocks in transport and setup. The NXTIONSTAR P1.86 GOB module lists at USD 49.08 per panel (≈ USD 959/m² module cost, VAT and shipping excluded). Cabinet, flight case and controller are quoted per project.",
+      sections: [
+        { h2: "Why P1.86 and why GOB?", body: "P1.86 stays sharp when camera and viewers are close. GOB coating protects against knocked-off LEDs, the main risk for screens that are assembled and dismantled often. The module is 320 × 160 mm, 172 × 86 pixels, 5 V DC, front-serviceable with magnetic mounting." },
+        { h2: "Portable setup", body: "For portable use the modules are mounted on a light cabinet or frame and protected in a transport case. Cabinet, case and bag options and setup time are specified in the quote by screen size." },
+        { h2: "Filming tips", body: "To avoid flicker and moiré you need a high-refresh control system, matching camera shutter and frame rate, and the right distance. See our camera and broadcast guide. The model's refresh rate is in the datasheet sent with the quote." },
+        { h2: "Example sizes and cost", body: "A 1.92 × 0.96 m screen uses 6 × 6 = 36 modules (≈ 1.84 m², 1,032 × 516 pixels); module cost 36 × 49.08 = USD 1,766.88. A 3.20 × 1.92 m screen uses 120 modules (≈ 6.14 m², 1,720 × 1,032 pixels); module cost 120 × 49.08 = USD 5,889.60. Our calculator adds labour at USD 100/m², a USD 500 control card and USD 500 driver + software; VAT and shipping excluded. The final price is set in a written quote." },
+        { h2: "Buy or rent?", body: "Studios and event companies filming regularly are better off buying; one-off events are better rented. Rental LED is priced by written quote based on dates and size." },
+      ],
+      faqs: [
+        { question: "Which pitch suits wedding filming?", answer: "If camera and guests are close, P1.86 GOB; for distant hall stages, indoor P2.5 or P3.07." },
+        { question: "What does a P1.86 GOB module cost?", answer: "USD 49.08 per panel (≈ USD 959/m² module cost), VAT and shipping excluded. Cabinet and controller are quoted per project." },
+        { question: "Can the portable screen be rented?", answer: "Yes. Rental is priced by written quote; send the dates, size and location." },
+        { question: "How is a faulty module replaced?", answer: "P1.86 GOB modules are front-serviceable and magnetic; the faulty module is removed from the front and replaced with a spare." },
+      ],
+      relatedSlugs: ["kamera-yayin-icin-led-ekran", "p1-86-vs-p2-5", "dugun-salonu-led"],
+      links: [
+        { href: "/en/rehber/gob-vs-smd/", label: "GOB vs SMD" },
+        { href: "/en/rehber/kiralik-mi-satin-alma/", label: "Rent or buy?" },
+        { href: "/en/hesaplayici/", label: "Price calculator" },
+      ],
+      cta: { title: "Send your size and use", body: "Send the screen size, type of shoot and transport needs via WhatsApp (+90 530 507 88 34) or to arled@arledscreen.com for a written quote." },
+      cardLabel: "Portable P1.86 LED screen",
+      cardTeaser: "P1.86 GOB for studio and wedding filming: why GOB, example sizes and cost.",
+    },
     "eczane-led-ekran": {
       slug: "eczane-led-ekran",
       title: "Pharmacy LED Screens: Window, Façade and Shelf-Top Displays | ARLEDSCREEN",
@@ -2735,11 +3191,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       slug: "dugun-salonu-led",
       title: "Wedding Hall LED Screen: Size, Price, Buy or Rent | ARLEDSCREEN",
       description:
-        "LED screens for wedding and event halls: stage screen size by hall depth, P3.07 / P4 choice, example module cost and comparison with USD 50 per m² per day rental. ARLEDSCREEN, Istanbul.",
+        "LED screens for wedding and event halls: stage screen size by hall depth, P3.07 / P4 choice, example module cost and comparison with rental. ARLEDSCREEN, Istanbul.",
       keywords: ["wedding hall LED screen", "wedding stage LED wall", "event hall LED screen", "wedding LED screen price", "rent LED screen wedding", "NXTIONSTAR"],
       h1: "Wedding hall LED screens: size, price and rental",
       intro:
-        "In a wedding hall the LED screen usually sits behind the stage and shows the couple's entrance, photo and video slideshows, live camera feed and the venue logo. Guests sit at tables usually 4 m or more from the screen, so indoor P3.07 or P4 modules are enough. Screen height is about one eighth of the distance to the farthest table. Venue owners usually buy; one-off events can rent at USD 50 per m² per day.",
+        "In a wedding hall the LED screen usually sits behind the stage and shows the couple's entrance, photo and video slideshows, live camera feed and the venue logo. Guests sit at tables usually 4 m or more from the screen, so indoor P3.07 or P4 modules are enough. Screen height is about one eighth of the distance to the farthest table. Venue owners usually buy; one-off events can rent (priced by quote).",
       sections: [
         {
           h2: "Pixel pitch",
@@ -2754,7 +3210,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Buy or rent?",
           body:
-            "Halls that host events every week are better off buying; a single wedding or engagement is better rented. Indoor and outdoor rental LED is USD 50 per m² per day; weekly and monthly rentals use the same daily per-m² rate, and no deposit is required. Installation and shipping are quoted separately.",
+            "Halls that host events every week are better off buying; a single wedding or engagement is better rented. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
         },
         {
           h2: "Content and control",
@@ -2781,7 +3237,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Can I rent an LED screen for a wedding?",
           answer:
-            "Yes. Rental LED is USD 50 per m² per day, so a 16.5 m² screen is about USD 827 for one day. Installation and shipping are quoted separately; no deposit is required.",
+            "Yes. Rental LED is priced by written quote based on dates and size. Installation and shipping are quoted separately.",
         },
         {
           question: "Which pixel pitch suits a wedding hall?",
@@ -2801,7 +3257,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           "Send the hall size, a photo of the stage wall and the nearest and farthest table distances; we will quote purchase and rental options.",
       },
       cardLabel: "Wedding hall LED screen",
-      cardTeaser: "Stage screen size, P3.07/P4 choice, buying vs USD 50 per m² per day rental.",
+      cardTeaser: "Stage screen size, P3.07/P4 choice, buying vs rental.",
     },
     "hastane-dijital-ekran": {
       slug: "hastane-dijital-ekran",
@@ -2996,5 +3452,8 @@ export const SEO_GUIDE_HUB = {
 } as const;
 
 export function getSeoGuideHub(locale: Locale) {
+  if (locale === "ar") {
+    return { ...SEO_GUIDE_HUB.en, eyebrow: "الأدلة", relatedLabel: "أدلة ذات صلة", allGuidesLabel: "جميع الأدلة" };
+  }
   return locale === "tr" ? SEO_GUIDE_HUB.tr : SEO_GUIDE_HUB.en;
 }

@@ -16,7 +16,7 @@ export function BrandBand({ locale }: { locale: Locale }) {
         <div className="relative isolate overflow-hidden rounded-[2rem] md:rounded-hero">
           <OptImage
             src="/projects/outdoor-led-mapping.jpg"
-            alt={tr ? "Dış mekân LED ekran kalibrasyon haritası" : "Outdoor LED calibration mapping"}
+            alt={tr ? "Kurulum sırasında kabin numaralarını gösteren dış mekân LED ekran, yanında kalibrasyon yapan dizüstü bilgisayar" : "Outdoor LED calibration mapping"}
             fill
             sizes="(min-width: 1280px) 1216px, 100vw"
             className="-z-10 scale-110 object-cover blur-[2px]"
@@ -27,7 +27,7 @@ export function BrandBand({ locale }: { locale: Locale }) {
               <span className="flex h-12 items-center rounded-2xl bg-white px-3 shadow-pill sm:h-16 sm:px-5">
                 <Image
                   src="/brand/nxtionstar-wordmark-header-478.webp"
-                  alt="NXTIONSTAR"
+                  alt=""
                   width={478}
                   height={137}
                   className="h-6 w-auto sm:h-8"
@@ -39,10 +39,10 @@ export function BrandBand({ locale }: { locale: Locale }) {
               </span>
               <span className="flex h-12 items-center rounded-2xl bg-white px-3 shadow-pill sm:h-16 sm:px-5">
                 <Image
-                  src="/brand/arledscreen-logo-header-514.webp"
+                  src="/brand/arledscreen-yatay.svg"
                   alt="ARLEDSCREEN"
                   width={514}
-                  height={160}
+                  height={123}
                   className="h-8 w-auto sm:h-11"
                   unoptimized
                 />

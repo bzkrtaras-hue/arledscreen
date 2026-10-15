@@ -167,7 +167,7 @@ export function buildAiShoppingIndex(): AiShoppingIndex {
         "Poster",
         "Kontrol kartı (Huidu/NovaStar/Colorlight)",
       ],
-      rental: "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
+      rental: "İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
       warranty: "ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar.",
       noFixedClaims: [
         "CE: ürünlerimiz CE sertifikalıdır. Diğer sertifikalar (RoHS/ISO/UL/ETL) — model veya teklifle",
