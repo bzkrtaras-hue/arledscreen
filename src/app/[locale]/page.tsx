@@ -23,6 +23,7 @@ import { HomeCtaBand } from "@/components/home/HomeCtaBand";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { LearningHub } from "@/components/home/LearningHub";
 import { HomeFaq } from "@/components/home/HomeFaq";
+import { InstallStrip } from "@/components/home/InstallStrip";
 import { GatewayTiles } from "@/components/home/GatewayTiles";
 import { ValuesBand } from "@/components/home/ValuesBand";
 import { FeaturedReferences } from "@/components/home/FeaturedReferences";
@@ -179,6 +180,7 @@ export default async function HomePage({ params }: PageProps) {
       <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
         <Hero locale={locale} />
       </div>
+      <InstallStrip />
       <GatewayTiles />
       <ValuesBand />
 

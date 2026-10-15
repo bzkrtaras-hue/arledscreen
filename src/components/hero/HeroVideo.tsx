@@ -274,7 +274,7 @@ export function HeroVideo({
 
         {clips.length > 1 && !reduce ? (
           <div
-            className="absolute bottom-5 start-5 z-10 flex gap-2 md:bottom-8 md:start-8"
+            className="absolute bottom-5 start-5 z-10 flex gap-2 md:bottom-[88px] md:start-8"
             role="tablist"
             aria-label={labels.scenes}
           >
@@ -297,14 +297,14 @@ export function HeroVideo({
           </div>
         ) : null}
 
-        <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-4 pb-[calc(4.25rem+1rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
+        <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-4 pb-[calc(4.25rem+1rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[136px] lg:px-8">
           {/* Left-settled: title + readable glass plate + CTAs (refs: pack B + glass) */}
           <div className="w-full max-w-[640px]">
             <span className="sr-only">{brand}</span>
 
             <m.h1
               id="home-h1"
-              className="text-balance font-display text-[clamp(1.55rem,1.15rem+1.7vw,2.55rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-white max-md:text-[32px] max-md:leading-[1.1]"
+              className="text-balance font-display text-[clamp(1.75rem,1.1rem+2.2vw,3.1rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-white max-md:text-[32px] max-md:leading-[1.1]"
               style={{ textShadow: "0 2px 24px rgba(11,27,51,0.7), 0 0 2px rgba(11,27,51,0.45)" }}
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
