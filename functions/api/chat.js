@@ -461,7 +461,7 @@ export async function onRequest(ctx) {
   }
   if (!env.GEMINI_API_KEY) return fallback(lastUser, "not_configured");
   const primary = /^[a-z0-9.\-]+$/i.test(env.GEMINI_MODEL || "") ? env.GEMINI_MODEL : "gemini-flash-lite-latest";
-  const models = [primary, "gemini-3.1-flash-lite", "gemini-3.7-flash", "gemini-flash-latest"].filter((m, i, a) => a.indexOf(m) === i);
+  const models = [primary, "gemini-3.1-flash-lite", "gemini-3.5-flash", "gemini-3-flash-preview", "gemini-3.7-flash", "gemini-flash-latest"].filter((m, i, a) => a.indexOf(m) === i);
 
   const name = customerName(msgs);
   const lang = detectLang(lastUser);
