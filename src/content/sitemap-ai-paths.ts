@@ -11,6 +11,7 @@
 export const AI_MACHINE_PATHS: readonly string[] = [
   "/ai-shopping.json",
   "/catalog.json",
+  "/materials.json",
   "/geo-baseline.json",
   "/entity.json",
   "/entity-profiles.json",
