@@ -140,6 +140,15 @@ test("(6) rental: approved facts are kept, no invented prices", async () => {
   assert.match(s.reply, /Türkiye geneli/);
 });
 
+test("(6) rental answers always keep 'yazılı teklif' even when the model wrote 5 sentences without it", async () => {
+  const r = await chat(["Kiralama ile satın alma farkı nedir?"], { reply: "Kiralama kısa süreli ihtiyaçlar içindir. Satın alma kalıcı kullanım içindir. Kiralamada keşif ve teknik ekip desteği sunulur. Satın almada ekran size aittir. Etkinlik tarihiniz nedir?" });
+  assert.match(r.reply, /yazılı teklifle verilir/);
+  assert.ok(r.reply.endsWith("Etkinlik tarihiniz nedir?"));
+  assert.ok(G.splitSent(r.reply).length <= 4, r.reply);
+  const en = await chat(["Can I rent a screen for a weekend?"], { reply: "Yes, rental is possible for events. We can plan stage and fair setups. Please share your dates. What size do you need?" });
+  assert.match(en.reply, /written quote/);
+});
+
 // (7) phone only on request -------------------------------------------------------------------------------
 test("(7) phone number only when asked", async () => {
   const unasked = await chat(["Başka marka kartım var, servis verir misiniz?"], { reply: "Marka ve model bilgilerinizi paylaşırsanız değerlendiririz. Detaylar için +90 530 507 88 34 numaralı telefondan bize ulaşabilirsiniz. Kartınızın modeli nedir?" });

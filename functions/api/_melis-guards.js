@@ -154,6 +154,19 @@ export function enforceRental(text, lang, question) {
   return r.changed ? r.text : text;
 }
 
+// Rental answers must carry the words "yazılı teklif" / "written quote". Called AFTER trimming so the sentence can never be cut off:
+// if it is missing, it replaces the sentence in front of the closing question (or the last sentence when there is no question).
+export function ensureRentalQuote(out, lang, question) {
+  if (lang !== "tr" && lang !== "en") return out;
+  if (!RENTAL_RE.test(question) || /teklif|quote/i.test(out)) return out;
+  const add = lang === "tr" ? "Kiralık ekran fiyatı yalnızca yazılı teklifle verilir." : "Rental prices are given only in a written quote.";
+  const parts = splitSent(out);
+  if (parts.length < 4) return out + " " + add;
+  const qi = /[?؟]\s*$/.test(parts[parts.length - 1]) ? parts.length - 1 : parts.length;
+  parts.splice(Math.max(0, qi - 1), qi === parts.length ? 1 : 1, add);
+  return parts.join(" ");
+}
+
 // ---- Phone number only on request ------------------------------------------------
 export const PHONE_RE = /(?:\+?\s*90[\s-]*)?\(?0?\s*530[\s)-]*507[\s-]*88[\s-]*34/;
 const PHONE_ASK = /telefon|numara|\btel\b|arayın|arayabilir|arayayım|aramak|ararım|ulaş|iletişim|irtibat|whatsapp|call|phone|contact|reach|get in touch|number|human|\binsan\b|gerçek\s*biri|yetkili|temsilci|هاتف|رقم|اتصال|телефон|номер|связ/i;

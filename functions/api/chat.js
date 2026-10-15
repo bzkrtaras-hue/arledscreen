@@ -6,7 +6,7 @@
 import { PANELS, PRICE_VALID_UNTIL } from "./_melis-prices.js";
 import { KB } from "./_melis-kb.js";
 import {
-  isIdentityQ, isIntroQ, identityLang, IDENTITY_TR, IDENTITY_EN, INTRO_TR, INTRO_EN, aiSelfMention,
+  isIdentityQ, isIntroQ, identityLang, ensureRentalQuote, IDENTITY_TR, IDENTITY_EN, INTRO_TR, INTRO_EN, aiSelfMention,
   trimSentences, dropSentences, splitSent, enforceWarranty, enforceRental, enforcePhone, QUALITY_RE,
   sanitizeUserText, starProducts, repeatsStarProduct, isAddressQ, addressComplete, ADDRESS_TR, ADDRESS_EN,
 } from "./_melis-guards.js";
@@ -591,11 +591,11 @@ export async function onRequest(ctx) {
     text = enforceWarranty(text, lang, lastUser);                                                          // exact warranty wording
     text = enforceRental(text, lang, lastUser);                                     // no unconfirmed rental scope claims
     text = enforcePhone(text, lastUser);                                                                   // phone only when asked
-    if (/kiral|rental|(?<![\p{L}])hire(?![\p{L}])/iu.test(lastUser) && !/teklif|quote/i.test(text)) text += lang === "tr" ? " Kiralık ekran fiyatı yalnızca yazılı teklifle verilir." : " Rental prices are given only in a written quote.";
     if (!waAllowed(msgs, lastUser, text)) text = dropSentences(text, (x) => WA_RE.test(x)) || text.replace(/https?:\/\/wa\.me\/\d+/g, "").trim();
     text = text.replace(/\[([^\]]*)\]\(https?:\/\/wa\.me\/\d+\)/g, "$1").replace(/\s*[:–-]?\s*\(?https?:\/\/wa\.me\/\d+\)?/g, "").replace(/:\s*([.!?]|$)/gm, "$1");
     const wa = WA_RE.test(text);
     let out = trimSentences(ensureIntro(stripIntro(text, msgs, name), msgs, lang, name), photo || ON_TOPIC.test(lastUser) ? 4 : 3);
+    out = ensureRentalQuote(out, lang, lastUser); // rental answers always say "yazılı teklif" (after trimming, so it is never cut)
     if (isAddressQ(lastUser) && !addressComplete(out)) return json({ reply: lang === "tr" ? ADDRESS_TR : ADDRESS_EN, guard: "address" }); // address must always be whole
     if (photo && photo.area != null && !/keşif|survey/i.test(out)) out += " " + PHOTO_NOTE[lang === "tr" ? "tr" : "en"];
     const body = { reply: out };
