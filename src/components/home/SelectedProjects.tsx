@@ -25,7 +25,7 @@ export function SelectedProjects() {
   if (!items.length) return null;
   return (
     <section aria-labelledby="secilmis-projeler" className="bg-[#0B1B33] text-[#F2F5FA]">
-      <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-6 pb-16 pt-10 md:py-24">
         <div className="mb-8 flex flex-wrap items-baseline justify-between gap-4 md:mb-10">
           <h2 id="secilmis-projeler" className="font-display text-[clamp(1.6rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] text-white">
             Seçilmiş projeler

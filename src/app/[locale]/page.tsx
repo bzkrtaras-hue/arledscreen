@@ -193,7 +193,7 @@ export default async function HomePage({ params }: PageProps) {
             title="Kullanım alanına göre LED ekran çözümleri"
             description="Ekran seçimi, kullanım amacı ve izleme mesafesiyle başlar. Size en yakın grubu seçin; seçenekleri, kullanım alanlarını ve ilgili projeleri inceleyin."
           />
-          <ProductGroupGrid mobileStrip />
+          <ProductGroupGrid mobileStrip skipCatalogCards />
           <p className="mt-8 text-sm text-ink-muted">
             Fiyat için{" "}
             <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
@@ -233,7 +233,7 @@ export default async function HomePage({ params }: PageProps) {
             title={dict.sections.references.title}
             description="Yakın süreçte tamamladığımız projelerden bir seçki."
           />
-          <FeaturedReferences />
+          <FeaturedReferences decorativeImage />
           <AllReferencesNote />
         </div>
       </section>

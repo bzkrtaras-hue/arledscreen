@@ -12,7 +12,7 @@ export function GatewayTiles() {
       cta: "Ürünleri inceleyin",
       href: "/tr/products/",
       img: "/projects/modules/smd-macro-matrix.jpg",
-      alt: "LED modül yüzeyinin yakından görünümü",
+      alt: "SMD LED'lerin makro çekimi, alt kısımda kırmızı yanan diyotlar",
     },
     {
       title: "PROJELER",
@@ -20,7 +20,8 @@ export function GatewayTiles() {
       cta: "Projeleri görün",
       href: "/tr/projelerimiz/",
       img: "/projects/unye.jpg",
-      alt: "Ünye Belediyesi etkinlik alanındaki LED ekran kurulumu",
+      // Same Ünye photo appears first in "Seçilmiş projeler" with full alt; decorative here.
+      alt: "",
     },
     {
       title: "SERVİS",

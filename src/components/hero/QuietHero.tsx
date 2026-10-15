@@ -23,7 +23,7 @@ export function QuietHero() {
   return (
     <section
       aria-labelledby="home-h1"
-      className="relative flex min-h-[88vh] items-end overflow-hidden bg-[#0B1B33] text-[#F2F5FA] [min-height:88svh]"
+      className="relative flex min-h-[calc(88vh-5rem)] items-end overflow-hidden bg-[#0B1B33] text-[#F2F5FA] [min-height:calc(88svh-5rem)] md:min-h-[88vh] md:[min-height:88svh]"
     >
       <picture>
         <source type="image/avif" srcSet={set("avif")} sizes="100vw" />
@@ -43,12 +43,12 @@ export function QuietHero() {
         className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,27,51,.97)_0%,rgba(11,27,51,.82)_38%,rgba(11,27,51,.25)_70%,rgba(11,27,51,.1)_100%)] md:bg-[linear-gradient(to_right,rgba(11,27,51,.95)_0%,rgba(11,27,51,.75)_40%,rgba(11,27,51,.1)_75%),linear-gradient(to_top,rgba(11,27,51,.9)_0%,rgba(11,27,51,0)_45%)]"
       />
       <div className="relative z-[1] mx-auto w-full max-w-7xl px-6 pb-[calc(4.5rem+env(safe-area-inset-bottom,0px))] pt-40 md:pb-20">
-        <h1 id="home-h1" className="text-xs font-semibold uppercase tracking-[0.18em] text-[#9CC0F5] md:text-sm [text-shadow:0_1px_8px_rgba(11,27,51,.6)]">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#9CC0F5] md:text-sm [text-shadow:0_1px_8px_rgba(11,27,51,.6)]">
           LED Ekran Teknoloji Merkezi
-        </h1>
-        <p className="mt-3 max-w-[14ch] font-display text-white text-[clamp(2.25rem,5.2vw,4.25rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
-          Mekânınıza yakışan LED ekran.
         </p>
+        <h1 id="home-h1" className="mt-3 max-w-[14ch] font-display text-white text-[clamp(2.25rem,5.2vw,4.25rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
+          Mekânınıza yakışan LED ekran.
+        </h1>
         <p id="home-lead" className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-[#C9D3E3] md:text-base">
           Keşiften montaja ve kurulum sonrası teknik servise kadar süreci aynı ekip yürütür. Merkezimiz İstanbul
           Gaziosmanpaşa’dır; satış, montaj ve servis Türkiye genelindedir.

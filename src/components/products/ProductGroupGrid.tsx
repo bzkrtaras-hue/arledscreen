@@ -13,6 +13,7 @@ export function ProductGroupGrid({
   showService = true,
   locale = "tr",
   mobileStrip = false,
+  skipCatalogCards = false,
 }: {
   groups?: ProductGroup[];
   headingLevel?: "h2" | "h3" | "h4";
@@ -20,6 +21,8 @@ export function ProductGroupGrid({
   locale?: "tr" | "en";
   /** Below md: one horizontal swipe row instead of a tall stacked list (home page). */
   mobileStrip?: boolean;
+  /** Home page: skip generic supplier catalog card art; use the group's own photo. */
+  skipCatalogCards?: boolean;
 }) {
   const H = headingLevel;
   const en = locale === "en";
@@ -31,7 +34,7 @@ export function ProductGroupGrid({
         name: overlay?.name ?? g.name,
         short: overlay?.short ?? g.short,
         tag: overlay?.tag ?? g.tag,
-        img: g.cardImage ?? g.image,
+        img: skipCatalogCards && g.cardImage?.includes("module-catalog-sheet") ? g.image : (g.cardImage ?? g.image),
         alt: overlay?.imageAlt ?? g.imageAlt,
         // Model PDPs stay TR-canonical; EN agents use group page + pricedPanels.
         models: en

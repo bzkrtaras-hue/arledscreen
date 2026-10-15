@@ -283,7 +283,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     family: "İç Mekân LED Ekranlar",
     types: ["Toplantı ve konferans", "Kontrol odası", "Yakın izleme alanları"],
     image: "/projects/modules/tech/gob-vs-standard-water.jpg",
-    imageAlt: "GOB LED modül üzerinde su damlası — koruyucu kaplama yüzeyi",
+    imageAlt: "GOB LED modül üzerinde su damlası, koruyucu kaplama yüzeyi",
     techGallery: FINE_PITCH_TECH_GALLERY,
     intro: [
       "GOB (Glue on Board) teknolojisinde LED'lerin üzeri şeffaf bir koruyucu katmanla kaplanır. Bu katman, LED yüzeyini darbe, nem ve toza karşı korumaya yardımcı olur.",
@@ -460,7 +460,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     types: ["Vitrin arkası", "Showroom camı", "Asma (askılı) kurulum", "İç / yarı outdoor cam"],
     image: "/projects/applications/seffaf-led-vitrin.jpg",
     cardImage: "/projects/applications/seffaf-led-vitrin.jpg",
-    imageAlt: "AVM mağaza vitrininde şeffaf LED ekran — pembe kalp içeriği, içerideki ürünler görünür",
+    imageAlt: "AVM mağaza vitrininde şeffaf LED ekran, pembe kalp içeriği, içerideki ürünler görünür",
     intro: [
       "Şeffaf LED ekranlarda LED’ler cam üzerinde ince bir film veya açık ızgara hâlinde dizilir; aralarında boşluk bırakıldığı için ekran çalışırken de camın arkası görülebilir. Mağaza içi gün ışığı ve ürün teşhiri büyük ölçüde korunur.",
       "Bu grup perakende vitrin ve showroom camı için planlanır. Bina cephesi ölçeğinde, dış hava koşullarına açık mesh/ızgara form faktörü için ayrı ürün grubumuz vardır: Transparan LED ekran.",
@@ -519,7 +519,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     family: "Dış Mekân LED Ekranlar",
     types: ["Cam cephe mesh", "Izgara / grid panel", "Yarı outdoor cephe", "AVM cam koridor"],
     image: "/projects/applications/transparan-led-cephe.jpg",
-    imageAlt: "Cam bina cephesinde transparan mesh LED ekran — arkadaki katlar görünür",
+    imageAlt: "Cam bina cephesinde transparan mesh LED ekran, arkadaki katlar görünür",
     intro: [
       "Transparan LED ekran, LED’lerin ızgara/mesh düzeninde boşluklu yerleştirildiği açık bir form faktördür. Amaç, cephe ölçeğinde dijital içerik gösterirken mimari derinliği ve ışık geçişini tamamen kapatmamaktır.",
       "Bu grup, mağaza vitrinindeki yüksek şeffaflıklı Şeffaf LED ekrandan ayrıdır. Cephe yüksekliği, rüzgâr/yağmur maruziyeti ve izleme mesafesi keşifte netleşir; model önerisi buna göre yapılır.",
@@ -901,7 +901,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     types: ["Ayaklı poster ekran", "Duvara montaj", "Yan yana birleştirme", "İç ve dış mekân totem", "Menuboard (kafe / restoran)"],
     image: "/projects/applications/led-poster-totems.jpg",
     cardImage: "/projects/applications/led-poster-totems.jpg",
-    imageAlt: "Dikey LED poster ve totem ekranları — yan yana dört ayaklı ünite",
+    imageAlt: "Dikey LED poster ve totem ekranları, yan yana dört ayaklı ünite",
     intro: [
       "Poster LED ekranlar, basılı afiş ve standların dijital karşılığıdır. Dikey formatları sayesinde giriş, koridor ve kasa önü gibi dar alanlara sığar; içerik birkaç dakika içinde değiştirilebilir.",
       "Ayaklı olarak tek başına kullanılabilir veya birkaç ekran yan yana getirilerek daha geniş bir yüzey oluşturulabilir. Dış mekân totemlerde ise gövde ve sabitleme detayları konuma göre planlanır.",

@@ -177,7 +177,8 @@ function processHtml(fileRel, mainCss, fontCss) {
   let critical = extractCritical(fullCss, classes);
   // Tiny safety net so hero paints navy even if a utility was missed.
   critical +=
-    'section[aria-labelledby="home-h1"]{position:relative;display:flex;min-height:88vh;min-height:88svh;align-items:flex-end;overflow:hidden;background:#0B1B33;color:#F2F5FA}' +
+    'section[aria-labelledby="home-h1"]{position:relative;display:flex;min-height:calc(88vh - 5rem);min-height:calc(88svh - 5rem);align-items:flex-end;overflow:hidden;background:#0B1B33;color:#F2F5FA}' +
+    '@media (min-width:768px){section[aria-labelledby="home-h1"]{min-height:88vh;min-height:88svh}}' +
     'section[aria-labelledby="home-h1"] img{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;object-position:50% 30%}';
 
   // Replace render-blocking main CSS link(s).
@@ -219,6 +220,15 @@ if (!mainCss) {
   process.exit(0);
 }
 
+// Disabled by default (PR #106 TBT regression): async Tailwind via media=print
+// moved FCP earlier, so React hydration (react-dom chunk 4bd1b696, Next runtime
+// chunk 1255) and the late full-CSS swap landed inside the TBT window
+// (mobile TBT median ~690 ms vs ~30 ms with blocking CSS, CLS up to 0.98).
+// Opt back in with HOME_LCP_ASYNC_CSS=1 only after re-measuring.
+if (process.env.HOME_LCP_ASYNC_CSS !== "1") {
+  console.log("postbuild-home-lcp: skipped (blocking CSS, no 1255 demotion); set HOME_LCP_ASYNC_CSS=1 to enable");
+  process.exit(0);
+}
 const results = [];
 for (const t of TARGETS) {
   const r = processHtml(t, mainCss, fontCss);

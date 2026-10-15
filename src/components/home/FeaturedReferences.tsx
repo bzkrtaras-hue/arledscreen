@@ -90,12 +90,15 @@ export function FeaturedReferences({
   ctaHref = "/tr/projelerimiz/",
   ctaLabel = "Tüm projeleri görün",
   locale = "tr",
+  decorativeImage = false,
 }: {
   limit?: number;
   showAllLink?: boolean;
   ctaHref?: string;
   ctaLabel?: string;
   locale?: "tr" | "en";
+  /** Home page: the featured photo already appeared above with full alt text. */
+  decorativeImage?: boolean;
 }) {
   const cases = getCaseStudies();
   const featured = cases.find((c) => c.image) ?? cases[0];
@@ -115,7 +118,9 @@ export function FeaturedReferences({
               <OptImage
                 src={featured.image.src}
                 alt={
-                  en
+                  decorativeImage
+                    ? ""
+                    : en
                     ? "Ünye Municipality Ordu Days LED display install"
                     : featured.image.alt
                 }

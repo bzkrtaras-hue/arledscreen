@@ -5,7 +5,7 @@ import { LocaleSelect } from "@/components/layout/LocaleSelect";
 
 /**
  * Quiet utility row (ONERI #4): slogan on the left, language + a single
- * "Teklif / İletişim" action on the right. E-mail, phone, WhatsApp and
+ * "Teklif alın" action on the right. E-mail, phone, WhatsApp and
  * social links live in the footer (and the mobile CTA bar), still in HTML.
  */
 export function TopBar({ locale }: { locale: Locale }) {
@@ -25,7 +25,7 @@ export function TopBar({ locale }: { locale: Locale }) {
             href={`/${locale}/contact/`}
             className="liquid-glass-btn liquid-glass-btn--compact min-h-11 min-w-11 justify-center px-3 font-semibold text-[#1a2430] hover:text-cyan"
           >
-            {tr ? "Teklif / İletişim" : "Quote / Contact"}
+            {tr ? "Teklif alın" : "Quote / Contact"}
           </Link>
         </div>
       </div>
