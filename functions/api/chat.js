@@ -212,6 +212,8 @@ function stripIntro(t, msgs, name) {
   return r.trim() ? r : t;
 }
 function ensureIntro(t, msgs, lang, name) {
+  // The model introduced itself in its own words: normalise to the approved wording.
+  t = t.replace(/^(\s*Merhaba[^.!?\n]{0,25}?,?\s*ben Melis)(\s*[.!])/iu, "$1, ARLEDSCREEN satış danışmanıyım$2");
   // Introduce only when the customer opens with a greeting or gives a name (the widget welcome already introduces Melis); direct questions get a direct first sentence.
   const first = msgs[msgs.length - 1].text;
   if (msgs.some((m) => m.role === "assistant") || /melis/i.test(t) || (lang !== "tr" && lang !== "en") || !(name || /^\s*(?:merhaba|selam|iyi günler|günaydın|iyi akşamlar|hello|hi|hey|good (?:morning|day|evening))(?![\p{L}])/iu.test(first))) return t;
