@@ -12,7 +12,7 @@ export function GatewayTiles() {
       cta: "Ürünleri inceleyin",
       href: "/tr/products/",
       img: "/projects/modules/smd-macro-matrix.jpg",
-      alt: "LED modül yüzeyinin yakından görünümü",
+      alt: "SMD LED'lerin makro çekimi, alt kısımda kırmızı yanan diyotlar",
     },
     {
       title: "PROJELER",
@@ -20,7 +20,8 @@ export function GatewayTiles() {
       cta: "Projeleri görün",
       href: "/tr/projelerimiz/",
       img: "/projects/unye.jpg",
-      alt: "Ünye Belediyesi etkinlik alanındaki LED ekran kurulumu",
+      // Same Ünye photo appears first in "Seçilmiş projeler" with full alt; decorative here.
+      alt: "",
     },
     {
       title: "SERVİS",
@@ -41,7 +42,7 @@ export function GatewayTiles() {
   ];
 
   return (
-    <section aria-labelledby="hizli-erisim" className="bg-white pb-12 pt-10 md:pb-16 md:pt-14">
+    <section aria-labelledby="hizli-erisim" className="bg-white pb-10 pt-8 md:pb-16 md:pt-14">
       <h2 id="hizli-erisim" className="sr-only">
         Ürünler, projeler, servis ve fiyat hesaplama
       </h2>
@@ -50,7 +51,7 @@ export function GatewayTiles() {
           <FadeIn as="li" key={t.title} delay={i * 0.15} amount={0.3}>
             <Link
               href={t.href}
-              className="group relative flex h-[260px] flex-col items-center overflow-hidden rounded-card px-5 pt-10 text-center shadow-tile sm:h-[280px]"
+              className="group relative flex h-[240px] flex-col items-center overflow-hidden rounded-card px-5 pt-9 text-center shadow-tile sm:h-[280px]"
             >
               <OptImage
                 src={t.img}

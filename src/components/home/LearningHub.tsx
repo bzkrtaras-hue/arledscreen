@@ -7,7 +7,7 @@ export function LearningHub() {
   const guides = listSeoGuides("tr");
   return (
     <div>
-      <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+      <ul className="flex flex-wrap justify-center gap-3 sm:gap-4 [&>li]:w-[calc(50%-0.375rem)] sm:[&>li]:w-[calc(50%-0.5rem)] lg:[&>li]:w-[calc(25%-0.75rem)]">
         {guides.map((g) => (
           <li key={g.slug}>
             <Link

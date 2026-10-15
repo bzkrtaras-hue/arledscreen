@@ -13,6 +13,7 @@ export function ProductGroupGrid({
   showService = true,
   locale = "tr",
   mobileStrip = false,
+  skipCatalogCards = false,
 }: {
   groups?: ProductGroup[];
   headingLevel?: "h2" | "h3" | "h4";
@@ -20,6 +21,8 @@ export function ProductGroupGrid({
   locale?: "tr" | "en";
   /** Below md: one horizontal swipe row instead of a tall stacked list (home page). */
   mobileStrip?: boolean;
+  /** Home page: skip generic supplier catalog card art; use the group's own photo. */
+  skipCatalogCards?: boolean;
 }) {
   const H = headingLevel;
   const en = locale === "en";
@@ -31,7 +34,7 @@ export function ProductGroupGrid({
         name: overlay?.name ?? g.name,
         short: overlay?.short ?? g.short,
         tag: overlay?.tag ?? g.tag,
-        img: g.cardImage ?? g.image,
+        img: skipCatalogCards && g.cardImage?.includes("module-catalog-sheet") ? g.image : (g.cardImage ?? g.image),
         alt: overlay?.imageAlt ?? g.imageAlt,
         // Model PDPs stay TR-canonical; EN agents use group page + pricedPanels.
         models: en
@@ -64,9 +67,9 @@ export function ProductGroupGrid({
 
   return (
     <ul
-      className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3${
+      className={`flex flex-wrap justify-center gap-5 [&>li]:w-full sm:[&>li]:w-[calc(50%-0.625rem)] lg:[&>li]:w-[calc(33.333%-0.834rem)]${
         mobileStrip
-          ? " max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-3 max-md:overflow-x-auto max-md:pb-3 max-md:[-webkit-overflow-scrolling:touch] max-md:[scrollbar-width:thin]"
+          ? " max-md:flex-nowrap max-md:justify-start max-md:snap-x max-md:snap-mandatory max-md:gap-3 max-md:overflow-x-auto max-md:pb-3 max-md:[-webkit-overflow-scrolling:touch] max-md:[scrollbar-width:thin]"
           : ""
       }`}
     >
@@ -76,10 +79,10 @@ export function ProductGroupGrid({
           key={c.href}
           delay={(i % 3) * 0.12}
           className={`flex h-full flex-col rounded-3xl bg-band transition duration-300 hover:-translate-y-1 hover:shadow-card${
-            mobileStrip ? " max-md:shrink-0 max-md:basis-[78%] max-md:snap-start" : ""
+            mobileStrip ? " max-md:shrink-0 max-md:!w-[78%] max-md:snap-start" : ""
           }`}
         >
-          <Link href={c.href} className="group flex flex-1 flex-col rounded-3xl p-2">
+          <Link href={c.href} className="group flex flex-col rounded-3xl p-2">
             <span className="relative block aspect-[4/3] overflow-hidden rounded-[1.1rem] bg-surface">
               <OptImage
                 src={c.img}
@@ -97,9 +100,6 @@ export function ProductGroupGrid({
             <span className="flex flex-1 flex-col items-center px-4 pb-4 pt-4 text-center">
               <H className="font-display text-lg font-bold text-ink">{c.name}</H>
               <span className="mt-1.5 text-sm leading-relaxed text-ink-muted">{c.short}</span>
-              <span className="mt-auto inline-flex items-center gap-1 pt-3 text-sm font-semibold text-cyan group-hover:text-cyan-700">
-                {en ? "View group" : "İnceleyin"} <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-              </span>
             </span>
           </Link>
           {c.models.length ? (
@@ -109,7 +109,7 @@ export function ProductGroupGrid({
                   <Link
                     href={m.href}
                     title={m.name}
-                    className="inline-flex min-h-11 items-center rounded-xl bg-white px-3 text-[12.5px] font-semibold text-ink-soft ring-1 ring-border transition hover:bg-cyan hover:text-white hover:ring-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan sm:min-h-9"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl bg-white px-3 text-[12.5px] font-semibold text-ink-soft ring-1 ring-border transition hover:bg-cyan hover:text-white hover:ring-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
                   >
                     {m.label}
                   </Link>
@@ -117,6 +117,14 @@ export function ProductGroupGrid({
               ))}
             </ul>
           ) : null}
+          <Link
+            href={c.href}
+            tabIndex={-1}
+            aria-hidden
+            className="mt-auto inline-flex items-center justify-center gap-1 px-4 pb-5 pt-1 text-sm font-semibold text-cyan hover:text-cyan-700"
+          >
+            {en ? "View group" : "İnceleyin"} <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+          </Link>
         </FadeIn>
       ))}
     </ul>

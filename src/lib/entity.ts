@@ -278,7 +278,7 @@ export type EntityDocument = {
 };
 
 export function buildEntityDocument(): EntityDocument {
-  const logo = `${SITE_URL}/brand/arledscreen-logo-header.png`;
+  const logo = `${SITE_URL}/brand/arledscreen-yatay-1024.png`;
   return {
     "@context": "https://schema.org",
     "@type": "Organization",

@@ -147,7 +147,7 @@ const IMAGE_BY_REF: Record<string, { src: string; alt: string }[]> = {
     { src: "/videos/kafe-led-ekran-uygulamasi.jpg", alt: "Kafe LED ekran uygulaması" },
   ],
   "ref-05": [{ src: "/projects/modules/outdoor-facade.jpg", alt: "Geniş dış mekân / belediye ölçeği LED yüzey" }],
-  "ref-27": [{ src: "/projects/billboard-arled.jpg", alt: "Büyük yüzey dış mekân LED ekran" }],
+  "ref-27": [{ src: "/projects/billboard-arled.jpg", alt: "Direk üzerinde ARLEDSCREEN logosu yayınlayan dış mekân LED billboard" }],
   "ref-44": [
     { src: "/projects/modules/tech/flexible-curve-concave-convex.jpg", alt: "Esnek / oval LED ekran formu" },
     { src: "/videos/manisa-kulup-oval-led-ekran.jpg", alt: "Manisa kulüp oval LED ekran" },

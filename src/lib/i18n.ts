@@ -558,7 +558,7 @@ const tr: Dictionary = {
     references: "Referanslar",
     configurator: "Konfigüratör",
     priceCalculator: "Hesaplayıcı",
-    quote: "Teklif al",
+    quote: "Teklif alın",
   },
   brand: {
     slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
