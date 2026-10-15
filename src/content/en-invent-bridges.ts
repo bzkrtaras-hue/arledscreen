@@ -396,8 +396,8 @@ export const EN_INVENT_BRIDGES: EnInventBridge[] = [
   {
     slug: "sartlar",
     target: "/en/about/",
-    title: "Şartlar | ARLEDSCREEN",
-    h1: "Şartlar / terms",
+    title: "Terms and Conditions | ARLEDSCREEN",
+    h1: "Terms and conditions",
     description:
       "No separate public terms page. Project terms are in written quotes. Bridge from inventable /en/sartlar/ to /en/about/.",
     cta: "Open about",
