@@ -4,6 +4,14 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 16 Ekim 2026 — Mobil menü okunabilirliği (dal `feat/menu-liquid-glass`)
+
+- **İstek (Aras):** mobil hamburger menüsündeki seçenek yazıları daha belirgin olsun, düğmeler sitedeki `liquid-glass-btn` diliyle uyumlu olsun.
+- **Kök neden:** çekmecedeki düğmeler zaten `liquid-glass-btn` kullanıyordu, ama düğmenin parlama katmanı (`::before`, z-index 0) etiketin ÖNÜNDE kalıyordu. Etiket çıplak metin düğümü olduğu için (`.liquid-glass-btn > *` kuralı metin düğümüne uygulanmaz) metnin sol yarısı beyazla yıkanıp soluk gri görünüyordu. Alt menü yazısı ayrıca küçük (15 px) ve gri (`#3d4650`) idi.
+- **Değişiklik (yalnız `src/app/globals.css` + `Header.tsx` alt menü bağlantısı):** çekmece içinde parlama katmanı etiketin arkasına alındı (`#mobile-nav .liquid-glass-btn::before { z-index: -1 }`); ana seçenekler 17 px / 700 / `#0b1b33`, alt seçenekler 16 px / 600 / `#0b1b33`, alt seçenek yüksekliği 46 px (ana 48 px); cam zemin biraz daha opak ve kenar çizgisi belirgin; hover/etkin durumda `#164a96`. Geçerli sayfadaki alt seçenek `aria-current="page"` + `is-active` alır. Çekmecedeki mavi "Fiyat hesapla" / "Teklif alın" düğmelerinin zemini beyaz yazı AA (>= 4.5:1) olacak kadar koyulaştırıldı.
+- **Dokunulmayanlar:** bağlantılar, sıra, çeviriler, masaüstü üst menü (`.liquid-glass-btn--nav` ve `--shell` kuralları değişmedi), ana sayfa/hero/H1, `/tr/quote/` bağlantısı.
+- **Önizleme (production değil):** `menu-glass-preview` dalı, Cloudflare Pages önizleme adresi. Birleştirilmedi, yayınlanmadı.
+
 ### 16 Ekim 2026 — Mağaza sayfası (`/tr/magaza/`, `/en/magaza/`) (PR #122, dal `magaza-section`)
 
 - **Ne yapıldı:** Aras'ın talimatıyla Shopify mağazasındaki (`k3kkws-wg.myshopify.com`) 19 ürün sitede görünür oldu: 12 NXTIONSTAR LED modülü + 7 referans ekran sistemi (2/4/6/8 m² iç mekân P2.5; 12/24/50 m² dış mekân P4). Sayfa TR + EN; Hizmetler sayfasında "Mağaza" kartı ve bölümü, alt menüde (TR "Mağaza", EN "Shop") ve TR mobil çekmecede bağlantı var. TR masaüstü üst çubuğuna eklenmedi: 1360 px'te sığmıyor ("LED ekran" ve "Hakkımızda" taşıyor). EN üst menüde "Shop" var. Ana sayfa, hero ve H1 değişmedi.

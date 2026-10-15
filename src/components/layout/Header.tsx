@@ -553,7 +553,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                 <li key={s.href}>
                                   <Link
                                     href={s.href}
-                                    className="liquid-glass-btn liquid-glass-btn--submenu"
+                                    aria-current={isActive(s.href) ? "page" : undefined}
+                                    className={cn(
+                                      "liquid-glass-btn liquid-glass-btn--submenu",
+                                      isActive(s.href) && "is-active",
+                                    )}
                                   >
                                     {s.label}
                                   </Link>
