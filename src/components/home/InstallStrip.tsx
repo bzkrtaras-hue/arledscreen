@@ -9,7 +9,6 @@ import { PROJECT_CASE_STUDIES, projectCasePath } from "@/content/case-studies";
  * No stock imagery, no figures beyond the record itself.
  */
 const PICKS: { refId: string; img: string }[] = [
-  { refId: "ref-39", img: "/videos/eskisehir-sigorta-led-ekran-vitrin.jpg" },
   { refId: "ref-26", img: "/projects/unye.jpg" },
   { refId: "ref-22", img: "/opt/blog/alanya-otel-led-ekran.jpg" },
   { refId: "ref-38", img: "/videos/istanbul-drama-sanat-atolyesi-dis-mekan-led.jpg" },

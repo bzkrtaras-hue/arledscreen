@@ -12,7 +12,6 @@ import { PROJECT_CASE_STUDIES, projectCasePath } from "@/content/case-studies";
 const PICKS: { refId: string; img: string; kind: string }[] = [
   { refId: "ref-26", img: "/projects/unye.jpg", kind: "Kamu / etkinlik" },
   { refId: "ref-27", img: "/projects/billboard-arled.jpg", kind: "Dış mekân" },
-  { refId: "ref-39", img: "/videos/eskisehir-sigorta-led-ekran-vitrin.jpg", kind: "Vitrin" },
   { refId: "ref-38", img: "/videos/istanbul-drama-sanat-atolyesi-dis-mekan-led.jpg", kind: "Dış mekân" },
 ];
 
@@ -34,7 +33,7 @@ export function SelectedProjects() {
             Tüm projeler →
           </Link>
         </div>
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid gap-6 sm:grid-cols-3">
           {items.map(({ c, image, kind }) => (
             <li key={c.slug} className="min-w-0">
               <Link
