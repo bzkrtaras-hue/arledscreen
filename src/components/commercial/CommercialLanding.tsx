@@ -29,6 +29,7 @@ import {
 } from "@/lib/social";
 import { ENTITY_FAQ_BRAND_DISAMBIG, ENTITY_FAQ_CANONICAL_DOMAIN } from "@/lib/entity";
 import { getFaqs } from "@/content/faqs";
+import { RentalScope } from "@/components/geo/RentalScope";
 import { formatProjectDate, formatProjectDetail } from "@/lib/dates";
 
 const CLUSTER_LABEL: Record<"tr" | "en", Record<CommercialPage["cluster"], string>> = {
@@ -298,6 +299,8 @@ export function CommercialLanding({
           </div>
         </section>
       ) : null}
+
+      {page.slug === "led-ekran-kiralama" ? <RentalScope locale={locale} /> : null}
 
       {page.images.length ? (
         <section className="border-t border-border bg-white py-12 md:py-16">
