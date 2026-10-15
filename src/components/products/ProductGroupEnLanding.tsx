@@ -18,6 +18,7 @@ import { getFaqs } from "@/content/faqs";
 import { modelUrlForPrice } from "@/content/models";
 import {
   BRAND_SUBJECT_REFS,
+  PRICE_VALID_FROM,
   PRICE_VALID_UNTIL,
   localBusinessRef,
   nxtionstarBrandRef,
@@ -70,7 +71,9 @@ export function ProductGroupEnLanding({
             lowPrice: Math.min(...prices.map((x) => x.usd)).toFixed(2),
             highPrice: Math.max(...prices.map((x) => x.usd)).toFixed(2),
             offerCount: prices.length,
+            validFrom: PRICE_VALID_FROM,
             priceValidUntil: PRICE_VALID_UNTIL,
+            availability: "https://schema.org/InStock",
             url: `${SITE_URL}/ai-shopping.json`,
             sameAs: [`${SITE_URL}/#priced-panels-aggregate`],
             description:

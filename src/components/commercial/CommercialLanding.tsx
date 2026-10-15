@@ -16,6 +16,7 @@ import { modelUrlForPrice } from "@/content/models";
 import {
   BRAND_SUBJECT_REFS,
   PANEL_PRICES,
+  PRICE_VALID_FROM,
   PRICE_VALID_UNTIL,
   localBusinessRef,
   nxtionstarBrandRef,
@@ -118,7 +119,9 @@ export function CommercialLanding({
             lowPrice: Math.min(...PANEL_PRICES.map((x) => x.usd)).toFixed(2),
             highPrice: Math.max(...PANEL_PRICES.map((x) => x.usd)).toFixed(2),
             offerCount: PANEL_PRICES.length,
+            validFrom: PRICE_VALID_FROM,
             priceValidUntil: PRICE_VALID_UNTIL,
+            availability: "https://schema.org/InStock",
             url: `${SITE_URL}/ai-shopping.json`,
             sameAs: [`${SITE_URL}/#priced-panels-aggregate`],
             description: tr
