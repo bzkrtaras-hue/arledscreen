@@ -72,6 +72,7 @@ const TR_CORE: {
   { path: "/about/", priority: 0.7, changeFrequency: "monthly" },
   { path: "/hesaplayici/", priority: 0.75, changeFrequency: "weekly" },
   { path: "/quote/", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/magaza/", priority: 0.85, changeFrequency: "weekly" },
 ];
 
 /** EN routes that have dedicated English text (not a thin shell). */
@@ -87,6 +88,7 @@ const EN_CORE: {
   { path: "/about/", priority: 0.6, changeFrequency: "monthly" },
   { path: "/hesaplayici/", priority: 0.65, changeFrequency: "weekly" },
   { path: "/quote/", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/magaza/", priority: 0.75, changeFrequency: "weekly" },
 ];
 
 function withTrailingSlash(path: string): string {

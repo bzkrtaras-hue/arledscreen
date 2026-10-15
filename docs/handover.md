@@ -4,6 +4,18 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 16 Ekim 2026 — Mağaza sayfası (`/tr/magaza/`, `/en/magaza/`) (PR #122, dal `magaza-section`)
+
+- **Ne yapıldı:** Aras'ın talimatıyla Shopify mağazasındaki (`k3kkws-wg.myshopify.com`) 19 ürün sitede görünür oldu: 12 NXTIONSTAR LED modülü + 7 referans ekran sistemi (2/4/6/8 m² iç mekân P2.5; 12/24/50 m² dış mekân P4). Sayfa TR + EN; Hizmetler sayfasında "Mağaza" kartı ve bölümü, alt menüde (TR "Mağaza", EN "Shop") ve TR mobil çekmecede bağlantı var. TR masaüstü üst çubuğuna eklenmedi: 1360 px'te sığmıyor ("LED ekran" ve "Hakkımızda" taşıyor). EN üst menüde "Shop" var. Ana sayfa, hero ve H1 değişmedi.
+- **Veri kaynağı:** Modül adı, USD fiyat, görsel ve ürün bağlantısı `PANEL_PRICES` / `LED_MODELS`'ten gelir (`src/content/magaza.ts`), yani `ai-shopping.json`, `catalog.json` ve `/products.json` ile aynı sayılar (12 fiyat birebir doğrulandı). Shopify TL fiyatları sitede gösterilmez.
+- **Referans sistemler:** Sitede yayımlanmış USD fiyatı yok → "Keşif sonrası yazılı teklifle". Fiyat uydurulmadı; Shopify'daki TL "referans sistem bedeli" ancak Aras karar verirse gösterilir. Bu 7 ürünün fotoğrafı yok; sade bir kart kullanıldı.
+- **Görseller:** Gerçek modül fotoğrafı olan 10 SKU'da sitedeki aynı dosya. P3.07 iç mekân (`indoor-smd-surface.jpg`: "P2.5" yazan salon görseli) ve P4 iç mekân (`indoor-wall.jpg`: kameraman stok fotoğrafı) ürün fotoğrafı olmadığı için sade kart kullanıldı. Aynı dosyalar ürün sayfalarında ve Shopify'da duruyor; düzeltme #102'de (ayrı iş).
+- **Yapılandırılmış veri:** Sayfada yeni Product/Offer JSON-LD üretilmedi (aynı SKU'lar model sayfalarında ve `ai-shopping.json`'da zaten tanımlı; çift düğüm çakışması olmasın diye). BreadcrumbList + ItemList var (modül adresleri mevcut model sayfaları; EN'de EN ürün grubu sayfası). Ürün başına ayrı `/magaza/<slug>/` sayfası açılmadı: 12 modülün model sayfası zaten var, 7 sistemin yayımlanmış fiyatı olmadığı için Product şeması yazılamaz. Stok bilgisi mevcut besleme kararıyla aynı kalır (InStock + 3–21 gün hazırlık); yeni bir karar verilmedi.
+- **Eski köprüler:** `/tr/magaza/` ve `/en/magaza/` daha önce `/products/` adresine giden noindex "invent" köprüleriydi. Gerçek sayfa olduğu için `tr/en-invent-bridges.ts` içinden çıkarıldı, `validate-ai-feeds.mjs`'teki `en/magaza → /en/products/` köprü denetimi kaldırıldı. Sitemap'e (`sitemap.xml`) tr + en ve hreflang eklendi (274 adres, 624 hreflang bağlantısı, validatör geçti). `sitemap-ai.xml`'de bu iki adres hâlâ listede (zararsız yinelenme).
+- **Dokunulmayanlar:** `public/.well-known/ard.json` (build yan etkisi, commit'e alınmadı), fiyatlar, Melis, hesaplayıcı, Shopify (yalnız okundu).
+- **Çakışma notu:** #119 (iade), #120 ve #121 `main`'e birleşti; bu dal `main` (`2eea9547`) ile birleştirilerek çakışmalar (handover, Footer, sitemap, validate-ai-feeds) iki tarafın içeriği korunarak çözüldü. #102 `models.ts`/`prices.ts` değiştiriyor; Mağaza bu verileri okuduğu için görsel düzeltmesi otomatik yansır (ve `NEUTRAL_IMAGE_IDS` listesi güncellenebilir).
+- **Önizleme (production değil):** https://magaza-preview.arledscreen.pages.dev
+
 ### 16 Ekim 2026 — İade, iptal ve teslimat sayfası (PR: `feat/iade-politikasi-taslak`)
 
 - **Karar (Aras):** iade/değişim süresi teslimattan itibaren 14 gün. Diğer noktalar Türk ticaret ve tüketici hukuku uygulamasına göre belirlendi (hukuki inceleme önerilir; PR açıklamasında liste var).
