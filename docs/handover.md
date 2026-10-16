@@ -4,6 +4,68 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 16 Ekim 2026 (gece, 4) — Melis #107 ana dal ile birleştirildi (yayına hazırlık)
+
+- `origin/main` (dbf3afcf: #122, #123, #124) `feat/melis-gemini-chat` içine birleştirildi (rebase ve force-push yok). Tek çakışma bu dosyaydı; iki taraf da korundu. `public/_routes.json` (`/api/chat` dahil) ve `src/` dosyaları (TopBar, şema, css) çakışmadı.
+- `scripts/gen-melis-prices.mjs`: #118'den beri `controlCard` bir sabite (`CONTROL_CARD_UNIT_USD`) bağlı olduğu için üretici hata veriyordu; sabiti çözecek şekilde düzeltildi. Üretilen `_melis-prices.js` değişmedi (fiyatlar ana dalla aynı).
+- H1 (Grok Bot yeniden test 3): `drifted()` karşılaştırma sorularında (huidu, novastar, colorlight, fark, compare, TR/AR/RU karşılıkları) "20 m²" cümlesini artık silmez; Huidu/NovaStar/Colorlight yanıtında hiçbir marka düşmez.
+- Testler: `npm run melis:test` 40/40, `tsc --noEmit` ve `npm run build` temiz. Birleştirme ve deploy Aras'ın onayıyla ayrıca yapılır; üretimde `GEMINI_API_KEY` (faturalandırması açık) gerekir.
+
+### 16 Ekim 2026 (gece, 3) — Melis yeniden test 2 düzeltmeleri (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
+
+- **Kaynak:** `/workspace/melis-kb/results-retest2/RETEST2_REPORT.md` (head 6f7eec6a). Üretime alınmadı, birleşmedi.
+- **Düzeltmeler:** (1) Soruda "colorlight" geçiyorsa Huidu–NovaStar karşılaştırma koruması atlanır, model üçünü de anlatır. (2) Adres koruması piksel, pixel, pitch, P değeri, çözünürlük, modül, panel, kontrol içeren soruları adres saymaz ("Showroom için hangi piksel aralığı?"). (3) Adres şablonu yalnız Türkçe ve İngilizce sorularda; Rusça ve Arapça adres soruları modele gider (dil korunur, yalnız bilgi tabanı adresi; "шоурум" iddiası da süzülür).
+- **Notlar:** (a) Arapça/Rusça garanti sorusu artık modele gitmez: onaylı cümlenin sadık çevirisi döner (model İngilizce cümleyi kopyalayıp dil korumasına takılıyordu; bu, önceki turda eklediğim "garanti cümlesini aynen kullan" kuralının yan etkisiydi). Dil koruması duruyor (yanıtta hedef dilde hiç harf yoksa reddeder; tek tük yazım hatası reddettirmez). (b) "titizlikle seçilmektedir", "güvenle tercih edilmektedir" (ve EN karşılıkları) kalite filtresine eklendi.
+- **Testler:** `npm run melis:test` 39 test.
+- **Geri alma:** önizlemeyi eski haline getirmek için `6f7eec6a` dalını yeniden dağıtın.
+
+### 16 Ekim 2026 (gece) — Melis ikinci düzeltme turu (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
+
+- **Neden:** Grok Bot'un 271 vakalık yeniden testi (`/workspace/melis-kb/results-retest/RETEST_REPORT.md`) 4 gerçek hata buldu; hepsi sunucu tarafında düzeltildi. Üretime alınmadı, birleşmedi.
+  1. "Dijital asistan / dijital temsilci mısın" (TR/EN, büyük İ, ASCII) artık "bot musun / insan mısın" ile aynı onaylı dürüst yanıtı alır (modele gitmez, yasak ifade hiç yazılmaz).
+  2. "Nerede / ofis / showroom / ziyaret / randevu / adres" soruları modele gitmeden doğrulanmış adres + çalışma saatleri yanıtını alır; model "showroomumuz" ve "randevu" diyemez (filtre). "Ürünler nerede üretiliyor?", "Garanti nerede geçerli?", "Keşif ziyareti" gibi sorular adres sayılmaz.
+  3. Kalite filtresi genişledi: "kalitemiz/kalitesi/kaliteli", "standartlarında/standartlarımız", "yüksek çözünürlüklü", "high-resolution", "quality", "üretilmekte/manufactured". "Görüntü kalitesi / image quality" ve piksel aralığına bağlı çözünürlük bilgisi serbest. Bir cümle tamamen böyle bir iddiaysa hata yerine tarafsız yanıt gider.
+  4. "Kontrol kartını sonradan değiştirebilir miyim?" bilgi tabanında yok: evet/hayır denmez, "ekibimiz yazılı olarak teyit eder" + WhatsApp (modele gitmez).
+  - Küçük: "Huidu vs NovaStar" kullanıcının dilinde, yalnız bilgi tabanındaki bilgilerle karşılaştırılır (modele gitmez).
+- **Testler:** `npm run melis:test` 33 test. **Not:** yeniden test raporuna göre Cloudflare'deki `GEMINI_API_KEY` da Google ücretsiz katmanında (dakikada 15 istek); canlıya çıkmadan önce Google projesinde faturalandırma (Tier 1) açılmalı.
+- **Geri alma:** PR birleşmediği için gerek yok; önizlemeyi eski haline getirmek için `b9df4b38` dalını yeniden dağıtın.
+
+### 16 Ekim 2026 — Melis düzeltmeleri (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
+
+- **Neden:** Grok Bot'un önizleme örnekleme testi (169 vaka, `PREVIEW_REPORT.md`) kimlik, garanti, adres, kiralık, telefon ve ölçü ayrıştırıcıda küçük hatalar buldu. Üretime alınmadı, birleşmedi.
+- **Düzeltmeler (sunucu tarafı, `functions/api/_melis-guards.js` + `chat.js`):**
+  1. "Sen kimsin / kendini tanıtır mısın / kimle konuşuyorum / adın ne" (TR ve EN) → sabit cevap "Ben Melis, ARLEDSCREEN satış danışmanıyım." (yapay zekâdan kendiliğinden söz edilmez; model kendiliğinden söylerse o cümle silinir).
+  2. "Bot musun / insan mısın / yapay zekâ mısın" tespiti büyük İ, I, ı ve ASCII yazımlarını da yakalar (Türkçe katlama); cevap Aras'ın onayladığı esprili-dürüst sabit metin + WhatsApp teklifi (değişmedi).
+  3. Garanti cümlesi her zaman aynen "2 yıl garanti ve 5 yıl ücretsiz teknik servis" (sunucu, garanti sorusunda başa koyar; başka yerde farklı yazılmışsa o cümle değiştirilir).
+  4. Cümle kırpıcı "Mah.", "Sok.", "No:" gibi kısaltmalarda kesmez; adres sorusunda adres eksikse sabit tam adres gider.
+  5. "kaliteli, yüksek kalite, güvenilir, güvenilirlik, high quality, reliable" yasak ifade filtresine eklendi (model bir kez düzeltmeye zorlanır, yine olursa yalnız o cümle silinir).
+  6. Kiralıkta "İzmir dahil / Türkiye geneli" ve "kurulum/nakliye ayrı/dahil" cümleleri "yazılı teklifte netleşir" ile değiştirilir (bilgi tabanı ve istem de güncellendi). Kiralık fiyatı yine söylenmez (50 USD/m² kararı bekliyor).
+  7. Telefon numarası yalnız müşteri telefon/iletişim isterse yazılır; aksi halde o cümle silinir.
+  8. Ölçü ayrıştırıcı "*" işaretini ölçü saymaz; `${7*7}`, `{{..}}` gibi kod ifadeleri modele gitmeden temizlenir, "7*7" yüzünden çıkan m² cümlesi silinir. 4x3, 4×3, 4 x 3 m gibi gerçek ölçüler okunur.
+  9. Fotoğraf reddi: eskiden kadrajda herhangi bir yüz ret nedeniydi; şimdi yalnız yüzün ana konu/net tanınır olması veya kimlik/kişisel veri görünmesi reddedilir. Uzaktaki/arka plandaki kişiler, ekran-poster-TV içindeki kişiler engel değil. Emin olunamazsa yine reddedilir.
+- **Testler:** `npm run melis:test` (21 test; Gemini taklit edilerek `onRequest` çalıştırılır, her madde için ayrı test). Önizleme canlı testi: `/workspace/melis-107/fix-results/`.
+- **Geri alma:** PR birleşmediği için gerek yok; önizlemeyi eski haline getirmek için `9544be2d` dalını yeniden dağıtın.
+
+### 15 Ekim 2026 (gece) — Melis yapay zekâ (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
+
+- **Önizleme:** https://melis-ai-preview.arledscreen.pages.dev (Cloudflare Pages dalı `melis-ai-preview`, noindex; canlıyı etkilemez). Üretime alınmadı, birleştirilmedi.
+- **Ne yapıldı:**
+  - 20 m² kuralı kodda ve istemde: ölçüyü (m², "5x4 m", "320x180 cm") sunucu okur, 20 m² altı Huidu, 20 m² ve üstü NovaStar; yanlış marka çıkarsa cevap düzeltilir. İfade "genellikle öneriyoruz".
+  - Doğrulanmamış iddia filtresi: IP, nit, "ücretsiz keşif", "sıfır gecikme", m² aralığı, "kontrol kartı dahil" (toplam dışında) vb. çıkarsa model bir kez düzeltmeye zorlanır, yine olursa dürüst hata mesajı gider (uydurma cevap gösterilmez).
+  - Garanti yalnız "2 yıl garanti ve 5 yıl ücretsiz teknik servis"; kiralık için rakam yok. Tutar yalnız müşteri fiyat sorarsa ve yalnız **modül toplamı** olarak verilir (kodda hesaplanır: modül adedi × liste fiyatı, KDV ve nakliye hariç); işçilik, montaj, kontrol kartı, yazılım "dahil" iddiası ve istenmeyen fiyat listesi filtrelenir; kontrol sistemi ve montaj "yazılı teklifte".
+  - İstek/yanıt biçimi: `{messages:[{role,text}]}` → `{reply}`; sunucu hatasında `fallback:true` dönerse widget hata balonu gösterir, geçmişe yazmaz. Zaman aşımı: sunucu 28 sn bütçe (fotoğrafla 45 sn), widget 40 sn (fotoğrafla 70 sn). Geçmiş sınırı iki tarafta 12 mesaj.
+  - Melis: selamlayan müşteriye "Merhaba, ben Melis, ARLEDSCREEN satış danışmanıyım" der (selamlamasız sorularda doğrudan cevap; karşılama balonu zaten tanıtır), müşteriye "siz" diye hitap eder, adı kullanır; en çok 4 cümle (konu dışı 3); "bot musun / insan mısın?" için Aras'ın onayladığı sabit cevap ("Bakış açınıza göre değişir, nasıl bakarsanız öyle görürsünüz 😊 Ben yapay zekâ destekli ARLEDSCREEN satış danışmanıyım. İsterseniz ekibimizle WhatsApp'tan da görüştüreyim."); kendiliğinden yapay zekâdan söz etmez, asla insan olduğunu söylemez. WhatsApp yalnız teklif/iletişim/bilmediği konuda ve birkaç mesajda bir önerilir; metne ham wa.me bağlantısı yazılmaz, sohbet yeşil "WhatsApp'ta yazın" düğmesi gösterir. Telefon yalnız istenirse. Yazma gecikmesi cevap uzunluğuna göre; otomatik ses yok.
+  - Konu dışı sorulara kısa doğru cevap + LED ekrana dönüş; tıbbi, hukuki, siyasi tavsiye, uygunsuz içerik ve rakip karşılaştırması yok.
+  - Bilgi tabanı: `docs/melis-knowledge-base.md` → `npm run melis:kb` → `functions/api/_melis-kb.js` (istemin içine girer). Fiyatlar yine `src/content/prices.ts` → `npm run melis:prices`.
+  - Fotoğraf yükleme: JPG/PNG, ham en çok 10 MB; tarayıcıda uzun kenar 2560 px ve en çok yaklaşık 3 MB JPEG'e küçültülür (EXIF/GPS silinir). Sunucu 4,7 MB üstü gövdeyi, JPG/PNG dışını ve bozuk veriyi reddeder. Görsel hiçbir yerde saklanmaz (KV/R2/önbellek yok), loglanmaz, fotoğraf istekleri AI Gateway'den geçmez (Gateway istek gövdesini kaydedebilir). Yüz veya kimlik görünürse görsel analiz edilmez. Ölçü fotoğraftan "yaklaşık, keşifte netleşir" diye verilir; m² kodda hesaplanır. IP başına günlük 5 görsel (izolat başına, en iyi çaba).
+  - Çıktı korumaları (sunucu, cümle düzeyinde): yanlış marka (20 m² kuralı), doğrulanmamış iddia, "üretici / kendi üretimimiz / üstün kalite / tek yazılım / N+ proje / N+ yıl", rakip adları, "dijital temsilci/asistan", sign.arledscreen.com için doğrulanmamış özellikler, modül toplamı dışında tutar, ölçü garip yazımı ("32,8x1,8": hesaplanan ölçüyle uyuşmayan boyut), bağlam kayması (alakasız soruda eski projeyi tekrar etme), Arapça/Rusça soruya başka dilde cevap. Önce bir kez düzeltme istenir; yine olursa yalnız sorunlu cümle atılır (tüm cevap hata olmaz); kontrol sistemi sorusunda deterministik cevap verilir.
+  - Model kotası: `gemini-flash-lite-latest` günlük ücretsiz kota (500/gün/model) dolduğunda 429 alınır; sunucu o modeli 3 dk atlar ve yedek zincire (gemini-3.1-flash-lite, 3.5-flash, 3-flash-preview, 3.7-flash, flash-latest) geçer. Üretim için faturalandırması açık bir anahtar şart. Hız sınırı varsayılan 20 istek/10 dk/IP; `MELIS_RATE_MAX` ortam değişkeniyle değiştirilir (yalnız test için Preview'da 300).
+- **Mobil:** karşılama balonundaki × yazının üstüne binmiyor (390×844 ölçüldü).
+- **Üretim için eksik:** Cloudflare Pages `arledscreen` projesinin **Production** ortamında `GEMINI_API_KEY` (secret) ve istenirse `AI_GATEWAY_BASE` yok; yalnız **Preview** ortamında var. Üretime almadan önce eklenmeli. Preview'daki `GEMINI_API_KEY` geçersizdi ("API key not valid"); 15 Ekim gece geçerli anahtarla yeniden yazıldı.
+- **Karar (Aras):** Melis "dijital temsilci / dijital asistan" demez (AGENTS.md §4 ile uyumlu). Melis kendini "ARLEDSCREEN satış danışmanıyım" diye tanıtır; "bot musun?" sorusunda: "Ben Melis, yapay zekâ destekli bir satış danışmanıyım; insan değilim" + WhatsApp teklifi (WhatsApp bağlantısı metne yazılmaz, sohbet düğme gösterir).
+- **Sınırlar:** hız ve günlük görsel sınırı izolat başına sayılır (Pages'de paylaşımlı sayaç yok); sıkı sınır için Cloudflare Rate Limiting kuralı gerekir.
+- **Geri alma:** PR birleşmediği için gerek yok; birleşirse `git revert`.
+
 ### 16 Ekim 2026 — Mobil menü okunabilirliği (dal `feat/menu-liquid-glass`)
 
 - **İstek (Aras):** mobil hamburger menüsündeki seçenek yazıları daha belirgin olsun, düğmeler sitedeki `liquid-glass-btn` diliyle uyumlu olsun.
