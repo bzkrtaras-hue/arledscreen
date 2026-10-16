@@ -4,6 +4,12 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 16 Ekim 2026 (gece, 4) — Melis #107 ana dal ile birleştirildi (yayına hazırlık)
+
+- `origin/main` (dbf3afcf: #122, #123, #124) `feat/melis-gemini-chat` içine birleştirildi (rebase ve force-push yok). Tek çakışma bu dosyaydı; iki taraf da korundu. `public/_routes.json` (`/api/chat` dahil) ve `src/` dosyaları (TopBar, şema, css) çakışmadı.
+- `scripts/gen-melis-prices.mjs`: #118'den beri `controlCard` bir sabite (`CONTROL_CARD_UNIT_USD`) bağlı olduğu için üretici hata veriyordu; sabiti çözecek şekilde düzeltildi. Üretilen `_melis-prices.js` değişmedi (fiyatlar ana dalla aynı).
+- Testler: `npm run melis:test` 39/39, `tsc --noEmit` ve `npm run build` temiz. Birleştirme ve deploy Aras'ın onayıyla ayrıca yapılır; üretimde `GEMINI_API_KEY` (faturalandırması açık) gerekir.
+
 ### 16 Ekim 2026 (gece, 3) — Melis yeniden test 2 düzeltmeleri (PR #107, `feat/melis-gemini-chat`) — yalnız önizleme
 
 - **Kaynak:** `/workspace/melis-kb/results-retest2/RETEST2_REPORT.md` (head 6f7eec6a). Üretime alınmadı, birleşmedi.
