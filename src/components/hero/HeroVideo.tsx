@@ -40,6 +40,8 @@ interface HeroVideoProps {
   labels: { region: string; pause: string; play: string; scenes: string };
   /** Soft crossfade dwell per clip (ms) */
   dwellMs?: number;
+  /** Scene dots (tablist) bottom-left. Off on the homepage: the loop is background only. */
+  showSceneDots?: boolean;
 }
 
 const ease = [0.22, 0.65, 0.2, 1] as const;
@@ -75,6 +77,7 @@ export function HeroVideo({
   secondaryLabel,
   labels,
   dwellMs = 8000,
+  showSceneDots = true,
 }: HeroVideoProps) {
   const reduce = useReducedMotion();
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -272,7 +275,7 @@ export function HeroVideo({
           </button>
         ) : null}
 
-        {clips.length > 1 && !reduce ? (
+        {showSceneDots && clips.length > 1 && !reduce ? (
           <div
             className="absolute bottom-5 start-5 z-10 flex gap-2 md:bottom-[88px] md:start-8"
             role="tablist"
