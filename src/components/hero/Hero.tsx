@@ -8,7 +8,7 @@ interface HeroProps {
 
 /**
  * Homepage hero — landscape-first field clips so desktop shows the LED wall.
- * Background loop (soft ~1.2 s crossfade, 6 s dwell): three field videos interleaved with three
+ * Background loop (soft ~1.2 s crossfade, 6 s dwell): three field videos interleaved with seven
  * site photos. The first slide stays the lounge poster, so LCP is unchanged. Eskişehir vitrin stays
  * out (its content carries a price ad). HeroVideo rotates only when there are 2+ slides.
  * H1 carries the local query; NXTIONSTAR slogan stays in the top bar only.
@@ -19,12 +19,15 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
     labelTr: "Lounge LED",
     labelEn: "Lounge LED",
   },
+  { slug: "foto-sahne-led-ekran-uygulamasi", labelTr: "Sahne LED ekran uygulaması", labelEn: "LED screen installation on a stage" },
+  { slug: "foto-kamu-etkinligi-kavisli-led", labelTr: "Kamu kurumu etkinliğinde kavisli LED ekran", labelEn: "Curved LED screen at a public-institution event" },
   { slug: "foto-kulup-led-ekran", labelTr: "Kulüp sahnesinde LED ekran", labelEn: "LED display on a club stage" },
   {
     slug: "sphere-led-showroom",
     labelTr: "Küresel LED",
     labelEn: "Sphere LED",
   },
+  { slug: "foto-dikey-led-ekranlar", labelTr: "Dikey LED ekranlar", labelEn: "Vertical LED screens" },
   { slug: "foto-kulup-sahne-montaj", labelTr: "Kulüp sahnesinde montaj", labelEn: "Installation on a club stage" },
   {
     slug: "club-curved-led-ribbon",
@@ -32,6 +35,7 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
     labelEn: "Club curved",
   },
   { slug: "foto-meclis-salonu", labelTr: "Meclis salonu", labelEn: "Council chamber" },
+  { slug: "foto-sahne-buyuk-led-ekran", labelTr: "Sahnede büyük LED ekranlar", labelEn: "Large LED screens on a stage" },
 ];
 
 /** Still-only slides (no video): optimized WebP, EXIF stripped, ≤1920 px + centre-square crop for ≤767 px. */
@@ -53,6 +57,30 @@ const HERO_PHOTOS: Record<string, { poster: string; posterMobile: string; width:
     posterMobile: "/videos/hero/foto-meclis-salonu-m.webp",
     width: 1920,
     height: 1080,
+  },
+  "foto-sahne-led-ekran-uygulamasi": {
+    poster: "/videos/hero/foto-sahne-led-ekran-uygulamasi.webp",
+    posterMobile: "/videos/hero/foto-sahne-led-ekran-uygulamasi-m.webp",
+    width: 1920,
+    height: 1080,
+  },
+  "foto-sahne-buyuk-led-ekran": {
+    poster: "/videos/hero/foto-sahne-buyuk-led-ekran.webp",
+    posterMobile: "/videos/hero/foto-sahne-buyuk-led-ekran-m.webp",
+    width: 1920,
+    height: 1080,
+  },
+  "foto-dikey-led-ekranlar": {
+    poster: "/videos/hero/foto-dikey-led-ekranlar.webp",
+    posterMobile: "/videos/hero/foto-dikey-led-ekranlar-m.webp",
+    width: 1600,
+    height: 900,
+  },
+  "foto-kamu-etkinligi-kavisli-led": {
+    poster: "/videos/hero/foto-kamu-etkinligi-kavisli-led.webp",
+    posterMobile: "/videos/hero/foto-kamu-etkinligi-kavisli-led-m.webp",
+    width: 1600,
+    height: 1200,
   },
 };
 
