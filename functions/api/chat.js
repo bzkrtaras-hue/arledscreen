@@ -361,7 +361,7 @@ function waAllowed(msgs, lastUser, reply) {
 // The reply restates the earlier project (area) although the current question is not about the project.
 function drifted(reply, lastUser) {
   return /\d+(?:[.,]\d+)?\s*(?:m²|m2|metrekare|sqm)/i.test(reply) && areaOf(lastUser) == null &&
-    !/fiyat|price|kaç|ölçü|boyut|kontrol|öner|teklif|maliyet|bütçe|modül|ekran|cost|quote|size|recommend|control|proje|project/i.test(lastUser);
+    !/fiyat|price|kaç|ölçü|boyut|kontrol|öner|teklif|maliyet|bütçe|modül|ekran|cost|quote|size|recommend|control|proje|project|huidu|nova\s?star|colorlight|kart|card|fark|difference|compar|karşılaştır|versus|hangisi|which|فرق|مقارنة|هويدو|نوفا|разниц|сравн|хуиду|новастар|контрол/i.test(lastUser);
 }
 function turnHint(msgs, area, name, dims) {
   const lang = LANG_NAME[detectLang(msgs[msgs.length - 1].text)];

@@ -391,3 +391,19 @@ test("(b) soft praise 'titizlikle seçilmektedir' / 'profesyonel projelerde güv
     assert.ok(r.reply.length > 20 && !r.fallback, r.reply);
   }
 });
+
+// ===== H1 (retest #3): comparison questions keep their '20 m²' sentence (drifted() exemption) ===========================
+test("(H1) Huidu / NovaStar / Colorlight comparison keeps every brand and the 20 m² rule sentence", async () => {
+  const a = "Huidu asenkron çalışır ve Wi-Fi ile içerik yüklenir. NovaStar yüksek piksel yükü ve senkron işler içindir. Colorlight çok kaynaklı işler için kullanılır. Genellikle 20 m² altında Huidu, 20 m² ve üzerinde NovaStar öneriyoruz.";
+  for (const q of ["Huidu, NovaStar ve Colorlight arasındaki fark nedir?", "Colorlight ile Huidu arasında ne fark var?", "What is the difference between Huidu, NovaStar and Colorlight?", "Please compare Huidu, NovaStar and Colorlight"]) {
+    const r = await chat([q], { reply: a });
+    assert.equal(r.calls.length, 1, q);
+    assert.match(r.reply, /Huidu/, q); assert.match(r.reply, /NovaStar/, q); assert.match(r.reply, /Colorlight/, q);
+    assert.match(r.reply, /20 m²/, q);
+  }
+  const ar = await chat(["هل هناك فرق بين Huidu و NovaStar و Colorlight؟"], { reply: "يعمل Huidu بشكل غير متزامن، و NovaStar للأحمال العالية، و Colorlight للمصادر المتعددة. نوصي عادةً بـ Huidu تحت 20 m² و NovaStar من 20 m² فما فوق." });
+  assert.match(ar.reply, /Colorlight/); assert.match(ar.reply, /20 m²/);
+  // unrelated question with an unrelated area sentence is still cleaned
+  const d = await chat(["Garanti nedir?"], { reply: "ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar. Önceki 20 m² projeniz için Huidu uygundur." });
+  assert.doesNotMatch(d.reply, /20 m²/);
+});
