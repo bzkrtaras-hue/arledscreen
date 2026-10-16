@@ -101,7 +101,8 @@ export function Header({ locale, groups, guides }: HeaderProps) {
     if (!open) setMobileSection(null);
   }, [open]);
 
-  const links: (MenuLink & { dropdown?: Exclude<Dropdown, null> })[] = tr
+  /** drawerOnly: shown in the mobile drawer only (the TR desktop bar is already full at 1360 px). */
+  const links: (MenuLink & { dropdown?: Exclude<Dropdown, null>; drawerOnly?: boolean })[] = tr
     ? [
         { href: "/tr/led-ekran/", label: "LED ekran" },
         { href: "/tr/products/", label: "Ürünler", dropdown: "products" },
@@ -110,10 +111,12 @@ export function Header({ locale, groups, guides }: HeaderProps) {
         { href: "/tr/rehber/", label: "Rehber", dropdown: "guides" },
         { href: "/tr/bolgeler/", label: "Bölgeler" },
         { href: "/tr/hizmetler/", label: "Hizmetler" },
+        { href: "/tr/magaza/", label: "Mağaza", drawerOnly: true },
         { href: "/tr/about/", label: "Hakkımızda" },
       ]
     : [
         { href: `/${locale}/products/`, label: dict.nav.products },
+        ...(locale === "en" ? [{ href: "/en/magaza/", label: "Shop" }] : []),
         { href: `/${locale}/rehber/`, label: locale === "ar" ? "الأدلة" : "Guides" },
         { href: `/${locale}/about/`, label: dict.nav.about },
       ];
@@ -173,7 +176,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           aria-label={tr ? "Ana menü" : "Primary"}
         >
           <ul className="flex w-full flex-nowrap items-center justify-end gap-0.5 xl:justify-center 2xl:gap-1.5">
-            {links.map((link) =>
+            {links.filter((link) => !link.drawerOnly).map((link) =>
               link.dropdown && (link.dropdown === "products" ? groups.length : guides.length) ? (
                 <li
                   key={link.href}
@@ -550,7 +553,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                 <li key={s.href}>
                                   <Link
                                     href={s.href}
-                                    className="liquid-glass-btn liquid-glass-btn--submenu"
+                                    aria-current={isActive(s.href) ? "page" : undefined}
+                                    className={cn(
+                                      "liquid-glass-btn liquid-glass-btn--submenu",
+                                      isActive(s.href) && "is-active",
+                                    )}
                                   >
                                     {s.label}
                                   </Link>

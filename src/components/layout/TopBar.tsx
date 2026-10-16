@@ -11,10 +11,10 @@ import { LocaleSelect } from "@/components/layout/LocaleSelect";
 export function TopBar({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const tr = locale === "tr";
-  // /ar/contact/ and /ru/contact/ do not exist (404 + failed prefetch on every AR/RU page);
-  // the real quote pages are /ar/quote/ and /ru/quote/. TR/EN keep their /contact/ bridge.
-  const hasContactBridge = locale === "tr" || locale === "en";
-  const ctaHref = hasContactBridge ? `/${locale}/contact/` : `/${locale}/quote/`;
+  // Always the canonical quote page. /tr/contact/ and /en/contact/ are noindex redirect bridges
+  // (extra hop) and made this button point to a different URL than every other "Teklif alın"
+  // link (PageSpeed: "Identical links have the same purpose"). /ar/contact/ and /ru/contact/ do not exist.
+  const ctaHref = `/${locale}/quote/`;
   const ctaLabel = tr
     ? "Teklif alın"
     : locale === "ar"

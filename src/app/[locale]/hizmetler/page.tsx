@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ClipboardCheck, Hammer, LifeBuoy, Ruler, Settings2, Truck, Wrench } from "lucide-react";
+import { ArrowRight, ClipboardCheck, Hammer, LifeBuoy, Ruler, Settings2, ShoppingBag, Truck, Wrench } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
@@ -14,6 +14,7 @@ import { HomeFaq } from "@/components/home/HomeFaq";
 import { WhatsAppProjectPicker } from "@/components/home/WhatsAppProjectPicker";
 import { OptImage } from "@/components/ui/opt-image";
 import { getFaqs } from "@/content/faqs";
+import { SHOP_MODULES, SHOP_SYSTEMS, priceBand, priceLabel } from "@/content/magaza";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
@@ -58,6 +59,7 @@ const SERVICES_TR = [
   { Icon: Settings2, title: "Devreye alma", body: "Kontrol sisteminin kurulumu, kalibrasyon, içerik testi ve kullanım eğitimi." },
   { Icon: LifeBuoy, title: "Bakım ve teknik servis", body: "Periyodik bakım, arıza tespiti, modül ve güç kaynağı değişimi; mevcut ekranlar için servis talebi." },
   { Icon: Wrench, title: "LED ekran tamiri", body: "Ölü piksel, kararan bölge, renk farkı, güç kaynağı ve kart arızalarında tespit ve onarım; fiyat keşif sonrası teklifle.", href: "/tr/led-ekran-tamiri/" },
+  { Icon: ShoppingBag, title: "Mağaza", body: "NXTIONSTAR LED modülleri ve referans ekran sistemleri; modüller yayımlanmış USD fiyatlarıyla, sistemler yazılı teklifle.", href: "/tr/magaza/" },
 ];
 
 const SERVICES_EN = [
@@ -68,6 +70,7 @@ const SERVICES_EN = [
   { Icon: Settings2, title: "Commissioning", body: "Controller setup, calibration, content test and operator handover." },
   { Icon: LifeBuoy, title: "Maintenance & service", body: "Scheduled maintenance, fault finding, module/PSU swap; service for existing walls." },
   { Icon: Wrench, title: "LED display repair", body: "Diagnosis and repair of dead pixels, dark areas, colour mismatch, PSU and card faults; priced on quote after survey.", href: "/en/led-ekran-tamiri/" },
+  { Icon: ShoppingBag, title: "Shop", body: "NXTIONSTAR LED modules and reference display systems; modules at published USD prices, systems in a written quote.", href: "/en/magaza/" },
 ];
 
 const FAQS_TR = [
@@ -310,9 +313,65 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
       </Section>
 
       <Section
+        eyebrow={en ? "Shop" : "Mağaza"}
+        title={en ? "NXTIONSTAR LED modules and display systems" : "NXTIONSTAR LED modül ve ekran sistemleri"}
+        description={
+          en
+            ? "Our shop lists indoor and outdoor LED modules with published USD prices and turnkey reference display systems."
+            : "Mağazamızda iç ve dış mekân LED modülleri yayımlanmış USD fiyatlarıyla, anahtar teslim referans ekran sistemleriyle birlikte listelenir."
+        }
+        id="magaza"
+        className="bg-surface/60 prose-seo"
+      >
+        <ul className="grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              href: `${base}/magaza/#ic-mekan-moduller`,
+              title: en ? "Indoor LED modules" : "İç mekân LED modüller",
+              body: en
+                ? `${SHOP_MODULES.filter((m) => m.use === "ic").length} modules, ${priceLabel(priceBand("ic").lo, locale)} – ${priceLabel(priceBand("ic").hi, locale)} per panel (VAT and shipping excluded).`
+                : `${SHOP_MODULES.filter((m) => m.use === "ic").length} modül, panel başına ${priceLabel(priceBand("ic").lo, locale)} – ${priceLabel(priceBand("ic").hi, locale)} (KDV ve nakliye hariç).`,
+            },
+            {
+              href: `${base}/magaza/#dis-mekan-moduller`,
+              title: en ? "Outdoor LED modules" : "Dış mekân LED modüller",
+              body: en
+                ? `${SHOP_MODULES.filter((m) => m.use === "dis").length} modules, ${priceLabel(priceBand("dis").lo, locale)} – ${priceLabel(priceBand("dis").hi, locale)} per panel (VAT and shipping excluded).`
+                : `${SHOP_MODULES.filter((m) => m.use === "dis").length} modül, panel başına ${priceLabel(priceBand("dis").lo, locale)} – ${priceLabel(priceBand("dis").hi, locale)} (KDV ve nakliye hariç).`,
+            },
+            {
+              href: `${base}/magaza/#referans-ekran-sistemleri`,
+              title: en ? "Reference display systems" : "Referans ekran sistemleri",
+              body: en
+                ? `${SHOP_SYSTEMS.length} turnkey systems from 2 to 50 m²; priced in a written quote after survey.`
+                : `2 – 50 m² arasında ${SHOP_SYSTEMS.length} anahtar teslim sistem; keşif sonrası yazılı teklifle.`,
+            },
+          ].map((c) => (
+            <li key={c.href} className="rounded-2xl p-6 glass-card">
+              <h3 className="font-display text-base font-bold text-ink">
+                <Link href={c.href} className="hover:text-cyan hover:underline">
+                  {c.title}
+                </Link>
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">{c.body}</p>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6">
+          <Link
+            href={`${base}/magaza/`}
+            className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-cyan hover:underline"
+          >
+            {en ? "Go to the shop" : "Mağazaya gidin"}
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </Link>
+        </p>
+      </Section>
+
+      <Section
         eyebrow={en ? "Process" : "Süreç"}
         title={en ? "Your project in five steps" : "Projeniz beş adımda ilerler"}
-        className="bg-surface/60 prose-seo"
+        className="prose-seo"
       >
         <ProcessSteps locale={locale} />
       </Section>
