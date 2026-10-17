@@ -1,0 +1,117 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "İç Mekân LED Ekran Modelleri ve Fiyatları",
+  "description": "NXTIONSTAR iç mekân LED ekran modülleri. Fiyatlar panel başına USD, KDV ve nakliye hariç. Ücretsiz kargo yoktur. Nihai tutar keşif ve yazılı teklifle kesinleşir.",
+  "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+  "itemListElement": [
+    {
+      "@type": "Product",
+      "name": "NXTIONSTAR P1.25 GOB İç Mekân LED Modül",
+      "sku": "p1-25-ic-gob",
+      "mpn": "p1-25-ic-gob",
+      "brand": { "@type": "Brand", "name": "NXTIONSTAR" },
+      "image": "https://arledscreen.com/modules/nxtionstar-p1-25-ic-mekan-modul.webp",
+      "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
+        "priceCurrency": "USD",
+        "price": "95.88",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir."
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "NXTIONSTAR P1.53 GOB İç Mekân LED Modül",
+      "sku": "p1-53-ic-gob",
+      "mpn": "p1-53-ic-gob",
+      "brand": { "@type": "Brand", "name": "NXTIONSTAR" },
+      "image": "https://arledscreen.com/modules/nxtionstar-p1-53-ic-mekan-modul.webp",
+      "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
+        "priceCurrency": "USD",
+        "price": "62.08",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok."
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "NXTIONSTAR P1.86 GOB İç Mekân LED Modül",
+      "sku": "p1-86-ic-gob",
+      "mpn": "p1-86-ic-gob",
+      "brand": { "@type": "Brand", "name": "NXTIONSTAR" },
+      "image": "https://arledscreen.com/modules/nxtionstar-p1-86-ic-mekan-modul.webp",
+      "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
+        "priceCurrency": "USD",
+        "price": "49.08",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok."
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "NXTIONSTAR P2.5 İç Mekân LED Modül",
+      "sku": "p2-5-ic",
+      "mpn": "p2-5-ic",
+      "brand": { "@type": "Brand", "name": "NXTIONSTAR" },
+      "image": "https://arledscreen.com/modules/nxtionstar-p2-5-ic-mekan-modul.webp",
+      "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
+        "priceCurrency": "USD",
+        "price": "32.18",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok."
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "NXTIONSTAR P3.07 İç Mekân LED Modül",
+      "sku": "p3-07-ic",
+      "mpn": "p3-07-ic",
+      "brand": { "@type": "Brand", "name": "NXTIONSTAR" },
+      "image": "https://arledscreen.com/projects/modules/indoor-smd-surface.jpg",
+      "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
+        "priceCurrency": "USD",
+        "price": "30.88",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok."
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "NXTIONSTAR P4 İç Mekân LED Modül",
+      "sku": "p4-ic",
+      "mpn": "p4-ic",
+      "brand": { "@type": "Brand", "name": "NXTIONSTAR" },
+      "image": "https://arledscreen.com/projects/modules/indoor-wall.jpg",
+      "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
+        "priceCurrency": "USD",
+        "price": "26.98",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok."
+      }
+    }
+  ]
+}
