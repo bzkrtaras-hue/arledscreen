@@ -2784,6 +2784,34 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
       const text = input.value.trim();
       if (!text) return;
       input.value = "";
+
+      /* Serbest yazı: Gemini'ye gönder (kısa chip cevapları rule-based kalsın) */
+      if (text.length > 40 || /fiyat|nedir|nasıl|kaç|usd|dolar|p2|p3|p4|öner|garanti/i.test(text)) {
+        addMsg("me", text);
+        const typing = document.createElement("div");
+        typing.className = "ar-msg ar-bubble ar-bubble-bot";
+        typing.textContent = "…";
+        typing.id = "ar-gemini-typing";
+        const log = document.getElementById("ar-log");
+        if (log) log.appendChild(typing);
+
+        fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text, history: [] })
+        })
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(data => {
+          if (typing.parentNode) typing.remove();
+          addMsg("bot", data.reply || "WhatsApp'tan (+90 530 507 88 34) yazabilirsiniz.");
+        })
+        .catch(() => {
+          if (typing.parentNode) typing.remove();
+          onCustomer(text);
+        });
+        return;
+      }
+
       onCustomer(text);
     });
     const cta = document.getElementById("ar-cta");
