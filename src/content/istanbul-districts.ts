@@ -1,6 +1,6 @@
 /**
  * Istanbul district landings for local GEO.
- * Only districts that appear in published references — no invented pages.
+ * Real-project districts + high-intent survey pages (no invented projects).
  */
 
 export interface DistrictProject {
@@ -18,6 +18,7 @@ export interface IstanbulDistrict {
   description: string;
   h1: string;
   intro: string;
+  surveyOnly?: boolean;
 }
 
 export const ISTANBUL_DISTRICTS: IstanbulDistrict[] = [
@@ -90,6 +91,45 @@ export const ISTANBUL_DISTRICTS: IstanbulDistrict[] = [
     h1: "Yeşilpınar LED ekran satış ve montaj",
     intro:
       "Yeşilpınar'da tamamladığımız proje: Ercan Et / Aslantürk (Oca 2026). Keşif ve montaj Gaziosmanpaşa merkez ofisten yürütülür.",
+  },
+  {
+    slug: "maslak",
+    name: "Maslak",
+    locative: "Maslak'ta",
+    projects: [],
+    surveyOnly: true,
+    title: "Maslak Ofis LED Ekran Keşif ve Montaj | ARLEDSCREEN",
+    description:
+      "Maslak ofis LED ekran: keşif, montaj ve teknik servis. Gaziosmanpaşa merkezden hizmet. Henüz yayımlanmış proje listesi yok.",
+    h1: "Maslak ofis LED ekran keşif ve montaj",
+    intro:
+      "Maslak ve çevresindeki ofis binaları için LED ekran keşif ve montaj talebi alıyoruz. Henüz bu bölgede yayımlanmış proje listemiz bulunmuyor. Ölçü, konum ve kullanım amacını paylaştığınızda keşif planı hazırlanır. Nihai fiyat keşif ve yazılı teklifle kesinleşir.",
+  },
+  {
+    slug: "ikitelli",
+    name: "İkitelli",
+    locative: "İkitelli'de",
+    projects: [],
+    surveyOnly: true,
+    title: "İkitelli LED Ekran İmalat ve Montaj Keşif | ARLEDSCREEN",
+    description:
+      "İkitelli sanayi bölgesi LED ekran keşif ve montaj. Gaziosmanpaşa merkezden hizmet.",
+    h1: "İkitelli LED ekran keşif ve montaj",
+    intro:
+      "İkitelli sanayi bölgesi için LED ekran keşif ve montaj talebi alıyoruz. Henüz yayımlanmış proje listesi yok. Fabrika, showroom ve depo kullanımları için keşif planlanır.",
+  },
+  {
+    slug: "fuar",
+    name: "Fuar / Etkinlik",
+    locative: "Fuar ve etkinliklerde",
+    projects: [],
+    surveyOnly: true,
+    title: "Fuar LED Ekran Kiralama | ARLEDSCREEN",
+    description:
+      "Fuar ve etkinlik LED ekran kiralama. m² başına günlük 50 USD. Keşif ve yazılı teklif.",
+    h1: "Fuar ve etkinlik LED ekran kiralama",
+    intro:
+      "Fuar, stand ve etkinlikler için kiralık LED ekran hizmeti sunuyoruz. m² başına günlük 50 USD (KDV ve nakliye hariç). Nihai tutar keşif ve yazılı teklifle kesinleşir. Henüz yayımlanmış fuar proje listesi yok.",
   },
 ];
 
