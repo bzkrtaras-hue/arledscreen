@@ -1,96 +1,80 @@
 /**
  * Cloudflare Pages Function: /api/chat
- * Melis Kurumsal Müşteri & Satış Danışmanı - Google Gemini 1.5 Flash
+ * Melis — ARLEDSCREEN Kıdemli Satış ve Müşteri Danışmanı (Gemini)
  */
 export async function onRequestPost(context) {
   const { request, env } = context;
 
   try {
     const body = await request.json();
-    const userMessage = body.message || '';
+    const userMessage = body.message || "";
     const history = body.history || [];
 
     if (!userMessage.trim()) {
-      return new Response(JSON.stringify({ error: 'Mesaj boş olamaz.' }), {
+      return new Response(JSON.stringify({ reply: "Lütfen bir soru veya ölçü yazın efendim." }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { "Content-Type": "application/json" }
       });
     }
 
     const apiKey = env.GEMINI_API_KEY;
     if (!apiKey) {
       return new Response(JSON.stringify({
-        reply: "Merhabalar efendim! Ben Melis. Ölçülerinizi ve talebinizi doğrudan +90 530 507 88 34 numaralı kurumsal WhatsApp hattımıza iletebilirsiniz; teknik ekibimizle birlikte resmi teklifinizi hemen hazırlayalım."
+        reply: "Merhabalar! Ben Melis. Şu anda sunucu bağlantımız güncelleniyor. Projeniz için lütfen WhatsApp hattımızdan (+90 530 507 88 34) bize ulaşın."
       }), {
-        headers: { 'Content-Type': 'application/json' }
+        headers: { "Content-Type": "application/json" }
       });
     }
 
-    const systemInstruction = `Sen Melis'sin. İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN (NXTIONSTAR) firmasının Kıdemli Satış ve Müşteri Danışmanısın.
-Kurumsal, nazik, son derece bilgili ve yardımseversin. Saçma dertleşmelere girmezsin; işine odaklısın.
+    const SYSTEM_PROMPT = `Sen ARLEDSCREEN'in Kıdemli Satış ve Müşteri Danışmanı Melis'sin.
+Merkez: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul.
+WhatsApp: +90 530 507 88 34 · E-posta: arled@arledscreen.com
 
-TEMEL MÜHENDİSLİK KURALLARIN:
-1. 20 m² EŞİK KURALI:
-   - 20 m²'nin altındaki iç mekân/vitrin ekranlarında Huidu (HD) Wi-Fi kartı önerilir (pratik, cep telefonundan Wi-Fi ile anında kontrol).
-   - 20 m² ve üzerindeki dev ekranlarda ve cephe projelerinde tartışmasız NovaStar 4K video işlemci (VX serisi) veya Taurus serisi kurulur.
-2. PİXEL ARALIĞI (P Değeri):
-   - İzleme mesafesi formülü: Minimum mesafe ≈ Her 1 mm için 1 metre (Örn: P2.5 için 2.5m).
-   - İç mekânda P1.25, P1.53, P1.86 (GOB epoksi zırhlı koruma) veya P2.5 önerilir.
-   - Dış mekânda P2.5 - P4 (minimum 6.000 - 8.000 nit gün ışığı parlaklığı, IP65 yalıtım).
-3. GARANTİ:
-   - 2 Yıl Tam Birebir Parça Garantisi + 5 Yıl Ücretsiz Yerinde Teknik Servis.
-   - İstanbul içi ücretsiz yerinde keşif.
-
-Cevaplarını Türkçe, samimi ve profesyonel ver. Yanıtının sonunda müşteriyi ölçüleriyle WhatsApp'tan resmi teklif almaya davet et.`;
+KURALLAR:
+- Kibarlı, kurumsal, kısa ve net cevap ver.
+- 20 m² altı iç mekân/vitrin: Huidu kontrol kartı öner.
+- 20 m² ve üzeri cephe/dev ekran: NovaStar (Taurus veya VX) öner.
+- Piksel aralığı: yaklaşık 1 mm = 1 m minimum izleme mesafesi.
+- Fiyatlar panel başına USD, KDV ve nakliye hariç. Ücretsiz kargo yoktur. Nihai tutar keşif + yazılı teklifle kesinleşir.
+- Garanti ve servis sürelerini kesin söyleme; "yazılı teklifte belirtilir" de.
+- Cevabın sonunda nazikçe WhatsApp'tan keşif/teklif alabileceklerini hatırlat.`;
 
     const contents = [];
-    const recentHistory = history.slice(-6);
-    recentHistory.forEach(item => {
+    (history.slice(-8) || []).forEach(item => {
       contents.push({
-        role: item.sender === 'user' ? 'user' : 'model',
+        role: item.sender === "user" ? "user" : "model",
         parts: [{ text: item.text }]
       });
     });
-
-    contents.push({
-      role: 'user',
-      parts: [{ text: userMessage }]
-    });
+    contents.push({ role: "user", parts: [{ text: userMessage }] });
 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-
     const geminiRes = await fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        contents: contents,
-        systemInstruction: {
-          parts: [{ text: systemInstruction }]
-        },
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 500
-        }
+        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents,
+        generationConfig: { temperature: 0.65, maxOutputTokens: 600 }
       })
     });
 
     if (!geminiRes.ok) {
-      throw new Error(`Gemini API hatası: ${geminiRes.status}`);
+      return new Response(JSON.stringify({
+        reply: "Anlık bir yoğunluk oluştu. Lütfen WhatsApp'tan (+90 530 507 88 34) yazın."
+      }), { headers: { "Content-Type": "application/json" } });
     }
 
     const geminiData = await geminiRes.json();
-    const replyText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || "Size en doğru çözümü sunabilmem için projenizin ölçülerini iletebilir misiniz?";
+    const replyText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text
+      || "Projeniz için WhatsApp'tan (+90 530 507 88 34) yazabilirsiniz.";
 
     return new Response(JSON.stringify({ reply: replyText }), {
-      headers: { 'Content-Type': 'application/json' }
+      headers: { "Content-Type": "application/json" }
     });
-
   } catch (err) {
     return new Response(JSON.stringify({
-      reply: "Sizi çok iyi anlıyorum efendim. ARLEDSCREEN güvencesiyle projenize en uygun çözümü sunmak isterim. Ölçülerinizi WhatsApp üzerinden paylaşabilir misiniz?"
-    }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' }
-    });
+      reply: "Bağlantıda gecikme oldu. Lütfen WhatsApp üzerinden (+90 530 507 88 34) yazın."
+    }), { status: 500, headers: { "Content-Type": "application/json" } });
   }
 }
