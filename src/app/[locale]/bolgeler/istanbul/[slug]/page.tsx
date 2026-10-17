@@ -140,32 +140,40 @@ export default async function IstanbulDistrictPage({
         </div>
       </section>
 
-      <Section
-        eyebrow="Tamamlanan projeler"
-        title={`${district.name} projelerimiz`}
-        className="bg-surface/60 prose-seo"
-      >
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
-            <thead>
-              <tr className="border-b border-border text-ink-muted">
-                <th className="py-2 pr-3 font-semibold">Tarih</th>
-                <th className="py-2 pr-3 font-semibold">Proje</th>
-                <th className="py-2 font-semibold">Ölçü / P</th>
-              </tr>
-            </thead>
-            <tbody>
-              {district.projects.map((p) => (
-                <tr key={`${p.date}-${p.label}`} className="border-b border-border/70">
-                  <td className="py-2.5 pr-3 text-ink-soft">{p.date}</td>
-                  <td className="py-2.5 pr-3 font-medium text-ink">{p.label}</td>
-                  <td className="py-2.5 text-ink-soft">{p.detail}</td>
+      {district.projects.length > 0 ? (
+        <Section
+          eyebrow="Tamamlanan projeler"
+          title={`${district.name} projelerimiz`}
+          className="bg-surface/60 prose-seo"
+        >
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
+              <thead>
+                <tr className="border-b border-border text-ink-muted">
+                  <th className="py-2 pr-3 font-semibold">Tarih</th>
+                  <th className="py-2 pr-3 font-semibold">Proje</th>
+                  <th className="py-2 font-semibold">Ölçü / P</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </Section>
+              </thead>
+              <tbody>
+                {district.projects.map((p) => (
+                  <tr key={`${p.date}-${p.label}`} className="border-b border-border/70">
+                    <td className="py-2.5 pr-3 text-ink-soft">{p.date}</td>
+                    <td className="py-2.5 pr-3 font-medium text-ink">{p.label}</td>
+                    <td className="py-2.5 text-ink-soft">{p.detail}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Section>
+      ) : (
+        <Section eyebrow="Keşif" title="Henüz yayımlanmış proje yok" className="bg-surface/60 prose-seo">
+          <p className="text-base leading-relaxed text-ink-soft">
+            Bu bölge için henüz yayımlanmış proje listemiz bulunmuyor. Keşif talebi alıyoruz; ölçü ve konum paylaşıldığında plan hazırlanır.
+          </p>
+        </Section>
+      )}
 
       <Section eyebrow="İlgili" title="Sonraki adımlar" className="prose-seo">
         <ul className="grid gap-3 sm:grid-cols-2">
