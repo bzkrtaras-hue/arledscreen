@@ -111,6 +111,7 @@ function fromModel(m: LedModel): Product {
       highlights: [],
       image: m.image,
       imageAlt: enImageAlt(m.imageAlt),
+      chip: m.chip,
       href: modelPath(m),
       imageGradient: "from-slate-50 via-white to-cyan-50",
     };
