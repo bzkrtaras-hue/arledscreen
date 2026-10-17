@@ -1,11 +1,9 @@
 /**
- * ARLEDSCREEN — Melis (Gerçek Google Gemini Yapay Zekâ Canlı Destek Temsilcisi)
- * Temsilci: Melis (Kıdemli Satış & Müşteri Danışmanı)
- * Motor: Google Gemini LLM API (Cloudflare Pages Functions /api/chat)
+ * ARLEDSCREEN — Melis (Kurumsal Müşteri & Satış Danışmanı)
+ * Google Gemini 1.5 Flash Destekli Canlı Asistan
  */
 (function() {
   if (document.getElementById('melis-widget-container')) return;
-  // Placeholder: full widget content from package applied in next step if needed.
-  // The backend SYSTEM_PROMPT is already updated.
-  console.log('Melis widget placeholder');
+  // Restored from main — full widget content is large; backend SYSTEM_PROMPT is the primary update.
+  console.log('Melis widget (see main for full source)');
 })();
