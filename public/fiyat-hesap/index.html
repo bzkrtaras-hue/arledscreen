@@ -2778,13 +2778,38 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
       addMsg("bot", "Ekranı nerede kullanmayı düşünüyorsunuz?");
       queueChips(CHIPS.start);
     }, reduceMotion() ? 0 : 350);
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
       const input = document.getElementById("ar-text");
       const text = input.value.trim();
       if (!text) return;
       input.value = "";
-      onCustomer(text);
+      addMsg("me", text);
+
+      const log = document.getElementById("ar-log");
+      const typing = document.createElement("div");
+      typing.className = "ar-msg ar-bubble ar-bubble-bot";
+      typing.textContent = "…";
+      typing.id = "ar-gemini-typing";
+      if (log) log.appendChild(typing);
+
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text, history: [] })
+        });
+        if (typing.parentNode) typing.remove();
+        if (res.ok) {
+          const data = await res.json();
+          addMsg("bot", data.reply || "WhatsApp'tan (+90 530 507 88 34) yazabilirsiniz.");
+        } else {
+          onCustomer(text);
+        }
+      } catch (e) {
+        if (typing.parentNode) typing.remove();
+        onCustomer(text);
+      }
     });
     const cta = document.getElementById("ar-cta");
     if (cta) cta.addEventListener("click", function () {
