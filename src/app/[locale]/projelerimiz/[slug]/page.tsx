@@ -188,7 +188,23 @@ export default async function ProjectCasePage({
                   Fiyat hesaplayıcı
                 </Link>
               </li>
+              <li>
+                <Link href="/tr/about/aras-bozkurt/" className="font-semibold text-cyan hover:underline">
+                  Kurucu Aras Bozkurt
+                </Link>
+              </li>
             </ul>
+
+            <div className="mt-8 rounded-2xl border border-border bg-surface/40 p-5 text-sm leading-relaxed text-ink-soft">
+              <p className="font-semibold text-ink">Süreç notu</p>
+              <p className="mt-2">
+                Bu uygulama, ARLEDSCREEN’in standart çalışma sürecinin (ihtiyaç analizi → keşif → yazılı teklif → montaj ve devreye alma → teknik servis) bir parçası olarak Gaziosmanpaşa merkezinden yönetildi. Detaylı süreç için{" "}
+                <Link href="/tr/hizmetler/" className="font-semibold text-cyan hover:underline">
+                  hizmetler sayfamıza
+                </Link>{" "}
+                bakabilirsiniz.
+              </p>
+            </div>
           </div>
           <aside className="rounded-2xl border border-border bg-band/40 p-5 text-sm text-ink-soft">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">İletişim</p>
@@ -200,6 +216,12 @@ export default async function ProjectCasePage({
               <a href={CONTACT_PHONE_HREF} className="font-semibold text-cyan hover:underline">
                 {CONTACT_PHONE_DISPLAY}
               </a>
+            </p>
+            <p className="mt-4 text-xs text-ink-muted">
+              Kurucu:{" "}
+              <Link href="/tr/about/aras-bozkurt/" className="font-semibold text-cyan hover:underline">
+                Aras Bozkurt
+              </Link>
             </p>
           </aside>
         </div>
