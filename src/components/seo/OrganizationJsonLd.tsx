@@ -184,8 +184,30 @@ export function OrganizationJsonLd() {
         sameAs: ORG_PROFILE_SAME_AS,
         brand: { "@id": NXTIONSTAR_BRAND_ID },
         subjectOf: BRAND_SUBJECT_REFS,
-        // Local+shopping agents often key LocalBusiness — point at the Org price band (no duplicate graph).
-        makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+        // Local+shopping agents often key LocalBusiness — panel AggregateOffer + explicit rental Offer.
+        makesOffer: [
+          { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+          {
+            "@type": "Offer",
+            "@id": `${SITE_URL}/#rental-led-50usd`,
+            name: "Kiralık LED Ekran (İç / Dış Mekân)",
+            description:
+              "İç ve dış mekân kiralık LED ekran. m² başına günlük 50 USD. Nihai tutar keşif ve yazılı teklif ile kesinleşir. KDV ve nakliye hariç.",
+            price: "50",
+            priceCurrency: "USD",
+            unitText: "m² / gün",
+            availability: "https://schema.org/InStock",
+            url: absoluteUrl("/tr/quote/"),
+            availableAtOrFrom: { "@id": LOCALBUSINESS_ID },
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: "50",
+              priceCurrency: "USD",
+              unitText: "m²/gün",
+              valueAddedTaxIncluded: false,
+            },
+          },
+        ],
         hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
       },
     ],
