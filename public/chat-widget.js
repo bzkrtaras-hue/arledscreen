@@ -1,6 +1,7 @@
 /**
  * ARLEDSCREEN — Melis (Kıdemli Satış Danışmanı)
- * Beyaz tema, gerçek fotoğraf avatarı, mavi butonlar
+ * Beyaz tema, gerçek fotoğraf avatarı (/brand/canli-destek-avatar.webp), mavi butonlar
+ * Güncellendi: 2026-10-18
  */
 (function() {
   if (document.getElementById('melis-widget-container')) return;
