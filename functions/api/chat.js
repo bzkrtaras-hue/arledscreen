@@ -1,6 +1,6 @@
 /**
  * Cloudflare Pages Function: /api/chat
- * Melis Kurumsal Müşteri & Satış Danışmanı - Google Gemini 1.5 Flash
+ * Melis Kurumsal Müşteri & Satış Danışmanı - Google Gemini 3.8 Flash
  */
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -19,9 +19,9 @@ export async function onRequestPost(context) {
 
     const apiKey = env.GEMINI_API_KEY;
     if (!apiKey) {
-      return new Response(JSON.stringify({
+      return new Response(JSON.stringify([
         reply: "Merhabalar efendim! Ben Melis. Ölçülerinizi ve talebinizi doğrudan +90 530 507 88 34 numaralı kurumsal WhatsApp hattımıza iletebilirsiniz; teknik ekibimizle birlikte resmi teklifinizi hemen hazırlayalım."
-      }), {
+      ]), {
         headers: { 'Content-Type': 'application/json' }
       });
     }
@@ -46,23 +46,23 @@ Cevaplarını Türkçe, samimi ve profesyonel ver. Yanıtının sonunda müşter
     const contents = [];
     const recentHistory = history.slice(-6);
     recentHistory.forEach(item => {
-      contents.push({
+      contents.push([
         role: item.sender === 'user' ? 'user' : 'model',
         parts: [{ text: item.text }]
       });
     });
 
-    contents.push({
+    contents.push([
       role: 'user',
       parts: [{ text: userMessage }]
     });
 
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`;
 
     const geminiRes = await fetch(apiUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
+      body: JSON.stringify([
         contents: contents,
         system_instruction: {
           parts: [{ text: systemInstruction }]
@@ -71,7 +71,7 @@ Cevaplarını Türkçe, samimi ve profesyonel ver. Yanıtının sonunda müşter
           temperature: 0.7,
           maxOutputTokens: 500
         }
-      })
+      ])
     });
 
     if (!geminiRes.ok) {
