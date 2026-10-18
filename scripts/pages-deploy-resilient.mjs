@@ -73,6 +73,7 @@ function wranglerDeploy({ skipCaching = false } = {}) {
     "--branch",
     "main",
     "--commit-dirty=true",
+    "--functions=./functions",
   ];
   if (skipCaching) args.push("--skip-caching");
   console.log(`\n→ npx ${args.join(" ")}\n`);
@@ -159,7 +160,7 @@ async function uploadMissingOneByOne() {
   let tok = await cf("GET", `/accounts/${ACCOUNT}/pages/projects/${PROJECT}/upload-token`, {
     token: TOKEN,
   });
-  if (!tok.json.success) throw new Error(`upload-token failed: ${tok.text.slice(0, 300)}`);
+  if (!tok.json.success) throw new Error(`upload-token failed: ${tok.text.slice(0, 300)}\n`);
   let jwt = tok.json.result.jwt;
 
   let miss = await cf("POST", `/pages/assets/check-missing`, {
@@ -176,7 +177,7 @@ async function uploadMissingOneByOne() {
       body: { hashes: fileMap.map((f) => f.hash) },
     });
   }
-  if (!miss.json.success) throw new Error(`check-missing failed: ${miss.text.slice(0, 400)}`);
+  if (!miss.json.success) throw new Error(`check-missing failed: ${miss.text.slice(0, 400)}\n`);
 
   const missing = miss.json.result || [];
   const byHash = new Map();
@@ -233,8 +234,7 @@ async function uploadMissingOneByOne() {
     token: jwt,
     body: { hashes: fileMap.map((f) => f.hash) },
   });
-  console.log(`Manual upload complete (${uploaded} files). Re-run wrangler for Functions + deployment.`);
-}
+  console.log(`Manual upload complete (${uploaded} files). Re-run wrangler for Functions + deployment.`)}
 
 function softIndexNow() {
   // Soft: never fail deploy on IndexNow. Helps Bing/participating engines re-crawl invent surfaces.
