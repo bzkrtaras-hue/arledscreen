@@ -1,48 +1,18 @@
 /**
- * ARLEDSCREEN — Melis (Kurumsal Müşteri & Satış Danışmanı)
- * Google Gemini Destekli Canlı Asistan
+ * ARLEDSCREEN — Melis (Kıdemli Satış Danışmanı)
+ * Beyaz tema, kulaklıklı gerçek fotoğraf, mavi butonlar
  */
 (function() {
   if (document.getElementById('melis-widget-container')) return;
 
-  const AVATAR_SVG = "data:image/jpeg;base64,<long_seq>";
-  const MEMORY_KEY = 'arled_melis_chat_memory_v1';
+  const AVATAR = "data:image/jpeg;base64,<long_seq>";
+  const MEMORY_KEY = 'arled_melis_chat_memory_v2';
 
   function getHistory() {
     try { return JSON.parse(localStorage.getItem(MEMORY_KEY)) || []; } catch(e) { return []; }
   }
   function saveHistory(hist) {
     try { localStorage.setItem(MEMORY_KEY, JSON.stringify(hist)); } catch(e) {}
-  }
-
-  function playIPhoneNotificationSound() {
-    try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
-      if (ctx.state === 'suspended') ctx.resume();
-
-      const now = ctx.currentTime;
-      const tones = [
-        { freq: 1046.50, start: 0.00, dur: 0.22 },
-        { freq: 1318.51, start: 0.10, dur: 0.24 },
-        { freq: 2093.00, start: 0.22, dur: 0.55 }
-      ];
-
-      tones.forEach(t => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(t.freq, now + t.start);
-        gain.gain.setValueAtTime(0.001, now + t.start);
-        gain.gain.exponentialRampToValueAtTime(0.28, now + t.start + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + t.start + t.dur);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now + t.start);
-        osc.stop(now + t.start + t.dur);
-      });
-    } catch(e) {}
   }
 
   function formatMarkdown(text) {
@@ -63,93 +33,67 @@
       z-index: 99999999;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
     }
-    #melis-notification-bubble {
-      position: absolute; bottom: 78px; right: 0; width: 320px; max-width: calc(100vw - 40px);
-      background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(16px);
-      border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 16px; padding: 12px 14px;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65); display: flex; gap: 12px; cursor: pointer;
-      transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    #melis-notification-bubble.show { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
-    .melis-bubble-avatar { width: 46px; height: 46px; border-radius: 50%; border: 2px solid #38BDF8; background: #1E293B; }
-    .melis-bubble-content { flex: 1; min-width: 0; }
-    .melis-bubble-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px; }
-    .melis-bubble-title { font-size: 13.5px; font-weight: 700; color: #F8FAFC; }
-    .melis-bubble-time { font-size: 11px; color: #94A3B8; }
-    .melis-bubble-text { font-size: 12.5px; color: #CBD5E1; line-height: 1.45; }
-    .melis-bubble-close { position: absolute; top: 6px; right: 8px; background: transparent; border: none; color: #64748B; font-size: 18px; cursor: pointer; }
     #melis-chat-trigger {
-      width: 68px; height: 68px; border-radius: 50%;
-      background: linear-gradient(135deg, #1E5BB8 0%, #0A192F 100%);
-      box-shadow: 0 10px 32px rgba(30, 91, 184, 0.65); display: flex; align-items: center; justify-content: center;
-      cursor: pointer; border: 2.5px solid #38BDF8; position: relative;
+      width: 64px; height: 64px; border-radius: 50%;
+      background: #1E5BB8;
+      box-shadow: 0 8px 24px rgba(30, 91, 184, 0.4);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; border: 3px solid #FFFFFF; position: relative;
     }
-    .melis-trigger-avatar { width: 58px; height: 58px; border-radius: 50%; }
-    .melis-online-ping { position: absolute; top: 2px; right: 2px; width: 16px; height: 16px; background: #10B981; border: 2.5px solid #0F172A; border-radius: 50%; }
-    .melis-unread-counter { position: absolute; top: -3px; left: -3px; background: #EF4444; color: #FFF; font-size: 11px; font-weight: 800; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #0F172A; }
+    .melis-trigger-avatar { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; }
+    .melis-online-ping { position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; background: #10B981; border: 2px solid #FFFFFF; border-radius: 50%; }
     #melis-chat-window {
       position: fixed; bottom: max(96px, calc(env(safe-area-inset-bottom, 20px) + 76px)); right: max(20px, env(safe-area-inset-right, 20px));
-      width: 415px; max-width: calc(100vw - 32px); height: 640px; max-height: calc(100vh - 120px);
-      background: #0F172A; border: 1px solid #334155; border-radius: 22px; box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85);
+      width: 400px; max-width: calc(100vw - 32px); height: 620px; max-height: calc(100vh - 120px);
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
       display: none; flex-direction: column; overflow: hidden; z-index: 99999999;
     }
     @media (max-width: 600px) {
       #melis-chat-window { bottom: 0 !important; right: 0 !important; left: 0 !important; width: 100vw !important; max-width: 100vw !important; height: 100dvh !important; max-height: 100dvh !important; border-radius: 0 !important; }
     }
-    .melis-chat-header { background: #1E293B; padding: 14px 18px; border-bottom: 1px solid #334155; display: flex; align-items: center; justify-content: space-between; }
-    .melis-header-info { display: flex; align-items: center; gap: 12px; }
-    .melis-header-avatar { width: 48px; height: 48px; border-radius: 50%; border: 2px solid #38BDF8; }
-    .melis-name { font-size: 15.5px; font-weight: 700; color: #F8FAFC; }
-    .melis-role { font-size: 11px; color: #94A3B8; }
-    .melis-status-badge { font-size: 10.5px; color: #10B981; font-weight: 600; }
-    .melis-header-btns { display: flex; align-items: center; gap: 8px; }
-    .melis-btn-icon { background: transparent; border: none; color: #94A3B8; cursor: pointer; font-size: 18px; padding: 6px; }
-    .melis-chat-body { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #080D1A; }
-    .melis-msg { max-width: 88%; padding: 13px 16px; border-radius: 16px; font-size: 13.5px; line-height: 1.6; word-break: break-word; }
-    .melis-bot-msg { background: #1E293B; color: #E2E8F0; border-bottom-left-radius: 4px; border: 1px solid #334155; align-self: flex-start; }
+    .melis-chat-header { background: #FFFFFF; padding: 14px 16px; border-bottom: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between; }
+    .melis-header-info { display: flex; align-items: center; gap: 10px; }
+    .melis-header-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+    .melis-name { font-size: 15px; font-weight: 700; color: #0F172A; }
+    .melis-role { font-size: 12px; color: #64748B; }
+    .melis-status-badge { font-size: 11px; color: #10B981; font-weight: 600; }
+    .melis-header-btns { display: flex; align-items: center; gap: 6px; }
+    .melis-btn-icon { background: transparent; border: none; color: #64748B; cursor: pointer; font-size: 18px; padding: 6px; }
+    .melis-chat-body { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #F8FAFC; }
+    .melis-msg { max-width: 86%; padding: 12px 14px; border-radius: 14px; font-size: 14px; line-height: 1.55; word-break: break-word; }
+    .melis-bot-msg { background: #FFFFFF; color: #0F172A; border-bottom-left-radius: 4px; border: 1px solid #E2E8F0; align-self: flex-start; }
     .melis-user-msg { background: #1E5BB8; color: #FFFFFF; border-bottom-right-radius: 4px; align-self: flex-end; }
-    .melis-typing-wrap { display: flex; align-items: center; gap: 4px; padding: 10px 14px; background: #1E293B; border-radius: 12px; border: 1px solid #334155; }
+    .melis-typing-wrap { display: flex; align-items: center; gap: 4px; padding: 10px 12px; background: #FFFFFF; border-radius: 12px; border: 1px solid #E2E8F0; }
     .melis-typing-dot { width: 6px; height: 6px; background: #94A3B8; border-radius: 50%; animation: melisBnc 1.4s infinite ease-in-out both; }
     @keyframes melisBnc { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-    .melis-chips-container { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
-    .melis-chip { background: #111A2E; color: #38BDF8; border: 1px solid #1E2E4A; border-radius: 10px; padding: 10px 13px; font-size: 12.5px; text-align: left; cursor: pointer; }
-    .melis-action-card { margin-top: 8px; padding: 10px 12px; background: #0F172A; border-radius: 10px; border: 1px solid #22324E; }
-    .melis-cta-whatsapp { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #16A34A; color: #FFFFFF !important; text-decoration: none; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 700; }
-    .melis-chat-footer { padding: 12px 14px; background: #1E293B; border-top: 1px solid #334155; display: flex; gap: 8px; align-items: center; }
-    .melis-input { flex: 1; background: #080D1A; border: 1px solid #334155; border-radius: 10px; padding: 12px 14px; color: #F8FAFC; font-size: 16px !important; outline: none; }
+    .melis-chips-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .melis-chip { background: #FFFFFF; color: #1E5BB8; border: 1px solid #CBD5E1; border-radius: 20px; padding: 8px 14px; font-size: 13px; cursor: pointer; }
+    .melis-chip:hover { background: #EFF6FF; }
+    .melis-action-card { margin-top: 8px; }
+    .melis-cta-whatsapp { display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #1E5BB8; color: #FFFFFF !important; text-decoration: none; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 700; }
+    .melis-chat-footer { padding: 12px 14px; background: #FFFFFF; border-top: 1px solid #E2E8F0; display: flex; gap: 8px; align-items: center; }
+    .melis-input { flex: 1; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px 14px; color: #0F172A; font-size: 16px !important; outline: none; }
     .melis-send-btn { background: #1E5BB8; border: none; border-radius: 10px; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-    .melis-send-btn svg { width: 19px; height: 19px; fill: #FFFFFF; }
+    .melis-send-btn svg { width: 18px; height: 18px; fill: #FFFFFF; }
   `;
   document.head.appendChild(style);
 
-  const container = document.createElement('div);
+  const container = document.createElement('div');
   container.id = 'melis-widget-container';
   container.innerHTML = `
-    <div id="melis-notification-bubble" onclick="melisOpenAndReadNotification()">
-      <img class="melis-bubble-avatar" src="${AVATAR_SVG}" alt="Melis">
-      <div class="melis-bubble-content">
-        <div class="melis-bubble-header">
-          <span class="melis-bubble-title">Melis (ARLEDSCREEN)</span>
-          <span class="melis-bubble-time">Şimdi</span>
-        </div>
-        <div class="melis-bubble-text">👋 Merhabalar! Projeniz için en doğru LED ekran modelini ve maliyetini birlikte hesaplayalım mı?</div>
-      </div>
-      <button class="melis-bubble-close" onclick="melisDismissBubble(event)">&times;</button>
-    </div>
     <div id="melis-chat-trigger" onclick="melisToggleChat()">
-      <img class="melis-trigger-avatar" src="${AVATAR_SVG}" alt="Melis">
+      <img class="melis-trigger-avatar" src="${AVATAR}" alt="Melis">
       <div class="melis-online-ping"></div>
-      <div id="melisUnreadBadge" class="melis-unread-counter">1</div>
     </div>
     <div id="melis-chat-window">
       <div class="melis-chat-header">
         <div class="melis-header-info">
-          <img class="melis-header-avatar" src="${AVATAR_SVG}" alt="Melis">
+          <img class="melis-header-avatar" src="${AVATAR}" alt="Melis">
           <div>
-            <div class="melis-name">Melis</div>
-            <div class="melis-role">Kıdemli Müşteri & Satış Danışmanı</div>
-            <div class="melis-status-badge">● Çevrim İçi · Gaziosmanpaşa Merkez</div>
+            <div class="melis-name">Melis • Canlı Destek</div>
+            <div class="melis-role">Kıdemli Satış Danışmanı</div>
+            <div class="melis-status-badge">● Çevrim İçi</div>
           </div>
         </div>
         <div class="melis-header-btns">
@@ -159,7 +103,7 @@
       </div>
       <div class="melis-chat-body" id="melisChatBody"></div>
       <div class="melis-chat-footer">
-        <input type="text" id="melisUserInput" class="melis-input" placeholder="Melis'e bir soru veya ölçü yazın..." onkeypress="melisHandleKey(event)">
+        <input type="text" id="melisUserInput" class="melis-input" placeholder="Örn. kafe vitrini 3x2 m iç mekân" onkeypress="melisHandleKey(event)">
         <button class="melis-send-btn" onclick="melisSendMessage()">
           <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
         </button>
@@ -169,28 +113,30 @@
   document.body.appendChild(container);
 
   function renderHistory() {
-    const chatBody = document.getElementById('melisChatBody);
+    const chatBody = document.getElementById('melisChatBody');
     if (!chatBody) return;
     chatBody.innerHTML = '';
     const hist = getHistory();
     if (hist.length > 0) {
       hist.forEach(m => {
-        const div = document.createElement('div);
+        const div = document.createElement('div');
         div.className = m.sender === 'user' ? 'melis-msg melis-user-msg' : 'melis-msg melis-bot-msg';
         div.innerHTML = m.html;
         chatBody.appendChild(div);
       });
     } else {
-      const welcome = document.createElement('div);
+      const welcome = document.createElement('div');
       welcome.className = 'melis-msg melis-bot-msg';
       welcome.innerHTML = `
-        Merhabalar! Ben <strong>Melis</strong>, ARLEDSCREEN Müşteri ve Satış Danışmanıyım.
+        Merhabalar! Ben <strong>Melis</strong>, ARLEDSCREEN Kıdemli Satış Danışmanıyım.
         <br><br>
         Mağazanız, vitrininiz ya da bina cepheniz için aklınızdaki her türlü soruyu bana sorabilirsiniz. Size en doğru piksel aralığını (P değeri), kontrol altyapısını ve atölye maliyetini anında hesaplayabilirim.
         <div class="melis-chips-container">
-          <button class="melis-chip" onclick="melisSendPredefined('Mağaza vitrinim için 3x2 metre ekran maliyeti ve piksel önerisi alabilir miyim?')">🏬 Vitrin Ekranı Ölçü & Fiyat Hesabı</button>
-          <button class="melis-chip" onclick="melisSendPredefined('Dış mekân bina cephesi projemiz var, teknik keşif ve NovaStar kontrol kartı için bilgi alabilir miyim?')">🏢 Bina Cephesi & NovaStar Kontrol Sistemi</button>
-          <button class="melis-chip" onclick="melisSendPredefined('20 metrekare altı ve üstü ekranlarda kontrol kartı seçim kuralınız nedir?')">⚡ 20 m² Huidu vs NovaStar Kuralı Nedir?</button>
+          <button class="melis-chip" onclick="melisSendPredefined('İç mekân')">İç mekân</button>
+          <button class="melis-chip" onclick="melisSendPredefined('Dış mekân')">Dış mekân</button>
+          <button class="melis-chip" onclick="melisSendPredefined('Kafe / restoran')">Kafe / restoran</button>
+          <button class="melis-chip" onclick="melisSendPredefined('Mağaza vitrini')">Mağaza vitrini</button>
+          <button class="melis-chip" onclick="melisSendPredefined('200x120 cm')">200x120 cm</button>
         </div>
       `;
       chatBody.appendChild(welcome);
@@ -199,36 +145,10 @@
   }
   renderHistory();
 
-  setTimeout(() => {
-    const bubble = document.getElementById('melis-notification-bubble);
-    if (bubble && !bubble.classList.contains('dismissed')) {
-      playIPhoneNotificationSound();
-      bubble.classList.add('show);
-    }
-  }, 2200);
-
-  window.melisOpenAndReadNotification = function() {
-    const bubble = document.getElementById('melis-notification-bubble);
-    if (bubble) bubble.classList.remove('show);
-    const badge = document.getElementById('melisUnreadBadge);
-    if (badge) badge.style.display = 'none';
-    melisToggleChat();
-  };
-
-  window.melisDismissBubble = function(e) {
-    e.stopPropagation();
-    const bubble = document.getElementById('melis-notification-bubble);
-    if (bubble) { bubble.classList.remove('show'); bubble.classList.add('dismissed'); }
-  };
-
   window.melisToggleChat = function() {
-    const win = document.getElementById('melis-chat-window);
+    const win = document.getElementById('melis-chat-window');
     win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
     if (win.style.display === 'flex') {
-      const badge = document.getElementById('melisUnreadBadge);
-      if (badge) badge.style.display = 'none';
-      const bubble = document.getElementById('melis-notification-bubble);
-      if (bubble) bubble.classList.remove('show);
       document.getElementById('melisUserInput').focus();
       document.getElementById('melisChatBody').scrollTop = document.getElementById('melisChatBody').scrollHeight;
     }
@@ -248,14 +168,14 @@
   };
 
   window.melisSendMessage = async function() {
-    const input = document.getElementById('melisUserInput);
+    const input = document.getElementById('melisUserInput');
     const userText = input.value.trim();
     if (!userText) return;
 
-    const chatBody = document.getElementById('melisChatBody);
+    const chatBody = document.getElementById('melisChatBody');
     const hist = getHistory();
 
-    const userDiv = document.createElement('div);
+    const userDiv = document.createElement('div');
     userDiv.className = 'melis-msg melis-user-msg';
     userDiv.textContent = userText;
     chatBody.appendChild(userDiv);
@@ -265,7 +185,7 @@
     hist.push({ sender: 'user', text: userText, html: formatMarkdown(userText) });
     saveHistory(hist);
 
-    const typingDiv = document.createElement('div);
+    const typingDiv = document.createElement('div');
     typingDiv.className = 'melis-typing-wrap';
     typingDiv.id = 'melisTypingIndicator';
     typingDiv.innerHTML = '<span class="melis-typing-dot"></span><span class="melis-typing-dot"></span><span class="melis-typing-dot"></span>';
@@ -277,10 +197,10 @@
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify([
+        body: JSON.stringify({
           message: userText,
           history: hist.slice(-8).map(h => ({ sender: h.sender, text: h.text }))
-        ])
+        })
       });
       if (res.ok) {
         const data = await res.json();
@@ -292,7 +212,7 @@
       replyText = "Talebinizi aldım efendim. Doğrudan WhatsApp hattımızdan (+90 530 507 88 34) bana ulaşabilir, ölçülerinize özel resmi teknik föy ve teklifimizi anında edinebilirsiniz.";
     }
 
-    const indicator = document.getElementById('melisTypingIndicator);
+    const indicator = document.getElementById('melisTypingIndicator');
     if (indicator) indicator.remove();
 
     let formattedHtml = formatMarkdown(replyText);
@@ -304,7 +224,7 @@
       </div>
     `;
 
-    const botDiv = document.createElement('div);
+    const botDiv = document.createElement('div');
     botDiv.className = 'melis-msg melis-bot-msg';
     botDiv.innerHTML = formattedHtml;
     chatBody.appendChild(botDiv);
