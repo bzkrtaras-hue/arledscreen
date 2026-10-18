@@ -64,7 +64,7 @@ function getSmartFallbackResponse(userText) {
   const t = userText.toLowerCase().trim();
 
   if (t.includes("naber") || t.includes("ne haber") || t.includes("nasılsın") || t.includes("nasilsin")) {
-    return "İyiyim efendim, çok teşekkür ederim! Siz nasılsınız? Umarım gününüz harika geçiyordur. ARLEDSCREEN olarak mağaza vitrinleri ve bina cepheleri için anahtar teslim LED ekran projeleri üretiyoruz. Aklınızda düşündünüz bir proje veya ölçü var mı?";
+    return "İyiyim efendim, çok teşekkür ederim! Siz nasılsınız? Umarım gününüz harika geçiyordur. ARLEDSCREEN olarak mağaza vitrinleri ve bina cepheleri için anahtar teslim LED ekran projeleri üretiyoruz. Aklınızda düşündüğünüz bir proje veya ölçü var mı?";
   }
   if (t.includes("merhaba") || t.includes("selam") || t.includes("günaydın") || t.includes("gunaydin") || t.includes("iyi günler") || t.includes("iyi aksamlar") || t.includes("iyi akşamlar")) {
     return "Merhabalar efendim! Hoş geldiniz. Ben Melis, ARLEDSCREEN Satış Danışmanıyım. Mağazanız, vitrininiz ya da bina cepheniz için en doğru piksel aralığını ve net atölye maliyetini birlikte hesaplayabiliriz. Nasıl bir ekran düşünüyorsunuz?";
@@ -73,7 +73,7 @@ function getSmartFallbackResponse(userText) {
     return "Aras Bozkurt, ARLEDSCREEN'in kurucusu ve baş proje direktörümüzdür efendim. Kendisi mühendislik ekibimizle birlikte Manisa Büyükşehir Belediyesi'nden Alanya'daki lüks otellere kadar dev LED ekran projelerimizin teknik hesaplarını ve saha yönetimini bizzat yürütmektedir.";
   }
   if (t.includes("firma") || t.includes("şirket") || t.includes("sirket") || t.includes("nerede") || t.includes("kimsiniz")) {
-    return "ARLEDSCREEN (NXTIONSTAR LED Ekran Teknoloji Merkezi) olarak İstanbul Gaziosmanpaşa merkezli bir kurumsal mühendislik firmasıyız efendim. Türkiye geneline ve yurt dışına 2 Yıl Tam Garanti ve 5 Yıl Ücretsiz Yerinde Teknik Servis güvencesiyle iç ve dış mekân LED ekran satışı, montajı ve keşfi sağlıyoruz.";
+    return "ARLEDSCREEN (NXTIONSTAR LED Ekran Teknoloji Merkezi) olarak İstanbul Gaziosmanpaşa merkezli bir kurumsal mühendislik firmasıyız efendim. Türkiye geneline ve yurt dışına 2 Yıl Tam Garanti ve 5 Yıl Ücretsiz Yerinde Teknik Servis güvencesiyle iç ve dış mekân LED ekran satışı, montajı ve keşfi sağlıyoruz";
   }
   if (t.includes("20") || t.includes("huidu") || t.includes("novastar") || t.includes("kart") || t.includes("islemci") || t.includes("işlemci")) {
     return "Kontrol kartlarında mühendislik kuralımız son derece nettir efendim:\n\n• 20 m² altındaki vitrin ve mağaza ekranlarında: Pratik Huidu Wi-Fi kartı kurulur; telefonunuzdan kampanya ve videolarınızı saniyeler içinde güncelleyebilirsiniz.\n• 20 m² ve üzerindeki dev ekranlarda: Milyonlarca piksel yükü ve sıfır gecikme için tartışmasız NovaStar video işlemci kullanılır.\n\nDüşündüğünüz ekran yaklaşık kaç metrekare?";
@@ -180,7 +180,7 @@ export async function onRequestPost(context) {
       }
     });
 
-    contents.push({
+    contents.push([
       role: "user",
       parts: [{ text: userMessage }]
     });
@@ -192,7 +192,7 @@ export async function onRequestPost(context) {
       contents: contents,
       generationConfig: {
         temperature: 0.65,
-        maxOutputTokens: 600
+        maxOutputTokens: 1200
       }
     };
 
@@ -246,7 +246,7 @@ export async function onRequestPost(context) {
 
   } catch (err) {
     console.error("Genel chat hatası:", err);
-    return jsonResponse({
+    return jsonResponse([
       reply: "Talebinizi aldım efendim. Doğrudan WhatsApp hattımızdan (+90 530 507 88 34) bana ulaşabilir, ölçülerinize özel resmi teknik föy ve teklifimizi anında edinebilirsiniz."
     });
   }
