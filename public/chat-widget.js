@@ -1,11 +1,11 @@
 /**
  * ARLEDSCREEN — Melis (Kurumsal Müşteri & Satış Danışmanı)
- * Google Gemini 1.5 Flash Destekli Canlı Asistan
+ * Google Gemini Destekli Canlı Asistan
  */
 (function() {
   if (document.getElementById('melis-widget-container')) return;
 
-  const AVATAR_SVG = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='bgGrad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%231E5BB8'/><stop offset='100%' stop-color='%230A192F'/></linearGradient><linearGradient id='hairGrad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%233E2723'/><stop offset='100%' stop-color='%231A0C08'/></linearGradient></defs><circle cx='50' cy='50' r='50' fill='url(%23bgGrad)'/><path d='M25 88 C25 68 40 64 50 64 C60 64 75 68 75 88 Z' fill='%2338BDF8'/><path d='M35 92 C35 76 43 71 50 71 C57 71 65 76 65 92 Z' fill='%23FFFFFF'/><path d='M32 38 C32 20 68 20 68 38 C68 54 62 60 50 60 C38 60 32 54 32 38 Z' fill='url(%23hairGrad)'/><circle cx='50' cy='43' r='16' fill='%23FDDEC0'/><path d='M36 34 C36 24 64 24 64 34 C64 30 58 26 50 26 C42 26 36 30 36 34 Z' fill='%23271406'/><circle cx='45' cy='42' r='2' fill='%231E293B'/><circle cx='55' cy='42' r='2' fill='%231E293B'/><path d='M47 48 Q50 51 53 48' stroke='%23E11D48' stroke-width='1.8' stroke-linecap='round' fill='none'/><path d='M65 42 C67 42 68 44 68 47 L65 52 L61 50 Z' fill='%2394A3B8'/><path d='M66 45 C66 48 57 56 50 56' stroke='%2394A3B8' stroke-width='1.5' stroke-linecap='round' fill='none'/><circle cx='50' cy='56' r='2' fill='%2338BDF8'/></svg>";
+  const AVATAR_SVG = "data:image/jpeg;base64,<long_seq>";
   const MEMORY_KEY = 'arled_melis_chat_memory_v1';
 
   function getHistory() {
@@ -47,7 +47,7 @@
 
   function formatMarkdown(text) {
     if (!text) return "";
-    let html = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    let html = text.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">");
     html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
     html = html.replace(/\n/g, '<br>');
@@ -123,7 +123,7 @@
   `;
   document.head.appendChild(style);
 
-  const container = document.createElement('div');
+  const container = document.createElement('div);
   container.id = 'melis-widget-container';
   container.innerHTML = `
     <div id="melis-notification-bubble" onclick="melisOpenAndReadNotification()">
@@ -148,7 +148,7 @@
           <img class="melis-header-avatar" src="${AVATAR_SVG}" alt="Melis">
           <div>
             <div class="melis-name">Melis</div>
-            <div class="melis-role">Kıdemli Müşteri &amp; Satış Danışmanı</div>
+            <div class="melis-role">Kıdemli Müşteri & Satış Danışmanı</div>
             <div class="melis-status-badge">● Çevrim İçi · Gaziosmanpaşa Merkez</div>
           </div>
         </div>
@@ -169,27 +169,27 @@
   document.body.appendChild(container);
 
   function renderHistory() {
-    const chatBody = document.getElementById('melisChatBody');
+    const chatBody = document.getElementById('melisChatBody);
     if (!chatBody) return;
     chatBody.innerHTML = '';
     const hist = getHistory();
     if (hist.length > 0) {
       hist.forEach(m => {
-        const div = document.createElement('div');
+        const div = document.createElement('div);
         div.className = m.sender === 'user' ? 'melis-msg melis-user-msg' : 'melis-msg melis-bot-msg';
         div.innerHTML = m.html;
         chatBody.appendChild(div);
       });
     } else {
-      const welcome = document.createElement('div');
+      const welcome = document.createElement('div);
       welcome.className = 'melis-msg melis-bot-msg';
       welcome.innerHTML = `
         Merhabalar! Ben <strong>Melis</strong>, ARLEDSCREEN Müşteri ve Satış Danışmanıyım.
         <br><br>
         Mağazanız, vitrininiz ya da bina cepheniz için aklınızdaki her türlü soruyu bana sorabilirsiniz. Size en doğru piksel aralığını (P değeri), kontrol altyapısını ve atölye maliyetini anında hesaplayabilirim.
         <div class="melis-chips-container">
-          <button class="melis-chip" onclick="melisSendPredefined('Mağaza vitrinim için 3x2 metre ekran maliyeti ve piksel önerisi alabilir miyim?')">🏬 Vitrin Ekranı Ölçü &amp; Fiyat Hesabı</button>
-          <button class="melis-chip" onclick="melisSendPredefined('Dış mekân bina cephesi projemiz var, teknik keşif ve NovaStar kontrol kartı için bilgi alabilir miyim?')">🏢 Bina Cephesi &amp; NovaStar Kontrol Sistemi</button>
+          <button class="melis-chip" onclick="melisSendPredefined('Mağaza vitrinim için 3x2 metre ekran maliyeti ve piksel önerisi alabilir miyim?')">🏬 Vitrin Ekranı Ölçü & Fiyat Hesabı</button>
+          <button class="melis-chip" onclick="melisSendPredefined('Dış mekân bina cephesi projemiz var, teknik keşif ve NovaStar kontrol kartı için bilgi alabilir miyim?')">🏢 Bina Cephesi & NovaStar Kontrol Sistemi</button>
           <button class="melis-chip" onclick="melisSendPredefined('20 metrekare altı ve üstü ekranlarda kontrol kartı seçim kuralınız nedir?')">⚡ 20 m² Huidu vs NovaStar Kuralı Nedir?</button>
         </div>
       `;
@@ -200,35 +200,35 @@
   renderHistory();
 
   setTimeout(() => {
-    const bubble = document.getElementById('melis-notification-bubble');
+    const bubble = document.getElementById('melis-notification-bubble);
     if (bubble && !bubble.classList.contains('dismissed')) {
       playIPhoneNotificationSound();
-      bubble.classList.add('show');
+      bubble.classList.add('show);
     }
   }, 2200);
 
   window.melisOpenAndReadNotification = function() {
-    const bubble = document.getElementById('melis-notification-bubble');
-    if (bubble) bubble.classList.remove('show');
-    const badge = document.getElementById('melisUnreadBadge');
+    const bubble = document.getElementById('melis-notification-bubble);
+    if (bubble) bubble.classList.remove('show);
+    const badge = document.getElementById('melisUnreadBadge);
     if (badge) badge.style.display = 'none';
     melisToggleChat();
   };
 
   window.melisDismissBubble = function(e) {
     e.stopPropagation();
-    const bubble = document.getElementById('melis-notification-bubble');
+    const bubble = document.getElementById('melis-notification-bubble);
     if (bubble) { bubble.classList.remove('show'); bubble.classList.add('dismissed'); }
   };
 
   window.melisToggleChat = function() {
-    const win = document.getElementById('melis-chat-window');
+    const win = document.getElementById('melis-chat-window);
     win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
     if (win.style.display === 'flex') {
-      const badge = document.getElementById('melisUnreadBadge');
+      const badge = document.getElementById('melisUnreadBadge);
       if (badge) badge.style.display = 'none';
-      const bubble = document.getElementById('melis-notification-bubble');
-      if (bubble) bubble.classList.remove('show');
+      const bubble = document.getElementById('melis-notification-bubble);
+      if (bubble) bubble.classList.remove('show);
       document.getElementById('melisUserInput').focus();
       document.getElementById('melisChatBody').scrollTop = document.getElementById('melisChatBody').scrollHeight;
     }
@@ -248,14 +248,14 @@
   };
 
   window.melisSendMessage = async function() {
-    const input = document.getElementById('melisUserInput');
+    const input = document.getElementById('melisUserInput);
     const userText = input.value.trim();
     if (!userText) return;
 
-    const chatBody = document.getElementById('melisChatBody');
+    const chatBody = document.getElementById('melisChatBody);
     const hist = getHistory();
 
-    const userDiv = document.createElement('div');
+    const userDiv = document.createElement('div);
     userDiv.className = 'melis-msg melis-user-msg';
     userDiv.textContent = userText;
     chatBody.appendChild(userDiv);
@@ -265,7 +265,7 @@
     hist.push({ sender: 'user', text: userText, html: formatMarkdown(userText) });
     saveHistory(hist);
 
-    const typingDiv = document.createElement('div');
+    const typingDiv = document.createElement('div);
     typingDiv.className = 'melis-typing-wrap';
     typingDiv.id = 'melisTypingIndicator';
     typingDiv.innerHTML = '<span class="melis-typing-dot"></span><span class="melis-typing-dot"></span><span class="melis-typing-dot"></span>';
@@ -277,10 +277,10 @@
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+        body: JSON.stringify([
           message: userText,
           history: hist.slice(-8).map(h => ({ sender: h.sender, text: h.text }))
-        })
+        ])
       });
       if (res.ok) {
         const data = await res.json();
@@ -292,7 +292,7 @@
       replyText = "Talebinizi aldım efendim. Doğrudan WhatsApp hattımızdan (+90 530 507 88 34) bana ulaşabilir, ölçülerinize özel resmi teknik föy ve teklifimizi anında edinebilirsiniz.";
     }
 
-    const indicator = document.getElementById('melisTypingIndicator');
+    const indicator = document.getElementById('melisTypingIndicator);
     if (indicator) indicator.remove();
 
     let formattedHtml = formatMarkdown(replyText);
@@ -304,7 +304,7 @@
       </div>
     `;
 
-    const botDiv = document.createElement('div');
+    const botDiv = document.createElement('div);
     botDiv.className = 'melis-msg melis-bot-msg';
     botDiv.innerHTML = formattedHtml;
     chatBody.appendChild(botDiv);
