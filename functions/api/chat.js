@@ -64,7 +64,7 @@ Cevaplarını Türkçe, samimi ve profesyonel ver. Yanıtının sonunda müşter
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: contents,
-        systemInstruction: {
+        system_instruction: {
           parts: [{ text: systemInstruction }]
         },
         generationConfig: {
@@ -86,9 +86,9 @@ Cevaplarını Türkçe, samimi ve profesyonel ver. Yanıtının sonunda müşter
     });
 
   } catch (err) {
-    return new Response(JSON.stringify({
+    return new Response(JSON.stringify([
       reply: "Sizi çok iyi anlıyorum efendim. ARLEDSCREEN güvencesiyle projenize en uygun çözümü sunmak isterim. Ölçülerinizi WhatsApp üzerinden paylaşabilir misiniz?"
-    }), {
+    ]), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
