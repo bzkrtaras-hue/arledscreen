@@ -1,3 +1,7 @@
+/**
+ * ARLEDSCREEN — Melis Canlı Destek Widget'ı
+ * Orijinal Kurumsal Açık Tema & Gerçek Fotoğraf Entegrasyonu
+ */
 (function() {
   if (document.getElementById('melis-widget-container')) return;
 
@@ -9,11 +13,12 @@
     try { return JSON.parse(localStorage.getItem(MEMORY_KEY)) || []; } catch(e) { return []; }
   }
   function saveHistory(hist) {
-    try { localStorage.setItem(MEMORY_KEY, JSON.stringify(hist)); } catch(e) {} }
+    try { localStorage.setItem(MEMORY_KEY, JSON.stringify(hist)); } catch(e) {}
+  }
 
   function formatMarkdown(text) {
     if (!text) return "";
-    let html = text.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">");
+    let html = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
     html = html.replace(/\n/g, '<br>');
@@ -21,7 +26,7 @@
   }
 
   // 2. Görseldeki Orijinal Açık Tema Stilleri
-  const style = document.createElement('style);
+  const style = document.createElement('style');
   style.textContent = `
     #melis-widget-container {
       position: fixed;
@@ -104,7 +109,7 @@
   document.head.appendChild(style);
 
   // 3. HTML Yapısı
-  const container = document.createElement('div);
+  const container = document.createElement('div');
   container.id = 'melis-widget-container';
   container.innerHTML = `
     <div id="melis-chat-trigger" onclick="melisToggleChat()">
@@ -147,7 +152,7 @@
 
   // 4. Sohbet & API Mantığı (Tamamen Korundu)
   function renderHistory() {
-    const chatBody = document.getElementById('melisChatBody);
+    const chatBody = document.getElementById('melisChatBody');
     if (!chatBody) return;
     chatBody.innerHTML = '';
     const hist = getHistory();
@@ -159,8 +164,8 @@
   }
 
   function appendMessage(sender, text) {
-    const chatBody = document.getElementById('melisChatBody);
-    const row = document.createElement('div);
+    const chatBody = document.getElementById('melisChatBody');
+    const row = document.createElement('div');
     row.className = sender === 'user' ? 'melis-msg-row user' : 'melis-msg-row';
 
     if (sender === 'bot') {
@@ -176,7 +181,7 @@
   }
 
   window.melisToggleChat = function() {
-    const win = document.getElementById('melis-chat-window);
+    const win = document.getElementById('melis-chat-window');
     win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
     if (win.style.display === 'flex') {
       document.getElementById('melisUserInput').focus();
@@ -189,7 +194,7 @@
   };
 
   window.melisSendMessage = async function() {
-    const input = document.getElementById('melisUserInput);
+    const input = document.getElementById('melisUserInput');
     const userText = input.value.trim();
     if (!userText) return;
 
@@ -205,7 +210,10 @@
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userText, history: hist.slice(-8) })
+        body: JSON.stringify({
+          message: userText,
+          history: hist.slice(-8)
+        })
       });
       if (res.ok) {
         const data = await res.json();
