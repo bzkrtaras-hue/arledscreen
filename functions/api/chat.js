@@ -1,7 +1,7 @@
 /**
  * ARLEDSCREEN — Melis (Google Gemini Canlı Yapay Zekâ Destek Motoru)
  * Cloudflare Pages Functions: /api/chat
- * Çoklu Model Desteği (gemini-2.5-flash, gemini-2.0-flash, gemini-3.8-flash) + Akıllı Hata Toleransı
+ * Çoklu Model Desteği + Model arası bekleme + KV cache (fallback spam önleme)
  */
 
 const SYSTEM_PROMPT = `Sen ARLEDSCREEN'in Kıdemli Müşteri ve Satış Danışmanı Melis'sin.
@@ -49,12 +49,22 @@ const GEMINI_MODELS = [
   "gemini-1.5-flash"
 ];
 
+// Model denemeleri arası bekleme (ms) — ücretsiz katman dakikalık limiti korumak için
+const MODEL_RETRY_DELAY_MS = 1200;
+
+// KV cache TTL (saniye) — sık sorulan sorular için
+const CACHE_TTL_SECONDS = 3600;
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // Akıllı Bağlamsal Yanıtlayıcı (API Anahtarı eksik veya kota dolu olduğunda robotlaşmayı önler)
 function getSmartFallbackResponse(userText) {
   const t = userText.toLowerCase().trim();
 
   if (t.includes("naber") || t.includes("ne haber") || t.includes("nasılsın") || t.includes("nasilsin")) {
-    return "İyiyim efendim, çok teşekkür ederim! Siz nasılsınız? Umarım gününüz harika geçiyordur. ARLEDSCREEN olarak mağaza vitrinleri ve bina cepheleri için anahtar teslim LED ekran projeleri üretiyoruz. Aklınızda düşündüğünüz bir proje veya ölçü var mı?";
+    return "İyiyim efendim, çok teşekkür ederim! Siz nasılsınız? Umarım gününüz harika geçiyordur. ARLEDSCREEN olarak mağaza vitrinleri ve bina cepheleri için anahtar teslim LED ekran projeleri üretiyoruz. Aklınızda düşündünüz bir proje veya ölçü var mı?";
   }
   if (t.includes("merhaba") || t.includes("selam") || t.includes("günaydın") || t.includes("gunaydin") || t.includes("iyi günler") || t.includes("iyi aksamlar") || t.includes("iyi akşamlar")) {
     return "Merhabalar efendim! Hoş geldiniz. Ben Melis, ARLEDSCREEN Satış Danışmanıyım. Mağazanız, vitrininiz ya da bina cepheniz için en doğru piksel aralığını ve net atölye maliyetini birlikte hesaplayabiliriz. Nasıl bir ekran düşünüyorsunuz?";
@@ -146,6 +156,20 @@ export async function onRequestPost(context) {
       return jsonResponse({ reply: getSmartFallbackResponse(userMessage) });
     }
 
+    // —— KV Cache: sık sorulan sorular için (MELIS_CACHE binding gerekir) ——
+    const cacheKey = "melis:" + userMessage.toLowerCase().replace(/\s+/g, " ").slice(0, 200);
+    if (env.MELIS_CACHE) {
+      try {
+        const cached = await env.MELIS_CACHE.get(cacheKey, { type: "json" });
+        if (cached && cached.reply) {
+          console.log("KV cache hit:", cacheKey);
+          return jsonResponse({ reply: cached.reply, cached: true });
+        }
+      } catch (cacheErr) {
+        console.warn("KV cache okuma hatası:", cacheErr.message);
+      }
+    }
+
     // Gemini API Sohbet Geçmişi Formatı
     const contents = [];
     conversationHistory.slice(-8).forEach(item => {
@@ -174,8 +198,12 @@ export async function onRequestPost(context) {
 
     let botReply = "";
 
-    // Modelleri sırayla dene (Hangisi aktifse ona bağlanır)
-    for (const model of GEMINI_MODELS) {
+    // Modelleri sırayla dene — araya bekleme koy (ücretsiz katman limiti)
+    for (let i = 0; i < GEMINI_MODELS.length; i++) {
+      const model = GEMINI_MODELS[i];
+      if (i > 0) {
+        await sleep(MODEL_RETRY_DELAY_MS);
+      }
       try {
         const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
         const response = await fetch(geminiUrl, {
@@ -203,6 +231,15 @@ export async function onRequestPost(context) {
     // Tüm modeller başarısız olursa akıllı bağlamsal yanıt üret
     if (!botReply) {
       botReply = getSmartFallbackResponse(userMessage);
+    } else if (env.MELIS_CACHE) {
+      // Başarılı Gemini cevabını KV'ye yaz (TTL: 1 saat)
+      try {
+        await env.MELIS_CACHE.put(cacheKey, JSON.stringify({ reply: botReply }), {
+          expirationTtl: CACHE_TTL_SECONDS
+        });
+      } catch (cacheErr) {
+        console.warn("KV cache yazma hatası:", cacheErr.message);
+      }
     }
 
     return jsonResponse({ reply: botReply });
