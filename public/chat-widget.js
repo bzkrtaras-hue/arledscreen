@@ -1,11 +1,11 @@
 /**
  * ARLEDSCREEN — Melis (Kıdemli Satış Danışmanı)
- * Beyaz tema, kulaklıklı gerçek fotoğraf, mavi butonlar
+ * Beyaz tema, gerçek fotoğraf avatarı, mavi butonlar
  */
 (function() {
   if (document.getElementById('melis-widget-container')) return;
 
-  const AVATAR = "data:image/jpeg;base64,<long_seq>";
+  const AVATAR = "/brand/canli-destek-avatar.webp";
   const MEMORY_KEY = 'arled_melis_chat_memory_v2';
 
   function getHistory() {
