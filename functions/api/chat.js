@@ -202,7 +202,7 @@ export async function onRequestPost(context) {
     const hour = Math.floor(now / 3600000), day = Math.floor(now / 86400000);
     const [h, d] = await Promise.all([bump(kv, `rl:h:${ip}:${hour}`, 3700), bump(kv, `rl:d:${ip}:${day}`, 90000)]);
     if (h > PER_IP_HOUR || d > PER_IP_DAY) {
-      const msg = L === "ar" ? `تم بلوغ حد الرسائل. تواصل معنا عبر واتساب ${WA}.` : L !== "tr" ? `Message limit reached. Please reach us on WhatsApp ${WA}.` : `Mesaj sınırına ulaşıldı. WhatsApp hattımızdan bize ulaşabilirsiniz: ${WA}.`;
+      const msg = L === "ar" ? `تم بلوغ حد الرسائل. تواصل معنا عبر واتساب ${WA}.` : L === "ru" ? `Достигнут лимит сообщений. Свяжитесь с нами в WhatsApp: ${WA}.` : L === "bg" ? `Достигнат е лимитът на съобщенията. Свържете се с нас в WhatsApp: ${WA}.` : L !== "tr" ? `Message limit reached. Please reach us on WhatsApp ${WA}.` : `Mesaj sınırına ulaşıldı. WhatsApp hattımızdan bize ulaşabilirsiniz: ${WA}.`;
       return jsonResponse({ reply: msg, text: msg, note: "rate_limited" }, 429);
     }
 

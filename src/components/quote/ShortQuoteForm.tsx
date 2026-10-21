@@ -22,7 +22,6 @@ interface FormState {
   location: string;
   timeline: string;
   notes: string;
-  consent: boolean;
   /** Optional explicit consent (açık rıza) for transfer abroad — never required. */
   abroadConsent: boolean;
 }
@@ -47,7 +46,6 @@ const I18N: Record<"ar" | "ru", Record<string, string>> = {
     "Please enter your full name.": "يرجى كتابة الاسم الكامل.",
     "Please enter a valid phone number.": "يرجى كتابة رقم هاتف صحيح.",
     "Please enter the project city or district.": "يرجى كتابة مدينة المشروع أو منطقته.",
-    "Please tick the consent box to continue.": "يرجى تحديد خانة الموافقة للمتابعة.",
     "LED display quote request": "طلب عرض سعر لشاشة LED",
     "Your request is ready": "طلبك جاهز",
     "WhatsApp opened in a new tab. Check the message and tap Send to reach us.": "فُتح واتساب في نافذة جديدة. راجع الرسالة ثم اضغط «إرسال» لتصلنا.",
@@ -71,8 +69,7 @@ const I18N: Record<"ar" | "ru", Record<string, string>> = {
     "Select": "اختر",
     "Notes": "ملاحظات",
     "Mount surface, viewing distance, content type, etc.": "سطح التركيب، مسافة المشاهدة، نوع المحتوى…",
-    "I agree that my details are used only to prepare a quote and to contact me.": "أوافق على استخدام بياناتي فقط لإعداد عرض السعر والتواصل معي.",
-    "This form does not store your details on the site. When you tap “Send via WhatsApp”, your request opens as a draft message; you choose whether to send it.": "لا يحفظ هذا النموذج بياناتك على الموقع. عند الضغط على «إرسال عبر واتساب» يُفتح طلبك كرسالة جاهزة، والقرار في إرسالها لك.",
+    "Your details are sent to our team by email solely to prepare your quote. When you tap “Send via WhatsApp”, your request opens as a draft message; you choose whether to send it.": "تُرسَل بياناتك إلى فريقنا عبر البريد الإلكتروني فقط لإعداد عرض السعر. عند الضغط على «إرسال عبر واتساب» يُفتح طلبك كرسالة جاهزة، والقرار في إرسالها لك.",
     "Send via WhatsApp": "إرسال عبر واتساب",
     "Send via email": "إرسال عبر البريد الإلكتروني",
     "(Optional) I give explicit consent to my personal data being transferred to service providers with servers abroad for email and form infrastructure.": "(اختياري) أوافق صراحةً على نقل بياناتي الشخصية إلى مزوّدي خدمات لديهم خوادم خارج تركيا لأغراض البريد الإلكتروني والنموذج.",
@@ -81,7 +78,6 @@ const I18N: Record<"ar" | "ru", Record<string, string>> = {
     "Please enter your full name.": "Пожалуйста, укажите имя и фамилию.",
     "Please enter a valid phone number.": "Пожалуйста, укажите корректный номер телефона.",
     "Please enter the project city or district.": "Пожалуйста, укажите город или район проекта.",
-    "Please tick the consent box to continue.": "Чтобы продолжить, отметьте согласие.",
     "LED display quote request": "Запрос коммерческого предложения на LED-экран",
     "Your request is ready": "Ваш запрос готов",
     "WhatsApp opened in a new tab. Check the message and tap Send to reach us.": "WhatsApp открылся в новой вкладке. Проверьте сообщение и нажмите «Отправить».",
@@ -105,8 +101,7 @@ const I18N: Record<"ar" | "ru", Record<string, string>> = {
     "Select": "Выберите",
     "Notes": "Комментарий",
     "Mount surface, viewing distance, content type, etc.": "Поверхность монтажа, расстояние просмотра, тип контента и т. п.",
-    "I agree that my details are used only to prepare a quote and to contact me.": "Я согласен(на), что мои данные используются только для подготовки предложения и связи со мной.",
-    "This form does not store your details on the site. When you tap “Send via WhatsApp”, your request opens as a draft message; you choose whether to send it.": "Форма не сохраняет ваши данные на сайте. При нажатии «Отправить в WhatsApp» запрос откроется как готовое сообщение — отправляете его вы.",
+    "Your details are sent to our team by email solely to prepare your quote. When you tap “Send via WhatsApp”, your request opens as a draft message; you choose whether to send it.": "Ваши данные передаются нашей команде по электронной почте только для подготовки предложения. При нажатии «Отправить в WhatsApp» запрос откроется как готовое сообщение — отправляете его вы.",
     "Send via WhatsApp": "Отправить в WhatsApp",
     "Send via email": "Отправить по e-mail",
     "(Optional) I give explicit consent to my personal data being transferred to service providers with servers abroad for email and form infrastructure.": "(Необязательно) Я даю явное согласие на передачу моих персональных данных поставщикам услуг с серверами за рубежом для работы почты и формы.",
@@ -198,7 +193,6 @@ export function ShortQuoteForm({
     location: "",
     timeline: "",
     notes: "",
-    consent: false,
     abroadConsent: false,
   });
 
@@ -235,9 +229,6 @@ export function ShortQuoteForm({
     }
     if (f.location.trim().length < 2) {
       e.location = tx("Lütfen projenin şehir veya ilçesini yazın.", "Please enter the project city or district.");
-    }
-    if (!f.consent) {
-      e.consent = tx("Devam etmek için onay kutusunu işaretleyin.", "Please tick the consent box to continue.");
     }
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -500,29 +491,14 @@ export function ShortQuoteForm({
           />
         </div>
         <div className="sm:col-span-2">
-          <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm text-ink-soft">
-            <input
-              type="checkbox"
-              className="mt-1 h-5 w-5 shrink-0 accent-[#1E5BB8]"
-              checked={f.consent}
-              aria-invalid={!!errors.consent}
-              aria-describedby={errors.consent ? `${id}-consent-err` : undefined}
-              onChange={(e) => set("consent", e.target.checked)}
-            />
-            <span>
-              {tx("Bilgilerimin yalnızca teklif hazırlanması ve benimle iletişime geçilmesi amacıyla kullanılmasını kabul ediyorum.", "I agree that my details are used only to prepare a quote and to contact me.")}
-            
-            </span>
-          </label>
-          {err("consent")}
-          <p className="mt-2 text-sm text-ink-soft">
+          <p className="text-sm text-ink-soft">
             {locale === "tr" ? (
               <>
                 Kişisel verilerinizin nasıl işlendiğini{" "}
                 <Link href="/tr/kvkk/" className="font-semibold text-cyan underline underline-offset-2">
                   KVKK Aydınlatma Metni
                 </Link>
-                &apos;nde okuyabilirsiniz.
+                'nde okuyabilirsiniz.
               </>
             ) : (
               <>
@@ -558,7 +534,7 @@ export function ShortQuoteForm({
       </div>
 
       <p id={`${id}-info`} className="mt-5 rounded-xl bg-surface px-4 py-3 text-xs leading-relaxed text-ink-muted">
-        {tx("Bu form bilgilerinizi sitede saklamaz. “WhatsApp ile gönder” dediğinizde talebiniz WhatsApp'ta hazır mesaj olarak açılır; göndermek için onay sizdedir.", "This form does not store your details on the site. When you tap “Send via WhatsApp”, your request opens as a draft message; you choose whether to send it.")}
+        {tx("Bilgileriniz yalnızca teklif hazırlamak için ekibimize e-postayla iletilir. “WhatsApp ile gönder” dediğinizde talebiniz WhatsApp'ta hazır mesaj olarak açılır; göndermek için onay sizdedir.", "Your details are sent to our team by email solely to prepare your quote. When you tap “Send via WhatsApp”, your request opens as a draft message; you choose whether to send it.")}
       </p>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-2">

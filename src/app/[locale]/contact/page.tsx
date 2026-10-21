@@ -40,6 +40,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   if (locale !== "en") notFound();
   return (
     <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+      <span data-form-page hidden />
       <h1 className="font-display text-2xl font-bold text-ink">Contact ARLEDSCREEN</h1>
       <p className="mt-3 text-ink-soft">
         Share your size, location and timeline for a free site survey and a written quote. Email:{" "}
