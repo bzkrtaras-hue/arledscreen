@@ -225,7 +225,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                   {i === 0 || menuGroups[i - 1].family !== g.family ? (
                                     <p
                                       className={cn(
-                                        "px-3 pb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#6b7785]",
+                                        "px-3 pb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#32373C]",
                                         i === 0 ? "pt-1" : "pt-3",
                                       )}
                                     >
@@ -272,11 +272,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                             {group ? (
                               <div className="grid grid-cols-[1fr_200px] gap-5 p-5">
                                 <div className="min-w-0">
-                                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6b7785]">
+                                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#32373C]">
                                     {group.tag}
                                   </p>
-                                  <p className="mt-1 font-display text-lg font-bold text-[#24303c]">{group.name}</p>
-                                  <p className="mt-1.5 text-[13.5px] leading-6 text-[#4b5563]">{group.short}</p>
+                                  <p className="mt-1 font-display text-lg font-bold text-[#32373C]">{group.name}</p>
+                                  <p className="mt-1.5 text-[13.5px] leading-6 text-[#32373C]">{group.short}</p>
                                   {group.pitches.length ? (
                                     <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Modeller">
                                       {group.pitches.map((p) => (
@@ -285,7 +285,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                             href={p.href}
                                             onFocus={() => openDrop("products")}
                                             onBlur={closeDrop}
-                                            className="inline-flex min-h-8 items-center rounded-lg border border-[#d8e2ee] bg-white/70 px-2.5 text-[12px] font-semibold text-[#3d4650] transition hover:border-cyan/40 hover:bg-cyan hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan"
+                                            className="inline-flex min-h-8 items-center rounded-lg border border-[#d8e2ee] bg-white/70 px-2.5 text-[12px] font-semibold text-[#32373C] transition hover:border-cyan/40 hover:bg-cyan hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan"
                                           >
                                             {p.label}
                                           </Link>
@@ -308,7 +308,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                   width={200}
                                   height={240}
                                   loading="lazy"
-                                  className="h-full max-h-[240px] w-full rounded-2xl object-cover shadow-[0_10px_28px_-14px_rgba(15,42,79,0.45)] ring-1 ring-black/5"
+                                  className="h-full max-h-[240px] w-full rounded-2xl object-cover shadow-[0_10px_28px_-14px_rgba(11, 27, 51,0.45)] ring-1 ring-black/5"
                                 />
                               </div>
                             ) : null}

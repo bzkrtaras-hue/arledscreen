@@ -177,7 +177,7 @@ export function ShortQuoteForm({
   const labelCls = "block text-sm font-semibold text-ink";
   const err = (k: keyof FormState) =>
     errors[k] ? (
-      <p id={`${id}-${k}-err`} className="mt-1 text-sm text-[#B42318]" role="alert">
+      <p id={`${id}-${k}-err`} className="mt-1 text-sm text-[#B3261E]" role="alert">
         {errors[k]}
       </p>
     ) : null;
@@ -232,7 +232,7 @@ export function ShortQuoteForm({
         <div>
           <label htmlFor={`${id}-name`} className={labelCls}>
             {en ? "Full name" : "Ad Soyad"}{" "}
-            <span aria-hidden className="text-[#B42318]">
+            <span aria-hidden className="text-[#B3261E]">
               *
             </span>
           </label>
@@ -252,7 +252,7 @@ export function ShortQuoteForm({
         <div>
           <label htmlFor={`${id}-phone`} className={labelCls}>
             {en ? "Phone" : "Telefon"}{" "}
-            <span aria-hidden className="text-[#B42318]">
+            <span aria-hidden className="text-[#B3261E]">
               *
             </span>
           </label>
@@ -358,7 +358,7 @@ export function ShortQuoteForm({
           <div className="col-span-2">
             <label htmlFor={`${id}-loc`} className={labelCls}>
               {en ? "City / district" : "Şehir / ilçe"}{" "}
-              <span aria-hidden className="text-[#B42318]">
+              <span aria-hidden className="text-[#B3261E]">
                 *
               </span>
             </label>
@@ -444,7 +444,7 @@ export function ShortQuoteForm({
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
         <button
           type="submit"
-          className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 bg-[#12813F] px-5 text-base text-white hover:bg-[#0E6B34]"
+          className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 bg-[#0F7A41] px-5 text-base text-white hover:bg-[#0F7A41]"
         >
           <Send className="h-4 w-4" aria-hidden />
           {en ? "Send via WhatsApp" : "WhatsApp ile gönder"}

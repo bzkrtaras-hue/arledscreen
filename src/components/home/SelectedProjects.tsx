@@ -23,7 +23,7 @@ export function SelectedProjects() {
   });
   if (!items.length) return null;
   return (
-    <section aria-labelledby="secilmis-projeler" className="bg-[#0B1B33] text-[#F2F5FA]">
+    <section aria-labelledby="secilmis-projeler" className="bg-[#0B1B33] text-[#F7F9FC]">
       <div className="mx-auto max-w-7xl px-6 pb-16 pt-10 md:py-24">
         <div className="mb-8 flex flex-wrap items-baseline justify-between gap-4 md:mb-10">
           <h2 id="secilmis-projeler" className="font-display text-[clamp(1.6rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] text-white">
@@ -40,7 +40,7 @@ export function SelectedProjects() {
                 href={projectCasePath(c.slug)}
                 className="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
-                <span className="relative block aspect-[4/3] overflow-hidden bg-[#13284A]">
+                <span className="relative block aspect-[4/3] overflow-hidden bg-[#0B1B33]">
                   <OptImage
                     src={image.src}
                     alt={image.alt}
@@ -50,7 +50,7 @@ export function SelectedProjects() {
                   />
                 </span>
                 <span className="mt-4 block text-[1.1rem] font-semibold leading-snug">{c.companyLabel}</span>
-                <span className="mt-1 block text-sm text-[#A9B6CC]">
+                <span className="mt-1 block text-sm text-[#F7F9FC]">
                   {kind} · {c.location}
                 </span>
               </Link>

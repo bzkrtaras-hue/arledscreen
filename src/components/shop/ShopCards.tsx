@@ -16,7 +16,7 @@ const btnGhost =
 function NeutralMedia({ big, small, label }: { big: ReactNode; small: string; label: string }) {
   return (
     <div
-      className="relative flex aspect-[16/10] flex-col items-center justify-center bg-gradient-to-br from-[#0B1B33] via-[#0F2A4F] to-[#1E5BB8]"
+      className="relative flex aspect-[16/10] flex-col items-center justify-center bg-gradient-to-br from-[#0B1B33] via-[#0B1B33] to-[#1E5BB8]"
       role="img"
       aria-label={label}
     >
@@ -51,7 +51,7 @@ export function ShopModuleCard({ item, locale }: { item: ShopModule; locale: Lan
           <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-0.5 text-xs font-semibold text-cyan-700">
             {use}
           </span>
-          <span className="absolute bottom-3 left-3 rounded-lg bg-[#0F2A4F]/85 px-2.5 py-1 font-display text-sm font-bold text-white">
+          <span className="absolute bottom-3 left-3 rounded-lg bg-[#0B1B33]/85 px-2.5 py-1 font-display text-sm font-bold text-white">
             {item.pitch}
           </span>
         </div>

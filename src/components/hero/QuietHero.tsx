@@ -23,7 +23,7 @@ export function QuietHero() {
   return (
     <section
       aria-labelledby="home-h1"
-      className="relative flex min-h-[calc(88vh-5rem)] items-end overflow-hidden bg-[#0B1B33] text-[#F2F5FA] [min-height:calc(88svh-5rem)] md:min-h-[88vh] md:[min-height:88svh]"
+      className="relative flex min-h-[calc(88vh-5rem)] items-end overflow-hidden bg-[#0B1B33] text-[#F7F9FC] [min-height:calc(88svh-5rem)] md:min-h-[88vh] md:[min-height:88svh]"
     >
       <picture>
         <source type="image/avif" srcSet={set("avif")} sizes="100vw" />
@@ -49,13 +49,13 @@ export function QuietHero() {
         <h1 id="home-h1" className="mt-3 max-w-[14ch] font-display text-white text-[clamp(2.25rem,5.2vw,4.25rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
           Mekânınıza yakışan LED ekran.
         </h1>
-        <p id="home-lead" className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-[#C9D3E3] md:text-base">
+        <p id="home-lead" className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-[#F7F9FC] md:text-base">
           Keşiften montaja ve kurulum sonrası teknik servise kadar süreci aynı ekip yürütür. Merkezimiz İstanbul
           Gaziosmanpaşa’dır; satış, montaj ve servis Türkiye genelindedir.
         </p>
         <a
           href={buyHref("tr")}
-          className="mt-7 inline-flex min-h-[52px] min-w-11 items-center justify-center rounded-sm bg-[#1E5BB8] px-7 text-[1.05rem] font-semibold text-white transition-colors hover:bg-[#2A6BD0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-white"
+          className="mt-7 inline-flex min-h-[52px] min-w-11 items-center justify-center rounded-sm bg-[#1E5BB8] px-7 text-[1.05rem] font-semibold text-white transition-colors hover:bg-[#1E5BB8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-white"
         >
           {buyLabel("tr")}
         </a>
