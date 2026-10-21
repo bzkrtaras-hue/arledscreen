@@ -75,7 +75,6 @@
 /urunler/led-modul-yedek-parca-servis/ /tr/hizmetler/ 301
 /urunler /tr/products/ 301
 /urunler/ /tr/products/ 301
-/urunler/* /tr/products/ 301
 /ic-mekan-led-ekranlar /tr/products/ic-mekan-led-ekran/ 301
 /dis-mekan-led-ekranlar /tr/products/dis-mekan-led-ekran/ 301
 /kiralik-led-ekranlar /tr/products/kiralik-led-ekran/ 301
@@ -122,7 +121,6 @@
 /kullanim-kosullari/ /tr/about/ 301
 /blog /tr/blog/ 301
 /blog/ /tr/blog/ 301
-/blog/* /tr/rehber/ 301
 /blogarticle /tr/rehber/ 301
 /blogdetail /tr/rehber/ 301
 /sss /tr/sss/ 301
@@ -193,3 +191,10 @@
 # Keep these 200 rewrites as a secondary static fallback.
 /brand /brand.json 200
 /modules /modules.json 200
+
+# Splat (dynamic) rules MUST stay at the very end of this file.
+# Cloudflare/wrangler treat every rule after the first splat/placeholder as
+# dynamic (limit 100); keeping splats last lets all exact rules count as
+# static (limit 2000). Exact rules always win over splats, so behaviour is same.
+/urunler/* /tr/products/ 301
+/blog/* /tr/rehber/ 301
