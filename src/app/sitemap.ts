@@ -232,6 +232,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "yearly",
     priority: 0.35,
   });
+  // /tr/kvkk/ şimdilik noindex — sitemap'e eklenmedi (DOĞRULA kapanınca eklenecek).
   // Returns, cancellation and delivery policy (indexable: no placeholders; see page.tsx).
   for (const locale of ["tr", "en"] as const) {
     entries.push({
