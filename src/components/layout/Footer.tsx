@@ -271,7 +271,7 @@ export function Footer({ locale }: FooterProps) {
             <>
               {" · "}
               <Link
-                href={tr ? "/tr/iade-politikasi/" : "/en/iade-politikasi/"}
+                href={tr ? "/tr/iade-politikasi/" : "/en/return-policy/"}
                 className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline"
               >
                 {tr ? "İade ve teslimat" : "Returns & delivery"}

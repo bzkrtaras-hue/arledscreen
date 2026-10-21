@@ -32,7 +32,7 @@ const out = rows.map((r) => {
     product_category: `Electronics > LED displays > ${use === "indoor" ? "Indoor" : "Outdoor"} LED modules`,
     accepts_returns: true,
     return_deadline_in_days: 14,
-    return_policy: "https://arledscreen.com/en/iade-politikasi/",
+    return_policy: "https://arledscreen.com/en/return-policy/",
     is_eligible_search: true,
     is_eligible_checkout: false,
   });

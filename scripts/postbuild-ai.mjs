@@ -972,7 +972,7 @@ function buildAiShopping() {
         shippingAndVat:
           "All list prices exclude VAT and freight. No free shipping. Project total is set after site survey in a written quote.",
         returnPolicy:
-          "MerchantReturnFiniteReturnWindow: standard stock products can be returned or exchanged within 14 days of delivery; made-to-order products follow written cancellation terms. Individual consumers: Law No. 6502 and the Distance Contracts Regulation; business customers: contract and Turkish Commercial Code. Details: https://arledscreen.com/en/iade-politikasi/",
+          "MerchantReturnFiniteReturnWindow: standard stock products can be returned or exchanged within 14 days of delivery; made-to-order products follow written cancellation terms. Individual consumers: Law No. 6502 and the Distance Contracts Regulation; business customers: contract and Turkish Commercial Code. Details: https://arledscreen.com/en/return-policy/",
         quoteOnlyGroups: [
           "Transparent / storefront",
           "Flexible",
