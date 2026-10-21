@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDictionary, type Locale } from "@/lib/i18n";
@@ -219,7 +220,7 @@ export async function InstallGuidePage({
             <p className="mt-2 max-w-2xl text-sm text-ink-soft">{guide.cta.body}</p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Button asChild>
-                <Link href={`/${raw}/quote`}>{dict.nav.quote}</Link>
+                <Link href={buyHref(raw)}>{buyLabel(raw)}</Link>
               </Button>
               <Button asChild variant="outline">
                 <Link href={`/${raw}/led-ekran-servis/`}>{labels.service}</Link>

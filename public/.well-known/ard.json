@@ -365,7 +365,6 @@
         "type": "Merchant Product Feed",
         "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
         "format": "text/tab-separated-values",
-        "description": "12 priced panel SKUs: id, mpn(=id), title, brand, brand_id (#brand-nxtionstar), brand_url (brand.json AggregateOffer×12), brand_makes_offer_id (#priced-panels-aggregate), brand_has_offer_catalog (catalog.json); Org join organization_id (#organization) + entity_url (entity.json)",
         "pricedPanels": 12,
         "mpnEqualsSku": true,
         "priceValidUntil": "2026-12-31",

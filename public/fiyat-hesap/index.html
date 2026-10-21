@@ -596,6 +596,15 @@ img{max-width:100%;height:auto}
                     <p class="help">Fiyatlar panel başınadır. Örneğin 64 × 64 cm ekran 8 modülden oluşur.</p>
                 </div>
 
+                <fieldset id="cabinet-fieldset">
+                    <legend class="f-label" id="cabinet-legend">KABİN TİPİ</legend>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
+                        <label style="flex:1 1 140px;display:flex;gap:8px;align-items:flex-start;padding:10px;border:1px solid #cbd5e1;border-radius:10px;cursor:pointer"><input type="radio" name="cabinet" value="cnc" checked style="margin-top:3px"> <span id="cabinet-cnc-label">CNC kabin (sabit kurulum)</span></label>
+                        <label style="flex:1 1 140px;display:flex;gap:8px;align-items:flex-start;padding:10px;border:1px solid #cbd5e1;border-radius:10px;cursor:pointer"><input type="radio" name="cabinet" value="rental" style="margin-top:3px"> <span id="cabinet-rental-label">Rental kabin (+100 USD/m²)</span></label>
+                    </div>
+                    <p class="help" id="cabinet-help">Rental: taşınabilir, sökülüp takılabilir kabin.</p>
+                </fieldset>
+
                 <fieldset>
                     <legend class="f-label">EKRAN ÖLÇÜLERİ</legend>
                     <div class="dims">
@@ -659,6 +668,7 @@ img{max-width:100%;height:auto}
                     <div class="lines">
                         <div class="line"><span>Malzeme maliyeti</span><strong id="result-material"></strong></div>
                         <div class="line"><span>Atölye işçiliği <small>100 USD / m²</small></span><strong id="result-labor" class="amber"></strong></div>
+                        <div class="line hidden" id="line-rental"><span id="label-rental">Rental kabin farkı <small>100 USD / m²</small></span><strong id="result-rental"></strong></div>
                         <div class="line"><span>Kontrol kartı</span><strong id="result-control-card"></strong></div>
                         <div class="line"><span>Sürücü + yazılım</span><strong id="result-driver"></strong></div>
                     </div>
@@ -863,6 +873,11 @@ img{max-width:100%;height:auto}
   if (btnOut) btnOut.innerHTML = '<svg class="ico ic-out" aria-hidden="true"><use href="#i-sun"/></svg> Outdoor';
   var modLabel = document.querySelector('label[for="moduleSelect"]');
   if (modLabel) modLabel.textContent = 'MODULE TYPE';
+  text('#cabinet-legend', 'CABINET TYPE');
+  text('#cabinet-cnc-label', 'CNC cabinet (fixed installation)');
+  text('#cabinet-rental-label', 'Rental cabinet (+100 USD/m²)');
+  text('#cabinet-help', 'Rental: portable cabinet, quick to assemble and dismantle.');
+  text('#label-rental', 'Rental cabinet surcharge (100 USD / m²)');
   text('.help', 'Prices are per panel. For example a 64 × 64 cm screen uses 8 modules.');
   text('.dims .dim:nth-child(1) .d-name', 'Width');
   text('.dims .dim:nth-child(2) .d-name', 'Height');
@@ -1043,7 +1058,11 @@ img{max-width:100%;height:auto}
             const controlCards = controlCardCount(areaM2);
             const controlCardCost = controlCards * CONTROL_CARD_UNIT_USD;
             const driverSoftwareCost = 500;
-            const totalCost = materialCost + laborCost + controlCardCost + driverSoftwareCost;
+            const cabinetEl = document.querySelector('input[name="cabinet"]:checked');
+            const cabinet = cabinetEl && cabinetEl.value === "rental" ? "rental" : "cnc";
+            const RENTAL_PER_M2_USD = 100;
+            const rentalCost = cabinet === "rental" ? areaM2 * RENTAL_PER_M2_USD : 0;
+            const totalCost = materialCost + laborCost + controlCardCost + driverSoftwareCost + rentalCost;
 
             document.getElementById("result-module-name").textContent = moduleName;
             document.getElementById("result-requested").innerHTML = `${widthInput.toLocaleString(_isEn ? "en-US" : "tr-TR")} × ${heightInput.toLocaleString(_isEn ? "en-US" : "tr-TR")} <span class="text-xs font-semibold text-slate-400">cm</span>`;
@@ -1054,6 +1073,8 @@ img{max-width:100%;height:auto}
             document.getElementById("result-labor").innerHTML = formatCurrency(laborCost);
             document.getElementById("result-control-card").innerHTML = formatCurrency(controlCardCost) + (controlCards > 1 ? " <small>(" + controlCards + (_isEn ? " cards" : " adet") + ")</small>" : "");
             document.getElementById("result-driver").innerHTML = formatCurrency(driverSoftwareCost);
+            document.getElementById("result-rental").innerHTML = formatCurrency(rentalCost);
+            document.getElementById("line-rental").classList.toggle("hidden", cabinet !== "rental");
             document.getElementById("result-total").innerHTML = formatCurrency(totalCost);
 
             const results = document.getElementById("results");
@@ -1063,7 +1084,7 @@ img{max-width:100%;height:auto}
             lastCalculation = {
                 moduleName, width: widthInput, height: heightInput, actualWidth: actualWidthCm,
                 actualHeight: actualHeightCm, totalModules, modulesX, modulesY, materialCost,
-                laborCost, controlCards, controlCardCost, driverSoftwareCost, totalCost
+                laborCost, controlCards, controlCardCost, driverSoftwareCost, cabinet, rentalCost, totalCost
             };
         }
 
@@ -1087,10 +1108,11 @@ Material: ${calculation.materialCost.toFixed(2)} USD
 Workshop labor: ${calculation.laborCost.toFixed(2)} USD
 Control card: ${calculation.controlCardCost.toFixed(2)} USD${calculation.controlCards > 1 ? " (" + calculation.controlCards + " cards)" : ""}
 Driver + software: ${calculation.driverSoftwareCost.toFixed(2)} USD
+Cabinet: ${calculation.cabinet === "rental" ? "Rental (+" + calculation.rentalCost.toFixed(2) + " USD)" : "CNC"}
 Total: ${calculation.totalCost.toFixed(2)} USD
 
 Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed from project details.`
-              : `ARLEDSCREEN LED Ekran Tahmini\n\nÖlçü: ${calculation.width} × ${calculation.height} cm\nUyarlanmış ölçü: ${calculation.actualWidth} × ${calculation.actualHeight} cm\n\nModül: ${calculation.moduleName}\nAdet: ${calculation.totalModules} (${calculation.modulesX} × ${calculation.modulesY})\n\nMalzeme: ${calculation.materialCost.toFixed(2)} USD\nAtölye işçiliği: ${calculation.laborCost.toFixed(2)} USD\nKontrol kartı: ${calculation.controlCardCost.toFixed(2)} USD${calculation.controlCards > 1 ? " (" + calculation.controlCards + " adet)" : ""}\nSürücü + yazılım: ${calculation.driverSoftwareCost.toFixed(2)} USD\nToplam: ${calculation.totalCost.toFixed(2)} USD\n\nNot: Atölye işçiliği dahildir. Nakliye ve KDV dahil değildir. Nihai tutar proje detaylarına göre teyit edilir.`;
+              : `ARLEDSCREEN LED Ekran Tahmini\n\nÖlçü: ${calculation.width} × ${calculation.height} cm\nUyarlanmış ölçü: ${calculation.actualWidth} × ${calculation.actualHeight} cm\n\nModül: ${calculation.moduleName}\nAdet: ${calculation.totalModules} (${calculation.modulesX} × ${calculation.modulesY})\n\nMalzeme: ${calculation.materialCost.toFixed(2)} USD\nAtölye işçiliği: ${calculation.laborCost.toFixed(2)} USD\nKontrol kartı: ${calculation.controlCardCost.toFixed(2)} USD${calculation.controlCards > 1 ? " (" + calculation.controlCards + " adet)" : ""}\nSürücü + yazılım: ${calculation.driverSoftwareCost.toFixed(2)} USD\nKabin: ${calculation.cabinet === "rental" ? "Rental (+" + calculation.rentalCost.toFixed(2) + " USD)" : "CNC"}\nToplam: ${calculation.totalCost.toFixed(2)} USD\n\nNot: Atölye işçiliği dahildir. Nakliye ve KDV dahil değildir. Nihai tutar proje detaylarına göre teyit edilir.`;
             window.open(`https://wa.me/905305078834?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
         }
 
@@ -1106,6 +1128,10 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
                 lastCalculation = {};
             });
         });
+
+        document.querySelectorAll('input[name="cabinet"]').forEach(el => el.addEventListener("change", () => {
+            if (lastCalculation.moduleName) calculate();
+        }));
 
         document.getElementById("moduleSelect").addEventListener("change", () => {
             document.getElementById("results").classList.add("hidden");
@@ -1562,10 +1588,10 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
       };
     }
     if (mem.env === "ic" && mem.budget) {
-      return { kind: "panel", name: "İç mekân P4", catalog: "P4 (İÇ MEKÂN)", price: 26.98, why: "İç mekânda ekonomik seçenek P4." };
+      return { kind: "panel", name: "İç mekân P4", catalog: "P4 (İÇ MEKÂN)", price: 26.98, why: "İç mekânda geniş yüzeyler için P4." };
     }
     if (mem.env === "dis" && mem.budget && mem.dist == null && !mem.close) {
-      return { kind: "panel", name: "Dış mekân P5", catalog: "P5 (DIŞ MEKÂN)", price: 29.90, why: "Uzaktan izlenen cephede ekonomik seçenek P5." };
+      return { kind: "panel", name: "Dış mekân P5", catalog: "P5 (DIŞ MEKÂN)", price: 29.90, why: "Uzaktan izlenen cephede P5." };
     }
     const d = effectiveDist();
     if (mem.env === "ic") {
