@@ -57,7 +57,7 @@ Kontrol sistemi: 20 m² altı genellikle Huidu, 20 m² ve üzeri genellikle Nova
 GÜVENCE (yalnızca bu ifadeler): "${WARRANTY_TR}" (EN: "${WARRANTY_EN}", AR: "${WARRANTY_AR}"). Ücretsiz keşif. %100 memnuniyet garantisi ve koşulsuz iade. Başka garanti süresi, "yerinde" servis vaadi, indirim veya kampanya söyleme. "ucuz", "uygun fiyat", "ekonomik", "maliyeti düşük" kelimelerini kullanma.
 Yanıtın sonunda kısaca WhatsApp hattını (${WA}) hatırlat.`;
 
-const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-2.5-flash-lite"];
+const GEMINI_MODELS = ["gemini-3.6-flash", "gemini-3.6", "gemini-2.5-flash", "gemini-2.5", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-2.0-flash-lite"];
 
 function lang(t) {
   if (/[\u0600-\u06FF]/.test(t)) return "ar";
@@ -185,20 +185,33 @@ export async function onRequestPost(context) {
     while (contents.length && contents[0].role !== "user") contents.shift();
 
     let reply = "";
-    for (const model of GEMINI_MODELS) {
+    const pn = parseNums(raw);
+    let facts = "";
+    if (pn.w && pn.h) {
+      const cols = Math.ceil(pn.w / 0.32 - 1e-9), rows = Math.ceil(pn.h / 0.16 - 1e-9), area = Math.round(pn.w * pn.h * 100) / 100;
+      facts = `\nKOD TARAFINDAN HESAPLANDI (bu sayıları kullan, yeniden hesaplama): ${pn.w} × ${pn.h} m = ${area} m²; 320 × 160 mm modülle ${cols} × ${rows} = ${cols * rows} modül, gerçek ölçü ${(cols * 0.32).toFixed(2)} × ${(rows * 0.16).toFixed(2)} m. Rental kabin farkı ${Math.round(area * RENTAL_PER_M2)} USD.`;
+    }
+    const call = async (model, thinkingConfig) => {
       const generationConfig = { temperature: 0.5, maxOutputTokens: MAX_OUTPUT_TOKENS };
-      // 2.5 modellerinde düşünme tokenları çıktı bütçesini tüketip yanıtı kesiyordu.
-      if (model.startsWith("gemini-2.5")) generationConfig.thinkingConfig = { thinkingBudget: 0 };
+      if (thinkingConfig) generationConfig.thinkingConfig = thinkingConfig;
+      return fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
+        body: JSON.stringify({ system_instruction: { parts: [{ text: SYSTEM_PROMPT + facts }] }, contents, generationConfig }),
+      });
+    };
+    for (const model of GEMINI_MODELS) {
       try {
-        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
-          body: JSON.stringify({ system_instruction: { parts: [{ text: SYSTEM_PROMPT }] }, contents, generationConfig }),
-        });
+        // Düşünme tokenları maxOutputTokens bütçesini tüketip yanıtı (özellikle Arapça) kesiyordu: düşünmeyi en aza indir.
+        const tc = model.startsWith("gemini-3") ? { thinkingLevel: "minimal" } : model.startsWith("gemini-2.5") ? { thinkingBudget: 0 } : null;
+        let res = await call(model, tc);
+        if (res.status === 400 && tc) res = await call(model, model.startsWith("gemini-3") ? { thinkingLevel: "low" } : null);
         if (!res.ok) { console.log("gemini", model, res.status); continue; }
         const out = await res.json();
         const c = out.candidates?.[0];
-        const text = (c?.content?.parts || []).map((p) => p.text || "").join("").trim();
+        const u = out.usageMetadata || {};
+        console.log("gemini ok", model, c?.finishReason, u.candidatesTokenCount, u.thoughtsTokenCount);
+        const text = (c?.content?.parts || []).filter((p) => !p.thought).map((p) => p.text || "").join("").trim();
         if (text) { reply = text; if (c.finishReason === "MAX_TOKENS") reply = reply.replace(/[^.!?。؟\n]*$/, "").trim() || text; break; }
       } catch (e) { console.log("gemini", model, "error"); }
     }
