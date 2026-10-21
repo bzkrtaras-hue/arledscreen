@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import { visibleFaqs } from "@/lib/faq-visible";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -351,7 +352,7 @@ export default async function YapayZekaPage({ params }: PageProps) {
             <p className="mt-2 max-w-2xl text-sm text-ink-soft">{c.ctaBody}</p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Button asChild>
-                <Link href={`/${locale}/quote`}>{dict.nav.quote}</Link>
+                <Link href={buyHref(locale)}>{buyLabel(locale)}</Link>
               </Button>
               <Button asChild variant="outline">
                 <Link href={`/${locale}/products`}>{dict.nav.products}</Link>

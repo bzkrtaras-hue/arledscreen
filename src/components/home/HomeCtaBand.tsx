@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
 import { Calculator, FileText } from "lucide-react";
@@ -51,11 +52,11 @@ export function HomeCtaBand({ locale }: HomeCtaBandProps) {
         </div>
         <div className="flex min-w-0 w-full flex-col gap-3 sm:w-auto">
           <Link
-            href={`/${locale}/quote/`}
+            href={buyHref(locale)}
             className="btn-soft inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#ffffff] px-8 text-[17px] font-bold text-[#174a96] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-[#EEF4FF] sm:min-w-[280px]"
           >
             <FileText className="h-5 w-5" aria-hidden />
-            {dict.nav.quote}
+            {buyLabel(locale)}
           </Link>
           <a
             href={quoteWhatsappHref(locale)}

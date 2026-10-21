@@ -1,3 +1,4 @@
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { FileText } from "lucide-react";
@@ -78,9 +79,9 @@ export function ShopModuleCard({ item, locale }: { item: ShopModule; locale: Lan
           {tr ? "KDV ve nakliye hariç." : "VAT and shipping excluded."}
         </p>
         <div className="mt-auto grid gap-2 pt-4 sm:grid-cols-2">
-          <Link href={`/${locale}/quote/?product=${encodeURIComponent(item.quoteSlug)}`} className={btnPrimary}>
+          <Link href={buyHref(locale)} className={btnPrimary}>
             <FileText className="h-4 w-4" aria-hidden />
-            {tr ? "Teklif alın" : "Get a quote"}
+            {buyLabel(locale)}
           </Link>
           <a href={whatsappHref(msg)} target="_blank" rel="noopener noreferrer" className={btnGhost}>
             <WhatsAppIcon className="h-4 w-4" />
@@ -127,9 +128,9 @@ export function ShopSystemCard({ item, locale }: { item: ShopSystem; locale: Lan
           </div>
         </dl>
         <div className="mt-auto grid gap-2 pt-4 sm:grid-cols-2">
-          <Link href={`/${locale}/quote/`} className={btnPrimary}>
+          <Link href={buyHref(locale)} className={btnPrimary}>
             <FileText className="h-4 w-4" aria-hidden />
-            {tr ? "Teklif alın" : "Get a quote"}
+            {buyLabel(locale)}
           </Link>
           <a href={whatsappHref(msg)} target="_blank" rel="noopener noreferrer" className={btnGhost}>
             <WhatsAppIcon className="h-4 w-4" />

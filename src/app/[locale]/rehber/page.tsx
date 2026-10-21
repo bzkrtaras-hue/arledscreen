@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
@@ -135,7 +136,7 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button asChild>
-              <Link href={`/${locale}/quote`}>{dict.nav.quote}</Link>
+              <Link href={buyHref(locale)}>{buyLabel(locale)}</Link>
             </Button>
             <Button asChild variant="outline">
               <Link href={`/${locale}/products`}>{dict.nav.products}</Link>

@@ -305,7 +305,7 @@ export default async function ModelPage({ params }: PageProps) {
                 </div>
               ) : (
                 <p className="mt-5 rounded-2xl border border-border bg-band/60 p-4 text-sm text-ink-soft">
-                  Bu model için fiyat; ölçü, adet ve kurulum koşullarına göre yazılı teklifle verilir. Yayımlanmış 12 panel listesi{" "}
+                  Bu model için fiyat; ölçü, adet ve kurulum koşullarına göre yazılı teklifle verilir. 15 panel modelinin listesi ve yayımlanmış panel fiyatları{" "}
                   <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                     LED ekran fiyatları
                   </Link>{" "}

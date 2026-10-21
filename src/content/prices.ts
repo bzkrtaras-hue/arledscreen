@@ -613,6 +613,24 @@ export const fmtM2 = (n: number) => trNum(Math.round(n * PANELS_PER_M2), 0);
  * different datasheet module size the per-m² figure is left to the quote (the
  * calculator tiles every panel as 320 × 160 mm; owner to confirm).
  */
+/** Rental (portable, quick-assembly) cabinet surcharge per m², on top of the CNC (fixed) price. */
+export const RENTAL_SURCHARGE_PER_M2_USD = 100;
+
+/** Panels per m² from the model's own module size (falls back to 320 × 160 mm). */
+export function panelsPerM2For(p: PanelPrice): number {
+  const m = p.moduleMm?.match(/(\d+(?:[.,]\d+)?)\s*[×x]\s*(\d+(?:[.,]\d+)?)/);
+  if (!m) return PANELS_PER_M2;
+  const w = Number(m[1].replace(",", ".")) / 1000;
+  const h = Number(m[2].replace(",", ".")) / 1000;
+  return w > 0 && h > 0 ? 1 / (w * h) : PANELS_PER_M2;
+}
+
+/** Module cost per m² (USD) for CNC and Rental cabinets. */
+export function cabinetM2Usd(p: PanelPrice): { cnc: number; rental: number } {
+  const cnc = Math.round(p.usd * panelsPerM2For(p));
+  return { cnc, rental: cnc + RENTAL_SURCHARGE_PER_M2_USD };
+}
+
 export const panelM2 = (p: PanelPrice): string | undefined => (p.moduleMm ? undefined : fmtM2(p.usd));
 
 export function panelLabel(p: PanelPrice, locale: "tr" | "en" = "tr"): string {

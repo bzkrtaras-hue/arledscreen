@@ -1,5 +1,6 @@
 "use client";
 
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -370,11 +371,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             {priceLabel}
           </Link>
           <Link
-            href={`/${locale}/quote/`}
+            href={buyHref(locale)}
             className="liquid-glass-btn liquid-glass-btn--primary min-h-11 gap-1.5 px-3 text-[13px] 2xl:px-3.5 font-bold sm:min-h-12"
           >
             <FileText className="h-3.5 w-3.5" aria-hidden />
-            {dict.nav.quote}
+            {buyLabel(locale)}
           </Link>
         </div>
 
@@ -600,11 +601,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   {priceLabel}
                 </Link>
                 <Link
-                  href={`/${locale}/quote/`}
+                  href={buyHref(locale)}
                   className="liquid-glass-btn liquid-glass-btn--primary min-h-12 w-full gap-2 text-[15px] font-semibold"
                 >
                   <FileText className="h-4 w-4" aria-hidden />
-                  {dict.nav.quote}
+                  {buyLabel(locale)}
                 </Link>
                 <a
                   href={quoteWhatsappHref(locale)}

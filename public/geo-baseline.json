@@ -5,7 +5,7 @@
   "name": "ARLEDSCREEN GEO / AI-alışveriş technical baseline",
   "description": "Machine-readable snapshot of pricedPanels, Brand @id, and discovery surfaces for before/after measurement. Does not invent ChatGPT/Gemini/Perplexity mention rates. Schema.org distribution walks invent aliases (parity with catalog/ai-shopping).",
   "url": "https://arledscreen.com/geo-baseline.json",
-  "dateModified": "2026-10-15",
+  "dateModified": "2026-10-21",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
@@ -1155,7 +1155,7 @@
     "legacyDomain": {
       "host": "arleds.com",
       "note": "Same phone historically; TLS broken/timeout observed; not sameAs; not a price/entity citation source. Prefer arledscreen.com.",
-      "measuredAt": "2026-10-15",
+      "measuredAt": "2026-10-21",
       "serpRisk": "high"
     },
     "aiTxt": "https://arledscreen.com/ai.txt"
@@ -1247,8 +1247,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "790956b83ff1629cc42198969f321c429f024d27f512e0073762a37aafb6737f",
-    "catalogSha256": "5982d8147548ef1111b85e0347821858c56c70706aefe2074e1bef8ef03a7d37",
+    "aiShoppingSha256": "dd759a96c1655d31fb9287ac88054ee4dd16b4681b4b7cd8c49a453cfd01f767",
+    "catalogSha256": "46937f901a622be8b5e98bd0a55a04fa862d319fdd47a08d687304bfa9027fe2",
     "merchantTsvSha256": "5c6b433e739a0460b09a6b823d409b81e0318a2f511b854cff7c9c2c90af7611",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
