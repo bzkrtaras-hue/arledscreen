@@ -75,7 +75,12 @@ export interface LedModel {
   chip: string;
   name: string;
   kind: ModelKind;
-  image: string;
+  /**
+   * Real product photo under /public. Omit when no photo that truly shows this
+   * exact model exists: pages then render a text card (brand + model) instead.
+   * Never use screenshots, banners or a photo of a different model.
+   */
+  image?: string;
   imageAlt: string;
   priceId?: string;
   specs: Partial<Record<SpecKey, SpecValue>>;
@@ -182,7 +187,7 @@ export const LED_MODELS: LedModel[] = [
     chip: "P3.07",
     name: "NXTIONSTAR P3.07 İç Mekân LED Modül",
     kind: "ic",
-    image: "/projects/modules/indoor-smd-surface.jpg",
+    image: "/modules/nxtionstar-p3-07-ic-mekan-modul.webp",
     imageAlt: "İç mekân SMD LED modül yüzeyi",
     priceId: "p3-07-ic",
     specs: {
@@ -405,7 +410,6 @@ export const LED_MODELS: LedModel[] = [
     name: "Huidu HD-C16 Asenkron LED Kontrol Kartı",
     kind: "kontrol",
     brandName: "Huidu",
-    image: "/control/huidu-card-a.jpg",
     imageAlt: "Huidu HD-C16 asenkron LED kontrol kartı",
     specs: {
       ledType: k("Asenkron oynatıcı (gönderici + alıcı işlevi)"),
@@ -447,7 +451,6 @@ export const LED_MODELS: LedModel[] = [
     name: "Huidu HD-W60 Wi‑Fi Tek/Çift Renk Kontrol Kartı",
     kind: "kontrol",
     brandName: "Huidu",
-    image: "/control/huidu-card-b.jpg",
     imageAlt: "Huidu HD-W60 Wi-Fi kontrol kartı",
     specs: {
       ledType: k("Tek / çift renk Wi‑Fi kontrol kartı"),
@@ -468,7 +471,6 @@ export const LED_MODELS: LedModel[] = [
     name: "NovaStar VX600 All-in-One LED Kontrolcü",
     kind: "kontrol",
     brandName: "NovaStar",
-    image: "/control/novastar-vx600.png",
     imageAlt: "NovaStar VX600 all-in-one LED kontrolcü",
     specs: {
       ledType: k("All-in-one video kontrolcü / fiber çevirici / bypass"),
@@ -489,7 +491,6 @@ export const LED_MODELS: LedModel[] = [
     name: "NovaStar Taurus TB50 Multimedya Oynatıcı",
     kind: "kontrol",
     brandName: "NovaStar",
-    image: "/control/novastar-hero.jpg",
     imageAlt: "NovaStar Taurus serisi multimedya oynatıcı ailesi",
     specs: {
       ledType: k("Taurus medya oynatıcı (oynatma + gönderim)"),
