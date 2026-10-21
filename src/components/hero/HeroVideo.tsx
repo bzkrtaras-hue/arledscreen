@@ -252,7 +252,7 @@ export function HeroVideo({
         )}
 
         <div
-          className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(15,42,79,0.34)_0%,rgba(15,42,79,0.48)_36%,rgba(11,27,51,0.88)_68%,rgba(11,27,51,0.97)_100%)] md:bg-[linear-gradient(105deg,rgba(15,42,79,0.9)_0%,rgba(15,42,79,0.72)_28%,rgba(11,27,51,0.28)_52%,rgba(11,27,51,0.08)_100%),linear-gradient(180deg,rgba(15,42,79,0.22)_0%,transparent_32%,rgba(11,27,51,0.42)_72%,rgba(11,27,51,0.88)_100%)]"
+          className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(11, 27, 51,0.34)_0%,rgba(11, 27, 51,0.48)_36%,rgba(11,27,51,0.88)_68%,rgba(11,27,51,0.97)_100%)] md:bg-[linear-gradient(105deg,rgba(11, 27, 51,0.9)_0%,rgba(11, 27, 51,0.72)_28%,rgba(11,27,51,0.28)_52%,rgba(11,27,51,0.08)_100%),linear-gradient(180deg,rgba(11, 27, 51,0.22)_0%,transparent_32%,rgba(11,27,51,0.42)_72%,rgba(11,27,51,0.88)_100%)]"
           aria-hidden
         />
 

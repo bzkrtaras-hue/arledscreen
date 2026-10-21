@@ -36,7 +36,7 @@ export function HomeCtaBand({ locale }: HomeCtaBandProps) {
   const socialLabel = locale === "tr" ? "Bize ulaşın" : locale === "ar" ? "تواصل معنا" : locale === "ru" ? "Связаться" : "Contact us";
 
   return (
-    <section className="relative overflow-hidden border-y border-[#133B78] bg-[linear-gradient(135deg,#1E5BB8_0%,#174a96_55%,#0F2A4F_100%)] py-14 sm:py-20">
+    <section className="relative overflow-hidden border-y border-[#1E5BB8] bg-[linear-gradient(135deg,#1E5BB8_0%,#174a96_55%,#0F2A4F_100%)] py-14 sm:py-20">
       {/* soft highlight, decorative */}
       <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
       <div className="relative mx-auto flex max-w-7xl min-w-0 flex-col items-stretch gap-8 px-4 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
@@ -53,7 +53,7 @@ export function HomeCtaBand({ locale }: HomeCtaBandProps) {
         <div className="flex min-w-0 w-full flex-col gap-3 sm:w-auto">
           <Link
             href={buyHref(locale)}
-            className="btn-soft inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#ffffff] px-8 text-[17px] font-bold text-[#174a96] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-[#EEF4FF] sm:min-w-[280px]"
+            className="btn-soft inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#ffffff] px-8 text-[17px] font-bold text-[#1E5BB8] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-[#F7F9FC] sm:min-w-[280px]"
           >
             <FileText className="h-5 w-5" aria-hidden />
             {buyLabel(locale)}
@@ -62,7 +62,7 @@ export function HomeCtaBand({ locale }: HomeCtaBandProps) {
             href={quoteWhatsappHref(locale)}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-soft inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#0F7A41] px-8 text-[17px] font-bold text-white ring-2 ring-white/70 hover:bg-[#0B6635] sm:min-w-[280px]"
+            className="btn-soft inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#0F7A41] px-8 text-[17px] font-bold text-white ring-2 ring-white/70 hover:bg-[#0F7A41] sm:min-w-[280px]"
           >
             <WhatsAppIcon className="h-5 w-5" />
             {waLabel}

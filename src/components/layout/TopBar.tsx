@@ -23,7 +23,7 @@ export function TopBar({ locale }: { locale: Locale }) {
     <div className="px-3 pt-1.5 sm:px-4 md:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl min-w-0 items-center gap-1.5 sm:gap-2">
         <div className="liquid-glass-btn liquid-glass-btn--slogan min-w-0 flex-1 justify-start px-3">
-          <p className="min-w-0 text-start text-[12px] font-semibold leading-tight tracking-[-0.01em] text-[#1a2430] sm:truncate sm:text-[13px] sm:font-bold">
+          <p className="min-w-0 text-start text-[12px] font-semibold leading-tight tracking-[-0.01em] text-[#32373C] sm:truncate sm:text-[13px] sm:font-bold">
             {dict.brand.slogan}
           </p>
         </div>
@@ -33,7 +33,7 @@ export function TopBar({ locale }: { locale: Locale }) {
           <span className="hidden md:block">
           <Link
             href={ctaHref}
-            className="liquid-glass-btn liquid-glass-btn--compact min-h-11 min-w-11 justify-center px-3 font-semibold text-[#1a2430] hover:text-cyan"
+            className="liquid-glass-btn liquid-glass-btn--compact min-h-11 min-w-11 justify-center px-3 font-semibold text-[#32373C] hover:text-cyan"
           >
             {ctaLabel}
           </Link>

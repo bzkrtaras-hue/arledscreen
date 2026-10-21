@@ -325,7 +325,7 @@ export default async function ModelPage({ params }: PageProps) {
                   href={wa}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#0F7A41] px-6 text-white hover:bg-[#0B6435]"
+                  className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#0F7A41] px-6 text-white hover:bg-[#0F7A41]"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   WhatsApp&apos;tan sorun

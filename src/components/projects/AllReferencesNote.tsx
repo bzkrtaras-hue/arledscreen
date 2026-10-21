@@ -20,7 +20,7 @@ export function AllReferencesNote({ locale = "tr" }: { locale?: "tr" | "en" } = 
           }
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-soft inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#0F7A41] px-5 text-sm font-semibold text-white hover:bg-[#0B6435]"
+          className="btn-soft inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#0F7A41] px-5 text-sm font-semibold text-white hover:bg-[#0F7A41]"
         >
           <MessageCircle className="h-4 w-4" aria-hidden /> WhatsApp
         </a>

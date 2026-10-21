@@ -42,7 +42,7 @@ export function ProductCard({ product, locale = "en" }: ProductCardProps) {
           {product.series}
         </span>
         {hasPitch ? (
-          <span className="absolute bottom-3 left-3 rounded-lg bg-[#0F2A4F]/85 px-2.5 py-1 font-display text-sm font-bold text-white">
+          <span className="absolute bottom-3 left-3 rounded-lg bg-[#0B1B33]/85 px-2.5 py-1 font-display text-sm font-bold text-white">
             {pitch}
           </span>
         ) : null}

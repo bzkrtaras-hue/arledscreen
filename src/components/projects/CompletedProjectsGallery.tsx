@@ -31,7 +31,7 @@ export function CompletedProjectsGallery({ locale }: Props) {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
               className="object-cover transition duration-700 group-hover:scale-[1.03]"
             />
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0F2A4F]/90 via-[#0F2A4F]/45 to-transparent p-4 pt-14">
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0B1B33]/90 via-[#0B1B33]/45 to-transparent p-4 pt-14">
               <p className="font-display text-sm font-semibold text-white">{labels[shot.key]}</p>
             </figcaption>
           </figure>

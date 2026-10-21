@@ -139,7 +139,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
               yer alır. KDV ve nakliye hariçtir; ücretsiz kargo yoktur.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
-              <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#0F7A41] px-5 text-sm font-semibold text-white hover:bg-[#0B6435]">
+              <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#0F7A41] px-5 text-sm font-semibold text-white hover:bg-[#0F7A41]">
                 <WhatsAppIcon className="h-4 w-4" />
                 WhatsApp&apos;tan yazın
               </a>
