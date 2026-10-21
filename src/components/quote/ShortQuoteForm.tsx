@@ -21,7 +21,6 @@ interface FormState {
   location: string;
   timeline: string;
   notes: string;
-  consent: boolean;
   /** Optional explicit consent (açık rıza) for transfer abroad — never required. */
   abroadConsent: boolean;
 }
@@ -119,7 +118,6 @@ export function ShortQuoteForm({
     location: "",
     timeline: "",
     notes: "",
-    consent: false,
     abroadConsent: false,
   });
 
@@ -158,9 +156,6 @@ export function ShortQuoteForm({
       e.location = en
         ? "Please enter the project city or district."
         : "Lütfen projenin şehir veya ilçesini yazın.";
-    }
-    if (!f.consent) {
-      e.consent = en ? "Please tick the consent box to continue." : "Devam etmek için onay kutusunu işaretleyin.";
     }
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -422,31 +417,19 @@ export function ShortQuoteForm({
           />
         </div>
         <div className="sm:col-span-2">
-          <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm text-ink-soft">
-            <input
-              type="checkbox"
-              className="mt-1 h-5 w-5 shrink-0 accent-[#1E5BB8]"
-              checked={f.consent}
-              aria-invalid={!!errors.consent}
-              aria-describedby={errors.consent ? `${id}-consent-err` : undefined}
-              onChange={(e) => set("consent", e.target.checked)}
-            />
-            <span>
-              {en
-                ? "I agree that my details are used only to prepare a quote and to contact me."
-                : "Bilgilerimin yalnızca teklif hazırlanması ve benimle iletişime geçilmesi amacıyla kullanılmasını kabul ediyorum."}
-            </span>
-          </label>
-          {err("consent")}
           {!en ? (
-            <p className="mt-2 text-sm text-ink-soft">
-              Kişisel verilerinizin nasıl işlendiğini{" "}
+            <p className="text-sm text-ink-soft">
+              Bilgileriniz{" "}
               <Link href="/tr/kvkk/" className="font-semibold text-cyan underline underline-offset-2">
                 KVKK Aydınlatma Metni
-              </Link>
-              &apos;nde okuyabilirsiniz.
+              </Link>{" "}
+              kapsamında işlenir.
             </p>
-          ) : null}
+          ) : (
+            <p className="text-sm text-ink-soft">
+              Your details are used only to prepare a quote and to contact you.
+            </p>
+          )}
         </div>
         {!en ? (
           <div className="sm:col-span-2">
