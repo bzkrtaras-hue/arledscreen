@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 import { CheckCircle2, Mail, Send } from "lucide-react";
 import { PROJECT_TYPES, projectTypeLabel, whatsappHref, type ProjectTypeId } from "@/lib/whatsapp";
@@ -21,6 +22,8 @@ interface FormState {
   timeline: string;
   notes: string;
   consent: boolean;
+  /** Optional explicit consent (açık rıza) for transfer abroad — never required. */
+  abroadConsent: boolean;
 }
 
 const ENV_LABEL: Record<FormLocale, Record<Env, string>> = {
@@ -67,6 +70,7 @@ function buildMessage(raw: FormState, locale: FormLocale): string {
       `• City / district: ${f.location}`,
       f.timeline ? `• Timeline: ${f.timeline}` : null,
       f.notes ? `• Notes: ${f.notes}` : null,
+      `• Consent to transfer abroad: ${f.abroadConsent ? "Yes" : "No"}`,
     ]
       .filter(Boolean)
       .join("\n");
@@ -82,6 +86,7 @@ function buildMessage(raw: FormState, locale: FormLocale): string {
     `• Şehir / ilçe: ${f.location}`,
     f.timeline ? `• Zaman planı: ${f.timeline}` : null,
     f.notes ? `• Not: ${f.notes}` : null,
+    `• Yurt dışı aktarım açık rızası: ${f.abroadConsent ? "Evet" : "Hayır"}`,
   ]
     .filter(Boolean)
     .join("\n");
@@ -115,6 +120,7 @@ export function ShortQuoteForm({
     timeline: "",
     notes: "",
     consent: false,
+    abroadConsent: false,
   });
 
   useEffect(() => {
@@ -432,7 +438,34 @@ export function ShortQuoteForm({
             </span>
           </label>
           {err("consent")}
+          {!en ? (
+            <p className="mt-2 text-sm text-ink-soft">
+              Kişisel verilerinizin nasıl işlendiğini{" "}
+              <Link href="/tr/kvkk/" className="font-semibold text-cyan underline underline-offset-2">
+                KVKK Aydınlatma Metni
+              </Link>
+              &apos;nde okuyabilirsiniz.
+            </p>
+          ) : null}
         </div>
+        {!en ? (
+          <div className="sm:col-span-2">
+            {/* DOĞRULA: yurt dışı aktarım dayanağı açık rıza mı? Değilse bu kutu kaldırılabilir. Kutu zorunlu değildir. */}
+            <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm text-ink-soft">
+              <input
+                type="checkbox"
+                name="yurtdisi-aktarim-acik-riza"
+                className="mt-1 h-5 w-5 shrink-0 accent-[#1E5BB8]"
+                checked={f.abroadConsent}
+                onChange={(e) => set("abroadConsent", e.target.checked)}
+              />
+              <span>
+                (İsteğe bağlı) Kişisel verilerimin, e-posta ve form altyapısı için yurt dışında sunucu
+                bulunduran hizmet sağlayıcılara aktarılmasına açık rıza veriyorum.
+              </span>
+            </label>
+          </div>
+        ) : null}
       </div>
 
       <p id={`${id}-info`} className="mt-5 rounded-xl bg-surface px-4 py-3 text-xs leading-relaxed text-ink-muted">
