@@ -73,7 +73,6 @@ function wranglerDeploy({ skipCaching = false } = {}) {
     "--branch",
     "main",
     "--commit-dirty=true",
-    "--functions=./functions",
   ];
   if (skipCaching) args.push("--skip-caching");
   console.log(`\n→ npx ${args.join(" ")}\n`);
