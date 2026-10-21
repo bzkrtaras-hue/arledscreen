@@ -224,6 +224,7 @@ export const LED_MODELS: LedModel[] = [
       moduleSize: k("320 × 160 mm"),
       matrix: k("64 × 128 piksel"),
       pixels: k("8.192"),
+      // DOĞRULA: IP65 datasheet — p2-5 dış mekân için IP65 tedarikçi föyüyle doğrulanmadı (belge-listesi bölüm C).
       protection: k("Su ve toza karşı korumalı gövde"),
       voltage: DC5,
       control: SR,
@@ -310,6 +311,7 @@ export const LED_MODELS: LedModel[] = [
       pitch: h("4 mm"),
       moduleSize: h("320 × 160 mm"),
       service: h("Önden servis (front service)"),
+      // DOĞRULA: IP65 datasheet — p4-on-servis için IP65 tedarikçi föyüyle doğrulanmadı (belge-listesi bölüm C).
       matrix: h("80 × 40 piksel (modül ölçüsü ÷ piksel aralığı)"),
       pixels: h("3.200 (hesaplanan)"),
     },
