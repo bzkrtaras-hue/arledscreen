@@ -23,7 +23,11 @@ export function ProductCard({ product, locale = "en" }: ProductCardProps) {
   const nameWithPitch = hasPitch ? `${product.name} (${pitch})` : product.name;
   const datasheetMsg = tr
     ? `Merhaba, ${nameWithPitch} modelinin teknik föyünü ve fiyat bilgisini rica ediyorum.`
-    : `Hello, please send me the datasheet and pricing for ${nameWithPitch}.`;
+    : locale === "ar"
+      ? `مرحباً، أرجو إرسال المواصفات الفنية والأسعار الخاصة بـ ${nameWithPitch}.`
+      : locale === "ru"
+        ? `Здравствуйте, пришлите, пожалуйста, техническое описание и цены на ${nameWithPitch}.`
+        : `Hello, please send me the datasheet and pricing for ${nameWithPitch}.`;
 
   return (
     <article

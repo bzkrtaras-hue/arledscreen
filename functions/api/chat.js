@@ -47,7 +47,7 @@ const SYSTEM_PROMPT = `Sen ARLEDSCREEN'in Kıdemli Satış ve Müşteri Danışm
 ARLEDSCREEN: İstanbul Gaziosmanpaşa (Merkez Mah. Tuna Sok. No:15-17 Kat 1). WhatsApp: ${WA}. E-posta: arled@arledscreen.com. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Kurucu: Aras Bozkurt.
 
 EN ÖNEMLİ KURAL: Müşterinin sorduğu soruyu doğrudan ve ilk cümlede yanıtla. Ölçü, piksel aralığı (P değeri) veya izleme mesafesi sorulursa aşağıdaki ürün verisini kullanarak somut model ve sayı ver. Genel tanıtım metniyle geçiştirme.
-Yanıtı müşterinin yazdığı dilde ver (Türkçe, İngilizce veya Arapça). En fazla 120 kelime; cümleyi asla yarıda bırakma.
+Yanıtı müşterinin SON mesajının dilinde ver (Türkçe, İngilizce, Arapça, Rusça, Bulgarca vb.); sayfa dili önemli değildir. En fazla 120 kelime; cümleyi asla yarıda bırakma.
 
 ÜRÜN VERİSİ (tek kaynak):
 ${PRODUCT_TABLE}
@@ -59,10 +59,50 @@ Yanıtın sonunda kısaca WhatsApp hattını (${WA}) hatırlat.`;
 
 const GEMINI_MODELS = ["gemini-3.6-flash", "gemini-3.6", "gemini-2.5-flash", "gemini-2.5", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-2.0-flash-lite"];
 
+// Dil algılama: yalnızca kullanıcının SON mesajına bakar (sayfa dili veya Türkçe varsayılanı değil).
+// Önce yazı sistemi (Arapça / Kiril), sonra Latin dillerde sözcük puanı. Belirsizse "en".
+const TR_WORDS = /\b(ve|bir|için|icin|kaç|kac|ne|nedir|mi|mı|mu|mü|ekran|metre|fiyat|fiyatı|mesafe|merhaba|teklif|kaça|nasıl|nasil|istiyorum|var|mı)\b/gi;
+const EN_WORDS = /\b(the|what|which|how|much|is|are|for|price|prices|screen|display|distance|size|cost|quote|need|want|hello|hi|do|you|i|my|meter|meters|wall|panel)\b/gi;
+const BG_HINT = /[ъщ]|\b(какво|колко|цена(та)?|екран|искам|здравейте|може|ли|за|на|е)\b/gi;
+const RU_HINT = /[ыэё]|\b(сколько|стоит|экран|цена|здравствуйте|хочу|можно|мне|это|какой)\b/gi;
 function lang(t) {
-  if (/[\u0600-\u06FF]/.test(t)) return "ar";
-  if (/[çğışöüÇĞİŞÖÜ]/.test(t) || /\b(ve|bir|için|kaç|ne|mi|mı|ekran|metre|fiyat|mesafe)\b/i.test(t)) return "tr";
-  return /\b(the|what|which|how|screen|price|distance|size|meter|metre)\b/i.test(t) ? "en" : "tr";
+  const s = String(t || "");
+  if (/[\u0600-\u06FF]/.test(s)) return "ar";
+  if (/[\u0400-\u04FF]/.test(s)) {
+    const bg = (s.match(BG_HINT) || []).length, ru = (s.match(RU_HINT) || []).length;
+    return bg > ru ? "bg" : "ru";
+  }
+  if (/[çğışÇĞİŞ]/.test(s)) return "tr";
+  const tr = (s.match(TR_WORDS) || []).length, en = (s.match(EN_WORDS) || []).length;
+  if (tr > en) return "tr";
+  if (en > 0) return "en";
+  return /[öüÖÜ]/.test(s) ? "tr" : "en";
+}
+const LANG_NAME = { tr: "Turkish", en: "English", ar: "Arabic", ru: "Russian", bg: "Bulgarian" };
+// Boş istek gibi metin olmayan durumlar için: body.lang → Accept-Language → en.
+function reqLang(data, request) {
+  const l = String((data && (data.lang || data.locale)) || "").slice(0, 2).toLowerCase();
+  if (LANG_NAME[l]) return l;
+  const al = (request.headers.get("Accept-Language") || "").toLowerCase().match(/[a-z]{2}/g) || [];
+  return al.find((x) => LANG_NAME[x]) || "en";
+}
+const EMPTY_MSG = {
+  tr: "Lütfen bir soru veya ölçü yazın.",
+  en: "Please type a question or the screen size.",
+  ar: "يرجى كتابة سؤالك أو مقاس الشاشة.",
+  ru: "Пожалуйста, напишите вопрос или размер экрана.",
+  bg: "Моля, напишете въпрос или размера на екрана.",
+};
+const LONG_MSG = {
+  tr: "Mesajınız en fazla 1000 karakter olabilir.",
+  en: "Your message can be up to 1000 characters.",
+  ar: "يمكن أن تصل رسالتك إلى 1000 حرف كحد أقصى.",
+  ru: "Сообщение может содержать не более 1000 символов.",
+  bg: "Съобщението може да бъде до 1000 знака.",
+};
+function langRule(L) {
+  const name = LANG_NAME[L] || "English";
+  return `\n\nLANGUAGE RULE (highest priority): The customer's latest message is in ${name}. Reply ONLY in ${name}, regardless of the page language, earlier turns or the Turkish wording of these instructions. Do not mix in Turkish words${L === "tr" ? "" : ` (e.g. say "free site survey" instead of "ücretsiz keşif"/"keşif", "written quote" instead of "teklif")`}. Keep model names, numbers, USD and the WhatsApp number as they are.`;
 }
 
 function parseNums(t) {
@@ -94,7 +134,7 @@ function fallback(text) {
   const dTxt = d ?? Math.max(1, Math.round(p.pitch));
   if (L === "ar")
     return `لمسافة مشاهدة ${dTxt} م نوصي بـ NXTIONSTAR ${p.m} (${outdoor ? "خارجي" : "داخلي"})، بدقة ${p.pitch} مم وسعر ${p.usd.toFixed(2)} دولار للوحدة (≈ ${m2} دولار/م² للوحدات).${mods} القاعدة: كل 1 مم من دقة البكسل ≈ 1 م أقرب مسافة مشاهدة. ${WARRANTY_AR}. للعرض المكتوب: واتساب ${WA}.`;
-  if (L === "en")
+  if (L !== "tr")
     return `For a viewing distance of about ${dTxt} m we recommend NXTIONSTAR ${p.m} (${outdoor ? "outdoor" : "indoor"}): ${p.pitch} mm pitch, ${p.usd.toFixed(2)} USD per module (≈ ${m2} USD/m² module cost, CNC cabinet; Rental cabinet +${RENTAL_PER_M2} USD/m²).${mods} Rule of thumb: each 1 mm of pitch ≈ 1 m minimum viewing distance. ${WARRANTY_EN}. For a written quote: WhatsApp ${WA}.`;
   return `Yaklaşık ${dTxt} m izleme mesafesi için NXTIONSTAR ${p.m} (${outdoor ? "dış mekân" : "iç mekân"}) öneriyoruz: ${String(p.pitch).replace(".", ",")} mm piksel aralığı, modül başına ${p.usd.toFixed(2).replace(".", ",")} USD (≈ ${m2} USD/m² modül bedeli, CNC kabin; Rental kabin +${RENTAL_PER_M2} USD/m²).${mods} Kural: her 1 mm piksel aralığı ≈ 1 m en yakın izleme mesafesi. ${WARRANTY_TR}; ücretsiz keşif. Yazılı teklif için WhatsApp: ${WA}.`;
 }
@@ -149,9 +189,10 @@ export async function onRequestPost(context) {
       data.message || data.text || data.prompt || data.content ||
       (Array.isArray(data.messages) && data.messages.length ? data.messages[data.messages.length - 1].content || data.messages[data.messages.length - 1].text : "") || ""
     ).toString().trim();
-    if (!raw) return jsonResponse({ reply: "Lütfen bir soru veya ölçü yazın.", text: "Lütfen bir soru veya ölçü yazın." }, 400);
+    if (!raw) { const msg = EMPTY_MSG[reqLang(data, request)]; return jsonResponse({ reply: msg, text: msg }, 400); }
+    const L = lang(raw);
     if (raw.length > MAX_INPUT) {
-      const msg = "Mesajınız en fazla 1000 karakter olabilir. / Max 1000 characters.";
+      const msg = LONG_MSG[L] || LONG_MSG.en;
       return jsonResponse({ reply: msg, text: msg }, 413);
     }
 
@@ -161,7 +202,7 @@ export async function onRequestPost(context) {
     const hour = Math.floor(now / 3600000), day = Math.floor(now / 86400000);
     const [h, d] = await Promise.all([bump(kv, `rl:h:${ip}:${hour}`, 3700), bump(kv, `rl:d:${ip}:${day}`, 90000)]);
     if (h > PER_IP_HOUR || d > PER_IP_DAY) {
-      const msg = lang(raw) === "ar" ? `تم بلوغ حد الرسائل. تواصل معنا عبر واتساب ${WA}.` : lang(raw) === "en" ? `Message limit reached. Please reach us on WhatsApp ${WA}.` : `Mesaj sınırına ulaşıldı. WhatsApp hattımızdan bize ulaşabilirsiniz: ${WA}.`;
+      const msg = L === "ar" ? `تم بلوغ حد الرسائل. تواصل معنا عبر واتساب ${WA}.` : L !== "tr" ? `Message limit reached. Please reach us on WhatsApp ${WA}.` : `Mesaj sınırına ulaşıldı. WhatsApp hattımızdan bize ulaşabilirsiniz: ${WA}.`;
       return jsonResponse({ reply: msg, text: msg, note: "rate_limited" }, 429);
     }
 
@@ -197,7 +238,7 @@ export async function onRequestPost(context) {
       return fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
-        body: JSON.stringify({ system_instruction: { parts: [{ text: SYSTEM_PROMPT + facts }] }, contents, generationConfig }),
+        body: JSON.stringify({ system_instruction: { parts: [{ text: SYSTEM_PROMPT + facts + langRule(L) }] }, contents, generationConfig }),
       });
     };
     for (const model of GEMINI_MODELS) {
@@ -218,7 +259,7 @@ export async function onRequestPost(context) {
     if (!reply) reply = fallback(raw);
     return jsonResponse({ reply, text: reply });
   } catch (err) {
-    const msg = `Talebinizi aldım. WhatsApp hattımızdan bize ulaşabilirsiniz: ${WA}.`;
+    const msg = `Talebinizi aldım. / We received your request. WhatsApp: ${WA}.`;
     return jsonResponse({ reply: msg, text: msg });
   }
 }

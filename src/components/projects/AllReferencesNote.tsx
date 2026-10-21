@@ -2,8 +2,8 @@ import Link from "next/link";
 import { MessageCircle, Mail } from "lucide-react";
 
 /** Closing note under project selections: the list is a selection, full references on request. */
-export function AllReferencesNote({ locale = "tr" }: { locale?: "tr" | "en" } = {}) {
-  const en = locale === "en";
+export function AllReferencesNote({ locale = "tr" }: { locale?: string } = {}) {
+  const en = locale !== "tr"; // ar/ru: EN text instead of a Turkish WhatsApp message
   return (
     <div className="mt-10 flex flex-col items-center gap-4 rounded-2xl border border-border bg-band px-6 py-7 text-center sm:flex-row sm:justify-between sm:text-left">
       <p className="font-display text-lg font-bold text-ink">

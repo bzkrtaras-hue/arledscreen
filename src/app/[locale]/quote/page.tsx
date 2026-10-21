@@ -201,7 +201,7 @@ export default async function QuotePage({ params }: PageProps) {
               </aside>
               <div className="min-w-0">
                 <h2 className="mb-4 font-display text-2xl font-bold text-ink">Kısa teklif formu</h2>
-                <ShortQuoteForm />
+                <ShortQuoteForm locale="tr" />
               </div>
             </div>
           </section>
@@ -261,6 +261,12 @@ export default async function QuotePage({ params }: PageProps) {
             <p className="text-sm text-ink-muted sm:col-span-3">
               Please share dimensions, indoor/outdoor use, location and timeline. ARLEDSCREEN · Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa, Istanbul, Turkey · Mon–Fri 09:00–18:00, Sat 10:00–15:00.
             </p>
+            <div className="sm:col-span-3" dir={locale === "ar" ? "rtl" : undefined}>
+              <h2 className="mb-4 font-display text-2xl font-bold text-ink">
+                {locale === "ar" ? "نموذج طلب عرض السعر" : locale === "ru" ? "Короткая форма запроса" : "Short quote form"}
+              </h2>
+              <ShortQuoteForm locale={locale as "en" | "ar" | "ru"} />
+            </div>
             {locale === "en" ? (
               <AiPriceSourceNote
                 locale="en"
