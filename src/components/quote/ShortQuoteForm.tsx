@@ -247,7 +247,7 @@ export function ShortQuoteForm({
     if (!validate()) return;
     const msg = buildMessage(f, locale);
     trackLead(via, locale);
-    // Server-side copy to arled@arledscreen.com (Cloudflare Email Routing, /api/lead).
+    // Server-side copy to arled@arledscreen.com (Cloudflare Email Service, /api/lead).
     // Fire-and-forget: WhatsApp/mail must still open even if the endpoint is not configured.
     try {
       const body = JSON.stringify({ message: msg, locale, via, name: f.name, phone: f.phone, abroadConsent: f.abroadConsent, website: "" });
