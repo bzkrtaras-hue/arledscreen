@@ -629,8 +629,17 @@ export default async function ProductGroupPage({ params }: PageProps) {
             {isControlGroup ? (
               <>
                 {" · "}
-                <Link href="/tr/led-ekran-servis/#teknik-destek" className="font-semibold text-cyan hover:underline">
-                  Teknik destek
+                <Link
+                  href={
+                    {
+                      "huidu-kontrol-kartlari": "/tr/rehber/huidu-led-ekran-kurulumu/",
+                      "novastar-kontrolculer": "/tr/rehber/novastar-led-ekran-kurulumu/",
+                      "colorlight-kontrolculer": "/tr/rehber/colorlight-led-ekran-kurulumu/",
+                    }[g.slug] ?? "/tr/teknik-destek/"
+                  }
+                  className="font-semibold text-cyan hover:underline"
+                >
+                  Kurulum ve destek
                 </Link>
               </>
             ) : null}

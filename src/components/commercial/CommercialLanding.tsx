@@ -33,7 +33,6 @@ import {
 } from "@/lib/social";
 import { ENTITY_FAQ_BRAND_DISAMBIG, ENTITY_FAQ_CANONICAL_DOMAIN } from "@/lib/entity";
 import { getFaqs } from "@/content/faqs";
-import { SupportHub } from "@/components/support/SupportHub";
 import { RentalScope } from "@/components/geo/RentalScope";
 import { formatProjectDate, formatProjectDetail } from "@/lib/dates";
 
@@ -312,7 +311,6 @@ export function CommercialLanding({
       ) : null}
 
       {page.slug === "led-ekran-kiralama" ? <RentalScope locale={locale} /> : null}
-      {page.slug === "led-ekran-servis" && tr ? <SupportHub /> : null}
 
       {page.images.length ? (
         <section className="border-t border-border bg-white py-12 md:py-16">

@@ -193,9 +193,3 @@
 # Keep these 200 rewrites as a secondary static fallback.
 /brand /brand.json 200
 /modules /modules.json 200
-
-# Teknik destek hub = existing service page (no duplicate page)
-/tr/teknik-destek /tr/led-ekran-servis/#teknik-destek 301
-/tr/teknik-destek/ /tr/led-ekran-servis/#teknik-destek 301
-/en/technical-support /en/led-ekran-servis/ 301
-/en/technical-support/ /en/led-ekran-servis/ 301

@@ -1538,7 +1538,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Servis",
           body:
-            "Yerinde inceleme, arıza tespiti, yedek parça, kalibrasyon, modül ve güç kaynağı değişimi ve periyodik bakım planı sunuyoruz; başka markaların ekranları için de uygunluk değerlendirmesi yapıyoruz. Garanti kapsamı ve koşulları yazılı teklifte belirtilir.",
+            "İnceleme, arıza tespiti, yedek parça, kalibrasyon, modül ve güç kaynağı değişimi ve periyodik bakım planı sunuyoruz; başka markaların ekranları için de uygunluk değerlendirmesi yapıyoruz. Garanti kapsamı ve koşulları yazılı teklifte belirtilir.",
         },
       ],
       faqs: [
