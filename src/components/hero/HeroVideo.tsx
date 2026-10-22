@@ -17,6 +17,9 @@ export type HeroClip = {
   height: number;
   /** Short scene label for a11y / dots */
   label: string;
+  /** ≤767px: show the whole landscape frame in a band under the header instead of a centre crop
+   *  (keeps on-screen logos uncut and clear of the H1 / copy plate). Desktop unchanged. */
+  mobileBand?: boolean;
 };
 
 export type HeroPoint = {
@@ -51,7 +54,12 @@ function clipKey(clip: HeroClip) {
   return clip.src ?? clip.poster;
 }
 
+const MOBILE_BAND = " max-md:object-contain max-md:[object-position:50%_6.5rem]";
+
 function coverClass(clip: HeroClip) {
+  if (clip.mobileBand) {
+    return "absolute inset-0 h-full w-full object-cover object-center md:object-[54%_46%]" + MOBILE_BAND;
+  }
   // Full-bleed cover so desktop hero shows the LED surface, not letterboxed bars.
   // Landscape: keep the wall centred; portrait: bias upward to the install.
   return clip.height > clip.width

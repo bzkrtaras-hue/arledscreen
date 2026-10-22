@@ -95,7 +95,8 @@ const HERO_MEDIA: Record<
     src?: string;
     srcMobile?: string;
     poster: string;
-    posterMobile: string;
+    posterMobile?: string;
+    mobileBand?: boolean;
     width?: number;
     height?: number;
   }
@@ -113,9 +114,11 @@ const HERO_MEDIA: Record<
   // faststart. ≤767px gets a native-density centre 576×720 (4:5) crop like the photo slides.
   "avm-iskele-dev-led-ekran": {
     src: "/videos/hero/avm-iskele-dev-led-ekran.mp4",
-    srcMobile: "/videos/hero/avm-iskele-dev-led-ekran-m.mp4",
+    // ≤767px: the 576×720 crop cut the ARLEDSCREEN logo ('EDSC…') and sat under the H1.
+    // Mobile now plays the same 1280×720 file, whole frame, in a band under the header
+    // (mobileBand). The -m files stay in the repo untouched; no re-encode.
     poster: "/videos/hero/avm-iskele-dev-led-ekran.webp",
-    posterMobile: "/videos/hero/avm-iskele-dev-led-ekran-m.webp",
+    mobileBand: true,
     width: 1280,
     height: 720,
   },
@@ -124,7 +127,7 @@ const HERO_MEDIA: Record<
 export function Hero({ locale }: HeroProps) {
   const tr = locale === "tr";
 
-  const clips: HeroClip[] = HERO_SCENES.flatMap((scene) => {
+  const clips: HeroClip[] = HERO_SCENES.flatMap((scene): HeroClip[] => {
     const photo = HERO_PHOTOS[scene.slug];
     if (photo) {
       return [{ ...photo, label: tr ? scene.labelTr : scene.labelEn }];
@@ -143,6 +146,7 @@ export function Hero({ locale }: HeroProps) {
         poster: HERO_MEDIA[scene.slug]?.poster ?? video.poster,
         posterMobile: HERO_MEDIA[scene.slug]?.posterMobile,
         srcMobile: HERO_MEDIA[scene.slug]?.srcMobile,
+        mobileBand: HERO_MEDIA[scene.slug]?.mobileBand,
         width: HERO_MEDIA[scene.slug]?.width ?? video.width,
         height: HERO_MEDIA[scene.slug]?.height ?? video.height,
         label: tr ? scene.labelTr : scene.labelEn,
