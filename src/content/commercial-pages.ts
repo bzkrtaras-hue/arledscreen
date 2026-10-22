@@ -340,7 +340,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Kiralık mı, satın alma mı?",
         answer:
-          "Tek seferlik etkinliklerde kiralama; sürekli kullanımda satın alma genelde daha ekonomiktir. Ayrıntılı karşılaştırma için “Kiralık mı, satın alma mı?” rehberine bakın.",
+          "Tek seferlik etkinliklerde kiralama; sürekli kullanımda satın alma uzun vadede daha avantajlıdır. Ayrıntılı karşılaştırma için “Kiralık mı, satın alma mı?” rehberine bakın.",
       },
       {
         question: "Kiralık LED ekran fiyatı ne kadar?",
