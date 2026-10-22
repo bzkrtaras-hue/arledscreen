@@ -194,7 +194,7 @@
       4000
     ]
   },
-  "/control/colorlight-vx20.png": {
+  "/control/colorlight-vx20.webp": {
     "w": 3840,
     "h": 2695,
     "widths": [
@@ -204,7 +204,7 @@
       3840
     ]
   },
-  "/control/colorlight-x20.png": {
+  "/control/colorlight-x20.webp": {
     "w": 4000,
     "h": 2291,
     "widths": [
@@ -270,7 +270,7 @@
       768
     ]
   },
-  "/control/novastar-vx600.png": {
+  "/control/novastar-vx600.webp": {
     "w": 1400,
     "h": 900,
     "widths": [

@@ -14,6 +14,8 @@
 # Calculator: old locale-prefixed links (e.g. /tr/fiyat-hesap/ in team docs) -> calculator page (site audit 2026-10-09)
 /tr/fiyat-hesap /tr/hesaplayici/ 301
 /tr/fiyat-hesap/ /tr/hesaplayici/ 301
+/tr/iade /tr/iade-politikasi/ 301
+/tr/iade/ /tr/iade-politikasi/ 301
 /en/fiyat-hesap /en/hesaplayici/ 301
 /en/fiyat-hesap/ /en/hesaplayici/ 301
 

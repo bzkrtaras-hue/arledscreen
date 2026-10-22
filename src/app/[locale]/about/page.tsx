@@ -12,9 +12,11 @@ import {
 import {
   ENTITY_CITE_MEDIUM,
   ENTITY_CITE_MEDIUM_EN,
-  ENTITY_DISAMBIGUATION,
   ENTITY_DISAMBIGUATION_EN,
 } from "@/lib/entity";
+
+/** Visible TR cite without the internal "Site: …" note (JSON-LD/feeds keep ENTITY_CITE_MEDIUM). */
+const ENTITY_CITE_MEDIUM_VISIBLE = ENTITY_CITE_MEDIUM.replace(/\s*Site: https:\/\/arledscreen\.com\/tr\/\.?$/, "");
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
@@ -106,7 +108,7 @@ export default async function AboutPage({ params }: PageProps) {
               {dict.brand.slogan}
             </p>
             <p id="about-cite" className="text-sm leading-relaxed text-ink-muted sm:text-base">
-              {locale === "tr" ? ENTITY_CITE_MEDIUM : (seo.intro ?? about.description)}
+              {locale === "tr" ? ENTITY_CITE_MEDIUM_VISIBLE : (seo.intro ?? about.description)}
             </p>
             <p className="text-sm leading-relaxed text-ink-soft sm:text-base">
               {about.body}
@@ -140,16 +142,11 @@ export default async function AboutPage({ params }: PageProps) {
             className="border-t border-border prose-seo"
           >
             <blockquote className="max-w-3xl rounded-2xl border border-border bg-band/40 p-5 text-base leading-relaxed text-ink">
-              {ENTITY_CITE_MEDIUM}
+              {ENTITY_CITE_MEDIUM_VISIBLE}
             </blockquote>
-            <ul id="about-disambiguation" className="mt-5 max-w-3xl space-y-2 text-sm text-ink-soft">
-              {ENTITY_DISAMBIGUATION.map((d) => (
-                <li key={d} className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden />
-                  {d}
-                </li>
-              ))}
-            </ul>
+            <p id="about-disambiguation" className="mt-5 max-w-3xl text-sm leading-relaxed text-ink-soft">
+              ARLEDSCREEN, İstanbul merkezli bir firmadır; Almanya merkezli ARLED Solutions GmbH ve ARLED Cinema ile bağlantısı yoktur. NXTIONSTAR da NextStar markasından farklıdır.
+            </p>
             <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
               <li>
                 <Link href="/tr/about/aras-bozkurt/" className="font-semibold text-cyan hover:underline">

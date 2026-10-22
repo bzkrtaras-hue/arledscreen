@@ -291,10 +291,10 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 <li aria-current="page" className="font-semibold text-ink-soft">{g.name}</li>
               </ol>
             </nav>
-            <h1 id="pg-h1" className="mt-3 text-balance font-display text-[clamp(1.9rem,1.4rem+2vw,2.75rem)] font-extrabold leading-tight tracking-[-0.03em] text-ink">
+            <h1 id="pg-h1" className="mt-3 [container-type:inline-size] text-balance font-display text-[clamp(1.9rem,1.4rem+2vw,2.75rem)] font-extrabold leading-tight tracking-[-0.03em] text-ink">
               {g.h1}
               <span className="sr-only">: </span>
-              <span id="pg-lead" className="mt-2 block text-[clamp(1.05rem,0.95rem+0.5vw,1.35rem)] font-semibold leading-snug tracking-[-0.01em] text-cyan">
+              <span id="pg-lead" className="mt-2 block text-[clamp(0.875rem,3.8cqi,1.35rem)] font-semibold leading-snug tracking-[-0.01em] text-cyan">
                 {g.lead}
               </span>
             </h1>

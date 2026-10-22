@@ -468,7 +468,7 @@ export const LED_MODELS: LedModel[] = [
     name: "NovaStar VX600 All-in-One LED Kontrolcü",
     kind: "kontrol",
     brandName: "NovaStar",
-    image: "/control/novastar-vx600.png",
+    image: "/control/novastar-vx600.webp",
     imageAlt: "NovaStar VX600 all-in-one LED kontrolcü",
     specs: {
       ledType: k("All-in-one video kontrolcü / fiber çevirici / bypass"),
@@ -530,7 +530,7 @@ export const LED_MODELS: LedModel[] = [
     name: "Colorlight X20 Multimedya LED İşlemci",
     kind: "kontrol",
     brandName: "Colorlight",
-    image: "/control/colorlight-x20.png",
+    image: "/control/colorlight-x20.webp",
     imageAlt: "Colorlight X20 multimedya LED işlemci",
     specs: {
       ledType: k("Multimedya LED işlemci"),
@@ -570,7 +570,7 @@ export const LED_MODELS: LedModel[] = [
     name: "Colorlight VX20 Video İşlemci",
     kind: "kontrol",
     brandName: "Colorlight",
-    image: "/control/colorlight-vx20.png",
+    image: "/control/colorlight-vx20.webp",
     imageAlt: "Colorlight VX20 LED video işlemci",
     specs: {
       ledType: k("Profesyonel LED video işlemci / kontrolcü"),
