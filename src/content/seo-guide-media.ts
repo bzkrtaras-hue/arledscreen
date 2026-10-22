@@ -230,8 +230,8 @@ const DUGUN_ROWS: T4[][] = [
   [t("≈ 35 m", "≈ 35 m", "≈ 35 м", "≈ 35 م"), t("7,68 × 4,48 m", "7.68 × 4.48 m", "7,68 × 4,48 м", "7.68 × 4.48 م"), t("672", "672", "672", "672"), t("P4 iç · 18.130,56", "P4 indoor · 18,130.56", "P4 · 18 130,56", "P4 داخلي · 18,130.56"), Q4],
 ];
 const DUGUN_CAPTION = t(
-  "Düğün salonu için örnek ekran ölçüleri: satın alma (yalnızca modül bedeli) ve kiralama (fiyat teklifle verilir); KDV ve nakliye hariç",
-  "Example wedding-hall screen sizes: purchase (module cost only) and rental (priced by quote); VAT and shipping excluded",
+  "Düğün salonu için örnek ekran ölçüleri: satın alma (yalnızca modül bedeli) ve kiralama (günlük 50 USD/m², KDV dahil)",
+  "Example wedding-hall screen sizes: purchase (module cost only) and rental (50 USD/m² per day, VAT included)",
   "Примеры для свадебного зала: покупка (только модули) и аренда (цена по предложению); без НДС и доставки",
   "أمثلة لقاعات الأفراح: الشراء (تكلفة الوحدات فقط) والإيجار (السعر بعرض مكتوب)؛ دون الضريبة والشحن",
 );

@@ -21,7 +21,7 @@ Kiralama şu durumlarda öne çıkar:
 - Yatırım bütçesi sabit bir ekran için henüz ayrılmamıştır.
 - Farklı mekânlarda tekrarlayan ama seyrek etkinlikler vardır.
 
-ARLEDSCREEN kiralık LED ekran grubunda sahne ve etkinlik için hızlı kurulan kabin seçeneklerini projelendirir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.
+ARLEDSCREEN kiralık LED ekran grubunda sahne ve etkinlik için hızlı kurulan kabin seçeneklerini projelendirir. İç ve dış mekân kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil. Kurulum ve nakliye yalnızca İstanbul içinde fiyata dahildir; İstanbul dışında nakliye ayrıca planlanır. Depozito alınmaz; yurt dışına kiralama yapılmaz.
 
 ## 2. Ne zaman satın alma?
 
@@ -57,7 +57,7 @@ Bu bilgilerle [teklif formundan](/tr/quote/) veya WhatsApp’tan yazmanız yeter
 ## 5. Sık sorulan sorular
 
 **Kiralık LED ekran fiyatı ne kadar?**
-İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.
+İç ve dış mekân kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil. Kurulum ve nakliye yalnızca İstanbul içinde fiyata dahildir; İstanbul dışında nakliye ayrıca planlanır. Depozito alınmaz; yurt dışına kiralama yapılmaz.
 
 **Aynı ekranı hem kiralayıp hem sonra satın alabilir miyim?**
 Senaryoya göre değerlendirilir. İhtiyacınızı paylaştığınızda uygun yolu yazılı teklifte belirtiriz.
@@ -67,6 +67,8 @@ Kısa süreli fuar ve lansmanlarda kiralama sık tercih edilir. Kalıcı showroo
 
 **Kurulum ve söküm dahil mi?**
 Kiralama tekliflerinde kurulum kapsamı yazılı olarak tanımlanır. Satın almada keşif, montaj ve devreye alma [hizmetler](/tr/hizmetler/) sürecine girer.
+
+Fiyat ve süreç için: [İstanbul'da LED ekran kiralama](/tr/led-ekran-kiralama/) (50 USD/m²/gün; KDV dahil; İstanbul içinde kurulum ve nakliye dahil, İstanbul dışında nakliye ayrıca planlanır; depozito yok).
 
 ---
 *NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. +90 530 507 88 34 · arled@arledscreen.com*

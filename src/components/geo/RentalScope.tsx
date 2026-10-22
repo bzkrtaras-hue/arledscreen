@@ -1,21 +1,21 @@
 /** Kiralama kapsamı tablosu. Satırlar yalnızca sitede zaten yayımlı bilgilere dayanır
- * (kiralama sayfaları, kategori SSS'si, llms.txt). Fiyat ve sayı yok; kiralık fiyat yazılı teklifle. */
+ * (kiralama sayfaları, kategori SSS'si, llms.txt). Kiralık fiyat: 50 USD/m²/gün (Aras onayı 22.10.2026). */
 const ROWS = {
   tr: [
     ["Keşif ve planlama", "Ölçü ve etkinlik tarihini paylaşmanız yeterlidir. Plan, bu bilgilere göre hazırlanır."],
-    ["Kurulum", "Kurulum planı etkinlik takvimine göre hazırlanır. Kurulum ayrıca tekliflendirilir."],
+    ["Kurulum", "Kurulum planı etkinlik takvimine göre hazırlanır. İstanbul içinde kurulum kiralama fiyatına dahildir."],
     ["Söküm", "Söküm planı da etkinlik takvimine göre hazırlanır. Teklife dahil kalemler yazılı olarak belirtilir."],
     ["Teknik ekip", "ARLEDSCREEN teknik ekibi montaj, devreye alma ve teknik servis hizmeti verir."],
-    ["Nakliye", "Nakliye ayrıca tekliflendirilir. Ücretsiz kargo yoktur."],
-    ["Fiyat", "Kiralık LED ekranda fiyat yazılı teklifle verilir."],
+    ["Nakliye", "İstanbul içinde nakliye kiralama fiyatına dahildir ve teslim bir haftadır; İstanbul dışında nakliye ayrıca planlanır."],
+    ["Fiyat", "50 USD/m²/gün; KDV dahil; İstanbul içinde kurulum ve nakliye dahil, İstanbul dışında nakliye ayrıca planlanır; depozito yok. Nihai tutar yazılı teklifte."],
   ],
   en: [
     ["Survey and planning", "Sharing the size and the event date is enough. The plan is prepared from this information."],
-    ["Installation", "The installation plan is prepared around the event calendar. Installation is quoted separately."],
+    ["Installation", "The installation plan is prepared around the event calendar. Within Istanbul, installation is included in the rental price."],
     ["Strike (removal)", "The strike plan is also prepared around the event calendar. Items included in the quote are listed in writing."],
     ["Technical team", "The ARLEDSCREEN technical team provides installation, commissioning and technical service."],
-    ["Shipping", "Shipping is quoted separately. There is no free shipping."],
-    ["Price", "Rental LED display is priced by written quote."],
+    ["Shipping", "Within Istanbul, shipping is included and delivery takes one week; shipping outside Istanbul is planned separately."],
+    ["Price", "50 USD per m² per day; VAT included; installation and shipping included within Istanbul, shipping outside Istanbul planned separately; no deposit. Final amount in the written quote."],
   ],
 } as const;
 

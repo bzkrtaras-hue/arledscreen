@@ -945,7 +945,7 @@ function buildAiShopping() {
         "Dijital ekran / menüboard / kiosk / LCD",
         "Kontrol kartı (Huidu/NovaStar/Colorlight)",
       ],
-      rental: "İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
+      rental: "İç ve dış mekân kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil. Kurulum ve nakliye yalnızca İstanbul içinde fiyata dahildir; İstanbul dışında nakliye ayrıca planlanır. Depozito alınmaz; yurt dışına kiralama yapılmaz.",
       warranty: "ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar.",
       noFixedClaims: [
         "CE: ürünlerimiz CE sertifikalıdır. Diğer sertifikalar (RoHS/ISO/UL/ETL) — model veya teklifle",
@@ -980,7 +980,7 @@ function buildAiShopping() {
           "Digital display / menu board / kiosk / LCD",
           "Control cards (Huidu/NovaStar/Colorlight)",
         ],
-        rental: "Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+        rental: "Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad.",
         warranty: "ARLEDSCREEN offers a 2-year warranty and 5 years of free technical service.",
         noFixedClaims: [
           "CE: our products are CE certified. Other certificates (RoHS/ISO/UL/ETL) — only per model or quote",

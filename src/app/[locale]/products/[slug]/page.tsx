@@ -471,7 +471,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 </h2>
                 <p className="mt-3 max-w-xl text-base leading-relaxed text-ink-soft">
                   {g.slug === "kiralik-led-ekran"
-                    ? "İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz."
+                    ? "İç ve dış mekân kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil. Kurulum ve nakliye yalnızca İstanbul içinde fiyata dahildir; İstanbul dışında nakliye ayrıca planlanır. Depozito alınmaz; yurt dışına kiralama yapılmaz. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz."
                     : `${g.name} fiyatı ölçü, form, süre ve kurulum koşullarına göre hazırlanır. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz.`}
                 </p>
                 <p className="mt-2 max-w-xl text-xs leading-relaxed text-ink-muted">
@@ -631,6 +631,13 @@ export default async function ProductGroupPage({ params }: PageProps) {
       </section>
 
       {g.slug === "kiralik-led-ekran" ? <RentalScope locale="tr" /> : null}
+      {g.slug === "kiralik-led-ekran" ? (
+        <p className="mx-auto max-w-7xl px-4 pb-10 text-sm sm:px-6 lg:px-8">
+          <Link href="/tr/led-ekran-kiralama/" className="font-semibold text-cyan hover:underline">
+            İstanbul&apos;da LED ekran kiralama
+          </Link>
+        </p>
+      ) : null}
       {g.slug === "kiralik-led-ekran" ? <RentalCompare locale="tr" /> : null}
 
       {refs.length ? (

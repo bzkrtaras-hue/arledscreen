@@ -6,7 +6,7 @@
  * - Only facts that are already published on the same page (guide lead/sections/FAQ) or
  *   in the owner-approved lists (PANEL_PRICES, delivery, payment). Nothing is invented.
  * - Every USD figure is read from PANEL_PRICES, so TR, EN and the price pages stay identical.
- * - Rental is quote-only (decision pending); no rental price or rental claim lives here.
+ * - Rental price (50 USD/m²/day) lives on the rental pages, not here.
  * - Premium wording only; no discount language.
  * The visible block itself is the ShortAnswer component from GEO paket 2 (same design).
  */

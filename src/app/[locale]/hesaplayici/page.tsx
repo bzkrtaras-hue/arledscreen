@@ -88,7 +88,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             },
             {
               name: "Yazılı teklif isteyin",
-              text: "Keşif sonrası malzeme listesi ve nihai tutar yalnızca yazılı teklifte kesinleşir. Şeffaf, esnek, poster ve kontrol ürünlerinde fiyat yazılı teklifle verilir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
+              text: "Keşif sonrası malzeme listesi ve nihai tutar yalnızca yazılı teklifte kesinleşir. Şeffaf, esnek, poster ve kontrol ürünlerinde fiyat yazılı teklifle verilir. İç ve dış mekân kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil. Kurulum ve nakliye yalnızca İstanbul içinde fiyata dahildir; İstanbul dışında nakliye ayrıca planlanır. Depozito alınmaz; yurt dışına kiralama yapılmaz.",
             },
           ]}
         />
@@ -117,7 +117,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             },
             {
               name: "Request a written quote",
-              text: "After survey, the bill of materials and final total are confirmed only in writing. Transparent, flexible, poster and control products are priced by written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+              text: "After survey, the bill of materials and final total are confirmed only in writing. Transparent, flexible, poster and control products are priced by written quote. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad.",
             },
           ]}
         />
