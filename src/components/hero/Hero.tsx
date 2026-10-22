@@ -9,21 +9,22 @@ interface HeroProps {
 
 /**
  * Homepage hero — landscape-first field clips so desktop shows the LED wall.
- * Background loop (soft ~1.2 s crossfade, 6 s dwell): three field videos interleaved with four
- * approved site photos. The first slide stays the lounge poster, so LCP is unchanged. Eskişehir vitrin stays
+ * Background loop (soft ~1.2 s crossfade, 6 s dwell): mall scaffolding video (opens the loop),
+ * lounge and sphere videos, then four approved site photos. Club video stays out (alcohol and
+ * prices on screen). Eskişehir vitrin stays
  * out (its content carries a price ad). HeroVideo rotates only when there are 2+ slides.
  * H1 carries the local query; NXTIONSTAR slogan stays in the top bar only.
  */
 const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
   {
+    slug: "avm-iskele-dev-led-ekran",
+    labelTr: "Bir AVM'de iskele üzerinde kurulumu süren dev iç mekân LED ekran",
+    labelEn: "Giant indoor LED screen being installed on scaffolding in a shopping mall",
+  },
+  {
     slug: "lounge-aquarium-wall",
     labelTr: "Lounge LED",
     labelEn: "Lounge LED",
-  },
-  {
-    slug: "foto-toplanti-salonu",
-    labelTr: "Resmî bir toplantı salonunda sahneyi saran geniş iç mekân LED ekran",
-    labelEn: "Wide indoor LED screen wrapping the stage in a formal meeting hall",
   },
   {
     slug: "sphere-led-showroom",
@@ -31,19 +32,19 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
     labelEn: "Sphere LED",
   },
   {
-    slug: "foto-sahne-logo",
-    labelTr: "Bir sahnede logo gösteren iç mekân LED ekranlar",
-    labelEn: "Indoor LED screens showing a logo on a stage",
-  },
-  {
-    slug: "club-curved-led-ribbon",
-    labelTr: "Kulüp kavisli",
-    labelEn: "Club curved",
+    slug: "foto-toplanti-salonu",
+    labelTr: "Resmî bir toplantı salonunda sahneyi saran geniş iç mekân LED ekran",
+    labelEn: "Wide indoor LED screen wrapping the stage in a formal meeting hall",
   },
   {
     slug: "foto-dikey-ekranlar",
     labelTr: "Karanlık sahnede yan yana duran beş dikey LED ekran",
     labelEn: "Five vertical LED screens side by side on a dark stage",
+  },
+  {
+    slug: "foto-sahne-logo",
+    labelTr: "Bir sahnede logo gösteren iç mekân LED ekranlar",
+    labelEn: "Indoor LED screens showing a logo on a stage",
   },
   {
     slug: "foto-sahne-arkasi",
@@ -108,15 +109,15 @@ const HERO_MEDIA: Record<
     poster: "/videos/hero/sphere-led-showroom.webp",
     posterMobile: "/videos/hero/sphere-led-showroom-m.webp",
   },
-  // Club slot: Drive IMG_3366.MOV 0–10 s (1920×1080, HLG → SDR BT.709 tone-mapped),
-  // H.264 CRF 23 slow. ≤767px gets a native-density centre 1080×1080 crop.
-  "club-curved-led-ribbon": {
-    src: "/videos/hero/club-led-kabin-1080.mp4",
-    srcMobile: "/videos/hero/club-led-kabin-1080-m.mp4",
-    poster: "/videos/hero/club-led-kabin-1080.webp",
-    posterMobile: "/videos/hero/club-led-kabin-1080-m.webp",
-    width: 1920,
-    height: 1080,
+  // Mall scaffolding clip (12.75 s, 1280×720 24p source): H.264 CRF 23 slow, audio removed,
+  // faststart. ≤767px gets a native-density centre 576×720 (4:5) crop like the photo slides.
+  "avm-iskele-dev-led-ekran": {
+    src: "/videos/hero/avm-iskele-dev-led-ekran.mp4",
+    srcMobile: "/videos/hero/avm-iskele-dev-led-ekran-m.mp4",
+    poster: "/videos/hero/avm-iskele-dev-led-ekran.webp",
+    posterMobile: "/videos/hero/avm-iskele-dev-led-ekran-m.webp",
+    width: 1280,
+    height: 720,
   },
 };
 
@@ -128,7 +129,13 @@ export function Hero({ locale }: HeroProps) {
     if (photo) {
       return [{ ...photo, label: tr ? scene.labelTr : scene.labelEn }];
     }
-    const video = getVideo(scene.slug);
+    const media = HERO_MEDIA[scene.slug];
+    // Hero-only clips (no gallery entry) carry their own src and size in HERO_MEDIA.
+    const video =
+      getVideo(scene.slug) ??
+      (media?.src && media.width && media.height
+        ? { src: media.src, poster: media.poster, width: media.width, height: media.height }
+        : undefined);
     if (!video) return [];
     return [
       {
