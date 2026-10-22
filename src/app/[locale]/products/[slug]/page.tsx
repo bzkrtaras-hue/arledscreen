@@ -631,6 +631,13 @@ export default async function ProductGroupPage({ params }: PageProps) {
       </section>
 
       {g.slug === "kiralik-led-ekran" ? <RentalScope locale="tr" /> : null}
+      {g.slug === "kiralik-led-ekran" ? (
+        <p className="mx-auto max-w-7xl px-4 pb-10 text-sm sm:px-6 lg:px-8">
+          <Link href="/tr/led-ekran-kiralama/" className="font-semibold text-cyan hover:underline">
+            İstanbul&apos;da LED ekran kiralama
+          </Link>
+        </p>
+      ) : null}
       {g.slug === "kiralik-led-ekran" ? <RentalCompare locale="tr" /> : null}
 
       {refs.length ? (

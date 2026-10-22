@@ -310,56 +310,78 @@ const INTENT_PAGES: CommercialPage[] = [
   page({
     slug: "led-ekran-kiralama",
     cluster: "intent",
-    title: "LED Ekran Kiralama | Sahne ve Etkinlik | ARLEDSCREEN",
+    title: "LED Ekran Kiralama İstanbul | 50 USD/m²/gün | ARLEDSCREEN",
     description:
-      "LED ekran kiralama: sahne, fuar ve etkinlik için kiralık kabin çözümleri. ARLEDSCREEN kiralama ve kurulum desteği.",
-    h1: "LED ekran kiralama",
+      "İstanbul'da kiralık LED ekran: 50 USD/m²/gün, depozito yok. Sahne, fuar ve etkinlik için iç ve dış mekân kabin. Yazılı teklif için hemen yazın.",
+    h1: "İstanbul'da LED Ekran Kiralama",
     eyebrow: "Kiralama",
-    lead: "Kısa süreli etkinlik, sahne ve fuarlar için kiralık LED ekran kurulumu planlıyoruz.",
+    lead: "Sahne, fuar ve etkinlikler için kiralık LED ekranı İstanbul'da kuruyor, devreye alıyor ve etkinlik sonrası söküyoruz.",
     intro: [
-      "Satın alma yerine kısa süreli ihtiyaçlarda kiralık LED ekran daha verimli olabilir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
-      "Kiralık ürün grubu ve kiralık mı satın alma rehberi ile karşılaştırma yapabilirsiniz.",
+      "Kısa süreli ihtiyaçlarda kiralık LED ekran, satın almaya göre çoğu zaman daha doğru tercihtir. Kiralama bedeli 50 USD/m²/gün'dür; KDV, kurulum ve nakliye dahildir, depozito alınmaz.",
+      "İstanbul içinde teslim bir haftadır; servis talebine hemen yanıt verilir.",
       NAP,
     ],
     bullets: [
       "Sahne ve etkinlik kurulumları",
-      "Süreye göre teklif",
+      "50 USD/m²/gün, depozito yok",
       "Kurulum + söküm planı",
     ],
     images: [
-      { src: "/projects/modules/rental-kit.jpg", alt: "Kiralık LED ekran kabin seti" },
-      { src: "/projects/modules/rental-cabinet-labeled.jpg", alt: "Kiralık LED kabin detayı" },
-      { src: "/projects/custom-booth.jpg", alt: "Fuar standı LED ekran uygulaması" },
+      { src: "/projects/modules/rental-kit.jpg", alt: "Kiralık LED ekran kabin seti, İstanbul" },
+      { src: "/projects/modules/rental-cabinet-labeled.jpg", alt: "Kiralık LED kabin detayı, İstanbul" },
+      { src: "/projects/custom-booth.jpg", alt: "Fuar standı LED ekran uygulaması, İstanbul" },
     ],
-    proofs: proofsFrom((r) => /kiralama|sahne|fuar|Ordu Günleri|stand/i.test(`${r.detail} ${r.company}`), 6),
-    relatedProducts: [productLink("kiralik-led-ekran", "Kiralık LED ekran")!].filter(Boolean),
+    // Brief kuralı: müşteri adı yok, proje adsız ve iş tipine göre yazılır.
+    proofs: proofsFrom((r) => /kiralama|sahne|fuar|Ordu Günleri|stand/i.test(`${r.detail} ${r.company}`), 6).map((p) => ({
+      ...p,
+      label: /fuar|stand/i.test(p.detail) ? "Fuar / stand kurulumu" : /sahne/i.test(p.detail) ? "Sahne kurulumu" : "Etkinlik kurulumu",
+    })),
+    relatedProducts: [productLink("kiralik-led-ekran", "Kiralık LED ekran kabinleri")!].filter(Boolean),
     relatedUses: usageLinks().filter((u) => /sahne|fuar|dugun|konferans/.test(u.href)),
     relatedCities: CORE_CITIES,
     relatedIntents: intentLinks("led-ekran-kiralama"),
     faqs: [
       {
-        question: "Kiralık mı, satın alma mı?",
+        question: "İstanbul'da kiralık LED ekran fiyatı ne kadar?",
         answer:
-          "Tek seferlik etkinliklerde kiralama; sürekli kullanımda satın alma uzun vadede daha avantajlıdır. Ayrıntılı karşılaştırma için “Kiralık mı, satın alma mı?” rehberine bakın.",
-      },
-      {
-        question: "Kiralık LED ekran fiyatı ne kadar?",
-        answer:
-          "İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
+          "Kiralık LED ekran bedeli 50 USD/m²/gün'dür; KDV, kurulum ve nakliye bu fiyata dahildir. Toplam tutar ekran alanı ve gün sayısıyla hesaplanır, nihai tutar yazılı teklifle kesinleşir.",
       },
       {
         question: "Haftalık veya aylık LED ekran kiralanabilir mi?",
         answer:
-          "Evet. Günlük, haftalık ve aylık kiralamalarda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
+          "Evet. Haftalık ve aylık kiralamalar da aynı günlük m² fiyatı, yani 50 USD/m²/gün üzerinden hesaplanır.",
       },
       {
-        question: "Kiralık LED ekranın ödemesi nasıl yapılır?",
+        question: "Depozito alıyor musunuz?",
+        answer: "Hayır, kiralık LED ekranda depozito alınmaz.",
+      },
+      {
+        question: "İstanbul'un hangi ilçelerinde hizmet veriyorsunuz?",
+        answer: "İstanbul'un tüm ilçelerinde proje yapıyoruz. Merkezimiz Gaziosmanpaşa'dadır.",
+      },
+      {
+        question: "LED ekran ne kadar sürede kurulur ve teslim edilir?",
         answer:
-          "Ödemeyi TL, USD, EUR ve diğer tüm para birimlerinde kabul ediyoruz; taksitli ödeme de yapılabilir. Ödeme planı yazılı teklifte belirtilir.",
+          "İstanbul içinde teslim bir haftadır. Kurulum ve söküm zamanı etkinlik takviminize göre planlanır ve yazılı teklifte belirtilir. Ölçü ve tarih bilgisini ne kadar erken paylaşırsanız plan o kadar rahat yapılır.",
+      },
+      {
+        question: "Kiralık mı, satın alma mı daha doğru?",
+        answer:
+          "Tek seferlik ya da kısa süreli etkinliklerde kiralık LED ekran çoğu zaman daha doğru tercihtir. Sürekli kullanımda satın alma uzun vadede daha mantıklıdır. Ayrıntılar için “Kiralık mı, satın alma mı?” rehberine bakın.",
+      },
+      {
+        question: "Ödeme nasıl yapılır, taksit var mı?",
+        answer:
+          "TL, USD ve EUR ile ödeme kabul ediyoruz, taksitli ödeme de mümkündür. Ödeme planı yazılı teklifte belirtilir.",
+      },
+      {
+        question: "NXTIONSTAR, NationStar veya NEXTSTAR ile aynı mı?",
+        answer:
+          "Hayır. NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır. NationStar bir LED bileşen markası, NEXTSTAR ise bir televizyon markasıdır. Ayrıntılar için NXTIONSTAR sayfasına bakın.",
       },
     ],
-    primaryCta: { href: "/tr/quote/", label: "Kiralama teklifi" },
-    secondaryCta: { href: "/tr/products/kiralik-led-ekran/", label: "Kiralık ürün grubu" },
+    primaryCta: { href: "/tr/quote/", label: "Kiralama teklifi al" },
+    secondaryCta: { href: "/tr/products/kiralik-led-ekran/", label: "Kiralık LED ekran kabinleri" },
   }),
   page({
     slug: "led-ekran-servis",
@@ -1932,20 +1954,20 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
     const tr = getCommercialPage("led-ekran-kiralama")!;
     return {
       ...tr,
-      title: "LED Display Rental | Stage & Events | ARLEDSCREEN",
+      title: "LED Screen Rental in Istanbul | 50 USD/m²/day | ARLEDSCREEN",
       description:
-        "LED display rental for stage, fair and events. ARLEDSCREEN rental cabinets are priced by written quote; installation and shipping quoted separately.",
-      h1: "LED display rental",
+        "LED screen rental in Istanbul: 50 USD per m² per day, no deposit; VAT, installation and shipping included. Stage, fair and event cabinets.",
+      h1: "LED Screen Rental in Istanbul",
       eyebrow: "Rental",
-      lead: "We plan rental LED installs for short-run events, stages and fairs.",
+      lead: "We install, commission and strike rental LED screens in Istanbul for stages, fairs and events.",
       intro: [
-        "For short needs, rental can beat purchase. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+        "ARLEDSCREEN rents LED screens in Istanbul for stages, fairs and events. Rental is 50 USD per m² per day, no deposit; VAT, installation and shipping are included. Weekly and monthly rentals use the same daily m² rate.",
         "Compare with purchase using our price list and calculator when ownership makes more sense.",
         NAP_EN,
       ],
       bullets: [
         "Stage and event installs",
-        "Quote by duration",
+        "50 USD/m²/day, no deposit",
         "Install + strike plan",
       ],
       images: [
@@ -1953,6 +1975,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         { src: "/projects/modules/rental-cabinet-labeled.jpg", alt: "Rental LED cabinet detail" },
         { src: "/projects/custom-booth.jpg", alt: "Fair booth LED display application" },
       ],
+      proofs: tr.proofs.map((p) => ({ ...p, label: p.label.startsWith("Fuar") ? "Fair / booth install" : p.label.startsWith("Sahne") ? "Stage install" : "Event install" })),
       relatedProducts: [
         { href: "/en/products/", label: "Product catalog" },
         { href: "/tr/products/kiralik-led-ekran/", label: "Rental product group (TR)" },
@@ -1962,19 +1985,22 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       relatedIntents: enIntentLinks("led-ekran-kiralama"),
       faqs: [
         {
-          question: "Rent or buy?",
+          question: "How much is LED screen rental in Istanbul?",
           answer:
-            "One-off events usually favor rental; continuous use usually favors purchase. Purchase prices per panel are published on our price list. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
-        },
-        {
-          question: "Is there a published fixed rental price?",
-          answer:
-            "Yes. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+            "50 USD per m² per day; VAT, installation and shipping are included. The final amount is confirmed in a written quote.",
         },
         {
           question: "Can I rent an LED screen weekly or monthly?",
+          answer: "Yes. Weekly and monthly rentals are calculated on the same daily rate of 50 USD per m² per day.",
+        },
+        {
+          question: "Do you take a deposit?",
+          answer: "No, there is no deposit for rental LED screens.",
+        },
+        {
+          question: "Rent or buy?",
           answer:
-            "Yes. Daily, weekly and monthly rentals are priced by written quote. Installation and shipping are quoted separately.",
+            "For one-off or short events, rental is usually the better choice; for continuous use, purchase makes more sense over time. Purchase prices per panel are published on our price list.",
         },
         {
           question: "How do I pay for a rental?",

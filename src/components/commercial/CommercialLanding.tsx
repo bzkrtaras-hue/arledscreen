@@ -34,6 +34,14 @@ import {
 import { ENTITY_FAQ_BRAND_DISAMBIG, ENTITY_FAQ_CANONICAL_DOMAIN } from "@/lib/entity";
 import { getFaqs } from "@/content/faqs";
 import { RentalScope } from "@/components/geo/RentalScope";
+import {
+  RentalAnswer,
+  RentalEventsSection,
+  RentalPriceSection,
+  RentalProcessSection,
+  RentalWhySection,
+  RENTAL_PRICE_USD,
+} from "@/components/commercial/RentalSections";
 import { formatProjectDate, formatProjectDetail } from "@/lib/dates";
 
 const CLUSTER_LABEL: Record<"tr" | "en", Record<CommercialPage["cluster"], string>> = {
@@ -80,6 +88,7 @@ export function CommercialLanding({
   const showShortAnswer = page.slug === "led-ekran-satisi";
   // Intent hubs (satış/montaj/kiralama…) get the 12-SKU Offer graph; pitch/use pages keep Dataset cites only.
   const showPanelOffers = page.cluster === "intent";
+  const rentalTr = tr && page.slug === "led-ekran-kiralama";
   const faqs = (() => {
     const next = [...page.faqs];
     if (tr) {
@@ -106,11 +115,31 @@ export function CommercialLanding({
     description: page.description,
     provider: localBusinessRef(),
     brand: nxtionstarBrandRef(),
-    areaServed: { "@type": "Country", name: tr ? "Türkiye" : "Turkey" },
+    ...(rentalTr
+      ? { serviceType: "LED ekran kiralama", areaServed: { "@type": "City", name: "İstanbul" } }
+      : { areaServed: { "@type": "Country", name: tr ? "Türkiye" : "Turkey" } }),
     url,
     isRelatedTo: BRAND_SUBJECT_REFS,
     // Intent hubs: AggregateOffer on page Service (avoid dual #service with panelProductsJsonLd).
-    ...(showPanelOffers
+    ...(rentalTr
+      ? {
+          offers: {
+            "@type": "Offer",
+            "@id": `${url}#rental-offer`,
+            price: RENTAL_PRICE_USD,
+            priceCurrency: "USD",
+            description: "Kiralık LED ekran, m² başına günlük fiyat; KDV, kurulum ve nakliye dahil; depozito yok.",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: RENTAL_PRICE_USD,
+              priceCurrency: "USD",
+              unitText: "m²/gün",
+            },
+            seller: { "@id": `${SITE_URL}/#organization` },
+            url,
+          },
+        }
+      : showPanelOffers
       ? {
           offers: {
             "@type": "AggregateOffer",
@@ -164,7 +193,7 @@ export function CommercialLanding({
         pageUrl={url}
         name={page.h1}
         description={page.description}
-        cssSelectors={showShortAnswer ? ["#commercial-h1", "#kisa-cevap", "#commercial-lead"] : ["#commercial-h1", "#commercial-lead"]}
+        cssSelectors={showShortAnswer || rentalTr ? ["#commercial-h1", "#kisa-cevap", "#commercial-lead"] : ["#commercial-h1", "#commercial-lead"]}
         mainEntity={{ "@id": `${url}#service` }}
         {...(showShortAnswer ? { dateModified: GEO_REVIEWED } : {})}
       />
@@ -207,6 +236,7 @@ export function CommercialLanding({
             {page.lead}
           </p>
           {showShortAnswer ? <ShortAnswer text={pageShortAnswer("satis", locale)} locale={locale} /> : null}
+          {rentalTr ? <RentalAnswer /> : null}
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
               href={page.primaryCta.href}
@@ -220,6 +250,14 @@ export function CommercialLanding({
             >
               {page.secondaryCta.label}
             </Link>
+            {rentalTr ? (
+              <Link
+                href="/tr/hesaplayici/"
+                className="btn-soft inline-flex min-h-12 items-center justify-center border border-cyan/50 bg-white px-6 text-cyan hover:bg-cyan-50"
+              >
+                m² hesapla
+              </Link>
+            ) : null}
           </div>
         </div>
       </section>
@@ -290,14 +328,17 @@ export function CommercialLanding({
         </div>
       </section>
 
+      {rentalTr ? <RentalPriceSection /> : null}
       {showPanelOffers ? (
         <section id="panel-fiyatlari" className="border-t border-border bg-white py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-xl font-bold text-ink md:text-2xl">
-              {tr ? "2026 panel fiyat listesi" : "2026 panel price list"}
+              {rentalTr ? "Satın almak isterseniz: 2026 panel fiyatları" : tr ? "2026 panel fiyat listesi" : "2026 panel price list"}
             </h2>
             <p className="mb-4 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
-              {tr
+              {rentalTr
+                ? "Bu tablo satış fiyatlarıdır, kiralık fiyat değildir. Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir."
+                : tr
                 ? "Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir."
                 : "Published prices for 12 NXTIONSTAR panels (USD). Transparent, flexible, poster and control products have no fixed list price; they are priced in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately."}
             </p>
@@ -306,11 +347,25 @@ export function CommercialLanding({
               panels={PANEL_PRICES}
               caption={tr ? "Panel fiyatları (USD, panel başına)" : "Panel prices (USD, per panel)"}
             />
+            {rentalTr ? (
+              <p className="mt-4 text-sm">
+                <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                  LED ekran fiyatları ve m² fiyatı
+                </Link>
+              </p>
+            ) : null}
           </div>
         </section>
       ) : null}
 
+      {rentalTr ? <RentalEventsSection /> : null}
       {page.slug === "led-ekran-kiralama" ? <RentalScope locale={locale} /> : null}
+      {rentalTr ? (
+        <>
+          <RentalProcessSection />
+          <RentalWhySection />
+        </>
+      ) : null}
 
       {page.images.length ? (
         <section className="border-t border-border bg-white py-12 md:py-16">
