@@ -128,7 +128,7 @@ export function CommercialLanding({
             "@id": `${url}#rental-offer`,
             price: RENTAL_PRICE_USD,
             priceCurrency: "USD",
-            description: "Kiralık LED ekran, m² başına günlük fiyat; KDV, kurulum ve nakliye dahil; depozito yok.",
+            description: "Kiralık LED ekran, m² başına günlük fiyat; KDV dahil; İstanbul içinde kurulum ve nakliye dahil, İstanbul dışında nakliye ayrıca planlanır; depozito yok.",
             priceSpecification: {
               "@type": "UnitPriceSpecification",
               price: RENTAL_PRICE_USD,

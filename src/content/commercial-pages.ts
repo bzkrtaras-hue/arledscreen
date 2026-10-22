@@ -317,7 +317,7 @@ const INTENT_PAGES: CommercialPage[] = [
     eyebrow: "Kiralama",
     lead: "Sahne, fuar ve etkinlikler için kiralık LED ekranı İstanbul'da kuruyor, devreye alıyor ve etkinlik sonrası söküyoruz.",
     intro: [
-      "Kısa süreli ihtiyaçlarda kiralık LED ekran, satın almaya göre çoğu zaman daha doğru tercihtir. Kiralama bedeli 50 USD/m²/gün'dür; KDV, kurulum ve nakliye dahildir, depozito alınmaz.",
+      "Kısa süreli ihtiyaçlarda kiralık LED ekran, satın almaya göre çoğu zaman daha doğru tercihtir. Kiralama bedeli 50 USD/m²/gün'dür; KDV dahildir; İstanbul içinde kurulum ve nakliye dahildir, İstanbul dışında nakliye ayrıca planlanır; depozito alınmaz.",
       "İstanbul içinde teslim bir haftadır; servis talebine hemen yanıt verilir.",
       NAP,
     ],
@@ -344,7 +344,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "İstanbul'da kiralık LED ekran fiyatı ne kadar?",
         answer:
-          "Kiralık LED ekran bedeli 50 USD/m²/gün'dür; KDV, kurulum ve nakliye bu fiyata dahildir. Toplam tutar ekran alanı ve gün sayısıyla hesaplanır, nihai tutar yazılı teklifle kesinleşir.",
+          "Kiralık LED ekran bedeli 50 USD/m²/gün'dür; KDV bu fiyata dahildir; İstanbul içinde kurulum ve nakliye de dahildir, İstanbul dışında nakliye ayrıca planlanır. Toplam tutar ekran alanı ve gün sayısıyla hesaplanır, nihai tutar yazılı teklifle kesinleşir.",
       },
       {
         question: "Haftalık veya aylık LED ekran kiralanabilir mi?",
@@ -1956,12 +1956,12 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       ...tr,
       title: "LED Screen Rental in Istanbul | 50 USD/m²/day | ARLEDSCREEN",
       description:
-        "LED screen rental in Istanbul: 50 USD per m² per day, no deposit; VAT, installation and shipping included. Stage, fair and event cabinets.",
+        "LED screen rental in Istanbul: 50 USD per m² per day, no deposit, VAT included; installation and shipping included within Istanbul.",
       h1: "LED Screen Rental in Istanbul",
       eyebrow: "Rental",
       lead: "We install, commission and strike rental LED screens in Istanbul for stages, fairs and events.",
       intro: [
-        "ARLEDSCREEN rents LED screens in Istanbul for stages, fairs and events. Rental is 50 USD per m² per day, no deposit; VAT, installation and shipping are included. Weekly and monthly rentals use the same daily m² rate.",
+        "ARLEDSCREEN rents LED screens in Istanbul for stages, fairs and events. Rental is 50 USD per m² per day, no deposit; VAT is included; installation and shipping are included within Istanbul, and shipping outside Istanbul is planned separately. Weekly and monthly rentals use the same daily m² rate.",
         "Compare with purchase using our price list and calculator when ownership makes more sense.",
         NAP_EN,
       ],
@@ -1987,7 +1987,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "How much is LED screen rental in Istanbul?",
           answer:
-            "50 USD per m² per day; VAT, installation and shipping are included. The final amount is confirmed in a written quote.",
+            "50 USD per m² per day; VAT is included; installation and shipping are included within Istanbul, and shipping outside Istanbul is planned separately. The final amount is confirmed in a written quote.",
         },
         {
           question: "Can I rent an LED screen weekly or monthly?",

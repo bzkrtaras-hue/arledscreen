@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-/** /tr/led-ekran-kiralama/ — Desk brief 2026-10-22. Facts: Aras onayı (50 USD/m²/gün, KDV + kurulum + nakliye dahil, depozito yok). */
+/** /tr/led-ekran-kiralama/ — Desk brief 2026-10-22. Facts: Aras onayı (50 USD/m²/gün, KDV dahil; kurulum + nakliye yalnız İstanbul içinde dahil, depozito yok). */
 export const RENTAL_PRICE_USD = 50;
 
 export function RentalAnswer() {
@@ -8,7 +8,7 @@ export function RentalAnswer() {
     <div id="kisa-cevap" className="mt-5 max-w-3xl rounded-2xl border border-cyan/30 bg-white p-5 text-base leading-relaxed text-ink">
       <p>
         ARLEDSCREEN, İstanbul&apos;da sahne, fuar ve etkinlikler için kiralık LED ekran sunar. Kiralama bedeli 50 USD/m²/gün&apos;dür;
-        KDV, kurulum ve nakliye bu fiyata dahildir. Haftalık ve aylık kiralamalar da aynı günlük m² fiyatı üzerinden hesaplanır ve
+        KDV bu fiyata dahildir; İstanbul içinde kurulum ve nakliye de dahildir, İstanbul dışında nakliye ayrıca planlanır. Haftalık ve aylık kiralamalar da aynı günlük m² fiyatı üzerinden hesaplanır ve
         depozito alınmaz. Kurulum takvimi ve teslim zamanı etkinliğinize göre planlanır ve yazılı teklifte belirtilir.
       </p>
     </div>
@@ -24,7 +24,7 @@ export function RentalPriceSection() {
     ["Haftalık", "50 USD × m² × gün sayısı"],
     ["Aylık", "50 USD × m² × gün sayısı"],
     ["Depozito", "Yok"],
-    ["Dahil olanlar", "KDV, kurulum ve nakliye"],
+    ["Dahil olanlar", "KDV; İstanbul içinde kurulum ve nakliye (İstanbul dışında nakliye ayrıca planlanır)"],
   ];
   return (
     <section id="kiralik-fiyat" className="border-t border-border bg-white py-12 md:py-16">
@@ -49,7 +49,7 @@ export function RentalPriceSection() {
           </table>
         </div>
         <div className="mt-5 max-w-3xl space-y-3 text-base leading-relaxed text-ink-soft">
-          <p>Örneğin 12 m² ekran, 3 gün: 12 × 3 × 50 = 1.800 USD. KDV, kurulum ve nakliye bu tutara dahildir.</p>
+          <p>Örneğin 12 m² ekran, 3 gün: 12 × 3 × 50 = 1.800 USD. KDV bu tutara dahildir; İstanbul içinde kurulum ve nakliye de dahildir, İstanbul dışında nakliye ayrıca planlanır.</p>
           <p>Ödemeyi TL, USD, EUR ve diğer para birimleriyle yapabilirsiniz; taksitli ödeme de mümkündür.</p>
           <p>
             Nihai tutar yazılı teklifle kesinleşir.{" "}
