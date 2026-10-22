@@ -309,9 +309,7 @@ export function HeroVideo({
               id="home-h1"
               className="text-balance font-display text-[clamp(1.75rem,1.1rem+2.2vw,3.1rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-white max-md:text-[32px] max-md:leading-[1.1]"
               style={{ textShadow: "0 2px 24px rgba(11,27,51,0.7), 0 0 2px rgba(11,27,51,0.45)" }}
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease, delay: 0.06 }}
+              initial={false}
             >
               {headline}
             </m.h1>

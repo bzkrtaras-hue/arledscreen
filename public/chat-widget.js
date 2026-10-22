@@ -1,579 +1,863 @@
-/*!
- * ARLEDSCREEN "Canlı Destek" sohbet balonu — v1
- * Tek dosya, harici istek yok (yalnızca aynı kökenden avatar + /fiyat-hesap/?mode=chat iframe'i).
- * CSP: satır içi olay işleyicisi yok; stil <style> etiketiyle eklenir (style-src 'unsafe-inline' yeterli).
- * Kullanım: <script src="/chat-widget.js" data-locale="tr" defer></script>
- *   data-locale  : "tr" (varsayılan) | "en"
- *   data-src     : sohbet adresi (varsayılan "/fiyat-hesap/?mode=chat")
- *   data-avatar  : avatar yolu (varsayılan "/brand/canli-destek-avatar.webp")
- *   data-delay   : karşılama balonu gecikmesi, ms (varsayılan 3500)
- *   data-pages   : Next.js istemci içi geçişlerde balonun görüneceği yollar (RegExp). Varsayılan: yüklendiği sayfa
- *                  + /tr/ ve /en/ ana sayfaları. "*" = her sayfa. /hesaplayici ve /fiyat-hesap her zaman hariç.
- * API: window.openCanliDestek(), window.closeCanliDestek(); ya da herhangi bir öğeye data-open-canli-destek.
+/**
+ * ARLEDSCREEN — Melis (Google Gemini 2.0+ Destekli Canlı Destek Widget'ı)
+ * UI Tasarımı: image_2.png Birebir Görsel Uyumu (Navy Header, Light Dotted Matrix Arka Plan,
+ * Melis Portresi, Yatay Hap Butonlar, Mikrofon & Gönder İkonları)
  */
-(function () {
-  "use strict";
-  if (window.__arledCanliDestek) return;
-  window.__arledCanliDestek = true;
+(function() {
+  if (document.getElementById('melis-widget-container')) return;
 
-  /* Hesaplayıcı sayfasında gösterme (sohbet zaten sayfada). */
-  var EXCLUDED = /\/(hesaplayici|fiyat-hesap)(\/|$)/;
-  if (EXCLUDED.test(location.pathname)) return;
+  // Melis Portre Avatarı (Öncelikli WebP dosyası, yüklenemezse anında devreye giren Base64 yedek)
+  const AVATAR_PRIMARY = '/brand/canli-destek-avatar.webp';
+  const AVATAR_FALLBACK = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABkAGQDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAcIAQMFBgQC/8QAMhAAAQMEAQEGAwcFAAAAAAAAAQACAwQFBhEHEggTITFBURQikRUjMkJhcbFSYnKBof/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYRAQEBAAAAAAAAAAAAAAAAAAARAf/aAAwDAQACEQMRAD8AgpERaZEREGHENG3LpUFhyCvg76hs9VLH/UYiFKnZb42ps1ySe7XiLvLZbnD7o+Urj5KfuT+WMN4zrqGxyUUMkjiGuijjA7pvoSosUhrKeqo6g09bTTU8o8xIwt/laiNFXr5BwvFeWMA+06GKETyQGSkqo26IIG9H3VOcIw+vyLkCDEtGOfviyU/2tPihHDt9BcbjKYrbQ1FU4eZZGSPqttys16tg6rja6qnafzd2dK8F5qcG4TwSOSSlgja1oABaC+Z3r4rlYjyxxvyLZ6mjucVNS+GnwzsA8D6goRSb02DtPTex9V7zmHFbNZOQBQ4zXR1NurpWiEtdsRlx8VJ2Rdm2O2YBJeor0X3GOETOBHynw3pEV0LgDonxRfqMb6g78TXFp/cIqMIiICO/A/8AxP8ACIfIj3GkFy+xhTwx8Zd8wDvJHnrKrx2mJ5Kjmi+ib5uhgDdjy8FL3Ylymm+DuGMVMzY5o3B1O1x11j10uf2mOHssvWefb+MUPx0Vfpkzd67r0JUaSd2S6iWfhmgjlJLWdYG1HnElBTM7VOSljW7hHyD235qYeN7NDxrxJBRXSdkRo4HPme4/mPjpVg4dzuCn5+nyCuk7ukuEz43PP76agsfzRieMXqqor7nFeyGyWzZMDj4SErlY/hHDGeWeWKw0kM0TB0l0LixzPYrZ2n8IvmdYbCzHnmaWA9Yha7QlBXk+yhxllmJ19Zdb/E6gjlADKfq2HfqoIH5owObjjMzQMqJZqN7g+kle4k+//F9N15mz644mcbqquYUhYI3Td1rqaPTqXvO2HebZX8i2a2iRsnwUrfiuk76Wk+Kk/NoOLm8KPMPwIpvhx3JaR3nXr6qpqmkUcnRtrSQfHevNF6THqi1strW1Dx1hx1senoio8yiIiCIiD7LLdLjZbrBdLVVOpauA7Y9p/lTtYO1LkFHQthulhFdO0aMod09X66VfUQSRynzLlWfQGhnJoLcTs07T4u/2o3HylpYS3pOxr390RBMnHnaHyvF7fFbbhSm700I1ESdFo9trr5X2ncluVE+mtFpFse8a70nq0oERRW6vq6q4VstdWzunqZndUkjjslatvLegzzuYPJhkPT9FhFUNfqiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiDBcAizrfkEQEREBERAREQEREBERAREQYPmiIqP//Z';
 
-  var me = document.currentScript || document.querySelector('script[src*="chat-widget"]');
-  var ds = (me && me.dataset) || {};
-  var LANG = ds.locale === "en" ? "en" : "tr";
-  var SRC = ds.src || "/fiyat-hesap/?mode=chat";
-  var AVATAR = ds.avatar || "/brand/canli-destek-avatar.webp";
-  var DELAY = ds.delay != null && ds.delay !== "" && isFinite(+ds.delay) ? +ds.delay : 3500;
-  var KEY = "arled-cd-dismissed";
-  function normPath(p) { return (p || "/").replace(/\/+$/, "") || "/"; }
-  var BOOT_PATH = normPath(location.pathname);
-  var PAGES = null;
-  if (ds.pages && ds.pages !== "*") { try { PAGES = new RegExp(ds.pages); } catch (e) { PAGES = null; } }
-  function allowedHere() {
-    var p = location.pathname;
-    if (EXCLUDED.test(p)) return false;
-    if (ds.pages === "*") return true;
-    if (PAGES) return PAGES.test(p);
-    var n = normPath(p);
-    return n === BOOT_PATH || n === "/" || n === "/tr" || n === "/en";
-  }
+  const MEMORY_KEY = 'arled_melis_chat_memory_v2';
+  let isMuted = false;
 
-  var T = {
-    tr: {
-      name: "Melis", online: "Canlı Destek • Çevrim içi",
-      teaser: "Merhaba, ben Melis. Size uygun LED ekranı ve fiyatı birlikte bulalım mı?",
-      teaserShort: "Merhaba, ben Melis. Uygun ekranı birlikte bulalım mı?",
-      note: "",
-      open: "Melis ile sohbeti aç", close: "Sohbeti kapat", closeTeaser: "Mesajı kapat",
-      dialog: "Melis • Canlı Destek", frame: "Melis: LED ekran önerisi ve tahmini fiyat", loading: "Bağlanıyor…",
-      typing: "Melis yazıyor", minimize: "Sohbeti küçült"
-    },
-    en: {
-      name: "Melis", online: "Live Support • Online",
-      teaser: "Hi, I'm Melis. Shall we find the right LED screen and an estimated price together?",
-      teaserShort: "Hi, I'm Melis. Shall we find the right screen together?",
-      note: "Chat is in Turkish.",
-      open: "Open chat with Melis", close: "Close chat", closeTeaser: "Dismiss message",
-      dialog: "Melis • Live Support", frame: "Melis: LED screen recommendation and estimated price", loading: "Connecting…",
-      typing: "Melis is typing", minimize: "Minimise chat"
+  function getHistory() {
+    try {
+      return JSON.parse(localStorage.getItem(MEMORY_KEY)) || [];
+    } catch(e) {
+      return [];
     }
-  }[LANG];
-
-  var mqReduce = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
-  /* Match MobileCtaBar (md:hidden = <768px) so launcher clears Ara / WhatsApp / Teklif. */
-  var mqMobile = window.matchMedia ? window.matchMedia("(max-width: 767px)") : null;
-  function reduced() { return !!(mqReduce && mqReduce.matches); }
-  function mobile() { return !!(mqMobile && mqMobile.matches); }
-  function dismissed() { try { return window.sessionStorage.getItem(KEY) === "1"; } catch (e) { return false; } }
-  function dismiss() { try { window.sessionStorage.setItem(KEY, "1"); } catch (e) { /* özel mod */ } }
-
-  var CSS = [
-    ".acd-root[hidden]{display:none!important}",
-    ".acd-root{--acd-b:calc(20px + env(safe-area-inset-bottom, 0px));--acd-r:calc(20px + env(safe-area-inset-right, 0px));--acd-navy:#0f2440;--acd-navy2:#1b3754;--acd-blue:#1e5bb8;--acd-ink:#0f172a;--acd-green:#22c55e;font-family:inherit;line-height:1.45;-webkit-font-smoothing:antialiased}",
-    ".acd-root *,.acd-root *::before,.acd-root *::after{box-sizing:border-box}",
-    ":where(.acd-root) button{font:inherit;margin:0;border:0;background:none;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}",
-    ".acd-root [hidden]{display:none!important}",
-    ".acd-root :focus-visible{outline:3px solid rgba(30,91,184,.55);outline-offset:3px}",
-    /* Launcher */
-    ".acd-launcher{position:fixed;right:var(--acd-r);bottom:var(--acd-b);z-index:55;width:64px;height:64px;padding:0;border-radius:50%;background:#fff;box-shadow:0 0 0 3px #fff,0 12px 28px -8px rgba(15,36,64,.55),0 4px 10px rgba(15,36,64,.18);transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,opacity .25s;animation:acd-pop .5s .2s cubic-bezier(.34,1.56,.64,1) both}",
-    ".acd-launcher:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 0 0 3px #fff,0 16px 32px -8px rgba(15,36,64,.6),0 4px 10px rgba(15,36,64,.2)}",
-    ".acd-launcher:active{transform:scale(.95)}",
-    ".acd-launcher img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;transition:opacity .2s,transform .25s}",
-    ".acd-dot{position:absolute;right:1px;bottom:1px;width:16px;height:16px;border-radius:50%;background:var(--acd-green);border:3px solid #fff;animation:acd-dot 2.6s 1s ease-out infinite}",
-    ".acd-badge{position:absolute;top:-3px;right:-3px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:#e11d48;color:#fff;font-size:11px;font-weight:700;line-height:20px;text-align:center;box-shadow:0 0 0 2px #fff;animation:acd-pop .35s cubic-bezier(.34,1.56,.64,1) both}",
-    ".acd-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(34,197,94,.55);opacity:0;pointer-events:none}",
-    ".acd-root.acd-attn .acd-ring{animation:acd-ring 1.8s ease-out 3}",
-    ".acd-x-ico{position:absolute;inset:0;display:grid;place-items:center;border-radius:50%;background:var(--acd-navy);color:#fff;opacity:0;transform:rotate(-60deg) scale(.6);transition:opacity .2s,transform .25s cubic-bezier(.34,1.56,.64,1)}",
-    ".acd-root.acd-open .acd-x-ico{opacity:1;transform:none}",
-    ".acd-root.acd-open .acd-dot,.acd-root.acd-open .acd-badge{opacity:0}",
-    /* Teaser */
-    ".acd-teaser{position:fixed;right:var(--acd-r);bottom:calc(var(--acd-b) + 78px);z-index:55;width:min(312px,calc(100vw - 32px));display:flex;align-items:flex-start;border-radius:18px 18px 6px 18px;background:#fff;color:var(--acd-ink);box-shadow:0 0 0 1px rgba(15,36,64,.08),0 22px 44px -18px rgba(15,36,64,.5),0 6px 14px -6px rgba(15,36,64,.18);transform-origin:100% 100%;animation:acd-teaser .5s cubic-bezier(.34,1.56,.64,1) both}",
-    ".acd-teaser::after{content:\"\";position:absolute;right:22px;bottom:-7px;width:14px;height:14px;background:#fff;transform:rotate(45deg);border-radius:0 0 4px 0;box-shadow:3px 3px 6px -3px rgba(15,36,64,.18)}",
-    ".acd-teaser-body{flex:1 1 auto;display:flex;align-items:flex-start;gap:11px;min-width:0;padding:14px 4px 14px 14px;text-align:left;border-radius:18px 0 0 18px}",
-    ".acd-teaser-body img{flex:none;width:42px;height:42px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 2px 8px rgba(15,36,64,.25)}",
-    ".acd-t-name{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--acd-navy2)}",
-    ".acd-t-name i{width:8px;height:8px;border-radius:50%;background:var(--acd-green);box-shadow:0 0 0 3px rgba(34,197,94,.18)}",
-    ".acd-t-name small{font-size:11.5px;font-weight:500;color:#5b6573}",
-    ".acd-t-msg{display:block;margin-top:3px;font-size:14px;line-height:1.45;color:#1f2937}",
-    ".acd-t-note{display:block;margin-top:4px;font-size:12px;color:#5b6573}",
-    ".acd-typing{display:inline-flex;gap:4px;padding:8px 0 4px}",
-    ".acd-typing span{width:7px;height:7px;border-radius:50%;background:#94a3b8;animation:acd-typing 1.1s ease-in-out infinite}",
-    ".acd-typing span:nth-child(2){animation-delay:.15s}.acd-typing span:nth-child(3){animation-delay:.3s}",
-    ".acd-msg-in{animation:acd-fade .35s ease-out both}",
-    ".acd-teaser-x{flex:none;width:44px;height:44px;display:grid;place-items:center;border-radius:0 18px 0 12px;color:#64748b;transition:color .2s,background-color .2s}",
-    ".acd-teaser-x:hover{color:var(--acd-ink);background:#f1f5f9}",
-    /* Panel */
-    ".acd-panel{position:fixed;right:var(--acd-r);bottom:calc(var(--acd-b) + 78px);z-index:56;width:400px;height:min(640px,calc(100vh - 140px));height:min(640px,calc(100dvh - 140px));overflow:hidden;border-radius:22px;background:var(--acd-navy);box-shadow:0 0 0 1px rgba(15,36,64,.1),0 32px 64px -24px rgba(15,36,64,.6),0 10px 24px -10px rgba(15,36,64,.25);transform-origin:100% 100%;animation:acd-panel .38s cubic-bezier(.22,1,.36,1) both;display:flex;flex-direction:column}",
-    ".acd-frame{display:block;flex:1 1 auto;min-height:0;width:100%;height:100%;border:0;background:#fff}",
-    ".acd-grab{display:none}",
-    ".acd-close{position:absolute;top:8px;right:10px;z-index:2;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.22);transition:background-color .2s,transform .2s}",
-    ".acd-close:hover{background:rgba(255,255,255,.22)}",
-    ".acd-close:active{transform:scale(.94)}",
-    ".acd-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(160deg,#0f2440,#1b3754);color:#d6e4f5;font-size:14px;font-weight:500;transition:opacity .3s}",
-    ".acd-loading img{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px rgba(255,255,255,.9);animation:acd-breathe 1.6s ease-in-out infinite}",
-    ".acd-loading.acd-done{opacity:0;pointer-events:none}",
-    "@media (max-width:767px){",
-    "  .acd-launcher{width:58px;height:58px}",
-    /* Mobil karşılama: başlatıcının yanında küçük balon; hero düğmelerini ve alt çubuğu örtmez. */
-    "  .acd-teaser{right:calc(var(--acd-r) + 68px);bottom:var(--acd-b);width:auto;max-width:min(260px,calc(100vw - 100px));min-height:58px;align-items:center;border-radius:20px 20px 6px 20px;transform-origin:100% 80%;animation-name:acd-teaser-m}",
-    "  .acd-teaser::after{right:-5px;bottom:12px;width:12px;height:12px;border-radius:0 4px 0 0;box-shadow:3px -3px 6px -3px rgba(15,36,64,.14)}",
-    "  .acd-teaser-body{gap:0;padding:8px 0 8px 13px;border-radius:20px 0 0 20px}",
-    "  .acd-teaser-body img,.acd-t-name small,.acd-t-note{display:none}",
-    "  .acd-t-name{font-size:12px;gap:5px}",
-    "  .acd-t-msg{margin-top:1px;font-size:13px;line-height:1.32;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}",
-    "  .acd-teaser-x{width:38px;height:44px;align-self:flex-start;border-radius:0 20px 0 12px}",
-    /* Mobil alt sayfa: ana sayfa üstte görünür kalır; kaydırma kilidi ve karartma yok. */
-    "  .acd-panel{left:0;right:0;bottom:var(--acd-kb,0px);width:auto;height:var(--acd-sh,min(62dvh,560px));max-height:560px;border-radius:24px 24px 0 0;background:#fff;padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 0 0 1px rgba(15,42,79,.06),0 -22px 48px -18px rgba(11,27,51,.42),0 -4px 14px -6px rgba(11,27,51,.16);transform-origin:50% 100%;animation:acd-sheet .34s cubic-bezier(.22,1,.36,1) backwards;transition:transform .26s cubic-bezier(.22,1,.36,1)}",
-    "  .acd-root.acd-kb .acd-panel{padding-bottom:0}",
-    "  .acd-panel.acd-dragging{transition:none;animation:none}",
-    "  .acd-panel.acd-out{transform:translateY(105%)!important;transition:transform .2s cubic-bezier(.4,0,1,1)}",
-    "  .acd-grab{display:flex;flex:none;justify-content:center;height:24px;background:#0b1b33;touch-action:none;cursor:grab}",
-    "  .acd-handle{width:112px;height:24px;display:grid;place-items:center;touch-action:none}",
-    "  .acd-handle::before{content:\"\";width:40px;height:5px;border-radius:3px;background:rgba(255,255,255,.42);transition:background-color .2s,width .2s}",
-    "  .acd-handle:hover::before,.acd-handle:focus-visible::before{background:rgba(255,255,255,.7);width:48px}",
-    "  .acd-root .acd-handle:focus-visible{outline-offset:-3px}",
-    "  .acd-close{top:32px}",
-    "  .acd-loading{top:24px}",
-    "  .acd-root.acd-open .acd-launcher,.acd-root.acd-open .acd-teaser{display:none}",
-    "  .acd-teaser.acd-measure{visibility:hidden;animation:none}",
-    "}",
-    "@keyframes acd-pop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}",
-    "@keyframes acd-teaser{from{opacity:0;transform:translateY(14px) scale(.9)}to{opacity:1;transform:none}}",
-    "@keyframes acd-panel{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}",
-    "@keyframes acd-sheet{from{transform:translateY(100%)}to{transform:none}}",
-    "@keyframes acd-teaser-m{from{opacity:0;transform:translateX(10px) scale(.92)}to{opacity:1;transform:none}}",
-    "@keyframes acd-fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}",
-    "@keyframes acd-typing{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}",
-    "@keyframes acd-dot{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%,100%{box-shadow:0 0 0 7px rgba(34,197,94,0)}}",
-    "@keyframes acd-ring{0%{transform:scale(.95);opacity:.9}100%{transform:scale(1.35);opacity:0}}",
-    "@keyframes acd-breathe{50%{transform:scale(1.05)}}",
-    "@media (prefers-reduced-motion:reduce){.acd-root *,.acd-root *::before,.acd-root *::after{animation:none!important;transition:none!important}}"
-  ].join("\n");
-
-  var SVG_X = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>';
-  var SVG_X_SM = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>';
-
-  function el(tag, cls, attrs) {
-    var n = document.createElement(tag);
-    if (cls) n.className = cls;
-    if (attrs) for (var k in attrs) if (Object.prototype.hasOwnProperty.call(attrs, k)) n.setAttribute(k, attrs[k]);
-    return n;
-  }
-  function avatarImg(size) {
-    // Bing Webmaster flags empty alt on 64×64 launcher / 72×72 loading avatars.
-    var i = el("img", "", {
-      src: AVATAR,
-      alt: T.name,
-      width: String(size),
-      height: String(size),
-      decoding: "async",
-    });
-    return i;
   }
 
-  var root, launcher, badge, teaser, teaserMsg, panel, closeBtn, grab, handle, frame, loading, lastFocus = null;
-  var isOpen = false, teaserTimer = 0, autoTimer = 0, drag = null, lastTap = 0, spaceWait = null;
+  function saveHistory(hist) {
+    try {
+      localStorage.setItem(MEMORY_KEY, JSON.stringify(hist));
+    } catch(e) {}
+  }
 
-  function build() {
-    var style = el("style", "", { id: "acd-style" });
-    style.textContent = CSS;
-    document.head.appendChild(style);
+  // Web Audio API ile Orijinal iPhone Tri-Tone Bildirim Zili
+  function playIPhoneNotificationSound() {
+    if (isMuted) return;
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      if (ctx.state === 'suspended') ctx.resume();
 
-    root = el("div", "acd-root", { "data-acd": "" });
+      const now = ctx.currentTime;
+      const tones = [
+        { freq: 1046.50, start: 0.00, dur: 0.22 }, // C6
+        { freq: 1318.51, start: 0.10, dur: 0.24 }, // E6
+        { freq: 2093.00, start: 0.22, dur: 0.55 }  // C7
+      ];
 
-    teaser = el("div", "acd-teaser");
-    teaser.hidden = true;
-    var tb = el("button", "acd-teaser-body", { type: "button", "aria-label": T.open });
-    tb.appendChild(avatarImg(42));
-    var tt = el("span", "");
-    var nm = el("span", "acd-t-name");
-    nm.appendChild(el("i", "", { "aria-hidden": "true" }));
-    nm.appendChild(document.createTextNode(T.name));
-    var on = el("small", "");
-    on.textContent = "• " + T.online;
-    nm.appendChild(on);
-    teaserMsg = el("span", "acd-t-msg", { "aria-live": "polite" });
-    tt.appendChild(nm);
-    tt.appendChild(teaserMsg);
-    tb.appendChild(tt);
-    var tx = el("button", "acd-teaser-x", { type: "button", "aria-label": T.closeTeaser });
-    tx.innerHTML = SVG_X_SM;
-    teaser.appendChild(tb);
-    teaser.appendChild(tx);
-
-    launcher = el("button", "acd-launcher", { type: "button", "aria-label": T.open, "aria-expanded": "false", "aria-controls": "acd-panel", "aria-haspopup": "dialog" });
-    launcher.appendChild(avatarImg(64));
-    launcher.appendChild(el("span", "acd-ring", { "aria-hidden": "true" }));
-    launcher.appendChild(el("span", "acd-dot", { "aria-hidden": "true" }));
-    badge = el("span", "acd-badge", { "aria-hidden": "true" });
-    badge.textContent = "1";
-    badge.hidden = true;
-    launcher.appendChild(badge);
-    var xi = el("span", "acd-x-ico", { "aria-hidden": "true" });
-    xi.innerHTML = SVG_X;
-    launcher.appendChild(xi);
-
-    panel = el("div", "acd-panel", { id: "acd-panel", role: "dialog", "aria-label": T.dialog });
-    panel.hidden = true;
-    closeBtn = el("button", "acd-close", { type: "button", "aria-label": T.close });
-    closeBtn.innerHTML = SVG_X;
-    loading = el("div", "acd-loading", { "aria-hidden": "true" });
-    loading.appendChild(avatarImg(72));
-    var lt = el("span", "");
-    lt.textContent = T.loading;
-    loading.appendChild(lt);
-    grab = el("div", "acd-grab");
-    handle = el("button", "acd-handle", { type: "button", "aria-label": T.minimize });
-    grab.appendChild(handle);
-    panel.appendChild(grab);
-    panel.appendChild(closeBtn);
-    panel.appendChild(loading);
-
-    root.appendChild(teaser);
-    root.appendChild(panel);
-    root.appendChild(launcher);
-    document.body.appendChild(root);
-
-    launcher.addEventListener("click", function () { if (isOpen) close(); else open(); });
-    tb.addEventListener("click", function () { open(); });
-    tx.addEventListener("click", function () { hideTeaser(); dismiss(); launcher.focus(); });
-    closeBtn.addEventListener("click", function () { close(); });
-    /* Tutamaca dokunma (veya Enter/Boşluk) küçültür; işaretçi yakalandığı için tıklama şeritte dinlenir. */
-    grab.addEventListener("click", function () {
-      if (Date.now() - lastTap < 700) return; /* dokunma zaten işlendi */
-      minimize();
-    });
-    /* Tutamaçtan aşağı kaydırınca küçült. */
-    grab.addEventListener("pointerdown", function (e) {
-      if (e.button) return;
-      try { grab.setPointerCapture(e.pointerId); } catch (x) { /* yok say */ }
-      dragStart(e.screenY, true);
-    });
-    grab.addEventListener("pointermove", function (e) { if (drag) dragMove(e.screenY); });
-    grab.addEventListener("pointerup", function () { dragEnd(); });
-    grab.addEventListener("pointercancel", function () { dragEnd(true); });
-    document.addEventListener("keydown", onKey);
-    document.addEventListener("click", function (e) {
-      var t = e.target && e.target.closest ? e.target.closest("[data-open-canli-destek]") : null;
-      if (t && !root.hidden) { e.preventDefault(); open(); }
-    });
-    window.addEventListener("resize", place);
-    if (mqMobile && mqMobile.addEventListener) mqMobile.addEventListener("change", function () { sheetSync(); place(); });
-    /* iOS/Android klavyesi: görünür alan küçülünce alt sayfayı klavyenin üstüne taşı. */
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener("resize", sheetSync);
-      window.visualViewport.addEventListener("scroll", sheetSync);
-    }
-    window.addEventListener("resize", sheetSync);
-    place();
-    /* Mobil hızlı iletişim çubuğu sonradan gelebilir: boyutunu izle. */
-    var bar = document.querySelector(".mobile-cta-bar");
-    if (bar && "ResizeObserver" in window) new ResizeObserver(place).observe(bar);
-    /* Menü/drawer kapanınca CTA tekrar görünür — --acd-b'yi yeniden ölç. */
-    if ("MutationObserver" in window) {
-      new MutationObserver(function () { place(); }).observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["class"],
+      tones.forEach(t => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(t.freq, now + t.start);
+        gain.gain.setValueAtTime(0.001, now + t.start);
+        gain.gain.exponentialRampToValueAtTime(0.28, now + t.start + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + t.start + t.dur);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + t.start);
+        osc.stop(now + t.start + t.dur);
       });
-    }
+    } catch(e) {}
   }
 
-  /* Alt hızlı iletişim çubuğu görünürse balonu onun üstüne taşı. */
-  function place() {
-    var bar = document.querySelector(".mobile-cta-bar");
-    var h = 0;
-    if (bar) {
-      var cs = window.getComputedStyle(bar);
-      if (cs.display !== "none" && cs.visibility !== "hidden" && cs.position === "fixed") h = bar.getBoundingClientRect().height;
+  function formatMarkdown(text) {
+    if (!text) return "";
+    let html = text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    html = html.replace(/\n/g, '<br>');
+    return html;
+  }
+
+  const style = document.createElement('style');
+  style.textContent = `
+    #melis-widget-container {
+      position: fixed;
+      bottom: max(20px, env(safe-area-inset-bottom, 20px));
+      right: max(20px, env(safe-area-inset-right, 20px));
+      z-index: 99999999;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
-    root.style.setProperty("--acd-b", h > 0 ? Math.round(h + 12) + "px" : "calc(20px + env(safe-area-inset-bottom, 0px))");
-    /* Sağ kenardaki yüzen WhatsApp/Instagram vb. düğmelerle çakışma varsa başlatıcıyı onların üstüne al. */
-    if (!launcher || root.hidden) return;
-    var sel = 'nav[aria-label="Hızlı iletişim"],nav[aria-label="Quick contact"],[data-floating-social],[class*="whatsapp-float"],[class*="float-whatsapp"],[class*="floating-social"]';
-    var nodes = document.querySelectorAll(sel);
-    for (var pass = 0; pass < 3; pass++) {
-      var lr = launcher.getBoundingClientRect(), moved = false;
-      if (!lr.width) return;
-      for (var i = 0; i < nodes.length; i++) {
-        var n = nodes[i];
-        if (n === bar || root.contains(n)) continue;
-        var ncs = window.getComputedStyle(n);
-        if (ncs.position !== "fixed" || ncs.display === "none" || ncs.visibility === "hidden") continue;
-        var r = n.getBoundingClientRect();
-        if (!r.width || !r.height) continue;
-        if (r.left < lr.right + 8 && r.right > lr.left - 8 && r.top < lr.bottom + 8 && r.bottom > lr.top - 8) {
-          root.style.setProperty("--acd-b", Math.round(window.innerHeight - r.top + 12) + "px");
-          moved = true;
-        }
+
+    /* iOS BİLDİRİM BALONU */
+    #melis-notification-bubble {
+      position: absolute;
+      bottom: 78px;
+      right: 0;
+      width: 320px;
+      max-width: calc(100vw - 40px);
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 18px;
+      padding: 13px 15px;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16), 0 2px 6px rgba(0, 0, 0, 0.06);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      cursor: pointer;
+      transform: translateY(20px) scale(0.95);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #melis-notification-bubble.show {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .melis-bubble-avatar-wrap {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+    .melis-bubble-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid #2563EB;
+      object-fit: cover;
+      background: #0B1B3D;
+    }
+    .melis-bubble-online {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      background: #10B981;
+      border: 2px solid #FFFFFF;
+      border-radius: 50%;
+    }
+    .melis-bubble-content { flex: 1; min-width: 0; }
+    .melis-bubble-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+    .melis-bubble-title { font-size: 13px; font-weight: 700; color: #0F172A; }
+    .melis-bubble-time { font-size: 11px; color: #94A3B8; }
+    .melis-bubble-text { font-size: 12.5px; color: #475569; line-height: 1.4; }
+    .melis-bubble-close {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+
+    /* TETİK BUTONU */
+    #melis-chat-trigger {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: #0B1B3D;
+      box-shadow: 0 10px 28px rgba(11, 27, 61, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2.5px solid #2563EB;
+      position: relative;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+      touch-action: manipulation;
+    }
+    #melis-chat-trigger:hover {
+      transform: scale(1.06);
+      box-shadow: 0 14px 34px rgba(11, 27, 61, 0.6);
+    }
+    #melis-chat-trigger:active { transform: scale(0.95); }
+    .melis-trigger-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .melis-online-dot {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 15px;
+      height: 15px;
+      background: #10B981;
+      border: 2.5px solid #FFFFFF;
+      border-radius: 50%;
+    }
+    .melis-unread-counter {
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      background: #EF4444;
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 800;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #FFFFFF;
+    }
+
+    /* SOHBET PENCERESİ */
+    #melis-chat-window {
+      position: fixed;
+      bottom: max(96px, calc(env(safe-area-inset-bottom, 20px) + 76px));
+      right: max(20px, env(safe-area-inset-right, 20px));
+      width: 420px;
+      max-width: calc(100vw - 32px);
+      height: 650px;
+      max-height: calc(100vh - 120px);
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(11, 27, 61, 0.25);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 99999999;
+      animation: melisPop 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes melisPop {
+      from { opacity: 0; transform: translateY(20px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (max-width: 600px) {
+      #melis-chat-window {
+        bottom: 0 !important;
+        right: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        border-radius: 0 !important;
+        border: none !important;
       }
-      if (!moved) break;
     }
-  }
 
-  /* Mobil alt sayfa yüksekliği: görünür alanın ~%62'si (en çok 560px); klavye açıkken klavyenin üstünde. */
-  function sheetSync() {
-    if (!root) return;
-    if (!isOpen || !mobile()) {
-      root.style.removeProperty("--acd-kb");
-      root.style.removeProperty("--acd-sh");
-      root.classList.remove("acd-kb");
-      return;
+    /* LACİVERT HEADER */
+    .melis-header {
+      background: #0B1B3D;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #FFFFFF;
     }
-    var lh = window.innerHeight, vv = window.visualViewport, vh = lh, kb = 0;
-    if (vv) {
-      vh = vv.height;
-      kb = Math.max(0, Math.round(lh - vv.height - vv.offsetTop));
-      if (kb < 80) kb = 0; /* adres çubuğu oynamaları klavye değildir */
+    .melis-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    var base = Math.min(Math.round(lh * 0.62), 560);
-    var hgt = kb ? Math.max(220, Math.min(base, Math.round(vh) - 12)) : base;
-    root.style.setProperty("--acd-kb", kb + "px");
-    root.style.setProperty("--acd-sh", hgt + "px");
-    root.classList.toggle("acd-kb", kb > 0);
-  }
-
-  function dragStart(y, fromGrab) {
-    if (!isOpen || !mobile()) return;
-    drag = { y0: y, dy: 0, t0: Date.now(), moved: false, grab: !!fromGrab };
-    panel.classList.add("acd-dragging");
-  }
-  function dragMove(y) {
-    if (!drag) return;
-    var dy = Math.max(0, y - drag.y0);
-    if (dy > 6) drag.moved = true;
-    drag.dy = dy;
-    panel.style.transform = dy ? "translateY(" + dy + "px)" : "";
-  }
-  function dragEnd(cancel) {
-    if (!drag) return;
-    var d = drag;
-    drag = null;
-    panel.classList.remove("acd-dragging");
-    var v = d.dy / Math.max(1, Date.now() - d.t0);
-    if (!cancel && (d.dy > 90 || (d.dy > 30 && v > 0.5))) { lastTap = Date.now(); minimize(); }
-    else if (!cancel && d.grab && !d.moved) { lastTap = Date.now(); panel.style.transform = ""; minimize(); } /* tutamaca dokunma */
-    else { if (d.moved) lastTap = Date.now(); panel.style.transform = ""; }
-  }
-  function minimize() {
-    if (!isOpen) return;
-    if (mobile() && !reduced()) {
-      panel.classList.add("acd-out");
-      setTimeout(function () { panel.classList.remove("acd-out"); close(); }, 200);
-    } else close();
-  }
-
-  function onKey(e) {
-    if (e.key === "Escape" && isOpen) { e.preventDefault(); close(); }
-  }
-
-  /* Mobil: balon sayfadaki bir düğmeyi/bağlantıyı örtecekse göstermeyi ertele (rozet görünür kalır), kaydırınca yeniden dene. */
-  function teaserFits() {
-    teaserMsg.textContent = T.teaserShort;
-    teaserMsg.className = "acd-t-msg";
-    teaser.classList.add("acd-measure");
-    teaser.hidden = false;
-    var r = teaser.getBoundingClientRect();
-    teaser.hidden = true;
-    teaser.classList.remove("acd-measure");
-    var els = document.querySelectorAll('a[href],button,input,select,textarea,[role="button"]');
-    for (var i = 0; i < els.length; i++) {
-      var e = els[i];
-      if (root.contains(e) || (e.closest && e.closest('header,.mobile-cta-bar,[aria-hidden="true"]'))) continue;
-      var q = e.getBoundingClientRect();
-      if (!q.width || !q.height) continue;
-      var ix = Math.min(r.right, q.right) - Math.max(r.left, q.left), iy = Math.min(r.bottom, q.bottom) - Math.max(r.top, q.top);
-      if (ix > 0 && iy > 0 && (ix * iy) / (q.width * q.height) > 0.2) return false; /* büyük kartın küçük bir köşesi sorun değil */
+    .melis-header-avatar-wrap {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
     }
-    return true;
-  }
-  function waitForSpace() {
-    if (spaceWait) return;
-    var t = 0;
-    spaceWait = function () {
-      clearTimeout(t);
-      t = setTimeout(function () {
-        if (dismissed() || isOpen || !root || root.hidden || !teaser.hidden) return;
-        if (teaserFits()) { window.removeEventListener("scroll", spaceWait); spaceWait = null; showTeaser(); }
-      }, 220);
-    };
-    window.addEventListener("scroll", spaceWait, { passive: true });
-  }
-  function showTeaser() {
-    if (isOpen || dismissed() || !root || root.hidden) return;
-    if (mobile() && !teaserFits()) {
-      badge.hidden = false;
-      root.classList.add("acd-attn");
-      waitForSpace();
-      return;
+    .melis-header-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid #38BDF8;
+      object-fit: cover;
+      background: #080D1A;
     }
-    teaser.hidden = false;
-    badge.hidden = false;
-    root.classList.add("acd-attn");
-    clearTimeout(autoTimer);
-    if (mobile()) autoTimer = setTimeout(autoHideTeaser, 8000);
-    if (reduced()) { setTeaserText(); return; }
-    teaserMsg.textContent = "";
-    var typing = el("span", "acd-typing", { role: "img", "aria-label": T.typing });
-    typing.appendChild(el("span"));
-    typing.appendChild(el("span"));
-    typing.appendChild(el("span"));
-    teaserMsg.appendChild(typing);
-    setTimeout(setTeaserText, 900);
-  }
-  function setTeaserText() {
-    teaserMsg.textContent = mobile() ? T.teaserShort : T.teaser;
-    teaserMsg.className = "acd-t-msg acd-msg-in";
-    if (T.note) {
-      var n = el("span", "acd-t-note");
-      n.textContent = T.note;
-      teaserMsg.appendChild(n);
+    .melis-header-dot {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      background: #10B981;
+      border: 2px solid #0B1B3D;
+      border-radius: 50%;
     }
-  }
-  /* Mobil: ~8 sn sonra yalnızca başlatıcı + rozet kalır (bu ziyarette tekrar açılmaz). */
-  function autoHideTeaser() {
-    if (!teaser || teaser.hidden || isOpen) return;
-    teaser.hidden = true;
-    root.classList.remove("acd-attn");
-    dismiss();
-  }
-  function hideTeaser() {
-    clearTimeout(teaserTimer);
-    clearTimeout(autoTimer);
-    if (spaceWait) { window.removeEventListener("scroll", spaceWait); spaceWait = null; }
-    if (!teaser) return;
-    teaser.hidden = true;
-    badge.hidden = true;
-    root.classList.remove("acd-attn");
-  }
-
-  function ensureFrame() {
-    if (frame) return;
-    frame = el("iframe", "acd-frame", { title: T.frame, allow: "microphone; clipboard-write", referrerpolicy: "same-origin" });
-    frame.addEventListener("load", function () {
-      loading.classList.add("acd-done");
-      try {
-        /* Aynı köken: Esc ile kapat; masaüstünde yazma alanına odaklan. */
-        var fd = frame.contentWindow.document;
-        fd.addEventListener("keydown", onKey);
-        var head = fd.querySelector(".chat-head");
-        if (head) {
-          head.addEventListener("touchstart", function (e) { if (e.touches.length === 1 && !(e.target.closest && e.target.closest("button"))) dragStart(e.touches[0].screenY); }, { passive: true });
-          head.addEventListener("touchmove", function (e) { if (drag && e.touches.length === 1) dragMove(e.touches[0].screenY); }, { passive: true });
-          head.addEventListener("touchend", function () { dragEnd(); }, { passive: true });
-          head.addEventListener("touchcancel", function () { dragEnd(true); }, { passive: true });
-        }
-        if (isOpen && window.matchMedia && window.matchMedia("(pointer: fine)").matches) {
-          var input = frame.contentWindow.document.getElementById("ar-text");
-          if (input) input.focus({ preventScroll: true });
-        }
-      } catch (e) { /* farklı köken: yok say */ }
-    });
-    frame.src = SRC; /* yalnızca ilk açılışta yüklenir (tembel yükleme) */
-    panel.appendChild(frame);
-  }
-
-  function open() {
-    if (!root) return;
-    hideTeaser();
-    if (isOpen) return;
-    isOpen = true;
-    lastFocus = document.activeElement;
-    ensureFrame();
-    panel.hidden = false;
-    root.classList.add("acd-open");
-    launcher.setAttribute("aria-expanded", "true");
-    launcher.setAttribute("aria-label", T.close);
-    panel.style.transform = "";
-    sheetSync();
-    if (loading.classList.contains("acd-done")) {
-      try {
-        if (window.matchMedia && window.matchMedia("(pointer: fine)").matches) {
-          var input = frame.contentWindow.document.getElementById("ar-text");
-          if (input) { input.focus({ preventScroll: true }); return; }
-        }
-      } catch (e) { /* yok say */ }
+    .melis-header-titles {
+      display: flex;
+      flex-direction: column;
     }
-    closeBtn.focus({ preventScroll: true });
-  }
-
-  /* Pencere kapanınca sohbetteki sesli dinleme/konuşma da durur (aynı köken iframe). */
-  function notifyFrameClosed() {
-    try { if (frame && frame.contentWindow) frame.contentWindow.dispatchEvent(new Event("arled-chat-close")); } catch (e) { /* yok say */ }
-  }
-
-  function close() {
-    if (!isOpen) return;
-    notifyFrameClosed();
-    isOpen = false;
-    dismiss();
-    panel.hidden = true;
-    root.classList.remove("acd-open");
-    launcher.setAttribute("aria-expanded", "false");
-    launcher.setAttribute("aria-label", T.open);
-    panel.style.transform = "";
-    sheetSync();
-    var back = lastFocus && lastFocus !== document.body && document.contains(lastFocus) ? lastFocus : launcher;
-    try { back.focus({ preventScroll: true }); } catch (e) { launcher.focus(); }
-  }
-
-  /* Next.js istemci içi sayfa geçişleri: izin verilmeyen sayfada balonu gizle (tam yükleme gerekmez). */
-  function onRoute() {
-    if (!root) return;
-    var ok = allowedHere();
-    if (ok === !root.hidden) return;
-    if (!ok) {
-      if (isOpen) {
-        notifyFrameClosed();
-        isOpen = false;
-        panel.hidden = true;
-        root.classList.remove("acd-open");
-        launcher.setAttribute("aria-expanded", "false");
-        launcher.setAttribute("aria-label", T.open);
-        panel.style.transform = "";
-        sheetSync();
-      }
-      hideTeaser();
-      root.hidden = true;
-    } else {
-      root.hidden = false;
-      place();
+    .melis-header-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.2px;
     }
-  }
-  function watchRoutes() {
-    ["pushState", "replaceState"].forEach(function (m) {
-      var orig = history[m];
-      if (typeof orig !== "function") return;
-      history[m] = function () {
-        var r = orig.apply(this, arguments);
-        setTimeout(onRoute, 0);
-        return r;
-      };
-    });
-    window.addEventListener("popstate", function () { setTimeout(onRoute, 0); });
-  }
+    .melis-header-sub {
+      font-size: 12px;
+      color: #94A3B8;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 1px;
+    }
+    .melis-status-indicator {
+      width: 7px;
+      height: 7px;
+      background: #10B981;
+      border-radius: 50%;
+    }
+    .melis-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .melis-header-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #16284F;
+      border: none;
+      color: #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.15s;
+    }
+    .melis-header-btn:hover { background: #2563EB; color: #FFF; }
 
-  window.openCanliDestek = function () {
-    if (!root) init();
-    if (root.hidden) return;
-    open();
+    /* AÇIK RENKLİ NOKTALI MATRIX ARKA PLAN */
+    .melis-body {
+      flex: 1;
+      padding: 18px 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background-color: #F8FAFC;
+      background-image: radial-gradient(#CBD5E1 1.2px, transparent 1.2px);
+      background-size: 18px 18px;
+      scroll-behavior: smooth;
+    }
+
+    /* MESAJ DİZİLİMİ */
+    .melis-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      max-width: 90%;
+    }
+    .melis-row-bot {
+      align-self: flex-start;
+    }
+    .melis-row-user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+      max-width: 82%;
+    }
+
+    .melis-msg-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid #CBD5E1;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #0B1B3D;
+      margin-top: 2px;
+    }
+
+    .melis-bubble-bot {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 18px;
+      border-top-left-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      padding: 12px 16px;
+      color: #1E293B;
+      font-size: 13.5px;
+      line-height: 1.55;
+      word-break: break-word;
+    }
+    .melis-bubble-bot-author {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 5px;
+    }
+    .melis-bubble-bot-author span.dot {
+      width: 6px;
+      height: 6px;
+      background: #10B981;
+      border-radius: 50%;
+    }
+
+    .melis-bubble-user {
+      background: #2563EB;
+      border-radius: 18px;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+      padding: 11px 16px;
+      color: #FFFFFF;
+      font-size: 13.5px;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+    .melis-bubble-user-author {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 3px;
+      text-align: right;
+    }
+
+    .melis-whatsapp-card {
+      margin-top: 10px;
+      padding: 8px 10px;
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .melis-whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #15803D !important;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .melis-whatsapp-link:hover { text-decoration: underline; }
+
+    /* YAZIYOR İNDİKATÖRÜ */
+    .melis-typing {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 14px;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      width: fit-content;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .melis-typing-dot {
+      width: 6px;
+      height: 6px;
+      background: #3B82F6;
+      border-radius: 50%;
+      animation: melisBounce 1.4s infinite ease-in-out both;
+    }
+    .melis-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .melis-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes melisBounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+
+    /* YATAY KAYDIRILABİLİR HAP BUTONLAR */
+    .melis-pills-bar {
+      padding: 10px 14px 6px 14px;
+      background: #FFFFFF;
+      border-top: 1px solid #F1F5F9;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .melis-pills-bar::-webkit-scrollbar { display: none; }
+    .melis-pill {
+      background: #FFFFFF;
+      color: #1D4ED8;
+      border: 1.5px solid #3B82F6;
+      border-radius: 9999px;
+      padding: 7px 15px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s ease;
+    }
+    .melis-pill:hover, .melis-pill:active {
+      background: #2563EB;
+      color: #FFFFFF;
+    }
+
+    /* ALT GİRİŞ ÇUBUĞU */
+    .melis-footer {
+      padding: 10px 14px 14px 14px;
+      background: #FFFFFF;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding-bottom: max(14px, env(safe-area-inset-bottom, 14px));
+    }
+    .melis-input {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 16px;
+      padding: 12px 16px;
+      color: #0F172A;
+      font-size: 16px !important;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .melis-input:focus { border-color: #2563EB; }
+    .melis-input::placeholder { color: #94A3B8; font-size: 13.5px; }
+
+    .melis-mic-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      color: #2563EB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .melis-mic-btn:hover { background: #EFF6FF; border-color: #2563EB; }
+    .melis-mic-btn.listening { background: #EF4444; color: #FFF; border-color: #EF4444; }
+
+    .melis-send-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: #1D4ED8;
+      border: none;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .melis-send-btn:hover { background: #1E40AF; }
+    .melis-send-btn:active { transform: scale(0.95); }
+    .melis-send-btn svg { width: 20px; height: 20px; fill: currentColor; }
+  `;
+  document.head.appendChild(style);
+
+  // Widget DOM Oluşturma
+  const container = document.createElement('div');
+  container.id = 'melis-widget-container';
+  container.innerHTML = `
+    <!-- iOS Bildirim Balonu -->
+    <div id="melis-notification-bubble" onclick="melisOpenAndReadNotification()">
+      <div class="melis-bubble-avatar-wrap">
+        <img class="melis-bubble-avatar" src="${AVATAR_PRIMARY}" onerror="this.onerror=null;this.src='${AVATAR_FALLBACK}';" alt="Melis">
+        <div class="melis-bubble-online"></div>
+      </div>
+      <div class="melis-bubble-content">
+        <div class="melis-bubble-header">
+          <span class="melis-bubble-title">Melis • Canlı Destek</span>
+          <span class="melis-bubble-time">Şimdi</span>
+        </div>
+        <div class="melis-bubble-text">👋 Merhabalar! Projeniz için en doğru LED ekran modelini ve maliyetini birlikte hesaplayalım mı?</div>
+      </div>
+      <button class="melis-bubble-close" onclick="melisDismissBubble(event)">&times;</button>
+    </div>
+
+    <!-- Tetik Butonu -->
+    <div id="melis-chat-trigger" onclick="melisToggleChat()">
+      <img class="melis-trigger-avatar" src="${AVATAR_PRIMARY}" onerror="this.onerror=null;this.src='${AVATAR_FALLBACK}';" alt="Melis">
+      <div class="melis-online-dot"></div>
+      <div id="melisUnreadBadge" class="melis-unread-counter">1</div>
+    </div>
+
+    <!-- Sohbet Penceresi -->
+    <div id="melis-chat-window">
+      <!-- Lacivert Header -->
+      <div class="melis-header">
+        <div class="melis-header-left">
+          <div class="melis-header-avatar-wrap">
+            <img class="melis-header-avatar" src="${AVATAR_PRIMARY}" onerror="this.onerror=null;this.src='${AVATAR_FALLBACK}';" alt="Melis">
+            <div class="melis-header-dot"></div>
+          </div>
+          <div class="melis-header-titles">
+            <div class="melis-header-name">Melis • Canlı Destek</div>
+            <div class="melis-header-sub">
+              <span class="melis-status-indicator"></span> Çevrim içi
+            </div>
+          </div>
+        </div>
+        <div class="melis-header-actions">
+          <button class="melis-header-btn" id="melisMuteBtn" title="Sesi Aç/Kapat" onclick="melisToggleMute()">🔊</button>
+          <button class="melis-header-btn" title="Geçmişi Temizle" onclick="melisClearMemory()">🗑️</button>
+          <button class="melis-header-btn" title="Kapat" onclick="melisToggleChat()">&times;</button>
+        </div>
+      </div>
+
+      <!-- Açık Noktalı Matrix Arka Plan -->
+      <div class="melis-body" id="melisChatBody"></div>
+
+      <!-- Yatay Hap Butonlar -->
+      <div class="melis-pills-bar">
+        <button class="melis-pill" onclick="melisSendPill('İç mekân')">İç mekân</button>
+        <button class="melis-pill" onclick="melisSendPill('Dış mekân')">Dış mekân</button>
+        <button class="melis-pill" onclick="melisSendPill('Kafe / restoran')">Kafe / restoran</button>
+        <button class="melis-pill" onclick="melisSendPill('Mağaza vitrini')">Mağaza vitrini</button>
+        <button class="melis-pill" onclick="melisSendPill('200x120 cm')">200x120 cm</button>
+        <button class="melis-pill" onclick="melisSendPill('P2.5 İç Mekân')">P2.5 İç Mekân</button>
+        <button class="melis-pill" onclick="melisSendPill('3.840 Hz Tazeleme')">3.840 Hz Tazeleme</button>
+        <button class="melis-pill" onclick="melisSendPill('20 m² Huidu vs NovaStar kuralınız nedir?')">NovaStar vs Huidu</button>
+      </div>
+
+      <!-- Giriş Çubuğu -->
+      <div class="melis-footer">
+        <input type="text" id="melisUserInput" class="melis-input" placeholder="Örn. kafe vitrini 3x2 m iç mekân" onkeypress="melisHandleKey(event)">
+        <button class="melis-mic-btn" id="melisMicBtn" title="Sesle Yaz" onclick="melisToggleSpeech()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="22"></line>
+          </svg>
+        </button>
+        <button class="melis-send-btn" onclick="melisSendMessage()">
+          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(container);
+
+  // Ses Durumu
+  window.melisToggleMute = function() {
+    isMuted = !isMuted;
+    const btn = document.getElementById('melisMuteBtn');
+    if (btn) btn.textContent = isMuted ? '🔇' : '🔊';
   };
-  window.closeCanliDestek = function () { close(); };
 
-  var started = false;
-  function init() {
-    if (started) return;
-    started = true;
-    build();
-    watchRoutes();
-    if (!dismissed()) {
-      var run = function () { teaserTimer = setTimeout(showTeaser, DELAY); };
-      if (document.readyState === "complete") run();
-      else window.addEventListener("load", run, { once: true });
+  // Sohbet Geçmişi Render
+  function renderHistory() {
+    const chatBody = document.getElementById('melisChatBody');
+    if (!chatBody) return;
+    chatBody.innerHTML = '';
+    const hist = getHistory();
+
+    if (hist.length > 0) {
+      hist.forEach(m => {
+        appendMessageUI(m.sender, m.text);
+      });
+    } else {
+      appendMessageUI('bot', 'Merhaba, ben Melis.');
+      appendMessageUI('bot', 'Ekranı nerede kullanmayı düşünüyorsunuz?');
     }
+    chatBody.scrollTop = chatBody.scrollHeight;
   }
 
-  if (document.body) init();
-  else document.addEventListener("DOMContentLoaded", init, { once: true });
+  function appendMessageUI(sender, text) {
+    const chatBody = document.getElementById('melisChatBody');
+    if (!chatBody) return;
+
+    const row = document.createElement('div');
+    if (sender === 'user') {
+      row.className = 'melis-row melis-row-user';
+      row.innerHTML = `
+        <div class="melis-bubble-user">
+          <div class="melis-bubble-user-author">Siz</div>
+          <div>${formatMarkdown(text)}</div>
+        </div>
+      `;
+    } else {
+      row.className = 'melis-row melis-row-bot';
+      let html = `
+        <img class="melis-msg-avatar" src="${AVATAR_PRIMARY}" onerror="this.onerror=null;this.src='${AVATAR_FALLBACK}';" alt="Melis">
+        <div class="melis-bubble-bot">
+          <div class="melis-bubble-bot-author"><span class="dot"></span> Melis</div>
+          <div>${formatMarkdown(text)}</div>
+      `;
+
+      if (text.length > 80 && (text.includes('USD') || text.includes('Garanti') || text.includes('WhatsApp') || text.includes('keşif') || text.includes('m²'))) {
+        html += `
+          <div class="melis-whatsapp-card">
+            <a class="melis-whatsapp-link" href="https://wa.me/905305078834?text=${encodeURIComponent('Merhabalar Melis Hanım, arledscreen.com canlı destekten ulaşıyorum: ' + text.slice(0, 100))}" target="_blank">
+              📲 WhatsApp Teklif Hattı (+90 530 507 88 34)
+            </a>
+          </div>
+        `;
+      }
+
+      html += `</div>`;
+      row.innerHTML = html;
+    }
+    chatBody.appendChild(row);
+  }
+
+  renderHistory();
+
+  // Bildirim sesi ve balonu açılışı (2.2 saniye gecikmeyle)
+  setTimeout(() => {
+    const bubble = document.getElementById('melis-notification-bubble');
+    if (bubble && !bubble.classList.contains('dismissed')) {
+      playIPhoneNotificationSound();
+      bubble.classList.add('show');
+    }
+  }, 2200);
+
+  window.melisOpenAndReadNotification = function() {
+    const bubble = document.getElementById('melis-notification-bubble');
+    if (bubble) bubble.classList.remove('show');
+    const badge = document.getElementById('melisUnreadBadge');
+    if (badge) badge.style.display = 'none';
+    melisToggleChat();
+  };
+
+  window.melisDismissBubble = function(e) {
+    e.stopPropagation();
+    const bubble = document.getElementById('melis-notification-bubble');
+    if (bubble) {
+      bubble.classList.remove('show');
+      bubble.classList.add('dismissed');
+    }
+  };
+
+  window.melisToggleChat = function() {
+    const win = document.getElementById('melis-chat-window');
+    const isVisible = (win.style.display === 'flex');
+    win.style.display = isVisible ? 'none' : 'flex';
+
+    if (!isVisible) {
+      const badge = document.getElementById('melisUnreadBadge');
+      if (badge) badge.style.display = 'none';
+      const bubble = document.getElementById('melis-notification-bubble');
+      if (bubble) bubble.classList.remove('show');
+      document.getElementById('melisUserInput').focus();
+      const body = document.getElementById('melisChatBody');
+      body.scrollTop = body.scrollHeight;
+    }
+  };
+
+  window.melisClearMemory = function() {
+    if (confirm('Sohbet geçmişini sıfırlamak istiyor musunuz?')) {
+      localStorage.removeItem(MEMORY_KEY);
+      renderHistory();
+    }
+  };
+
+  window.melisHandleKey = function(e) {
+    if (e.key === 'Enter') melisSendMessage();
+  };
+
+  window.melisSendPill = function(text) {
+    document.getElementById('melisUserInput').value = text;
+    melisSendMessage();
+  };
+
+  // Sesli Giriş (Web Speech API)
+  let recognition = null;
+  window.melisToggleSpeech = function() {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Tarayıcınız sesle yazmayı desteklemiyor. Lütfen klavyeyi kullanın.");
+      return;
+    }
+
+    const micBtn = document.getElementById('melisMicBtn');
+    if (recognition) {
+      recognition.stop();
+      recognition = null;
+      micBtn.classList.remove('listening');
+      return;
+    }
+
+    recognition = new SpeechRecognition();
+    recognition.lang = 'tr-TR';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    micBtn.classList.add('listening');
+
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript;
+      document.getElementById('melisUserInput').value = transcript;
+      melisSendMessage();
+    };
+
+    recognition.onerror = function() {
+      micBtn.classList.remove('listening');
+      recognition = null;
+    };
+
+    recognition.onend = function() {
+      micBtn.classList.remove('listening');
+      recognition = null;
+    };
+
+    recognition.start();
+  };
+
+  // Mesaj Gönderme
+  window.melisSendMessage = async function() {
+    const input = document.getElementById('melisUserInput');
+    const userText = input.value.trim();
+    if (!userText) return;
+
+    const chatBody = document.getElementById('melisChatBody');
+    const hist = getHistory();
+
+    appendMessageUI('user', userText);
+    input.value = '';
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    hist.push({ sender: 'user', text: userText });
+    saveHistory(hist);
+
+    // Yazıyor indikatörü
+    const typingRow = document.createElement('div');
+    typingRow.className = 'melis-row melis-row-bot';
+    typingRow.id = 'melisTypingRow';
+    typingRow.innerHTML = `
+      <img class="melis-msg-avatar" src="${AVATAR_PRIMARY}" onerror="this.onerror=null;this.src='${AVATAR_FALLBACK}';" alt="Melis">
+      <div class="melis-typing">
+        <span class="melis-typing-dot"></span>
+        <span class="melis-typing-dot"></span>
+        <span class="melis-typing-dot"></span>
+      </div>
+    `;
+    chatBody.appendChild(typingRow);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    let replyText = "";
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userText,
+          history: hist.slice(-8).map(h => ({ sender: h.sender, text: h.text }))
+        })
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        replyText = data.reply;
+      } else {
+        replyText = "Sizi çok iyi anlıyorum efendim. ARLEDSCREEN olarak 2 Yıl Tam Garanti ve 5 Yıl Ücretsiz Yerinde Teknik Servis güvencesiyle anahtar teslim projeler üretiyoruz. Mekânınızın ölçülerini iletirseniz, size en doğru piksel modelini ve net atölye maliyetini hemen çıkarabilirim.";
+      }
+    } catch(e) {
+      replyText = "Talebinizi aldım efendim. Doğrudan WhatsApp hattımızdan (+90 530 507 88 34) bana ulaşabilir, ölçülerinize özel resmi teknik föy ve teklifimizi anında edinebilirsiniz.";
+    }
+
+    const typingEl = document.getElementById('melisTypingRow');
+    if (typingEl) typingEl.remove();
+
+    appendMessageUI('bot', replyText);
+    playIPhoneNotificationSound();
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    hist.push({ sender: 'bot', text: replyText });
+    saveHistory(hist);
+  };
 })();

@@ -1,5 +1,6 @@
 "use client";
 
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import Link from "next/link";
 import { PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { usePathname } from "next/navigation";
@@ -40,11 +41,11 @@ export function MobileCtaBar({ locale }: { locale: Locale }) {
           {locale === "ar" ? "واتساب" : "WhatsApp"}
         </a>
         <Link
-          href={`/${locale}/quote/`}
+          href={buyHref(locale)}
           className="liquid-glass-btn liquid-glass-btn--primary min-h-[52px] flex-[1.35] flex-col gap-0.5 px-2 text-xs font-semibold"
         >
           <FileText className="h-5 w-5" aria-hidden />
-          {tr ? "Teklif alın" : locale === "ar" ? "اطلب عرض سعر" : "Get a quote"}
+          {buyLabel(locale)}
         </Link>
       </div>
     </nav>

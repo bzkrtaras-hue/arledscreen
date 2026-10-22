@@ -1,5 +1,5 @@
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import { preload } from "react-dom";
-import { quoteWhatsappHref } from "@/lib/whatsapp";
 
 /**
  * TR homepage hero — "sessiz premium" (Melis taslağı, ONERI #2).
@@ -54,12 +54,10 @@ export function QuietHero() {
           Gaziosmanpaşa’dır; satış, montaj ve servis Türkiye genelindedir.
         </p>
         <a
-          href={quoteWhatsappHref("tr")}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={buyHref("tr")}
           className="mt-7 inline-flex min-h-[52px] min-w-11 items-center justify-center rounded-sm bg-[#1E5BB8] px-7 text-[1.05rem] font-semibold text-white transition-colors hover:bg-[#2A6BD0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-white"
         >
-          Teklif alın
+          {buyLabel("tr")}
         </a>
       </div>
     </section>

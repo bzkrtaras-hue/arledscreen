@@ -208,7 +208,7 @@ export const LED_MODELS: LedModel[] = [
       matrix: h("80 × 40 piksel (modül ölçüsü ÷ piksel aralığı)"),
       pixels: h("3.200 (hesaplanan)"),
     },
-    note: "Yüksek tavanlı salonlar, spor alanları ve izleyicinin uzakta durduğu geniş iç mekânlar için ekonomik bir seçenektir.",
+    note: "Yüksek tavanlı salonlar, spor alanları ve izleyicinin uzakta durduğu geniş iç mekânlar için tercih edilen bir seçenektir.",
   },
   {
     slug: "p2-5",
@@ -264,7 +264,7 @@ export const LED_MODELS: LedModel[] = [
     specs: {
       pitch: k("3,076 mm"),
       moduleSize: k("320 × 160 mm"),
-      matrix: k("52 × 104 piksel"),
+      matrix: k("104 × 52 piksel"),
       pixels: k("5.408"),
       ledType: k("Yüksek parlaklıklı RGB LED"),
       protection: k("IP65"),
@@ -356,7 +356,7 @@ export const LED_MODELS: LedModel[] = [
       control: SR,
       media: MEDIA,
     },
-    note: "Bina cepheleri ve büyük reklam panoları gibi uzaktan izlenen geniş yüzeylerde maliyeti düşük tutmak için tercih edilir.",
+    note: "Bina cepheleri ve büyük reklam panoları gibi uzaktan izlenen geniş yüzeylerde güçlü görünürlük için tercih edilir.",
   },
   {
     slug: "p1-86-esnek",
@@ -459,7 +459,7 @@ export const LED_MODELS: LedModel[] = [
       power: k("5 V DC · düşük güç"),
       control: k("Huidu W6X serisi"),
     },
-    note: "Klasik tek–çift renk LED tabelalarda ekonomik Wi‑Fi güncelleme için tercih edilir; tam renkli video duvarı için C/A serisi seçilir.",
+    note: "Klasik tek–çift renk LED tabelalarda pratik Wi‑Fi güncelleme için tercih edilir; tam renkli video duvarı için C/A serisi seçilir.",
   },
   {
     slug: "vx600",

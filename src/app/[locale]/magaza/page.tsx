@@ -1,3 +1,4 @@
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -113,11 +114,11 @@ export default async function MagazaPage({ params }: { params: Promise<{ locale:
           <ShortAnswer text={SHORT_ANSWER(locale)} locale={locale} />
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              href={`${base}/quote/`}
+              href={buyHref(locale)}
               className="btn-soft inline-flex min-h-11 items-center justify-center gap-1.5 bg-cyan px-5 text-sm text-white hover:bg-cyan-600"
             >
               <FileText className="h-4 w-4" aria-hidden />
-              {tr ? "Teklif alın" : "Get a quote"}
+              {buyLabel(locale)}
             </Link>
             <a
               href={quoteWhatsappHref(locale)}

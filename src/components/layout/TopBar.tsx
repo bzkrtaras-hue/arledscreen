@@ -1,3 +1,4 @@
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
@@ -11,17 +12,13 @@ import { LocaleSelect } from "@/components/layout/LocaleSelect";
 export function TopBar({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const tr = locale === "tr";
-  // /ar/contact/ and /ru/contact/ do not exist (404 + failed prefetch on every AR/RU page);
-  // the real quote pages are /ar/quote/ and /ru/quote/. TR/EN keep their /contact/ bridge.
-  const hasContactBridge = locale === "tr" || locale === "en";
-  const ctaHref = hasContactBridge ? `/${locale}/contact/` : `/${locale}/quote/`;
-  const ctaLabel = tr
-    ? "Teklif alın"
-    : locale === "ar"
-      ? "اطلب عرض سعر"
-      : locale === "ru"
-        ? dict.nav.quote
-        : "Quote / Contact";
+  // Always the canonical quote page. /tr/contact/ and /en/contact/ are noindex redirect bridges
+  // (extra hop) and made this button point to a different URL than every other "Teklif alın"
+  // link (PageSpeed: "Identical links have the same purpose"). /ar/contact/ and /ru/contact/ do not exist.
+  const ctaHref = buyHref(locale);
+  const ctaLabel = buyLabel(locale);
+  void dict;
+  void tr;
   return (
     <div className="px-3 pt-1.5 sm:px-4 md:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl min-w-0 items-center gap-1.5 sm:gap-2">
@@ -32,12 +29,15 @@ export function TopBar({ locale }: { locale: Locale }) {
         </div>
         <div className="flex shrink-0 items-center justify-end gap-1">
           <LocaleSelect locale={locale} className="hidden md:block" id="locale-select" />
+          {/* Mobile first screen: the bottom MobileCtaBar carries the CTA; avoid a duplicate here. */}
+          <span className="hidden md:block">
           <Link
             href={ctaHref}
             className="liquid-glass-btn liquid-glass-btn--compact min-h-11 min-w-11 justify-center px-3 font-semibold text-[#1a2430] hover:text-cyan"
           >
             {ctaLabel}
           </Link>
+          </span>
         </div>
       </div>
     </div>

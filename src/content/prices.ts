@@ -192,7 +192,6 @@ export function pricedPanelsHasPartStubs() {
           "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
         sameAs: [`${SITE_URL}/catalog.json#offer-${p.id}`, `${url}#offer`],
         itemOffered: {
-          "@type": "Product" as const,
           "@id": `${url}#product`,
           sku: p.id,
           mpn: p.id,
@@ -412,8 +411,9 @@ export function panelOffer(
     // Offer → Product join (schema.org shopping merges).
     ...(productId && sku
       ? {
+          // Untyped reference on purpose: a typed Product here (no name/offers) is read by Google
+          // as a separate, invalid Product item. The Offer is nested in its Product, so this is a join only.
           itemOffered: {
-            "@type": "Product" as const,
             "@id": productId,
             sku,
             mpn: sku,
@@ -484,6 +484,7 @@ export function pricedPanelOfferStubs(panels: PanelPrice[] = PANEL_PRICES) {
       mpn: p.id,
       price,
       priceCurrency: "USD",
+      validFrom: PRICE_VALID_FROM,
       priceValidUntil: PRICE_VALID_UNTIL,
       url,
       availability: "https://schema.org/InStock" as const,
@@ -491,8 +492,8 @@ export function pricedPanelOfferStubs(panels: PanelPrice[] = PANEL_PRICES) {
       description:
         "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
       sameAs: [`${SITE_URL}/catalog.json#offer-${p.id}`, `${url}#offer`],
+      // Untyped join (no nameless typed Product node).
       itemOffered: {
-        "@type": "Product" as const,
         "@id": `${url}#product`,
         sku: p.id,
         mpn: p.id,
@@ -539,6 +540,7 @@ export function organizationMakesOffer() {
     lowPrice: Math.min(...usd).toFixed(2),
     highPrice: Math.max(...usd).toFixed(2),
     offerCount: PANEL_PRICES.length,
+    validFrom: PRICE_VALID_FROM,
     priceValidUntil: PRICE_VALID_UNTIL,
     url: `${SITE_URL}/ai-shopping.json`,
     availability: "https://schema.org/InStock",
@@ -611,6 +613,24 @@ export const fmtM2 = (n: number) => trNum(Math.round(n * PANELS_PER_M2), 0);
  * different datasheet module size the per-m² figure is left to the quote (the
  * calculator tiles every panel as 320 × 160 mm; owner to confirm).
  */
+/** Rental (portable, quick-assembly) cabinet surcharge per m², on top of the CNC (fixed) price. */
+export const RENTAL_SURCHARGE_PER_M2_USD = 100;
+
+/** Panels per m² from the model's own module size (falls back to 320 × 160 mm). */
+export function panelsPerM2For(p: PanelPrice): number {
+  const m = p.moduleMm?.match(/(\d+(?:[.,]\d+)?)\s*[×x]\s*(\d+(?:[.,]\d+)?)/);
+  if (!m) return PANELS_PER_M2;
+  const w = Number(m[1].replace(",", ".")) / 1000;
+  const h = Number(m[2].replace(",", ".")) / 1000;
+  return w > 0 && h > 0 ? 1 / (w * h) : PANELS_PER_M2;
+}
+
+/** Module cost per m² (USD) for CNC and Rental cabinets. */
+export function cabinetM2Usd(p: PanelPrice): { cnc: number; rental: number } {
+  const cnc = Math.round(p.usd * panelsPerM2For(p));
+  return { cnc, rental: cnc + RENTAL_SURCHARGE_PER_M2_USD };
+}
+
 export const panelM2 = (p: PanelPrice): string | undefined => (p.moduleMm ? undefined : fmtM2(p.usd));
 
 export function panelLabel(p: PanelPrice, locale: "tr" | "en" = "tr"): string {
@@ -704,7 +724,9 @@ export function panelProductsJsonLd(
         lowPrice: Math.min(...usd).toFixed(2),
         highPrice: Math.max(...usd).toFixed(2),
         offerCount: panels.length,
+        validFrom: PRICE_VALID_FROM,
         priceValidUntil: PRICE_VALID_UNTIL,
+        availability: "https://schema.org/InStock",
         url: `${SITE_URL}/ai-shopping.json`,
         // Join hub band → Organization AggregateOffer (entity-first agents).
         sameAs: [`${SITE_URL}/#priced-panels-aggregate`],

@@ -1,3 +1,4 @@
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import Link from "next/link";
 import { FileText, MapPin } from "lucide-react";
 import { SocialLinks } from "@/components/layout/SocialLinks";
@@ -33,7 +34,6 @@ export function QuoteSplit({
   const quick = PROJECT_TYPES.filter((t) =>
     ["magaza", "dis-mekan", "toplanti", "etkinlik", "servis"].includes(t.id),
   );
-  const quoteHref = en ? "/en/quote/" : "/tr/quote/";
   const waHref = en ? GENERIC_WHATSAPP_HREF_EN : GENERIC_WHATSAPP_HREF;
   return (
     <FadeIn
@@ -51,11 +51,11 @@ export function QuoteSplit({
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Link
-            href={quoteHref}
+            href={buyHref(en ? "en" : "tr")}
             className="btn-soft inline-flex min-h-14 flex-1 items-center justify-center gap-2 rounded-full bg-[#ffffff] px-6 text-[16px] font-bold text-[#174a96] shadow-[0_10px_30px_-12px_rgba(0,0,0,0.55)] hover:bg-[#EEF4FF]"
           >
             <FileText className="h-5 w-5" aria-hidden />
-            {en ? "Request a quote" : "Teklif alın"}
+            {buyLabel(en ? "en" : "tr")}
           </Link>
           <a
             href={waHref}

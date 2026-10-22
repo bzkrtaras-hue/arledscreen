@@ -1,3 +1,4 @@
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock, MapPin } from "lucide-react";
@@ -43,7 +44,7 @@ export function Footer({ locale }: FooterProps) {
         { href: "/tr/rehber/", label: "Rehber" },
         { href: "/tr/about/", label: "Hakkımızda" },
         { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
-        { href: "/tr/quote/", label: "Teklif alın" },
+        { href: buyHref("tr"), label: buyLabel("tr") },
         { href: "/tr/sss/", label: "SSS" },
         { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
         { href: "/tr/blog/", label: "Blog" },

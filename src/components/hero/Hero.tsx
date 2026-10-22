@@ -1,3 +1,4 @@
+import { buyHref, buyLabel } from "@/lib/buy-cta";
 import type { Locale } from "@/lib/i18n";
 import { getVideo } from "@/content/videos";
 import { HeroVideo, type HeroClip } from "@/components/hero/HeroVideo";
@@ -163,8 +164,8 @@ export function Hero({ locale }: HeroProps) {
           ? "Keşiften montaja ve kurulum sonrası teknik servise kadar süreci aynı ekip yürütür. Merkezimiz İstanbul Gaziosmanpaşa’dır; satış, montaj ve servis Türkiye genelindedir. Şehir sayfalarında yalnızca kayıtlı projeler yer alır."
           : "Survey, supply, installation and after-sales service are run by the same team. Headquarters is in Gaziosmanpaşa, Istanbul; sales, installation and service cover Turkey. City pages list only recorded projects."
       }
-      quoteHref={`/${locale}/quote/`}
-      quoteLabel={tr ? "Teklif alın" : "Get a quote"}
+      quoteHref={buyHref(locale)}
+      quoteLabel={buyLabel(locale)}
       secondaryHref={`/${locale}/hesaplayici/`}
       secondaryLabel={tr ? "Fiyat hesapla" : "Price calculator"}
       labels={

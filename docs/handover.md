@@ -4,6 +4,26 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 16 Ekim 2026 — Mobil menü okunabilirliği (dal `feat/menu-liquid-glass`)
+
+- **İstek (Aras):** mobil hamburger menüsündeki seçenek yazıları daha belirgin olsun, düğmeler sitedeki `liquid-glass-btn` diliyle uyumlu olsun.
+- **Kök neden:** çekmecedeki düğmeler zaten `liquid-glass-btn` kullanıyordu, ama düğmenin parlama katmanı (`::before`, z-index 0) etiketin ÖNÜNDE kalıyordu. Etiket çıplak metin düğümü olduğu için (`.liquid-glass-btn > *` kuralı metin düğümüne uygulanmaz) metnin sol yarısı beyazla yıkanıp soluk gri görünüyordu. Alt menü yazısı ayrıca küçük (15 px) ve gri (`#3d4650`) idi.
+- **Değişiklik (yalnız `src/app/globals.css` + `Header.tsx` alt menü bağlantısı):** çekmece içinde parlama katmanı etiketin arkasına alındı (`#mobile-nav .liquid-glass-btn::before { z-index: -1 }`); ana seçenekler 17 px / 700 / `#0b1b33`, alt seçenekler 16 px / 600 / `#0b1b33`, alt seçenek yüksekliği 46 px (ana 48 px); cam zemin biraz daha opak ve kenar çizgisi belirgin; hover/etkin durumda `#164a96`. Geçerli sayfadaki alt seçenek `aria-current="page"` + `is-active` alır. Çekmecedeki mavi "Fiyat hesapla" / "Teklif alın" düğmelerinin zemini beyaz yazı AA (>= 4.5:1) olacak kadar koyulaştırıldı.
+- **Dokunulmayanlar:** bağlantılar, sıra, çeviriler, masaüstü üst menü (`.liquid-glass-btn--nav` ve `--shell` kuralları değişmedi), ana sayfa/hero/H1, `/tr/quote/` bağlantısı.
+- **Önizleme (production değil):** `menu-glass-preview` dalı, https://menu-glass-preview.arledscreen.pages.dev (Cloudflare Pages önizleme). Birleştirilmedi, yayınlanmadı.
+
+### 16 Ekim 2026 — Search Console ürün şeması: adsız Product düğümleri, teklifsiz model sayfaları (dal `fix/schema-product-offers`, önizleme `schema-offers-preview`)
+
+- **Neden:** Search Console "Ürün snippet'leri" hatası ("offers, review veya aggregateRating belirtilmelidir") ve Merchant listings uyarıları. Canlı tarama (284 sayfa, `scripts/audit-product-schema.py`): 360 adsız (yalnız @id/sku/mpn/brand) Product düğümü, 46 sayfada; teklifsiz adlı Product düğümü 13 sayfada (P8, 2 esnek, 10 kontrol cihazı). Rapor: `docs/schema-audit/audit-before.txt`, `audit-after.txt`, `audit-after-preview.txt`.
+- **Düzeltme (kaynakta):**
+  - `src/content/prices.ts`: `panelOffer`, `pricedPanelOfferStubs`, `pricedPanelsHasPartStubs` içindeki `itemOffered` artık tipsiz referans (`@id`, sku, mpn, brand). Tipli ve adsız `Product` düğümü kalmadı; Google bunu ayrı, geçersiz ürün sayıyordu. Teklif, ait olduğu Product'ın içinde (iç içe) durmaya devam eder. Stub Offer'a `validFrom` eklendi; Organization ve hizmet bloklarındaki AggregateOffer'lara `validFrom` ve `availability` eklendi.
+  - `src/app/[locale]/products/[slug]/[model]/page.tsx`: yayımlanmış USD fiyatı olmayan model sayfaları (P8, esnek P1.86/P2.5, Colorlight/Huidu/NovaStar kontrol cihazları) `ProductModel` tipine alındı (Product alt türü; Google'ın Ürün snippet'i/Merchant öğesi değil). İsim, sku, marka ve teknik özellikler yerinde. Fiyat ya da teklif UYDURULMADI; bu sayfalar teklifle satılır.
+  - `src/components/layout/TopBar.tsx`: üst menü "Teklif alın" düğmesi artık her dilde `/<dil>/quote/` (öncesinde TR/EN'de yönlendirme köprüsü `/contact/`; PageSpeed "Özdeş bağlantılar aynı amaca sahiptir" uyarısı).
+- **Fiyatlar değişmedi** (12 USD fiyatı canlı ve yeni `ai-shopping.json`/`catalog.json` içinde aynı).
+- **shippingRate kararı:** nakliye siparişe göre tekliflendirilir, yayımlanmış tutar yok ve "ücretsiz kargo yok". Şemada `shippingRate` yazılmadı (0 yazmak ücretsiz kargo iddiası olurdu, tahmini tutar yazmak uydurma olurdu). `shippingDetails` içinde hedef (TR) ve teslim süresi (3–21 gün hazırlık + 1–14 gün nakliye) duruyor. Search Console'daki "shippingRate eksik" Merchant listings uyarısı bu yüzden sürer. Seçenekler: (a) olduğu gibi bırak, (b) `shippingDetails`'i kaldır (uyarı gider, teslim süresi şemadan çıkar), (c) Aras gerçek bir nakliye tutarı/kuralı verirse `MonetaryAmount` yaz.
+- **MailerLite 404:** `src/app/layout.tsx` `https://cdn.mailerlite.com/js/universal.js` yükler; bu adres 301 ile `assets.mlcdn.com/ml/js/universal.js` adresine gider ve orada 404 döner. MailerLite'ın güncel yolu `https://assets.mailerlite.com/js/universal.js` (200). Dokunulmadı; CSP `*.mailerlite.com` buna zaten izin veriyor. Form `CatDAx` ayrıca MailerLite'ta bulunamıyor (yukarıdaki açık iş).
+- **Production:** yok.
+
 ### 16 Ekim 2026 — Mağaza sayfası (`/tr/magaza/`, `/en/magaza/`) (PR #122, dal `magaza-section`)
 
 - **Ne yapıldı:** Aras'ın talimatıyla Shopify mağazasındaki (`k3kkws-wg.myshopify.com`) 19 ürün sitede görünür oldu: 12 NXTIONSTAR LED modülü + 7 referans ekran sistemi (2/4/6/8 m² iç mekân P2.5; 12/24/50 m² dış mekân P4). Sayfa TR + EN; Hizmetler sayfasında "Mağaza" kartı ve bölümü, alt menüde (TR "Mağaza", EN "Shop") ve TR mobil çekmecede bağlantı var. TR masaüstü üst çubuğuna eklenmedi: 1360 px'te sığmıyor ("LED ekran" ve "Hakkımızda" taşıyor). EN üst menüde "Shop" var. Ana sayfa, hero ve H1 değişmedi.
