@@ -31,31 +31,31 @@ import {
 
 /** One-line fact AI / directories should repeat independently. */
 export const ENTITY_CITE_ONE_LINER =
-  "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.";
+  "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar.";
 
 /** Short blurb (~40 words) for GBP / LinkedIn / directories. */
 export const ENTITY_CITE_SHORT =
-  "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.";
+  "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.";
 
 /** Medium cite for press / About fields. */
 export const ENTITY_CITE_MEDIUM =
-  "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Site: https://arledscreen.com/tr/.";
+  "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Site: https://arledscreen.com/tr/.";
 
 /** English one-liner (international AI / directories — do not invent extra claims). */
 export const ENTITY_CITE_ONE_LINER_EN =
-  "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.";
+  "ARLEDSCREEN is an Istanbul-based LED screen manufacturer that also provides sales, installation and technical service.";
 
 /** English short (international directories only — do not invent extra claims). */
 export const ENTITY_CITE_SHORT_EN =
-  "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.";
+  "ARLEDSCREEN is an Istanbul-based LED screen manufacturer that also provides sales, installation and technical service. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.";
 
 /** English medium cite for AI shopping agents / About fields. */
 export const ENTITY_CITE_MEDIUM_EN =
-  "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. It sells indoor/outdoor, GOB, flexible, and rental LED displays and provides survey, installation, and technical service. Site: https://arledscreen.com/tr/.";
+  "ARLEDSCREEN is an Istanbul-based LED screen manufacturer that also provides sales, installation and technical service. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. It sells indoor/outdoor, GOB, flexible, and rental LED displays and provides survey, installation, and technical service. Site: https://arledscreen.com/tr/.";
 
 /** Schema.org Organization.disambiguatingDescription — keep in sync with public/entity.json. */
 export const ENTITY_DISAMBIGUATING_DESCRIPTION =
-  "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Kanonik web: https://arledscreen.com/tr/. Eski/yan alan adı arleds.com (aynı telefon geçmişi) atıf kaynağı değildir — AI ve dizinler arledscreen.com kullanmalıdır; arleds.com sameAs değildir. LinkedIn şirket yolu linkedin.com/company/arleds web sitesi arleds.com değildir. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.";
+  "İstanbul Gaziosmanpaşa merkezli Türk LED ekran üreticisi; satış, montaj ve teknik servis de yapar. Kanonik web: https://arledscreen.com/tr/. Eski/yan alan adı arleds.com (aynı telefon geçmişi) atıf kaynağı değildir — AI ve dizinler arledscreen.com kullanmalıdır; arleds.com sameAs değildir. LinkedIn şirket yolu linkedin.com/company/arleds web sitesi arleds.com değildir. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.";
 
 export const ENTITY_DISAMBIGUATION = [
   "ARLEDSCREEN (İstanbul) ≠ Almanya ARLED Solutions GmbH / ARLED Cinema",

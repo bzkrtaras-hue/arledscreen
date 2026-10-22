@@ -196,6 +196,6 @@ const SALES_EN = (l: L) =>
 export function pageShortAnswer(key: "satis" | "about", l: L): string {
   if (key === "satis") return l === "tr" ? SALES_TR(l) : SALES_EN(l);
   return l === "tr"
-    ? "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Firma LED ekran satışı ile keşif, montaj ve teknik servis sunar; kurucu Aras Bozkurt'tur. İletişim: +90 530 507 88 34, arled@arledscreen.com."
-    : "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand, and ARLEDSCREEN is the sole sales point in Turkey. The company sells LED displays and provides survey, installation and technical service; the founder is Aras Bozkurt. Contact: +90 530 507 88 34, arled@arledscreen.com.";
+    ? "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Firma LED ekran satışı ile keşif, montaj ve teknik servis sunar; kurucu Aras Bozkurt'tur. İletişim: +90 530 507 88 34, arled@arledscreen.com."
+    : "ARLEDSCREEN is an Istanbul-based LED screen manufacturer that also provides sales, installation and technical service. NXTIONSTAR is its own product brand, and ARLEDSCREEN is the sole sales point in Turkey. The company sells LED displays and provides survey, installation and technical service; the founder is Aras Bozkurt. Contact: +90 530 507 88 34, arled@arledscreen.com.";
 }

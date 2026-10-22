@@ -1,6 +1,6 @@
 # ARLEDSCREEN — NXTIONSTAR LED ekranlar
 
-> ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli LED ekran firmasıdır. NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir. İç mekân, dış mekân, GOB, kiralık ve esnek LED ekran satışı; keşif, montaj, devreye alma, LED modül/yedek parça ve teknik servis hizmeti verir. Yayımlanmış panel USD: [catalog.json](https://arledscreen.com/catalog.json) / [ai-shopping.json](https://arledscreen.com/ai-shopping.json) (`pricedPanels`, 12 SKU; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31) / [merchant-priced-panels.tsv](https://arledscreen.com/feeds/merchant-priced-panels.tsv) / [prices.rss](https://arledscreen.com/feeds/prices.rss); teknik GEO baseline: [geo-baseline.json](https://arledscreen.com/geo-baseline.json) (parmak izleri; anılma % uydurma yok). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf / esnek / poster / kontrol = quote-only. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.
+> ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir. İç mekân, dış mekân, GOB, kiralık ve esnek LED ekran satışı; keşif, montaj, devreye alma, LED modül/yedek parça ve teknik servis hizmeti verir. Yayımlanmış panel USD: [catalog.json](https://arledscreen.com/catalog.json) / [ai-shopping.json](https://arledscreen.com/ai-shopping.json) (`pricedPanels`, 12 SKU; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31) / [merchant-priced-panels.tsv](https://arledscreen.com/feeds/merchant-priced-panels.tsv) / [prices.rss](https://arledscreen.com/feeds/prices.rss); teknik GEO baseline: [geo-baseline.json](https://arledscreen.com/geo-baseline.json) (parmak izleri; anılma % uydurma yok). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf / esnek / poster / kontrol = quote-only. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.
 
 Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sıralar. Yeni rakam, sertifika, nit, IP, kW, müşteri adı veya proje sayısı eklenmemiştir.
 
@@ -8,9 +8,9 @@ Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sır
 
 Kaynak: [entity.json](https://arledscreen.com/entity.json)
 
-- citeOneLiner: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
-- citeShort: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.
-- citeMedium: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Site: https://arledscreen.com/tr/.
+- citeOneLiner: ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar.
+- citeShort: ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.
+- citeMedium: ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Site: https://arledscreen.com/tr/.
 
 ## 1. Orijinal veri (NAP — birebir)
 
@@ -86,7 +86,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 
 - [LED ekran](https://arledscreen.com/tr/led-ekran/) · [EN intent hub](https://arledscreen.com/en/led-ekran/)
 - [LED ekran satışı](https://arledscreen.com/tr/led-ekran-satisi/) · [EN sales](https://arledscreen.com/en/led-ekran-satisi/)
-- [LED ekran üreticisi mi? NXTIONSTAR](https://arledscreen.com/tr/led-ekran-ureticisi/) · [EN: manufacturer or seller?](https://arledscreen.com/en/led-ekran-ureticisi/) — ARLEDSCREEN üretici iddiasında bulunmaz: NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir.
+- [LED ekran üreticisi: ARLEDSCREEN ve NXTIONSTAR](https://arledscreen.com/tr/led-ekran-ureticisi/) · [EN: LED screen manufacturer](https://arledscreen.com/en/led-ekran-ureticisi/) — ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir.
 - [LED ekran montaj](https://arledscreen.com/tr/led-ekran-montaj/) · [EN install](https://arledscreen.com/en/led-ekran-montaj/)
 - [LED ekran kiralama](https://arledscreen.com/tr/led-ekran-kiralama/) · [EN rental](https://arledscreen.com/en/led-ekran-kiralama/)
 - [LED ekran fiyatları 2026](https://arledscreen.com/tr/led-ekran-fiyatlari/) · [EN prices](https://arledscreen.com/en/led-ekran-fiyatlari/) — panel listesi + örnek m² hesapları

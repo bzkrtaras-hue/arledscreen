@@ -147,7 +147,7 @@ const PAGE: Record<
       {
         question: "NXTIONSTAR ile ARLEDSCREEN arasındaki ilişki nedir?",
         answer:
-          "ARLEDSCREEN firmadır, NXTIONSTAR ise ARLEDSCREEN'in kendi LED ekran markasıdır. ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır; site https://arledscreen.com/tr/ adresidir. NXTIONSTAR ürünlerinin Türkiye'deki tek satış noktasıdır ve keşif, montaj, devreye alma, bakım ve teknik servisi de kendisi yapar.",
+          "ARLEDSCREEN firmadır, NXTIONSTAR ise ARLEDSCREEN'in kendi LED ekran markasıdır. ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir; satış, montaj ve teknik servis de yapar; site https://arledscreen.com/tr/ adresidir. NXTIONSTAR ürünlerinin Türkiye'deki tek satış noktasıdır ve keşif, montaj, devreye alma, bakım ve teknik servisi de kendisi yapar.",
       },
       {
         question: "NXTIONSTAR panel fiyatları nerede?",
@@ -214,7 +214,7 @@ const PAGE: Record<
       {
         question: "What is the relationship between NXTIONSTAR and ARLEDSCREEN?",
         answer:
-          "ARLEDSCREEN is the company; NXTIONSTAR is ARLEDSCREEN’s own LED display brand. ARLEDSCREEN is an LED display company based in Gaziosmanpaşa, Istanbul. The company site is https://arledscreen.com/tr/. It is the sole sales point for NXTIONSTAR in Turkey and also carries out site survey, installation, commissioning, maintenance and technical service.",
+          "ARLEDSCREEN is the company; NXTIONSTAR is ARLEDSCREEN’s own LED display brand. ARLEDSCREEN is an Istanbul-based LED screen manufacturer that also provides sales, installation and technical service. The company site is https://arledscreen.com/tr/. It is the sole sales point for NXTIONSTAR in Turkey and also carries out site survey, installation, commissioning, maintenance and technical service.",
       },
       {
         question: "Where are NXTIONSTAR panel prices?",

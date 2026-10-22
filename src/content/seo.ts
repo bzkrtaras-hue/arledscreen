@@ -54,11 +54,11 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     about: {
       title: "Hakkımızda | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN, İstanbul Gaziosmanpaşa LED ekran satış, montaj ve teknik servis. NXTIONSTAR kendi markası; Türkiye'deki tek satış noktası ARLEDSCREEN.",
+        "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR kendi markası; Türkiye'deki tek satış noktası ARLEDSCREEN.",
       keywords: ["ARLEDSCREEN", "LED ekran firması İstanbul", "LED ekran montaj", "NXTIONSTAR"],
       h1: "ARLEDSCREEN hakkında",
       intro:
-        "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Site: https://arledscreen.com/tr/.",
+        "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Site: https://arledscreen.com/tr/.",
     },
     hesaplayici: {
       title: "LED Ekran Fiyat Hesaplayıcı | Malzeme & Maliyet | ARLEDSCREEN",
@@ -156,7 +156,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     about: {
       title: "About ARLEDSCREEN | LED Engineering Partner",
       description:
-        "ARLEDSCREEN in Gaziosmanpaşa, Istanbul: LED survey, install, calibration and after-sales support for enterprise LED walls across Turkey.",
+        "ARLEDSCREEN is an Istanbul-based LED screen manufacturer that also provides sales, installation and technical service.",
       keywords: [
         "ARLEDSCREEN",
         "LED display Turkey",
@@ -165,7 +165,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       ],
       h1: "ARLEDSCREEN — LED engineering partner",
       intro:
-        "Our role is clear: we support integrators, agencies and facility owners with engineering-led LED wall projects across Turkey. NXTIONSTAR is our product sub-brand.",
+        "ARLEDSCREEN is an Istanbul-based LED screen manufacturer that also provides sales, installation and technical service. We support integrators, agencies and facility owners with engineering-led LED wall projects across Turkey. NXTIONSTAR is our product sub-brand.",
     },
     hesaplayici: {
       title: "LED Display Price Calculator | ARLEDSCREEN",

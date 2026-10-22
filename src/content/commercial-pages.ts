@@ -234,12 +234,12 @@ const INTENT_PAGES: CommercialPage[] = [
     cluster: "intent",
     title: "LED Ekran Üreticisi | ARLEDSCREEN NXTIONSTAR",
     description:
-      "LED ekran üreticisi mi arıyorsunuz? NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa. Tedarik, montaj ve servis.",
-    h1: "LED ekran üreticisi mi? NXTIONSTAR ve ARLEDSCREEN",
+      "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR kendi markasıdır.",
+    h1: "İstanbul merkezli LED ekran üreticisi: ARLEDSCREEN ve NXTIONSTAR",
     eyebrow: "Marka · Tedarik",
     lead: "İstanbul merkezli teknoloji merkezimizde NXTIONSTAR LED ekran sistemlerini projelendiriyor, tedarik ediyor ve sahada uyguluyoruz.",
     intro: [
-      "ARLEDSCREEN, NXTIONSTAR markalı LED ekran çözümlerini Türkiye’de satış, montaj ve servisle buluşturan teknoloji merkezidir.",
+      "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran markasıdır.",
       "Tedarik, kalite kontrol ve saha montajı aynı operasyon altında ilerler; proje ölçüsüne göre panel ve kontrol konfigürasyonu hazırlanır.",
       NAP,
     ],
@@ -262,7 +262,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Üretici misiniz, bayi misiniz?",
         answer:
-          "ARLEDSCREEN üretici iddiasında bulunmaz. NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir. Projelendirme, tedarik, montaj ve servisi ARLEDSCREEN yapar.",
+          "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir. Projelendirme, tedarik, montaj ve servisi ARLEDSCREEN yapar.",
       },
     ],
     primaryCta: { href: "/tr/quote/", label: "Proje teklifi iste" },
@@ -1842,13 +1842,13 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       ...tr,
       title: "LED Display Manufacturer | ARLEDSCREEN NXTIONSTAR",
       description:
-        "Looking for an LED display manufacturer? NXTIONSTAR is ARLEDSCREEN's own brand; its sole sales point in Turkey is Gaziosmanpaşa, Istanbul. Supply, install, service.",
-      h1: "LED display manufacturer? NXTIONSTAR and ARLEDSCREEN",
+        "ARLEDSCREEN is an Istanbul-based LED screen manufacturer that also provides sales, installation and technical service. NXTIONSTAR is its own brand.",
+      h1: "LED screen manufacturer in Istanbul: ARLEDSCREEN and NXTIONSTAR",
       eyebrow: "Supply · Technology center",
       lead:
         "From our Istanbul technology center we project, supply and install NXTIONSTAR LED display systems on site.",
       intro: [
-        "ARLEDSCREEN is the Istanbul technology center that brings NXTIONSTAR LED systems to Turkey with sales, install and service.",
+        "ARLEDSCREEN is an Istanbul-based LED screen manufacturer that also provides sales, installation and technical service. NXTIONSTAR is its own LED display brand.",
         "Supply, quality checks and field install run under one operation; panel and control config follow project size.",
         NAP_EN,
       ],
@@ -1870,7 +1870,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Are you a manufacturer or a reseller?",
           answer:
-            "ARLEDSCREEN does not claim to be a manufacturer. NXTIONSTAR is ARLEDSCREEN's own LED display brand; its sole sales point in Turkey is the ARLEDSCREEN headquarters in Gaziosmanpaşa, Istanbul. Brand page: /en/nxtionstar/.",
+            "ARLEDSCREEN is an Istanbul-based LED screen manufacturer that also provides sales, installation and technical service. NXTIONSTAR is ARLEDSCREEN's own LED display brand; its sole sales point in Turkey is the ARLEDSCREEN headquarters in Gaziosmanpaşa, Istanbul. Brand page: /en/nxtionstar/.",
         },
         {
           question: "Is NXTIONSTAR the same as NationStar?",
