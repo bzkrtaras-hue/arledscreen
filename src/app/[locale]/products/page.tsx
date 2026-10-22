@@ -19,22 +19,12 @@ import { modelUrlForPrice } from "@/content/models";
 import { PANEL_PRICES, panelProductsJsonLd } from "@/content/prices";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { productSections } from "@/components/products/product-sections";
 import {
   PRODUCT_GROUPS,
-  groupsByFamily,
-  LEAD_GROUP_LABEL,
   productGroupPath,
-  type ProductFamily,
 } from "@/content/categories";
 
-const PRODUCT_FAMILY_EN: Record<ProductFamily, string> = {
-  "Dış Mekân LED Ekranlar": "Outdoor LED displays",
-  "İç Mekân LED Ekranlar": "Indoor LED displays",
-  "LCD ve Dijital Ekranlar": "LCD and digital displays",
-  "Kiralık LED Ekranlar": "Rental LED displays",
-  "Poster ve Totem LED Ekranlar": "Poster and totem LED displays",
-  "Modül ve Kontrol Sistemleri": "Modules and control systems",
-};
 import { getProductGroupEn } from "@/content/product-groups-en";
 import { CANONICAL_LINEUP } from "@/content/product-lineup";
 import { ArrowRight, Calculator, FileText } from "lucide-react";
@@ -274,17 +264,13 @@ export default async function ProductsPage({ params }: PageProps) {
                 </ul>
               </aside>
               <div className="space-y-12">
-                {groupsByFamily().map((f) => (
-                  <div key={f.family}>
+                {productSections(locale === "en" ? "en" : "tr").map((sec) => (
+                  <div key={sec.id} id={`grup-${sec.id}`}>
                     <h3 className="mb-5 border-l-4 border-cyan pl-3 font-display text-lg font-bold text-ink sm:text-xl">
-                      {f.family === "lead"
-                        ? LEAD_GROUP_LABEL[locale === "en" ? "en" : "tr"]
-                        : locale === "en"
-                          ? PRODUCT_FAMILY_EN[f.family]
-                          : f.family}
+                      {sec.label}
                     </h3>
                     <ProductGroupGrid
-                      groups={f.groups}
+                      groups={sec.groups}
                       showService={false}
                       headingLevel="h4"
                       locale={locale === "en" ? "en" : "tr"}

@@ -4,7 +4,8 @@ import { TopBar } from "@/components/layout/TopBar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileCtaBar } from "@/components/layout/MobileCtaBar";
 import { MotionProvider } from "@/components/motion/MotionProvider";
-import { LEAD_GROUP_LABEL, PRODUCT_GROUPS, isLeadProductGroup, productGroupPath } from "@/content/categories";
+import { productGroupPath } from "@/content/categories";
+import { productSections } from "@/components/products/product-sections";
 import { ARTICLE_LINKS } from "@/content/article-links";
 import { modelPath, modelsForGroup } from "@/content/models";
 import { listSeoGuides } from "@/content/seo-guides";
@@ -19,17 +20,18 @@ export function SiteShell({ locale, children }: SiteShellProps) {
   const tr = locale === "tr";
   // Menu data is prepared on the server so the client header stays small.
   const groups: MenuGroup[] = tr
-    ? PRODUCT_GROUPS.map((g) => ({
+    ? productSections("tr").flatMap((sec) => sec.groups.map((g) => ({
         href: productGroupPath(g),
         name: g.name,
         // Owner's lead products sit together under one heading at the top of the menu.
-        family: isLeadProductGroup(g.slug) ? LEAD_GROUP_LABEL.tr : g.family,
+        // Menu headings follow the products page sections (İç Mekân / Dış Mekân / Kontrol Kartları).
+        family: sec.label,
         short: g.short,
         tag: g.tag,
         img: optSrc(g.cardImage ?? g.image, 480),
         imgAlt: g.imageAlt,
         pitches: modelsForGroup(g.slug).map((m) => ({ label: m.chip, href: modelPath(m) })),
-      }))
+      })))
     : [];
   const guides: MenuLink[] = tr
     ? [
