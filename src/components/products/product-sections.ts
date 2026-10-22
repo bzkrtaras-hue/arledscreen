@@ -14,18 +14,16 @@ export const PRODUCT_SECTIONS = [
       "ic-mekan-led-ekran",
       "gob-led-ekran",
       "esnek-led-ekran",
-      "seffaf-led-ekran",
-      "transparan-led-ekran",
-      "ince-pitch-led-ekran",
-      "poster-led-ekran",
       "kiralik-led-ekran",
+      "seffaf-led-ekran",
+      "ince-pitch-led-ekran",
     ],
   },
   {
     id: "dis",
     tr: "Dış Mekân",
     en: "Outdoor",
-    slugs: ["dis-mekan-led-ekran"],
+    slugs: ["dis-mekan-led-ekran", "transparan-led-ekran"],
   },
   {
     id: "kontrol",
@@ -33,16 +31,16 @@ export const PRODUCT_SECTIONS = [
     en: "Control cards",
     slugs: [
       "colorlight-kontrolculer",
-      "huidu-kontrol-kartlari",
       "novastar-kontrolculer",
+      "huidu-kontrol-kartlari",
       "led-modul-ve-kontrol-sistemleri",
     ],
   },
   {
     id: "dijital",
-    tr: "Dijital Ekran ve Kiosk",
-    en: "Digital Displays & Kiosks",
-    slugs: ["dijital-ekran", "menuboard", "kiosk", "lcd-ekran"],
+    tr: "Dijital Ekranlar",
+    en: "Digital Displays",
+    slugs: ["dijital-ekran", "menuboard", "kiosk", "lcd-ekran", "poster-led-ekran"],
   },
 ] as const;
 
