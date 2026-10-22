@@ -9,8 +9,8 @@ interface HeroProps {
 
 /**
  * Homepage hero — landscape-first field clips so desktop shows the LED wall.
- * Background loop (soft ~1.2 s crossfade, 6 s dwell): three field videos interleaved with seven
- * site photos. The first slide stays the lounge poster, so LCP is unchanged. Eskişehir vitrin stays
+ * Background loop (soft ~1.2 s crossfade, 6 s dwell): three field videos interleaved with four
+ * approved site photos. The first slide stays the lounge poster, so LCP is unchanged. Eskişehir vitrin stays
  * out (its content carries a price ad). HeroVideo rotates only when there are 2+ slides.
  * H1 carries the local query; NXTIONSTAR slogan stays in the top bar only.
  */
@@ -20,68 +20,63 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
     labelTr: "Lounge LED",
     labelEn: "Lounge LED",
   },
-  { slug: "foto-sahne-led-ekran-uygulamasi", labelTr: "Sahne LED ekran uygulaması", labelEn: "LED screen installation on a stage" },
-  { slug: "foto-kamu-etkinligi-kavisli-led", labelTr: "Kamu kurumu etkinliğinde kavisli LED ekran", labelEn: "Curved LED screen at a public-institution event" },
-  { slug: "foto-kulup-led-ekran", labelTr: "Kulüp sahnesinde LED ekran", labelEn: "LED display on a club stage" },
+  {
+    slug: "foto-toplanti-salonu",
+    labelTr: "Resmî bir toplantı salonunda sahneyi saran geniş iç mekân LED ekran",
+    labelEn: "Wide indoor LED screen wrapping the stage in a formal meeting hall",
+  },
   {
     slug: "sphere-led-showroom",
     labelTr: "Küresel LED",
     labelEn: "Sphere LED",
   },
-  { slug: "foto-dikey-led-ekranlar", labelTr: "Dikey LED ekranlar", labelEn: "Vertical LED screens" },
-  { slug: "foto-kulup-sahne-montaj", labelTr: "Kulüp sahnesinde montaj", labelEn: "Installation on a club stage" },
+  {
+    slug: "foto-sahne-logo",
+    labelTr: "Bir sahnede logo gösteren iç mekân LED ekranlar",
+    labelEn: "Indoor LED screens showing a logo on a stage",
+  },
   {
     slug: "club-curved-led-ribbon",
     labelTr: "Kulüp kavisli",
     labelEn: "Club curved",
   },
-  { slug: "foto-meclis-salonu", labelTr: "Meclis salonu", labelEn: "Council chamber" },
-  { slug: "foto-sahne-buyuk-led-ekran", labelTr: "Sahnede büyük LED ekranlar", labelEn: "Large LED screens on a stage" },
+  {
+    slug: "foto-dikey-ekranlar",
+    labelTr: "Karanlık sahnede yan yana duran beş dikey LED ekran",
+    labelEn: "Five vertical LED screens side by side on a dark stage",
+  },
+  {
+    slug: "foto-sahne-arkasi",
+    labelTr: "Kurulum sırasında test görüntüsü gösteren sahne LED ekranları",
+    labelEn: "Stage LED screens showing a test pattern during installation",
+  },
 ];
 
-/** Still-only slides (no video): optimized WebP, EXIF stripped, ≤1920 px + centre-square crop for ≤767 px. */
+/** Still-only slides (no video): Aras-approved photos. Desktop 1440×810 (16:9), ≤767 px 780×975 (4:5) crop. */
 const HERO_PHOTOS: Record<string, { poster: string; posterMobile: string; width: number; height: number }> = {
-  "foto-kulup-led-ekran": {
-    poster: "/videos/hero/foto-kulup-led-ekran.webp",
-    posterMobile: "/videos/hero/foto-kulup-led-ekran-m.webp",
-    width: 1920,
-    height: 1080,
+  "foto-toplanti-salonu": {
+    poster: "/videos/hero/hero-toplanti-salonu-1440.webp",
+    posterMobile: "/videos/hero/hero-toplanti-salonu-390.webp",
+    width: 1440,
+    height: 810,
   },
-  "foto-kulup-sahne-montaj": {
-    poster: "/videos/hero/foto-kulup-sahne-montaj.webp",
-    posterMobile: "/videos/hero/foto-kulup-sahne-montaj-m.webp",
-    width: 1920,
-    height: 1440,
+  "foto-sahne-logo": {
+    poster: "/videos/hero/hero-sahne-logo-1440.webp",
+    posterMobile: "/videos/hero/hero-sahne-logo-390.webp",
+    width: 1440,
+    height: 810,
   },
-  "foto-meclis-salonu": {
-    poster: "/videos/hero/foto-meclis-salonu.webp",
-    posterMobile: "/videos/hero/foto-meclis-salonu-m.webp",
-    width: 1920,
-    height: 1080,
+  "foto-dikey-ekranlar": {
+    poster: "/videos/hero/hero-dikey-ekranlar-1440.webp",
+    posterMobile: "/videos/hero/hero-dikey-ekranlar-390.webp",
+    width: 1440,
+    height: 810,
   },
-  "foto-sahne-led-ekran-uygulamasi": {
-    poster: "/videos/hero/foto-sahne-led-ekran-uygulamasi.webp",
-    posterMobile: "/videos/hero/foto-sahne-led-ekran-uygulamasi-m.webp",
-    width: 1920,
-    height: 1080,
-  },
-  "foto-sahne-buyuk-led-ekran": {
-    poster: "/videos/hero/foto-sahne-buyuk-led-ekran.webp",
-    posterMobile: "/videos/hero/foto-sahne-buyuk-led-ekran-m.webp",
-    width: 1920,
-    height: 1080,
-  },
-  "foto-dikey-led-ekranlar": {
-    poster: "/videos/hero/foto-dikey-led-ekranlar.webp",
-    posterMobile: "/videos/hero/foto-dikey-led-ekranlar-m.webp",
-    width: 1600,
-    height: 900,
-  },
-  "foto-kamu-etkinligi-kavisli-led": {
-    poster: "/videos/hero/foto-kamu-etkinligi-kavisli-led.webp",
-    posterMobile: "/videos/hero/foto-kamu-etkinligi-kavisli-led-m.webp",
-    width: 1600,
-    height: 1200,
+  "foto-sahne-arkasi": {
+    poster: "/videos/hero/hero-sahne-arkasi-1440.webp",
+    posterMobile: "/videos/hero/hero-sahne-arkasi-390.webp",
+    width: 1440,
+    height: 810,
   },
 };
 
