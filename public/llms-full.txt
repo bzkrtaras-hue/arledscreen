@@ -68,7 +68,7 @@ Karıştırılmaması gerekenler:
 | İç mekân LED ekran | P1.25 – P4 | Mağaza, kafe, showroom, toplantı salonu | https://arledscreen.com/tr/products/ic-mekan-led-ekran/ |
 | Dış mekân LED ekran | P2.5 – P5 | Cephe, totem, billboard, tabela | https://arledscreen.com/tr/products/dis-mekan-led-ekran/ |
 | GOB LED ekran | P1.25, P1.53, P1.86 | Koruyucu kaplamalı yüzey, yakın izleme | https://arledscreen.com/tr/products/gob-led-ekran/ |
-| Kiralık LED ekran | Fiyat teklifle verilir (kurulum ve nakliye ayrıca) | Konser, fuar, lansman, açık hava etkinliği | https://arledscreen.com/tr/products/kiralik-led-ekran/ |
+| Kiralık LED ekran | 50 USD/m²/gün (KDV, kurulum ve nakliye dahil; depozito yok) | Konser, fuar, lansman, açık hava etkinliği | https://arledscreen.com/tr/products/kiralik-led-ekran/ |
 | Esnek LED ekran | Projeye göre | Kavisli, silindir ve özel form yüzeyler | https://arledscreen.com/tr/products/esnek-led-ekran/ |
 | Montaj, modül ve teknik servis | — | Keşif, montaj, bakım, modül ve güç kaynağı değişimi | https://arledscreen.com/tr/hizmetler/ |
 
@@ -137,7 +137,7 @@ Hesaplayıcının toplam formülü:
 
 Aynı ölçüde P5 dış mekân: 120 × 29,90 = 3.588,00 USD malzeme; toplam 5.164,00 USD (KDV ve nakliye hariç).
 
-Esnek LED ekranlarda fiyat; ölçü, form, süre, lokasyon ve kurulum koşullarına göre projeye özel yazılı teklifle verilir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.
+Esnek LED ekranlarda fiyat; ölçü, form, süre, lokasyon ve kurulum koşullarına göre projeye özel yazılı teklifle verilir. Kiralık LED ekran 50 USD/m²/gün; KDV, kurulum ve nakliye dahil, depozito yok (https://arledscreen.com/tr/led-ekran-kiralama/).
 
 ## 5. Proje süreci
 
@@ -222,7 +222,7 @@ Süre; ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüks
 ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar. Kurulum sonrası arıza, bakım ve yedek parça talepleri telefon, WhatsApp veya e-posta ile iletilir.
 
 **Kiralık LED ekran hizmetiniz var mı?**
-Evet. Sahne, fuar ve etkinlik projeleri için kiralık ve satış seçenekleri birlikte değerlendirilir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.
+Evet. Sahne, fuar ve etkinlik projeleri için kiralık ve satış seçenekleri birlikte değerlendirilir. Kiralık LED ekran 50 USD/m²/gün; KDV, kurulum ve nakliye dahil, depozito yok (https://arledscreen.com/tr/led-ekran-kiralama/).
 
 **Ekrana içerik nasıl yüklenir?**
 LED ekranlar bir kontrol sistemi (gönderici/alıcı kart veya medya oynatıcı) üzerinden yönetilir. Kullanım senaryosuna göre bilgisayardan canlı yayın, USB ile oynatma veya uzaktan içerik yönetimi seçenekleri keşifte belirlenir.

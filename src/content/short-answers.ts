@@ -51,7 +51,7 @@ export function shortAnswer(key: ShortAnswerKey, l: L): string {
   if (l === "tr") {
     switch (key) {
       case "fiyat":
-        return `2026 listemizde iç mekân LED ekran panelleri ${usd(ic.lo, l)} – ${usd(ic.hi, l)} USD, dış mekân panelleri ${usd(dis.lo, l)} – ${usd(dis.hi, l)} USD'dir (panel başına, KDV ve nakliye hariç). Yalnızca modül bedeli m² başına yaklaşık ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} USD (iç mekân) ve ${int(dis.m2lo, l)} – ${int(dis.m2hi, l)} USD (dış mekân) tutar. Kiralık LED ekranda fiyat yazılı teklifle verilir. ${DELIVERY_TR} ${PAY_TR}`;
+        return `2026 listemizde iç mekân LED ekran panelleri ${usd(ic.lo, l)} – ${usd(ic.hi, l)} USD, dış mekân panelleri ${usd(dis.lo, l)} – ${usd(dis.hi, l)} USD'dir (panel başına, KDV ve nakliye hariç). Yalnızca modül bedeli m² başına yaklaşık ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} USD (iç mekân) ve ${int(dis.m2lo, l)} – ${int(dis.m2hi, l)} USD (dış mekân) tutar. Kiralık LED ekran 50 USD/m²/gün'dür (KDV, kurulum ve nakliye dahil, depozito yok). ${DELIVERY_TR} ${PAY_TR}`;
       case "ic-mekan-led-ekran":
         return `İç mekân LED ekran ${pitches(IC)} piksel aralığında sunulur; panel fiyatı ${usd(ic.lo, l)} – ${usd(ic.hi, l)} USD, yalnızca modül bedeli m² başına yaklaşık ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} USD'dir (KDV ve nakliye hariç). Yakın izleme için P1.25 – P1.86 GOB, orta mesafe için P2.5 – P4 seçilir; pratik kural her 1 mm piksel aralığı için yaklaşık 1 m izleme mesafesidir. ${DELIVERY_TR}`;
       case "dis-mekan-led-ekran":
@@ -61,12 +61,12 @@ export function shortAnswer(key: ShortAnswerKey, l: L): string {
       case "led-ekran-ihracat":
         return `ARLEDSCREEN, NXTIONSTAR LED ekranları İstanbul'dan tüm Avrupa'ya, Orta Doğu'ya ve Balkanlar'a gönderir. Ürünler CE sertifikalıdır. Panel fiyatları USD'dir ve tüm dillerde aynıdır (iç mekân ${usd(ic.lo, l)} – ${usd(ic.hi, l)} USD, dış mekân ${usd(dis.lo, l)} – ${usd(dis.hi, l)} USD; panel başına, KDV ve nakliye hariç). Ödemede tüm para birimleri kabul edilir, taksit seçeneği vardır. ${DELIVERY_TR}`;
       case "kiralik-led-ekran":
-        return "Kiralık LED ekran (iç ve dış mekân) için fiyat yazılı teklifle verilir; kurulum ve nakliye ayrıca tekliflendirilir. Teklif için etkinlik tarihi, ekran ölçüsü ve lokasyonu paylaşmanız yeterlidir. Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir; ödemede tüm para birimleri kabul edilir.";
+        return "Kiralık LED ekran (iç ve dış mekân) 50 USD/m²/gün'dür; KDV, kurulum ve nakliye dahildir, depozito alınmaz. Haftalık ve aylık kiralamalar aynı günlük m² fiyatı üzerinden hesaplanır. İstanbul içinde teslim bir haftadır; ödemede tüm para birimleri kabul edilir.";
     }
   }
   switch (key) {
     case "fiyat":
-      return `In our 2026 list, indoor LED display panels cost USD ${usd(ic.lo, l)} – ${usd(ic.hi, l)} and outdoor panels USD ${usd(dis.lo, l)} – ${usd(dis.hi, l)} (per panel, excl. VAT and shipping). Module cost alone is about USD ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} per m² indoor and USD ${int(dis.m2lo, l)} – ${int(dis.m2hi, l)} per m² outdoor. Rental LED is priced by written quote. Prices are listed in USD; ${PAY_EN.charAt(0).toLowerCase() + PAY_EN.slice(1)} ${DELIVERY_EN} We ship to Europe, the Middle East and the Balkans.`;
+      return `In our 2026 list, indoor LED display panels cost USD ${usd(ic.lo, l)} – ${usd(ic.hi, l)} and outdoor panels USD ${usd(dis.lo, l)} – ${usd(dis.hi, l)} (per panel, excl. VAT and shipping). Module cost alone is about USD ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} per m² indoor and USD ${int(dis.m2lo, l)} – ${int(dis.m2hi, l)} per m² outdoor. Rental LED is 50 USD per m² per day (VAT, installation and shipping included, no deposit). Prices are listed in USD; ${PAY_EN.charAt(0).toLowerCase() + PAY_EN.slice(1)} ${DELIVERY_EN} We ship to Europe, the Middle East and the Balkans.`;
     case "ic-mekan-led-ekran":
       return `Indoor LED displays come in ${pitches(IC)} pixel pitch; panels cost USD ${usd(ic.lo, l)} – ${usd(ic.hi, l)}, module cost alone about USD ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} per m² (excl. VAT and shipping). Choose P1.25 – P1.86 GOB for close viewing and P2.5 – P4 for medium distance; rule of thumb: about 1 m viewing distance per 1 mm pitch. ${DELIVERY_EN}`;
     case "dis-mekan-led-ekran":
@@ -76,7 +76,7 @@ export function shortAnswer(key: ShortAnswerKey, l: L): string {
     case "led-ekran-ihracat":
       return `ARLEDSCREEN ships its own NXTIONSTAR LED screens from Istanbul to all of Europe, the Middle East and the Balkans. Products are CE certified. Panel prices are in USD and identical in every language (indoor USD ${usd(ic.lo, l)} – ${usd(ic.hi, l)}, outdoor USD ${usd(dis.lo, l)} – ${usd(dis.hi, l)} per panel, excl. VAT and shipping). We accept payment in all currencies and installments are available. ${DELIVERY_EN}`;
     case "kiralik-led-ekran":
-      return "Rental LED displays (indoor and outdoor) are priced by written quote; installation and shipping are quoted separately. Share the event date, screen size and location to receive a quote. Lead time is 3–21 days preparation + 1–14 days shipping; we accept payment in all currencies.";
+      return "Rental LED displays (indoor and outdoor) are 50 USD per m² per day; VAT, installation and shipping are included and there is no deposit. Weekly and monthly rentals use the same daily m² rate. Delivery within Istanbul takes one week; we accept payment in all currencies.";
   }
 }
 
@@ -88,7 +88,7 @@ export function comparisonRows(l: L) {
     { type: t("İç mekân (SMD)", "Indoor (SMD)"), pitch: pitches(STD_IC), panel: `${usd(ic.lo, l)} – ${usd(ic.hi, l)}`, m2: `≈ ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)}`, use: t("Mağaza, toplantı salonu, salon", "Retail, meeting rooms, venues") },
     { type: t("İç mekân GOB", "Indoor GOB"), pitch: pitches(GOB), panel: `${usd(gob.lo, l)} – ${usd(gob.hi, l)}`, m2: `≈ ${int(gob.m2lo, l)} – ${int(gob.m2hi, l)}`, use: t("Yakın izleme, kontrol odası, temas riski olan alanlar", "Close viewing, control rooms, touch-risk areas") },
     { type: t("Dış mekân", "Outdoor"), pitch: pitches(DIS), panel: `${usd(dis.lo, l)} – ${usd(dis.hi, l)}`, m2: `≈ ${int(dis.m2lo, l)} – ${int(dis.m2hi, l)}`, use: t("Cephe, totem, vitrin, açık alan", "Façades, totems, shop windows, open air") },
-    { type: t("Kiralık (iç / dış)", "Rental (indoor / outdoor)"), pitch: "—", panel: "—", m2: t("Yazılı teklif", "Written quote"), use: t("Konser, fuar, lansman, düğün", "Concerts, fairs, launches, weddings") },
+    { type: t("Kiralık (iç / dış)", "Rental (indoor / outdoor)"), pitch: "—", panel: "—", m2: t("50 USD/m²/gün (kiralama)", "50 USD/m²/day (rental)"), use: t("Konser, fuar, lansman, düğün", "Concerts, fairs, launches, weddings") },
   ];
 }
 
