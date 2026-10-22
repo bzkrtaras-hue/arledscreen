@@ -570,7 +570,7 @@
     </div>
 
     <!-- Tetik Butonu -->
-    <div id="melis-chat-trigger" onclick="melisToggleChat()">
+    <div id="melis-chat-trigger" role="button" tabindex="0" aria-label="Melis canlı desteği aç" onclick="melisToggleChat()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();melisToggleChat();}">
       <img class="melis-trigger-avatar" src="${AVATAR_PRIMARY}" onerror="this.onerror=null;this.src='${AVATAR_FALLBACK}';" alt="Melis">
       <div class="melis-online-dot"></div>
       <div id="melisUnreadBadge" class="melis-unread-counter">1</div>
@@ -593,14 +593,14 @@
           </div>
         </div>
         <div class="melis-header-actions">
-          <button class="melis-header-btn" id="melisMuteBtn" title="Sesi Aç/Kapat" onclick="melisToggleMute()">🔊</button>
-          <button class="melis-header-btn" title="Geçmişi Temizle" onclick="melisClearMemory()">🗑️</button>
-          <button class="melis-header-btn" title="Kapat" onclick="melisToggleChat()">&times;</button>
+          <button class="melis-header-btn" id="melisMuteBtn" type="button" title="Sesi Aç/Kapat" aria-label="Sesi aç/kapat" onclick="melisToggleMute()">🔊</button>
+          <button class="melis-header-btn" type="button" title="Geçmişi Temizle" aria-label="Sohbet geçmişini temizle" onclick="melisClearMemory()">🗑️</button>
+          <button class="melis-header-btn" type="button" title="Kapat" aria-label="Sohbeti kapat" onclick="melisToggleChat()">&times;</button>
         </div>
       </div>
 
       <!-- Açık Noktalı Matrix Arka Plan -->
-      <div class="melis-body" id="melisChatBody"></div>
+      <div class="melis-body" id="melisChatBody" role="log" aria-live="polite" aria-label="Melis sohbet geçmişi"></div>
 
       <!-- Yatay Hap Butonlar -->
       <div class="melis-pills-bar">
@@ -616,15 +616,15 @@
 
       <!-- Giriş Çubuğu -->
       <div class="melis-footer">
-        <input type="text" id="melisUserInput" class="melis-input" placeholder="Örn. kafe vitrini 3x2 m iç mekân" onkeypress="melisHandleKey(event)">
-        <button class="melis-mic-btn" id="melisMicBtn" title="Sesle Yaz" onclick="melisToggleSpeech()">
+        <input type="text" id="melisUserInput" class="melis-input" aria-label="Mesajınızı yazın" maxlength="1000" placeholder="Örn. kafe vitrini 3x2 m iç mekân" onkeypress="melisHandleKey(event)">
+        <button class="melis-mic-btn" id="melisMicBtn" type="button" title="Sesle Yaz" aria-label="Sesle yaz" onclick="melisToggleSpeech()">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
             <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
             <line x1="12" y1="19" x2="12" y2="22"></line>
           </svg>
         </button>
-        <button class="melis-send-btn" onclick="melisSendMessage()">
+        <button class="melis-send-btn" type="button" aria-label="Gönder" onclick="melisSendMessage()">
           <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
         </button>
       </div>
@@ -682,7 +682,7 @@
       if (text.length > 80 && (text.includes('USD') || text.includes('Garanti') || text.includes('WhatsApp') || text.includes('keşif') || text.includes('m²'))) {
         html += `
           <div class="melis-whatsapp-card">
-            <a class="melis-whatsapp-link" href="https://wa.me/905305078834?text=${encodeURIComponent('Merhabalar Melis Hanım, arledscreen.com canlı destekten ulaşıyorum: ' + text.slice(0, 100))}" target="_blank">
+            <a class="melis-whatsapp-link" href="https://wa.me/905305078834?text=${encodeURIComponent('Merhabalar Melis Hanım, arledscreen.com canlı destekten ulaşıyorum: ' + text.slice(0, 100))}" target="_blank" rel="noopener">
               📲 WhatsApp Teklif Hattı (+90 530 507 88 34)
             </a>
           </div>
@@ -799,10 +799,14 @@
   };
 
   // Mesaj Gönderme
+  let melisBusy = false; // Aynı anda iki istek gönderilmesini engeller.
   window.melisSendMessage = async function() {
     const input = document.getElementById('melisUserInput');
     const userText = input.value.trim();
-    if (!userText) return;
+    if (!userText || melisBusy) return;
+    melisBusy = true;
+    const sendBtn = document.querySelector('.melis-send-btn');
+    if (sendBtn) sendBtn.disabled = true;
 
     const chatBody = document.getElementById('melisChatBody');
     const hist = getHistory();
@@ -830,24 +834,32 @@
     chatBody.scrollTop = chatBody.scrollHeight;
 
     let replyText = "";
+    const isEn = !/[çğışöüÇĞİŞÖÜ]/.test(userText) && /\b(the|what|how|price|screen|do|you|is|are|can|need|want|hello|hi)\b/i.test(userText);
+    const errMsg = isEn
+      ? "Sorry, I could not answer right now. Please write to us on WhatsApp (+90 530 507 88 34) and we will prepare your written quote."
+      : "Şu anda yanıt veremedim. WhatsApp hattımızdan (+90 530 507 88 34) yazarsanız ölçülerinize özel yazılı teklifinizi hazırlayalım.";
+    const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    const timer = ctrl ? setTimeout(() => ctrl.abort(), 30000) : null;
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: ctrl ? ctrl.signal : undefined,
         body: JSON.stringify({
           message: userText,
           history: hist.slice(-8).map(h => ({ sender: h.sender, text: h.text }))
         })
       });
-
-      if (res.ok) {
-        const data = await res.json();
-        replyText = data.reply;
-      } else {
-        replyText = "Sizi çok iyi anlıyorum efendim. ARLEDSCREEN olarak 2 Yıl Tam Garanti ve 5 Yıl Ücretsiz Yerinde Teknik Servis güvencesiyle anahtar teslim projeler üretiyoruz. Mekânınızın ölçülerini iletirseniz, size en doğru piksel modelini ve net atölye maliyetini hemen çıkarabilirim.";
-      }
+      let data = null;
+      try { data = await res.json(); } catch(_) { data = null; }
+      // Sunucu hata durumlarında da (429, 413) kendi açıklamasını gönderir; onu göster.
+      replyText = (data && (data.reply || data.text)) || errMsg;
     } catch(e) {
-      replyText = "Talebinizi aldım efendim. Doğrudan WhatsApp hattımızdan (+90 530 507 88 34) bana ulaşabilir, ölçülerinize özel resmi teknik föy ve teklifimizi anında edinebilirsiniz.";
+      replyText = errMsg;
+    } finally {
+      if (timer) clearTimeout(timer);
+      melisBusy = false;
+      if (sendBtn) sendBtn.disabled = false;
     }
 
     const typingEl = document.getElementById('melisTypingRow');

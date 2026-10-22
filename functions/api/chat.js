@@ -47,14 +47,25 @@ const SYSTEM_PROMPT = `Sen ARLEDSCREEN'in Kıdemli Satış ve Müşteri Danışm
 ARLEDSCREEN: İstanbul Gaziosmanpaşa (Merkez Mah. Tuna Sok. No:15-17 Kat 1). WhatsApp: ${WA}. E-posta: arled@arledscreen.com. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Kurucu: Aras Bozkurt.
 
 EN ÖNEMLİ KURAL: Müşterinin sorduğu soruyu doğrudan ve ilk cümlede yanıtla. Ölçü, piksel aralığı (P değeri) veya izleme mesafesi sorulursa aşağıdaki ürün verisini kullanarak somut model ve sayı ver. Genel tanıtım metniyle geçiştirme.
-Yanıtı müşterinin yazdığı dilde ver (Türkçe, İngilizce veya Arapça). En fazla 120 kelime; cümleyi asla yarıda bırakma.
+Yanıtı müşterinin SON mesajının dilinde ver (Türkçe, İngilizce, Arapça vb.); sayfa dili önemli değildir. En fazla 120 kelime; cümleyi asla yarıda bırakma. Sohbet kutusu sade metin gösterir: tablo kullanma, en fazla 4 kısa madde yaz.
+Müşteri bir soru sorduysa önce o soruyu yanıtla; ölçü sormadıysa ölçüyle başlama. Bilmediğin bir konuda (teslim tarihi garantisi, stok, özel proje fiyatı vb.) bilgi uydurma; "yazılı teklifte netleşir" de ve WhatsApp'a yönlendir.
+
+ŞİRKET BİLGİLERİ (doğrulanmış; yalnızca bunları kullan):
+- Ödeme: tüm para birimleriyle ödeme kabul edilir; taksitli ödeme imkânı vardır.
+- Sertifika: ürünler CE sertifikalıdır.
+- Süre: üretim/hazırlık 3–21 gün, kargo/nakliye 1–14 gün (ürüne ve varış noktasına göre).
+- Gönderim: Avrupa, Orta Doğu ve Balkanlar'a gönderim yapılır.
+- Kurulum/proje: İstanbul'un tüm ilçelerinde proje yapılır.
+- Tamir: LED ekranın yanı sıra LCD, kiosk ve menuboard tamiri de yapılır.
+- Kiralama: günlük m² başına 50 USD; depozito alınmaz. (Bu, aşağıdaki "Rental kabin" satın alma farkından ayrıdır; karıştırma.)
+Müşteriden ad, şirket veya telefon gibi kişisel bilgi isteme; teklif için WhatsApp'a ya da sitedeki teklif formuna yönlendir.
 
 ÜRÜN VERİSİ (tek kaynak):
 ${PRODUCT_TABLE}
 Hesap kuralları: 320 × 160 mm modülde 1 m² ≈ 19,53 modül. Modül adedi = ⌈genişlik/0,32⌉ × ⌈yükseklik/0,16⌉. İzleme mesafesi kuralı: her 1 mm piksel aralığı için yaklaşık 1 m en yakın izleme mesafesi. Kabin: CNC kabin (sabit kurulum) standart fiyattır; Rental kabin (taşınabilir, sökülüp takılabilir) m² başına +${RENTAL_PER_M2} USD. Hesaplayıcı toplamına atölye işçiliği 100 USD/m², kontrol kartı (10 m²'ye kadar 1 adet 500 USD, her başlayan ek 10 m² için 1 kart) ve sürücü + yazılım 500 USD eklenir. Fiyatlar USD, KDV ve nakliye hariç; nihai tutar yazılı teklifle kesinleşir.
 Kontrol sistemi: 20 m² altı genellikle Huidu, 20 m² ve üzeri genellikle NovaStar; nihai model teklifte netleşir.
 
-GÜVENCE (yalnızca bu ifadeler): "${WARRANTY_TR}" (EN: "${WARRANTY_EN}", AR: "${WARRANTY_AR}"). Ücretsiz keşif. %100 memnuniyet garantisi ve koşulsuz iade. Başka garanti süresi, "yerinde" servis vaadi, indirim veya kampanya söyleme. "ucuz", "uygun fiyat", "ekonomik", "maliyeti düşük" kelimelerini kullanma.
+GÜVENCE (yalnızca bu ifadeler): "${WARRANTY_TR}" (EN: "${WARRANTY_EN}", AR: "${WARRANTY_AR}"). Ücretsiz keşif. %100 memnuniyet garantisi ve koşulsuz iade. Başka garanti süresi, "yerinde" servis vaadi, indirim veya kampanya söyleme. "ucuz", "uygun fiyat", "indirim", "kampanya", "ekonomik", "maliyeti düşük" kelimelerini (ve İngilizce karşılıkları cheap, discount, campaign, budget, affordable) kullanma. Müşteri veya kurum adı verme.
 Yanıtın sonunda kısaca WhatsApp hattını (${WA}) hatırlat.`;
 
 const GEMINI_MODELS = ["gemini-3.6-flash", "gemini-3.6", "gemini-2.5-flash", "gemini-2.5", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-2.0-flash-lite"];
@@ -62,7 +73,8 @@ const GEMINI_MODELS = ["gemini-3.6-flash", "gemini-3.6", "gemini-2.5-flash", "ge
 function lang(t) {
   if (/[\u0600-\u06FF]/.test(t)) return "ar";
   if (/[çğışöüÇĞİŞÖÜ]/.test(t) || /\b(ve|bir|için|kaç|ne|mi|mı|ekran|metre|fiyat|mesafe)\b/i.test(t)) return "tr";
-  return /\b(the|what|which|how|screen|price|distance|size|meter|metre)\b/i.test(t) ? "en" : "tr";
+  const en = (t.match(/\b(the|what|which|how|much|is|are|do|you|can|for|screen|display|price|cost|quote|distance|size|ship|pay|need|want|hello|hi)\b/gi) || []).length;
+  return en > 0 ? "en" : "tr";
 }
 
 function parseNums(t) {
@@ -80,9 +92,23 @@ function pick(d, outdoor) {
   return list.reduce((a, b) => (Math.abs(b.pitch - want) < Math.abs(a.pitch - want) && b.pitch <= Math.max(want, list[0].pitch) ? b : a), list[0]);
 }
 
+// Sık sorulan konular için kural tabanlı kısa yanıtlar (yalnızca doğrulanmış bilgiler).
+function faq(text, L) {
+  const s = text.toLowerCase();
+  const en = L === "en", out = [];
+  if (/kira|rent|hire/.test(s)) out.push(en ? "Rental: 50 USD per m² per day, no deposit." : "Kiralama: günlük m² başına 50 USD, depozito alınmaz.");
+  if (/kargo|teslim|süre|ne zaman|gönderim|yurt ?dışı|avrupa|ship|deliver|lead time|how long|europe|abroad/.test(s)) out.push(en ? "Preparation takes 3–21 days, shipping 1–14 days. We ship to Europe, the Middle East and the Balkans." : "Hazırlık 3–21 gün, kargo 1–14 gün sürer. Avrupa, Orta Doğu ve Balkanlar'a gönderim yapıyoruz.");
+  if (/ödeme|taksit|döviz|euro|eur\b|para birimi|pay|currenc|install?ment/.test(s)) out.push(en ? "We accept payment in all currencies and installment payment is available." : "Tüm para birimleriyle ödeme kabul ediyoruz; taksitli ödeme imkânı da var.");
+  if (/\bce\b|sertifika|certif/.test(s)) out.push(en ? "Our products are CE certified." : "Ürünlerimiz CE sertifikalıdır.");
+  if (/tamir|onarım|arıza|lcd|kiosk|menuboard|repair|fix/.test(s)) out.push(en ? "We also repair LCD screens, kiosks and menuboards." : "LED ekranın yanı sıra LCD, kiosk ve menuboard tamiri de yapıyoruz.");
+  if (!out.length) return "";
+  return out.join(" ") + (en ? ` For details: WhatsApp ${WA}.` : ` Ayrıntılar için WhatsApp: ${WA}.`);
+}
+
 // Kural tabanlı yanıt: Gemini yoksa, kota dolduysa veya hata olursa.
 function fallback(text) {
   const L = lang(text);
+  if (L !== "ar") { const f = faq(text, L); if (f && !/\d\s*(x|×|\*)\s*\d/i.test(text)) return f; }
   const { w, h, d, outdoor } = parseNums(text);
   const p = pick(d, outdoor);
   const m2 = perM2(p);
@@ -218,7 +244,7 @@ export async function onRequestPost(context) {
     if (!reply) reply = fallback(raw);
     return jsonResponse({ reply, text: reply });
   } catch (err) {
-    const msg = `Talebinizi aldım. WhatsApp hattımızdan bize ulaşabilirsiniz: ${WA}.`;
+    const msg = `Talebinizi aldım. WhatsApp hattımızdan bize ulaşabilirsiniz: ${WA}. / We received your request, please reach us on WhatsApp: ${WA}.`;
     return jsonResponse({ reply: msg, text: msg });
   }
 }
