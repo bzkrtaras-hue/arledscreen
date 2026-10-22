@@ -187,6 +187,16 @@ export function HeroVideo({
   return (
     <section aria-label={labels.region} className="relative isolate w-full overflow-hidden bg-navy">
       <div className="relative h-[100svh] min-h-[560px] max-h-[860px] md:h-[min(100dvh,920px)] md:min-h-[680px] md:max-h-[920px]">
+        {/* Preload the first poster (the LCP element) so it is fetched from the head,
+            before hydration. Mobile and desktop get only their own file. */}
+        {first.posterMobile ? (
+          <>
+            <link rel="preload" as="image" href={first.posterMobile} type="image/webp" media="(max-width: 767px)" fetchPriority="high" />
+            <link rel="preload" as="image" href={first.poster} media="(min-width: 768px)" fetchPriority="high" />
+          </>
+        ) : (
+          <link rel="preload" as="image" href={first.poster} fetchPriority="high" />
+        )}
         {/* Still / poster stack — HQ factory frames stay sharp under the wash */}
         {clips.map((clip, i) =>
           i === 0 || started || active === i ? (
