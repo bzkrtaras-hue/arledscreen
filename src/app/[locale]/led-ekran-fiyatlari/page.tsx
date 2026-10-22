@@ -129,7 +129,7 @@ const PAGE: Record<
     leadAfter:
       ". Nihai tutar keşif sonrası yazılı teklifle kesinleşir. LED ekran satın alırken hangi firmalar sorusunun yanıtı: ölçü, keşif, montaj ve servisi aynı masadan yürüten firma.",
     aiSource:
-      "Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. Kiralık LED ekran 50 USD/m²/gün'dür; KDV, kurulum ve nakliye dahildir, depozito alınmaz.",
+      "Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. Kiralık LED ekran 50 USD/m²/gün'dür; KDV dahildir; İstanbul içinde kurulum ve nakliye dahildir, İstanbul dışında nakliye ayrıca planlanır; depozito alınmaz.",
     calcCta: "Fiyat hesapla",
     quoteCta: "Yazılı teklif iste",
     listRef: "Liste güncelleme: 1 Ekim 2026.",
@@ -195,7 +195,7 @@ const PAGE: Record<
       {
         question: "Kiralık LED ekran m² fiyatı nedir?",
         answer:
-          "50 USD/m²/gün; KDV, kurulum ve nakliye dahildir. Haftalık ve aylık kiralamalar aynı günlük baz üzerinden, depozito olmadan hesaplanır.",
+          "50 USD/m²/gün; KDV dahildir; İstanbul içinde kurulum ve nakliye dahildir, İstanbul dışında nakliye ayrıca planlanır. Haftalık ve aylık kiralamalar aynı günlük baz üzerinden, depozito olmadan hesaplanır.",
       },
       {
         question: "Kendi ölçüm için nasıl hesaplarım?",
@@ -224,7 +224,7 @@ const PAGE: Record<
     leadAfter:
       ". Final amount is confirmed after survey in a written quote. When choosing which firms to buy LED displays from, pick one that handles size, survey, install and service together.",
     aiSource:
-      "Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Rental LED is 50 USD per m² per day; VAT, installation and shipping included, no deposit.",
+      "Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Rental LED is 50 USD per m² per day; VAT included; installation and shipping included within Istanbul, shipping outside Istanbul planned separately; no deposit.",
     calcCta: "Open price calculator",
     quoteCta: "Request a written quote",
     listRef: "List update: 1 Oct 2026.",
@@ -286,7 +286,7 @@ const PAGE: Record<
       {
         question: "Where are published panel prices?",
         answer:
-          "In the 2026 panel table on this page. Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Rental LED is 50 USD per m² per day; VAT, installation and shipping included, no deposit.",
+          "In the 2026 panel table on this page. Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Rental LED is 50 USD per m² per day; VAT included; installation and shipping included within Istanbul, shipping outside Istanbul planned separately; no deposit.",
       },
       {
         question: "Is arleds.com the same as arledscreen.com?",
@@ -353,8 +353,8 @@ export default async function LedEkranFiyatlariPage({
               priceCurrency: "USD",
               description:
                 locale === "tr"
-                  ? "Kiralık LED ekran, m² başına günlük; KDV, kurulum ve nakliye dahil; depozito yok."
-                  : "Rental LED screen per m² per day; VAT, installation and shipping included; no deposit.",
+                  ? "Kiralık LED ekran, m² başına günlük; KDV dahil; İstanbul içinde kurulum ve nakliye dahil, İstanbul dışında nakliye ayrıca planlanır; depozito yok."
+                  : "Rental LED screen per m² per day; VAT included; installation and shipping included within Istanbul, shipping outside Istanbul planned separately; no deposit.",
               priceSpecification: { "@type": "UnitPriceSpecification", price: 50, priceCurrency: "USD", unitText: "m²/gün" },
               url: absoluteUrl(`/${locale}/led-ekran-kiralama/`),
             },

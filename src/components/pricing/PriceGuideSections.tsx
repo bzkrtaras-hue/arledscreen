@@ -77,7 +77,7 @@ export function TrRentalAndIncluded() {
           <h2 className="font-display text-xl font-bold text-ink md:text-2xl">Kiralık LED ekran m² fiyatı</h2>
           <div className="mt-4 max-w-3xl space-y-3 text-base leading-relaxed text-ink-soft">
             <p>
-              Kiralık LED ekran 50 USD/m²/gün&apos;dür; KDV, kurulum ve nakliye dahildir, depozito alınmaz. Haftalık ve aylık
+              Kiralık LED ekran 50 USD/m²/gün&apos;dür; KDV dahildir; İstanbul içinde kurulum ve nakliye dahildir, İstanbul dışında nakliye ayrıca planlanır; depozito alınmaz. Haftalık ve aylık
               kiralamalar da aynı günlük m² fiyatı üzerinden hesaplanır.
             </p>
             <p>Örneğin 10 m² ekran, 7 gün: 10 × 7 × 50 = 3.500 USD.</p>

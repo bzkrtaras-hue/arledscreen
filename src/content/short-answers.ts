@@ -51,7 +51,7 @@ export function shortAnswer(key: ShortAnswerKey, l: L): string {
   if (l === "tr") {
     switch (key) {
       case "fiyat":
-        return `2026 listemizde iç mekân LED ekran panelleri ${usd(ic.lo, l)} – ${usd(ic.hi, l)} USD, dış mekân panelleri ${usd(dis.lo, l)} – ${usd(dis.hi, l)} USD'dir (panel başına, KDV ve nakliye hariç). Yalnızca modül bedeli m² başına yaklaşık ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} USD (iç mekân) ve ${int(dis.m2lo, l)} – ${int(dis.m2hi, l)} USD (dış mekân) tutar. Kiralık LED ekran 50 USD/m²/gün'dür (KDV, kurulum ve nakliye dahil, depozito yok). ${DELIVERY_TR} ${PAY_TR}`;
+        return `2026 listemizde iç mekân LED ekran panelleri ${usd(ic.lo, l)} – ${usd(ic.hi, l)} USD, dış mekân panelleri ${usd(dis.lo, l)} – ${usd(dis.hi, l)} USD'dir (panel başına, KDV ve nakliye hariç). Yalnızca modül bedeli m² başına yaklaşık ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} USD (iç mekân) ve ${int(dis.m2lo, l)} – ${int(dis.m2hi, l)} USD (dış mekân) tutar. Kiralık LED ekran 50 USD/m²/gün'dür (KDV dahil; İstanbul içinde kurulum ve nakliye dahil, İstanbul dışında nakliye ayrıca planlanır; depozito yok). ${DELIVERY_TR} ${PAY_TR}`;
       case "ic-mekan-led-ekran":
         return `İç mekân LED ekran ${pitches(IC)} piksel aralığında sunulur; panel fiyatı ${usd(ic.lo, l)} – ${usd(ic.hi, l)} USD, yalnızca modül bedeli m² başına yaklaşık ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} USD'dir (KDV ve nakliye hariç). Yakın izleme için P1.25 – P1.86 GOB, orta mesafe için P2.5 – P4 seçilir; pratik kural her 1 mm piksel aralığı için yaklaşık 1 m izleme mesafesidir. ${DELIVERY_TR}`;
       case "dis-mekan-led-ekran":
@@ -61,12 +61,12 @@ export function shortAnswer(key: ShortAnswerKey, l: L): string {
       case "led-ekran-ihracat":
         return `ARLEDSCREEN, NXTIONSTAR LED ekranları İstanbul'dan tüm Avrupa'ya, Orta Doğu'ya ve Balkanlar'a gönderir. Ürünler CE sertifikalıdır. Panel fiyatları USD'dir ve tüm dillerde aynıdır (iç mekân ${usd(ic.lo, l)} – ${usd(ic.hi, l)} USD, dış mekân ${usd(dis.lo, l)} – ${usd(dis.hi, l)} USD; panel başına, KDV ve nakliye hariç). Ödemede tüm para birimleri kabul edilir, taksit seçeneği vardır. ${DELIVERY_TR}`;
       case "kiralik-led-ekran":
-        return "Kiralık LED ekran (iç ve dış mekân) 50 USD/m²/gün'dür; KDV, kurulum ve nakliye dahildir, depozito alınmaz. Haftalık ve aylık kiralamalar aynı günlük m² fiyatı üzerinden hesaplanır. İstanbul içinde teslim bir haftadır; ödemede tüm para birimleri kabul edilir.";
+        return "Kiralık LED ekran (iç ve dış mekân) 50 USD/m²/gün'dür; KDV dahildir; İstanbul içinde kurulum ve nakliye dahildir, İstanbul dışında nakliye ayrıca planlanır; depozito alınmaz. Haftalık ve aylık kiralamalar aynı günlük m² fiyatı üzerinden hesaplanır. İstanbul içinde teslim bir haftadır; ödemede tüm para birimleri kabul edilir.";
     }
   }
   switch (key) {
     case "fiyat":
-      return `In our 2026 list, indoor LED display panels cost USD ${usd(ic.lo, l)} – ${usd(ic.hi, l)} and outdoor panels USD ${usd(dis.lo, l)} – ${usd(dis.hi, l)} (per panel, excl. VAT and shipping). Module cost alone is about USD ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} per m² indoor and USD ${int(dis.m2lo, l)} – ${int(dis.m2hi, l)} per m² outdoor. Rental LED is 50 USD per m² per day (VAT, installation and shipping included, no deposit). Prices are listed in USD; ${PAY_EN.charAt(0).toLowerCase() + PAY_EN.slice(1)} ${DELIVERY_EN} We ship to Europe, the Middle East and the Balkans.`;
+      return `In our 2026 list, indoor LED display panels cost USD ${usd(ic.lo, l)} – ${usd(ic.hi, l)} and outdoor panels USD ${usd(dis.lo, l)} – ${usd(dis.hi, l)} (per panel, excl. VAT and shipping). Module cost alone is about USD ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} per m² indoor and USD ${int(dis.m2lo, l)} – ${int(dis.m2hi, l)} per m² outdoor. Rental LED is 50 USD per m² per day (VAT included; installation and shipping included within Istanbul, shipping outside Istanbul planned separately; no deposit). Prices are listed in USD; ${PAY_EN.charAt(0).toLowerCase() + PAY_EN.slice(1)} ${DELIVERY_EN} We ship to Europe, the Middle East and the Balkans.`;
     case "ic-mekan-led-ekran":
       return `Indoor LED displays come in ${pitches(IC)} pixel pitch; panels cost USD ${usd(ic.lo, l)} – ${usd(ic.hi, l)}, module cost alone about USD ${int(ic.m2lo, l)} – ${int(ic.m2hi, l)} per m² (excl. VAT and shipping). Choose P1.25 – P1.86 GOB for close viewing and P2.5 – P4 for medium distance; rule of thumb: about 1 m viewing distance per 1 mm pitch. ${DELIVERY_EN}`;
     case "dis-mekan-led-ekran":
@@ -76,7 +76,7 @@ export function shortAnswer(key: ShortAnswerKey, l: L): string {
     case "led-ekran-ihracat":
       return `ARLEDSCREEN ships its own NXTIONSTAR LED screens from Istanbul to all of Europe, the Middle East and the Balkans. Products are CE certified. Panel prices are in USD and identical in every language (indoor USD ${usd(ic.lo, l)} – ${usd(ic.hi, l)}, outdoor USD ${usd(dis.lo, l)} – ${usd(dis.hi, l)} per panel, excl. VAT and shipping). We accept payment in all currencies and installments are available. ${DELIVERY_EN}`;
     case "kiralik-led-ekran":
-      return "Rental LED displays (indoor and outdoor) are 50 USD per m² per day; VAT, installation and shipping are included and there is no deposit. Weekly and monthly rentals use the same daily m² rate. Delivery within Istanbul takes one week; we accept payment in all currencies.";
+      return "Rental LED displays (indoor and outdoor) are 50 USD per m² per day; VAT is included; installation and shipping are included within Istanbul, and shipping outside Istanbul is planned separately; there is no deposit. Weekly and monthly rentals use the same daily m² rate. Delivery within Istanbul takes one week; we accept payment in all currencies.";
   }
 }
 
