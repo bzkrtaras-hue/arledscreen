@@ -263,7 +263,7 @@ export function Footer({ locale }: FooterProps) {
           © {year} ARLEDSCREEN · NXTIONSTAR. {dict.footer.rights}{" "}
           <Link
             href={tr ? "/tr/gizlilik/" : "/en/gizlilik/"}
-            className="footer-privacy-link text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline"
+            className="footer-privacy-link inline-flex min-h-6 items-center px-1 text-white/70 underline underline-offset-2 hover:text-[#9CC0F5]"
           >
             {tr ? "Gizlilik" : ar ? "الخصوصية" : "Privacy"}
           </Link>
@@ -272,7 +272,7 @@ export function Footer({ locale }: FooterProps) {
               {" · "}
               <Link
                 href={tr ? "/tr/iade-politikasi/" : "/en/iade-politikasi/"}
-                className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline"
+                className="inline-flex min-h-6 items-center px-1 text-white/70 underline underline-offset-2 hover:text-[#9CC0F5]"
               >
                 {tr ? "İade ve teslimat" : "Returns & delivery"}
               </Link>

@@ -137,8 +137,8 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     tag: "Colorlight · X · VX · S",
     family: "Modül ve Kontrol Sistemleri",
     types: ["Multimedya işlemci", "Video işlemci", "Gönderici kart", "Alıcı kart (i / 5A serisi)"],
-    image: "/control/colorlight-vx20.png",
-    cardImage: "/control/colorlight-x20.png",
+    image: "/control/colorlight-vx20.webp",
+    cardImage: "/control/colorlight-x20.webp",
     imageAlt: "Colorlight LED video işlemci ve kontrol cihazı",
     brandName: "Colorlight",
     intro: [
