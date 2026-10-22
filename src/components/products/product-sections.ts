@@ -10,7 +10,14 @@ export const PRODUCT_SECTIONS = [
     id: "ic",
     tr: "İç Mekân",
     en: "Indoor",
-    slugs: ["ic-mekan-led-ekran", "gob-led-ekran", "esnek-led-ekran", "kiralik-led-ekran"],
+    slugs: [
+      "ic-mekan-led-ekran",
+      "gob-led-ekran", "esnek-led-ekran",
+      "seffaf-led-ekran",
+      "transparan-led-ekran",
+      "ince-pitch-led-ekran",
+      "kiralik-led-ekran",
+    ],
   },
   {
     id: "dis",
@@ -22,7 +29,7 @@ export const PRODUCT_SECTIONS = [
     id: "kontrol",
     tr: "Kontrol Kartları",
     en: "Control cards",
-    slugs: ["colorlight-kontrolculer"],
+    slugs: ["colorlight-kontrolculer", "huidu-kontrol-kartlari", "novastar-kontrolculer"],
   },
 ] as const;
 
