@@ -367,7 +367,7 @@ const INTENT_PAGES: CommercialPage[] = [
     title: "LED Ekran Servis ve Bakım | ARLEDSCREEN",
     description:
       "LED ekran teknik servis, bakım, modül ve güç kaynağı değişimi. İstanbul merkezli ARLEDSCREEN servis ekibi.",
-    h1: "LED ekran teknik servis",
+    h1: "LED ekran teknik servis ve destek",
     eyebrow: "Servis · Bakım",
     lead: "Periyodik bakım, arıza tespiti, modül/güç kaynağı değişimi ve mevcut ekranlar için teknik servis desteği sunuyoruz.",
     intro: [
@@ -394,6 +394,15 @@ const INTENT_PAGES: CommercialPage[] = [
         question: "Başka firmadan alınmış ekrana bakıyor musunuz?",
         answer:
           "Marka, model ve kontrol sistemi bilgisini paylaşırsanız inceleyip servis ve yedek parça olanaklarını iletiriz.",
+      },
+      {
+        question: "Hangi kontrol kartlarına teknik destek veriyorsunuz?",
+        answer:
+          "Huidu, NovaStar ve Colorlight kontrol kartlarında kurulum, yapılandırma, gönderici ve alıcı kart ile yazılım desteği veriyoruz.",
+      },
+      {
+        question: "Garanti ve teknik servis süresi nedir?",
+        answer: "2 yıl garanti ve 5 yıl ücretsiz teknik servis.",
       },
     ],
     primaryCta: { href: "/tr/quote/", label: "Servis talebi" },

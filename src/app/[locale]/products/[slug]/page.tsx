@@ -626,6 +626,14 @@ export default async function ProductGroupPage({ params }: PageProps) {
               <BookOpen className="h-4 w-4" aria-hidden />
               {g.guide.label}
             </Link>
+            {isControlGroup ? (
+              <>
+                {" · "}
+                <Link href="/tr/led-ekran-servis/#teknik-destek" className="font-semibold text-cyan hover:underline">
+                  Teknik destek
+                </Link>
+              </>
+            ) : null}
           </p>
         </div>
       </section>
