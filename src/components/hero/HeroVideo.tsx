@@ -17,6 +17,9 @@ export type HeroClip = {
   height: number;
   /** Short scene label for a11y / dots */
   label: string;
+  /** ≤767px: show the whole landscape frame in a band under the header instead of a centre crop
+   *  (keeps on-screen logos uncut and clear of the H1 / copy plate). Desktop unchanged. */
+  mobileBand?: boolean;
 };
 
 export type HeroPoint = {
@@ -40,6 +43,8 @@ interface HeroVideoProps {
   labels: { region: string; pause: string; play: string; scenes: string };
   /** Soft crossfade dwell per clip (ms) */
   dwellMs?: number;
+  /** Scene dots (tablist) bottom-left. Off on the homepage: the loop is background only. */
+  showSceneDots?: boolean;
 }
 
 const ease = [0.22, 0.65, 0.2, 1] as const;
@@ -49,7 +54,12 @@ function clipKey(clip: HeroClip) {
   return clip.src ?? clip.poster;
 }
 
+const MOBILE_BAND = " max-md:object-contain max-md:[object-position:50%_6.5rem]";
+
 function coverClass(clip: HeroClip) {
+  if (clip.mobileBand) {
+    return "absolute inset-0 h-full w-full object-cover object-center md:object-[54%_46%]" + MOBILE_BAND;
+  }
   // Full-bleed cover so desktop hero shows the LED surface, not letterboxed bars.
   // Landscape: keep the wall centred; portrait: bias upward to the install.
   return clip.height > clip.width
@@ -75,6 +85,7 @@ export function HeroVideo({
   secondaryLabel,
   labels,
   dwellMs = 8000,
+  showSceneDots = true,
 }: HeroVideoProps) {
   const reduce = useReducedMotion();
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -184,6 +195,16 @@ export function HeroVideo({
   return (
     <section aria-label={labels.region} className="relative isolate w-full overflow-hidden bg-navy">
       <div className="relative h-[100svh] min-h-[560px] max-h-[860px] md:h-[min(100dvh,920px)] md:min-h-[680px] md:max-h-[920px]">
+        {/* Preload the first poster (the LCP element) so it is fetched from the head,
+            before hydration. Mobile and desktop get only their own file. */}
+        {first.posterMobile ? (
+          <>
+            <link rel="preload" as="image" href={first.posterMobile} type="image/webp" media="(max-width: 767px)" fetchPriority="high" />
+            <link rel="preload" as="image" href={first.poster} media="(min-width: 768px)" fetchPriority="high" />
+          </>
+        ) : (
+          <link rel="preload" as="image" href={first.poster} fetchPriority="high" />
+        )}
         {/* Still / poster stack — HQ factory frames stay sharp under the wash */}
         {clips.map((clip, i) =>
           i === 0 || started || active === i ? (
@@ -272,7 +293,7 @@ export function HeroVideo({
           </button>
         ) : null}
 
-        {clips.length > 1 && !reduce ? (
+        {showSceneDots && clips.length > 1 && !reduce ? (
           <div
             className="absolute bottom-5 start-5 z-10 flex gap-2 md:bottom-[88px] md:start-8"
             role="tablist"
