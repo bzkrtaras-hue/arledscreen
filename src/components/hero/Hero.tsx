@@ -12,11 +12,17 @@ interface HeroProps {
  * Single clip: lounge aquarium wall (Eskişehir vitrin, sphere and club clips removed).
  * H1 carries the local query; NXTIONSTAR slogan stays in the top bar only.
  */
-const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
+const HERO_SCENES: { slug: string; labelTr: string; labelEn: string; alt: Record<string, string> }[] = [
   {
     slug: "lounge-aquarium-wall",
     labelTr: "Lounge LED",
     labelEn: "Lounge LED",
+    alt: {
+      tr: "Bir salonda akvaryum görüntüsü oynatan iç mekân LED ekran",
+      en: "Indoor LED screen playing aquarium footage in a lounge",
+      ar: "شاشة LED داخلية تعرض مشهد حوض أسماك في صالة",
+      ru: "Внутренний LED-экран с видео аквариума в зале",
+    },
   },
 ];
 
@@ -60,6 +66,7 @@ export function Hero({ locale }: HeroProps) {
         width: HERO_MEDIA[scene.slug]?.width ?? video.width,
         height: HERO_MEDIA[scene.slug]?.height ?? video.height,
         label: tr ? scene.labelTr : scene.labelEn,
+        alt: scene.alt[locale] ?? scene.alt.en,
       },
     ];
   });

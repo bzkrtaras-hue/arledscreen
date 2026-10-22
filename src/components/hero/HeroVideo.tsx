@@ -17,6 +17,8 @@ export type HeroClip = {
   height: number;
   /** Short scene label for a11y / dots */
   label: string;
+  /** Descriptive alt for the poster image (falls back to label). */
+  alt?: string;
 };
 
 export type HeroPoint = {
@@ -193,7 +195,7 @@ export function HeroVideo({
             ) : null}
           <img
             src={clip.poster}
-            alt={clip.label}
+            alt={clip.alt ?? clip.label}
             width={clip.width}
             height={clip.height}
             fetchPriority={i === 0 ? "high" : "low"}

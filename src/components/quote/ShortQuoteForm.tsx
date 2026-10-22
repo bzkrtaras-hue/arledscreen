@@ -6,9 +6,10 @@ import { CheckCircle2, Mail, Send } from "lucide-react";
 import { PROJECT_TYPES, projectTypeLabel, whatsappHref, type ProjectTypeId } from "@/lib/whatsapp";
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/social";
 import { getProducts } from "@/content/products";
+import { trackLead } from "@/lib/track";
 
 type Env = "ic" | "dis" | "bilmiyorum";
-type FormLocale = "tr" | "en";
+type FormLocale = "tr" | "en" | "ar" | "ru";
 
 interface FormState {
   name: string;
@@ -28,11 +29,83 @@ interface FormState {
 const ENV_LABEL: Record<FormLocale, Record<Env, string>> = {
   tr: { ic: "İç mekân", dis: "Dış mekân", bilmiyorum: "Emin değilim" },
   en: { ic: "Indoor", dis: "Outdoor", bilmiyorum: "Not sure" },
+  ar: { ic: "داخلي", dis: "خارجي", bilmiyorum: "لست متأكداً" },
+  ru: { ic: "В помещении", dis: "На улице", bilmiyorum: "Не уверен(а)" },
 };
 
 const TIMELINES: Record<FormLocale, string[]> = {
   tr: ["En kısa sürede", "1 ay içinde", "1–3 ay", "3 aydan sonra", "Henüz belli değil"],
   en: ["As soon as possible", "Within 1 month", "1–3 months", "After 3 months", "Not decided yet"],
+  ar: ["في أقرب وقت", "خلال شهر", "1–3 أشهر", "بعد 3 أشهر", "لم يُحدَّد بعد"],
+  ru: ["Как можно скорее", "В течение месяца", "1–3 месяца", "Через 3 месяца и позже", "Пока не решено"],
+};
+
+/** Labels for ar/ru, keyed by the English string (TR/EN stay inline below). */
+const I18N: Record<"ar" | "ru", Record<string, string>> = {
+  ar: {
+    "Please enter your full name.": "يرجى كتابة الاسم الكامل.",
+    "Please enter a valid phone number.": "يرجى كتابة رقم هاتف صحيح.",
+    "Please enter the project city or district.": "يرجى كتابة مدينة المشروع أو منطقته.",
+    "LED display quote request": "طلب عرض سعر لشاشة LED",
+    "Your request is ready": "طلبك جاهز",
+    "WhatsApp opened in a new tab. Check the message and tap Send to reach us.": "فُتح واتساب في نافذة جديدة. راجع الرسالة ثم اضغط «إرسال» لتصلنا.",
+    "Your email app opened. Send the email to reach us.": "فُتح تطبيق البريد. أرسل الرسالة لتصلنا.",
+    "Our team will contact you using the size and location details to plan survey and quote.": "سيتواصل معك فريقنا بناءً على المقاس والموقع لتنظيم المعاينة وعرض السعر.",
+    "If the app did not open, call us: ": "إذا لم يفتح التطبيق، اتصل بنا: ",
+    "Edit form": "تعديل النموذج",
+    "Full name": "الاسم الكامل",
+    "Phone": "الهاتف",
+    "Company": "الشركة",
+    "(optional)": "(اختياري)",
+    "Project type": "نوع المشروع",
+    "Environment": "بيئة الاستخدام",
+    "e.g. 3": "مثال: 3",
+    "e.g. 2": "مثال: 2",
+    "Width (m)": "العرض (م)",
+    "Height (m)": "الارتفاع (م)",
+    "City / district": "المدينة / المنطقة",
+    "e.g. Istanbul / Şişli": "مثال: دبي",
+    "Timeline": "الجدول الزمني",
+    "Select": "اختر",
+    "Notes": "ملاحظات",
+    "Mount surface, viewing distance, content type, etc.": "سطح التركيب، مسافة المشاهدة، نوع المحتوى…",
+    "Your details are sent to our team by email solely to prepare your quote. When you tap “Send via WhatsApp”, your request opens as a draft message; you choose whether to send it.": "تُرسَل بياناتك إلى فريقنا عبر البريد الإلكتروني فقط لإعداد عرض السعر. عند الضغط على «إرسال عبر واتساب» يُفتح طلبك كرسالة جاهزة، والقرار في إرسالها لك.",
+    "Send via WhatsApp": "إرسال عبر واتساب",
+    "Send via email": "إرسال عبر البريد الإلكتروني",
+    "(Optional) I give explicit consent to my personal data being transferred to service providers with servers abroad for email and form infrastructure.": "(اختياري) أوافق صراحةً على نقل بياناتي الشخصية إلى مزوّدي خدمات لديهم خوادم خارج تركيا لأغراض البريد الإلكتروني والنموذج.",
+  },
+  ru: {
+    "Please enter your full name.": "Пожалуйста, укажите имя и фамилию.",
+    "Please enter a valid phone number.": "Пожалуйста, укажите корректный номер телефона.",
+    "Please enter the project city or district.": "Пожалуйста, укажите город или район проекта.",
+    "LED display quote request": "Запрос коммерческого предложения на LED-экран",
+    "Your request is ready": "Ваш запрос готов",
+    "WhatsApp opened in a new tab. Check the message and tap Send to reach us.": "WhatsApp открылся в новой вкладке. Проверьте сообщение и нажмите «Отправить».",
+    "Your email app opened. Send the email to reach us.": "Открылось почтовое приложение. Отправьте письмо, и оно дойдёт до нас.",
+    "Our team will contact you using the size and location details to plan survey and quote.": "Наша команда свяжется с вами по размеру и адресу, чтобы запланировать замер и предложение.",
+    "If the app did not open, call us: ": "Если приложение не открылось, позвоните нам: ",
+    "Edit form": "Изменить форму",
+    "Full name": "Имя и фамилия",
+    "Phone": "Телефон",
+    "Company": "Компания",
+    "(optional)": "(необязательно)",
+    "Project type": "Тип проекта",
+    "Environment": "Место установки",
+    "e.g. 3": "напр. 3",
+    "e.g. 2": "напр. 2",
+    "Width (m)": "Ширина (м)",
+    "Height (m)": "Высота (м)",
+    "City / district": "Город / район",
+    "e.g. Istanbul / Şişli": "напр. Стамбул",
+    "Timeline": "Сроки",
+    "Select": "Выберите",
+    "Notes": "Комментарий",
+    "Mount surface, viewing distance, content type, etc.": "Поверхность монтажа, расстояние просмотра, тип контента и т. п.",
+    "Your details are sent to our team by email solely to prepare your quote. When you tap “Send via WhatsApp”, your request opens as a draft message; you choose whether to send it.": "Ваши данные передаются нашей команде по электронной почте только для подготовки предложения. При нажатии «Отправить в WhatsApp» запрос откроется как готовое сообщение — отправляете его вы.",
+    "Send via WhatsApp": "Отправить в WhatsApp",
+    "Send via email": "Отправить по e-mail",
+    "(Optional) I give explicit consent to my personal data being transferred to service providers with servers abroad for email and form infrastructure.": "(Необязательно) Я даю явное согласие на передачу моих персональных данных поставщикам услуг с серверами за рубежом для работы почты и формы.",
+  },
 };
 
 /** Plain-text cleanup: drop control characters (except newlines in notes) and clamp length. */
@@ -50,14 +123,14 @@ function buildMessage(raw: FormState, locale: FormLocale): string {
     location: clean(raw.location, 80),
     notes: clean(raw.notes, 1000, true),
   };
-  const type = projectTypeLabel(f.projectType, locale);
+  const type = projectTypeLabel(f.projectType, locale === "tr" ? "tr" : "en");
   const size =
     f.width && f.height
       ? `${f.width} m × ${f.height} m`
-      : locale === "en"
+      : locale !== "tr"
         ? "Not specified"
         : "Belirtilmedi";
-  if (locale === "en") {
+  if (locale !== "tr") {
     return [
       "Hello ARLEDSCREEN, LED display quote request:",
       `• Name: ${f.name}`,
@@ -104,7 +177,9 @@ export function ShortQuoteForm({
   locale?: FormLocale;
 } = {}) {
   const id = useId();
-  const en = locale === "en";
+  const en = locale !== "tr";
+  const tx = (trText: string, enText: string) =>
+    locale === "tr" ? trText : locale === "en" ? enText : I18N[locale][enText] ?? enText;
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [sentVia, setSentVia] = useState<null | "whatsapp" | "email">(null);
   const [f, setF] = useState<FormState>({
@@ -147,15 +222,13 @@ export function ShortQuoteForm({
   const validate = () => {
     const e: Partial<Record<keyof FormState, string>> = {};
     if (f.name.trim().length < 2) {
-      e.name = en ? "Please enter your full name." : "Lütfen adınızı ve soyadınızı yazın.";
+      e.name = tx("Lütfen adınızı ve soyadınızı yazın.", "Please enter your full name.");
     }
     if (f.phone.replace(/\D/g, "").length < 10) {
-      e.phone = en ? "Please enter a valid phone number." : "Lütfen geçerli bir telefon numarası yazın.";
+      e.phone = tx("Lütfen geçerli bir telefon numarası yazın.", "Please enter a valid phone number.");
     }
     if (f.location.trim().length < 2) {
-      e.location = en
-        ? "Please enter the project city or district."
-        : "Lütfen projenin şehir veya ilçesini yazın.";
+      e.location = tx("Lütfen projenin şehir veya ilçesini yazın.", "Please enter the project city or district.");
     }
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -164,10 +237,19 @@ export function ShortQuoteForm({
   const submit = (via: "whatsapp" | "email") => {
     if (!validate()) return;
     const msg = buildMessage(f, locale);
+    trackLead(via, locale);
+    // Server-side copy to arled@arledscreen.com (Cloudflare Email Service, /api/lead).
+    // Fire-and-forget: WhatsApp/mail must still open even if the endpoint is not configured.
+    try {
+      const body = JSON.stringify({ message: msg, locale, via, name: f.name, phone: f.phone, abroadConsent: f.abroadConsent, website: "" });
+      if (!(navigator.sendBeacon && navigator.sendBeacon("/api/lead", new Blob([body], { type: "application/json" })))) {
+        void fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {});
+      }
+    } catch {}
     if (via === "whatsapp") {
       window.open(whatsappHref(msg), "_blank", "noopener,noreferrer");
     } else {
-      const subject = en ? "LED display quote request" : "LED ekran teklif talebi";
+      const subject = tx("LED ekran teklif talebi", "LED display quote request");
       window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg)}`;
     }
     setSentVia(via);
@@ -188,22 +270,16 @@ export function ShortQuoteForm({
       <div className="mx-auto max-w-xl rounded-2xl p-8 text-center glass-card" role="status">
         <CheckCircle2 className="mx-auto h-12 w-12 text-cyan" aria-hidden />
         <h2 className="mt-4 font-display text-2xl font-bold text-ink">
-          {en ? "Your request is ready" : "Talebiniz hazırlandı"}
+          {tx("Talebiniz hazırlandı", "Your request is ready")}
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-ink-muted">
           {sentVia === "whatsapp"
-            ? en
-              ? "WhatsApp opened in a new tab. Check the message and tap Send to reach us."
-              : "WhatsApp yeni sekmede açıldı. Mesajı kontrol edip “Gönder”e dokunduğunuzda talebiniz bize ulaşır."
-            : en
-              ? "Your email app opened. Send the email to reach us."
-              : "E-posta uygulamanız açıldı. E-postayı gönderdiğinizde talebiniz bize ulaşır."}{" "}
-          {en
-            ? "Our team will contact you using the size and location details to plan survey and quote."
-            : "Ekibimiz ölçü ve konum bilgisine göre sizinle iletişime geçerek keşif ve teklif sürecini planlayacaktır."}
+            ? tx("WhatsApp yeni sekmede açıldı. Mesajı kontrol edip “Gönder”e dokunduğunuzda talebiniz bize ulaşır.", "WhatsApp opened in a new tab. Check the message and tap Send to reach us.")
+            : tx("E-posta uygulamanız açıldı. E-postayı gönderdiğinizde talebiniz bize ulaşır.", "Your email app opened. Send the email to reach us.")}{" "}
+          {tx("Ekibimiz ölçü ve konum bilgisine göre sizinle iletişime geçerek keşif ve teklif sürecini planlayacaktır.", "Our team will contact you using the size and location details to plan survey and quote.")}
         </p>
         <p className="mt-4 text-sm text-ink-muted">
-          {en ? "If the app did not open, call us: " : "Uygulama açılmadıysa bizi doğrudan arayın: "}
+          {tx("Uygulama açılmadıysa bizi doğrudan arayın: ", "If the app did not open, call us: ")}
           <a href={CONTACT_PHONE_HREF} className="font-semibold text-cyan">
             {CONTACT_PHONE_DISPLAY}
           </a>
@@ -213,7 +289,7 @@ export function ShortQuoteForm({
           onClick={() => setSentVia(null)}
           className="mt-6 text-sm font-semibold text-cyan underline underline-offset-4"
         >
-          {en ? "Edit form" : "Formu düzenle"}
+          {tx("Formu düzenle", "Edit form")}
         </button>
       </div>
     );
@@ -232,7 +308,7 @@ export function ShortQuoteForm({
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor={`${id}-name`} className={labelCls}>
-            {en ? "Full name" : "Ad Soyad"}{" "}
+            {tx("Ad Soyad", "Full name")}{" "}
             <span aria-hidden className="text-[#B42318]">
               *
             </span>
@@ -252,7 +328,7 @@ export function ShortQuoteForm({
         </div>
         <div>
           <label htmlFor={`${id}-phone`} className={labelCls}>
-            {en ? "Phone" : "Telefon"}{" "}
+            {tx("Telefon", "Phone")}{" "}
             <span aria-hidden className="text-[#B42318]">
               *
             </span>
@@ -264,7 +340,7 @@ export function ShortQuoteForm({
             autoComplete="tel"
             maxLength={30}
             required
-            placeholder={en ? "+90 …" : "05xx xxx xx xx"}
+            placeholder={tx("05xx xxx xx xx", "+90 …")}
             aria-invalid={!!errors.phone}
             aria-describedby={errors.phone ? `${id}-phone-err` : undefined}
             className={field}
@@ -275,9 +351,9 @@ export function ShortQuoteForm({
         </div>
         <div>
           <label htmlFor={`${id}-company`} className={labelCls}>
-            {en ? "Company" : "Firma / kurum"}{" "}
+            {tx("Firma / kurum", "Company")}{" "}
             <span className="font-normal text-ink-muted">
-              {en ? "(optional)" : "(isteğe bağlı)"}
+              {tx("(isteğe bağlı)", "(optional)")}
             </span>
           </label>
           <input
@@ -291,7 +367,7 @@ export function ShortQuoteForm({
         </div>
         <div>
           <label htmlFor={`${id}-type`} className={labelCls}>
-            {en ? "Project type" : "Proje türü"}
+            {tx("Proje türü", "Project type")}
           </label>
           <select
             id={`${id}-type`}
@@ -301,13 +377,13 @@ export function ShortQuoteForm({
           >
             {PROJECT_TYPES.map((t) => (
               <option key={t.id} value={t.id}>
-                {projectTypeLabel(t.id, locale)}
+                {projectTypeLabel(t.id, locale === "tr" ? "tr" : "en")}
               </option>
             ))}
           </select>
         </div>
         <fieldset className="sm:col-span-2">
-          <legend className={labelCls}>{en ? "Environment" : "Kullanım ortamı"}</legend>
+          <legend className={labelCls}>{tx("Kullanım ortamı", "Environment")}</legend>
           <div className="mt-2 grid grid-cols-3 gap-2">
             {(Object.keys(ENV_LABEL[locale]) as Env[]).map((k) => (
               <label
@@ -330,13 +406,13 @@ export function ShortQuoteForm({
         <div className="grid grid-cols-2 gap-3 sm:col-span-2 sm:grid-cols-4">
           <div>
             <label htmlFor={`${id}-w`} className={labelCls}>
-              {en ? "Width (m)" : "Genişlik (m)"}
+              {tx("Genişlik (m)", "Width (m)")}
             </label>
             <input
               id={`${id}-w`}
               inputMode="decimal"
               maxLength={8}
-              placeholder={en ? "e.g. 3" : "örn. 3"}
+              placeholder={tx("örn. 3", "e.g. 3")}
               className={field}
               value={f.width}
               onChange={(e) => set("width", e.target.value)}
@@ -344,13 +420,13 @@ export function ShortQuoteForm({
           </div>
           <div>
             <label htmlFor={`${id}-h`} className={labelCls}>
-              {en ? "Height (m)" : "Yükseklik (m)"}
+              {tx("Yükseklik (m)", "Height (m)")}
             </label>
             <input
               id={`${id}-h`}
               inputMode="decimal"
               maxLength={8}
-              placeholder={en ? "e.g. 2" : "örn. 2"}
+              placeholder={tx("örn. 2", "e.g. 2")}
               className={field}
               value={f.height}
               onChange={(e) => set("height", e.target.value)}
@@ -358,7 +434,7 @@ export function ShortQuoteForm({
           </div>
           <div className="col-span-2">
             <label htmlFor={`${id}-loc`} className={labelCls}>
-              {en ? "City / district" : "Şehir / ilçe"}{" "}
+              {tx("Şehir / ilçe", "City / district")}{" "}
               <span aria-hidden className="text-[#B42318]">
                 *
               </span>
@@ -367,7 +443,7 @@ export function ShortQuoteForm({
               id={`${id}-loc`}
               autoComplete="address-level2"
               maxLength={80}
-              placeholder={en ? "e.g. Istanbul / Şişli" : "örn. İstanbul / Şişli"}
+              placeholder={tx("örn. İstanbul / Şişli", "e.g. Istanbul / Şişli")}
               aria-invalid={!!errors.location}
               aria-describedby={errors.location ? `${id}-location-err` : undefined}
               className={field}
@@ -379,7 +455,7 @@ export function ShortQuoteForm({
         </div>
         <div>
           <label htmlFor={`${id}-time`} className={labelCls}>
-            {en ? "Timeline" : "Zaman planı"}
+            {tx("Zaman planı", "Timeline")}
           </label>
           <select
             id={`${id}-time`}
@@ -387,7 +463,7 @@ export function ShortQuoteForm({
             value={f.timeline}
             onChange={(e) => set("timeline", e.target.value)}
           >
-            <option value="">{en ? "Select" : "Seçiniz"}</option>
+            <option value="">{tx("Seçiniz", "Select")}</option>
             {TIMELINES[locale].map((t) => (
               <option key={t} value={t}>
                 {t}
@@ -397,9 +473,9 @@ export function ShortQuoteForm({
         </div>
         <div className="sm:col-span-2">
           <label htmlFor={`${id}-notes`} className={labelCls}>
-            {en ? "Notes" : "Not"}{" "}
+            {tx("Not", "Notes")}{" "}
             <span className="font-normal text-ink-muted">
-              {en ? "(optional)" : "(isteğe bağlı)"}
+              {tx("(isteğe bağlı)", "(optional)")}
             </span>
           </label>
           <textarea
@@ -407,9 +483,7 @@ export function ShortQuoteForm({
             rows={3}
             maxLength={1000}
             placeholder={
-              en
-                ? "Mount surface, viewing distance, content type, etc."
-                : "Montaj yüzeyi, izleme mesafesi, içerik türü vb."
+              tx("Montaj yüzeyi, izleme mesafesi, içerik türü vb.", "Mount surface, viewing distance, content type, etc.")
             }
             className={`${field} py-3`}
             value={f.notes}
@@ -417,21 +491,27 @@ export function ShortQuoteForm({
           />
         </div>
         <div className="sm:col-span-2">
-          {!en ? (
-            <p className="text-sm text-ink-soft">
-              Bilgileriniz{" "}
-              <Link href="/tr/kvkk/" className="font-semibold text-cyan underline underline-offset-2">
-                KVKK Aydınlatma Metni
-              </Link>{" "}
-              kapsamında işlenir.
-            </p>
-          ) : (
-            <p className="text-sm text-ink-soft">
-              Your details are used only to prepare a quote and to contact you.
-            </p>
-          )}
+          <p className="text-sm text-ink-soft">
+            {locale === "tr" ? (
+              <>
+                Bilgileriniz{" "}
+                <Link href="/tr/kvkk/" className="font-semibold text-cyan underline underline-offset-2">
+                  KVKK Aydınlatma Metni
+                </Link>{" "}
+                kapsamında işlenir.
+              </>
+            ) : (
+              <>
+                {locale === "ar" ? "اطّلع على كيفية معالجة بياناتك الشخصية في " : locale === "ru" ? "Как мы обрабатываем персональные данные, описано в " : "Read how we process your personal data in our "}
+                <Link href={locale === "ar" ? "/ar/privacy/" : "/en/privacy/"} className="font-semibold text-cyan underline underline-offset-2">
+                  {locale === "ar" ? "إشعار الخصوصية" : locale === "ru" ? "уведомлении о конфиденциальности (EN)" : "Privacy Notice"}
+                </Link>
+                {locale === "ar" ? "." : "."}
+              </>
+            )}
+          </p>
         </div>
-        {!en ? (
+        {(
           <div className="sm:col-span-2">
             {/* DOĞRULA: yurt dışı aktarım dayanağı açık rıza mı? Değilse bu kutu kaldırılabilir. Kutu zorunlu değildir. */}
             <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm text-ink-soft">
@@ -443,18 +523,18 @@ export function ShortQuoteForm({
                 onChange={(e) => set("abroadConsent", e.target.checked)}
               />
               <span>
-                (İsteğe bağlı) Kişisel verilerimin, e-posta ve form altyapısı için yurt dışında sunucu
-                bulunduran hizmet sağlayıcılara aktarılmasına açık rıza veriyorum.
+                {tx(
+                  "(İsteğe bağlı) Kişisel verilerimin, e-posta ve form altyapısı için yurt dışında sunucu bulunduran hizmet sağlayıcılara aktarılmasına açık rıza veriyorum.",
+                  "(Optional) I give explicit consent to my personal data being transferred to service providers with servers abroad for email and form infrastructure.",
+                )}
               </span>
             </label>
           </div>
-        ) : null}
+        )}
       </div>
 
       <p id={`${id}-info`} className="mt-5 rounded-xl bg-surface px-4 py-3 text-xs leading-relaxed text-ink-muted">
-        {en
-          ? "This form does not store your details on the site. When you tap “Send via WhatsApp”, your request opens as a draft message; you choose whether to send it."
-          : "Bu form bilgilerinizi sitede saklamaz. “WhatsApp ile gönder” dediğinizde talebiniz WhatsApp'ta hazır mesaj olarak açılır; göndermek için onay sizdedir."}
+        {tx("Bilgileriniz yalnızca teklif hazırlamak için ekibimize e-postayla iletilir. “WhatsApp ile gönder” dediğinizde talebiniz WhatsApp'ta hazır mesaj olarak açılır; göndermek için onay sizdedir.", "Your details are sent to our team by email solely to prepare your quote. When you tap “Send via WhatsApp”, your request opens as a draft message; you choose whether to send it.")}
       </p>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -463,7 +543,7 @@ export function ShortQuoteForm({
           className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 bg-[#12813F] px-5 text-base text-white hover:bg-[#0E6B34]"
         >
           <Send className="h-4 w-4" aria-hidden />
-          {en ? "Send via WhatsApp" : "WhatsApp ile gönder"}
+          {tx("WhatsApp ile gönder", "Send via WhatsApp")}
         </button>
         <button
           type="button"
@@ -471,7 +551,7 @@ export function ShortQuoteForm({
           className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 border border-cyan/50 bg-white px-5 text-base text-cyan hover:bg-cyan-50"
         >
           <Mail className="h-4 w-4" aria-hidden />
-          {en ? "Send via email" : "E-posta ile gönder"}
+          {tx("E-posta ile gönder", "Send via email")}
         </button>
       </div>
     </form>

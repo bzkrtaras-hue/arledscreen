@@ -94,8 +94,15 @@ export function projectWhatsappHref(id: ProjectTypeId, locale: "tr" | "en" = "tr
 export const WHATSAPP_QUOTE_HREF_TR = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Merhaba, projem için bilgi ve teklif almak istiyorum")}`;
 export const WHATSAPP_QUOTE_HREF_EN = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello, I'd like information and a proposal for my project")}`;
 
+export const WHATSAPP_QUOTE_HREF_AR = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("مرحباً، أود الحصول على معلومات وعرض سعر لمشروعي")}`;
+export const WHATSAPP_QUOTE_HREF_RU = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Здравствуйте, я хотел(а) бы получить информацию и коммерческое предложение по моему проекту")}`;
+
+/** Prefilled WhatsApp text always matches the page language (ar/ru no longer fall back to Turkish). */
 export function quoteWhatsappHref(locale?: string): string {
-  return locale === "en" ? WHATSAPP_QUOTE_HREF_EN : WHATSAPP_QUOTE_HREF_TR;
+  if (locale === "tr") return WHATSAPP_QUOTE_HREF_TR;
+  if (locale === "ar") return WHATSAPP_QUOTE_HREF_AR;
+  if (locale === "ru") return WHATSAPP_QUOTE_HREF_RU;
+  return WHATSAPP_QUOTE_HREF_EN;
 }
 
 /** TR default (kept for TR-only components). */

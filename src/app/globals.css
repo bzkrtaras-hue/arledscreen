@@ -1084,3 +1084,11 @@ details > summary::-webkit-details-marker {
     scroll-padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
   }
 }
+
+/* Form pages (quote/contact): on phones the chat bubble + avatar covered the send button.
+   Hide only the widget's outer container there; chat internals untouched, desktop unchanged. */
+@media (max-width: 480px) {
+  body:has([data-form-page]) #melis-widget-container {
+    display: none !important;
+  }
+}

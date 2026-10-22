@@ -11,6 +11,7 @@ import { SiteShell } from "@/components/layout/SiteShell";
 import { LocaleHtml } from "@/components/layout/LocaleHtml";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { absoluteUrl } from "@/lib/site";
+import { LeadClickTracker } from "@/components/analytics/LeadClickTracker";
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -54,6 +55,7 @@ export default async function LocaleLayout({
       <LocaleHtml locale={locale} />
       <OrganizationJsonLd />
       <SiteShell locale={locale}>{children}</SiteShell>
+      <LeadClickTracker locale={locale} />
       {/* Canlı Destek (Melis): her sayfa türünde; /hesaplayici ve /fiyat-hesap widget içinde hariç tutulur. */}
       <Script src="/chat-widget.js" strategy="lazyOnload" data-locale={locale} data-pages="*" />
     </div>
