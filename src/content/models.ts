@@ -105,7 +105,7 @@ export const LED_MODELS: LedModel[] = [
     specs: {
       pitch: k("1,25 mm"),
       moduleSize: k("320 × 160 mm"),
-      matrix: k("128 × 256 piksel"),
+      matrix: k("256 × 128 piksel"),
       pixels: k("32.768"),
       density: k("640.000 piksel/m² üzeri"),
       ledType: k("RGB; isteğe bağlı GOB (yüzeye koruyucu reçine) kaplama"),
@@ -127,7 +127,7 @@ export const LED_MODELS: LedModel[] = [
     specs: {
       pitch: k("1,53 mm"),
       moduleSize: k("320 × 160 mm"),
-      matrix: k("104 × 208 piksel"),
+      matrix: k("208 × 104 piksel"),
       pixels: k("21.632"),
       ledType: k("RGB; isteğe bağlı GOB (şeffaf reçine) kaplama"),
       voltage: DC5,
@@ -169,7 +169,7 @@ export const LED_MODELS: LedModel[] = [
     specs: {
       pitch: k("2,5 mm"),
       moduleSize: k("320 × 160 mm"),
-      matrix: k("64 × 128 piksel"),
+      matrix: k("128 × 64 piksel"),
       pixels: k("8.192"),
       voltage: DC5,
       control: SR,
@@ -222,7 +222,7 @@ export const LED_MODELS: LedModel[] = [
     specs: {
       pitch: k("2,5 mm"),
       moduleSize: k("320 × 160 mm"),
-      matrix: k("64 × 128 piksel"),
+      matrix: k("128 × 64 piksel"),
       pixels: k("8.192"),
       protection: k("Su ve toza karşı korumalı gövde"),
       voltage: DC5,
@@ -493,7 +493,7 @@ export const LED_MODELS: LedModel[] = [
     imageAlt: "NovaStar Taurus serisi multimedya oynatıcı ailesi",
     specs: {
       ledType: k("Taurus medya oynatıcı (oynatma + gönderim)"),
-      loadCapacity: k("≈1,3 milyon piksel sınıfı (föye göre)"),
+      loadCapacity: k("≈1,3 milyon piksel sınıfı"),
       ethernetPorts: k("Gigabit Ethernet; Wi‑Fi; opsiyonel 4G"),
       videoInputs: k("USB oynatma; HDMI loop (T50 varyantında)"),
       media: k("H.264/H.265 4K@60 decode; çoklu pencere"),
@@ -514,7 +514,7 @@ export const LED_MODELS: LedModel[] = [
     imageAlt: "NovaStar MCTRL660 PRO gönderici kart",
     specs: {
       ledType: k("Profesyonel LED gönderici kart"),
-      loadCapacity: k("Yüksek çözünürlüklü senkron gönderim (föy)"),
+      loadCapacity: k("Yüksek çözünürlüklü senkron gönderim"),
       ethernetPorts: k("Çoklu Gigabit Ethernet çıkış"),
       videoInputs: k("Harici video işlemci / bilgisayar kaynağı"),
       media: k("Senkron LED yayın; kalibrasyon uyumu"),
@@ -554,7 +554,7 @@ export const LED_MODELS: LedModel[] = [
     imageAlt: "Colorlight X40m yüksek kapasiteli LED işlemci",
     specs: {
       ledType: k("Yüksek kapasiteli multimedya işlemci"),
-      loadCapacity: k("8K×2K sınıfı / on milyonlarca piksele kadar (föy)"),
+      loadCapacity: k("8K×2K sınıfı / on milyonlarca piksele kadar"),
       ethernetPorts: k("40× Gigabit veya 4×10G fiber moda geçiş"),
       videoInputs: k("HDMI 2.0, DP 1.2, HDMI 1.4, DVI"),
       media: k("6 katman serbest splicing; USB oynatma; Hi‑Fi ses"),
@@ -594,7 +594,7 @@ export const LED_MODELS: LedModel[] = [
     imageAlt: "Colorlight S20 LED gönderici kart",
     specs: {
       ledType: k("LED gönderici kart"),
-      loadCapacity: k("Senkron gönderim (föy / alıcı kart ile)"),
+      loadCapacity: k("Senkron gönderim (alıcı kart ile)"),
       ethernetPorts: k("Gigabit Ethernet çıkışlar"),
       videoInputs: k("Üst işlemci veya bilgisayar kaynağı"),
       media: k("Senkron LED veri gönderimi"),
