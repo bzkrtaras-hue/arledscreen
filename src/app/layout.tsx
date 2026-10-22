@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Montserrat } from "next/font/google";
 import { SITE_URL } from "@/lib/site";
@@ -11,6 +11,10 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  themeColor: "#0B1B33",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -31,7 +35,6 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/site.webmanifest",
-  themeColor: "#0B1B33",
   openGraph: {
     type: "website",
     siteName: "ARLEDSCREEN",
