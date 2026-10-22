@@ -1280,7 +1280,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Stage and event LED — purchase walls or rental cabinets with install/strike support.",
     intro: [
       "Our Kadıköy Matiz Sahne project is a stage/outdoor example. Short runs often favour rental cabinets.",
-      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad.",
       NAP_EN,
     ],
     bullets: ["Rent or buy decision", "Size and days quote", "Install + strike plan"],
@@ -1289,7 +1289,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Is stage rental on the price list?",
         answer:
-          "No. Our price list covers purchase prices per panel only. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately. Compare purchase prices on our price list.",
+          "No. Our price list covers purchase prices per panel only. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad. Compare purchase prices on our price list.",
       },
     ],
   },
@@ -1368,7 +1368,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Stage-backdrop and side-wall LED for wedding halls — rental for short runs, purchase for permanent installs.",
     intro: [
       "Stage and side-wall LED is common in wedding venues. Short events may favour rental cabinets.",
-      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad.",
       NAP_EN,
     ],
     bullets: ["Rent or buy", "Stage size survey", "Install + strike plan"],
@@ -1377,7 +1377,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Is wedding-hall rental on the price list?",
         answer:
-          "Our price list covers purchase prices per panel. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+          "Our price list covers purchase prices per panel. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad.",
       },
     ],
   },
@@ -1412,7 +1412,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
     lead: "Booth and temporary LED for fairs — rental or purchase by event duration.",
     intro: [
       "The published Ünye Belediyesi Ordu Günleri stand (Atatürk Airport Millet Bahçesi) is a booth example — not a template.",
-      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately. No free shipping.",
+      "Purchase prices per panel are published on our price list. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad. No free shipping.",
       NAP_EN,
     ],
     bullets: ["Duration drives rent vs buy", "Booth size survey", "Install + strike"],
@@ -1421,7 +1421,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Rent or buy for a three-day fair?",
         answer:
-          "Short fairs usually favour rental. Compare purchase prices on our price list. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+          "Short fairs usually favour rental. Compare purchase prices on our price list. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad.",
       },
     ],
   },

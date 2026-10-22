@@ -161,7 +161,7 @@ const tr: Guides = {
       {
         h2: "Satın almak mı, kiralamak mı?",
         body:
-          "Düzenli etkinlik, fuar veya çekim yapan firmalar için satın alma, tek seferlik organizasyonlar için kiralama daha uygundur. Kiralık LED ekranda fiyat; tarih, ölçü ve konuma göre teklifle verilir; kurulum ve nakliye ayrıca tekliflendirilir.",
+          "Düzenli etkinlik, fuar veya çekim yapan firmalar için satın alma, tek seferlik organizasyonlar için kiralama daha uygundur. Kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil; kurulum ve nakliye yalnızca İstanbul içinde dahildir, İstanbul dışında nakliye ayrıca planlanır.",
       },
       {
         h2: "Teklif için ne paylaşmalısınız?",
@@ -183,7 +183,7 @@ const tr: Guides = {
       {
         question: "Taşınabilir ekran kiralanabilir mi?",
         answer:
-          "Evet. Kiralık LED ekranda fiyat teklifle verilir; tarih, ölçü ve lokasyonu paylaşmanız yeterlidir.",
+          "Evet. Kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil; tarih, ölçü ve lokasyonu paylaşmanız yeterlidir.",
       },
       {
         question: "Mobil ekranın fiyatı ne kadar?",
@@ -477,7 +477,7 @@ const en: Guides = {
       {
         h2: "Buy or rent?",
         body:
-          "Companies that run regular events, fairs or shoots usually buy; one-off events are better served by rental. Rental LED pricing depends on date, size and location and is given by quote; installation and shipping are quoted separately.",
+          "Companies that run regular events, fairs or shoots usually buy; one-off events are better served by rental. Rental LED is 50 USD/m² per day, VAT included; installation and shipping are included within Istanbul only, and outside Istanbul shipping is planned separately.",
       },
       {
         h2: "What to send for a quote",
@@ -498,7 +498,7 @@ const en: Guides = {
       },
       {
         question: "Can a portable screen be rented?",
-        answer: "Yes. Rental LED is priced by quote; just share the date, size and location.",
+        answer: "Yes. Rental LED is 50 USD/m² per day, VAT included; just share the date, size and location.",
       },
       {
         question: "How much does a mobile screen cost?",

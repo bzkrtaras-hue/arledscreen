@@ -339,8 +339,8 @@ export function CommercialLanding({
               {rentalTr
                 ? "Bu tablo satış fiyatlarıdır, kiralık fiyat değildir. Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir."
                 : tr
-                ? "Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir."
-                : "Published prices for 12 NXTIONSTAR panels (USD). Transparent, flexible, poster and control products have no fixed list price; they are priced in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately."}
+                ? "Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir. İç ve dış mekân kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil. Kurulum ve nakliye yalnızca İstanbul içinde fiyata dahildir; İstanbul dışında nakliye ayrıca planlanır. Depozito alınmaz; yurt dışına kiralama yapılmaz."
+                : "Published prices for 12 NXTIONSTAR panels (USD). Transparent, flexible, poster and control products have no fixed list price; they are priced in a written quote. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad."}
             </p>
             <PanelPriceTable
               locale={tr ? "tr" : "en"}

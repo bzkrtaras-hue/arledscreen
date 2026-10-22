@@ -6,7 +6,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Where are published panel prices listed?",
       answer:
-        "The published 12 panel USD prices are on https://arledscreen.com/en/led-ekran-fiyatlari/ (TR: /tr/led-ekran-fiyatlari/) and in the price calculator. Prices are in USD per panel; VAT and shipping are excluded; there is no free shipping. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+        "The published 12 panel USD prices are on https://arledscreen.com/en/led-ekran-fiyatlari/ (TR: /tr/led-ekran-fiyatlari/) and in the price calculator. Prices are in USD per panel; VAT and shipping are excluded; there is no free shipping. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad.",
     },
     {
       question: "Is arleds.com the same as arledscreen.com?",
@@ -76,7 +76,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Can I rent an LED screen weekly or monthly?",
       answer:
-        "Yes. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+        "Yes. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad.",
     },
   ],
   tr: [
@@ -88,7 +88,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Panel fiyatları nerede yayımlanır?",
       answer:
-        "Yayımlanmış 12 panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasında ve fiyat hesaplayıcıdadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir; ücretsiz kargo yoktur. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
+        "Yayımlanmış 12 panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasında ve fiyat hesaplayıcıdadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir; ücretsiz kargo yoktur. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil. Kurulum ve nakliye yalnızca İstanbul içinde fiyata dahildir; İstanbul dışında nakliye ayrıca planlanır. Depozito alınmaz; yurt dışına kiralama yapılmaz.",
     },
     {
       question: "arleds.com ile arledscreen.com aynı mı?",
@@ -168,7 +168,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Kiralık LED ekran haftalık ve aylık kiralanabilir mi?",
       answer:
-        "Evet. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
+        "Evet. İç ve dış mekân kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil. Kurulum ve nakliye yalnızca İstanbul içinde fiyata dahildir; İstanbul dışında nakliye ayrıca planlanır. Depozito alınmaz; yurt dışına kiralama yapılmaz.",
     },
   ],
   ar: [

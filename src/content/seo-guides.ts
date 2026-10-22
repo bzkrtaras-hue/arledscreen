@@ -1612,7 +1612,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Satın al mı, kirala mı?",
           body:
-            "Düzenli çekim yapan stüdyo ve organizasyon firmaları için satın alma, tek seferlik etkinlikler için kiralama daha uygundur. Kiralık LED ekranda fiyat, tarih ve ölçüye göre teklifle verilir.",
+            "Düzenli çekim yapan stüdyo ve organizasyon firmaları için satın alma, tek seferlik etkinlikler için kiralama daha uygundur. Kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil; İstanbul içinde kurulum ve nakliye dahildir.",
         },
       ],
       faqs: [
@@ -1629,7 +1629,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Taşınabilir ekran kiralanabilir mi?",
           answer:
-            "Evet. Kiralık LED ekranda fiyat teklifle verilir; tarih, ölçü ve lokasyonu paylaşmanız yeterlidir.",
+            "Evet. Kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil; tarih, ölçü ve lokasyonu paylaşmanız yeterlidir.",
         },
         {
           question: "Modül arızalanırsa nasıl değiştirilir?",
@@ -1746,7 +1746,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Satın alma mı, kiralama mı?",
           body:
-            "Her hafta organizasyon yapan salonlar için satın alma, tek düğün veya nişan için kiralama daha mantıklıdır. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
+            "Her hafta organizasyon yapan salonlar için satın alma, tek düğün veya nişan için kiralama daha mantıklıdır. İç ve dış mekân kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil. Kurulum ve nakliye yalnızca İstanbul içinde fiyata dahildir; İstanbul dışında nakliye ayrıca planlanır. Depozito alınmaz; yurt dışına kiralama yapılmaz.",
         },
         {
           h2: "İçerik ve kontrol",
@@ -1773,7 +1773,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Düğün için LED ekran kiralanır mı?",
           answer:
-            "Evet. Kiralık LED ekranda fiyat, tarih ve ölçüye göre teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
+            "Evet. Kiralık LED ekranda fiyat günlük 50 USD/m², KDV dahil. Kurulum ve nakliye yalnızca İstanbul içinde dahildir; İstanbul dışında nakliye ayrıca planlanır.",
         },
         {
           question: "Düğün salonu ekranında hangi piksel aralığı seçilmeli?",
@@ -3155,12 +3155,12 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         { h2: "Portable setup", body: "For portable use the modules are mounted on a light cabinet or frame and protected in a transport case. Cabinet, case and bag options and setup time are specified in the quote by screen size." },
         { h2: "Filming tips", body: "To avoid flicker and moiré you need a high-refresh control system, matching camera shutter and frame rate, and the right distance. See our camera and broadcast guide. The model's refresh rate is in the datasheet sent with the quote." },
         { h2: "Example sizes and cost", body: "A 1.92 × 0.96 m screen uses 6 × 6 = 36 modules (≈ 1.84 m², 1,032 × 516 pixels); module cost 36 × 49.08 = USD 1,766.88. A 3.20 × 1.92 m screen uses 120 modules (≈ 6.14 m², 1,720 × 1,032 pixels); module cost 120 × 49.08 = USD 5,889.60. Our calculator adds labour at USD 100/m², a USD 500 control card and USD 500 driver + software; VAT and shipping excluded. The final price is set in a written quote." },
-        { h2: "Buy or rent?", body: "Studios and event companies filming regularly are better off buying; one-off events are better rented. Rental LED is priced by written quote based on dates and size." },
+        { h2: "Buy or rent?", body: "Studios and event companies filming regularly are better off buying; one-off events are better rented. Rental LED is 50 USD/m² per day, VAT included; installation and shipping are included within Istanbul." },
       ],
       faqs: [
         { question: "Which pitch suits wedding filming?", answer: "If camera and guests are close, P1.86 GOB; for distant hall stages, indoor P2.5 or P3.07." },
         { question: "What does a P1.86 GOB module cost?", answer: "USD 49.08 per panel (≈ USD 959/m² module cost), VAT and shipping excluded. Cabinet and controller are quoted per project." },
-        { question: "Can the portable screen be rented?", answer: "Yes. Rental is priced by written quote; send the dates, size and location." },
+        { question: "Can the portable screen be rented?", answer: "Yes. Rental is 50 USD/m² per day, VAT included; send the dates, size and location." },
         { question: "How is a faulty module replaced?", answer: "P1.86 GOB modules are front-serviceable and magnetic; the faulty module is removed from the front and replaced with a spare." },
       ],
       relatedSlugs: ["kamera-yayin-icin-led-ekran", "p1-86-vs-p2-5", "dugun-salonu-led"],
@@ -3251,7 +3251,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       keywords: ["wedding hall LED screen", "wedding stage LED wall", "event hall LED screen", "wedding LED screen price", "rent LED screen wedding", "NXTIONSTAR"],
       h1: "Wedding hall LED screens: size, price and rental",
       intro:
-        "In a wedding hall the LED screen usually sits behind the stage and shows the couple's entrance, photo and video slideshows, live camera feed and the venue logo. Guests sit at tables usually 4 m or more from the screen, so indoor P3.07 or P4 modules are enough. Screen height is about one eighth of the distance to the farthest table. Venue owners usually buy; one-off events can rent (priced by quote).",
+        "In a wedding hall the LED screen usually sits behind the stage and shows the couple's entrance, photo and video slideshows, live camera feed and the venue logo. Guests sit at tables usually 4 m or more from the screen, so indoor P3.07 or P4 modules are enough. Screen height is about one eighth of the distance to the farthest table. Venue owners usually buy; one-off events can rent (50 USD/m² per day, VAT included).",
       sections: [
         {
           h2: "Pixel pitch",
@@ -3266,7 +3266,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Buy or rent?",
           body:
-            "Halls that host events every week are better off buying; a single wedding or engagement is better rented. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+            "Halls that host events every week are better off buying; a single wedding or engagement is better rented. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad.",
         },
         {
           h2: "Content and control",
@@ -3293,7 +3293,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Can I rent an LED screen for a wedding?",
           answer:
-            "Yes. Rental LED is priced by written quote based on dates and size. Installation and shipping are quoted separately.",
+            "Yes. Rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately.",
         },
         {
           question: "Which pixel pitch suits a wedding hall?",

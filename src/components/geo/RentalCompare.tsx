@@ -1,5 +1,5 @@
 /** Rental vs purchase comparison (GEO paket 2). Rows mirror the published guide
- * /rehber/kiralik-mi-satin-alma/; no prices (rental is quote-only). */
+ * /rehber/kiralik-mi-satin-alma/; no prices in this component. */
 const ROWS = {
   tr: [
     ["Tipik kullanım", "Sahne, fuar, lansman", "Mağaza, cephe, salon, totem"],

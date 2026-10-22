@@ -101,13 +101,13 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     lead: "Stage, fair and event cabinets — priced by written quote",
     title: "Rental LED Display | Stage & Events | ARLEDSCREEN",
     description:
-      "Rental LED for stage, fair and events, priced by written quote. ARLEDSCREEN install and strike support — Istanbul.",
+      "Rental LED for stage, fair and events, 50 USD/m² per day, VAT included. ARLEDSCREEN install and strike support — Istanbul.",
     short: "Rental LED for events",
     tag: "Rental",
     imageAlt: "LED screen on a concert stage with the audience",
     quoteOnly: true,
     intro: [
-      "Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+      "Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad.",
       "For ownership planning, use the published purchase prices on our price list.",
     ],
     highlights: ["Quote by days and m²", "Install + strike plan", "Purchase option on our price list"],
@@ -115,7 +115,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       {
         question: "Is rental on the price list?",
         answer:
-          "Our price list covers purchase panels. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+          "Our price list covers purchase panels. Indoor and outdoor rental LED is 50 USD/m² per day, VAT included. Installation and shipping are included within Istanbul only; outside Istanbul, shipping is planned separately. No deposit; no rentals abroad.",
       },
     ],
   },
