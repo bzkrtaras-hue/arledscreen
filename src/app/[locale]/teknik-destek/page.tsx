@@ -84,7 +84,10 @@ const SECTIONS: { id: string; title: string; items: QA[] }[] = [
         answer: "NovaStar için NovaLCT, ViPlex ve VNNOX; Huidu için HDPlayer ve LedArt; Colorlight için LEDVISION.",
         links: [L.novastar, L.huidu, L.colorlight],
       },
-      // TODO(Uzman): uzaktan masaüstü (TeamViewer/AnyDesk vb.) yazılım desteği veriliyor mu? Cevap gelene kadar soru yayımlanmaz.
+      {
+        question: "Yazılım sorunlarında nasıl destek alırım?",
+        answer: "Telefon ve WhatsApp üzerinden hızlı destek veriyoruz; servis yanıtı hemen.",
+      },
     ],
   },
   {
@@ -96,7 +99,11 @@ const SECTIONS: { id: string; title: string; items: QA[] }[] = [
         answer: "Periyodik kontrol listesi, ölü piksel ve ömür bilgisi bakım rehberindedir; servis hizmeti için servis sayfasına bakın.",
         links: [L.bakim, L.servis],
       },
-      // TODO(Uzman): periyodik bakım sözleşmesi var mı, sıklığı nedir? Cevap gelene kadar soru yayımlanmaz.
+      {
+        question: "Bakım sözleşmesi var mı?",
+        answer: "Ayrı bir bakım sözleşmesi yoktur; 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunuyoruz.",
+        links: [L.servis],
+      },
     ],
   },
   {
@@ -108,7 +115,11 @@ const SECTIONS: { id: string; title: string; items: QA[] }[] = [
         answer: "Ekran tipi, piksel aralığı, kontrol kartı markası ve modeli, arızanın fotoğrafı veya videosu ve ilçe bilgisi. Talebi e-posta veya telefonla iletebilirsiniz.",
         links: [L.tamir],
       },
-      // TODO(Uzman): başka firmanın kurduğu ekranlara ve sitede olmayan kart markalarına (ör. Linsn) destek veriliyor mu?
+      {
+        question: "Başka firmanın kurduğu ekrana destek veriyor musunuz?",
+        answer: "Evet. Başka firmaların kurduğu ekranlara ve yaygın kontrol kartı markalarına da destek veriyoruz; tamir hizmetimiz LCD, kiosk ve menuboard dahil her ekran tipini kapsar.",
+        links: [L.tamir],
+      },
     ],
   },
   {

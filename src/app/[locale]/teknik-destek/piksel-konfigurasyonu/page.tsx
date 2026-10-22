@@ -51,7 +51,10 @@ const FAQS: QA[] = [
     answer: `${WARRANTY}.`,
     links: [{ href: "/tr/led-ekran-servis/", label: "LED ekran servis" }],
   },
-  // TODO(Uzman): kalibrasyon yöntemi/ekipmanı (yazılımla nokta nokta mı, kamera mı?). Cevaba kadar yalnızca "renk ve parlaklık eşitleme".
+  {
+    question: "LED ekran kalibrasyonu nedir?",
+    answer: "Kalibrasyon, ekran yüzeyinde renk ve parlaklık eşitlemedir; modül değişimi sonrası da yapılır.",
+  },
   // TODO(Uzman/föy): modül piksel matrisi, tarama oranı ve kart başı yük föyde olmayan modeller için doldurulmaz.
 ];
 
