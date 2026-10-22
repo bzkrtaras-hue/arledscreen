@@ -97,7 +97,7 @@ export function exportFacts(l: L): { k: string; v: string }[] {
   const t = (tr: string, en: string) => (l === "tr" ? tr : en);
   return [
     { k: t("Gönderim bölgeleri", "Ships to"), v: t("Avrupa, Orta Doğu, Balkanlar", "Europe, Middle East, Balkans") },
-    { k: t("Satıcı", "Seller"), v: t("ARLEDSCREEN, İstanbul (NXTIONSTAR markası)", "ARLEDSCREEN, Istanbul (NXTIONSTAR brand)") },
+    { k: t("Üretici ve satıcı", "Manufacturer and seller"), v: t("ARLEDSCREEN, İstanbul (NXTIONSTAR markası)", "ARLEDSCREEN, Istanbul (NXTIONSTAR brand)") },
     { k: t("Sertifika", "Certification"), v: t("CE sertifikalı", "CE certified") },
     { k: t("Fiyat", "Prices"), v: t("USD, panel başına, KDV ve nakliye hariç; tüm dillerde aynı", "USD per panel, excl. VAT and shipping; same in every language") },
     { k: t("Ödeme", "Payment"), v: t("Tüm para birimleri; taksit seçeneği", "All currencies; installments available") },

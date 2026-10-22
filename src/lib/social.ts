@@ -94,8 +94,8 @@ export const WHATSAPP_NUMBER = "905305078834";
 
 /** Owner-confirmed (1 Oct 2026): full address, coordinates and opening hours. */
 export const BUSINESS_NAP_LINE =
-  "ARLEDSCREEN · Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul";
-export const BUSINESS_ADDRESS_LINES = ["Merkez Mah. Tuna Sok. No:15-17 Kat 1", "34245 Gaziosmanpaşa / İstanbul"] as const;
+  "ARLEDSCREEN · Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul";
+export const BUSINESS_ADDRESS_LINES = ["Merkez Mah. Tuna Sok. No:15-17 Kat 1", "34245 Gaziosmanpaşa/İstanbul"] as const;
 export const BUSINESS_GEO = { latitude: 41.0538876, longitude: 28.9121358 } as const;
 export const BUSINESS_MAP_URL = "https://www.google.com/maps/search/?api=1&query=41.0538876%2C28.9121358";
 export const BUSINESS_HOURS_TEXT = ["Pazartesi – Cuma: 09:00 – 18:00", "Cumartesi: 10:00 – 15:00"] as const;

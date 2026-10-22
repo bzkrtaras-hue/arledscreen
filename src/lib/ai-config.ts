@@ -37,7 +37,7 @@ export const AI_DISCOVERY_CONFIG = {
   contact: {
     email: "arled@arledscreen.com",
     phone: "+905305078834",
-    address: "Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye",
+    address: "Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul, Türkiye",
   },
 };
 

@@ -91,7 +91,7 @@ function buildIntro(province: string, meta: { locative: string; isHq?: boolean }
     .join("; ");
 
   if (meta.isHq) {
-    return `${meta.locative} LED ekran satışı, keşif, montaj ve teknik servis Gaziosmanpaşa merkez ofisten yürütülür (Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245). Tem 2025 – Tem 2026 döneminde bu ilde ${count} LED ekran uygulaması tamamladık${sample ? `: ${sample}` : ""}. Nihai fiyat keşif ve yazılı teklifle kesinleşir.`;
+    return `${meta.locative} LED ekran satışı, keşif, montaj ve teknik servis Gaziosmanpaşa merkez ofisten yürütülür (Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul). Tem 2025 – Tem 2026 döneminde bu ilde ${count} LED ekran uygulaması tamamladık${sample ? `: ${sample}` : ""}. Nihai fiyat keşif ve yazılı teklifle kesinleşir.`;
   }
 
   return `${meta.locative} tamamladığımız ${count} LED ekran projesi bulunur${sample ? ` (${sample})` : ""}. Keşif ve montaj İstanbul Gaziosmanpaşa merkezimizden planlanır. Nihai fiyat keşif ve yazılı teklifle kesinleşir.`;
