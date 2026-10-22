@@ -342,14 +342,25 @@ export default async function ModelPage({ params }: PageProps) {
               </div>
 
               <h2 id="teknik" className="mt-10 scroll-mt-28 font-display text-xl font-bold text-ink sm:text-2xl">Teknik özellikler</h2>
-              <dl className="mt-4 overflow-hidden rounded-2xl border border-border bg-white">
-                {specRows.map((r, i) => (
-                  <div key={r.key} className={`grid gap-1 px-4 py-3 text-sm sm:grid-cols-[230px_1fr] sm:gap-4 sm:px-5 ${i % 2 ? "bg-band/60" : ""}`}>
-                    <dt className="font-semibold text-ink">{r.label}</dt>
-                    <dd className={r.spec ? "font-medium text-ink-soft" : "text-ink-muted"}>{r.spec?.value}</dd>
-                  </div>
-                ))}
-              </dl>
+              <div className="mt-4 overflow-hidden rounded-2xl border border-border bg-white">
+                <table className="w-full border-collapse text-left text-sm" aria-labelledby="teknik">
+                  <caption className="sr-only">{m.name} teknik özellikler tablosu</caption>
+                  <thead className="sr-only">
+                    <tr>
+                      <th scope="col">Özellik</th>
+                      <th scope="col">Değer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {specRows.map((r, i) => (
+                      <tr key={r.key} className={`grid gap-1 px-4 py-3 sm:grid-cols-[230px_1fr] sm:gap-4 sm:px-5 ${i % 2 ? "bg-band/60" : ""}`}>
+                        <th scope="row" className="font-semibold text-ink">{r.label}</th>
+                        <td className={r.spec ? "font-medium text-ink-soft" : "text-ink-muted"}>{r.spec?.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
               <p className="mt-3 text-[12.5px] leading-relaxed text-ink-muted">
                 {m.kind === "kontrol"
                   ? "Değerler ilgili üreticinin (Huidu / NovaStar / Colorlight) yayımlanmış teknik föylerinden alınmıştır. Proje koşullarına bağlı ayrıntılar yazılı teklifte netleşir."
