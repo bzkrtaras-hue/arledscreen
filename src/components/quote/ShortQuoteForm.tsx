@@ -494,11 +494,11 @@ export function ShortQuoteForm({
           <p className="text-sm text-ink-soft">
             {locale === "tr" ? (
               <>
-                Kişisel verilerinizin nasıl işlendiğini{" "}
+                Bilgileriniz{" "}
                 <Link href="/tr/kvkk/" className="font-semibold text-cyan underline underline-offset-2">
                   KVKK Aydınlatma Metni
-                </Link>
-                'nde okuyabilirsiniz.
+                </Link>{" "}
+                kapsamında işlenir.
               </>
             ) : (
               <>

@@ -102,7 +102,7 @@ export default async function KvkkPage({ params }: { params: Promise<{ locale: s
                 <li><strong className="text-ink">İletişim:</strong> iş e-posta adresi, telefon numarası</li>
                 <li><strong className="text-ink">Mesleki bilgi:</strong> otel adı, görev/unvan</li>
                 <li>
-                  <strong className="text-ink">İşlem güvenliği:</strong> form gönderim tarihi ve saati (IP adresiniz kaydedilmez)
+                  <strong className="text-ink">İşlem güvenliği:</strong> form gönderim tarihi ve saati. Form aracılığıyla IP adresiniz kaydedilmez.
                   {/* IP: form (ShortQuoteForm) talebi WhatsApp/e-posta taslağı olarak açar, sitede saklamaz; IP kaydı yok. */}
                 </li>
               </ul>
@@ -146,7 +146,7 @@ export default async function KvkkPage({ params }: { params: Promise<{ locale: s
               </p>
               <p className="mt-2">
                 E-posta ve form altyapısı için yurt dışında sunucu bulunduran hizmet sağlayıcılar
-                kullanılmaktadır (barındırma: Cloudflare; bildirim e-postaları: Cloudflare Email Service). Bu
+                kullanılmaktadır (barındırma: Cloudflare; bildirim e-postaları: Cloudflare Email Service; bildirimlerin ulaştığı arled@arledscreen.com e-posta kutusu: Google Workspace). Bu
                 aktarım, KVKK m. 9&apos;a uygun olarak gerçekleştirilir.
                 <Dogrula note="DOĞRULA-4: dayanak — açık rıza mı, standart sözleşme mi? Açık rıza ise formda ayrı ve zorunlu olmayan bir onay kutusu gerekir" />
               </p>
