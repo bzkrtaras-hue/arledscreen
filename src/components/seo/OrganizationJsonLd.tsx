@@ -166,7 +166,7 @@ export function OrganizationJsonLd() {
         "@id": `${SITE_URL}/#localbusiness`,
         name: "ARLEDSCREEN",
         description:
-          "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir. Satış, montaj ve teknik servis de yapar. NXTIONSTAR markasının Türkiye'deki tek satış noktası. İstanbul / Gaziosmanpaşa.",
+          "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir; satış, montaj ve teknik servisi de kendisi yapar. NXTIONSTAR markasının Türkiye'deki tek satış noktası. İstanbul / Gaziosmanpaşa.",
         url: absoluteUrl("/tr/"),
         image: logo,
         logo,
