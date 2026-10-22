@@ -29,10 +29,13 @@ import {
 const RETURN_WINDOW_DAYS = 14;
 const POLICY_UPDATED = { tr: "15 Ekim 2026", en: "15 October 2026" };
 
+/** TR lives at /tr/iade-politikasi/, EN at /en/return-policy/ (old EN URL 301s, see public/_redirects). */
+export const RETURN_POLICY_PATH = { tr: "/iade-politikasi/", en: "/return-policy/" } as const;
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [{ locale: "tr" }, { locale: "en" }];
+  return [{ locale: "tr" }];
 }
 
 export async function generateMetadata({
@@ -45,7 +48,7 @@ export async function generateMetadata({
   const en = raw === "en";
   const meta = buildPageMetadata({
     locale: raw as Locale,
-    path: "/iade-politikasi/",
+    path: RETURN_POLICY_PATH[raw],
     title: en
       ? "Returns, Cancellation & Delivery | ARLEDSCREEN"
       : "İade, İptal ve Teslimat Koşulları | ARLEDSCREEN",
@@ -54,7 +57,18 @@ export async function generateMetadata({
       : "Stoktan standart ürünlerde 14 gün iade ve değişim, özel üretim LED ekranlarda yazılı iptal, teslimat ve garanti koşulları.",
     hreflangLocales: ["tr", "en"],
   });
-  return meta;
+  // Locale-specific slugs: point hreflang alternates at each locale's own URL.
+  return {
+    ...meta,
+    alternates: {
+      ...meta.alternates,
+      languages: {
+        tr: absoluteUrl(`/tr${RETURN_POLICY_PATH.tr}`),
+        en: absoluteUrl(`/en${RETURN_POLICY_PATH.en}`),
+        "x-default": absoluteUrl(`/tr${RETURN_POLICY_PATH.tr}`),
+      },
+    },
+  };
 }
 
 export default async function IadePolitikasiPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -63,7 +77,7 @@ export default async function IadePolitikasiPage({ params }: { params: Promise<{
   const locale = raw as "tr" | "en";
   const en = locale === "en";
   const base = `/${locale}`;
-  const pageUrl = absoluteUrl(`${base}/iade-politikasi/`);
+  const pageUrl = absoluteUrl(`${base}${RETURN_POLICY_PATH[locale]}`);
   const mail = (
     <a href={CONTACT_EMAIL_HREF} className="font-semibold text-cyan hover:underline">
       {CONTACT_EMAIL}

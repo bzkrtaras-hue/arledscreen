@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Validates the public return/cancellation page against the machine-readable policy.
- * - /tr/ and /en/iade-politikasi/ exist, no [ONAY BEKLİYOR]/[AWAITING APPROVAL] marker, no noindex
+ * - /tr/iade-politikasi/ and /en/return-policy/ exist, no [ONAY BEKLİYOR]/[AWAITING APPROVAL] marker, no noindex
  * - both URLs are in sitemap.xml
  * - ai-shopping.json / catalog.json: every panel offer = FiniteReturnWindow, 14 days, link to the page
  * - llms.txt / llms-full.txt no longer say the return policy is not published
@@ -21,9 +21,10 @@ const fail = (m) => {
   console.error(`❌ validate-iade-policy: ${m}`);
   process.exit(1);
 };
+const SLUG = { tr: "iade-politikasi", en: "return-policy" };
 for (const loc of ["tr", "en"]) {
-  const f = path.join(out, loc, "iade-politikasi", "index.html");
-  if (!fs.existsSync(f)) fail(`${loc}/iade-politikasi/index.html missing`);
+  const f = path.join(out, loc, SLUG[loc], "index.html");
+  if (!fs.existsSync(f)) fail(`${loc}/${SLUG[loc]}/index.html missing`);
   const html = fs.readFileSync(f, "utf8");
   if (/ONAY BEKLİYOR|AWAITING APPROVAL/i.test(html)) fail(`${loc} page still has a placeholder marker`);
   if (/<meta[^>]+name="robots"[^>]+noindex/i.test(html)) fail(`${loc} page is noindex`);
@@ -32,7 +33,7 @@ for (const loc of ["tr", "en"]) {
 }
 const sm = fs.readFileSync(path.join(out, "sitemap.xml"), "utf8");
 for (const loc of ["tr", "en"]) {
-  if (!sm.includes(`<loc>https://arledscreen.com/${loc}/iade-politikasi/</loc>`)) fail(`sitemap.xml lacks /${loc}/iade-politikasi/`);
+  if (!sm.includes(`<loc>https://arledscreen.com/${loc}/${SLUG[loc]}/</loc>`)) fail(`sitemap.xml lacks /${loc}/${SLUG[loc]}/`);
 }
 const walk = (n, acc = []) => {
   if (Array.isArray(n)) n.forEach((x) => walk(x, acc));

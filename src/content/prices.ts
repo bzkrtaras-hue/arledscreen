@@ -430,7 +430,7 @@ export function panelOffer(
     itemCondition: "https://schema.org/NewCondition",
     description:
       opts?.locale === "en"
-        ? "Price per panel (module) in USD; excl. VAT and shipping. No free shipping. Standard stock products can be returned or exchanged within 14 days of delivery; made-to-order terms are in writing (arledscreen.com/en/iade-politikasi/)."
+        ? "Price per panel (module) in USD; excl. VAT and shipping. No free shipping. Standard stock products can be returned or exchanged within 14 days of delivery; made-to-order terms are in writing (arledscreen.com/en/return-policy/)."
         : "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. Stoktan standart ürünlerde teslimattan itibaren 14 gün iade ve değişim; özel üretimde iptal koşulları yazılı (arledscreen.com/tr/iade-politikasi/).",
     priceSpecification: {
       "@type": "UnitPriceSpecification",

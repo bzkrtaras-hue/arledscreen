@@ -235,7 +235,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Returns, cancellation and delivery policy (indexable: no placeholders; see page.tsx).
   for (const locale of ["tr", "en"] as const) {
     entries.push({
-      url: absoluteUrl(`/${locale}/iade-politikasi/`),
+      url: absoluteUrl(locale === "en" ? "/en/return-policy/" : "/tr/iade-politikasi/"),
       changeFrequency: "yearly",
       priority: 0.5,
     });

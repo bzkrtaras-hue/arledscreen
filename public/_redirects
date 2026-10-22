@@ -17,6 +17,10 @@
 /en/fiyat-hesap /en/hesaplayici/ 301
 /en/fiyat-hesap/ /en/hesaplayici/ 301
 
+# EN return policy moved to an English slug (2026-10-22)
+/en/iade-politikasi /en/return-policy/ 301
+/en/iade-politikasi/ /en/return-policy/ 301
+
 # Locale-less section roots -> Turkish section (were 404)
 /products /tr/products/ 301
 /products/ /tr/products/ 301
