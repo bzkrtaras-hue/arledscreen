@@ -10,7 +10,7 @@ last_reviewed: 2026-10-04
 
 # Kiralık LED ekran mı, satın alma mı?
 
-**Kısa cevap:** Tek seferlik etkinlik (konser, fuar, lansman, miting) için **kiralık LED ekran** çoğu zaman daha ekonomiktir. Mağaza, cephe, showroom veya sürekli yayın için **satın alma** uzun vadede daha mantıklıdır. ARLEDSCREEN her iki seçeneği de değerlendirir; net karar etkinlik süresi, konum ve ölçüye göre yazılı teklifle netleşir.
+**Kısa cevap:** Tek seferlik etkinlik (konser, fuar, lansman, miting) için **kiralık LED ekran** çoğu zaman daha mantıklıdır. Mağaza, cephe, showroom veya sürekli yayın için **satın alma** uzun vadede daha mantıklıdır. ARLEDSCREEN her iki seçeneği de değerlendirir; net karar etkinlik süresi, konum ve ölçüye göre yazılı teklifle netleşir.
 
 ## 1. Ne zaman kiralama?
 
