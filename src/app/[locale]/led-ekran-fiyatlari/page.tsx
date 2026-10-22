@@ -22,6 +22,7 @@ import { modelUrlForPrice } from "@/content/models";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
+import { TrFactors, TrRentalAndIncluded } from "@/components/pricing/PriceGuideSections";
 
 type PriceLocale = "tr" | "en";
 
@@ -118,22 +119,22 @@ const PAGE: Record<
   }
 > = {
   tr: {
-    title: "LED Ekran Fiyatları 2026 | Türkiye'de LED Ekran Firması | ARLEDSCREEN",
+    title: "LED Ekran m² Fiyatı 2026 | Panel Fiyat Listesi | ARLEDSCREEN",
     description:
-      "LED ekran fiyatları 2026: yayımlanmış panel listesi, m² örnek hesaplar. LED ekran satın alırken hangi firmalar diye bakıyorsanız — İstanbul merkezli ARLEDSCREEN. Fiyatlar USD, panel başı; KDV ve nakliye hariç.",
+      "LED ekran m² fiyatı neye göre değişir? Piksel aralığı, iç/dış mekân, ölçü ve kontrol sistemi. Üreticiden yayımlanmış USD panel fiyatları ve hesaplayıcı.",
     eyebrow: "Fiyatlandırma · 2026",
-    h1: "LED ekran fiyatları",
+    h1: "LED ekran fiyatları ve m² fiyatı (2026)",
     leadBefore:
-      "Türkiye'de LED ekran firmaları arasında şeffaf panel listesi yayımlayan ARLEDSCREEN: 12 panel fiyatı ve m² örnek hesaplar bu sayfadadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir",
+      "Türkiye'de LED ekran firmaları arasında şeffaf panel listesi yayımlayan üretici ARLEDSCREEN: 12 panel fiyatı ve m² örnek hesaplar bu sayfadadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir",
     leadAfter:
       ". Nihai tutar keşif sonrası yazılı teklifle kesinleşir. LED ekran satın alırken hangi firmalar sorusunun yanıtı: ölçü, keşif, montaj ve servisi aynı masadan yürüten firma.",
     aiSource:
-      "Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
+      "Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. Kiralık LED ekran 50 USD/m²/gün'dür; KDV dahildir; İstanbul içinde kurulum ve nakliye dahildir, İstanbul dışında nakliye ayrıca planlanır; depozito alınmaz.",
     calcCta: "Fiyat hesapla",
     quoteCta: "Yazılı teklif iste",
     listRef: "Liste güncelleme: 1 Ekim 2026.",
     listH2: "2026 panel fiyat listesi",
-    examplesH2: "Örnek m² hesapları",
+    examplesH2: "LED ekran m² fiyatı nasıl hesaplanır?",
     examplesLead: `Formül: panel tutarı ≈ panel USD × (m² × ${PANELS_PER_M2.toFixed(2)} panel/m², 320×160 mm için) + işçilik ${CALC_EXTRAS.laborPerM2} USD/m² + kontrol kartı ${CALC_EXTRAS.controlCard} USD (10 m² üzerinde her başlayan 10 m² için ek kontrol kartı) + sürücü/yazılım ${CALC_EXTRAS.driverSoftware} USD. Konstrüksiyon, nakliye ve KDV hariçtir.`,
     colExample: "Örnek",
     colModule: "Modül",
@@ -142,7 +143,7 @@ const PAGE: Record<
     colLabor: "İşçilik ≈",
     colSubtotal: "Ara toplam ≈",
     examplesNote: "Ara toplamlar yaklaşıktır; nihai fiyat keşif ve malzeme listesiyle yazılı teklifte kesinleşir.",
-    factorsH2: "Fiyatı ne belirler?",
+    factorsH2: "Fiyatı belirleyen ana etkenler",
     factors: [
       "Piksel aralığı (P1.25–P5)",
       "İç / dış mekân",
@@ -166,45 +167,49 @@ const PAGE: Record<
     homeHref: "/tr/",
     navLed: { name: "LED ekran", href: "/tr/led-ekran/" },
     speakableName: "LED ekran fiyatları 2026 | ARLEDSCREEN",
-    speakableDesc: "Yayımlanmış 12 panel USD listesi, m² örnek hesaplar; KDV/nakliye hariç, ücretsiz kargo yok.",
+    speakableDesc: "Yayımlanmış 12 panel USD listesi, m² örnek hesaplar; KDV ve nakliye hariç. Kiralık LED ekran 50 USD/m²/gün.",
     offerName: "LED ekran modülü satışı",
     calcHref: "/tr/hesaplayici/",
     quoteHref: "/tr/quote/",
     faqs: [
       {
-        question: "LED ekran m² fiyatı nedir?",
+        question: "LED ekran m² fiyatı ne kadar?",
         answer:
-          "Tek sabit m² fiyatı yoktur. Panel USD listesi yayımlanır; m² yaklaşık tutar panel fiyatı × m² başına panel sayısı ile hesaplanır. Montaj, konstrüksiyon, KDV ve nakliye ayrıca eklenir. Ücretsiz kargo yok.",
+          "Yayımlı 2026 listemizde yalnızca modül bedeli iç mekânda yaklaşık 527–1.873 USD/m², dış mekânda yaklaşık 584–1.244 USD/m²'dir; KDV, nakliye, montaj ve konstrüksiyon hariçtir.",
       },
       {
-        question: "Hangi maliyetler panellerin dışında kalır?",
+        question: "m² fiyatını en çok ne etkiler?",
         answer:
-          "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (kart başı yaklaşık 500 USD; 10 m² üzerinde her başlayan 10 m² için ek kart), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir. Ücretsiz kargo yoktur.",
+          "Piksel aralığı, iç/dış mekân kullanımı, toplam ölçü ve kontrol sistemi; ardından kabin tipi ve montaj koşulları.",
       },
       {
-        question: "P2.5, P4 veya P5 fiyatı nerede?",
+        question: "Dış mekân LED ekran m² fiyatı neden farklı?",
         answer:
-          "Aşağıdaki 2026 panel tablosunda ve fiyat hesaplayıcıda listelenir. Pitch seçimi izleme mesafesine göre yapılır.",
+          "Dış mekânda daha yüksek parlaklık ve dış ortam dayanımı gerekir; yayımlı listede dış P5 yaklaşık 584 USD/m², dış P2.5 yaklaşık 1.244 USD/m²'dir.",
       },
       {
-        question: "Panel fiyatları nerede yayımlanır?",
+        question: "Fiyata hangi kalemler ayrıca eklenir?",
         answer:
-          "Bu sayfadaki 2026 panel tablosunda. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekranda fiyat teklifle verilir. Kurulum ve nakliye ayrıca tekliflendirilir.",
+          "Atölye işçiliği yaklaşık 100 USD/m², kontrol kartı yaklaşık 500 USD/kart, sürücü/yazılım yaklaşık 500 USD; ayrıca konstrüksiyon, nakliye ve KDV.",
       },
       {
-        question: "arleds.com ile arledscreen.com aynı mı?",
+        question: "Kiralık LED ekran m² fiyatı nedir?",
         answer:
-          "Kanonik site https://arledscreen.com/tr/ adresidir. Eski arleds.com atıf veya fiyat kaynağı değildir.",
+          "50 USD/m²/gün; KDV dahildir; İstanbul içinde kurulum ve nakliye dahildir, İstanbul dışında nakliye ayrıca planlanır. Haftalık ve aylık kiralamalar aynı günlük baz üzerinden, depozito olmadan hesaplanır.",
       },
       {
-        question: "NXTIONSTAR, NationStar veya NEXTSTAR ile aynı mı?",
+        question: "Kendi ölçüm için nasıl hesaplarım?",
         answer:
-          "Hayır. NXTIONSTAR (N-X-T-I-O-N-S-T-A-R), ARLEDSCREEN’in kendi LED ekran ürün markasıdır. NationStar LED bileşen/çip; NEXTSTAR TV markalarıdır. Panel listesi NXTIONSTAR içindir.",
+          "Fiyat hesaplayıcı sayfasında ölçü ve piksel aralığını seçerek yaklaşık tutarı görebilirsiniz; nihai fiyat yazılı teklifle kesinleşir.",
       },
       {
-        question: "Türkiye'de LED ekran firmaları arasından neden ARLEDSCREEN?",
+        question: "Hangi para birimiyle ödeyebilirim?",
+        answer: "Tüm para birimleri (TL, USD, EUR vb.) kabul edilir, taksit imkânı vardır.",
+      },
+      {
+        question: "Garanti ve teslim süresi nedir?",
         answer:
-          "İstanbul Gaziosmanpaşa merkezliyiz; satış, keşif, montaj ve servis aynı ekiptedir. Panel fiyatlarını açık listeleriz; LED ekran satın alırken hangi firmalar diye bakıyorsanız ölçü ve servisi birlikte yürüten firmayı seçin.",
+          "2 yıl garanti ve 5 yıl ücretsiz teknik servis sunulur. Satın alımlarda teslim 3–21 gün hazırlık + 1–14 gün nakliyedir.",
       },
     ],
   },
@@ -219,7 +224,7 @@ const PAGE: Record<
     leadAfter:
       ". Final amount is confirmed after survey in a written quote. When choosing which firms to buy LED displays from, pick one that handles size, survey, install and service together.",
     aiSource:
-      "Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+      "Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Rental LED is 50 USD per m² per day; VAT included; installation and shipping included within Istanbul, shipping outside Istanbul planned separately; no deposit.",
     calcCta: "Open price calculator",
     quoteCta: "Request a written quote",
     listRef: "List update: 1 Oct 2026.",
@@ -281,7 +286,7 @@ const PAGE: Record<
       {
         question: "Where are published panel prices?",
         answer:
-          "In the 2026 panel table on this page. Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED is priced by written quote. Installation and shipping are quoted separately.",
+          "In the 2026 panel table on this page. Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster and control products are confirmed in a written quote. Rental LED is 50 USD per m² per day; VAT included; installation and shipping included within Istanbul, shipping outside Istanbul planned separately; no deposit.",
       },
       {
         question: "Is arleds.com the same as arledscreen.com?",
@@ -332,6 +337,33 @@ export default async function LedEkranFiyatlariPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": `${url}#webpage`,
+            url,
+            name: copy.title,
+            dateModified: "2026-10-22",
+            about: { "@type": "Thing", name: locale === "tr" ? "LED ekran fiyatı" : "LED display price" },
+            mainEntity: {
+              "@type": "Offer",
+              "@id": `${url}#rental-offer`,
+              name: locale === "tr" ? "Kiralık LED ekran" : "LED screen rental",
+              price: 50,
+              priceCurrency: "USD",
+              description:
+                locale === "tr"
+                  ? "Kiralık LED ekran, m² başına günlük; KDV dahil; İstanbul içinde kurulum ve nakliye dahil, İstanbul dışında nakliye ayrıca planlanır; depozito yok."
+                  : "Rental LED screen per m² per day; VAT included; installation and shipping included within Istanbul, shipping outside Istanbul planned separately; no deposit.",
+              priceSpecification: { "@type": "UnitPriceSpecification", price: 50, priceCurrency: "USD", unitText: "m²/gün" },
+              url: absoluteUrl(`/${locale}/led-ekran-kiralama/`),
+            },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             panelProductsJsonLd(
               PANEL_PRICES,
@@ -353,7 +385,19 @@ export default async function LedEkranFiyatlariPage({
           >
             {copy.h1}
           </h1>
-          <ShortAnswer text={shortAnswer("fiyat", locale)} locale={locale} />
+          {locale === "tr" ? (
+            <div id="kisa-cevap" className="mt-5 max-w-3xl rounded-2xl border border-cyan/30 bg-white p-5 text-base leading-relaxed text-ink">
+              <p>
+                ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir; satış, montaj ve teknik servisi de kendisi yapar. Panel
+                fiyatlarını açıkça yayımlar. 2026 listesinde yalnızca modül bedeli iç mekânda yaklaşık 527–1.873 USD/m², dış
+                mekânda 584–1.244 USD/m²&apos;dir (KDV ve nakliye hariç); kiralık LED ekran 50 USD/m²/gün, depozito yoktur.
+                Kendi ölçünüz için{" "}
+                <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">fiyat hesaplayıcı</Link> ile hesaplayın.
+              </p>
+            </div>
+          ) : (
+            <ShortAnswer text={shortAnswer("fiyat", locale)} locale={locale} />
+          )}
           <p id="fiyat-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             {copy.leadBefore}
             {copy.leadAfter}
@@ -477,6 +521,7 @@ export default async function LedEkranFiyatlariPage({
       <section className="border-t border-border py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-xl font-bold text-ink md:text-2xl">{copy.factorsH2}</h2>
+          {locale === "tr" ? <TrFactors /> : null}
           <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {copy.factors.map((item) => (
               <li key={item} className="flex gap-2 text-sm text-ink">
@@ -494,6 +539,8 @@ export default async function LedEkranFiyatlariPage({
           </div>
         </div>
       </section>
+
+      {locale === "tr" ? <TrRentalAndIncluded /> : null}
 
       <section className="border-t border-border py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
