@@ -12,10 +12,12 @@ export const PRODUCT_SECTIONS = [
     en: "Indoor",
     slugs: [
       "ic-mekan-led-ekran",
-      "gob-led-ekran", "esnek-led-ekran",
+      "gob-led-ekran",
+      "esnek-led-ekran",
       "seffaf-led-ekran",
       "transparan-led-ekran",
       "ince-pitch-led-ekran",
+      "poster-led-ekran",
       "kiralik-led-ekran",
     ],
   },
@@ -29,11 +31,22 @@ export const PRODUCT_SECTIONS = [
     id: "kontrol",
     tr: "Kontrol Kartları",
     en: "Control cards",
-    slugs: ["colorlight-kontrolculer", "huidu-kontrol-kartlari", "novastar-kontrolculer"],
+    slugs: [
+      "colorlight-kontrolculer",
+      "huidu-kontrol-kartlari",
+      "novastar-kontrolculer",
+      "led-modul-ve-kontrol-sistemleri",
+    ],
+  },
+  {
+    id: "dijital",
+    tr: "Dijital Ekran ve Kiosk",
+    en: "Digital Displays & Kiosks",
+    slugs: ["dijital-ekran", "menuboard", "kiosk", "lcd-ekran"],
   },
 ] as const;
 
-/** Üç başlığa atanmamış gruplar bu başlık altında, sayfanın sonunda listelenir. */
+/** Yukarıdaki başlıklara atanmamış yeni bir grup eklenirse güvenlik için bu başlıkta listelenir. */
 export const OTHER_SECTION_LABEL = { tr: "Diğer ürünler", en: "More products" } as const;
 
 export interface ProductSection {
