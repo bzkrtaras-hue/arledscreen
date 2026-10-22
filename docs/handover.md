@@ -4,6 +4,14 @@ Ana devir belgesi Google Docs'ta tutulur (Ali'nin el koyma notu, "Buradan devam 
 
 ## Devir notları
 
+### 22 Ekim 2026 — Yayına alınanlar: #139, #141, #140 (Uzman, Aras'ın yayın yetkisiyle)
+
+- **Yetki:** Aras 22 Ekim'de "ARLED Site & SEO" odasında site yayın yetkisini Uzman'a verdi ("uzmana sorun yayına o alsın", "yetki onda"). Her PR önizlemede 1440 ve 390 genişlikte kontrol edildi, sırayla (deploy'lar çakışmadan) squash-merge edildi ve canlıda yeniden doğrulandı.
+- **#139 — model sayfalarında erişilebilir HTML teknik tablo** (squash `4a32705`, production deploy `fbba0810`): `<dl>` yerine `<table>` (caption, scope). P2.5 piksel matrisi 128 × 64; "(föy)" notu yok; taşma yok; yasaklı kelime yok. Kontrol edilen sayfalar: P2.5, Colorlight S20, P1.86 GOB, P2.5 esnek, P3.07.
+- **#141 — yasaklı kelime "ekonomik" 4 sayfadan çıkarıldı** (squash `44b13c2`, deploy `a95c2d01`): kiralık mı satın alma mı rehberi artık "kiralık LED ekran çoğu zaman daha doğru tercihtir" diyor ("daha mantıklıdır" metinde bir kez). 284 sayfalık sitemap taramasında ucuz / uygun fiyat / indirim / kampanya / ekonomik yok. Fiyat hesaplama ve Melis dosyalarına dokunulmadı.
+- **#140 — Ürünler sayfası ve menüsü dört başlıkta** (squash `de8330c`, deploy `0da7e645`): İç Mekân (iç mekân, GOB, esnek, kiralık, şeffaf, ince pitch); Dış Mekân (dış mekân, transparan); Kontrol Kartları (Colorlight, NovaStar, Huidu, LED modül ve kontrol sistemleri); Dijital Ekranlar (dijital ekran, menüboard, kiosk, LCD, poster/totem). "Diğer ürünler" başlığı çıktı. 42 kategori bağlantısının hepsi 200 döndü. Masaüstü açılır menüde aynı dört başlık var. Mobil çekmecede başlık yok, ama sıralama aynı (başlıksız düz liste zaten vardı). `product-sections.ts` dosyasında atanmamış yeni bir grup için "Diğer ürünler" yedeği kodda duruyor.
+- **Dokunulmayanlar:** ana sayfa hero'su (#125 yayına alınmadı), Melis.
+
 ### 16 Ekim 2026 — Mobil menü okunabilirliği (dal `feat/menu-liquid-glass`)
 
 - **İstek (Aras):** mobil hamburger menüsündeki seçenek yazıları daha belirgin olsun, düğmeler sitedeki `liquid-glass-btn` diliyle uyumlu olsun.

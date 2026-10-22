@@ -256,7 +256,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Dış mekân ekranında piksel aralığı nasıl belirlenir?",
         answer:
-          "Ekranın montaj yüksekliği, izleyicinin ortalama uzaklığı ve içerik türü birlikte değerlendirilir. Uzaktan izlenen cephe ve billboard uygulamalarında daha büyük piksel aralıkları ekonomik bir seçim olabilir.",
+          "Ekranın montaj yüksekliği, izleyicinin ortalama uzaklığı ve içerik türü birlikte değerlendirilir. Uzaktan izlenen cephe ve billboard uygulamalarında daha büyük piksel aralıkları bütçe açısından daha verimli olabilir.",
       },
       {
         question: "Taşıyıcı sistem ve elektrik altyapısı teklife dahil mi?",

@@ -617,7 +617,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Sac kasa mı, alüminyum kasa mı?",
           answer:
-            "Sac kasa daha ekonomik ama daha ağırdır ve sabit kurulumlarda yeterlidir. Alüminyum ve döküm kabinler daha hafif, paslanmaya dayanıklı ve ölçüce daha hassastır; ince pitch, kiralık ve hafiflik gereken cephe işlerinde öne çıkar.",
+            "Sac kasa daha düşük maliyetlidir ama daha ağırdır ve sabit kurulumlarda yeterlidir. Alüminyum ve döküm kabinler daha hafif, paslanmaya dayanıklı ve ölçüce daha hassastır; ince pitch, kiralık ve hafiflik gereken cephe işlerinde öne çıkar.",
         },
         {
           question: "LED kasa fiyatı ne kadar?",
