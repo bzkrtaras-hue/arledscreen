@@ -85,7 +85,7 @@ function cityLinks(slugs: string[]): CommercialLink[] {
 }
 
 const NAP =
-  "Merkez: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul · +90 530 507 88 34 · arled@arledscreen.com";
+  "Merkez: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul · +90 530 507 88 34 · arled@arledscreen.com";
 
 const CORE_CITIES = cityLinks(["istanbul", "antalya", "bursa", "izmir", "eskisehir", "manisa", "yalova"]);
 
@@ -1019,7 +1019,7 @@ export function commercialPath(slug: string, locale: "tr" | "en" = "tr"): string
 }
 
 const NAP_EN =
-  "HQ: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul · +90 530 507 88 34 · arled@arledscreen.com";
+  "HQ: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul · +90 530 507 88 34 · arled@arledscreen.com";
 
 const EN_PRODUCT_LINKS: CommercialLink[] = [
   { href: "/en/products/", label: "Product catalog" },

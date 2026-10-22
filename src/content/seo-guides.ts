@@ -134,7 +134,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "İstanbul'da LED ekran nereden alınır?",
           answer:
-            "ARLEDSCREEN'in merkezi Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul'dadır. Telefon ve WhatsApp: +90 530 507 88 34, e-posta: arled@arledscreen.com. Satış, montaj ve servis Türkiye genelinde yapılır.",
+            "ARLEDSCREEN'in merkezi Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul'dadır. Telefon ve WhatsApp: +90 530 507 88 34, e-posta: arled@arledscreen.com. Satış, montaj ve servis Türkiye genelinde yapılır.",
         },
       ],
       relatedSlugs: [
@@ -192,7 +192,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "İstanbul'da dijital ekran satın alma süreci",
           body:
-            "ARLEDSCREEN'in merkezi Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul adresindedir. Süreç, ölçü ve kullanım amacını paylaşmanızla başlar; ardından keşif, piksel aralığı seçimi, yazılı teklif, montaj, devreye alma ve teknik servis gelir. Satış, montaj ve servis Türkiye genelinde yapılır; Temmuz 2025 – Temmuz 2026 arasında 13 ilde, ayrıca Almanya ve Azerbaycan'da proje kaydımız bulunur.",
+            "ARLEDSCREEN'in merkezi Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul adresindedir. Süreç, ölçü ve kullanım amacını paylaşmanızla başlar; ardından keşif, piksel aralığı seçimi, yazılı teklif, montaj, devreye alma ve teknik servis gelir. Satış, montaj ve servis Türkiye genelinde yapılır; Temmuz 2025 – Temmuz 2026 arasında 13 ilde, ayrıca Almanya ve Azerbaycan'da proje kaydımız bulunur.",
         },
         {
           h2: "Ekran boyutuna ve mekâna göre dijital ekran seçenekleri",

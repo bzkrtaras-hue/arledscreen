@@ -76,7 +76,7 @@ export const ENTITY_FAQS = [
   {
     question: "ARLEDSCREEN nerede?",
     answer:
-      "Merkez: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye. Site: https://arledscreen.com/tr/. Telefon / WhatsApp: +90 530 507 88 34.",
+      "Merkez: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul, Türkiye. Site: https://arledscreen.com/tr/. Telefon / WhatsApp: +90 530 507 88 34.",
   },
   {
     question: "NXTIONSTAR nedir?",
@@ -114,7 +114,7 @@ export const ENTITY_FAQS_EN = [
   {
     question: "Where is ARLEDSCREEN located?",
     answer:
-      "HQ: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul, Turkey. Phone / WhatsApp: +90 530 507 88 34.",
+      "HQ: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa/İstanbul, Turkey. Phone / WhatsApp: +90 530 507 88 34.",
   },
   {
     question: "What is NXTIONSTAR?",
@@ -168,7 +168,7 @@ ${CONTACT_PHONE_DISPLAY}`,
   directoryShort: ENTITY_CITE_ONE_LINER,
   directoryLong: `${ENTITY_CITE_MEDIUM}
 
-Adres: ${BUSINESS_ADDRESS.streetAddress}, ${BUSINESS_ADDRESS.postalCode} ${BUSINESS_ADDRESS.addressLocality} / ${BUSINESS_ADDRESS.addressRegion}
+Adres: ${BUSINESS_ADDRESS.streetAddress}, ${BUSINESS_ADDRESS.postalCode} ${BUSINESS_ADDRESS.addressLocality}/${BUSINESS_ADDRESS.addressRegion}
 Telefon: ${CONTACT_PHONE_DISPLAY}
 E-posta: ${CONTACT_EMAIL}
 Web: https://arledscreen.com/tr/

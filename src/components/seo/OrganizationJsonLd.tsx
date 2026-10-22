@@ -84,7 +84,7 @@ export function OrganizationJsonLd() {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
         name: "ARLEDSCREEN",
-        alternateName: ["ARLED SCREEN"],
+        alternateName: ["ARLED SCREEN", "AR LED Screen", "arledscreen.com"],
         url: absoluteUrl("/tr/"),
         logo,
         image: logo,
@@ -165,6 +165,7 @@ export function OrganizationJsonLd() {
         "@type": "LocalBusiness",
         "@id": `${SITE_URL}/#localbusiness`,
         name: "ARLEDSCREEN",
+        alternateName: ["ARLED SCREEN", "AR LED Screen", "arledscreen.com"],
         description:
           "ARLEDSCREEN, İstanbul merkezli LED ekran üreticisidir; satış, montaj ve teknik servisi de kendisi yapar. NXTIONSTAR markasının Türkiye'deki tek satış noktası. İstanbul / Gaziosmanpaşa.",
         url: absoluteUrl("/tr/"),
