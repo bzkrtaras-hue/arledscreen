@@ -372,7 +372,7 @@ const INTENT_PAGES: CommercialPage[] = [
     lead: "Periyodik bakım, arıza tespiti, modül/güç kaynağı değişimi ve mevcut ekranlar için teknik servis desteği sunuyoruz.",
     intro: [
       "Satışını yaptığımız sistemlerde satış sonrası teknik destek planlanır. Başka marka ekranlarda model ve kontrol kartı bilgisiyle servis uygunluğu değerlendirilir.",
-      "Servis kapsamı: yerinde inceleme, arıza tespiti, yedek parça ve kalibrasyon.",
+      "Servis kapsamı: inceleme, arıza tespiti, yedek parça ve kalibrasyon.",
       NAP,
     ],
     bullets: [
@@ -407,11 +407,11 @@ const INTENT_PAGES: CommercialPage[] = [
       "LED ekran tamiri: ölü piksel, sönen modül, renk farkı, güç kaynağı ve kontrol kartı arızaları. İstanbul Gaziosmanpaşa merkezli servis; keşif sonrası teklif.",
     h1: "LED ekran tamiri",
     eyebrow: "Servis · Tamir",
-    lead: "Sönen modül, renk farkı, kararan bölge ya da hiç açılmayan ekran: arızayı yerinde tespit edip modül, güç kaynağı, kart ve kablo düzeyinde onarıyoruz. Fiyatı keşif sonrası teklifle veriyoruz.",
+    lead: "Sönen modül, renk farkı, kararan bölge ya da hiç açılmayan ekran: arızayı tespit edip modül, güç kaynağı, kart ve kablo düzeyinde onarıyoruz. Fiyatı keşif sonrası teklifle veriyoruz.",
     intro: [
       "LED ekran tamirinde en sık karşılaştığımız arızalar şunlardır: ölü piksel ya da tamamen sönen modül; bölgeler arasında renk ve parlaklık farkı; güç kaynağı (PSU) arızası yüzünden kararan kabin; alıcı (receiving) veya gönderici (sending) karttan kaynaklanan görüntü kayması, donma ve sinyal kaybı; gevşemiş ya da oksitlenmiş flat kablo ve konnektörler; dış mekânda conta yıpranması sonrası içeri su ve nem girmesi.",
-      "Ekran tamir süreci beş adımda ilerler. Arızanın fotoğrafını veya kısa videosunu WhatsApp'tan gönderirsiniz ve uzaktan ön teşhis yaparız. Ardından yerinde keşif ve ölçümle arızanın kaynağını tespit ederiz. Onayınızla modül, güç kaynağı, kart ya da kablo değiştirilir veya onarılır. Son adımda ekran test edilir, gerekirse renk ve parlaklık ayarı yapılır.",
-      "LED ekranların yanı sıra LCD reklam ekranı, kiosk ve menuboard tamiri de yapıyoruz: görüntü gelmemesi, dokunmatik arızası, güç kartı ve bağlantı sorunları yerinde incelenir. Ekran titremesi, yatay ya da dikey çizgi, tek sırada renk bozulması (ör. bir sıranın kırmızı yanması), hiç açılmama ve yıldırım ya da aşırı gerilim sonrası arızalar da bu kapsamdadır.",
+      "Ekran tamir süreci beş adımda ilerler. Arızanın fotoğrafını veya kısa videosunu WhatsApp'tan gönderirsiniz ve uzaktan ön teşhis yaparız. Ardından keşif ve ölçümle arızanın kaynağını tespit ederiz. Onayınızla modül, güç kaynağı, kart ya da kablo değiştirilir veya onarılır. Son adımda ekran test edilir, gerekirse renk ve parlaklık ayarı yapılır.",
+      "LED ekranların yanı sıra LCD reklam ekranı, kiosk ve menuboard tamiri de yapıyoruz: görüntü gelmemesi, dokunmatik arızası, güç kartı ve bağlantı sorunları incelenir. Ekran titremesi, yatay ya da dikey çizgi, tek sırada renk bozulması (ör. bir sıranın kırmızı yanması), hiç açılmama ve yıldırım ya da aşırı gerilim sonrası arızalar da bu kapsamdadır.",
       "NovaStar, Colorlight ve Huidu kontrol sistemli ekranlarda kart ve yazılım kontrolü yapıyoruz. Başka firmadan alınmış ekranlarda marka, model ve kontrol kartı bilgisiyle servis ve yedek parça uygunluğunu değerlendiriyoruz. Merkezimiz İstanbul Gaziosmanpaşa'dadır; Türkiye genelinde servis veriyoruz.",
       NAP,
     ],
@@ -441,7 +441,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Ekranın bir bölümü karardı; sebebi ne olabilir?",
         answer:
-          "Kabin ya da bölge bazında kararma çoğunlukla güç kaynağı, alıcı kart veya bağlantı kablosundan kaynaklanır. Tek modül sönmüşse modül veya flat kablo arızası olasıdır. Kesin teşhisi yerinde ölçümle koyarız.",
+          "Kabin ya da bölge bazında kararma çoğunlukla güç kaynağı, alıcı kart veya bağlantı kablosundan kaynaklanır. Tek modül sönmüşse modül veya flat kablo arızası olasıdır. Kesin teşhisi ölçümle koyarız.",
       },
       {
         question: "Ekranda renk ve parlaklık farkı neden olur?",
@@ -466,7 +466,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "LED ekran titriyor; nasıl düzelir?",
         answer:
-          "Titreme çoğunlukla gevşek veri veya güç kablosu, arızalı güç kaynağı, alıcı kart ayarları ya da düşük tazeleme hızından kaynaklanır. Ekranı açıp kapatmak kalıcı çözüm değildir; kablo ve kart kontrolüyle kaynağı yerinde tespit edip gideriyoruz.",
+          "Titreme çoğunlukla gevşek veri veya güç kablosu, arızalı güç kaynağı, alıcı kart ayarları ya da düşük tazeleme hızından kaynaklanır. Ekranı açıp kapatmak kalıcı çözüm değildir; kablo ve kart kontrolüyle kaynağı tespit edip gideriyoruz.",
       },
       {
         question: "Ekranda yatay çizgi var ya da bir sıra kırmızı yanıyor; neden?",
@@ -481,7 +481,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Yıldırım veya elektrik dalgalanması sonrası LED ekran tamir edilir mi?",
         answer:
-          "Evet. Aşırı gerilim çoğunlukla güç kaynaklarına, alıcı kartlara ve bağlantılara zarar verir. Etkilenen parçaları yerinde ölçümle tespit edip değiştiriyoruz; kapsam ve fiyat yazılı teklifte belirtilir.",
+          "Evet. Aşırı gerilim çoğunlukla güç kaynaklarına, alıcı kartlara ve bağlantılara zarar verir. Etkilenen parçaları ölçümle tespit edip değiştiriyoruz; kapsam ve fiyat yazılı teklifte belirtilir.",
       },
       {
         question: "Tamir ne kadar sürer?",

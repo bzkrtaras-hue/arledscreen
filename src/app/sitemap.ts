@@ -189,6 +189,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
   for (const path of [
     "/hizmetler/",
+    "/teknik-destek/",
+    "/teknik-destek/piksel-konfigurasyonu/",
+    "/rehber/colorlight-led-ekran-kurulumu/",
     "/bolgeler/",
     "/projelerimiz/",
     "/galeri/",
